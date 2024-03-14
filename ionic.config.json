@@ -1,0 +1,7 @@
+{
+  "name": "bliphostfrontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
