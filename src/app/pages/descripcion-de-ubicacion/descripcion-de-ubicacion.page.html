@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">¿Dónde está tu estacionamiento?</h1>
+
+          <!-- Barra de búsqueda -->
+
+          <div class="box">
+	          <i class="fa fa-search" aria-hidden="true"></i>
+	          <input type="text" placeholder="Introduce tu ubicación" name="" >
+          </div>
+          
+          <button class="custom-btn" routerLink="/descripcion-del-mapa">
+            <img src="/assets/images/map-marker.png" alt="">
+            <span class="btn-text">Seleccionar en el mapa</span>
+          </button>
+          <button class="custom-btn" >
+            <img src="/assets/images/marker.png" alt=""> 
+            <span class="btn-text">Usar Ubicación real</span>   
+          </button>
+
+          <button routerLink="/descripcion-de-medidas-del-espacio" class="more-info-btn">Atrás</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

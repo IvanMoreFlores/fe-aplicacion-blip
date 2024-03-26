@@ -1,0 +1,55 @@
+.container {
+    background-color: #79FFAF;
+    display: flex;
+    height: 100%;
+}
+
+img {
+    margin-top: 80px;
+}
+  
+.title {
+    font-size: 28px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 10px auto;
+    display: block;
+    width: 80%;
+}
+  
+.subtitle {
+    font-size: 15px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin: 20px auto 0px;
+    display: block;
+    width: 80%;
+}
+  
+.description {
+    font-size: 14px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin: 10px auto;
+    display: block;
+    width: 80%;
+}
+  
+.next-btn {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    border: 1px solid #212121; 
+    background-color: transparent; 
+    color: #212121;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 150px;
+    height: 45px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+  
+.next-btn:hover {
+    background-color: rgba(163, 163, 163, 0.2); /* Cambio de color de fondo en hover */
+}

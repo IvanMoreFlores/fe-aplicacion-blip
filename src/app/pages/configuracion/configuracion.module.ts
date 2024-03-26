@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { ImgEstaPageRoutingModule } from './img-esta-routing.module';
-import { ImgEstaPage } from './img-esta.page';
+
+import { ConfiguracionPageRoutingModule } from './configuracion-routing.module';
+
+import { ConfiguracionPage } from './configuracion.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ImgEstaPageRoutingModule
+    ConfiguracionPageRoutingModule
   ],
-  declarations: [ImgEstaPage]
+  declarations: [ConfiguracionPage]
 })
-export class ImgEstaPageModule {}
+export class ConfiguracionPageModule {}

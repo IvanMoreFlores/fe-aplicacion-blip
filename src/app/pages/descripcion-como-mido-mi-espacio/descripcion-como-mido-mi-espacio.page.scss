@@ -1,0 +1,44 @@
+.container {
+    background-color: #79FFAF;
+    display: flex;
+    height: 100%;
+}
+
+img {  
+    margin: 20px auto;
+    display: block;
+}
+  
+.title {
+    font-size: 31px;
+    line-height: 37px;
+    font-family: "Poppins", sans-serif;
+    margin: 100px auto 20px;
+    width: 80%;
+}
+
+.description {
+    font-size: 12px;
+    line-height: 17px;
+    font-family: "Poppins", sans-serif;
+    margin: 30px 100px 20px 60px;
+}
+  
+.more-info-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    border: 1px solid #212121;
+    background-color: #212121;
+    color: #79FFAF;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 150px;
+    height: 45px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+  
+.more-info-btn:hover {
+    background-color: #363636;
+}
