@@ -2,15 +2,66 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'terminos-y-condiciones',
+    loadChildren: () => import('./pages/terminos-y-condiciones/terminos-y-condiciones.module').then( m => m.TerminosYCondicionesPageModule)
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'terminos-y-condiciones-mas-informacion',
+    loadChildren: () => import('./pages/redaccion/redaccion.module').then( m => m.RedaccionPageModule)
+  },  {
+    path: 'terminos-y-condiciones-empezar',
+    loadChildren: () => import('./pages/terminos-y-condiciones-empezar/terminos-y-condiciones-empezar.module').then( m => m.TerminosYCondicionesEmpezarPageModule)
   },
+  {
+    path: 'descripcion-del-estacionamiento',
+    loadChildren: () => import('./pages/descripcion-del-estacionamiento/descripcion-del-estacionamiento.module').then( m => m.DescripcionDelEstacionamientoPageModule)
+  },
+  {
+    path: 'descripcion-del-espacio',
+    loadChildren: () => import('./pages/descripcion-del-espacio/descripcion-del-espacio.module').then( m => m.DescripcionDelEspacioPageModule)
+  },
+  {
+    path: 'descripcion-de-direccion',
+    loadChildren: () => import('./pages/descripcion-de-direccion/descripcion-de-direccion.module').then( m => m.DescripcionDeDireccionPageModule)
+  },
+  {
+    path: 'descripcion-de-servicios-adicionales',
+    loadChildren: () => import('./pages/descripcion-de-servicios-adicionales/descripcion-de-servicios-adicionales.module').then( m => m.DescripcionDeServiciosAdicionalesPageModule)
+  },
+  {
+    path: 'descripcion-de-medidas-del-espacio',
+    loadChildren: () => import('./pages/descripcion-de-medidas-del-espacio/descripcion-de-medidas-del-espacio.module').then( m => m.DescripcionDeMedidasDelEspacioPageModule)
+  },
+  {
+    path: 'descripcion-como-mido-mi-espacio',
+    loadChildren: () => import('./pages/descripcion-como-mido-mi-espacio/descripcion-como-mido-mi-espacio.module').then( m => m.DescripcionComoMidoMiEspacioPageModule)
+  },
+  {
+    path: 'descripcion-de-ubicacion',
+    loadChildren: () => import('./pages/descripcion-de-ubicacion/descripcion-de-ubicacion.module').then( m => m.DescripcionDeUbicacionPageModule)
+  },
+  {
+    path: 'descripcion-del-mapa',
+    loadChildren: () => import('./pages/descripcion-del-mapa/descripcion-del-mapa.module').then( m => m.DescripcionDelMapaPageModule)
+  },
+  {
+    path: 'configuracion',
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },
+  {
+    path: 'configuracion-pago',
+    loadChildren: () => import('./pages/configuracion-pago/configuracion-pago.module').then( m => m.ConfiguracionPagoPageModule)
+  },
+  {
+    path: 'configuracion-alquilar',
+    loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
+  }
+
+
+
+
 ];
 
 @NgModule({

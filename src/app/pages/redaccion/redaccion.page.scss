@@ -1,0 +1,38 @@
+.container {
+    background-color: #79FFAF;
+    display: flex;
+    height: 100%;
+  }
+  
+.title {
+    font-size: 30px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 100px auto 20px;
+    display: block;
+    width: 80%;
+}
+
+.description {
+    font-size: 15px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin: 20px auto;
+    display: block;
+    width: 80%;
+}
+
+.next-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    border: 1px solid #212121; 
+    background-color: #212121; 
+    color: #79FFAF;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 150px;
+    height: 45px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
