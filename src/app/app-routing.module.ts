@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'ante-penal',
+    redirectTo: 'menu-config',
     pathMatch: 'full'
   },
   {
@@ -88,6 +88,22 @@ const routes: Routes = [
   {
     path: 'configuracion-alquilar',
     loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
+  },
+  {
+    path: 'mostra-esta',
+    loadChildren: () => import('./pages/mostra-esta/mostra-esta.module').then( m => m.MostraEstaPageModule)
+  },
+  {
+    path: 'nuevo-anu-pone-alq',
+    loadChildren: () => import('./pages/nuevo-anu-pone-alq/nuevo-anu-pone-alq.module').then( m => m.NuevoAnuPoneAlqPageModule)
+  },
+  {
+    path: 'menu-config',
+    loadChildren: () => import('./pages/menu-config/menu-config.module').then( m => m.MENUCONFIGPageModule)
+  },
+  {
+    path: 'inf-perso',
+    loadChildren: () => import('./pages/inf-perso/inf-perso.module').then( m => m.InfPersoPageModule)
   }
 ];
 

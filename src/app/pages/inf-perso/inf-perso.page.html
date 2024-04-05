@@ -1,0 +1,117 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <button routerLink="/configuracion-pago" class="info-back"> Información personal <div class="signo-menor"></div> </button>   
+          <div class="izqn">
+            <h2 class="subtitle">NOMBRE Y APELLIDO</h2>
+            <ion-item>
+              <ion-text>{{ textoGuardado }}</ion-text>
+            </ion-item>
+            <button (click)="toggleContent()" expand="block" class="EDIT1">
+              <span class="subrayado">Editar</span>
+            </button>
+            <div *ngIf="showContent" class="darken-background"></div>
+            <div *ngIf="showContent" class="new-vent">
+              <p class="titil3">Edita tu información </p>
+              <div class="linea"></div>
+              <div class="input-bar">
+                <ion-label class="label-text"></ion-label>
+                <ion-input [(ngModel)]="texto" placeholder="Escribe tu nombre"></ion-input>
+              </div>
+              <button (click)="guardarCambio()" expand="block" class="GuarCam">Guardar Cambios</button>
+            </div>
+          </div>
+          
+          <div class="sub-num-tef">
+            <h2 class="subtitle2">NÚMERO TELEFÓNICO</h2>
+            <ion-item>
+              <ion-text>{{ textoGuardado2 }}</ion-text>
+            </ion-item>
+            <button (click)="toggleContent2()" expand="block" class="EDIT2">
+              <span class="subrayado2">Editar</span>
+            </button>
+            <div *ngIf="showContent2" class="darken-background"></div>
+            <div *ngIf="showContent2" class="new-vent2">
+              <p class="titil3">Edita tu información </p>
+              <div class="linea"></div>
+              <div class="input-bar">
+                <ion-label class="label-text2">NÚMERO TELEFÓNICO</ion-label>
+                <ion-input class="escrib"    [(ngModel)]="texto2" placeholder="Escribe tu numero telefonico"></ion-input>
+              </div>
+              <button (click)="guardarCambio2()" expand="block" class="GuarCam">Guardar Cambios</button>
+            </div>
+          </div>
+
+          <div class="mail">
+            <h2 class="subtitle3">Correo electrónico</h2>
+            <ion-item>
+              <ion-text>{{ textoGuardado3 }}</ion-text>
+            </ion-item>
+            <button (click)="toggleContent3()" expand="block" class="EDIT3">
+              <span class="subrayado3">Editar</span>
+            </button>
+            <div *ngIf="showContent3" class="darken-background"></div>
+            <div *ngIf="showContent3" class="new-vent3">
+              <p class="titil3">Edita tu información </p>
+              <div class="linea"></div>
+              <div class="input-bar">
+                <ion-label class="label-text3">Correo electrónico</ion-label>
+                <ion-input class="escrib"    [(ngModel)]="texto3" placeholder="Escribe tu Correo Electronico"></ion-input>
+              </div>
+              <button (click)="guardarCambio3()" expand="block" class="GuarCam">Guardar Cambios</button>
+            </div>
+          </div>
+
+          <div class="mail">
+            <h2 class="subtitle4">Correo electrónico</h2>
+            <ion-item>
+              <ion-text>{{ textoGuardado4 }}</ion-text>
+            </ion-item>
+            <button (click)="toggleContent4()" expand="block" class="EDIT4">
+              <span class="subrayado4">Agregar </span>
+            </button>
+
+            <div *ngIf="showContent4" class="new-vent4">
+              <button *ngIf="showContent4" (click)="cancelar()" expand="block" class="CANCELAR">
+                <img src="assets/images/may-53.png" alt="">
+              </button>
+              <p class="titil4">Indícanos quién será tu contacto en caso de emergencia. </p>
+              <p class="contexto">Si no estás en casa para recibir a la persona que alquilo tu estacionamiento, comparte datos de emergencia para comunicarnos.</p>
+              <div class="input-bar">
+                <ion-label class="label-text4">Nombre de un contacto de emergencia</ion-label>
+                <ion-input class="escrib"    [(ngModel)]="texto4" placeholder="Escribe el Nombre"></ion-input>
+              </div>
+              <div class="input-bar2">
+                <ion-label class="label-text5">Teléfono del contacto de emergencia</ion-label>
+                <ion-input class="escrib"     placeholder="Escribe el telefono "></ion-input>
+              </div>
+              <button (click)="guardarCambio4()" expand="block" class="GuarCam2">Guardar </button>
+            </div>
+          </div>
+          <div class="custom-checkbox" (click)="toggleCheckbox()">
+            <div class="checkbox-icon" [ngClass]="{'checked': isChecked}">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+            <div class="checkbox-label">Verificación de Identidad (ej. DNI, otros.)</div>
+          </div>
+          <div class="custom-checkbox" (click)="toggleCheckbox2()">
+            <div class="checkbox-icon" [ngClass]="{'checked': isChecked2}">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+            <div class="checkbox-label">Acreditación de título de propiedad</div>
+          </div>
+          <div class="custom-checkbox" (click)="toggleCheckbox3()">
+            <div class="checkbox-icon" [ngClass]="{'checked': isChecked3}">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+            <div class="checkbox-label">Antecedentes Penales</div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

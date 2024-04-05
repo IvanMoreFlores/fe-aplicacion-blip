@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { AdjDtDniPageRoutingModule } from './adj-dt-dni-routing.module';
-import { AdjDtDniPage } from './adj-dt-dni.page';
+
+import { MENUCONFIGPageRoutingModule } from './menu-config-routing.module';
+
+import { MENUCONFIGPage } from './menu-config.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdjDtDniPageRoutingModule
+    MENUCONFIGPageRoutingModule
   ],
-  declarations: [AdjDtDniPage]
+  declarations: [MENUCONFIGPage]
 })
-export class AdjDtDniPageModule {}
+export class MENUCONFIGPageModule {}

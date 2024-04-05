@@ -78,3 +78,25 @@
 .swiper-pagination-bullet-active{
     background-color: black;
 }
+
+.custom-action-sheet {
+    .action-sheet-container {
+          background-color: #f4f4f4; /* Cambia el color de fondo del menú */
+        }
+      
+    .action-sheet-group {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end; /* Alinea los botones a la derecha */
+          padding: 0 20px; /* Ajusta el espaciado lateral */
+        }
+      
+    .action-sheet-button {
+          color: #007bff; /* Cambia el color del texto de los botones */
+          margin-bottom: 10px; /* Ajusta el espaciado entre los botones */
+        }
+      
+    .action-sheet-button.cancel-button {
+          color: #dc3545; /* Cambia el color del texto del botón de cancelar */
+        } 
+    }
