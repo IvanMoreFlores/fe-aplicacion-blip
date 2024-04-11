@@ -1,0 +1,348 @@
+.container {
+    background: linear-gradient(to bottom, #79FFAF 10%, transparent 10%);
+    height: 100%;
+    overflow: hidden;
+}
+
+.top-bar {
+    position: absolute; 
+    top: 40px; 
+    left: 0; 
+    width: 100%; 
+    background-color: #ffffff; 
+    border-radius: 30px 30px 0 0; 
+    transition: bottom 0.5s ease;
+}
+
+.top-bar .navbar {
+    background-color: transparent !important; 
+    margin: 20px auto;
+    width: 90%;
+    display: block;
+}
+
+.navbar {
+    border: none; 
+    width: 100%;
+}
+
+.navbar-toggler {
+    border: none; 
+    background-color: transparent; 
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+
+.navbar-collapse {
+    background-color: #FFFFFF;
+    z-index: 9;
+    border-radius: 30px 30px 0 0;
+    bottom: -810px;
+    width: 430px !important;
+    position: absolute;
+    right: -20px;
+}
+
+.navbar-nav {
+    margin: 20px 0px;
+}
+
+.menu-above {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: #524F4F;
+}
+
+.separator-line {
+    border-top: 2px solid #D4D4D4;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-left: 30px;
+}
+
+.service-button {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 30px;
+}
+
+.button-image {
+    margin-left: 30px;
+    margin-right: 15px; 
+}
+
+.button-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px; 
+}
+
+.second-image {
+    position: absolute;
+    right: 80px;
+}
+
+.text-b {
+    font-size: 17px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    width: 280px;
+}
+
+.message-time{
+    position: absolute;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    display: flex;
+    left: 350px;
+    margin-bottom: 15px;
+}
+
+.img-blip {
+    margin-right: 15px;
+    background-color: transparent;
+    height: 40px;
+    width: 42px;
+}
+
+.mensaje {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin-block: 15px;
+    margin-left: 20px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+}
+
+.separator-line {
+    border-top: 2px solid #D4D4D4;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.vector-mensaje {
+    display: flex;
+    background-color: transparent;
+    margin-right: 20px;
+}
+
+.btn-custom {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 150px auto 0px;
+    display: block;
+    width: 90%;
+    font-weight: 600;
+}
+
+.menu-black {
+    display: block;
+    margin: 40px auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 35px;
+    bottom: 30px;
+    background-color: #fff;
+}
+
+.image-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.image-button {
+    margin: 15px 15px;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 60px;
+}
+
+.image-button-3 {
+    margin: 15px 15px 18px;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 60px;
+    background-color: #79FFAF;
+    border-radius: 40%;
+}
+
+.image-button:hover {
+    color: #79FFAF;
+    background-color: #79FFAF;
+    border-radius: 40%;
+}
+
+.dot {
+    position: absolute; 
+    bottom: 5px; 
+    right: 126px; 
+    transform: translateX(-50%); 
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    border: 1px solid #79FFAF;
+    border-radius: 50%;
+}
+
+.custom-btn {
+    margin: 30px auto; 
+    background-color: transparent;
+    color: #212121;
+    font-size: 16px;
+    border: 1px solid #212121;
+    border-radius: 30px;
+    width: 80%;
+    height: 49px;
+    padding: 10px 20px; 
+    display: flex; 
+    align-items: center; 
+}
+
+.custom-btn ion-icon {
+    margin-right: 10px; 
+}
+
+.custom-btn input[type="checkbox"] {
+    margin-left: auto; 
+    border: 1px solid #000; 
+    background-color: transparent; 
+    accent-color: #212121;
+}
+
+.btn-text {
+    margin-left: 50px; 
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.container-1 {
+    display: block;
+    position: absolute;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container-1 input {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    right: 0px;
+    top: 10px;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: #212121;
+    border: 1px black solid;
+    border-radius: 5px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container-1:hover input ~ .checkmark {
+    background-color: #212121;
+    border-radius: 5px;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container-1 input:checked ~ .checkmark {
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+  }
+  
+  /* Show the checkmark when checked */
+  .container-1 input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container-1 .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+
+  .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 8; 
+    transition: opacity 0.3s ease;
+    pointer-events: none; 
+  }
+  
+  .navbar-collapse.show + .dark-overlay {
+    opacity: 1;
+    pointer-events: auto; 
+  }
+
+  /* Calendar */
+
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-gap: 10px; /* Espacio entre los elementos */
+  }
+
+  
+  

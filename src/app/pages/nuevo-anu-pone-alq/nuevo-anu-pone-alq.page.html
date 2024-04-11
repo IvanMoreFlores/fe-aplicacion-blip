@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">Poner en alquiler tu espacio en Blip es muy sencillo</h1>
+          <h2 class="subti" >Sigue estos tres simples pasos:</h2>
+          <p class="pasos">1.  Confirma tu Identidad</p>
+          <p class="desciption"  >Te solicitaremos subir tu documento de identidad, antecedentes penales y judiciales.</p>         
+          <p class="pasos">2. Describe tu estacionamiento</p>
+          <p class="desciption"  >Incluirás detalles acerca de tu área de estacionamiento, como sus dimensiones y ubicación.</p>
+          <p class="pasos">3. Terminar y Publicar</p>
+          <p class="desciption"  >Responderás algunas preguntas sobre cómo te gustaría manejar ciertos aspectos como Host y subirás imágenes de tu espacio.</p>
+          <button  (click)="toggleContent()" expand="block" class="back-btn">Salir  </button>
+          <div *ngIf="showContent" class="darken-background"></div>
+          <div *ngIf="showContent" class="new-vent">
+            <p class="titil3">¿Seguro que quieres salir?</p>
+            <div class="linea"></div>
+            <p class="confir">Recuerda que puedes crear un anuncio en cualquier momento.</p>
+            <button class="salir">Salir</button>
+            <button class="continuar">Continuar</button>
+          </div>
+          <button  routerLink="/"   class="next-btn">Siguiente  </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

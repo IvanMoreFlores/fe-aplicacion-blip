@@ -1,0 +1,432 @@
+.container {
+    background: linear-gradient(to bottom, #79FFAF 50%, transparent 50%);
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+.top-bar {
+    position: absolute; 
+    top: 40px; 
+    left: 0; 
+    width: 100%; 
+    height: 110px;
+    background-color: #ffffff; 
+    border-radius: 30px 30px 0 0; 
+    transition: bottom 0.5s ease;
+  }
+  
+  .top-bar .navbar {
+    background-color: transparent !important; 
+    margin: 10px auto;
+    width: 90%;
+    display: block;
+  }
+  
+  .navbar {
+    border: none; 
+    width: 100%;
+  }
+  
+  .navbar-toggler {
+    border: none; 
+    background-color: #79FFAF; 
+    padding: 3px;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+
+  .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  .navbar-collapse {
+    background-color: #FFFFFF;
+    z-index: 9;
+    border-radius: 30px 30px 0 0;
+    bottom: -800px;
+    width: 430px !important;
+    position: absolute;
+    right: -20px;
+  }
+    
+  .navbar-nav {
+    margin: 20px 0px;
+  }
+
+  .menu-above {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .separator-line {
+    border-top: 2px solid #D4D4D4;
+    width: 100%;
+    margin: 10px auto;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-left: 30px;
+  }
+
+  .button-container {
+    margin: 0px auto;
+    width: 90%;
+    display: block;
+}
+  
+  .service-button {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 30px;
+  }
+
+  .button-image {
+    margin-left: 30px;
+    margin-right: 15px; 
+  }
+  
+  .button-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px; 
+  }
+
+  .second-image {
+    position: absolute;
+    right: 80px;
+  }
+
+  .text-b {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    margin-left: 15px;
+    width: 200px;
+    line-height: 22px;
+  }
+
+  .btn-custom {
+    background-color: transparent;
+    box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+    border-radius: 10px;
+    padding: 3px;
+  }
+  
+  .title {
+    font-size: 28px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 170px auto 0px;
+    display: block;
+    width: 90%;
+    font-weight: 600;
+  }
+  
+  .description {
+    font-size: 14px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin: 0px auto 20px;
+    display: block;
+    width: 90%;
+  }
+
+  .cuadro {
+    margin: 20px auto;
+    display: block;
+    width: 90%;
+}
+
+  .swiper-container {
+    width: 160px;
+    height: 145px;
+    border: none;
+}
+  
+.swiper-slide {
+    font-size: 18px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-right: 25px !important; 
+}
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    right: 0px;
+    top: 10px;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    height: 20px;
+    width: 20px;
+    border: 1px black solid;
+    border-radius: 5px;
+  }
+  
+  .container:hover input ~ .checkmark {
+    background-color: #212121;
+    border-radius: 5px;
+  }
+  
+  .container input:checked ~ .checkmark {
+    background-color: transparent;
+    border-radius: 5px;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+  }
+  
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .container .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+  /* Style the checkmark/indicator */
+
+  
+  .checktext {
+    font-size: 12px;
+    line-height: 140%;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    margin: 20px 10px 0px 20px;
+  }
+  
+  .checkdescripcion{
+    font-size: 10px;
+    line-height: 140%;
+    font-family: "Poppins", sans-serif;
+    margin: 5px 10px 0px 20px;
+  }
+
+  img.calendario {
+    margin: 20px 0px 0px 20px;
+  }
+
+  .checktex {
+    font-size: 12px;
+    line-height: 140%;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    margin: 8px 10px 0px 20px;
+  }
+
+
+  .reservaciones {
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    margin: 40px auto 20px;
+    width: 90%;
+    display: block;
+    font-weight: 600;
+  }
+
+  .container-slider{
+    width: 90%;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .slider {
+    height: 40px ;
+  }
+  
+  .button1 {
+    width: 120px !important; 
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-right: 25px !important;
+    display: flex;
+    align-items: center;
+    text-align: left; 
+    padding-left: 10px; 
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+  }
+
+  .button2 {
+    width: 150px; 
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-right: 25px !important;
+    display: flex;
+    align-items: center;
+    text-align: left; 
+    padding-left: 10px; 
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+  }
+
+  .button3 {
+    width: 120px !important; 
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-right: 25px !important;
+    display: flex;
+    align-items: center;
+    text-align: left; 
+    padding-left: 10px; 
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+  }
+
+  .button4 {
+    width: 150px; 
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-right: 25px !important;
+    display: flex;
+    align-items: center;
+    text-align: left; 
+    padding-left: 10px; 
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+  }
+
+  .info {
+    border-radius: 10px;
+    height: 160px;
+    width: 90%;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #212121;
+    background-color: #fff; 
+    padding: 20px; 
+    margin: 20px; 
+  }
+
+  .menu-black {
+    display: block;
+    margin: 40px auto;
+    box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 35px;
+    bottom: 30px;
+  }
+
+  .image-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-button {
+    margin: 15px 15px;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 60px;
+  }
+
+  .image-button-1 {
+    margin: 15px 15px 18px;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 60px;
+    background-color: #79FFAF;
+    border-radius: 40%;
+  }
+
+  .image-button:hover{
+    color: #79FFAF;
+    background-color: #79FFAF;
+    border-radius: 40%;
+  }
+
+  .dot {
+    position: absolute; 
+    bottom: 5px; 
+    left: 45px; 
+    transform: translateX(-50%); 
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    border: 1px solid #79FFAF;
+    border-radius: 50%;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 8; 
+  transition: opacity 0.3s ease;
+  pointer-events: none; 
+}
+
+.navbar-collapse.show + .dark-overlay {
+  opacity: 1;
+  pointer-events: auto; 
+}
+  
+
+
+  
+  
+  
+  
+ 
+  
+
+
+  
+  
+  
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  

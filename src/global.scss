@@ -78,3 +78,63 @@
 .swiper-pagination-bullet-active{
     background-color: black;
 }
+
+.custom-action-sheet {
+    .action-sheet-container {
+          background-color: #f4f4f4; /* Cambia el color de fondo del menú */
+        }
+      
+    .action-sheet-group {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end; /* Alinea los botones a la derecha */
+          padding: 0 20px; /* Ajusta el espaciado lateral */
+        }
+      
+    .action-sheet-button {
+          color: #007bff; /* Cambia el color del texto de los botones */
+          margin-bottom: 10px; /* Ajusta el espaciado entre los botones */
+        }
+      
+    .action-sheet-button.cancel-button {
+          color: #dc3545; /* Cambia el color del texto del botón de cancelar */
+        } 
+    }
+
+#calendar {
+    width: 90%;
+    margin: 20px auto;
+    display: block;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+    overflow-y: auto; 
+    max-height: calc(100vh - 300px);
+  }
+  
+  .calendar-container h2 {
+    justify-content: space-between;
+    display: flex;
+    font-size: 16px;
+    width: 85%;
+    margin: 20px auto;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
+  
+  .calendar-container table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  table th {
+    font-weight: 600;
+  }
+
+  table td {
+    padding: 5px;
+  }

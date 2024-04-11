@@ -1,0 +1,366 @@
+.container{
+    background-color: #79FFAF; 
+    display: flex;
+    justify-content: center;
+    
+    height: 100%;
+}
+.content{
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    width: 432px;
+    margin-top: 50px;
+    height: 882px;
+    display: block;
+    background-color: #FFFFFF;
+    padding: 20px;
+    
+}
+.info-back{
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    background-color: transparent;
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.signo-menor::before {
+    content: '\003c'; /* Código Unicode para el signo menor (<) */
+    display: flex;
+    margin-left: -250px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+}
+.subtitle{
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  margin-left: 15px;
+  margin-top: 50px;
+}
+.subtitle2{
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  margin-left: 15px;
+  margin-top: 50px;
+}
+.subtitle3{
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  margin-left: 15px;
+  margin-top: 50px;
+}
+.subtitle4{
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  margin-left: 15px;
+  margin-top: 50px;
+}
+.EDIT1{
+  font-size: 10px;
+  color: #212121;
+  background-color: transparent;
+  position: absolute;
+  right: 30px;
+  top: 165px;
+}
+.EDIT2{
+  font-size: 10px;
+  color: #212121;
+  background-color: transparent;
+  position: absolute;
+  right: 30px;
+  top: 290px;
+}
+.EDIT3{
+  font-size: 10px;
+  color: #212121;
+  background-color: transparent;
+  position: absolute;
+  right: 30px;
+  top: 410px;
+}
+.EDIT4{
+  font-size: 10px;
+  color: #212121;
+  background-color: transparent;
+  position: absolute;
+  right: 30px;
+  top: 530px;
+}
+.nombre{
+  list-style: 1px solid #212121;
+}
+.subrayado {
+  text-decoration: underline;
+}
+.subrayado2 {
+  text-decoration: underline;
+}
+.subrayado3 {
+  text-decoration: underline;
+}
+.subrayado4 {
+  text-decoration: underline;
+}
+.izqn{
+
+  align-items: center;
+}
+.sub-num-tef{
+  align-items: center;
+}
+.darken-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
+    z-index: 999; /* Asegúrate de que este valor sea mayor que el z-index del contenido desplegable */
+  }
+@keyframes slideIn {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+.new-vent {
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 302px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -16.6%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+}
+.new-vent2 {
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 302px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -16.6%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+}
+.new-vent3 {
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 302px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -16.6%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+}
+.new-vent4 {
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 882px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -47.1%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+}
+/* Estilos para el botón con el símbolo de mayor y menor */
+.CANCELAR {
+  font-size: 10px;
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  display: flex;
+  margin-left: 20px;
+  margin-top: 40px;
+  color: #212121;
+}
+
+
+.input-bar {
+  position: relative;
+  padding: 5px 20px;
+  border: 1px solid;
+  height: 56px;
+  border-radius: 30px;
+  top: 30px;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Centra horizontalmente */
+}
+.input-bar2 {
+  position: relative;
+  padding: 5px 20px;
+  border: 1px solid;
+  height: 56px;
+  border-radius: 30px;
+  top: 80px;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Centra horizontalmente */
+}
+  
+.label-text {
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    background-color: #ffffff;
+    padding: 0 10px;
+    z-index: 1;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+}
+.label-text2 {
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    background-color: #ffffff;
+    padding: 0 10px;
+    z-index: 1;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+}
+.label-text3 {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #ffffff;
+  padding: 0 10px;
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.label-text4 {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #ffffff;
+  padding: 0 10px;
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.label-text5 {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #ffffff;
+  padding: 0 10px;
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.titil3{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.titil4{
+  font-size: 22px;
+  width: 90%;
+  margin: 10px auto;
+  display: block;
+  margin-top: 20px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+.contexto{
+  font-family: "Poppins", sans-serif;
+  width: 90%;
+  margin: 25px auto;
+  font-size: 12;
+}
+.linea {
+  background-color: #D4D4D4;
+  width: 100%;
+  height: 1px;
+}
+img{
+  width: 17px;
+  height: 17px;
+}
+.GuarCam{
+  position: absolute;
+  bottom: 65px;
+  border: 1px solid #212121; 
+  background-color: #212121; 
+  color: #79FFAF;
+  font-size: 16px;
+  border-radius: 30px;
+  width: 80%;
+  height: 60px;
+  font-weight: 600;
+  left: 43px;
+  font-family: "Poppins", sans-serif;
+}
+.GuarCam2{
+  position: absolute;
+  bottom: 65px;
+  border: 1px solid #212121; 
+  background-color: #212121; 
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 30px;
+  width: 80%;
+  height: 60px;
+  font-weight: 600;
+  left: 43px;
+  font-family: "Poppins", sans-serif;
+}
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-icon {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.checkbox-icon.checked {
+  background-color: #5a5a5a;
+  border-color: #5a5a5a;
+}
+
+.checkbox-icon ion-icon {
+  font-size: 16px;
+  color: #fff;
+}
+
+.checkbox-label {
+  font-size: 16px;
+  color: #333;
+}
+.custom-checkbox{
+  margin-top: 20px;
+  margin-left: 20px;
+}

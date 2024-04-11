@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NG_ASYNC_VALIDATORS } from '@angular/forms';
+import { asapScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-configuracion-pago',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./configuracion-pago.page.scss'],
 })
 export class ConfiguracionPagoPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  
+  description: boolean = false;
+  
+    constructor() { }
+  
+    ngOnInit() {
+    }
+  
+    cargando(){
+      this.description = true;
+    }
+  
   }
-
-}

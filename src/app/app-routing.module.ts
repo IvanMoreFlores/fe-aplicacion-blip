@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'ante-penal',
+    redirectTo: 'menu-config',
     pathMatch: 'full'
   },
   {
@@ -88,7 +88,108 @@ const routes: Routes = [
   {
     path: 'configuracion-alquilar',
     loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'mensajes',
+    loadChildren: () => import('./pages/mensajes/mensajes.module').then( m => m.MensajesPageModule)
+  },
+  {
+    path: 'mensajes-chat',
+    loadChildren: () => import('./pages/mensajes-chat/mensajes-chat.module').then( m => m.MensajesChatPageModule)
+  },
+  {
+    path: 'mensajes-archivados',
+    loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
+  },
+  {
+    path: 'mensajes-destacados',
+    loadChildren: () => import('./pages/mensajes-destacados/mensajes-destacados.module').then( m => m.MensajesDestacadosPageModule)
+  },
+  {
+    path: 'mensajes-atencion',
+    loadChildren: () => import('./pages/mensajes-atencion/mensajes-atencion.module').then( m => m.MensajesAtencionPageModule)
+  },
+  {
+    path: 'mensajes-programados',
+    loadChildren: () => import('./pages/mensajes-programados/mensajes-programados.module').then( m => m.MensajesProgramadosPageModule)
+  },
+  {
+    path: 'mensajes-respuestas',
+    loadChildren: () => import('./pages/mensajes-respuestas/mensajes-respuestas.module').then( m => m.MensajesRespuestasPageModule)
+  },
+  {
+    path: 'home-notificaciones',
+    loadChildren: () => import('./pages/home-notificaciones/home-notificaciones.module').then( m => m.HomeNotificacionesPageModule)
+  },
+  {
+    path: 'calendario',
+    loadChildren: () => import('./pages/calendario/calendario.module').then( m => m.CalendarioPageModule)
+  },
+  {
+    path: 'calendario-semanal',
+    loadChildren: () => import('./pages/calendario-semanal/calendario-semanal.module').then( m => m.CalendarioSemanalPageModule)
+  },
+  {
+    path: 'descripcion-de-direccion',
+    loadChildren: () => import('./pages/descripcion-de-direccion/descripcion-de-direccion.module').then( m => m.DescripcionDeDireccionPageModule)
+  },
+  {
+    path: 'descripcion-de-servicios-adicionales',
+    loadChildren: () => import('./pages/descripcion-de-servicios-adicionales/descripcion-de-servicios-adicionales.module').then( m => m.DescripcionDeServiciosAdicionalesPageModule)
+  },
+  {
+    path: 'descripcion-de-medidas-del-espacio',
+    loadChildren: () => import('./pages/descripcion-de-medidas-del-espacio/descripcion-de-medidas-del-espacio.module').then( m => m.DescripcionDeMedidasDelEspacioPageModule)
+  },
+  {
+    path: 'descripcion-como-mido-mi-espacio',
+    loadChildren: () => import('./pages/descripcion-como-mido-mi-espacio/descripcion-como-mido-mi-espacio.module').then( m => m.DescripcionComoMidoMiEspacioPageModule)
+  },
+  {
+    path: 'descripcion-de-ubicacion',
+    loadChildren: () => import('./pages/descripcion-de-ubicacion/descripcion-de-ubicacion.module').then( m => m.DescripcionDeUbicacionPageModule)
+  },
+  {
+    path: 'descripcion-del-mapa',
+    loadChildren: () => import('./pages/descripcion-del-mapa/descripcion-del-mapa.module').then( m => m.DescripcionDelMapaPageModule)
+  },
+  {
+    path: 'configuracion',
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },
+  {
+    path: 'configuracion-pago',
+    loadChildren: () => import('./pages/configuracion-pago/configuracion-pago.module').then( m => m.ConfiguracionPagoPageModule)
+  },
+  {
+    path: 'configuracion-alquilar',
+    loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
+  },
+  {
+    path: 'mostra-esta',
+    loadChildren: () => import('./pages/mostra-esta/mostra-esta.module').then( m => m.MostraEstaPageModule)
+  },
+  {
+    path: 'nuevo-anu-pone-alq',
+    loadChildren: () => import('./pages/nuevo-anu-pone-alq/nuevo-anu-pone-alq.module').then( m => m.NuevoAnuPoneAlqPageModule)
+  },
+  {
+    path: 'menu-config',
+    loadChildren: () => import('./pages/menu-config/menu-config.module').then( m => m.MENUCONFIGPageModule)
+  },
+  {
+    path: 'inf-perso',
+    loadChildren: () => import('./pages/inf-perso/inf-perso.module').then( m => m.InfPersoPageModule)
+  },
+  {
+    path: 'calendario-mes',
+    loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
   }
+
 ];
 
 @NgModule({

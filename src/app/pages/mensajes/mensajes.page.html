@@ -1,0 +1,137 @@
+<ion-content [fullscreen]="true">
+  <div  *ngIf="isNavbarOpen" class="dark-overlay"></div>
+  <div class="top-bar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center w-100">
+          <button  routerLink="/home" class="vector-mensaje">
+          <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
+        </button>
+          <div class="text-b">Mensajes</div>
+        
+          <button class="btn-custom shadow"><img src="/assets/images/btn-filter.png" alt=""></button>
+          <button class="navbar-toggler shadow" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="/assets/images/filtro.png" alt="Icono de navegación">
+          </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- Nuevo contenido dentro del navbar-collapse -->
+            <div class="menu-above">Filtrar mensajes</div>
+            <hr class="separator-line">
+            <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
+            <div class="button-container">
+              <button class="custom-btn">
+                <img src="/assets/images/envelope.png" alt="">
+                <span class="btn-text">Todos los mensajes</span>
+                <label class="container-1">
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/download.png" alt=""> 
+                <span class="btn-text">Atención al cliente</span>
+                <label class="container-1">
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/star.png" alt="">
+                <span class="btn-text">Destacados</span>
+                <label class="container-1">
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/info.png" alt=""> 
+                <span class="btn-text">Archivados</span>
+                <label class="container-1">
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </button>
+          </div>
+
+          <div>
+            <h2 class="subtitle">CONFIGURACIÓN</h2>
+            <button class="custom-btn">
+              <img src="/assets/images/time-check.png" alt=""> 
+              <span class="btn-text">Programados</span>
+              <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+            </button>
+            
+            <button class="custom-btn">
+              <img src="/assets/images/envelope-open.png" alt=""> 
+              <span class="btn-text">Respuestas rápidas</span>
+              <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+            </button> 
+            </div>      
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">Todos los mensajes </h1>
+
+          <div class="cliente">
+            <button class="mensaje">
+              <img class="img-blip " src="/assets/images/group.png" alt="">
+              <span class="texmensaje">Atención al cliente de Blip <br> <span style="font-size: 10px; font-weight: Poppins, sans-serif; ;">¿Cómo te gustaría comunicarte con nosot...</span></span> 
+              <div class="message-time">12:25</div>
+            </button>
+          </div>
+          <hr class="separator-line">
+
+          <div class="cliente">
+            <button routerLink="/mensajes-chat" class="mensaje">
+              <img class="img-blip " src="/assets/images/image39.png" alt="">
+              <span class="texmensaje">Laura <br> <span style="font-size: 10px; font-weight: Poppins, sans-serif; ;">Laura te ha invitado a ser anfitrión en blip...</span></span> 
+              <div class="message-time">12:25</div>
+            </button>
+          </div>
+          <hr class="separator-line">
+
+          <div class="cliente">
+            <button routerLink="/mensajes-chat" class="mensaje">
+              <img class="img-blip " src="/assets/images/image39.png" alt="">
+              <span class="texmensaje">Laura <br> <span style="font-size: 10px; font-weight: Poppins, sans-serif; ;">Laura te ha invitado a ser anfitrión en blip...</span></span> 
+              <div class="message-time">12:25</div>
+            </button>
+          </div>
+          <hr class="separator-line">
+          
+          <div class="menu-black">
+            
+            <div class="image-buttons">
+              <button routerLink="/home" class="image-button">
+                <img class="num1" src="/assets/images/home.png" alt="Button 1">
+              </button>
+              <button class="image-button-2">
+                <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
+              </button>
+              <div class="dot"></div>
+              <button routerLink="/calendario" class="image-button">
+                <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
+              </button>
+              <button class="image-button">
+                <img class="num4" src="/assets/images/signal.png" alt="Button 4">
+              </button>
+            </div>
+          </div>
+
+
+                
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
