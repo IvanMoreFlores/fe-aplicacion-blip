@@ -1,0 +1,120 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="pantalla">
+
+      <div class="inicio">
+        <a class="regresar" href="#">
+          <div class="left-arrow">
+            <img src="/assets/images/left-arrow.svg" alt="" />
+          </div>
+          <h1 class="title">Estacionamiento</h1>
+        </a>
+
+
+      </div>
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <button (click)="changeContent('Ingresos')"
+              [ngClass]="{'active': isButtonActive('Ingresos')}">Ingresos</button>
+          </div>
+
+          <div class="swiper-slide">
+            <button (click)="changeContent('Historial de Alquiler')"
+              [ngClass]="{'active': isButtonActive('Historial de Alquiler')}">Historial de Alquiler</button>
+          </div>
+
+          <div class="swiper-slide">
+            <button (click)="changeContent('Pagos')" [ngClass]="{'active': isButtonActive('Pagos')}">Pagos</button>
+          </div>
+
+          <div class="swiper-slide">
+            <button (click)="changeContent('Historial de Pago')"
+              [ngClass]="{'active': isButtonActive('Historial de Pago')}">Historial de Pago</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--                 -----Ingresos-----              -->
+      <div *ngIf="selectedContent === 'Ingresos'">
+
+        <div class="anuncio">
+          <div>
+            <h2>Anuncio 1</h2>
+            <p>Estacionamiento Las Begonias</p>
+          </div>
+          <div class="anuncio-ingreso">
+            <div>
+              <h3>Ingreso del día</h3>
+              <p>Lunes, 15 de Abril 2024</p>
+            </div>
+            <div>
+              <span>s/. 0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="anuncio">
+          <div>
+            <h2>Anuncio 1</h2>
+            <p>Estacionamiento Las Begonias</p>
+          </div>
+          <div class="anuncio-ingreso">
+            <div>
+              <h3>Ingreso del día</h3>
+              <p>Lunes, 15 de Abril 2024</p>
+            </div>
+            <div>
+              <span>s/. 0.00</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="ingreso-final">
+
+          <h3>Ingreso Final</h3>
+          <p>Recuerda que el balance final se actualizará en base a la recurrencia de actividad y será acumulado para la forma de pago elegida en la sección de pagos.</p>
+          <span>s/. 0.00</span>
+
+          <div class="deposito-pago">
+            <div>
+              <img src="/assets/images/icon-info.svg" alt="">
+            </div>
+            <p>
+              Depósito de pago: S/. 0.00 el 6
+              de diciembre (actividad del 27 de Noviembre al 03 de Diciembre).
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!--                 -----Historial de Alquiler-----              -->
+      <div *ngIf="selectedContent === 'Historial de Alquiler'">
+
+
+      </div>
+
+      <!--                 -----Pagos-----              -->
+      <div *ngIf="selectedContent === 'Pagos'">
+
+
+      </div>
+
+      <!--                 -----Historial de Pago-----              -->
+      <div *ngIf="selectedContent === 'Historial de Pago'">
+
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+</ion-content>

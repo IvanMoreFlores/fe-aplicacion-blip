@@ -1,0 +1,172 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  margin: 0;
+}
+
+.container {
+  background-color: #79ffaf;
+  height: 100%;
+  min-width: 100%;
+  padding-top: 44px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.pantalla {
+  background-color: white;
+  padding: 5% 7% 5% 7%;
+  width: 100%;
+  min-height: 100%; /* Esto hace que el div ocupe el 100% de la altura de la pantalla */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  color: #212121;
+}
+
+.regresar {
+  display: flex;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #212121;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.inicio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribuye los elementos a lo largo del eje principal (horizontal) */
+  margin-bottom: 20px;
+  height: 37px;
+}
+
+.left-arrow {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.grid-small-button {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+
+.small-button {
+  box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+  border-radius: 10px;
+  margin-right: 0px;
+  width: 37px;
+  height: 37px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-container {
+  width: auto;
+}
+
+.swiper-slide {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  width: fit-content; /* Ajusta el ancho al contenido */
+}
+
+.swiper-wrapper button {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin: 0;
+  padding: 13px 20px;
+  background-color: #ffffff;
+  color: #5f5d5d;
+  border: 1px solid #5f5d5d;
+  border-radius: 30px;
+}
+
+.swiper-wrapper button.active {
+  color: #ffffff;
+  background-color: #212121;
+  border: 1px solid #212121;
+}
+
+//---------------------ANUNCIO-------------------------------
+
+.anuncio{
+  margin-bottom: 30px;
+}
+
+.anuncio h2 {
+  font-size: 10px;
+  font-weight: 500;
+  color: #808080;
+  margin-bottom: 0;
+}
+
+.anuncio p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #212121;
+}
+
+.anuncio-ingreso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 10px 5px rgba(83, 83, 83, 0.034);
+  padding: 20px 60px 20px 20px;
+  border-radius: 15px;
+  width: 100%;
+  height: 71px;
+}
+
+.anuncio-ingreso h3 {
+  color: #212121;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.anuncio-ingreso p {
+  color: #808080;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.anuncio-ingreso span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.ingreso-final{
+  width: 100%;
+  height: 246px;
+}
+
+
+.deposito-pago{
+  display: flex;
+}
+
+.deposito-pago p{
+  
+}
+
