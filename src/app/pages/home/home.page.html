@@ -1,21 +1,75 @@
 <ion-content [fullscreen]="true">
+  <div  *ngIf="isNavbarOpen" class="dark-overlay"></div>
   <div class="top-bar">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <img src="/assets/images/back.png" alt="Logo" class="navbar-logo">
+        <div class="d-flex  align-items-center w-100">
+          <img src="/assets/images/backdrop-component.png" alt="Logo" class="navbar-logo">
           <div class="text-b">Bienvenida <br> <span style="font-size: 25px;">Mariana D.</span></div>
-          <button class="btn-custom"></button>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <button routerLink="/home-notificaciones" class="btn-custom"> <img src="/assets/images/bell.png" alt=""></button>
+          <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <img src="/assets/images/comment.png" alt="Icono de navegación">
           </button>
         </div>
+        
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link ">Home</a>
-            <a class="nav-link" >Features</a>
-            <a class="nav-link" >Pricing</a>
-            <a class="nav-link" >Disabled</a>
+            <!-- Nuevo contenido dentro del navbar-collapse -->
+            <div class="menu-above">Menu</div>
+            <hr class="separator-line">
+            <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
+            <div class="button-container">
+              <button class="service-button">
+                  <img class="button-image" src="/assets/images/edit.png" alt="Imagen 1">
+                  <span class="button-text">Crea un nuevo anuncio</span>
+                  <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                  <img class="button-image" src="/assets/images/megaphone.png" alt="Imagen 2">
+                  <span class="button-text">Mis Anuncios</span>
+                  <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+          </div>
+            <h2 class="subtitle">CUENTA</h2>
+            <div class="button-container">
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/settings.png" alt="Imagen 1">
+                <span class="button-text">Configuración</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/woman-head.png" alt="Imagen 2">
+                <span class="button-text">Perfil</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/ring.png" alt="Imagen 1">
+                <span class="button-text">Suscripción</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/heart.png" alt="Imagen 2">
+                <span class="button-text">Soporte</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/interactive.png" alt="Imagen 1">
+                <span class="button-text">Ayuda</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/interrogation.png" alt="Imagen 2">
+                <span class="button-text">Preguntas Frecuentes</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+            </div>
+            <hr class="separator-line">
+            <div class="button-container">
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/out-alt.png" alt="Imagen 1">
+                <span class="button-text">Cerrar Sesión</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -87,13 +141,14 @@
           <div class="menu-black">
             
             <div class="image-buttons">
-              <button class="image-button">
+              <button class="image-button-1">
                 <img class="num1" src="/assets/images/home.png" alt="Button 1">
               </button>
-              <button class="image-button">
+              <div class="dot"></div>
+              <button routerLink="/mensajes" class="image-button">
                 <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
               </button>
-              <button class="image-button">
+              <button routerLink="/calendario" class="image-button">
                 <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
               </button>
               <button class="image-button">

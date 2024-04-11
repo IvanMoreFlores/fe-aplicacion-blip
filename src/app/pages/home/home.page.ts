@@ -10,6 +10,7 @@ SwiperCore.use([Pagination]);
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  isNavbarOpen = false; // Variable para rastrear si el navbar-collapse está abierto
 
   constructor() { }
 
@@ -27,4 +28,10 @@ export class HomePage implements OnInit {
       },
     });
   }
+
+  
+  
+    toggleNavbar() {
+      this.isNavbarOpen = !this.isNavbarOpen;
+    }
 }

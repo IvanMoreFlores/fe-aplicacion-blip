@@ -92,7 +92,51 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },  {
+    path: 'mensajes',
+    loadChildren: () => import('./pages/mensajes/mensajes.module').then( m => m.MensajesPageModule)
+  },
+  {
+    path: 'mensajes-chat',
+    loadChildren: () => import('./pages/mensajes-chat/mensajes-chat.module').then( m => m.MensajesChatPageModule)
+  },
+  {
+    path: 'mensajes-archivados',
+    loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
+  },
+  {
+    path: 'mensajes-destacados',
+    loadChildren: () => import('./pages/mensajes-destacados/mensajes-destacados.module').then( m => m.MensajesDestacadosPageModule)
+  },
+  {
+    path: 'mensajes-atencion',
+    loadChildren: () => import('./pages/mensajes-atencion/mensajes-atencion.module').then( m => m.MensajesAtencionPageModule)
+  },
+  {
+    path: 'mensajes-programados',
+    loadChildren: () => import('./pages/mensajes-programados/mensajes-programados.module').then( m => m.MensajesProgramadosPageModule)
+  },
+  {
+    path: 'mensajes-respuestas',
+    loadChildren: () => import('./pages/mensajes-respuestas/mensajes-respuestas.module').then( m => m.MensajesRespuestasPageModule)
+  },
+  {
+    path: 'home-notificaciones',
+    loadChildren: () => import('./pages/home-notificaciones/home-notificaciones.module').then( m => m.HomeNotificacionesPageModule)
+  },
+  {
+    path: 'calendario',
+    loadChildren: () => import('./pages/calendario/calendario.module').then( m => m.CalendarioPageModule)
+  },
+  {
+    path: 'calendario-semanal',
+    loadChildren: () => import('./pages/calendario-semanal/calendario-semanal.module').then( m => m.CalendarioSemanalPageModule)
+  },
+  {
+    path: 'calendario-mes',
+    loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
   }
+
 ];
 
 @NgModule({
