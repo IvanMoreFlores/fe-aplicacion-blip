@@ -1,0 +1,168 @@
+<ion-content [fullscreen]="true">
+  <div  *ngIf="isNavbarOpen" class="dark-overlay"></div>
+  <div class="top-bar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="d-flex  align-items-center w-100">
+          <img src="/assets/images/backdrop-component.png" alt="Logo" class="navbar-logo">
+          <div class="text-b">Bienvenida <br> <span style="font-size: 25px;">Mariana D.</span></div>
+          <button routerLink="/home-notificaciones" class="btn-custom"> <img src="/assets/images/bell.png" alt=""></button>
+          <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="/assets/images/comment.png" alt="Icono de navegación">
+          </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- Nuevo contenido dentro del navbar-collapse -->
+            <div class="menu-above">Menu</div>
+            <hr class="separator-line">
+            <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
+            <div class="button-container">
+              <button class="service-button">
+                  <img class="button-image" src="/assets/images/edit.png" alt="Imagen 1">
+                  <span class="button-text">Crea un nuevo anuncio</span>
+                  <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                  <img class="button-image" src="/assets/images/megaphone.png" alt="Imagen 2">
+                  <span class="button-text">Mis Anuncios</span>
+                  <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+          </div>
+            <h2 class="subtitle">CUENTA</h2>
+            <div class="button-container">
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/settings.png" alt="Imagen 1">
+                <span class="button-text">Configuración</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/woman-head.png" alt="Imagen 2">
+                <span class="button-text">Perfil</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/ring.png" alt="Imagen 1">
+                <span class="button-text">Suscripción</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/heart.png" alt="Imagen 2">
+                <span class="button-text">Soporte</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/interactive.png" alt="Imagen 1">
+                <span class="button-text">Ayuda</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/interrogation.png" alt="Imagen 2">
+                <span class="button-text">Preguntas Frecuentes</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+            </div>
+            <hr class="separator-line">
+            <div class="button-container">
+              <button class="service-button">
+                <img class="button-image" src="/assets/images/out-alt.png" alt="Imagen 1">
+                <span class="button-text">Cerrar Sesión</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">Pasos adicionales</h1>
+          <p class="description">Revisa estos pasos, personalícelos según sus preferencias y mejore la experiencia para sus futuros arrendatarios</p>
+          
+          <div class="cuadro">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide shadow">
+                  <label class="container-fluid">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                  <h2 class="checktext">Elige tu política de cancelación</h2>
+                  <p class="checkdescripcion">Ten control de elegir como supervisar tus reservaciones</p>
+                </div>
+
+                <div class="swiper-slide shadow">
+                  <label class="container-fluid">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                  <h2 class="checktext">Añade tus reglas del estacionamiento</h2>
+                  <p class="checkdescripcion">Expresa claramente tus expectativas de los arrendatarios.</p>
+                </div>
+
+                <div class="swiper-slide shadow">
+                  <label class="container-fluid">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                  <h2 class="checktext">Ofrece ofertas  especiales</h2>
+                  <p class="checkdescripcion">Incluye descuentos para atraer a posibles arrendatarios.</p>
+                </div>
+
+                <div class="swiper-slide shadow">
+                  <img class="calendario" src="/assets/images/fi-sr-calendar.png" alt="">
+                  <h2 class="checktex">Configura tu calendario</h2>
+                  <p class="checkdescripcion">Organiza y modifica los horarios disponibles</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="reservaciones">Tus reservaciones</h1>
+
+          <div class="container-slider">
+            <div class="swiper-container slider">
+              <div class="swiper-wrapper">
+                <button class="custom-button swiper-slide button1">Todos</button>
+                <button class="custom-button swiper-slide button2">Terminan Pronto</button>
+                <button class="custom-button swiper-slide button3">En Curso</button>
+                <button class="custom-button swiper-slide button4">Comienzan Pronto</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="info"></div>
+
+
+          <div class="menu-black">
+            
+            <div class="image-buttons">
+              <button class="image-button-1">
+                <img class="num1" src="/assets/images/home.png" alt="Button 1">
+              </button>
+              <div class="dot"></div>
+              <button routerLink="/mensajes" class="image-button">
+                <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
+              </button>
+              <button routerLink="/calendario" class="image-button">
+                <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
+              </button>
+              <button class="image-button">
+                <img class="num4" src="/assets/images/signal.png" alt="Button 4">
+              </button>
+            </div>
+          </div>
+
+          
+          
+
+                
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

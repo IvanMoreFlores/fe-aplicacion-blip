@@ -100,3 +100,41 @@
           color: #dc3545; /* Cambia el color del texto del botón de cancelar */
         } 
     }
+
+#calendar {
+    width: 90%;
+    margin: 20px auto;
+    display: block;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+    overflow-y: auto; 
+    max-height: calc(100vh - 300px);
+  }
+  
+  .calendar-container h2 {
+    justify-content: space-between;
+    display: flex;
+    font-size: 16px;
+    width: 85%;
+    margin: 20px auto;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
+  
+  .calendar-container table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  table th {
+    font-weight: 600;
+  }
+
+  table td {
+    padding: 5px;
+  }

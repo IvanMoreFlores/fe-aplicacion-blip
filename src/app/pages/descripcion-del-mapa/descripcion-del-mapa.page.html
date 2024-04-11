@@ -3,31 +3,16 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <h1 class="title">¿Cómo prefieres recibir tus pagos?</h1>
-          <button class="custom-btn">
-            <img src="/assets/icon/home.png" alt="">
-            <span class="btn-text">Mensual</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-          <button class="custom-btn">
-            <img src="/assets/icon/building.png" alt=""> 
-            <span class="btn-text">Semanal</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-
-          <h2 class="subtitle">¿Cuál es el funcionamiento del proceso de facturación de mis pagos?</h2>
-          <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five cent</p>
-      
-          <button routerLink="/" class="more-info-btn">Atrás</button>
-          <button routerLink="/" class="next-btn">Siguiente</button>
+          <h1 class="title">Mapa</h1>
+          <!-- Contenido del mapa aquí -->
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Botones Salir y Siguiente -->
+  <div class="botones">
+    <button class="boton boton-salir" id="boton-salir" (click)="mostrarAlerta('Salir')">Salir</button>
+    <button class="boton boton-siguiente" id="boton-siguiente" (click)="mostrarAlerta('Siguiente')">Siguiente</button>
   </div>
 </ion-content>

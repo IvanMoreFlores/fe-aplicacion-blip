@@ -1,0 +1,355 @@
+.container {
+    background: linear-gradient(to bottom, #79FFAF 10%, transparent 10%);
+    height: 100%;
+    overflow: hidden;
+}
+
+.top-bar {
+    position: absolute; 
+    top: 40px; 
+    left: 0; 
+    width: 100%; 
+    background-color: #ffffff; 
+    border-radius: 30px 30px 0 0; 
+    transition: bottom 0.5s ease;
+}
+
+.top-bar .navbar {
+    background-color: transparent !important; 
+    margin: 20px auto;
+    width: 90%;
+    display: block;
+}
+
+.navbar {
+    border: none; 
+    width: 100%;
+}
+
+.navbar-toggler {
+    border: none; 
+    background-color: transparent; 
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+
+.navbar-collapse {
+    background-color: #FFFFFF;
+    z-index: 9;
+    border-radius: 30px 30px 0 0;
+    width: 430px !important;
+    position: absolute;
+    right: -20px;
+    bottom: -810px;
+}
+
+.navbar-nav {
+    margin: 20px 0px;
+}
+
+.menu-above {
+    text-align: center;
+    font-size: 22px;
+    font-family: "Poppins", sans-serif;
+    color: #524F4F;
+}
+
+.separator-line {
+    border-top: 2px solid #D4D4D4;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-left: 30px;
+}
+
+.service-button {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 30px;
+}
+
+.button-image {
+    margin-left: 30px;
+    margin-right: 15px; 
+}
+
+.button-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px; 
+}
+
+.second-image {
+    position: absolute;
+    right: 80px;
+}
+
+.text-b {
+    font-size: 17px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    line-height: 14px;
+    width: 280px;
+}
+
+.img-blip {
+    margin-right: 15px;
+    background-color: transparent;
+    height: 40px;
+    width: 42px;
+}
+
+.mensaje {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin-block: 15px;
+    margin-left: 20px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+
+}
+
+.vector-mensaje {
+    display: flex;
+    background-color: transparent;
+    margin-right: 20px;
+}
+
+.btn-custom {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 12px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 150px auto 0px;
+    display: block;
+    width: 90%;
+    font-weight: 500;
+}
+
+.menu-black {
+    height: 70px;
+    display: block;
+    margin: 40px auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 35px;
+    bottom: 30px;
+}
+
+.image-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.image-button {
+    margin: 15px 15px;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 60px;
+}
+
+.custom-btn {
+    margin: 30px auto; 
+    background-color: transparent;
+    color: #212121;
+    font-size: 16px;
+    border: 1px solid #212121;
+    border-radius: 15px;
+    width: 80%;
+    height: 49px;
+    padding: 10px 20px; 
+    display: flex; 
+    align-items: center; 
+}
+
+.btn-text {
+    margin-left: 30px; 
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+
+
+
+.bottom-bar {
+    bottom: 40px;
+    left: 0;
+    width: 80%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+    position: absolute;
+    border: 1px solid #212121;
+    border-radius: 20px;
+    margin: 20px 40px;
+}
+  
+  .input-area {
+    flex-grow: 1;
+  }
+  
+  .input-area input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+  }
+  
+  .left-button,
+  .right-button {
+    margin: 0 10px;
+  }
+
+  .right-button {
+    background-color: #212121;
+    padding: 2px;
+    border-radius: 5px;
+    
+  }
+  
+  .add-button,
+  .mic-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+
+  .message-bubble {
+    background-color: #FAFAFA; 
+    border-radius: 15px; 
+    padding: 15px; 
+    max-width: 70%; 
+    position: relative; 
+    margin-left: 40px;
+  }
+  
+  .message-text {
+    font-size: 14px; 
+    margin-bottom: 5px; 
+  }
+  
+  .message-time {
+    font-size: 12px;
+    color: #777; 
+    position: absolute; 
+    bottom: -15px; 
+    right: 5px; 
+  }
+
+  .message-avatar {
+    display: flex;
+    align-items: center;
+  }
+
+  .avatar {
+    margin-right: 15px;
+    background-color: transparent;
+    height: 40px;
+    width: 42px;
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .message-sender {  
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+
+  /* Conversacion 2 */
+
+  .message-left {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 20px; 
+  }
+  
+  .message-bubble-left {
+    background-color: #EAE9E9; 
+  }
+
+  .message-time-1 {
+    font-size: 12px; 
+    color: #777; 
+    position: absolute; 
+    bottom: -15px; 
+  }
+
+  .message-avatar-1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar-1 {
+    margin-left: 15px;
+    background-color: transparent;
+    height: 40px;
+    width: 42px;
+    position: relative;
+    left: 280px;
+    bottom: 10px;
+  }
+
+  .message-sender-1 {  
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    left: 260px;
+    font-weight: 500;
+  }
+
+  .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 8; 
+    transition: opacity 0.3s ease;
+    pointer-events: none; 
+  }
+  
+  .navbar-collapse.show + .dark-overlay {
+    opacity: 1;
+    pointer-events: auto; 
+  }
+  
+  
+  
+  
+ 
+  
+  
+  

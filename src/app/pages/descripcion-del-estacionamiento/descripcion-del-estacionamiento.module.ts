@@ -15,6 +15,7 @@ import { DescripcionDelEstacionamientoPage } from './descripcion-del-estacionami
     IonicModule,
     DescripcionDelEstacionamientoPageRoutingModule
   ],
-  declarations: [DescripcionDelEstacionamientoPage]
+  declarations: [DescripcionDelEstacionamientoPage,
+    ]
 })
 export class DescripcionDelEstacionamientoPageModule {}
