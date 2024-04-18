@@ -11,12 +11,51 @@
         </a>
 
         <div class="grid-small-button">
+          <!---->
+          <!---->
+        <button class="pop-elianuncio" (click)="toggleContent1()">
           <div class="small-button">
-            <img src="/assets/images/trash.svg" alt="" />
+          <img src="/assets/images/trash.svg" alt="" />
           </div>
-          <div class="small-button">
-            <img src="/assets/images/down-arrow.svg" alt="" />
+        </button>
+        <div *ngIf="showContent1" class="darken-background"></div>
+        <div *ngIf="showContent1" class="pop-eliminar">
+          <p class="cabecera">¿Seguro que quieres eliminar el anuncio?</p>
+          <div class="linea"></div>
+          <button class="btn-elianuncio">Eliminar Anuncio</button>
+          <button class="btn-cancelar" (click)="cerrarContent()">Cancelar</button>
+        </div>
+
+
+          <button class="pop-anuncio" (click)="toggleContent2()" >
+           <div class="small-button">
+          <img src="/assets/images/down-arrow.svg" alt="" />
+            </div>
+          </button>
+
+          <div *ngIf="showContent2" class="darken-background"></div>
+          <div *ngIf="showContent2" class="pop-upanuncio">
+            <p class="cabecera">Selecciona tu anuncio</p>
+            <div class="linea"></div>
+            <div class="cuadrito1">
+              <img src="/assets/images/vehiculo.svg" alt="" />
+              <p>Estacionamiento Las Begonias</p>
+              <input type="checkbox" name="" id="">
+            </div>
+            <div class="cuadrito2">
+              <img src="/assets/images/vehiculo.svg" alt="" />
+              <p>Cochera Santa Cruz 1254</p>
+              <input type="checkbox" name="" id="">
+            </div>
+            <button class="btn-anuncio">
+              <img src="/assets/images/mas_simbol.svg" alt=""> 
+              <h3>Agregar nuevo anuncio</h3>  
+          </button>
           </div>
+
+          <!---->
+          <!---->
+
         </div>
       </div>
 
@@ -79,19 +118,119 @@
           <p>Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.</p>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" routerLink="">Editar descripción
+              <a class="servicios" (click)="toggleContentEdit()">Editar descripción
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
             </p>
           </div>
+          <div *ngIf="showContentEdit" class="pop-edit">
+            <h1 class="cabecera1">Edita tu descripción</h1>
+            <div class="linea"></div>
+            <div class="form-descrip">
+              <div class="descrip">Descripción de Espacio</div>
+              <div class="false-txtSdescrip">
+                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
+                </textarea>
+              </div>
+            </div>
+            <button class="btn-guardar">Guardar Cambios</button>
+          </div>
+
           <h3>¿Qué lugares están cerca?</h3>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" routerLink="">Agregar lugares
+              <a class="servicios" (click)="toggleContentLugares()">Agregar lugares
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
             </p>
           </div>
+          <div *ngIf="showContentLugares" class="pop-lugares">
+            <h1 class="cabecera1">Agregar Lugares</h1>
+            <div class="linea"></div>
+            <div class="form-descrip">
+              <div class="descrip">Agrega Lugares Cerca</div>
+              <div class="false-txtSdescrip">
+                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
+                </textarea>
+              </div>
+            </div>
+            <button class="btn-guardar">Guardar Cambios</button>
+          </div>
+
+
+            <!---->
+            <!---->
+          <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
+          <p>2.10 m de Ancho </p>
+          <p>5 m de Largo</p>
+          <p>2.10 de Altura</p>
+          <div class="enlace">
+            <p class="tex-pagina">
+              <a class="servicios" (click)="toggleContentDimension()">Editar dimensiones
+                <img src="/assets/images/right-arrow.svg" alt=""/>
+              </a>
+            </p>
+          </div>
+          <div *ngIf="showContentDimension" class="pop-dimension">
+            <h1 class="cabecera1">Editar dimensiones</h1>
+            <div class="linea"></div>
+            <div class="input1">
+              <ion-label class="lblmedida">Medida (Ancho x Largo)</ion-label>
+              <ion-input class="txtmedida"></ion-input>
+            </div>
+            <div class="input2">
+              <ion-label class="lblaltura">Altura (en caso sea techado)</ion-label>
+              <ion-input class="txtaltura"></ion-input>
+            </div>
+            <button class="btn-guardar">Guardar Cambios</button>
+          </div>
+
+
+
+          <h3>¿Qué servicios también ofreces?</h3>
+          <div class="txtservicio">
+            <img src="/assets/images/tienda.svg" alt="" />
+            <p>Autoboutique</p>
+          </div>
+          
+          <div class="txtservicio">
+            <img src="/assets/images/ojo.svg" alt="" />
+            <p>Sistema de vigilancia</p>
+          </div>
+          
+          <div class="txtservicio">
+            <img src="/assets/images/capas.svg" alt="" />
+            <p>Techado</p>
+          </div>
+          <div class="enlace">
+            <p class="tex-pagina">
+              <a class="servicios" routerLink="">Editar servicios
+                <img src="/assets/images/right-arrow.svg" alt="" />
+              </a>
+            </p>
+          </div>
+
+          <h3>Ubicación</h3>
+          <p>Av. Alfredo Mendiola 3698</p>
+          <div class="enlace">
+            <p class="tex-pagina">
+              <a class="servicios" (click)="toggleContentDirec()">Editar dirección
+                <img src="/assets/images/right-arrow.svg" alt="" />
+              </a>
+            </p>
+          </div>
+          <div *ngIf="showContentDirec" class="pop-direccion">
+            <h1 class="cabecera1">Editar dirección</h1>
+            <div class="linea"></div>
+            <div class="input3">
+              <ion-label class="lbldireccion">Dirección</ion-label>
+              <ion-input class="txtdireccion"></ion-input>
+            </div>
+            <button class="btn-guardar">Guardar Cambios</button>
+          </div>
+
+
+          
         </div>
       </div>
 

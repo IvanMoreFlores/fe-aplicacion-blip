@@ -14,6 +14,38 @@ export class AnuncioCaracteristicasPage implements OnInit {
   selectedContent: string = 'Características'; // Inicializa la variable con el valor por defecto
   text = ''; // Texto del primer textarea
   textareas: string[] = []; // Array para almacenar los textareas adicionales
+//
+//
+showContent1: boolean = false;
+showContent2: boolean = false;
+showContentEdit: boolean = false;
+showContentLugares: boolean = false;
+showContentDimension: boolean = false;
+showContentDirec: boolean = false;
+
+toggleContent1() {
+  this.showContent1 = !this.showContent1;
+}
+ cerrarContent() {
+  this.showContent1 = false;
+}
+toggleContent2() {
+  this.showContent2 = !this.showContent2;
+}
+toggleContentEdit() {
+  this.showContentEdit = !this.showContentEdit;
+}
+toggleContentLugares() {
+  this.showContentLugares = !this.showContentLugares;
+}
+toggleContentDimension() {
+  this.showContentDimension = !this.showContentDimension;
+}
+toggleContentDirec() {
+  this.showContentDirec = !this.showContentDirec;
+}
+//
+//
 
 
 
