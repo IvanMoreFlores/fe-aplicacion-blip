@@ -201,6 +201,15 @@ const routes: Routes = [
     path: 'anuncio-caracteristicas',
     loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
   },
+  {
+    path: 'lds',
+    loadChildren: () => import('./pages/lds/lds.module').then( m => m.LdsPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  
 
 
 ];

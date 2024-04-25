@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-adj-dt-dni',
@@ -12,35 +13,47 @@ export class AdjDtDniPage implements OnInit {
   
   constructor(private navCtrl: NavController) {}
 
-  dniFrontB64(event: any) {
-    const file: File = event.target.files[0];
-    
-    if(file){
-      const reader = new FileReader();
+  async captureImage(type: string) {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+      });
 
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.dniFront = reader.result as string;
-      };
+      if (image.webPath) {
+        if (type === 'front') {
+          this.convertToBase64(image.webPath, 'front');
+        } else if (type === 'back') {
+          this.convertToBase64(image.webPath, 'back');
+        }
+      } else {
+        console.error('No se ha podido obtener la ruta de la imagen.');
+      }
+    } catch (error) {
+      console.error('Error al capturar la imagen:', error);
     }
   }
 
-  dniBackB64(event:any){
-    const file:File = event.target.files[0];
-
-    if(file){
-      const reader = new FileReader();
-
-      reader.readAsDataURL(file);
-      
-      reader.onload=()=> {
-        this.dniBack = reader.result as string;
-      };
-    }
- }
-
-  ngOnInit(){
-
+  convertToBase64(url: string, type: string) {
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = () => {
+          const base64data = reader.result as string;
+          if (type === 'front') {
+            this.dniFront = base64data;
+          } else if (type === 'back') {
+            this.dniBack = base64data;
+          }
+        };
+      });
   }
+
+  ngOnInit() {}
+
 }
+

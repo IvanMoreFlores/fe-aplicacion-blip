@@ -5,19 +5,16 @@
         <div class="content">
           <h1 class="titlex">Adjunta una foto de tu documento de identidad.</h1>
           <h2 class="text-adj">Por favor, toma fotos horizontales de ambas caras de tu documento en un fondo blanco. Asegúrate de que las imágenes estén nítidas para garantizar un proceso eficiente. </h2>
-          <label for="dniFront" class="custom-button bl">
-            <input type="file" class="form-control" id="dniFront" accept="image/*" style="display: none;" (change)="dniFrontB64($event)">
+          <button (click)="captureImage('front')" class="custom-button bl">
             <img src="assets/images/adj-del24.png" alt="">
-          </label> 
-          <label for="dniBack" class="custom-button bl">
-            <input type="file" class="form-control" id="dniBack" accept="image/*" style="display: none;" (change)="dniBackB64($event)">
+          </button> 
+          <button (click)="captureImage('back')" class="custom-button bl">
             <img src="assets/images/adj-tra24.png" alt="">
-          </label> 
+          </button> 
            <button routerLink="/confirmacion-de-identidad"  class="back-btn">Atrás</button> 
            <button [routerLink]="['/img-mostrar']" [queryParams]="{dnifront: dniFront, dniback: dniBack}"  class="next-btn">Siguiente</button>
         </div>
       </div>
     </div>
   </div>
-
 </ion-content>
