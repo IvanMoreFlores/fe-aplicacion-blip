@@ -17,7 +17,7 @@
             <input type="file" class="form-control" id="esta3" accept="image/*" style="display: none;" (change)="park3($event)">
             <img src="assets/images/adj-est.png" alt="">
           </label>
-          <button routerLink="/configuracion" class="more-info-btn">Atrás</button>
+          <button routerLink="/configuracion-alquilar" class="more-info-btn">Atrás</button>
           <button [routerLink]="['/mostra-esta']" [queryParams]="{esTa1: esta1, esTa2: esta2,esTa3: esta3}"  class="next-btn">Siguiente</button>
         </div>
       </div>

@@ -204,7 +204,24 @@ const routes: Routes = [
   {
     path: 'calendario-mes',
     loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
-  }
+
+  
+
+  },
+  {
+    path: 'panel',
+    loadChildren: () => import('./pages/panel/panel.module').then( m => m.PanelPageModule)
+  },
+  {
+    path: 'acre-pro',
+    loadChildren: () => import('./pages/acre-pro/acre-pro.module').then( m => m.AcreProPageModule)
+  },
+  {
+    path: 'anuncio-caracteristicas',
+    loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
+  },
+
+
 
 ];
 

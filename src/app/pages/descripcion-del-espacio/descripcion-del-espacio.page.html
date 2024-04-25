@@ -4,23 +4,42 @@
       <div class="col-12">
         <div class="content">
           <h1 class="title">¿Cuál de estas opciones describe mejor tu espacio?</h1>
-          <button class="custom-btn">
-            <img src="/assets/images/home.png" alt="">
-            <span class="btn-text">Casa</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-          <button class="custom-btn">
-            <img src="/assets/images/building.png" alt=""> 
-            <span class="btn-text">Departamento</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-          <button class="custom-btn">
+          <ion-radio-group value="custom-checked">
+              <button class="custom-btn">
+                <img src="/assets/images/home.png" alt="">
+                <span class="btn-text">Casa</span>
+                
+                  <ion-radio class="cus1" value="custom1" aria-label="Custom checkbox that is checked"></ion-radio>
+              
+              </button>
+
+              <button class="custom-btn">
+                <img src="/assets/images/building.png" alt=""> 
+                <span class="btn-text">Departamento</span>  
+                <ion-radio class="cus2" value="custom2" aria-label="Custom checkbox"></ion-radio>
+              </button>
+
+              <button class="custom-btn">
+                <img src="/assets/images/urbanizacion.png" alt=""> 
+                <span class="btn-text">Urbanización</span>
+                <ion-radio class="cus3" value="custom3" aria-label="Custom checkbox"></ion-radio>
+              </button>
+
+              <button class="custom-btn">
+                <img src="/assets/images/cond31.png" alt=""> 
+                <span class="btn-text">Condominio</span>
+                <ion-radio class="cus4"  value="custom4" aria-label="Custom checkbox"></ion-radio>
+              </button>
+
+              <button routerLink="/descripcion-del-estacionamiento" class="more-info-btn">Atrás</button>
+              <button routerLink="/descripcion-de-direccion" class="next-btn">Siguiente</button>
+          </ion-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+          <!-- <button class="custom-btn">
             <img src="/assets/images/cochera.png" alt="">
             <span class="btn-text">Cochera  o  Playa</span>
             <label class="container">
