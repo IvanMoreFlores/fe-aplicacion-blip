@@ -327,12 +327,29 @@
     border-radius: 10px;
     height: 160px;
     width: 90%;
-    display: block;
+    display: flex;
+    justify-content: center;
     margin: 20px auto;
-    border: 1px solid #212121;
+    border: 1px solid #A3A2A4;
     background-color: #fff; 
     padding: 20px; 
     margin: 20px; 
+  }
+
+  .cont {
+    display: flex;
+    align-items: center;
+  }
+
+  .info img {
+    margin-right: 15px;
+  }
+  
+  .info p {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px; 
+    margin: 0; 
+    font-weight: 500;
   }
 
   .menu-black {

@@ -11,7 +11,7 @@ export class CalendarioMesPage implements OnInit {
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    this.generarCalendario(2024); // Llama a la función para generar el calendario al inicializar el componente
+    this.generarCalendario(2024, ); 
   }
 
   toggleNavbar() {

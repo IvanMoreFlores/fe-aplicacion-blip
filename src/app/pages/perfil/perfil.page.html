@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+
+    <div class="pantalla">
+
+      <div class="inicio">
+        <div class="left-arrow">
+          <img src="/assets/images/left-arrow.svg" alt="" />
+        </div>
+        <h3 class="title">Perfil</h3>
+      </div>
+
+      
+      <div class="perfil-contenedor">
+        <div class="avatar-edit">
+          <div class="avatar">
+            <div class="avatar-initial">C</div> 
+
+            <div class="button-editar-avatar">
+              <button class="editar-avatar">
+                <img src="/assets/images/fi-rr-edit.png" alt="">
+                Editar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="nombre-usuario"> 
+          <h1>Camila</h1> 
+          <h2>Host</h2>
+        </div>
+      </div> 
+
+      <div class="info-perfil">
+        <h2>Completa tu Perfil</h2>
+        <p>La información que compartas se usará en toda la plataforma para que otros arrendatarios y hosts te conozcan mejor.</p>
+        <div class="enlace">
+          <p class="tex-pagina">
+            <a class="masinfo" routerLink="">Más información</a> <img src="/assets/images/right.png" alt="" />
+          </p>
+        </div>
+      </div>
+      <div class="preguntas">
+        <ion-button (click)="openActionSheet()">
+          Abrir acción de hoja
+        </ion-button>
+        
+        
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</ion-content>

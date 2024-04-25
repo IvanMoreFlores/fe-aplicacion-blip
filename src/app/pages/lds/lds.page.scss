@@ -1,0 +1,12 @@
+.circular-button {
+    width: 100px; /* Ancho del botón */
+    height: 100px; /* Altura del botón */
+    border-radius: 50%; /* Hace que el botón sea circular */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Peso de la fuente */
+  }
+  
+  .circular-button.active {
+    border-width: 3px; /* Grosor del borde cuando el botón está activo */
+    border-color: black; /* Color del borde cuando el botón está activo */
+  }

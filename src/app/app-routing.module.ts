@@ -188,25 +188,7 @@ const routes: Routes = [
   {
     path: 'calendario-mes',
     loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
-  },
-  {
-    path: 'soporte56',
-    loadChildren: () => import('./pages/soporte56/soporte56.module').then( m => m.Soporte56PageModule)
-  },
-  {
-    path: 'ayuda57',
-    loadChildren: () => import('./pages/ayuda57/ayuda57.module').then( m => m.Ayuda57PageModule)
-  },
-  {
-    path: 'cancelacion-politica',
-    loadChildren: () => import('./pages/cancelacion-politica/cancelacion-politica.module').then( m => m.CancelacionPoliticaPageModule)
-  },  {
-    path: 'panel-anfitrion',
-    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
-  },
-
-  
-
+  }
 
 ];
 
