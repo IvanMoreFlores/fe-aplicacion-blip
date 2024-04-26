@@ -1,77 +1,91 @@
 <ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <div class="cuadro shadow">
-            <div class="swiper-container">
-              <div class="cross">
-                <img src="/assets/images/cross.png" alt="" />
-              </div>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="img-contenedor">
-                    <img class="img-principal" src="/assets/images/presentacion.png" alt="" />
-                  </div>
 
-                  <h1 class="title">Bienvenida a Blip, Camila</h1>
-                  <h2 class="subtitle">
-                    Ahora eres parte de esta maravillosa comunidad
-                  </h2>
-                  <p class="description">
-                    ¡Qué emoción tenerte por aquí!<br />
-                    Prepárate para potenciar la rentabilidad de tu espacio y
-                    ofrecer a los usuarios una experiencia de estacionamiento
-                    increíble.<br />
-                    ¡Vamos a ello!
-                  </p>
-                </div>
-                <div class="swiper-slide">
-                  <div class="img-contenedor">
-                    <img class="img-principal" src="/assets/images/presentacion1.png" alt="" />
-                  </div>
+  <div class="pantalla">
 
-                  <h1 class="title">Manejo de Infracciones</h1>
-                  <h2 class="subtitle">
-                    Advertencia y Desactivación de Cuenta
-                  </h2>
-                  <p class="description">
-                    La importancia de mantener un entorno seguro y respetuoso para todos nuestros usuarios. Por eso, contamos con un proceso claro y transparente para el manejo de infracciones.
-                  </p>
-                  <div class="enlace">
-                    <p class="tex-pagina">
-                      <a class="servicios" routerLink="/presentacion-infracciones-informacion">Más información</a>
-                      <img src="/assets/images/right.png" alt="" />
-                    </p>
-                  </div>
-                </div>
+    <div class="swiper-container">
+      <div class="cross">
+        <img src="/assets/images/cross.png" alt="" />
+      </div>
+      <div class="swiper-wrapper">
 
-                <div class="swiper-slide">
-                  <div class="img-contenedor">
-                    <img class="img-principal" src="/assets/images/presentacion2.png" alt="" />
-                  </div>
+        <!-- ----------------------------------- SLIDER 1 -----------------------------------  -->
+        <div class="swiper-slide">
+          <div class="img-contenedor">
+            <img class="img-principal" src="/assets/images/presentacion.png" alt="" />
+          </div>
 
-                  <h1 class="title">Atiende bien a tus inquilinos</h1>
-                  <h2 class="subtitle">
-                    Dale prioridad a brindar un servicio excelente.
-                  </h2>
-                  <p class="description">
-                    En Blip, la atención al inquilino es esencial. Recuerda que cuentas con 10 minutos para atenderlos. Tu eficiencia y calidad en el servicio serán recompensadas.
-                  </p>
-                  <div class="enlace">
-                    <p class="tex-pagina">
-                      <a class="servicios" routerLink="/presentacion-infracciones-informacion">Más información</a>
-                      <img src="/assets/images/right.png" alt="" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-            <button routerLink="/ante-penal" class="next-btn">Comenzar</button>
+          <div class="informacion-container">
+            <h1 class="title">Bienvenida a Blip, Camila</h1>
+            <h2 class="subtitle">
+              Ahora eres parte de esta maravillosa comunidad
+            </h2>
+            <p class="description">
+              Prepárate para potenciar la rentabilidad 
+              de tu espacio y ofrecer a los usuarios una experiencia de estacionamiento increíble.<br>
+              ¡Empecemos!
+            </p>
           </div>
         </div>
+
+        <!-- ----------------------------------- SLIDER 2 -----------------------------------  -->
+        <div class="swiper-slide">
+          <div class="img-contenedor">
+            <img class="img-principal" src="/assets/images/presentacion1.png" alt="" />
+          </div>
+
+          <div class="informacion-container">
+            <h1 class="title">Manejo de Infracciones</h1>
+            <h2 class="subtitle">
+              Advertencia y Desactivación de Cuenta
+            </h2>
+            <p class="description">
+              Nos comprometemos a mantener un entorno seguro para todos. Infringir las políticas de uso puede resultar en infracciones o desactivación de cuenta.
+            </p>
+            <div class="enlace">
+              <p class="tex-pagina">
+                <a class="servicios" routerLink="/presentacion-infracciones-informacion">Más información</a>
+                <img src="/assets/images/right-arrow.svg" alt="" />
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ----------------------------------- SLIDER 3 -----------------------------------  -->
+        <div class="swiper-slide">
+          <div class="img-contenedor">
+            <img class="img-principal" src="/assets/images/presentacion2.png" alt="" />
+          </div>
+
+          <div class="informacion-container">
+            <h1 class="title">Atiende bien a tus inquilinos</h1>
+            <h2 class="subtitle">
+              Dale prioridad a brindar un servicio excelente.
+            </h2>
+            <p class="description">
+              En Blip, la atención es esencial. Recuerda que cuentas con 10 minutos para atenderlos. Tu eficacia y calidad en el servicio serán recompensadas.
+            </p>
+            <div class="enlace">
+              <p class="tex-pagina">
+                <a class="servicios" routerLink="/presentacion-inquilinos-informacion">Más información</a>
+                <img src="/assets/images/right-arrow.svg" alt="" />
+              </p>
+            </div>
+          </div>
+        </div>
+
+
       </div>
+
+      <div class="swiper-pagination"></div>
+
     </div>
+
+    <div class="btn-container">
+      <button routerLink="" class="next-btn">Comenzar</button>
+    </div>
+
+
   </div>
+
 </ion-content>

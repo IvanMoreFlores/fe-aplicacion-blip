@@ -29,10 +29,6 @@ export class FinanzasPage implements OnInit {
     this.initSwiper();
   }
 
-  isButtonActive(content: string): boolean {
-    return this.selectedContent === content;
-  }
-
   initSwiper() {
     const mySwiper = new Swiper('.swiper-container', {
       // Configuración de Swiper
@@ -43,7 +39,10 @@ export class FinanzasPage implements OnInit {
         el: '.swiper-pagination',
       },
     });
+  }
 
+  isButtonActive(content: string): boolean {
+    return this.selectedContent === content;
   }
 
   changeContent(content: string) {

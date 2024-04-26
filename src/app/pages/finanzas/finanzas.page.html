@@ -52,7 +52,7 @@
               <p>Lunes, 15 de Abril 2024</p>
             </div>
             <div>
-              <span>s/. 0.00</span>
+              <span>S/. 0.00</span>
             </div>
           </div>
         </div>
@@ -68,26 +68,29 @@
               <p>Lunes, 15 de Abril 2024</p>
             </div>
             <div>
-              <span>s/. 0.00</span>
+              <span>S/. 0.00</span>
             </div>
           </div>
         </div>
 
+        <hr>
 
         <div class="ingreso-final">
+          <div>
+            <h3>Ingreso Final</h3>
+            <p>Recuerda que el balance final se actualizará en base a la recurrencia de actividad y será acumulado para
+              la forma de pago elegida en la sección de <span>pagos</span>.</p>
+            <span>S/. 0.00</span>
 
-          <h3>Ingreso Final</h3>
-          <p>Recuerda que el balance final se actualizará en base a la recurrencia de actividad y será acumulado para la forma de pago elegida en la sección de pagos.</p>
-          <span>s/. 0.00</span>
-
-          <div class="deposito-pago">
-            <div>
-              <img src="/assets/images/icon-info.svg" alt="">
+            <div class="deposito-pago">
+              <div class="icon-info">
+                <img src="/assets/images/icon-info.svg" alt="">
+              </div>
+              <p>
+                Depósito de pago: S/. 0.00 el 6
+                de diciembre (actividad del 27 de Noviembre al 03 de Diciembre).
+              </p>
             </div>
-            <p>
-              Depósito de pago: S/. 0.00 el 6
-              de diciembre (actividad del 27 de Noviembre al 03 de Diciembre).
-            </p>
           </div>
         </div>
 
@@ -97,19 +100,217 @@
       <!--                 -----Historial de Alquiler-----              -->
       <div *ngIf="selectedContent === 'Historial de Alquiler'">
 
+        <div class="alquiler-title">
+          <h3>Esta semana</h3>
+        </div>
+
+        <div class="alquiler">
+          <div class="icon-alquiler">
+            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+          </div>
+
+          <div class="info-alquiler">
+            <h3 class="date">04 DE DICIEMBRE</h3>
+            <h4 class="time">15:00 - 16:00</h4>
+            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
+          </div>
+
+          <div class="alquiler-monto">
+            <span class="amount">S/. 0.00</span>
+          </div>
+        </div>
+
+        <div class="alquiler">
+          <div class="icon-alquiler">
+            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+          </div>
+
+          <div class="info-alquiler">
+            <h3 class="date">04 DE DICIEMBRE</h3>
+            <h4 class="time">15:00 - 16:00</h4>
+            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
+          </div>
+
+          <div class="alquiler-monto">
+            <span class="amount">S/. 0.00</span>
+          </div>
+        </div>
+
+        <div class="alquiler">
+          <div class="icon-alquiler">
+            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+          </div>
+
+          <div class="info-alquiler">
+            <h3 class="date">04 DE DICIEMBRE</h3>
+            <h4 class="time">15:00 - 16:00</h4>
+            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
+          </div>
+
+          <div class="alquiler-monto">
+            <span class="amount">S/. 0.00</span>
+          </div>
+        </div>
+
+        <div class="alquiler">
+          <div class="icon-alquiler">
+            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+          </div>
+
+          <div class="info-alquiler">
+            <h3 class="date">04 DE DICIEMBRE</h3>
+            <h4 class="time">15:00 - 16:00</h4>
+            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
+          </div>
+
+          <div class="alquiler-monto">
+            <span class="amount">S/. 0.00</span>
+          </div>
+        </div>
+
+        <div class="alquiler">
+          <div class="icon-alquiler">
+            <img src="/assets/images/icon-motorbike.svg" alt="" class="icon-car">
+          </div>
+
+          <div class="info-alquiler">
+            <h3 class="date">04 DE DICIEMBRE</h3>
+            <h4 class="time">15:00 - 16:00</h4>
+            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
+          </div>
+
+          <div class="alquiler-monto">
+            <span class="amount">S/. 0.00</span>
+          </div>
+        </div>
+
 
       </div>
 
       <!--                 -----Pagos-----              -->
       <div *ngIf="selectedContent === 'Pagos'">
 
+        <div>
+          <h1 class="pagos-title">¿En qué momento te gustaría recibir tu pago?</h1>
 
+          <ion-item lines="none">
+            <ion-toggle justify="space-between">PAGO MENSUAL</ion-toggle>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-toggle justify="space-between">PAGO SEMANAL</ion-toggle>
+          </ion-item>
+
+          <div class="informacion-pagos">
+            <p>
+              Tu ganancia mensual será depositada puntualmente cada <span>día 6 de cada mes.</span> Prepárate para
+              recibir tu pago de manera regular y constante.
+            </p>
+          </div>
+
+          <h1 class="pagos-title">¿Cómo prefieres recibir tu pago?</h1>
+
+          <ion-item lines="none">
+            <ion-toggle justify="space-between">YAPE / PLIN</ion-toggle>
+          </ion-item>
+
+          <div class="form-regla">
+            <label class="num-regla">Escribe el número para la transferencia</label>
+            <input type="number" class="input-pago">
+          </div>
+
+          <ion-item lines="none">
+            <ion-toggle justify="space-between">TRANSFERENCIA</ion-toggle>
+          </ion-item>
+
+          <div class="form-regla">
+            <label class="num-regla">Banco de Destino</label>
+            <input placeholder="BCP" class="input-pago">
+          </div>
+
+          <div class="form-regla">
+            <label class="num-regla">Número de Cuenta</label>
+            <input type="number" class="input-pago">
+          </div>
+
+          <div class="form-regla">
+            <label class="num-regla">Número de Cuenta Interbancaria (CCI)</label>
+            <input type="number" class="input-pago">
+          </div>
+
+          <div class="informacion-pagos">
+            <p>
+              Ten en cuenta que los pagos se efectuarán únicamente al titular de la cuenta. Asegúrate de que los datos
+              concuerden con la verificación de la cuenta; de lo contrario, la transacción no se llevará a cabo.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!--                 -----Historial de Pago-----              -->
       <div *ngIf="selectedContent === 'Historial de Pago'">
 
+        <div>
 
+          <h1 class="historial-title">Revisa tu histórico de pagos efectuados</h1>
+
+          <h3 class="historial-subtitle">Diciembre 2024</h3>
+ 
+  
+          <div class="historial">
+            <div class="icon-historial">
+              <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
+            </div>
+  
+            <div class="info-historial">
+              <h3 class="date">6 DE DICIEMBRE</h3>
+              <p class="description">Pago del mes de diciembre por<br>alquiler de <span>Parking Las Begonias</span></p>
+              <h4 class="time">Pago Mensual</h4>
+            </div>
+  
+            <div class="historial-monto">
+              <span class="amount">S/. 500</span>
+            </div>
+          </div>
+
+          <h3 class="historial-subtitle">Marzo 2025</h3>
+
+          <div class="historial">
+            <div class="icon-historial">
+              <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
+            </div>
+  
+            <div class="info-historial">
+              <h3 class="date">LUNES 4 - VIERNES 8</h3>
+              <p class="description">Pago semanal de enero por<br>alquiler de <span>Estacionamiento 2</span></p>
+              <h4 class="time">Pago Semanal</h4>
+            </div>
+  
+            <div class="historial-monto">
+              <span class="amount">S/. 50</span>
+            </div>
+          </div>
+
+          <div class="historial">
+            <div class="icon-historial">
+              <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
+            </div>
+  
+            <div class="info-historial">
+              <h3 class="date">LUNES 11 - DOMINGO 27</h3>
+              <p class="description">Pago semanal de enero por<br>alquiler de <span>Estacionamiento 2</span></p>
+              <h4 class="time">Pago Semanal</h4>
+            </div>
+  
+            <div class="historial-monto">
+              <span class="amount">S/. 105</span>
+            </div>
+          </div>
+          
+
+
+
+        </div>
       </div>
 
 
