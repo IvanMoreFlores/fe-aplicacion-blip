@@ -106,8 +106,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
   },
   {
+    path: 'mensajes-archivados-desarchivar',
+    loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
+  },
+  {
     path: 'mensajes-destacados',
     loadChildren: () => import('./pages/mensajes-destacados/mensajes-destacados.module').then( m => m.MensajesDestacadosPageModule)
+  },
+  {
+    path: 'mensajes-marcar-destacado',
+    loadChildren: () => import('./pages/mensajes-marcar-destacado/mensajes-marcar-destacado.module').then( m => m.MensajesMarcarDestacadoPageModule)
+  },
+  {
+    path: 'mensajes-marcar-leido',
+    loadChildren: () => import('./pages/mensajes-marcar-leido/mensajes-marcar-leido.module').then( m => m.MensajesMarcarLeidoPageModule)
+  },
+  {
+    path: 'mensajes-marcar-no-leido',
+    loadChildren: () => import('./pages/mensajes-marcar-no-leido/mensajes-marcar-no-leido.module').then( m => m.MensajesMarcarNoLeidoPageModule)
   },
   {
     path: 'mensajes-atencion',
@@ -190,25 +206,32 @@ const routes: Routes = [
     loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
   },
   {
-    path: 'presentacion',
-    loadChildren: () => import('./pages/presentacion/presentacion.module').then( m => m.PresentacionPageModule)
+    path: 'panel',
+    loadChildren: () => import('./pages/panel/panel.module').then( m => m.PanelPageModule)
   },
   {
-    path: 'panel-anfitrion',
-    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
-  },
-  {
-    path: 'soporte56',
-    loadChildren: () => import('./pages/soporte56/soporte56.module').then( m => m.Soporte56PageModule)
+    path: 'acre-pro',
+    loadChildren: () => import('./pages/acre-pro/acre-pro.module').then( m => m.AcreProPageModule)
   },
   {
     path: 'anuncio-caracteristicas',
     loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
   },
   {
-    path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+    path: 'pressed',
+    loadChildren: () => import('./pages/pressed/pressed.module').then( m => m.PressedPageModule)
   },
+  {
+    path: 'pressed-chat',
+    loadChildren: () => import('./pages/pressed-chat/pressed-chat.module').then( m => m.PressedChatPageModule)
+  },
+  {
+    path: 'pressed-chat-component',
+    loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
+  },
+
+
+
 ];
 
 @NgModule({

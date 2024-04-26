@@ -12,6 +12,7 @@ export class MensajesChatPage implements OnInit {
 
   ngOnInit() {
   }
+  
   toggleNavbar() {
     this.isNavbarOpen = !this.isNavbarOpen;
   }
