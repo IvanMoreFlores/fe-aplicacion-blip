@@ -1,5 +1,5 @@
 .container {
-    background-color: #79FFAF;
+    background-color: #FFFFFF;
     display: flex;
     height: 100%;
   }
@@ -20,6 +20,15 @@
     margin: 20px auto;
     display: block;
     width: 80%;
+    font-weight: 300;
+}
+.tamano{
+    font-size: 15px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    display: block;
 }
 
 .next-btn {
@@ -35,4 +44,8 @@
     height: 45px;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
+}
+.scrollbar{
+    overflow: auto;
+    max-height: 550px;
 }
