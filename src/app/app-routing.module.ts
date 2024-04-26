@@ -229,7 +229,10 @@ const routes: Routes = [
     path: 'pressed-chat-component',
     loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
   },
-
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  }
 
 
 ];
