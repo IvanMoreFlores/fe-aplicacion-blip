@@ -1,0 +1,145 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  background-color: #79ffaf;
+  height: 100%;
+  min-width: 100%;
+  padding-top: 44px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.pantalla {
+  background-color: #ffffff;
+  padding: 5% 7% 5% 7%;
+  width: 100%;
+  min-height: 100%; /* Esto hace que el div ocupe el 100% de la altura de la pantalla */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  color: #212121;
+}
+
+.regresar {
+  display: flex;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #212121;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.inicio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribuye los elementos a lo largo del eje principal (horizontal) */
+  margin-bottom: 20px;
+  height: 37px;
+}
+
+.left-arrow {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+
+// --------------------TOGGLE------------------------------
+
+
+ion-item::part(native) {
+  background: #FFFF;
+  color: #212121;
+  font-size: 19px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+ion-toggle {
+  --track-background: #ddd;
+  --track-background-checked: #212121;
+
+  --handle-background: #ffff;
+  --handle-background-checked: #ffff;
+
+  --handle-width: 25px;
+  --handle-height: 25px;
+  --handle-max-height: auto;
+  --handle-spacing: 5px;
+
+  --handle-border-radius: 50%;
+  --handle-box-shadow: none;
+}
+
+ion-toggle::part(track) {
+  height: 29px;
+  width: 53px;
+
+  /* Required for iOS handle to overflow the height of the track */
+  overflow: visible;
+}
+
+
+p{
+    font-size: 12px;
+    font-weight: 300;
+    color: #6D6D6D;
+}
+
+
+
+
+ion-datetime-button::part(native) {
+  border: 1px solid #212121;
+  width: 116px;
+  height: 27px;
+  border-radius: 30px;
+  margin-right: 40px;
+  background-color: #ffff;
+  color: #212121;
+  font-weight: 500;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+ion-modal {
+  --background: transparent !important;
+}
+
+ion-datetime {
+  --background: transparent !important;
+  --wheel-highlight-background: rgba(121, 255, 175, 0.281);
+  --wheel-highlight-border-radius: 48px;
+  --wheel-fade-background-rgb: transparent !important;
+  background-image: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.2) 70%, rgba(255,255,255,0) 100%); 
+}
+
+ion-datetime::part(wheel-item) {
+  color: #212121;
+}
+

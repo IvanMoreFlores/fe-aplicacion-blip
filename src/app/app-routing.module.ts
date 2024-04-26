@@ -89,6 +89,7 @@ const routes: Routes = [
     path: 'configuracion-alquilar',
     loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
   },
+
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
@@ -206,29 +207,32 @@ const routes: Routes = [
     loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
   },
   {
-    path: 'panel',
-    loadChildren: () => import('./pages/panel/panel.module').then( m => m.PanelPageModule)
+    path: 'finanzas',
+    loadChildren: () => import('./pages/finanzas/finanzas.module').then( m => m.FinanzasPageModule)
   },
-  {
-    path: 'acre-pro',
-    loadChildren: () => import('./pages/acre-pro/acre-pro.module').then( m => m.AcreProPageModule)
-  },
+
   {
     path: 'anuncio-caracteristicas',
     loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
   },
+
   {
-    path: 'pressed',
-    loadChildren: () => import('./pages/pressed/pressed.module').then( m => m.PressedPageModule)
+    path: 'presentacion',
+    loadChildren: () => import('./pages/presentacion/presentacion.module').then( m => m.PresentacionPageModule)
   },
   {
-    path: 'pressed-chat',
-    loadChildren: () => import('./pages/pressed-chat/pressed-chat.module').then( m => m.PressedChatPageModule)
+    path: 'presentacion-infracciones-informacion',
+    loadChildren: () => import('./pages/presentacion-infracciones-informacion/presentacion-infracciones-informacion.module').then( m => m.PresentacionInfraccionesInformacionPageModule)
   },
   {
-    path: 'pressed-chat-component',
-    loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
+    path: 'presentacion-inquilinos-informacion',
+    loadChildren: () => import('./pages/presentacion-inquilinos-informacion/presentacion-inquilinos-informacion.module').then( m => m.PresentacionInquilinosInformacionPageModule)
   },
+  {
+    path: 'ubicacion',
+    loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
+  }
+
 
 
 

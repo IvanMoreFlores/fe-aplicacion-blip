@@ -148,7 +148,7 @@
           </p>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" (click)="toggleContentEdit()"
+              <a class="servicios" routerLink=""
                 >Editar descripción
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
@@ -171,7 +171,7 @@ Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus activi
           <h3>¿Qué lugares están cerca?</h3>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" (click)="toggleContentLugares()"
+              <a class="servicios" routerLink=""
                 >Agregar lugares
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
@@ -410,7 +410,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       <!--                 -----DISPONIBILIDAD-----              -->
       <div *ngIf="selectedContent === 'Disponibilidad'">
         <div class="disponibilidad-container">
-          <h1 class="secondary-title">Días restringidos</h1>
+          <ion-item lines="none">
+            <ion-toggle justify="space-between">Días restringidos</ion-toggle>
+          </ion-item>
           <p>
             Los arrendatarios no podrán reservar tu estacionamiento en estos
             días:
@@ -419,70 +421,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           <div class="checkbox-semana">
             <form class="clearfix">
               <!-- Columna 1 -->
-              <div class="checkbox-column">
-                <label for="lunes">
-                  <input
-                    type="checkbox"
-                    id="lunes"
-                    name="diasSemana"
-                    value="lunes"
-                  />
-                  Lunes
-                </label>
-                <br />
-                <label for="martes">
-                  <input
-                    type="checkbox"
-                    id="martes"
-                    name="diasSemana"
-                    value="martes"
-                  />
-                  Martes
-                </label>
-                <br />
-                <label for="miercoles">
-                  <input
-                    type="checkbox"
-                    id="miercoles"
-                    name="diasSemana"
-                    value="miercoles"
-                  />
-                  Miércoles
-                </label>
-              </div>
-              <!-- Columna 2 -->
-              <div class="checkbox-column">
-                <label for="jueves">
-                  <input
-                    type="checkbox"
-                    id="jueves"
-                    name="diasSemana"
-                    value="jueves"
-                  />
-                  Jueves
-                </label>
-                <br />
-                <label for="viernes">
-                  <input
-                    type="checkbox"
-                    id="viernes"
-                    name="diasSemana"
-                    value="viernes"
-                  />
-                  Viernes
-                </label>
-                <br />
-                <label for="sabado">
-                  <input
-                    type="checkbox"
-                    id="sabado"
-                    name="diasSemana"
-                    value="sabado"
-                  />
-                  Sábado
-                </label>
-              </div>
-              <!-- Columna 3 -->
               <div class="checkbox-column">
                 <label for="domingo">
                   <input
@@ -493,72 +431,123 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                   />
                   Domingo
                 </label>
+                <label for="lunes">
+                  <input
+                    type="checkbox"
+                    id="lunes"
+                    name="diasSemana"
+                    value="lunes"
+                  />
+                  Lunes
+                </label>
+                <label for="martes">
+                  <input
+                    type="checkbox"
+                    id="martes"
+                    name="diasSemana"
+                    value="martes"
+                  />
+                  Martes
+                </label>
+              </div>
+              <!-- Columna 2 -->
+              <div class="checkbox-column">
+                <label for="miercoles">
+                  <input
+                    type="checkbox"
+                    id="miercoles"
+                    name="diasSemana"
+                    value="miercoles"
+                  />
+                  Miércoles
+                </label>
+                <label for="jueves">
+                  <input
+                    type="checkbox"
+                    id="jueves"
+                    name="diasSemana"
+                    value="jueves"
+                  />
+                  Jueves
+                </label>
+
+                <label for="viernes">
+                  <input
+                    type="checkbox"
+                    id="viernes"
+                    name="diasSemana"
+                    value="viernes"
+                  />
+                  Viernes
+                </label>
+              </div>
+              <!-- Columna 3 -->
+              <div class="checkbox-column">
+                <label for="sabado">
+                  <input
+                    type="checkbox"
+                    id="sabado"
+                    name="diasSemana"
+                    value="sabado"
+                  />
+                  Sábado
+                </label>
               </div>
             </form>
           </div>
 
-          <div class="time-range-container">
-            <div class="time-input-group">
-              <label for="inputDesde">Desde:</label>
-              <input
-                type="text"
-                id="inputDesde"
-                name="inputDesde"
-                placeholder="00:00 AM"
-              />
-            </div>
-            <div class="time-input-group">
-              <label for="inputHasta">Hasta:</label>
-              <input
-                type="text"
-                id="inputHasta"
-                name="inputHasta"
-                placeholder="00:00 AM"
-              />
-            </div>
-          </div>
-
-          <h1 class="secondary-title">Horas restringidas</h1>
+          <ion-item lines="none">
+            <ion-toggle justify="space-between">Horas restringidas</ion-toggle>
+          </ion-item>
           <p>
             Los arrendatarios no podrán reservar tu estacionamiento dentro del
             siguiente horario:
           </p>
 
           <div class="time-range-container">
+            
             <div class="time-input-group">
               <label for="inputDesde">Desde:</label>
-              <input
-                type="text"
-                id="inputDesde"
-                name="inputDesde"
-                placeholder="00:00 AM"
-              />
+              <ion-datetime-button datetime="datetime1"></ion-datetime-button>
+
+              <ion-modal [keepContentsMounted]="true">
+                <ng-template>
+                  <ion-datetime
+                    id="datetime1"
+                    presentation="time"
+                    hourCycle="h12"
+                    value="2024-04-17T00:00"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-modal>
             </div>
+
+
             <div class="time-input-group">
               <label for="inputHasta">Hasta:</label>
-              <input
-                type="text"
-                id="inputHasta"
-                name="inputHasta"
-                placeholder="00:00 AM"
-              />
+              <ion-datetime-button datetime="datetime2"></ion-datetime-button>
+
+              <ion-modal [keepContentsMounted]="true">
+                <ng-template>
+                  <ion-datetime
+                    id="datetime2"
+                    presentation="time"
+                    hourCycle="h12"
+                    value="2024-04-17T00:00"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-modal>
             </div>
           </div>
-
-          <ion-datetime-button datetime="datetime"></ion-datetime-button>
-
-          <ion-modal [keepContentsMounted]="true">
-            <ng-template>
-              <ion-datetime id="datetime" presentation="time"></ion-datetime>
-            </ng-template>
-          </ion-modal>
         </div>
       </div>
 
       <!--                 -----ABONADOS-----              -->
       <div *ngIf="selectedContent === 'Abonados'">
         <div class="abonados-container">
-          <h1 class="secondary-title">Abonados</h1>
+          <ion-item lines="none">
+            <ion-toggle justify="space-between">Abonados</ion-toggle>
+          </ion-item>
           <p class="abonados-descripcion">
             Eleva tu oferta como Host con Abonados Blip. Activa esta opción en
             la aplicación para permitir que los usuarios reserven
@@ -568,14 +557,23 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           </p>
 
           <div class="form-regla">
-            <div class="num-regla">¿Cuánto sería el monto?</div>
-            <div class="false-textarea">
-              <input style="border: none" type="text" />
-            </div>
+            <label class="num-regla">¿Cuánto sería el monto?</label>
+            <input class="false-textarea" placeholder="Ejem: S/. 320" />
           </div>
 
           <h1 class="secondary-title">Solicitudes de Abonado</h1>
 
+          <div class="solicitud-abonado">
+
+            <img src="/assets/images/icon-time-delete.svg" alt="">
+            <p>No cuenta con solicitudes de abonado</p>
+
+          </div>
+
+
+
+
+          <!-- 
           <div class="solicitud-container">
             <div class="solicitud1">
               <div class="solicitud-img">
@@ -634,6 +632,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
               <button class="declinar">Declinar</button>
             </div>
           </div>
+          -->
+
+
         </div>
       </div>
     </div>
