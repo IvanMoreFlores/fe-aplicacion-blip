@@ -204,9 +204,6 @@ const routes: Routes = [
   {
     path: 'calendario-mes',
     loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
-
-  
-
   },
   {
     path: 'panel',
@@ -219,6 +216,18 @@ const routes: Routes = [
   {
     path: 'anuncio-caracteristicas',
     loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
+  },
+  {
+    path: 'pressed',
+    loadChildren: () => import('./pages/pressed/pressed.module').then( m => m.PressedPageModule)
+  },
+  {
+    path: 'pressed-chat',
+    loadChildren: () => import('./pages/pressed-chat/pressed-chat.module').then( m => m.PressedChatPageModule)
+  },
+  {
+    path: 'pressed-chat-component',
+    loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
   },
 
 

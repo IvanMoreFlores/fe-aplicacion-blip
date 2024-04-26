@@ -1,5 +1,5 @@
 .container {
-  background-color: #79FFAF;
+  background-color: #F5F5F5;
   display: flex;
   height: 100%;
 }
@@ -11,6 +11,7 @@
   margin: 100px auto 50px;
   display: block;
   width: 80%;
+  color: #212121;
 }
 
 .more-info-btn {
@@ -36,8 +37,8 @@
   position: absolute;
   bottom: 50px;
   right: 50px;
-  border: 1px solid #212121; 
-  background-color: transparent; 
+  border: 1px solid #79FFAF; 
+  background-color: #79FFAF; 
   color: #212121;
   font-size: 16px;
   border-radius: 30px;
@@ -53,7 +54,7 @@
 
 .custom-btn {
   margin: 30px auto; 
-  background-color: #79FFAF;
+  background-color: #F5F5F5;
   color: #212121;
   font-size: 16px;
   border: 1px solid #212121;
@@ -85,16 +86,18 @@
   font-weight: 500;
 }
 
-.container {
+label.container {
+  height: 20px;
+  width: 20px;
   display: block;
-  position: relative;
-  margin-bottom: 12px;
+  position: absolute;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  right: 74px;
 }
 
 /* Hide the browser's default checkbox */
@@ -104,18 +107,18 @@
   cursor: pointer;
   height: 0;
   width: 0;
-  right: 0px;
-  top: 10px;
+  right: 4px;
+  top: 4px;
 }
 
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
-  top: 10px;
-  right: 0px;
-  height: 20px;
-  width: 20px;
-  background-color: #79FFAF;
+  top: 0px;
+  right: 4px;
+  height: 23px;
+  width: 23px;
+  background-color: #F5F5F5;
   border: 1px black solid;
   border-radius: 5px;
 }
@@ -145,13 +148,14 @@
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 6px;
-  top: 3px;
-  width: 5px;
-  height: 10px;
-  border: solid #79FFAF;
+  left: 7px;
+  top: 2px;
+  width: 8px;
+  height: 14px;
+  border: solid #F5F5F5;
   border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(35deg);
-  -ms-transform: rotate(35deg);
-  transform: rotate(35deg);
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
 }
+
