@@ -188,8 +188,27 @@ const routes: Routes = [
   {
     path: 'calendario-mes',
     loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
-  }
-
+  },
+  {
+    path: 'presentacion',
+    loadChildren: () => import('./pages/presentacion/presentacion.module').then( m => m.PresentacionPageModule)
+  },
+  {
+    path: 'panel-anfitrion',
+    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
+  },
+  {
+    path: 'soporte56',
+    loadChildren: () => import('./pages/soporte56/soporte56.module').then( m => m.Soporte56PageModule)
+  },
+  {
+    path: 'anuncio-caracteristicas',
+    loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
 ];
 
 @NgModule({

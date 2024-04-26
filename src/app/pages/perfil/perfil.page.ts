@@ -1,5 +1,4 @@
-// perfil.page.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 
 @Component({
@@ -7,36 +6,37 @@ import { ActionSheetController } from '@ionic/angular';
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
-export class PerfilPage {
+export class PerfilPage implements OnInit {
 
-  constructor(private actionSheetController: ActionSheetController) {}
+  constructor(public actionSheetController: ActionSheetController) {}
+
+  ngOnInit() {
+  }
 
   async openActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Cuéntanos algo curioso de ti',
-      subHeader: 'Comparte con nosotros algún dato curioso que hayas vivido o sobre ti.',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel'
-        },
-        {
-          text: 'Aceptar',
-          handler: () => {
-            console.log('Texto aceptado');
-          }
+      header: 'Opciones',
+      buttons: [{
+        text: 'Opción 1',
+        handler: () => {
+          console.log('Opción 1 seleccionada');
         }
-      ],
-      mode: 'md', // Establecer el modo en "md"
-      // inputs: [
-      //   {
-      //     name: 'curiosidad',
-      //     type: 'text',
-      //     placeholder: 'Escribe aquí...'
-      //   }
-      // ]
+      }, {
+        text: 'Opción 2',
+        handler: () => {
+          console.log('Opción 2 seleccionada');
+        }
+      }, {
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancelado');
+        }
+      }]
     });
-    
     await actionSheet.present();
   }
+
 }
+
+
