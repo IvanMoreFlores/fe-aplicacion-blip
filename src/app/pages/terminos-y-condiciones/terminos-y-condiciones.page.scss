@@ -1,5 +1,5 @@
 .container {
-    background-color: #79FFAF;
+    background-color: #FFFFFF;
     display: flex;
     height: 100%;
   }
@@ -12,7 +12,16 @@
     display: block;
     width: 80%;
 }
-  
+.tamano{
+    font-size: 15px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin: 20px auto;
+    margin-left:15px ;
+    display: block;
+    width: 100%;
+    
+}  
 .subtitle {
     font-size: 15px;
     line-height: 23px;
@@ -20,13 +29,14 @@
     margin: 20px auto;
     display: block;
     width: 80%;
+    font-weight: 500;
 }
   
 .description {
     font-size: 15px;
     line-height: 23px;
     font-family: "Poppins", sans-serif;
-    margin: 20px auto;
+    margin: 30px auto;
     display: block;
     width: 80%;
 }
@@ -35,13 +45,14 @@
     background-color: #212121; 
     color: #79FFAF; 
     font-size: 16px;
-    margin: 40px auto;
+    margin: 30px auto;
     border-radius: 30px;
     width: 80%;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     height: 56px;
     display: block;
+    margin-bottom: 20px;
 }
   
 .more-info-btn:hover {
@@ -66,3 +77,46 @@
 .next-btn:hover {
     background-color: rgba(163, 163, 163, 0.2); /* Cambio de color de fondo en hover */
 }
+.subrayado:hover {
+    text-decoration: underline;
+  }
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .checkbox-icon {
+    margin-left: 25px;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #212121;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+  }
+  
+  .checkbox-icon.checked {
+    background-color: #212121;
+    border-color: #212121;
+  }
+  .checkbox-icon ion-icon {
+    font-size: 16px;
+    color: transparent;
+  }
+
+  .checkbox-icon.checked ion-icon {
+    font-size: 16px;
+    color: #fff;
+  }
+  
+  .checkbox-label {
+    font-size: 16px;
+    color: #333;
+  }
+  .custom-checkbox{
+    margin-top: 20px;
+    margin-left: 20px;
+  }

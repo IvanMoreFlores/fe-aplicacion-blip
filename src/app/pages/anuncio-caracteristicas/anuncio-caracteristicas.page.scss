@@ -146,7 +146,7 @@ body {
   height: 56px;
   align-items: center;
   display: flex;
-  width: 100%;
+  width: 98%;
   background-color: transparent;
   padding: 12px 22px;
   margin-bottom: 30px;
@@ -969,9 +969,55 @@ input[type="checkbox"] {
   padding-right: 5px;
 }
 
-.form-descrip {
-  margin-top: 30px;
-}
+  .btn-guardar {
+    height: 56px; /* Altura del botón */
+    width: 327px; /* Ancho del botón */
+    background-color: #FFFFFF;
+    margin-top:15px;
+    border-radius: 40px; 
+    border: 1px solid #C8C5CA; 
+    font-size: 16px;
+    color: #C8C5CA;
+  }
+  .pop-lugares {
+    animation: slideIn 0.1s ease-in-out;
+    width: 430px;
+    height: 358px;
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    z-index: 9999;
+    position: absolute;
+    bottom: -21.6%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra el elemento */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    .cabecera1{
+      color: #524F4F;
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      margin-top: 20px;
+      font-weight: 500;
+      }
+      .pop-dimension {
+        animation: slideIn 0.1s ease-in-out;
+        width: 430px;
+        height: 320px;
+        border: 1px solid #ccc;
+        border-radius: 30px 30px 0 0;
+        z-index: 9999;
+        position: absolute;
+        top: 82%;
+        left: 50%; /* Centra horizontalmente */
+        transform: translate(-50%, -50%); /* Centra el elemento */
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
 
 .false-txtSdescrip {
   height: auto;
@@ -1150,4 +1196,35 @@ input[type="checkbox"] {
   z-index: 1;
   left: 15px;
   font-family: "Poppins", sans-serif;
+}
+      .input3 {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        height: 56px; 
+        width: 327px; 
+        background-color: #FFFFFF;
+        border-radius: 40px; 
+        border: 1px solid #212121; 
+        font-size: 16px;
+        color: #1D1B20;
+        padding: 0 15px; /* Ajusta el padding según lo necesites */
+      }
+   
+    .lbldireccion {
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      background-color: #ffffff;
+      padding: 0 10px;
+      z-index: 1;
+      left: 15px;
+      font-family: "Poppins", sans-serif;
+      
+    }
+.scroll{
+  overflow: auto;
+  max-height: 700px;
+  max-width: 700px;
 }

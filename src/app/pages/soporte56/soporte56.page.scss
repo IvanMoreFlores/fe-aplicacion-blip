@@ -1,0 +1,53 @@
+.container{
+    background-color: #79FFAF; 
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.content{
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    width: 432px;
+    margin-top: 50px;
+    height: 882px;
+    display: block;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+.info-back{
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    background-color: transparent;
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+.signo-menor::before {
+    content: '\003c'; /* Código Unicode para el signo menor (<) */
+    display: flex;
+    margin-left: -110px;
+    font-size: 22px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+.contenido-inf{
+    margin: 30px;
+    font-size: 21px;
+    font-family: "Poppins", sans-serif;
+    margin-left: 12px;
+    margin-right: 20px;
+}
+.parr2{
+   font-size: 14px;
+   font-weight: 300;
+   line-height: 1.8;
+}
+.botonchat{
+    background-color: transparent;
+    margin-top: 30px;
+    position: absolute;
+}
+.title{
+    font-size: 21px;
+}

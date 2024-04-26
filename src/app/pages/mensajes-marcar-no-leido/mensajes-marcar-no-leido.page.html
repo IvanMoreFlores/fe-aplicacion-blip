@@ -1,0 +1,107 @@
+<ion-content [fullscreen]="true">
+  <div  *ngIf="isNavbarOpen" class="dark-overlay"></div>
+  <div class="top-bar">
+    <div class="overlay"></div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center w-100">
+          <button routerLink="/mensajes" class="vector-mensaje">
+          <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
+        </button>
+        <div class="text-b">Laura<br> <span style="font-size: 10px; font-weight: 500;">Tiempo de respuesta: 5 horas</span></div>
+        <div class="notification-circle"></div>
+          <button class="navbar-toggler shadow" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="/assets/images/btn-punto.png" alt="Icono de navegación">
+          </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- Nuevo contenido dentro del navbar-collapse -->
+            <div class="menu-above">Filtrar mensajes</div>
+            <hr class="separator-line">
+            <div class="button-container">
+              <button class="custom-btn">
+                <img src="/assets/images/envelope-ban.png" alt="">
+                <span class="btn-text">Marcar como no leído</span>         
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/star.png" alt=""> 
+                <span class="btn-text">Destacar Mensaje</span>              
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/download.png" alt="">
+                <span class="btn-text">Archivar</span>               
+              </button>         
+          </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="text-center title">24 nov 2023 </h1>
+          <div class="conversation">
+            <div class="message">
+              <div class="message-content">
+                <div class="message-bubble">
+                  <div class="message-text">Laura te ha invitado a ser Host en Blip.
+
+                    ¡Hola Camila bienvenida al mundo de Blip Host! Te comento que soy Diseñadora de Interiores, Host Estrella y Embajadora de Blip en todo el Perú.
+                    Estaré encantada de ayudarte a empezar a publicar su anuncio y responder cualquier duda que tengas
+                    
+                    ¿Qué preguntas tienes para mí?</div>
+                  <div class="message-time">13:30</div>
+                </div>
+                <div class="message-avatar">
+                  <img class="avatar" src="/assets/images/image39.png" alt="Avatar">
+                  <div class="message-sender">Laura</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="conversation">
+            <div class="message message-left">
+              
+              <div class="message-content">
+                
+                <div class="message-bubble message-bubble-left">
+                  <div class="message-text">Lorem Ipsum.v software like Aldus PageMaker including versions of Lorem Ipsumharised in the 1960s with the release of Letraset sh</div>
+                  <div class="message-time-1">10:15</div>
+                </div>
+                <div class="message-avatar-1">
+                  <div class="message-sender-1">Camila</div>
+                  <img class="avatar-1" src="/assets/images/Rectangle9.png" alt="Avatar">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+
+          <div class="bottom-bar">
+            <div class="left-button">
+              <button class="add-button">
+                <img src="/assets/images/plus-small.png" alt="Agregar">
+              </button>
+            </div>
+            <div class="input-area">
+              <input type="text" placeholder="Escribe un mensaje...">
+            </div>
+            <div class="right-button">
+              <button class="mic-button">
+                <img class="microphone" src="/assets/images/microphone.png" alt="Micrófono">
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

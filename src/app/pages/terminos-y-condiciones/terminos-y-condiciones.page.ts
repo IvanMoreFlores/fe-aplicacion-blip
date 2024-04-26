@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./terminos-y-condiciones.page.scss'],
 })
 export class TerminosYCondicionesPage implements OnInit {
-
+  
+  isChecked: boolean = false;
   constructor() { }
+
+  toggleCheckbox() {
+    this.isChecked = !this.isChecked;
+  }
 
   ngOnInit() {
   }

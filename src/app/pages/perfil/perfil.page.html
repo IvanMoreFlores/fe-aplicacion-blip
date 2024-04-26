@@ -41,12 +41,13 @@
         </div>
       </div>
       <div class="preguntas">
-        <ion-button (click)="openActionSheet()">
-          Abrir acción de hoja
-        </ion-button>
+          <ion-button id="open-modal" expand="block">Open Sheet Modal</ion-button>
         
-        
-
+          <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block">Block of Content</div>
+            </ng-template>
+          </ion-modal>
       </div>
 
 

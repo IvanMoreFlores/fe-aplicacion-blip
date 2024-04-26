@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mensajes-destacados.page.scss'],
 })
 export class MensajesDestacadosPage implements OnInit {
+  isNavbarOpen = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleNavbar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
   }
 
 }
