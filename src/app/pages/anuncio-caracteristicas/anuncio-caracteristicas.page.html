@@ -1,7 +1,6 @@
 <ion-content [fullscreen]="true">
   <div class="container">
     <div class="pantalla">
-
       <div class="inicio">
         <a class="regresar" href="#">
           <div class="left-arrow">
@@ -13,23 +12,24 @@
         <div class="grid-small-button">
           <!---->
           <!---->
-        <button class="pop-elianuncio" (click)="toggleContent1()">
-          <div class="small-button">
-          <img src="/assets/images/trash.svg" alt="" />
+          <button class="pop-elianuncio" (click)="toggleContent1()">
+            <div class="small-button">
+              <img src="/assets/images/trash.svg" alt="" />
+            </div>
+          </button>
+          <div *ngIf="showContent1" class="darken-background"></div>
+          <div *ngIf="showContent1" class="pop-eliminar">
+            <p class="cabecera">¿Seguro que quieres eliminar el anuncio?</p>
+            <div class="linea"></div>
+            <button class="btn-elianuncio">Eliminar Anuncio</button>
+            <button class="btn-cancelar" (click)="cerrarContent()">
+              Cancelar
+            </button>
           </div>
-        </button>
-        <div *ngIf="showContent1" class="darken-background"></div>
-        <div *ngIf="showContent1" class="pop-eliminar">
-          <p class="cabecera">¿Seguro que quieres eliminar el anuncio?</p>
-          <div class="linea"></div>
-          <button class="btn-elianuncio">Eliminar Anuncio</button>
-          <button class="btn-cancelar" (click)="cerrarContent()">Cancelar</button>
-        </div>
 
-
-          <button class="pop-anuncio" (click)="toggleContent2()" >
-           <div class="small-button">
-          <img src="/assets/images/down-arrow.svg" alt="" />
+          <button class="pop-anuncio" (click)="toggleContent2()">
+            <div class="small-button">
+              <img src="/assets/images/down-arrow.svg" alt="" />
             </div>
           </button>
 
@@ -40,85 +40,116 @@
             <div class="cuadrito1">
               <img src="/assets/images/vehiculo.svg" alt="" />
               <p>Estacionamiento Las Begonias</p>
-              <input type="checkbox" name="" id="">
+              <input type="checkbox" name="" id="" />
             </div>
             <div class="cuadrito2">
               <img src="/assets/images/vehiculo.svg" alt="" />
               <p>Cochera Santa Cruz 1254</p>
-              <input type="checkbox" name="" id="">
+              <input type="checkbox" name="" id="" />
             </div>
             <button class="btn-anuncio">
-              <img src="/assets/images/mas_simbol.svg" alt=""> 
-              <h3>Agregar nuevo anuncio</h3>  
-          </button>
+              <img src="/assets/images/mas_simbol.svg" alt="" />
+              <h3>Agregar nuevo anuncio</h3>
+            </button>
           </div>
 
           <!---->
           <!---->
-
         </div>
       </div>
 
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <button (click)="changeContent('Características')"
-              [ngClass]="{'active': isButtonActive('Características')}">Características</button>
+            <button
+              (click)="changeContent('Características')"
+              [ngClass]="{'active': isButtonActive('Características')}"
+            >
+              Características
+            </button>
           </div>
 
           <div class="swiper-slide">
-            <button (click)="changeContent('Reglas')" [ngClass]="{'active': isButtonActive('Reglas')}">Reglas</button>
+            <button
+              (click)="changeContent('Reglas')"
+              [ngClass]="{'active': isButtonActive('Reglas')}"
+            >
+              Reglas
+            </button>
           </div>
 
           <div class="swiper-slide">
-            <button (click)="changeContent('Precio')" [ngClass]="{'active': isButtonActive('Precio')}">Precio</button>
+            <button
+              (click)="changeContent('Precio')"
+              [ngClass]="{'active': isButtonActive('Precio')}"
+            >
+              Precio
+            </button>
           </div>
 
           <div class="swiper-slide">
-            <button (click)="changeContent('Disponibilidad')"
-              [ngClass]="{'active': isButtonActive('Disponibilidad')}">Disponibilidad</button>
+            <button
+              (click)="changeContent('Disponibilidad')"
+              [ngClass]="{'active': isButtonActive('Disponibilidad')}"
+            >
+              Disponibilidad
+            </button>
           </div>
 
           <div class="swiper-slide">
-            <button (click)="changeContent('Abonados')"
-              [ngClass]="{'active': isButtonActive('Abonados')}">Abonados</button>
+            <button
+              (click)="changeContent('Abonados')"
+              [ngClass]="{'active': isButtonActive('Abonados')}"
+            >
+              Abonados
+            </button>
           </div>
         </div>
-
       </div>
 
       <!--                 -----CARACTERISTICAS-----              -->
       <div *ngIf="selectedContent === 'Características'">
         <div class="informacion">
           <h1 class="secondary-title">Información del estacionamiento</h1>
-          <h2>Los arrendatarios podrán ver esta información antes de alquilar tu estacionamiento.</h2>
+          <h2>
+            Los arrendatarios podrán ver esta información antes de alquilar tu
+            estacionamiento.
+          </h2>
           <div class="form">
             <label class="anuncio-label" for="">Nombre del Anuncio</label>
-            <input type="text" class="outlinenone" placeholder="Parking Las Begonias">
+            <input
+              type="text"
+              class="outlinenone"
+              placeholder="Parking Las Begonias"
+            />
           </div>
           <h3>Fotos</h3>
           <h5>Mínimo tres fotos, pero si tienes más, ¡Genial!</h5>
         </div>
         <div class="boxes">
           <div class="box1">
-            <img src="/assets/images/upload.svg" alt="">
+            <img src="/assets/images/upload.svg" alt="" />
           </div>
           <div class="box2">
-            <img src="/assets/images/upload.svg" alt="">
+            <img src="/assets/images/upload.svg" alt="" />
           </div>
           <div class="box3">
-            <img src="/assets/images/upload.svg" alt="">
+            <img src="/assets/images/upload.svg" alt="" />
           </div>
           <div class="box4">
-            <img src="/assets/images/upload.svg" alt="">
+            <img src="/assets/images/upload.svg" alt="" />
           </div>
         </div>
         <div class="descripcion">
           <h3>Descripción</h3>
-          <p>Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.</p>
+          <p>
+            Estacionamiento en cochera privada cómodo y seguro para disfrutar de
+            tus actividades diarias.
+          </p>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" (click)="toggleContentEdit()">Editar descripción
+              <a class="servicios" (click)="toggleContentEdit()"
+                >Editar descripción
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
             </p>
@@ -129,7 +160,8 @@
             <div class="form-descrip">
               <div class="descrip">Descripción de Espacio</div>
               <div class="false-txtSdescrip">
-                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
+                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">
+Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
                 </textarea>
               </div>
             </div>
@@ -139,7 +171,8 @@
           <h3>¿Qué lugares están cerca?</h3>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" (click)="toggleContentLugares()">Agregar lugares
+              <a class="servicios" (click)="toggleContentLugares()"
+                >Agregar lugares
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
             </p>
@@ -150,24 +183,25 @@
             <div class="form-descrip">
               <div class="descrip">Agrega Lugares Cerca</div>
               <div class="false-txtSdescrip">
-                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
+                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
                 </textarea>
               </div>
             </div>
             <button class="btn-guardar">Guardar Cambios</button>
           </div>
 
-
-            <!---->
-            <!---->
+          <!---->
+          <!---->
           <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
-          <p>2.10 m de Ancho </p>
+          <p>2.10 m de Ancho</p>
           <p>5 m de Largo</p>
           <p>2.10 de Altura</p>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" (click)="toggleContentDimension()">Editar dimensiones
-                <img src="/assets/images/right-arrow.svg" alt=""/>
+              <a class="servicios" (click)="toggleContentDimension()"
+                >Editar dimensiones
+                <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
             </p>
           </div>
@@ -179,32 +213,33 @@
               <ion-input class="txtmedida"></ion-input>
             </div>
             <div class="input2">
-              <ion-label class="lblaltura">Altura (en caso sea techado)</ion-label>
+              <ion-label class="lblaltura"
+                >Altura (en caso sea techado)</ion-label
+              >
               <ion-input class="txtaltura"></ion-input>
             </div>
             <button class="btn-guardar">Guardar Cambios</button>
           </div>
-
-
 
           <h3>¿Qué servicios también ofreces?</h3>
           <div class="txtservicio">
             <img src="/assets/images/tienda.svg" alt="" />
             <p>Autoboutique</p>
           </div>
-          
+
           <div class="txtservicio">
             <img src="/assets/images/ojo.svg" alt="" />
             <p>Sistema de vigilancia</p>
           </div>
-          
+
           <div class="txtservicio">
             <img src="/assets/images/capas.svg" alt="" />
             <p>Techado</p>
           </div>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" routerLink="">Editar servicios
+              <a class="servicios" routerLink=""
+                >Editar servicios
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
             </p>
@@ -214,7 +249,8 @@
           <p>Av. Alfredo Mendiola 3698</p>
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" (click)="toggleContentDirec()">Editar dirección
+              <a class="servicios" (click)="toggleContentDirec()"
+                >Editar dirección
                 <img src="/assets/images/right-arrow.svg" alt="" />
               </a>
             </p>
@@ -228,35 +264,43 @@
             </div>
             <button class="btn-guardar">Guardar Cambios</button>
           </div>
-
-
-          
         </div>
       </div>
 
       <!--                 -----REGLAS-----              -->
       <div *ngIf="selectedContent === 'Reglas'">
         <div>
-          <h1 class="secondary-title">Escribe las reglas que consideres esenciales</h1>
+          <h1 class="secondary-title">
+            Escribe las reglas que consideres esenciales
+          </h1>
           <div class="form-regla">
             <div class="num-regla">Regla #1</div>
             <div class="false-textarea">
-              <textarea [style.min-height]="getPlaceholderHeight()" rows="4"
-                placeholder="Ej. Ser puntal con las horas de reserva y salir al momento pactado"></textarea>
+              <textarea
+                [style.min-height]="getPlaceholderHeight()"
+                rows="4"
+                placeholder="Ej. Ser puntal con las horas de reserva y salir al momento pactado"
+              ></textarea>
             </div>
-
 
             <div *ngFor="let contenido of textareas; let i = index">
               <div class="num-regla">Regla #{{ i + 2 }}</div>
               <div class="false-textarea">
-                <textarea [style.min-height]="getPlaceholderHeight()" rows="4"
-                  placeholder="Ej. Ser puntal con las horas de reserva y salir al momento pactado"></textarea>
+                <textarea
+                  [style.min-height]="getPlaceholderHeight()"
+                  rows="4"
+                  placeholder="Ej. Ser puntal con las horas de reserva y salir al momento pactado"
+                ></textarea>
               </div>
             </div>
 
             <div class="adicionar">
-              <button (click)="agregarTextarea()" *ngIf="textareas.length < 3" class="boton-adicionar">
-                <img src="/assets/images/addition.svg" alt="">
+              <button
+                (click)="agregarTextarea()"
+                *ngIf="textareas.length < 3"
+                class="boton-adicionar"
+              >
+                <img src="/assets/images/addition.svg" alt="" />
               </button>
             </div>
           </div>
@@ -271,41 +315,60 @@
         </div>
 
         <div>
-
           <div class="precio-base">
             <span class="simbolo">S/.</span>
-            <input class="monto" id="hora-fraccion" placeholde="0.00" type="number">
-            <label for="hora-fraccion" class="hora-fraccion">Hora o fracción</label>
+            <input
+              class="monto"
+              id="hora-fraccion"
+              placeholde="0.00"
+              type="number"
+            />
+            <label for="hora-fraccion" class="hora-fraccion"
+              >Hora o fracción</label
+            >
           </div>
 
           <div class="precio-personalizado">
-            <input class="input-precio-personalizado" placeholder="Precio personalizado para fines de semana"
-              type="number">
+            <input
+              class="input-precio-personalizado"
+              placeholder="Precio personalizado para fines de semana"
+              type="number"
+            />
             <label for="hora-fraccion" class="agregar">Agregar</label>
           </div>
 
           <div class="recordatorio">
-            <p>Recuerda que la tarifa de servicio es 25% sobre el precio base. Según el precio base x hr/fracc.
-              <span>(S/.10)</span> ingresado estarías ganando <span>S/.8.70</span> x hora.
+            <p>
+              Recuerda que la tarifa de servicio es 25% sobre el precio base.
+              Según el precio base x hr/fracc. <span>(S/.10)</span> ingresado
+              estarías ganando <span>S/.8.70</span> x hora.
             </p>
           </div>
 
           <h1 class="secondary-title">Descuentos</h1>
-          <span class="descuentos-descripcion">Ajusta tus precios para atraer a más </span>
+          <span class="descuentos-descripcion"
+            >Ajusta tus precios para atraer a más
+          </span>
 
           <div class="precio-personalizado">
-            <input class="input-descuento" placeholder="0%" type="number">
-            <label for="hora-fraccion" class="reserva">Reserva Semanal<br>Por 7 días o más</label>
-            <label for="hora-fraccion" class="promedio">El promedio semanal<br>es de PEN00</label>
+            <input class="input-descuento" placeholder="0%" type="number" />
+            <label for="hora-fraccion" class="reserva"
+              >Reserva Semanal<br />Por 7 días o más</label
+            >
+            <label for="hora-fraccion" class="promedio"
+              >El promedio semanal<br />es de PEN00</label
+            >
           </div>
 
           <div class="precio-personalizado">
-            <input class="input-descuento" placeholder="0%" type="number">
-            <label for="hora-fraccion" class="reserva">Reservación adelantada<br>con 1 día de adelanto</label>
-            <label for="hora-fraccion" class="promedio">El promedio semanal<br>es de PEN00</label>
+            <input class="input-descuento" placeholder="0%" type="number" />
+            <label for="hora-fraccion" class="reserva"
+              >Reservación adelantada<br />con 1 día de adelanto</label
+            >
+            <label for="hora-fraccion" class="promedio"
+              >El promedio semanal<br />es de PEN00</label
+            >
           </div>
-
-
         </div>
       </div>
 
@@ -313,42 +376,87 @@
       <div *ngIf="selectedContent === 'Disponibilidad'">
         <div class="disponibilidad-container">
           <h1 class="secondary-title">Días restringidos</h1>
-          <p>Los arrendatarios no podrán reservar tu estacionamiento en estos días:</p>
+          <p>
+            Los arrendatarios no podrán reservar tu estacionamiento en estos
+            días:
+          </p>
 
           <div class="checkbox-semana">
             <form class="clearfix">
               <!-- Columna 1 -->
               <div class="checkbox-column">
                 <label for="lunes">
-                  <input type="checkbox" id="lunes" name="diasSemana" value="lunes"> Lunes
+                  <input
+                    type="checkbox"
+                    id="lunes"
+                    name="diasSemana"
+                    value="lunes"
+                  />
+                  Lunes
                 </label>
-                <br>
+                <br />
                 <label for="martes">
-                  <input type="checkbox" id="martes" name="diasSemana" value="martes"> Martes
+                  <input
+                    type="checkbox"
+                    id="martes"
+                    name="diasSemana"
+                    value="martes"
+                  />
+                  Martes
                 </label>
-                <br>
+                <br />
                 <label for="miercoles">
-                  <input type="checkbox" id="miercoles" name="diasSemana" value="miercoles"> Miércoles
+                  <input
+                    type="checkbox"
+                    id="miercoles"
+                    name="diasSemana"
+                    value="miercoles"
+                  />
+                  Miércoles
                 </label>
               </div>
               <!-- Columna 2 -->
               <div class="checkbox-column">
                 <label for="jueves">
-                  <input type="checkbox" id="jueves" name="diasSemana" value="jueves"> Jueves
+                  <input
+                    type="checkbox"
+                    id="jueves"
+                    name="diasSemana"
+                    value="jueves"
+                  />
+                  Jueves
                 </label>
-                <br>
+                <br />
                 <label for="viernes">
-                  <input type="checkbox" id="viernes" name="diasSemana" value="viernes"> Viernes
+                  <input
+                    type="checkbox"
+                    id="viernes"
+                    name="diasSemana"
+                    value="viernes"
+                  />
+                  Viernes
                 </label>
-                <br>
+                <br />
                 <label for="sabado">
-                  <input type="checkbox" id="sabado" name="diasSemana" value="sabado"> Sábado
+                  <input
+                    type="checkbox"
+                    id="sabado"
+                    name="diasSemana"
+                    value="sabado"
+                  />
+                  Sábado
                 </label>
               </div>
               <!-- Columna 3 -->
               <div class="checkbox-column">
                 <label for="domingo">
-                  <input type="checkbox" id="domingo" name="diasSemana" value="domingo"> Domingo
+                  <input
+                    type="checkbox"
+                    id="domingo"
+                    name="diasSemana"
+                    value="domingo"
+                  />
+                  Domingo
                 </label>
               </div>
             </form>
@@ -357,80 +465,93 @@
           <div class="time-range-container">
             <div class="time-input-group">
               <label for="inputDesde">Desde:</label>
-              <input type="text" id="inputDesde" name="inputDesde" placeholder="00:00 AM">
+              <input
+                type="text"
+                id="inputDesde"
+                name="inputDesde"
+                placeholder="00:00 AM"
+              />
             </div>
             <div class="time-input-group">
               <label for="inputHasta">Hasta:</label>
-              <input type="text" id="inputHasta" name="inputHasta" placeholder="00:00 AM">
+              <input
+                type="text"
+                id="inputHasta"
+                name="inputHasta"
+                placeholder="00:00 AM"
+              />
             </div>
           </div>
 
           <h1 class="secondary-title">Horas restringidas</h1>
-          <p>Los arrendatarios no podrán reservar tu estacionamiento dentro del siguiente horario:</p>
+          <p>
+            Los arrendatarios no podrán reservar tu estacionamiento dentro del
+            siguiente horario:
+          </p>
 
           <div class="time-range-container">
             <div class="time-input-group">
               <label for="inputDesde">Desde:</label>
-              <input type="text" id="inputDesde" name="inputDesde" placeholder="00:00 AM">
+              <input
+                type="text"
+                id="inputDesde"
+                name="inputDesde"
+                placeholder="00:00 AM"
+              />
             </div>
             <div class="time-input-group">
               <label for="inputHasta">Hasta:</label>
-              <input type="text" id="inputHasta" name="inputHasta" placeholder="00:00 AM">
+              <input
+                type="text"
+                id="inputHasta"
+                name="inputHasta"
+                placeholder="00:00 AM"
+              />
             </div>
           </div>
 
-
-
-          
           <ion-datetime-button datetime="datetime"></ion-datetime-button>
 
           <ion-modal [keepContentsMounted]="true">
             <ng-template>
-              <ion-datetime
-                id="datetime"
-                presentation="time"
-              ></ion-datetime>
+              <ion-datetime id="datetime" presentation="time"></ion-datetime>
             </ng-template>
           </ion-modal>
-
-
-
-
         </div>
       </div>
-
 
       <!--                 -----ABONADOS-----              -->
       <div *ngIf="selectedContent === 'Abonados'">
         <div class="abonados-container">
           <h1 class="secondary-title">Abonados</h1>
-          <p class="abonados-descripcion">Eleva tu oferta como Host con Abonados Blip.
-            Activa esta opción en la aplicación para permitir
-            que los usuarios reserven mensualmente.<br><br>
+          <p class="abonados-descripcion">
+            Eleva tu oferta como Host con Abonados Blip. Activa esta opción en
+            la aplicación para permitir que los usuarios reserven
+            mensualmente.<br /><br />
 
-            ¡Mejora tu experiencia con Abonados Blip!</p>
+            ¡Mejora tu experiencia con Abonados Blip!
+          </p>
 
           <div class="form-regla">
             <div class="num-regla">¿Cuánto sería el monto?</div>
             <div class="false-textarea">
-              <input style="border: none;" type="text">
+              <input style="border: none" type="text" />
             </div>
           </div>
 
           <h1 class="secondary-title">Solicitudes de Abonado</h1>
 
           <div class="solicitud-container">
-
-
             <div class="solicitud1">
               <div class="solicitud-img">
-                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                <img
+                  alt=""
+                  src="https://ionicframework.com/docs/img/demos/avatar.svg"
+                />
               </div>
             </div>
 
-
             <div class="solicitud2">
-
               <div class="solicitud-container2">
                 <div class="solicitud-izquierda">
                   <div class="solicitud-aviso">Solicitud</div>
@@ -442,51 +563,44 @@
               </div>
               <div>
                 <h1 class="solicitud-nombre">Laura Costa</h1>
-                <p class="solicitud-descripcion">Está interesada en aplicar al pago abonado para el estacionamiento 1
-                  dentro de la siguientes fechas:
+                <p class="solicitud-descripcion">
+                  Está interesada en aplicar al pago abonado para el
+                  estacionamiento 1 dentro de la siguientes fechas:
                 </p>
               </div>
             </div>
 
-
             <div class="solicitud3">
-
               <div class="solicitud-fecha-izquierda">
-                <div class="icon-solicitud"><img src="/assets/images/icon-calendar.svg" alt=""></div>
+                <div class="icon-solicitud">
+                  <img src="/assets/images/icon-calendar.svg" alt="" />
+                </div>
                 <div class="fechas">
                   <div class="fecha">Domingo 07, Ene.</div>
                   <div class="hora">10:00 AM</div>
                 </div>
               </div>
 
-              <img src="/assets/images/right-arrow-calendar.svg" alt="">
+              <img src="/assets/images/right-arrow-calendar.svg" alt="" />
 
               <div class="solicitud-fecha-derecha">
                 <div class="fechas">
                   <div class="fecha">Miércoles 07, Feb.</div>
                   <div class="hora">10:00 AM</div>
                 </div>
-                <div class="icon-solicitud"><img src="/assets/images/icon-calendar.svg" alt=""></div>
+                <div class="icon-solicitud">
+                  <img src="/assets/images/icon-calendar.svg" alt="" />
+                </div>
               </div>
-
             </div>
 
             <div class="solicitud4">
-              <button class="aceptar">
-                Aceptar
-              </button>
-              <button class="declinar">
-                Declinar
-              </button>
+              <button class="aceptar">Aceptar</button>
+              <button class="declinar">Declinar</button>
             </div>
-
           </div>
-
-
         </div>
       </div>
-
-
     </div>
   </div>
 </ion-content>

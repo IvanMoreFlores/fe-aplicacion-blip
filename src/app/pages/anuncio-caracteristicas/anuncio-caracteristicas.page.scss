@@ -591,10 +591,9 @@ a.servicios:hover {
   box-shadow: 0px 3px 8px 1px rgba(88, 88, 88, 0.418);
   border-radius: 10px;
   overflow: hidden; /* Oculta cualquier contenido que se salga del círculo */
-
 }
 
-.solicitud-img img{
+.solicitud-img img {
   object-fit: cover;
   display: flex;
 }
@@ -750,15 +749,12 @@ a.servicios:hover {
     opacity: 1;
   }
 }
-.pop-elianuncio{
+.pop-elianuncio {
   background-color: transparent;
 }
-.pop-anuncio{
+.pop-anuncio {
   background-color: transparent;
 }
-
-
-
 
 .pop-eliminar {
   animation: slideIn 0.1s ease-in-out;
@@ -775,59 +771,58 @@ a.servicios:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  }
-  
-  .btn-elianuncio {
-    height: 56px; /* Altura del botón */
-    width: 327px; /* Ancho del botón */
-    background-color: #FFFFFF;
-    margin-top: 30px;
-    border: 1px solid #212121; 
-    border-radius: 40px; 
-    font-size: 16px;
-    color: #212121;
-  }
-  .btn-cancelar {
-    height: 56px; /* Altura del botón */
-    width: 327px; /* Ancho del botón */
-    background-color: #212121;
-    margin-top: 30px;
-    border-radius: 40px; 
-    font-size: 16px;
-    color: #FFFFFF;
-  }
+}
+
+.btn-elianuncio {
+  height: 56px; /* Altura del botón */
+  width: 327px; /* Ancho del botón */
+  background-color: #ffffff;
+  margin-top: 30px;
+  border: 1px solid #212121;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #212121;
+}
+.btn-cancelar {
+  height: 56px; /* Altura del botón */
+  width: 327px; /* Ancho del botón */
+  background-color: #212121;
+  margin-top: 30px;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #ffffff;
+}
 
 //
 //
 .pop-upanuncio {
-animation: slideIn 0.1s ease-in-out;
-width: 430px;
-height: 358px;
-border: 1px solid #ccc;
-border-radius: 30px 30px 0 0;
-z-index: 9999;
-position: absolute;
-bottom: -21.6%; /* Centra verticalmente */
-left: 50%; /* Centra horizontalmente */
-transform: translate(-50%, -50%); /* Centra el elemento */
-background-color: white;
-display: flex;
-flex-direction: column;
-align-items: center;
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 358px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -21.6%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.cabecera{
-  color: #524F4F;
+.cabecera {
+  color: #524f4f;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   margin-top: 20px;
   font-weight: 500;
-  }
-
-.linea{
-width: 100%; 
-border-bottom: 1px solid #D4D4D4;
 }
 
+.linea {
+  width: 100%;
+  border-bottom: 1px solid #d4d4d4;
+}
 
 .cuadrito1 {
   border-color: #212121;
@@ -861,7 +856,7 @@ border-bottom: 1px solid #D4D4D4;
   font-size: 14px;
   color: black;
 }
-.cuadrito1  p{
+.cuadrito1 p {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
   color: #212121;
@@ -874,7 +869,7 @@ border-bottom: 1px solid #D4D4D4;
   padding-right: 10px;
   text-overflow: ellipsis;
 }
-.cuadrito2  p{
+.cuadrito2 p {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
   color: #212121;
@@ -896,20 +891,20 @@ input[type="checkbox"] {
   width: 15px; // Ajusta el tamaño del checkbox
   height: 15px; // Ajusta el tamaño del checkbox
   border-radius: 50%; // Hace que el checkbox sea circular
-  border: 1px solid #555; 
+  border: 1px solid #555;
 
   &:checked {
-      background-color: #000000; // Cambia el color de fondo cuando el checkbox está marcado
+    background-color: #000000; // Cambia el color de fondo cuando el checkbox está marcado
 
-      &::before {
-          content: ''; // Añade un marcador de verificación personalizado(el circulo blanco que aparecera al activar)
-          display: block;
-          width: 8px; //Tamaño del circulo/marcador interno owo
-          height: 8px;//Tamaño del circulo interno owo
-          margin: 3px;// AYUDAR A CENTRAR EL MARCADOR 
-          border-radius: 50%;
-          background-color: #ffffff;
-      }
+    &::before {
+      content: ""; // Añade un marcador de verificación personalizado(el circulo blanco que aparecera al activar)
+      display: block;
+      width: 8px; //Tamaño del circulo/marcador interno owo
+      height: 8px; //Tamaño del circulo interno owo
+      margin: 3px; // AYUDAR A CENTRAR EL MARCADOR
+      border-radius: 50%;
+      background-color: #ffffff;
+    }
   }
 }
 
@@ -919,22 +914,22 @@ input[type="checkbox"] {
   align-items: center;
   background-color: transparent;
   padding: 12px 22px;
-  margin-top: 8px; 
+  margin-top: 8px;
 }
 
 .btn-anuncio img {
   margin-right: 10px; /* Espacio entre la imagen y el texto */
 }
- .btn-anuncio h3{
-    font-family: "Poppins", sans-serif;
-    font-size: 14px;
-    color: #212121;
-    font-weight: 300;
-    margin-top: 0;
-    margin-bottom: 0;
- }
+.btn-anuncio h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #212121;
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-.enlace{
+.enlace {
   margin-top: 10px;
 }
 
@@ -945,9 +940,9 @@ input[type="checkbox"] {
 
 .txtservicio img {
   margin-right: 10px;
- }
+}
 
- .pop-edit {
+.pop-edit {
   animation: slideIn 0.1s ease-in-out;
   width: 430px;
   height: 358px;
@@ -962,202 +957,197 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  }
+}
 
-  .descrip {
-    position: absolute;
-    font-size: 12px;
-    color: 49454F;
-    background-color: #ffffff;
-    transform: translateY(-10px) translateX(15px);
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  
-  .form-descrip {
-    margin-top: 30px;
-    
-  }
-  
-  .false-txtSdescrip {
-    height: auto;
-    width: 346px;
-    padding: 15px 22px;
-    border-color: #212121;
-    border-radius: 30px;
-    border-style: solid;
-    border-width: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-  }
-  
-  .form-descrip textarea {
-    border-style: none;
-    width: 100%;
-    height: auto;
-    max-height: 120px;
-    background-color: transparent;
-    font-size: 14px;
-    color: #212121;
-    field-sizing: content;
-    outline: none;
-    overflow-y: visible;
-    resize: none;
-    text-overflow: clip;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .form-descrip textarea::-webkit-scrollbar {
-    display: none;
-  }
+.descrip {
+  position: absolute;
+  font-size: 12px;
+  color: 49454F;
+  background-color: #ffffff;
+  transform: translateY(-10px) translateX(15px);
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
-  .btn-guardar {
-    height: 56px; /* Altura del botón */
-    width: 327px; /* Ancho del botón */
-    background-color: #FFFFFF;
-    margin-top:15px;
-    border-radius: 40px; 
-    border: 1px solid #C8C5CA; 
-    font-size: 16px;
-    color: #C8C5CA;
-  }
-  .pop-lugares {
-    animation: slideIn 0.1s ease-in-out;
-    width: 430px;
-    height: 358px;
-    border: 1px solid #ccc;
-    border-radius: 30px 30px 0 0;
-    z-index: 9999;
-    position: absolute;
-    bottom: -21.6%; /* Centra verticalmente */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Centra el elemento */
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    }
-    .cabecera1{
-      color: #524F4F;
-      font-family: "Poppins", sans-serif;
-      font-size: 16px;
-      margin-top: 20px;
-      font-weight: 500;
-      }
-      .pop-dimension {
-        animation: slideIn 0.1s ease-in-out;
-        width: 430px;
-        height: 358px;
-        border: 1px solid #ccc;
-        border-radius: 30px 30px 0 0;
-        z-index: 9999;
-        position: absolute;
-        bottom: -21.6%; /* Centra verticalmente */
-        left: 50%; /* Centra horizontalmente */
-        transform: translate(-50%, -50%); /* Centra el elemento */
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        }
+.form-descrip {
+  margin-top: 30px;
+}
 
-        .input1 {
-          position: relative;
-          justify-content: center;
-          align-items: center;
-          margin-top: 30px;
-          height: 56px; 
-          width: 327px; 
-          background-color: #FFFFFF;
-          border-radius: 40px; 
-          border: 1px solid #212121; 
-          font-size: 16px;
-          color: #1D1B20;
-          padding: 0 15px; /* Ajusta el padding según lo necesites */
-        }
-     
-      .lblmedida {
-        font-size: 12px;
-        position: absolute;
-        top: -10px;
-        background-color: #ffffff;
-        padding: 0 10px;
-        z-index: 1;
-        left: 15px;
-        font-family: "Poppins", sans-serif;
-        
-      }
-      .input2 {
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        height: 56px; 
-        width: 327px; 
-        background-color: #FFFFFF;
-        border-radius: 40px; 
-        border: 1px solid #212121; 
-        font-size: 16px;
-        color: #1D1B20;
-        padding: 0 15px; /* Ajusta el padding según lo necesites */
-      }
-   
-    .lblaltura {
-      font-size: 12px;
-      position: absolute;
-      top: -10px;
-      background-color: #ffffff;
-      padding: 0 10px;
-      z-index: 1;
-      left: 15px;
-      font-family: "Poppins", sans-serif;
-      
-    }
-    .pop-direccion {
-      animation: slideIn 0.1s ease-in-out;
-      width: 430px;
-      height: 358px;
-      border: 1px solid #ccc;
-      border-radius: 30px 30px 0 0;
-      z-index: 9999;
-      position: absolute;
-      bottom: -21.6%; /* Centra verticalmente */
-      left: 50%; /* Centra horizontalmente */
-      transform: translate(-50%, -50%); /* Centra el elemento */
-      background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      }
+.false-txtSdescrip {
+  height: auto;
+  width: 346px;
+  padding: 15px 22px;
+  border-color: #212121;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
 
-      .input3 {
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        margin-top: 30px;
-        height: 56px; 
-        width: 327px; 
-        background-color: #FFFFFF;
-        border-radius: 40px; 
-        border: 1px solid #212121; 
-        font-size: 16px;
-        color: #1D1B20;
-        padding: 0 15px; /* Ajusta el padding según lo necesites */
-      }
-   
-    .lbldireccion {
-      font-size: 12px;
-      position: absolute;
-      top: -10px;
-      background-color: #ffffff;
-      padding: 0 10px;
-      z-index: 1;
-      left: 15px;
-      font-family: "Poppins", sans-serif;
-      
-    }
+.form-descrip textarea {
+  border-style: none;
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #212121;
+  field-sizing: content;
+  outline: none;
+  overflow-y: visible;
+  resize: none;
+  text-overflow: clip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-descrip textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-guardar {
+  height: 56px; /* Altura del botón */
+  width: 327px; /* Ancho del botón */
+  background-color: #ffffff;
+  margin-top: 15px;
+  border-radius: 40px;
+  border: 1px solid #c8c5ca;
+  font-size: 16px;
+  color: #c8c5ca;
+}
+.pop-lugares {
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 358px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -21.6%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cabecera1 {
+  color: #524f4f;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+.pop-dimension {
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 358px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -21.6%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input1 {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  height: 56px;
+  width: 327px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  border: 1px solid #212121;
+  font-size: 16px;
+  color: #1d1b20;
+  padding: 0 15px; /* Ajusta el padding según lo necesites */
+}
+
+.lblmedida {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #ffffff;
+  padding: 0 10px;
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.input2 {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  height: 56px;
+  width: 327px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  border: 1px solid #212121;
+  font-size: 16px;
+  color: #1d1b20;
+  padding: 0 15px; /* Ajusta el padding según lo necesites */
+}
+
+.lblaltura {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #ffffff;
+  padding: 0 10px;
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.pop-direccion {
+  animation: slideIn 0.1s ease-in-out;
+  width: 430px;
+  height: 358px;
+  border: 1px solid #ccc;
+  border-radius: 30px 30px 0 0;
+  z-index: 9999;
+  position: absolute;
+  bottom: -21.6%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra el elemento */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input3 {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  height: 56px;
+  width: 327px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  border: 1px solid #212121;
+  font-size: 16px;
+  color: #1d1b20;
+  padding: 0 15px; /* Ajusta el padding según lo necesites */
+}
+
+.lbldireccion {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #ffffff;
+  padding: 0 10px;
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+}
