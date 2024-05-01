@@ -10,52 +10,47 @@
         </a>
 
         <div class="grid-small-button">
-          <!---->
-          <!---->
-          <button class="pop-elianuncio" (click)="toggleContent1()">
-            <div class="small-button">
+
+          <button class="small-button" id="open-modal1" expand="block">
               <img src="/assets/images/trash.svg" alt="" />
-            </div>
           </button>
-          <div *ngIf="showContent1" class="darken-background"></div>
-          <div *ngIf="showContent1" class="pop-eliminar">
-            <p class="cabecera">¿Seguro que quieres eliminar el anuncio?</p>
-            <div class="linea"></div>
-            <button class="btn-elianuncio">Eliminar Anuncio</button>
-            <button class="btn-cancelar" (click)="cerrarContent()">
-              Cancelar
-            </button>
-          </div>
 
-          <button class="pop-anuncio" (click)="toggleContent2()">
-            <div class="small-button">
+          <ion-modal trigger="open-modal1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block">
+                <h1>¿Seguro que quieres eliminar el anuncio?</h1>
+
+                <hr>
+
+                <div class="button-container-modal">
+                  <button class="button-eliminar-modal">Eliminar Anuncio</button>
+                  <button>Cancelar</button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+
+          <button class="small-button" id="open-modal2" expand="block">
               <img src="/assets/images/down-arrow.svg" alt="" />
-            </div>
           </button>
 
-          <div *ngIf="showContent2" class="darken-background"></div>
-          <div *ngIf="showContent2" class="pop-upanuncio">
-            <p class="cabecera">Selecciona tu anuncio</p>
-            <div class="linea"></div>
-            <div class="cuadrito1">
-              <img src="/assets/images/vehiculo.svg" alt="" />
-              <p>Estacionamiento Las Begonias</p>
-              <input type="checkbox" name="" id="" />
-            </div>
-            <div class="cuadrito2">
-              <img src="/assets/images/vehiculo.svg" alt="" />
-              <p>Cochera Santa Cruz 1254</p>
-              <input type="checkbox" name="" id="" />
-            </div>
-            <button class="btn-anuncio">
-              <img src="/assets/images/mas_simbol.svg" alt="" />
-              <h3>Agregar nuevo anuncio</h3>
-            </button>
-          </div>
+          <ion-modal trigger="open-modal2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block2">
+                <h1>Selecciona tu anuncio</h1>
 
-          <!---->
-          <!---->
+                <hr>
+
+                <div class="button-container-modal">
+                  <button class="button-eliminar-modal">Eliminar Anuncio</button>
+                  <button>Cancelar</button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+
         </div>
+
       </div>
 
       <div class="swiper-container">
@@ -161,8 +156,9 @@
               <div class="descrip">Descripción de Espacio</div>
               <div class="false-txtSdescrip">
                 <textarea [style.min-height]="getPlaceholderHeight()" rows="4">
-Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
-                </textarea>
+  Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
+                  </textarea
+                >
               </div>
             </div>
             <button class="btn-guardar">Guardar Cambios</button>
@@ -184,8 +180,9 @@ Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus activi
               <div class="descrip">Agrega Lugares Cerca</div>
               <div class="false-txtSdescrip">
                 <textarea [style.min-height]="getPlaceholderHeight()" rows="4">
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
-                </textarea>
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
+                  </textarea
+                >
               </div>
               <div *ngIf="showContentEdit" class="darken-background"></div>
               <div *ngIf="showContentEdit" class="pop-edit">
@@ -194,8 +191,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 <div class="form-descrip">
                   <div class="descrip">Descripción de Espacio</div>
                   <div class="false-txtSdescrip">
-                    <textarea [style.min-height]="getPlaceholderHeight()" rows="4">Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
-                    </textarea>
+                    <textarea
+                      [style.min-height]="getPlaceholderHeight()"
+                      rows="4"
+                    >
+  Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
+                      </textarea
+                    >
                   </div>
                 </div>
                 <button class="btn-guardar">Guardar Cambios</button>
@@ -204,7 +206,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
               <h3>¿Qué lugares están cerca?</h3>
               <div class="enlace">
                 <p class="tex-pagina">
-                  <a class="servicios" (click)="toggleContentLugares()">Agregar lugares
+                  <a class="servicios" (click)="toggleContentLugares()"
+                    >Agregar lugares
                     <img src="/assets/images/right-arrow.svg" alt="" />
                   </a>
                 </p>
@@ -216,24 +219,29 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 <div class="form-descrip">
                   <div class="descrip">Agrega Lugares Cerca</div>
                   <div class="false-txtSdescrip">
-                    <textarea [style.min-height]="getPlaceholderHeight()" rows="4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
-                    </textarea>
+                    <textarea
+                      [style.min-height]="getPlaceholderHeight()"
+                      rows="4"
+                    >
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
+                      </textarea
+                    >
                   </div>
                 </div>
                 <button class="btn-guardar">Guardar Cambios</button>
               </div>
 
-
-                <!---->
-                <!---->
+              <!---->
+              <!---->
               <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
-              <p>2.10 m de Ancho </p>
+              <p>2.10 m de Ancho</p>
               <p>5 m de Largo</p>
               <p>2.10 de Altura</p>
               <div class="enlace">
                 <p class="tex-pagina">
-                  <a class="servicios" (click)="toggleContentDimension()">Editar dimensiones
-                    <img src="/assets/images/right-arrow.svg" alt=""/>
+                  <a class="servicios" (click)="toggleContentDimension()"
+                    >Editar dimensiones
+                    <img src="/assets/images/right-arrow.svg" alt="" />
                   </a>
                 </p>
               </div>
@@ -242,36 +250,39 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 <h1 class="cabecera1">Editar dimensiones</h1>
                 <div class="linea"></div>
                 <div class="input1">
-                  <ion-label class="lblmedida">Medida (Ancho x Largo)</ion-label>
+                  <ion-label class="lblmedida"
+                    >Medida (Ancho x Largo)</ion-label
+                  >
                   <ion-input class="txtmedida"></ion-input>
                 </div>
                 <div class="input2">
-                  <ion-label class="lblaltura">Altura (en caso sea techado)</ion-label>
+                  <ion-label class="lblaltura"
+                    >Altura (en caso sea techado)</ion-label
+                  >
                   <ion-input class="txtaltura"></ion-input>
                 </div>
                 <button class="btn-guardar">Guardar Cambios</button>
               </div>
-
-
 
               <h3>¿Qué servicios también ofreces?</h3>
               <div class="txtservicio">
                 <img src="/assets/images/tienda.svg" alt="" />
                 <p>Autoboutique</p>
               </div>
-              
+
               <div class="txtservicio">
                 <img src="/assets/images/ojo.svg" alt="" />
                 <p>Sistema de vigilancia</p>
               </div>
-              
+
               <div class="txtservicio">
                 <img src="/assets/images/capas.svg" alt="" />
                 <p>Techado</p>
               </div>
               <div class="enlace">
                 <p class="tex-pagina">
-                  <a class="servicios" routerLink="">Editar servicios
+                  <a class="servicios" routerLink=""
+                    >Editar servicios
                     <img src="/assets/images/right-arrow.svg" alt="" />
                   </a>
                 </p>
@@ -281,7 +292,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
               <p>Av. Alfredo Mendiola 3698</p>
               <div class="enlace">
                 <p class="tex-pagina">
-                  <a class="servicios" (click)="toggleContentDirec()">Editar dirección
+                  <a class="servicios" (click)="toggleContentDirec()"
+                    >Editar dirección
                     <img src="/assets/images/right-arrow.svg" alt="" />
                   </a>
                 </p>
@@ -296,12 +308,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 </div>
                 <button class="btn-guardar">Guardar Cambios</button>
               </div>
-
-
-              
             </div>
           </div>
-       </div>
+        </div>
+      </div>
       <!--                 -----REGLAS-----              -->
       <div *ngIf="selectedContent === 'Reglas'">
         <div>
@@ -505,7 +515,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           </p>
 
           <div class="time-range-container">
-            
             <div class="time-input-group">
               <label for="inputDesde">Desde:</label>
               <ion-datetime-button datetime="datetime1"></ion-datetime-button>
@@ -521,7 +530,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 </ng-template>
               </ion-modal>
             </div>
-
 
             <div class="time-input-group">
               <label for="inputHasta">Hasta:</label>
@@ -548,6 +556,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           <ion-item lines="none">
             <ion-toggle justify="space-between">Abonados</ion-toggle>
           </ion-item>
+
           <p class="abonados-descripcion">
             Eleva tu oferta como Host con Abonados Blip. Activa esta opción en
             la aplicación para permitir que los usuarios reserven
@@ -564,77 +573,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           <h1 class="secondary-title">Solicitudes de Abonado</h1>
 
           <div class="solicitud-abonado">
-
-            <img src="/assets/images/icon-time-delete.svg" alt="">
+            <img src="/assets/images/icon-time-delete.svg" alt="" />
             <p>No cuenta con solicitudes de abonado</p>
-
           </div>
-
-
-
-
-          <!-- 
-          <div class="solicitud-container">
-            <div class="solicitud1">
-              <div class="solicitud-img">
-                <img
-                  alt=""
-                  src="https://ionicframework.com/docs/img/demos/avatar.svg"
-                />
-              </div>
-            </div>
-
-            <div class="solicitud2">
-              <div class="solicitud-container2">
-                <div class="solicitud-izquierda">
-                  <div class="solicitud-aviso">Solicitud</div>
-                </div>
-                <div class="solicitud-derecha">
-                  <div class="solicitud-titulo">300 PEN</div>
-                  <div class="solicitud-subtitulo">contraoferta</div>
-                </div>
-              </div>
-              <div>
-                <h1 class="solicitud-nombre">Laura Costa</h1>
-                <p class="solicitud-descripcion">
-                  Está interesada en aplicar al pago abonado para el
-                  estacionamiento 1 dentro de la siguientes fechas:
-                </p>
-              </div>
-            </div>
-
-            <div class="solicitud3">
-              <div class="solicitud-fecha-izquierda">
-                <div class="icon-solicitud">
-                  <img src="/assets/images/icon-calendar.svg" alt="" />
-                </div>
-                <div class="fechas">
-                  <div class="fecha">Domingo 07, Ene.</div>
-                  <div class="hora">10:00 AM</div>
-                </div>
-              </div>
-
-              <img src="/assets/images/right-arrow-calendar.svg" alt="" />
-
-              <div class="solicitud-fecha-derecha">
-                <div class="fechas">
-                  <div class="fecha">Miércoles 07, Feb.</div>
-                  <div class="hora">10:00 AM</div>
-                </div>
-                <div class="icon-solicitud">
-                  <img src="/assets/images/icon-calendar.svg" alt="" />
-                </div>
-              </div>
-            </div>
-
-            <div class="solicitud4">
-              <button class="aceptar">Aceptar</button>
-              <button class="declinar">Declinar</button>
-            </div>
-          </div>
-          -->
-
-
         </div>
       </div>
     </div>
