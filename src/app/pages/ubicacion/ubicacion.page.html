@@ -19,23 +19,14 @@
       <p>Indica de manera exacta al usuario dónde se encuentra tu espacio. Solo les facilitaremos tu dirección cuando su reservación esté confirmada.</p>
 
 
-    
-        <ion-datetime-button datetime="datetime"></ion-datetime-button>
-  
-        <ion-modal [keepContentsMounted]="true">
+
+        <button id="open-modal" expand="block">Open Sheet Modal</button>
+      
+        <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
           <ng-template>
-            <ion-datetime
-              id="datetime"
-              presentation="time"
-              hourCycle="h12"
-              value="2024-04-17T00:00"
-            ></ion-datetime>
+            <div class="block">Block of Content</div>
           </ng-template>
         </ion-modal>
-
-
-
-
 
 
 
