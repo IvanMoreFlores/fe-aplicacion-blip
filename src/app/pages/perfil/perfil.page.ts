@@ -13,30 +13,9 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
   }
 
-  async openActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Opciones',
-      buttons: [{
-        text: 'Opción 1',
-        handler: () => {
-          console.log('Opción 1 seleccionada');
-        }
-      }, {
-        text: 'Opción 2',
-        handler: () => {
-          console.log('Opción 2 seleccionada');
-        }
-      }, {
-        text: 'Cancelar',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancelado');
-        }
-      }]
-    });
-    await actionSheet.present();
+
   }
 
-}
+
 
 
