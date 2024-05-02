@@ -7,7 +7,7 @@
           <h2 class="subtitle">Te pedimos que te comprometas con lo siguiente:</h2>
           <p class="description">Acepto tratar a todos en la comunidad de Blip con respeto y sin prejuicios, sin importar la raza, religión, nacionalidad, etnia, color de piel, sexo, discapacidad, identidad de género, orientación sexual o edad.</p>
           <button routerLink="/terminos-y-condiciones-mas-informacion" class="more-info-btn subrayado">Ver Términos y Condiciones</button>
-          <button routerLink="/terminos-y-condiciones-empezar" class="next-btn">Siguiente</button>
+          <button routerLink="/terminos-y-condiciones-empezar" class="next-btn" [disabled]="!isChecked" [ngClass]="{ 'disabled-btn': !isChecked }">Siguiente</button>
           <div class="custom-checkbox" (click)="toggleCheckbox()">
             <div class="checkbox-icon" [ngClass]="{'checked': isChecked}">
               <ion-icon name="checkmark"></ion-icon>

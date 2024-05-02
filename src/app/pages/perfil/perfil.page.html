@@ -1,58 +1,202 @@
 <ion-content [fullscreen]="true">
   <div class="container">
-
     <div class="pantalla">
-
       <div class="inicio">
         <div class="left-arrow">
-          <img src="/assets/images/left-arrow.svg" alt="" />
+          <img src="/assets/images/left-arrow.svg" alt=""  routerLink="/confirmacion-de-identidad"/>
         </div>
         <h3 class="title">Perfil</h3>
       </div>
-
-      
-      <div class="perfil-contenedor">
-        <div class="avatar-edit">
-          <div class="avatar">
-            <div class="avatar-initial">C</div> 
-
-            <div class="button-editar-avatar">
-              <button class="editar-avatar">
-                <img src="/assets/images/fi-rr-edit.png" alt="">
-                Editar
-              </button>
+      <div class="scroll">
+          <div class="perfil-contenedor">
+            <div class="avatar-edit">
+              <div class="avatar">
+                <div class="avatar-initial">C</div> 
+                <div class="button-editar-avatar">
+                  <button class="editar-avatar">
+                    <img src="/assets/images/fi-rr-edit.png" alt="">
+                    Editar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="nombre-usuario"> 
+              <h1>Camila</h1> 
+              <h2>Host</h2>
+            </div>
+          </div> 
+          <div class="info-perfil">
+            <h2>Completa tu Perfil</h2>
+            <p>La información que compartas se usará en toda la plataforma para que otros arrendatarios y hosts te conozcan mejor.</p>
+            <div class="enlace">
+              <p class="tex-pagina">
+                <a class="masinfo" routerLink="">Más información</a> <img src="/assets/images/right.png" alt="" />
+              </p>
             </div>
           </div>
-        </div>
-
-        <div class="nombre-usuario"> 
-          <h1>Camila</h1> 
-          <h2>Host</h2>
-        </div>
-      </div> 
-
-      <div class="info-perfil">
-        <h2>Completa tu Perfil</h2>
-        <p>La información que compartas se usará en toda la plataforma para que otros arrendatarios y hosts te conozcan mejor.</p>
-        <div class="enlace">
-          <p class="tex-pagina">
-            <a class="masinfo" routerLink="">Más información</a> <img src="/assets/images/right.png" alt="" />
-          </p>
+          <div class="preguntas">
+            <button id="open-modal" expand="block" class="mi-boton"> 
+              <div class="padre">
+                <div class="hijo">  
+                  <img src="assets/images/sombr.svg" alt="" class="lef">
+                  <h1 class="AD">¿Algún dato curioso sobre ti?</h1>
+                </div>              
+                <img src="assets/images/arribaf.svg" alt="" class="right">
+              </div>
+            </button> 
+              <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">Cuéntanos algo curioso de ti</h1>
+                    <div class="line"></div>
+                    <p class="parraf">Comparte con nosotros algún dato curioso que hayas vivido o sobre ti.</p>
+                    <div class="input-bar">
+                      <ion-textarea class="cun-al" placeholder="Ej. Colecciono figuras de acción de superhéroes desde los 10 años"></ion-textarea>
+                      <button class="save">Guardar Cambios</button>
+                    </div>        
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <button id="open-modal2" expand="block" class="mi-boton">
+                <div class="padre">
+                 <div class="hijo"> 
+                    <img src="assets/images/porta.svg" alt="" class="lef">
+                    <h1 class="AD">¿A qué te dedicas?</h1>
+                  </div>
+                  <img src="assets/images/arribaf.svg" alt="" class="right">
+                </div>
+              </button> 
+              <ion-modal trigger="open-modal2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">¿A qué te dedicas?</h1>
+                    <div class="line"></div>
+                    <p class="parraf">Cuéntanos en qué te desempeñas profesionalmente.</p>
+                    <div class="input-bar">
+                      <ion-textarea class="cun-al" placeholder=" Ej. Soy desarrollador de software y me especializo en webs y apps."></ion-textarea>
+                      <button class="save">Guardar Cambios</button>
+                    </div>        
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <button id="open-modal3" expand="block" class="mi-boton">
+                <div class="padre">
+                  <div class="hijo">
+                    <img src="assets/images/int.svg" alt="" class="lef">
+                    <h1 class="AD">¿Cuántos idiomas hablas?</h1>
+                  </div>
+                  <img src="assets/images/arribaf.svg" alt="" class="right">
+                </div>
+              </button> 
+              <ion-modal trigger="open-modal3" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">¿Cuántos idiomas conoces?</h1>
+                    <div class="line"></div>
+                    <p class="parraf">Comparte con nosotros cuántos idiomas dominas.</p>
+                    <div class="input-bar">
+                      <ion-textarea class="cun-al" placeholder="Ej. Hablo inglés y español con fluidez, y estoy aprendiendo francés."></ion-textarea>
+                      <button class="save">Guardar Cambios</button>
+                    </div>        
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <button id="open-modal4" expand="block" class="mi-boton">
+                <div class="padre">
+                  <div class="hijo">
+                    <img src="assets/images/pelo.svg" alt="" class="lef">
+                    <h1 class="AD">¿Cuáles son tus hobbies?</h1>
+                  </div>
+                  <img src="assets/images/arribaf.svg" alt="" class="right">
+                </div>
+              </button> 
+              <ion-modal trigger="open-modal4" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">¿Cuáles son tus hobbies?</h1>
+                    <div class="line"></div>
+                    <p class="parraf">Queremos saber en qué actividades disfrutas dedicar tu tiempo libre.</p>
+                    <div class="input-bar">
+                      <ion-textarea class="cun-al" placeholder=" Ej. Me encanta la fotografía de paisajes y tocar la guitarra en mi tiempo libre."></ion-textarea>
+                      <button class="save">Guardar Cambios</button>
+                    </div>        
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <button id="open-modal5" expand="block" class="mi-boton">
+                <div class="padre">
+                  <div class="hijo">
+                    <img src="assets/images/hamb.svg" alt="" class="lef">
+                    <h1 class="AD">¿Cuál es tu comida favorita?</h1>
+                  </div>
+                  <img src="assets/images/arribaf.svg" alt="" class="right">
+                </div>
+              </button> 
+              <ion-modal trigger="open-modal5" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">¿Cuál es tu comida favorita?</h1>
+                    <div class="line"></div>
+                    <p class="parraf">Nos encanta conocer tus gustos culinarios y compartir recomendaciones gastronómicas.</p>
+                    <div class="input-bar">
+                      <ion-textarea class="cun-al" placeholder="Ej. Sin duda, la pizza casera con mucho queso y pepperoni."></ion-textarea>
+                      <button class="save">Guardar Cambios</button>
+                    </div>        
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <button id="open-modal6" expand="block" class="mi-boton">
+                <div class="padre">
+                  <div class="hijo">
+                    <img src="assets/images/temp.svg" alt="" class="lef">
+                    <h1 class="AD">¿A qué dedico mucho tiempo?</h1>
+                  </div>
+                  <img src="assets/images/arribaf.svg" alt="" class="right">
+                </div>
+              </button> 
+              <ion-modal trigger="open-modal6" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">¿A qué dedico mucho tiempo?</h1>
+                    <div class="line"></div>
+                    <p class="parraf">En qué actividades inviertes la mayor parte de tu tiempo.</p>
+                    <div class="input-bar">
+                      <ion-textarea class="cun-al" placeholder="Ej. Suelo pasar muchas horas practicando senderismo."></ion-textarea>
+                      <button class="save">Guardar Cambios</button>
+                    </div>        
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <button id="open-modal7" expand="block" class="mi-boton">
+                <div class="padre">
+                  <div class="hijo">
+                    <img src="assets/images/pat.svg" alt="" class="lef">
+                    <h1 class="AD">¿Tienes mascotas?</h1>
+                  </div>
+                  <img src="assets/images/arribaf.svg" alt="" class="right">
+                </div>
+              </button> 
+              <ion-modal trigger="open-modal7" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">¿Tienes mascotas?</h1>
+                    <div class="line"></div>
+                    <p class="parraf">Comparte con nosotros si tienes alguna mascota. .</p>
+                    <div class="input-bar">
+                      <ion-textarea class="cun-al" placeholder="Ej. Sí, tengo un perro llamado Max que es mi compañero de aventuras."></ion-textarea>
+                      <button class="save">Guardar Cambios</button>
+                    </div>        
+                  </div>           
+                </ng-template>
+              </ion-modal>
+          </div>
+          <div class="escb-a">
+            <h1 class="tile7">Escríbenos algo más sobre ti</h1>
+            <div class="input-bar2">
+              <ion-textarea class="cun-al2" placeholder="Esta información nos ayudará a personalizar tu experiencia en Blip."></ion-textarea>
+            </div>  
+          </div>
         </div>
       </div>
-      <div class="preguntas">
-          <ion-button id="open-modal" expand="block">Open Sheet Modal</ion-button>
-        
-          <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="block">Block of Content</div>
-            </ng-template>
-          </ion-modal>
-      </div>
-
-
-    </div>
-
   </div>
-
 </ion-content>

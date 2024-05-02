@@ -229,6 +229,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/presentacion-inquilinos-informacion/presentacion-inquilinos-informacion.module').then( m => m.PresentacionInquilinosInformacionPageModule)
   },
   {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  } ,
+   {
     path: 'ubicacion',
     loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
   }
