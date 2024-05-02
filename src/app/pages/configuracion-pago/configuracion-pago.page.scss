@@ -1,8 +1,8 @@
 .container {
-    background-color: #79FFAF;
+    background-color: #F5F5F5;
     display: flex;
     height: 100%;
-  }
+}
   
 .title {
     font-size: 31px;
@@ -58,8 +58,8 @@
     position: absolute;
     bottom: 50px;
     right: 50px;
-    border: 1px solid #212121; 
-    background-color: transparent; 
+    border: 1px solid #79FFAF; 
+    background-color: #79FFAF; 
     color: #212121;
     font-size: 16px;
     border-radius: 30px;
@@ -75,7 +75,7 @@
   
 .custom-btn {
     margin: 30px auto; 
-    background-color: #79FFAF;
+    background-color: #F5F5F5;
     color: #212121;
     font-size: 16px;
     border: 1px solid #212121;
@@ -113,6 +113,8 @@
     height: 20px;
     position: absolute;
     right: 80px;
+    border: 1px solid #A3A2A4;
+    background-color: transparent;
   }
   
   .form-check-input:checked {

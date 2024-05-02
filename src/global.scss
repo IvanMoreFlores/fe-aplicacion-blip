@@ -107,13 +107,11 @@
     flex-direction: column;
     text-align: center; 
     overflow-y: auto; 
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 100px);
     color: #212121;
   }
   
   .calendar-container h2 {
-    justify-content: space-between;
-    display: flex;
     font-size: 16px;
     width: 85%;
     margin: 20px auto;
@@ -129,9 +127,25 @@
 
   table th {
     font-weight: 600;
+    font-size: 14px;
   }
 
   table td {
-    padding: 5px;
+    font-size: 14px;
+    padding: 1px 10px;
   }
+
+  td {
+    width: 30px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  td.highlight {
+    background-color: #79FFAF; 
+  }
+  
   
