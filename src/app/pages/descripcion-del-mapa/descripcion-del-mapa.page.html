@@ -3,16 +3,29 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <h1 class="title">Mapa</h1>
-          <!-- Contenido del mapa aquí -->
+          <h1 class="title"></h1>
+
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <!-- Nuevo contenido dentro del navbar-collapse -->
+              <div class="menu-above">El estacionamiento se ubica en:</div>
+              <hr class="separator-line">
+              <div class="button-container">
+                <div class="box">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <input type="text" placeholder="Calle 58 305" name="" >
+                </div>
+                
+                <button class="custom-btn">
+                  <span class="btn-text">Listo</span>               
+                </button>      
+
+            </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Botones Salir y Siguiente -->
-  <div class="botones">
-    <button class="boton boton-salir" id="boton-salir" routerLink="/descripcion-de-ubicacion" (click)="mostrarAlerta('Salir')">Salir</button>
-    <button class="boton boton-siguiente" id="boton-siguiente" routerLink="/loading" (click)="mostrarAlerta('Siguiente')">Siguiente</button>
   </div>
 </ion-content>

@@ -22,7 +22,7 @@ body {
 }
 
 .pantalla {
-  background-color: white;
+  background-color: #ffffff;
   padding: 5% 7% 5% 7%;
   width: 100%;
   min-height: 100%; /* Esto hace que el div ocupe el 100% de la altura de la pantalla */
@@ -86,7 +86,7 @@ body {
 .swiper-slide {
   display: inline-block;
   margin-right: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   width: fit-content; /* Ajusta el ancho al contenido */
 }
 
@@ -132,7 +132,7 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 0px 10px 5px rgba(83, 83, 83, 0.034);
-  padding: 20px 60px 20px 20px;
+  padding: 20px 40px 20px 20px;
   border-radius: 15px;
   width: 100%;
   height: 71px;
@@ -159,14 +159,281 @@ body {
 .ingreso-final{
   width: 100%;
   height: 246px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 5px rgba(83, 83, 83, 0.034);
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  margin-top: 30px  ;
 }
 
+.ingreso-final h3{
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
 
-.deposito-pago{
+.ingreso-final p{
+  font-size: 10px;
+  font-weight: 400;
+  color: #6D6D6D;
+  margin-bottom: 10px;
+}
+
+.ingreso-final p span{
+  font-size: 10px;
+  font-weight: 600;
+  color: #6D6D6D;
+  text-decoration: underline;
+}
+
+.ingreso-final span{
+  font-size: 18px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.deposito-pago {
+  margin-top: 10px;
+  background-color: #79FFAF;
+  border-radius: 15px;
+  padding: 15px;
   display: flex;
 }
 
-.deposito-pago p{
-  
+.icon-info {
+  flex-shrink: 0; /* Evita que el icono se reduzca */
 }
 
+.icon-info img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.deposito-pago p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #212121;
+  margin: 0;
+  margin-left: 10px; /* Agregado para dar espacio entre el icono y el texto */
+}
+
+
+hr{
+ border-top: 1px solid #CDCDCD;
+}
+
+
+
+// ----------------HISTORIAL DE ALQUILER------------------------------
+
+.alquiler-title h3{
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.alquiler {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.icon-alquiler {
+  margin-right: 10px; /* Espacio entre el icono y la información */
+}
+
+.info-alquiler h3 {
+  margin: 0; /* Elimina el margen superior e inferior de h3 */
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.info-alquiler h4 {
+  margin: 0; /* Elimina el margen superior e inferior de h4 */
+  font-size: 10px;
+  font-weight: 500;
+  color: #6D6D6D;
+}
+
+.info-alquiler p {
+  margin: 0; /* Elimina el margen superior e inferior de p */
+  font-size: 11px;
+  font-weight: 300;
+}
+
+.info-alquiler p span{
+  text-decoration: underline;
+  font-weight: 400;
+
+}
+
+.alquiler-monto {
+  margin-left: auto; /* Empuja este contenedor hacia la derecha */
+}
+
+.alquiler-monto span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+// --------------------PAGOS------------------------------
+
+.pagos-title{
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.informacion-pagos{
+  background-color: #79FFAF;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 5px rgba(83, 83, 83, 0.082);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.informacion-pagos p{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.informacion-pagos p span{
+  font-weight: 500;
+}
+
+
+ion-item::part(native) {
+  background: #FFFF;
+  color: #212121;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+ion-toggle {
+  --track-background: #ddd;
+  --track-background-checked: #212121;
+
+  --handle-background: #ffff;
+  --handle-background-checked: #ffff;
+
+  --handle-width: 25px;
+  --handle-height: 25px;
+  --handle-max-height: auto;
+  --handle-spacing: 5px;
+
+  --handle-border-radius: 50%;
+  --handle-box-shadow: none;
+}
+
+ion-toggle::part(track) {
+  height: 29px;
+  width: 53px;
+
+  /* Required for iOS handle to overflow the height of the track */
+  overflow: visible;
+}
+
+
+.num-regla {
+  position: absolute;
+  font-size: 12px;
+  color: 49454F;
+  background-color: #ffffff;
+  transform: translateY(-10px) translateX(15px);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.form-regla {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.input-pago {
+  height: auto;
+  width: 100%;
+  padding: 15px 22px;
+  border-color: #212121;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+// ------------------------HISTORIAL DE PAGO------------------------------
+
+
+.historial-title{
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.historial-subtitle{
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #49454F;
+}
+
+.historial {
+  display: flex;
+  align-items: flex-start; /* Alinea los elementos en la parte superior */
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.icon-historial {
+  margin-right: 10px; /* Espacio entre el icono y la información */
+
+}
+
+.icon-historial img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.info-historial{
+  flex-grow: 1; /* Permite que este contenedor ocupe todo el espacio disponible */
+}
+
+.info-historial h3 {
+  margin: 0; /* Elimina el margen superior e inferior de h3 */
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.info-historial h4 {
+  margin: 0; /* Elimina el margen superior e inferior de h4 */
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.info-historial p {
+  margin: 0; /* Elimina el margen superior e inferior de p */
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.info-historial p span{
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.historial-monto {
+  margin-left: auto; /* Empuja este contenedor hacia la derecha */
+}
+
+.historial-monto span {
+  font-size: 16px;
+  font-weight: 500;
+}

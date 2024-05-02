@@ -89,6 +89,7 @@ const routes: Routes = [
     path: 'configuracion-alquilar',
     loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
   },
+
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
@@ -106,8 +107,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
   },
   {
+    path: 'mensajes-archivados-desarchivar',
+    loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
+  },
+  {
     path: 'mensajes-destacados',
     loadChildren: () => import('./pages/mensajes-destacados/mensajes-destacados.module').then( m => m.MensajesDestacadosPageModule)
+  },
+  {
+    path: 'mensajes-marcar-destacado',
+    loadChildren: () => import('./pages/mensajes-marcar-destacado/mensajes-marcar-destacado.module').then( m => m.MensajesMarcarDestacadoPageModule)
+  },
+  {
+    path: 'mensajes-marcar-leido',
+    loadChildren: () => import('./pages/mensajes-marcar-leido/mensajes-marcar-leido.module').then( m => m.MensajesMarcarLeidoPageModule)
+  },
+  {
+    path: 'mensajes-marcar-no-leido',
+    loadChildren: () => import('./pages/mensajes-marcar-no-leido/mensajes-marcar-no-leido.module').then( m => m.MensajesMarcarNoLeidoPageModule)
   },
   {
     path: 'mensajes-atencion',
@@ -188,7 +205,40 @@ const routes: Routes = [
   {
     path: 'calendario-mes',
     loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
+  },
+  {
+    path: 'finanzas',
+    loadChildren: () => import('./pages/finanzas/finanzas.module').then( m => m.FinanzasPageModule)
+  },
+
+  {
+    path: 'anuncio-caracteristicas',
+    loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
+  },
+
+  {
+    path: 'presentacion',
+    loadChildren: () => import('./pages/presentacion/presentacion.module').then( m => m.PresentacionPageModule)
+  },
+  {
+    path: 'presentacion-infracciones-informacion',
+    loadChildren: () => import('./pages/presentacion-infracciones-informacion/presentacion-infracciones-informacion.module').then( m => m.PresentacionInfraccionesInformacionPageModule)
+  },
+  {
+    path: 'presentacion-inquilinos-informacion',
+    loadChildren: () => import('./pages/presentacion-inquilinos-informacion/presentacion-inquilinos-informacion.module').then( m => m.PresentacionInquilinosInformacionPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  } ,
+   {
+    path: 'ubicacion',
+    loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
   }
+
+
+
 
 ];
 

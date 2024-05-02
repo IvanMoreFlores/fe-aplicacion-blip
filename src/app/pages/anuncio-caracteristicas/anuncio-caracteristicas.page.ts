@@ -57,9 +57,7 @@ toggleContentDirec() {
     return `${placeholderHeight}px`;
   }
 
-  ngOnInit() {
-    this.initSwiper();
-  }
+
 
   isButtonActive(content: string): boolean {
     return this.selectedContent === content;
@@ -89,7 +87,9 @@ toggleContentDirec() {
   }
 
 
-  
+  ngOnInit() {
+    this.initSwiper();
+  }
   
 
 }

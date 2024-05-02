@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mensajes-archivados.page.scss'],
 })
 export class MensajesArchivadosPage implements OnInit {
+  isNavbarOpen = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleNavbar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
   }
 
 }

@@ -125,22 +125,44 @@
           <h1 class="reservaciones">Tus reservaciones</h1>
 
           <div class="container-slider">
+
+
             <div class="swiper-container slider">
               <div class="swiper-wrapper">
-                <button class="custom-button swiper-slide button1">Todos</button>
-                <button class="custom-button swiper-slide button2">Terminan Pronto</button>
-                <button class="custom-button swiper-slide button3">En Curso</button>
-                <button class="custom-button swiper-slide button4">Comienzan Pronto</button>
+                <button class="swiper-slide fitcontent" (click)="changeContent('Todos')"
+                  [ngClass]="{'active': selectedContent === 'Todos'}">Todos <div class="cantidad">0</div></button>
+                <button class="swiper-slide fitcontent" (click)="changeContent('Terminan Pronto')"
+                  [ngClass]="{'active': selectedContent === 'Terminan Pronto'}">Terminan Pronto <div class="cantidad">0</div></button>
+                <button class="swiper-slide fitcontent" (click)="changeContent('En Curso')"
+                  [ngClass]="{'active': selectedContent === 'En Curso'}">En Curso <div class="cantidad">0</div></button>
+                <button class="swiper-slide fitcontent" (click)="changeContent('Comienzan Pronto')"
+                  [ngClass]="{'active': selectedContent === 'Comienzan Pronto'}">Comienzan Pronto <div class="cantidad">0</div></button>
               </div>
             </div>
-          </div>
 
+            
+          </div>
+          
           <div class="info">
-            <div class="cont">
-              <img src="/assets/images/calendar.png" alt="">
+            <div class="cochera-estado" *ngIf="selectedContent === 'Todos'">
+              <img src="/assets/images/icon-calendar2.svg" alt="">
+              <p>Ninguna cochera disponible.</p>
+            </div>
+            <div class="cochera-estado" *ngIf="selectedContent === 'Terminan Pronto'">
+              <img src="/assets/images/icon-calendar2.svg" alt="">
               <p>Ninguna cochera próxima a vencer.</p>
             </div>
+            <div class="cochera-estado" *ngIf="selectedContent === 'En Curso'">
+              <img src="/assets/images/icon-calendar2.svg" alt="">
+              <p>Ninguna cochera en curso.</p>
+            </div>
+            <div class="cochera-estado" *ngIf="selectedContent === 'Comienzan Pronto'">
+              <img src="/assets/images/icon-calendar2.svg" alt="">
+              <p>Ninguna cochera programada.</p>
+            </div>
           </div>
+          
+          
 
 
           <div class="menu-black">
