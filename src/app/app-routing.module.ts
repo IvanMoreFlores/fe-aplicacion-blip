@@ -236,6 +236,10 @@ const routes: Routes = [
     path: 'ubicacion',
     loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
   },
+  {
+    path: 'horario-personalizado',
+    loadChildren: () => import('./pages/horario-personalizado/horario-personalizado.module').then( m => m.HorarioPersonalizadoPageModule)
+  },
    {
     path: 'panel-anfitrion',
     loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
@@ -260,6 +264,7 @@ const routes: Routes = [
     path: 'pressed-chat-component',
     loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
   },
+
 
 
 

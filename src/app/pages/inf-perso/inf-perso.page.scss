@@ -1,366 +1,294 @@
 .container{
-    background-color: #79FFAF; 
-    display: flex;
-    justify-content: center;
-    
-    height: 100%;
+  background-color: #79FFAF; 
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
 }
 .content{
-    border: 1px solid #ccc;
-    border-radius: 30px 30px 0 0;
-    width: 432px;
-    margin-top: 50px;
-    height: 882px;
-    display: block;
-    background-color: #FFFFFF;
-    padding: 20px;
-    
-}
-.info-back{
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-    background-color: transparent;
-    display: flex;
-    margin-left: 40px;
-    margin-top: 20px;
-}
-.signo-menor::before {
-    content: '\003c'; /* Código Unicode para el signo menor (<) */
-    display: flex;
-    margin-left: -250px;
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-}
-.subtitle{
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  margin-left: 15px;
-  margin-top: 50px;
-}
-.subtitle2{
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  margin-left: 15px;
-  margin-top: 50px;
-}
-.subtitle3{
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  margin-left: 15px;
-  margin-top: 50px;
-}
-.subtitle4{
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  margin-left: 15px;
-  margin-top: 50px;
-}
-.EDIT1{
-  font-size: 10px;
-  color: #212121;
-  background-color: transparent;
-  position: absolute;
-  right: 30px;
-  top: 165px;
-}
-.EDIT2{
-  font-size: 10px;
-  color: #212121;
-  background-color: transparent;
-  position: absolute;
-  right: 30px;
-  top: 290px;
-}
-.EDIT3{
-  font-size: 10px;
-  color: #212121;
-  background-color: transparent;
-  position: absolute;
-  right: 30px;
-  top: 410px;
-}
-.EDIT4{
-  font-size: 10px;
-  color: #212121;
-  background-color: transparent;
-  position: absolute;
-  right: 30px;
-  top: 530px;
-}
-.nombre{
-  list-style: 1px solid #212121;
-}
-.subrayado {
-  text-decoration: underline;
-}
-.subrayado2 {
-  text-decoration: underline;
-}
-.subrayado3 {
-  text-decoration: underline;
-}
-.subrayado4 {
-  text-decoration: underline;
-}
-.izqn{
-
-  align-items: center;
-}
-.sub-num-tef{
-  align-items: center;
-}
-.darken-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
-    z-index: 999; /* Asegúrate de que este valor sea mayor que el z-index del contenido desplegable */
-  }
-@keyframes slideIn {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-}
-.new-vent {
-  animation: slideIn 0.1s ease-in-out;
-  width: 430px;
-  height: 302px;
   border: 1px solid #ccc;
   border-radius: 30px 30px 0 0;
-  z-index: 9999;
-  position: absolute;
-  bottom: -16.6%; /* Centra verticalmente */
-  left: 50%; /* Centra horizontalmente */
-  transform: translate(-50%, -50%); /* Centra el elemento */
-  background-color: white;
-}
-.new-vent2 {
-  animation: slideIn 0.1s ease-in-out;
-  width: 430px;
-  height: 302px;
-  border: 1px solid #ccc;
-  border-radius: 30px 30px 0 0;
-  z-index: 9999;
-  position: absolute;
-  bottom: -16.6%; /* Centra verticalmente */
-  left: 50%; /* Centra horizontalmente */
-  transform: translate(-50%, -50%); /* Centra el elemento */
-  background-color: white;
-}
-.new-vent3 {
-  animation: slideIn 0.1s ease-in-out;
-  width: 430px;
-  height: 302px;
-  border: 1px solid #ccc;
-  border-radius: 30px 30px 0 0;
-  z-index: 9999;
-  position: absolute;
-  bottom: -16.6%; /* Centra verticalmente */
-  left: 50%; /* Centra horizontalmente */
-  transform: translate(-50%, -50%); /* Centra el elemento */
-  background-color: white;
-}
-.new-vent4 {
-  animation: slideIn 0.1s ease-in-out;
-  width: 430px;
+  width: 432px;
+  margin-top: 50px;
   height: 882px;
-  border: 1px solid #ccc;
-  border-radius: 30px 30px 0 0;
-  z-index: 9999;
-  position: absolute;
-  bottom: -47.1%; /* Centra verticalmente */
-  left: 50%; /* Centra horizontalmente */
-  transform: translate(-50%, -50%); /* Centra el elemento */
-  background-color: white;
+  display: block;
+  background-color: #FFFFFF;
+  padding: 20px;
+
 }
-/* Estilos para el botón con el símbolo de mayor y menor */
-.CANCELAR {
-  font-size: 10px;
+.title {
+font-size: 18px;
+font-family: "Poppins", sans-serif;
+color: #212121;
+margin-right: auto;
+margin-top: 0;
+margin-bottom: 0;
+}
+
+.inicio {
+margin-top: 10px;
+display: flex;
+align-items: center; 
+margin-bottom: 64px;
+}
+
+.left-arrow {
+margin-right: 20px; 
+margin-left: 19px;
+}
+.pg{
+font-size: 12px;
+margin:0;
+}
+
+
+.cont-pre{
+background-color: transparent;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-right: 0px;
+padding-left: 20px;
+margin-top: 23px;
+}
+.preg{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+.block{
+  width: 100%;
+  height: 301px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+ion-modal {
+  --height: auto;
+}
+.title-mo{
+  text-align: center;
+  font-family: "Poppins", sans-serif; 
+  font-size: 18px;
+  color: #524F4F;
+
+}
+.line{
+  border-bottom: solid 1px #D4D4D4;
+}
+.parraf{
+  margin-top: 20px;
+  margin-right: 40px;
+  margin-left: 40px;
   font-family: "Poppins", sans-serif;
-  background-color: transparent;
-  display: flex;
-  margin-left: 20px;
-  margin-top: 40px;
-  color: #212121;
+  font-size: 16px;
+  color: rgba(33, 33, 33, 0.8);/* Color con 80% de opacidad */
 }
-
-
 .input-bar {
   position: relative;
-  padding: 5px 20px;
-  border: 1px solid;
-  height: 120px;
-  border-radius: 30px;
-  top: 30px;
-  width: 80%;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-.input-bar2 {
-  position: relative;
-  padding: 5px 20px;
-  border: 1px solid;
+  padding: 15px 0; 
+  display: flex;
+  border: 1px solid #212121;
   height: 56px;
   border-radius: 30px;
-  top: 80px;
   width: 80%;
   justify-content: center;
   align-items: center;
-  margin: 0 auto; /* Centra horizontalmente */
-}
-  
-.label-text {
-    font-size: 12px;
-    position: absolute;
-    top: -10px;
-    background-color: #ffffff;
-    padding: 0 10px;
-    z-index: 1;
-    left: 15px;
-    font-family: "Poppins", sans-serif;
-}
-.label-text2 {
-    font-size: 12px;
-    position: absolute;
-    top: -10px;
-    background-color: #ffffff;
-    padding: 0 10px;
-    z-index: 1;
-    left: 15px;
-    font-family: "Poppins", sans-serif;
-}
-.label-text3 {
-  font-size: 12px;
-  position: absolute;
-  top: -10px;
-  background-color: #ffffff;
-  padding: 0 10px;
-  z-index: 1;
-  left: 15px;
-  font-family: "Poppins", sans-serif;
-}
-.label-text4 {
-  font-size: 12px;
-  position: absolute;
-  top: -10px;
-  background-color: #ffffff;
-  padding: 0 10px;
-  z-index: 1;
-  left: 15px;
-  font-family: "Poppins", sans-serif;
-}
-.label-text5 {
-  font-size: 12px;
-  position: absolute;
-  top: -10px;
-  background-color: #ffffff;
-  padding: 0 10px;
-  z-index: 1;
-  left: 15px;
-  font-family: "Poppins", sans-serif;
-}
-.titil3{
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-.titil4{
-  font-size: 22px;
-  width: 90%;
-  margin: 10px auto;
   display: block;
-  margin-top: 20px;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
+  margin: 40px auto;
 }
-.contexto{
-  font-family: "Poppins", sans-serif;
+.input-bar2{
+  position: relative;
+  padding: 15px 0; 
+  display: flex;
+  border: 1px solid #212121;
+  height: 56px;
+  border-radius: 30px;
   width: 90%;
-  margin: 25px auto;
-  font-size: 12;
-}
-.linea {
-  background-color: #D4D4D4;
-  width: 100%;
-  height: 1px;
-}
-img{
-  width: 17px;
-  height: 17px;
-}
-.GuarCam{
-  position: absolute;
-  bottom: 65px;
-  border: 1px solid #212121; 
-  background-color: #212121; 
-  color: #79FFAF;
-  font-size: 16px;
-  border-radius: 30px;
-  width: 80%;
-  height: 60px;
-  font-weight: 600;
-  left: 43px;
-  font-family: "Poppins", sans-serif;
-}
-.GuarCam2{
-  position: absolute;
-  bottom: 65px;
-  border: 1px solid #212121; 
-  background-color: #212121; 
-  color: #ffffff;
-  font-size: 16px;
-  border-radius: 30px;
-  width: 80%;
-  height: 60px;
-  font-weight: 600;
-  left: 43px;
-  font-family: "Poppins", sans-serif;
-}
-.custom-checkbox {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.checkbox-icon {
-  width: 24px;
-  height: 24px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  margin-right: 8px;
+  align-items: center;
+  display: block;
+  margin: 49px auto;
+}
+.label-text {
+  font-size: 12px;
+  position: absolute;
+  top: -10px; 
+  background-color: #FFFFFF; 
+  padding: 0 10px; 
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+  color: #212121;
 }
 
-.checkbox-icon.checked {
-  background-color: #5a5a5a;
-  border-color: #5a5a5a;
+.ld{
+  margin-left: 10px;
+  bottom: 8px;
+}
+.editar{
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0;
+font-family: Poppins;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px; /* 211.111% */
+  letter-spacing: 0.18px;
+  text-decoration-line: underline;
+  color: #212121;
+}
+.model{
+background-color: transparent;
+}
+.iden{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 200% */
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  padding-inline: 15px;
+  margin-top: 23px;
 }
 
-.checkbox-icon ion-icon {
-  font-size: 16px;
+/* Estilo personalizado para el checkbox */
+ion-checkbox {
+  --size: 15px;
+  --checkbox-background-checked: #6D6D6D;
+  color: #6D6D6D;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 300;
+line-height: 23px; /* 191.667% */
+}
+
+ion-checkbox::part(container) {
+  border-radius: 3px;
+  border: 2px solid #6D6D6D;
+}
+
+/* Aumentar el grosor y tamaño del marcador de verificación */
+ion-checkbox::part(indeterminate) {
+  transform: scale(1.5); /* Aumenta el tamaño del marcador de verificación */
+  border-width: 1px; /* Ajusta el grosor del borde del marcador de verificación */
+}
+.doc{
+  background-color: transparent;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-right: 0px;
+padding-left: 20px;
+margin-top: 10px;
+}
+.textos{
+  display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+.cont{
+  background-color: #79FFAF; 
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+}
+.subcont{
+  background-color: white;
+  padding-top: 5%;
+  padding-left: 7%;
+  padding-right: 7%;
+  margin-top: 50px;
+  width: 100%;
+  height: 882px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.t1-0{
+display: flex;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+color: #000;
+font-family: Poppins;
+font-size: 19px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 126.316% */
+letter-spacing: 0.048px;
+padding-left: 20px;
+padding-right: 20px;
+}
+.p01{
+color: #212121;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 300;
+line-height: 18px; /* 150% */
+letter-spacing: 0.03px;
+margin-top: 22px;
+padding-inline: 20px;
+}
+.btn {
+  position: relative;
+  padding: 15px 0; 
+  display: flex;
+  border: 1px solid #212121;
+  background-color: #212121;
+  height: 56px;
+  border-radius: 30px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: 49px auto;
+  
+}
+
+.GuarCam {
   color: #fff;
+  background: transparent;
+  color: #FFF;
+text-align: center;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 180%; /* 28.8px */
 }
 
-.checkbox-label {
+.btn2 {
+  position: relative;
+  padding: 15px 0; 
+  border: 1px solid #212121;
+  height: 56px;
+  border-radius: 30px;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: 49px auto; /* Centra vertical y horizontalmente */
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+.GuarCam2 {
+  color: #565656;
+  background: transparent;
+  font-family: Poppins;
   font-size: 16px;
-  color: #333;
+  font-weight: 500;
+  line-height: 180%; /* 28.8px */
 }
-.custom-checkbox{
-  margin-top: 20px;
-  margin-left: 20px;
-}
+
+

@@ -1,0 +1,116 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="pantalla">
+      <div class="inicio">
+        <a class="regresar" href="#">
+          <div class="left-arrow">
+            <img src="/assets/images/left-arrow.svg" alt="" />
+          </div>
+        </a>
+      </div>
+
+      <h1 class="title ">Restricción Personalizada</h1>
+
+      <p class="description margin20">
+        Personaliza la restricción horaria para arrendatarios los cuales no
+        podrán reservar tu estacionamiento dentro de los siguientes horarios
+      </p>
+
+      <button class="agregar-horario">
+        <img src="/assets/images/icon-plus2.svg" alt="" />
+        <span>Agregar Horario</span>
+      </button>
+
+
+      <!-- ------------------------------HORARIO PERSONALIZADO CONTENEDOR------------------------------ -->
+      <div class="horario-personalizado-container">
+        <button class="cross" id="open-modal1">
+          <img src="/assets/images/cross.png" alt="" />
+        </button>
+
+          <!-- START MODAL -->
+
+          <ion-modal
+          trigger="open-modal1"
+          [initialBreakpoint]="1"
+          [breakpoints]="[0, 1]"
+        >
+          <ng-template>
+            <div class="block">
+              <h1>¿Seguro que quieres eliminar el anuncio?</h1>
+
+              <hr />
+
+              <div class="button-container-modal">
+                <button class="button-eliminar-modal">
+                  Eliminar Horario
+                </button>
+                <button>Cancelar</button>
+              </div>
+            </div>
+          </ng-template>
+        </ion-modal>
+
+        <!-- END MODAL -->
+
+        <h1 class="title">Horario Personalizado 1</h1>
+        <p class="description margin7">
+          Selecciona una fecha o rango en el que se aplicará el/los horario(s)
+          personalizado(s):
+        </p>
+
+        <div class="form-regla">
+          <label class="num-regla">Seleccione una fecha o rango</label>
+          <input class="false-textarea" placeholder="17/08/2024" />
+        </div>
+        <span class="date-type">DD/MM/AA</span>
+
+        <p class="description margin17">
+          <span>Selecciona</span> el/los horario(s) en el que los arrendatarios
+          no podrán reservar tu estacionamiento:
+        </p>
+
+        <div class="time-range-container">
+          <div class="time-input-group">
+            <label for="inputDesde">Desde:</label>
+            <ion-datetime-button datetime="datetime1"></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                  id="datetime1"
+                  presentation="time"
+                  hourCycle="h12"
+                  value="2024-04-17T00:00"
+                ></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </div>
+
+          <div class="time-input-group">
+            <label for="inputHasta">Hasta:</label>
+            <ion-datetime-button datetime="datetime2"></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                  id="datetime2"
+                  presentation="time"
+                  hourCycle="h12"
+                  value="2024-04-17T00:00"
+                ></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </div>
+
+
+          <button class="agregar-horario2">
+            <img src="/assets/images/icon-plus3.svg" alt=""/>
+          </button>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

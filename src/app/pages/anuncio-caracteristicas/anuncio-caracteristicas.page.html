@@ -10,20 +10,25 @@
         </a>
 
         <div class="grid-small-button">
-
           <button class="small-button" id="open-modal1" expand="block">
-              <img src="/assets/images/trash.svg" alt="" />
+            <img src="/assets/images/trash.svg" alt="" />
           </button>
 
-          <ion-modal trigger="open-modal1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+          <ion-modal
+            trigger="open-modal1"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+          >
             <ng-template>
               <div class="block">
                 <h1>¿Seguro que quieres eliminar el anuncio?</h1>
 
-                <hr>
+                <hr />
 
                 <div class="button-container-modal">
-                  <button class="button-eliminar-modal">Eliminar Anuncio</button>
+                  <button class="button-eliminar-modal">
+                    Eliminar Anuncio
+                  </button>
                   <button>Cancelar</button>
                 </div>
               </div>
@@ -31,26 +36,66 @@
           </ion-modal>
 
           <button class="small-button" id="open-modal2" expand="block">
-              <img src="/assets/images/down-arrow.svg" alt="" />
+            <img src="/assets/images/down-arrow.svg" alt="" />
           </button>
 
-          <ion-modal trigger="open-modal2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+          <ion-modal
+            trigger="open-modal2"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+          >
             <ng-template>
               <div class="block2">
                 <h1>Selecciona tu anuncio</h1>
 
-                <hr>
+                <hr />
 
-                <div class="button-container-modal">
-                  <button class="button-eliminar-modal">Eliminar Anuncio</button>
-                  <button>Cancelar</button>
+                <div class="block2-container">
+                  <div class="checkbox-anuncio-container">
+                    <div class="checkbox-anuncio">
+                      <label for="checkbox">
+                        <div>
+                          <img src="/assets/images/icon-car.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Estacionamiento Las B...</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          class="checkbox-round"
+                        />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/icon-car.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Cochera Santa Cruz 1254</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          class="checkbox-round"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <div class="button-agregar-anuncio-container">
+                    <button class="button-agregar-anuncio">
+                      <span class="false-button-agregar-anuncio"
+                        ><img src="/assets/images/icon-plus2.svg" alt=""
+                      /></span>
+                      <span>Agregar nuevo anuncio</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </ng-template>
           </ion-modal>
-
         </div>
-
       </div>
 
       <div class="swiper-container">
@@ -101,7 +146,6 @@
           </div>
         </div>
       </div>
-
 
       <div *ngIf="selectedContent === 'Características'">
         <div class="informacion">
@@ -350,9 +394,10 @@
             </div>
           </div>
         </div>
+      </div>
 
-
-
+      <!--                 -----PRECIO-----              -->
+      <div *ngIf="selectedContent === 'Precio'">
         <div class="titulo-precio">
           <h1 class="secondary-title">Precio base</h1>
           <h2 class="pen">PEN</h2>
@@ -414,9 +459,10 @@
             >
           </div>
         </div>
+      </div>
 
-
-
+      <!--                 -----DISPONIBILIDAD-----              -->
+      <div *ngIf="selectedContent === 'Disponibilidad'">
         <div class="disponibilidad-container">
           <ion-item lines="none">
             <ion-toggle justify="space-between">Días restringidos</ion-toggle>
@@ -505,7 +551,12 @@
           </div>
 
           <ion-item lines="none">
-            <ion-toggle justify="space-between">Horas restringidas</ion-toggle>
+            <ion-toggle justify="space-between">
+              <div class="toggle-info">
+                Horas restringidas
+                <img src="/assets/images/icon-info2.svg" alt="">
+              </div>
+            </ion-toggle>
           </ion-item>
           <p>
             Los arrendatarios no podrán reservar tu estacionamiento dentro del
@@ -545,10 +596,19 @@
               </ion-modal>
             </div>
           </div>
+
+          <hr>
+
+          <button class="button-personalizar">
+            Personalizar Horarios (0)
+          </button>
+
+
         </div>
- 
+      </div>
 
-
+      <!--                 -----ABONADOS-----              -->
+      <div *ngIf="selectedContent === 'Abonados'">
         <div class="abonados-container">
           <ion-item lines="none">
             <ion-toggle justify="space-between">Abonados</ion-toggle>
@@ -574,7 +634,7 @@
             <p>No cuenta con solicitudes de abonado</p>
           </div>
         </div>
-
+      </div>
     </div>
   </div>
-
+</ion-content>
