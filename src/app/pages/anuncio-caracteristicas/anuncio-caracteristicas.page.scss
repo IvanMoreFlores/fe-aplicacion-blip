@@ -131,7 +131,11 @@ body {
   color: #212121;
   font-family: "Poppins", sans-serif;
   border-radius: 20px 20px 0px 0px;
-  
+
+  .block2-container {
+    padding-inline: 36px;
+  }
+
   h1 {
     font-size: 16px;
     font-weight: 400;
@@ -150,6 +154,87 @@ body {
     margin-top: 0px;
     margin-bottom: 23px;
   }
+}
+
+.checkbox-anuncio-container {
+  color: #49454f;
+
+  img {
+    margin-right: 18px;
+  }
+
+  .checkbox-anuncio {
+    margin-bottom: 17px;
+  }
+
+  .checkbox-anuncio label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    border: 1px solid #49454f;
+    border-radius: 30px;
+    padding-inline: 30px;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .checkbox-round:checked {
+    background-color: #212121;
+    border: 1px solid #212121;
+  }
+
+  .checkbox-anuncio input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+}
+
+.button-agregar-anuncio-container {
+  height: 50px;
+  padding-inline: 15px;
+  display: flex;
+  align-items: center;
+}
+.button-agregar-anuncio {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 15px;
+    font-weight: 400;
+    color: #212121;
+  }
+}
+
+.false-button-agregar-anuncio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6e8e4;
+  width: 43px;
+  height: 33px;
+  border-radius: 100px;
+  margin-right: 20px;
 }
 
 ion-modal {
@@ -569,9 +654,19 @@ a.servicios:hover {
 
 /* -----------------------------DISPONIBILIDAD -----------------------*/
 
-.disponibilidad-container p {
-  font-size: 12px;
-  font-weight: 400;
+.disponibilidad-container {
+  hr {
+    background-color: #2c2c2c;
+    height: 1px;
+    border: 0;
+    margin-top: 0px;
+    margin-bottom: 33px;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: 400;
+  }
 }
 
 .checkbox-semana {
@@ -671,6 +766,19 @@ ion-modal {
 
 ion-datetime::part(wheel-item) {
   color: #212121;
+}
+
+.button-personalizar {
+  height: 44px;
+  width: 100%;
+  border-radius: 30px;
+  background-color: #ffffff;
+  border: 1px solid #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 // -------------------- ABONADOS ---------------------------------
@@ -896,4 +1004,11 @@ ion-toggle::part(track) {
 
   /* Required for iOS handle to overflow the height of the track */
   overflow: visible;
+}
+
+.toggle-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }

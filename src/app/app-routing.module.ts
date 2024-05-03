@@ -235,7 +235,11 @@ const routes: Routes = [
    {
     path: 'ubicacion',
     loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
+  },  {
+    path: 'horario-personalizado',
+    loadChildren: () => import('./pages/horario-personalizado/horario-personalizado.module').then( m => m.HorarioPersonalizadoPageModule)
   }
+
 
 
 
