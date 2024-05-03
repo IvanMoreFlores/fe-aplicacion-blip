@@ -3,111 +3,152 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <button routerLink="/configuracion-pago" class="info-back"> Información personal <div class="signo-menor"></div> </button>   
-          <div class="izqn">
-            <h2 class="subtitle">NOMBRE Y APELLIDO</h2>
-            <ion-item>
-              <ion-text>{{ textoGuardado }}</ion-text>
-            </ion-item>
-            <button (click)="toggleContent()" expand="block" class="EDIT1">
-              <span class="subrayado">Editar</span>
-            </button>
-            <div *ngIf="showContent" class="darken-background"></div>
-            <div *ngIf="showContent" class="new-vent">
-              <p class="titil3">Edita tu información </p>
-              <div class="linea"></div>
-              <div class="input-bar">
-                <ion-label class="label-text"></ion-label>
-                <ion-input [(ngModel)]="texto" placeholder="Escribe tu nombre"></ion-input>
-              </div>
-              <button (click)="guardarCambio()" expand="block" class="GuarCam">Guardar Cambios</button>
+          <div class="inicio">
+            <div class="left-arrow">
+              <img src="/assets/images/left-arrow.svg" alt=""  routerLink="/confirmacion-de-identidad"/>
             </div>
+            <h3 class="title">Información personal</h3>
           </div>
-          
-          <div class="sub-num-tef">
-            <h2 class="subtitle2">NÚMERO TELEFÓNICO</h2>
-            <ion-item>
-              <ion-text>{{ textoGuardado2 }}</ion-text>
-            </ion-item>
-            <button (click)="toggleContent2()" expand="block" class="EDIT2">
-              <span class="subrayado2">Editar</span>
-            </button>
-            <div *ngIf="showContent2" class="darken-background"></div>
-            <div *ngIf="showContent2" class="new-vent2">
-              <p class="titil3">Edita tu información </p>
-              <div class="linea"></div>
-              <div class="input-bar">
-                <ion-label class="label-text2">NÚMERO TELEFÓNICO</ion-label>
-                <ion-input class="escrib"    [(ngModel)]="texto2" placeholder="Escribe tu numero telefonico"></ion-input>
+          <div class="inf-peso">
+            <div class="preguntas">
+              <div class="cont-pre">
+                <div class="preg">
+                  <h1 class="pg">NOMBRE Y APELLIDO</h1>
+                </div>
+                <button id="open-modal" expand="block" class="model"><a class="editar">Editar</a></button>
               </div>
-              <button (click)="guardarCambio2()" expand="block" class="GuarCam">Guardar Cambios</button>
+              <ion-item>
+                <ion-text>{{ textoGuardado }}</ion-text>
+              </ion-item>
+              <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">Edita tu información</h1>
+                    <div class="line"></div>
+                    <div class="input-bar">
+                      <ion-label class="label-text">Nombre y apellido</ion-label>
+                      <ion-input [(ngModel)]="texto" class="ld" placeholder="Ingresar nombres y apellidos"></ion-input>
+                    </div>    
+                    <div class="btn2">
+                      <button (click)="guardarCambios()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+                     </div>    
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <div class="cont-pre">
+                <div class="preg">
+                  <h1 class="pg">NÚMERO TELEFÓNICO</h1>
+                </div>
+                <button id="open-modal2" expand="block" class="model"><a class="editar">Editar</a></button>
+              </div>
+              <ion-item>
+                <ion-text>{{ textoGuardado2 }}</ion-text>
+              </ion-item>
+              <ion-modal trigger="open-modal2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">Edita tu información</h1>
+                    <div class="line"></div>
+                    <div class="input-bar">
+                      <ion-label class="label-text">NÚMERO TELEFÓNICO</ion-label>
+                      <ion-input [(ngModel)]="texto2"class="ld" placeholder="Ingresar numero telefonico"></ion-input>
+                    </div>     
+                    <div class="btn2">
+                      <button (click)="guardarCambios2()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+                     </div>    
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              
+            </div>
+            <div class="preguntas">
+              <div class="cont-pre">
+                <div class="preg">
+                  <h1 class="pg">CORREO ELECTRONICO</h1>
+                </div>
+                <button id="open-modal3" expand="block" class="model"><a class="editar">Editar</a></button>
+              </div>
+              <ion-item>
+                <ion-text>{{ textoGuardado3 }}</ion-text>
+              </ion-item>
+              <ion-modal trigger="open-modal3" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-mo">Edita tu información</h1>
+                    <div class="line"></div>
+                    <div class="input-bar">
+                      <ion-label class="label-text">CORREO ELECTRONICO</ion-label>
+                      <ion-input [(ngModel)]="texto3"class="ld" placeholder="Ingresar el correo electronico"></ion-input>
+                    </div>  
+                    <div class="btn2">
+                     <button (click)="guardarCambios3()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+                    </div>
+                  </div>           
+                </ng-template>
+              </ion-modal>
+              <div class="cont-pre">
+                <div class="preg">
+                  <h1 class="pg">CONTACTO DE EMERGENCIA</h1>
+                </div>
+                <button (click)="setOpen(true)" expand="block" class="model"><a class="editar">Agregar</a></button>
+              </div>
+              <ion-item>
+                <ion-text>{{ textoGuardado4 }}</ion-text>
+              </ion-item>
+              <ion-modal [isOpen]="isModalOpen">
+                <ng-template>
+                  <div class="cont">
+                    <div class="subcont">
+                      <div class="inicio">
+                        <div class="left-arrow">
+                          <img src="/assets/images/left-arrow.svg" alt=""  (click)="setOpen(false)">
+                        </div>
+                        
+                      </div>
+                      <div class="t1">
+                        <h1 class="t1-0">Indícanos quién será tu contacto en caso de emergencia.</h1>
+                        <p class="p01">Si no estás en casa para recibir a la persona que alquilo tu estacionamiento, comparte datos de emergencia para comunicarnos.</p>
+                        <div class="input-bar2">
+                          <ion-label class="label-text">Nombre de un contacto de emergencia</ion-label>
+                          <ion-input class="ld" placeholder="Ingresar el nombre "></ion-input>
+                        </div>  
+                        <div class="input-bar2">
+                          <ion-label class="label-text">Teléfono del contacto de emergencia</ion-label>
+                          <ion-input [(ngModel)]="texto4" label="51+"class="ld" placeholder="Ingresar el Teléfono"></ion-input>
+                        </div>
+                        <div class="btn">  
+                          <button (click)="guardarCambios4()"   expand="block" class="GuarCam">Guardar Contacto</button>   
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ion-modal>
+              
+            </div>
+            <div class="preguntas">
+              <h2 class="iden">IDENTIFICACION (DOCUMENTOS)</h2>
+              <div class="doc">
+                <div class="textos">
+                  <ion-checkbox labelPlacement="end">Verificación de Identidad (ej. DNI, otros.)</ion-checkbox>
+                </div>
+                <button class="model"><a class="editar">Actualizar</a></button>
+              </div>
+              <div class="doc">
+                <div class="textos">
+                  <ion-checkbox labelPlacement="end">Acreditación de título de propiedad</ion-checkbox>
+                </div>
+                <button class="model"><a class="editar">Actualizar</a></button>
+              </div>
+              <div class="doc">
+                <div class="textos">
+                  <ion-checkbox labelPlacement="end">Antecedentes Penales</ion-checkbox>
+                </div>
+                <button class="model"><a class="editar">Agregar</a></button>
+              </div>
             </div>
           </div>
 
-          <div class="mail">
-            <h2 class="subtitle3">Correo electrónico</h2>
-            <ion-item>
-              <ion-text>{{ textoGuardado3 }}</ion-text>
-            </ion-item>
-            <button (click)="toggleContent3()" expand="block" class="EDIT3">
-              <span class="subrayado3">Editar</span>
-            </button>
-            <div *ngIf="showContent3" class="darken-background"></div>
-            <div *ngIf="showContent3" class="new-vent3">
-              <p class="titil3">Edita tu información </p>
-              <div class="linea"></div>
-              <div class="input-bar">
-                <ion-label class="label-text3">Correo electrónico</ion-label>
-                <ion-input class="escrib"    [(ngModel)]="texto3" placeholder="Escribe tu Correo Electronico"></ion-input>
-              </div>
-              <button (click)="guardarCambio3()" expand="block" class="GuarCam">Guardar Cambios</button>
-            </div>
-          </div>
-
-          <div class="mail">
-            <h2 class="subtitle4">Correo electrónico</h2>
-            <ion-item>
-              <ion-text>{{ textoGuardado4 }}</ion-text>
-            </ion-item>
-            <button (click)="toggleContent4()" expand="block" class="EDIT4">
-              <span class="subrayado4">Agregar </span>
-            </button>
-
-            <div *ngIf="showContent4" class="new-vent4">
-              <button *ngIf="showContent4" (click)="cancelar()" expand="block" class="CANCELAR">
-                <img src="assets/images/may-53.png" alt="">
-              </button>
-              <p class="titil4">Indícanos quién será tu contacto en caso de emergencia. </p>
-              <p class="contexto">Si no estás en casa para recibir a la persona que alquilo tu estacionamiento, comparte datos de emergencia para comunicarnos.</p>
-              <div class="input-bar">
-                <ion-label class="label-text4">Nombre de un contacto de emergencia</ion-label>
-                <ion-input class="escrib"    [(ngModel)]="texto4" placeholder="Escribe el Nombre"></ion-input>
-              </div>
-              <div class="input-bar2">
-                <ion-label class="label-text5">Teléfono del contacto de emergencia</ion-label>
-                <ion-input class="escrib"     placeholder="Escribe el telefono "></ion-input>
-              </div>
-              <button (click)="guardarCambio4()" expand="block" class="GuarCam2">Guardar </button>
-            </div>
-          </div>
-          <div class="custom-checkbox" (click)="toggleCheckbox()">
-            <div class="checkbox-icon" [ngClass]="{'checked': isChecked}">
-              <ion-icon name="checkmark"></ion-icon>
-            </div>
-            <div class="checkbox-label">Verificación de Identidad (ej. DNI, otros.)</div>
-          </div>
-          <div class="custom-checkbox" (click)="toggleCheckbox2()">
-            <div class="checkbox-icon" [ngClass]="{'checked': isChecked2}">
-              <ion-icon name="checkmark"></ion-icon>
-            </div>
-            <div class="checkbox-label">Acreditación de título de propiedad</div>
-          </div>
-          <div class="custom-checkbox" (click)="toggleCheckbox3()">
-            <div class="checkbox-icon" [ngClass]="{'checked': isChecked3}">
-              <ion-icon name="checkmark"></ion-icon>
-            </div>
-            <div class="checkbox-label">Antecedentes Penales</div>
-          </div>
 
 
         </div>
