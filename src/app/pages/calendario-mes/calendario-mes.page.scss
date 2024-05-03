@@ -55,10 +55,11 @@
 
 .menu-above {
     text-align: center;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 500;
     font-family: "Poppins", sans-serif;
     color: #524F4F;
+    margin-block: 20px;
 }
 
 .separator-line {
@@ -326,7 +327,35 @@
   table td {
     padding: 5px;
   }
+
+
+/* Block */
+
+.menu-block {
+    display: flex;
+    justify-content: center;
+    font-size: 19px;
+    font-family: "Poppins", sans-serif;
+    margin-block: 20px;
+    font-weight: 500;
+  }
   
+  .block {
+    width: 100%;
+    height: 370px; 
+    background-color: #FFFFFF;
+  }
+  
+  ion-modal {
+    --height: auto;
+  }
+  
+  .button-punto {
+    background-color: #79ffaf;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+}
 
   
   

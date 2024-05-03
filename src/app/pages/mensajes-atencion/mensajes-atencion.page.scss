@@ -55,9 +55,11 @@
 
 .menu-above {
     text-align: center;
-    font-size: 22px;
+    font-size: 19px;
     font-family: "Poppins", sans-serif;
     color: #524F4F;
+    margin-block: 20px;
+    font-weight: 500;
 }
 
 .separator-line {
@@ -71,6 +73,7 @@
     font-weight: bold;
     font-family: "Poppins", sans-serif;
     margin-left: 30px;
+    color: #212121;
 }
 
 .service-button {
@@ -182,7 +185,7 @@
     color: #212121;
     font-size: 16px;
     border: 1px solid #212121;
-    border-radius: 15px;
+    border-radius: 30px;
     width: 80%;
     height: 49px;
     padding: 10px 20px; 
@@ -195,6 +198,77 @@
     font-size: 16px;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
+}
+
+.container-1 {
+  display: block;
+  position: absolute;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-1 input {
+  position: relative;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  right: 0px;
+  top: 10px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 8px;
+  left: 270px;
+  height: 23px;
+  width: 23px;
+  background-color: #212121;
+  border: 1px black solid;
+  border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color */
+.container-1:hover input ~ .checkmark {
+  background-color: #212121;
+  border-radius: 5px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-1 input:checked ~ .checkmark {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+}
+
+/* Show the checkmark when checked */
+.container-1 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-1 .checkmark:after {
+  left: 7px;
+  top: 2px;
+  width: 8px;
+  height: 14px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
 }
 
 
@@ -340,7 +414,36 @@
     position: absolute;
     left: 260px;
     font-weight: 500;
-  }
+}
+
+/* Block */
+
+.menu-block {
+  display: flex;
+  justify-content: center;
+  font-size: 19px;
+  font-family: "Poppins", sans-serif;
+  margin-block: 20px;
+  font-weight: 500;
+}
+
+.block {
+  width: 100%;
+  height: 650px; 
+  background-color: #FFFFFF;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+.button-punto {
+  background-color: #79ffaf;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
   
   
   

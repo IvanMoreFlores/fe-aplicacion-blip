@@ -10,10 +10,30 @@
         </button>
         <div class="text-b">Laura<br> <span style="font-size: 10px; font-weight: 500;">Tiempo de respuesta: 5 horas</span></div>
         
-        <button class="favorite-button"> <img src="/assets/images/star-1.png" alt=""></button>
-          <button class="navbar-toggler shadow" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="/assets/images/btn-punto.png" alt="Icono de navegación">
-          </button>
+        <button class="favorite-button"> <img src="/assets/images/star-2.png" alt=""></button>
+        <button  id="open-modal" class="shadow navbar-toggler" expand="block"><img src="/assets/images/btn-punto.png" alt=""></button>
+        <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+          <ng-template>
+            <div class="block">
+              <div class="menu-above">Más Opciones</div>
+            <hr class="separator-line">
+            <div class="button-container">
+              <button class="custom-btn">
+                <img src="/assets/images/eye-1.png" alt="">
+                <span class="btn-text">Marcar como no leído</span>         
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/star-1.png" alt=""> 
+                <span class="btn-text">Destacar Mensaje</span>              
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/download.png" alt="">
+                <span class="btn-text">Archivar</span>               
+              </button>         
+          </div>
+            </div>
+          </ng-template>
+        </ion-modal>
         </div>
         
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
