@@ -394,9 +394,10 @@
             </div>
           </div>
         </div>
+      </div>
 
-
-
+      <!--                 -----PRECIO-----              -->
+      <div *ngIf="selectedContent === 'Precio'">
         <div class="titulo-precio">
           <h1 class="secondary-title">Precio base</h1>
           <h2 class="pen">PEN</h2>
@@ -458,9 +459,10 @@
             >
           </div>
         </div>
+      </div>
 
-
-
+      <!--                 -----DISPONIBILIDAD-----              -->
+      <div *ngIf="selectedContent === 'Disponibilidad'">
         <div class="disponibilidad-container">
           <ion-item lines="none">
             <ion-toggle justify="space-between">Días restringidos</ion-toggle>
@@ -603,9 +605,10 @@
 
 
         </div>
- 
+      </div>
 
-
+      <!--                 -----ABONADOS-----              -->
+      <div *ngIf="selectedContent === 'Abonados'">
         <div class="abonados-container">
           <ion-item lines="none">
             <ion-toggle justify="space-between">Abonados</ion-toggle>
@@ -631,7 +634,7 @@
             <p>No cuenta con solicitudes de abonado</p>
           </div>
         </div>
-
+      </div>
     </div>
   </div>
 </ion-content>
