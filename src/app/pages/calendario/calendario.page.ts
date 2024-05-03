@@ -6,66 +6,63 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendario.page.scss'],
 })
 export class CalendarioPage implements OnInit {
-  isNavbarOpen = false;
+  isNavbarOpen: boolean = false;
+  months: { name: string, days: number[][] }[][] = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.generarCalendario(2024, 2025); 
+    this.generateMonths();
   }
 
   toggleNavbar() {
     this.isNavbarOpen = !this.isNavbarOpen;
   }
 
-  // Función para generar el calendario
-  generarCalendario(startYear: number, endYear: number) {
-    const meses = [
-      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  generateMonths() {
+    const monthNames = [
+      "Enero", "Febrero", "Marzo", "Abril",
+      "Mayo", "Junio", "Julio", "Agosto",
+      "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
-    let html = '<div class="calendar-container">';
+    let currentRow: { name: string, days: number[][] }[] = [];
+    for (let i = 0; i < 12; i++) {
+      const numDays = new Date(2024, i + 1, 0).getDate(); // Obtener el número de días del mes
+      const firstDay = new Date(2024, i, 1).getDay(); // Obtener el día de la semana del primer día del mes
+      let daysOfMonth: number[][] = [[]];
+      let currentWeek = 0;
 
-    for (let year = startYear; year <= endYear; year++) {
-      meses.forEach((mes, index) => {
-        html += `<h2>${mes} ${year}</h2>`;
-        html += '<table>';
-        html += '<tr><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr>';
-
-        const primerDiaMes = new Date(year, index, 9);
-        const primerDiaSemana = primerDiaMes.getDay();
-        const diasEnMes = new Date(year, index + 1, 0).getDate();
-
-        let dia = 1;
-        for (let i = 0; i < 6; i++) {
-          html += '<tr>';
-
-          for (let j = 0; j < 7; j++) {
-            if (i === 0 && j < primerDiaSemana) {
-              html += '<td></td>';
-            } else if (dia > diasEnMes) {
-              break;
-            } else {
-              html += `<td>${dia}</td>`;
-              dia++;
-            }
-          }
-
-          html += '</tr>';
+      // Llenar el arreglo con los números de los días del mes organizados en filas y columnas
+      for (let j = 1; j <= numDays; j++) {
+        if (j === 1 && firstDay !== 0) {
+          daysOfMonth[currentWeek] = Array.from({ length: firstDay }, _ => 0); // Rellenar los días en blanco hasta llegar al primer día del mes
         }
 
-        html += '</table>';
-      });
+        if (daysOfMonth[currentWeek].length === 7) {
+          daysOfMonth.push([]); // Empezar una nueva fila cada vez que se llegue al final de una semana
+          currentWeek++;
+        }
+        
+        daysOfMonth[currentWeek].push(j); // Agregar el número del día al arreglo de la semana actual
+      }
+
+      // Rellenar los días restantes de la última semana con ceros si es necesario
+      if (daysOfMonth[currentWeek].length < 7) {
+        const remainingDays = 7 - daysOfMonth[currentWeek].length;
+        daysOfMonth[currentWeek] = [...daysOfMonth[currentWeek], ...Array.from({ length: remainingDays }, _ => 0)];
+      }
+
+      currentRow.push({ name: monthNames[i], days: daysOfMonth });
+      if (currentRow.length === 3) {
+        this.months.push(currentRow);
+        currentRow = [];
+      }
     }
 
-    html += '</div>';
-
-    // Inserta el calendario en el elemento con el ID 'calendar-año'
-    const calendarContainer = document.getElementById('calendar-año');
-    if (calendarContainer) {
-      calendarContainer.innerHTML = html;
-    } else {
-      console.error('No se encontró el contenedor del calendario');
+    // Si quedan meses en la fila actual, agregamos esa fila también
+    if (currentRow.length > 0) {
+      this.months.push(currentRow);
     }
   }
 }

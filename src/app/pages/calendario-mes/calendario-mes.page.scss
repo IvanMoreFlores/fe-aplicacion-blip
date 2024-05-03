@@ -29,7 +29,7 @@
 .navbar-toggler {
     border: none; 
     background-color: transparent; 
-    padding: 5px;
+    padding: 3px;
     border-radius: 10px;
 }
 
@@ -98,10 +98,11 @@
 }
 
 .text-b {
-    font-size: 17px;
+    font-size: 20px;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     width: 280px;
+    margin-right: 30px;
     color: #212121;
 }
 
@@ -289,7 +290,7 @@
   /* Calendar */
 
   #calendar {
-    width: 90%;
+    width: 85%;
     margin: 20px auto;
     display: block;
 }
@@ -325,5 +326,7 @@
   table td {
     padding: 5px;
   }
+  
+
   
   

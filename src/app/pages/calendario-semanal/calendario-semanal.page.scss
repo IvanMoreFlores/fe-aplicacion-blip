@@ -1,7 +1,11 @@
 .container {
-    background: linear-gradient(to bottom, #79FFAF 10%, transparent 10%);
+    background: linear-gradient(to bottom, #79FFAF 10%, #FFFFFF 10%);
     height: 100%;
     overflow: hidden;
+}
+
+*{
+    color: #212121;
 }
 
 .top-bar {
@@ -29,7 +33,7 @@
 .navbar-toggler {
     border: none; 
     background-color: transparent; 
-    padding: 5px;
+    padding: 3px;
     border-radius: 10px;
 }
 
