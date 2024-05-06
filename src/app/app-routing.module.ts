@@ -108,7 +108,7 @@ const routes: Routes = [
   },
   {
     path: 'mensajes-archivados-desarchivar',
-    loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
+    loadChildren: () => import('./pages/mensajes-archivados-desarchivar/mensajes-archivados-desarchivar.module').then( m => m.MensajesArchivadosDesarchivarPageModule)
   },
   {
     path: 'mensajes-destacados',
@@ -240,6 +240,18 @@ const routes: Routes = [
     path: 'horario-personalizado',
     loadChildren: () => import('./pages/horario-personalizado/horario-personalizado.module').then( m => m.HorarioPersonalizadoPageModule)
   },
+   {
+    path: 'panel-anfitrion',
+    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
+  },
+  {
+    path: 'panel',
+    loadChildren: () => import('./pages/panel/panel.module').then( m => m.PanelPageModule)
+  },
+  {
+    path: 'inf-perso',
+    loadChildren: () => import('./pages/inf-perso/inf-perso.module').then( m => m.InfPersoPageModule)
+  },
   {
     path: 'pressed',
     loadChildren: () => import('./pages/pressed/pressed.module').then( m => m.PressedPageModule)
@@ -252,11 +264,6 @@ const routes: Routes = [
     path: 'pressed-chat-component',
     loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
   },
-  {
-    path: 'panel-anfitrion',
-    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
-  },
-
 
 
 
