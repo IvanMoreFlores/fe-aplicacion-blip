@@ -235,10 +235,28 @@ const routes: Routes = [
    {
     path: 'ubicacion',
     loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
-  },  {
+  },
+  {
     path: 'horario-personalizado',
     loadChildren: () => import('./pages/horario-personalizado/horario-personalizado.module').then( m => m.HorarioPersonalizadoPageModule)
-  }
+  },
+  {
+    path: 'pressed',
+    loadChildren: () => import('./pages/pressed/pressed.module').then( m => m.PressedPageModule)
+  },
+  {
+    path: 'pressed-chat',
+    loadChildren: () => import('./pages/pressed-chat/pressed-chat.module').then( m => m.PressedChatPageModule)
+  },
+  {
+    path: 'pressed-chat-component',
+    loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
+  },
+  {
+    path: 'panel-anfitrion',
+    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
+  },
+
 
 
 
