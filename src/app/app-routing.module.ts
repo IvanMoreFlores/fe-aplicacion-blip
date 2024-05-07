@@ -264,6 +264,10 @@ const routes: Routes = [
     path: 'pressed-chat-component',
     loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
   },
+  {
+    path: 'acre-pro',
+    loadChildren: () => import('./pages/acre-pro/acre-pro.module').then( m => m.AcreProPageModule)
+  },
 
 
 

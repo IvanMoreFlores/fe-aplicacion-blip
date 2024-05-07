@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import Swiper from 'swiper';
+import { ModalController } from '@ionic/angular';
+import Swiper from 'swiper';///sliders
 
 import SwiperCore, { Pagination } from 'swiper';
 SwiperCore.use([Pagination]);
@@ -13,13 +14,16 @@ export class HomePage implements OnInit {
   selectedContent: string = 'Todos'; // Inicializa la variable con el valor por defecto
   isNavbarOpen = false; // Variable para rastrear si el navbar-collapse está abierto
 
-  constructor() { }
+  constructor(private modalController: ModalController) {} // Inyecta el ModalController
 
   ngOnInit() {
     this.initSwiper('.swiper-container');
     this.initSwiper('.slider');
   }
-
+  async exit() {
+    
+    await this.modalController.dismiss();
+  }
   initSwiper(selector: string) {
     const mySwiper = new Swiper(selector, {
       slidesPerView: 'auto',

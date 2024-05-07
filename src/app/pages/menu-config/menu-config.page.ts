@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu-config',
@@ -6,13 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-config.page.scss'],
 })
 export class MENUCONFIGPage implements OnInit {
-  showContent: boolean = false;
+  switchValue: boolean = false; // Valor inicial del switch
 
-  toggleContent() {
-    this.showContent = !this.showContent;
+  
+  constructor(private modalController: ModalController, private cdr: ChangeDetectorRef) { }
+
+  async dismissModal() {
+    // Cerrar el modal
+    await this.modalController.dismiss();
+    
+    // Revertir el valor del switch a false
+    this.switchValue = false;
+
+    // Actualizar la vista
+    this.cdr.detectChanges();
   }
-  constructor() { }
-
   ngOnInit() {
   }
 
