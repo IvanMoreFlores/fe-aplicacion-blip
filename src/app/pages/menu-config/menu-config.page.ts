@@ -14,7 +14,7 @@ export class MENUCONFIGPage implements OnInit {
 
   async dismissModal() {
     // Cerrar el modal
-    await this.modalController.dismiss();
+    await this.modalController.dismiss(null,'open-modal_apagongeneral');
     
     // Revertir el valor del switch a false
     this.switchValue = false;

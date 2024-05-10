@@ -5,18 +5,15 @@
         <div class="content">
           <h1 class="titlex">Incluye imágenes de tu área de estacionamiento.</h1>
           <h2 class="text-adj">Mínimo tres fotos, pero si tienes más, ¡será genial! </h2>
-          <label for="esta1" class="custom-button bl">
-            <input type="file" class="form-control" id="esta1" accept="image/*" style="display: none;" (change)="park1($event)">
+          <button (click)="captureImage('Aest1')" class="custom-button bl">
             <img src="assets/images/adj-est.png" alt="">
-          </label> 
-          <label for="esta2" class="custom-button bl">
-            <input type="file" class="form-control" id="esta2" accept="image/*" style="display: none;" (change)="park2($event)">
+          </button> 
+          <button (click)="captureImage('Aest2')" class="custom-button bl">
             <img src="assets/images/adj-est.png" alt="">
-          </label> 
-          <label for="esta3" class="custom-button bl">
-            <input type="file" class="form-control" id="esta3" accept="image/*" style="display: none;" (change)="park3($event)">
+          </button> 
+          <button (click)="captureImage('Aest3')" class="custom-button bl">
             <img src="assets/images/adj-est.png" alt="">
-          </label>
+          </button> 
           <button routerLink="/configuracion-alquilar" class="more-info-btn">Atrás</button>
           <button [routerLink]="['/mostra-esta']" [queryParams]="{esTa1: esta1, esTa2: esta2,esTa3: esta3}"  class="next-btn">Siguiente</button>
         </div>
@@ -24,3 +21,4 @@
     </div>
   </div>
 </ion-content>
+

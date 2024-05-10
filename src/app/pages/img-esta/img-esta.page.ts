@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 @Component({
   selector: 'app-img-esta',
   templateUrl: './img-esta.page.html',
@@ -13,46 +14,50 @@ export class ImgEstaPage implements OnInit {
   
   constructor(private navCtrl: NavController) {}
 
-  park1(event: any) {
-    const file: File = event.target.files[0];
-    
-    if(file){
-      const reader = new FileReader();
+  async captureImage(type: string) {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+      });
 
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.esta1 = reader.result as string;
-      };
+      if (image.webPath) {
+        if (type === 'Aest1') {
+          this.convertToBase64(image.webPath, 'Aest1');
+        } else if (type === 'Aest2') {
+          this.convertToBase64(image.webPath, 'Aest2');
+        }else if(type === 'Aest3'){
+          this.convertToBase64(image.webPath,'Aest3');
+        }
+      } else {
+        console.error('No se ha podido obtener la ruta de la imagen.');
+      }
+    } catch (error) {
+      console.error('Error al capturar la imagen:', error);
     }
   }
 
-  park2(event:any){
-    const file:File = event.target.files[0];
-
-    if(file){
-      const reader = new FileReader();
-
-      reader.readAsDataURL(file);
-      
-      reader.onload=()=> {
-        this.esta2 = reader.result as string;
-      };
-    }
- }
- park3(event:any){
-  const file:File = event.target.files[0];
-
-  if(file){
-    const reader = new FileReader();
-
-    reader.readAsDataURL(file);
-    
-    reader.onload=()=> {
-      this.esta3 = reader.result as string;
-    };
+  convertToBase64(url: string, type: string) {
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = () => {
+          const base64data = reader.result as string;
+          if (type === 'Aest1') {
+            this.esta1 = base64data;
+          } else if (type === 'Aest2') {
+            this.esta2 = base64data;
+          } else if (type === 'Aest3'){
+            this.esta3 = base64data;
+          }
+          
+        };
+      });
   }
-}
  ngOnInit(){
   }
 

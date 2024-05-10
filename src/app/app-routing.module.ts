@@ -268,7 +268,22 @@ const routes: Routes = [
     path: 'acre-pro',
     loadChildren: () => import('./pages/acre-pro/acre-pro.module').then( m => m.AcreProPageModule)
   },
-
+  {
+    path: 'soporte56',
+    loadChildren: () => import('./pages/soporte56/soporte56.module').then( m => m.Soporte56PageModule)
+  },
+  {
+    path: 'ayuda57',
+    loadChildren: () => import('./pages/ayuda57/ayuda57.module').then( m => m.Ayuda57PageModule)
+  },
+  {
+    path: 'ini-seg-se',
+    loadChildren: () => import('./pages/ini-seg-se/ini-seg-se.module').then( m => m.IniSegSePageModule)
+  },
+  {
+    path: 'notifi',
+    loadChildren: () => import('./pages/notifi/notifi.module').then( m => m.NotifiPageModule)
+  },
 
 
 

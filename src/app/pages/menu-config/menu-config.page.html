@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <button routerLink="/configuracion-pago" class="config"> Configuracion <div class="signo-menor"></div> </button>
+          <button routerLink="/home" class="config"> Configuracion <div class="signo-menor"></div> </button>
           <button routerLink="/inf-perso" class="menu-con"><img src="assets/images/personal.png" alt=""> Informacion personal <div class="signo-mayor1"></div> </button>
           <button routerLink="/configuracion-pago" class="menu-con"><img src="assets/images/segurity.png" alt=""> Incio y seguridad <div class="signo-mayor2"></div></button>
           <button routerLink="/configuracion-pago" class="menu-con"><img src="assets/images/campana.png" alt=""> Notificaciones <div class="signo-mayor3"></div> </button>
@@ -15,11 +15,11 @@
                 <img src="assets/images/eye.svg" alt="" class="lef">
                 <h1 class="AG"> Apagon General </h1>
               </div>
-              <ion-toggle id="open-modal" expand="block" class="right" [(ngModel)]="switchValue" ></ion-toggle>
+              <ion-toggle id="open-modal_apagongeneral" expand="block" class="right" [(ngModel)]="switchValue" ></ion-toggle>
 
             </div> 
           </buttom>
-            <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]"(ionBackdropTap)="dismissModal()">
+            <ion-modal trigger="open-modal_apagongeneral" [initialBreakpoint]="1" [breakpoints]="[0, 1]"(ionBackdropTap)="dismissModal()">
               <ng-template>
                 <div class="block">
                   <h1 class="title-mo">¿Estás seguro de realizar el Apagón General?</h1>

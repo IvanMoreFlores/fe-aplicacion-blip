@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-nuevo-anu-pone-alq',
@@ -6,24 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nuevo-anu-pone-alq.page.scss'],
 })
 export class NuevoAnuPoneAlqPage implements OnInit {
-  showContent: boolean = false;
 
-  toggleContent() {
-    this.showContent = !this.showContent;
-  }
-
-  accionBoton1() {
-    // Lógica para el botón 1
-    console.log('Botón 1 presionado');
-  }
-
-  accionBoton2() {
-    // Lógica para el botón 2
-    console.log('Botón 2 presionado');
-  }
-  constructor() { }
-
+  constructor(private modalController: ModalController) { }
   ngOnInit() {
+
   }
 
+
+  ionViewWillLeave() {
+    this.dismissModal();
+  }
+
+  dismissModal() {
+    this.modalController.dismiss(null,'open-modal_nuevoanu');
+  }
 }
