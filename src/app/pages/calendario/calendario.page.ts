@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendario',
@@ -9,7 +10,11 @@ export class CalendarioPage implements OnInit {
   isNavbarOpen: boolean = false;
   months: { name: string, days: number[][] }[][] = [];
 
-  constructor() { }
+  constructor( private modalController: ModalController) {} // Inyecta el ModalController
+  async exit() {
+    
+    await this.modalController.dismiss(null,'open-modal-calend-año');
+  }
 
   ngOnInit() {
     this.generateMonths();

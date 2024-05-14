@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendario-semanal',
@@ -12,8 +13,11 @@ export class CalendarioSemanalPage implements OnInit {
   anioActual: number = 0;
   semanas2024: any[] = [];
 
-  constructor() { }
-
+  constructor( private modalController: ModalController) {} // Inyecta el ModalController
+  async retu() {
+    
+    await this.modalController.dismiss(null,"open-modal-calend-sema");
+  }
   ngOnInit() {
     const fechaActual = new Date();
     this.mesActual = this.mesesDelAnio[fechaActual.getMonth()]; // Obtener el nombre del mes actual

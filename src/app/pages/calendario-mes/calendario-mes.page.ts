@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-calendario-mes',
   templateUrl: './calendario-mes.page.html',
@@ -8,7 +8,11 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 export class CalendarioMesPage implements OnInit {
   isNavbarOpen = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef ,  private modalController: ModalController) {} // Inyecta el ModalController
+  async exit() {
+    
+    await this.modalController.dismiss(null,'open-modal-opt-calend');
+  }
 
   ngOnInit() {
     this.generarCalendario(2024, 2025); 

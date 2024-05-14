@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-horario-personalizado',
   templateUrl: './horario-personalizado.page.html',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HorarioPersonalizadoPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController) {} // Inyecta el ModalController
+  async exit() {
+    
+    await this.modalController.dismiss(null,'open-modal-elimnar-horario');
+  }
 
   ngOnInit() {
   }

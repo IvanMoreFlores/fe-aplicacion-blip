@@ -22,6 +22,7 @@ showContentEdit: boolean = false;
 showContentLugares: boolean = false;
 showContentDimension: boolean = false;
 showContentDirec: boolean = false;
+  modalController: any;
 
 toggleContent1() {
   this.showContent1 = !this.showContent1;
@@ -85,7 +86,9 @@ toggleContentDirec() {
       this.textareas.push(''); // Agrega un nuevo textarea vacío al array
     }
   }
-
+  dismissModal() {
+    this.modalController.dismiss(null,'open-modal-tash');
+  }
 
   ngOnInit() {
     this.initSwiper();
