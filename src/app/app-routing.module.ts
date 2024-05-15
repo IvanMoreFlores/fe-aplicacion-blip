@@ -284,8 +284,14 @@ const routes: Routes = [
     path: 'notifi',
     loadChildren: () => import('./pages/notifi/notifi.module').then( m => m.NotifiPageModule)
   },
-
-
+  {
+    path: 'cancelacion-politica',
+    loadChildren: () => import('./pages/cancelacion-politica/cancelacion-politica.module').then( m => m.CancelacionPoliticaPageModule)
+  },
+  {
+    path: 'lds',
+    loadChildren: () => import('./pages/lds/lds.module').then( m => m.LdsPageModule)
+  },
 
 
 ];

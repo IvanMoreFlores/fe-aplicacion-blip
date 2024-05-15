@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Dropzone from 'dropzone';
 
 @Component({
   selector: 'app-lds',
@@ -6,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lds.page.scss'],
 })
 export class LdsPage implements OnInit {
+  ngAfterViewInit() {
+    Dropzone.autoDiscover = false;
+    new Dropzone('#my-dropzone', {
+      url: '/upload', // Cambia esto a tu URL de subida
+      paramName: 'file',
+      maxFilesize: 2, // Tamaño máximo de archivo en MB
+      addRemoveLinks: true
+    });
+  }
 
   constructor() { }
 
