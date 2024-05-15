@@ -1,18 +1,23 @@
 .container {
-    background-color: #79FFAF;
+    background-color: #FFFFFF;
     height: 100%;
     width: 100%;
     display:flex;
 }
 .title{
-    margin: 55px;
+    margin: 40px;
     margin-top: 80px;
     display: flex;
     margin-bottom: 0px;
 }
 .acre{
-    font-family: "Poppins", sans-serif;
-    font-size:30px ;
+    color: #212121;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px; /* 140% */
+    
 }
 .title2{
     
@@ -66,8 +71,8 @@ img{
     position: absolute;
     bottom: 50px;
     right: 50px;
-    border: 1px solid #212121; 
-    background-color: transparent; 
+    border: 1px solid #79FFAF; 
+    background-color: #79FFAF; 
     color: #212121;
     font-size: 16px;
     border-radius: 30px;

@@ -4,18 +4,18 @@
       <div class="inicio">
         <a class="regresar" href="#">
           <div class="left-arrow">
-            <img src="/assets/images/left-arrow.svg" alt="" />
+            <img src="/assets/images/left-arrow.svg" alt="" routerLink="/home"/>
           </div>
           <h1 class="title">Estacionamiento</h1>
         </a>
 
         <div class="grid-small-button">
-          <button class="small-button" id="open-modal1" expand="block">
+          <button class="small-button" id="open-modal-tash" expand="block">
             <img src="/assets/images/trash.svg" alt="" />
           </button>
 
           <ion-modal
-            trigger="open-modal1"
+            trigger="open-modal-tash"
             [initialBreakpoint]="1"
             [breakpoints]="[0, 1]"
           >
@@ -29,7 +29,7 @@
                   <button class="button-eliminar-modal">
                     Eliminar Anuncio
                   </button>
-                  <button>Cancelar</button>
+                  <button (click)="dismissModal">Cancelar</button>
                 </div>
               </div>
             </ng-template>
@@ -703,7 +703,11 @@
 
           <hr />
 
-          <button class="button-personalizar">Personalizar Horarios (0)</button>
+          <button routerLink="/horario-personalizado" class="button-personalizar">
+            Personalizar Horarios (0)
+          </button>
+
+
         </div>
       </div>
 

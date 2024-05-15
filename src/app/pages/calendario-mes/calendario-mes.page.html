@@ -1,5 +1,4 @@
 <ion-content [fullscreen]="true">
-  <div  *ngIf="isNavbarOpen" class="dark-overlay"></div>
   <div class="top-bar">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -8,18 +7,14 @@
           <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
         </button>
           <div class="text-b">Calendario</div>
-          <button class="navbar-toggler shadow" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="/assets/images/calendar-btn.png" alt="Icono de navegación">
-          </button>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <!-- Nuevo contenido dentro del navbar-collapse -->
-            <div class="menu-above">Vista del calendario</div>
+          <button  id="open-modal-opt-calend" class="shadow navbar-toggler" expand="block"><img src="/assets/images/calendar-btn.png" alt=""></button>
+            <ion-modal trigger="open-modal-opt-calend" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <div class="menu-above">Vista del calendario</div>
             <hr class="separator-line">
             <div class="button-container">
-              <button class="custom-btn">      
+              <button (click)="exit()" routerLink="/calendario-semanal" class="custom-btn">      
                 <img src="/assets/images/fi-sr-calendar.png" alt="">         
                 <span class="btn-text">Semana</span>
                 <div class="form-check">
@@ -28,7 +23,7 @@
                   </label>
                 </div>
               </button>
-              <button class="custom-btn">
+              <button (click)="exit()" class="custom-btn">
                 <img src="/assets/images/fi-sr-calendar.png" alt="">
                 <span class="btn-text">Mes</span>
                 <div class="form-check">
@@ -37,7 +32,7 @@
                   </label>
                 </div>
               </button>
-              <button  class="custom-btn">
+              <button (click)="exit()"routerLink="/calendario" class="custom-btn">
                 <img src="/assets/images/fi-sr-calendar.png" alt="">
                 <span class="btn-text">Año</span>
                 <div class="form-check">
@@ -47,7 +42,9 @@
                 </div>
               </button>
           </div>
-          </div>
+                </div>
+              </ng-template>
+            </ion-modal>
         </div>
       </div>
     </nav>
@@ -58,6 +55,8 @@
       <div class="col-12">
         <div class="content">
           <h1 class="title"></h1>
+
+          
           
           <div id="calendar" (click)="highlightDate($event)">
           </div>
@@ -76,7 +75,7 @@
                 <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
               </button>
               <div class="dot"></div>
-              <button routerLink="/panel" class="image-button">
+              <button routerLink="/panel-anfitrion" class="image-button">
                 <img class="num4" src="/assets/images/signal.png" alt="Button 4">
               </button>
             </div>

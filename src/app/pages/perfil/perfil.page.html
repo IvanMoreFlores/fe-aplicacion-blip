@@ -3,7 +3,7 @@
     <div class="pantalla">
       <div class="inicio">
         <div class="left-arrow">
-          <img src="/assets/images/left-arrow.svg" alt=""  routerLink="/confirmacion-de-identidad"/>
+          <img src="/assets/images/left-arrow.svg" alt=""  routerLink="/home"/>
         </div>
         <h3 class="title">Perfil</h3>
       </div>
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="preguntas">
-            <button id="open-modal" expand="block" class="mi-boton"> 
+            <button id="open-modal-algo-ti" expand="block" class="mi-boton"> 
               <div class="padre">
                 <div class="hijo">  
                   <img src="assets/images/sombr.svg" alt="" class="lef">
@@ -44,19 +44,19 @@
                 <img src="assets/images/arribaf.svg" alt="" class="right">
               </div>
             </button> 
-              <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-                <ng-template>
-                  <div class="block">
-                    <h1 class="title-mo">Cuéntanos algo curioso de ti</h1>
-                    <div class="line"></div>
-                    <p class="parraf">Comparte con nosotros algún dato curioso que hayas vivido o sobre ti.</p>
-                    <div class="input-bar">
-                      <ion-textarea class="cun-al" placeholder="Ej. Colecciono figuras de acción de superhéroes desde los 10 años"></ion-textarea>
-                      <button class="save">Guardar Cambios</button>
-                    </div>        
-                  </div>           
-                </ng-template>
-              </ion-modal>
+                <ion-modal trigger="open-modal-algo-ti" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                  <ng-template>
+                    <div class="block">
+                      <h1 class="title-mo">Cuéntanos algo curioso de ti</h1>
+                      <div class="line"></div>
+                      <p class="parraf">Comparte con nosotros algún dato curioso que hayas vivido o sobre ti.</p>
+                      <div class="input-bar">
+                        <ion-textarea class="cun-al" placeholder="Ej. Colecciono figuras de acción de superhéroes desde los 10 años"></ion-textarea>
+                        <button class="save">Guardar Cambios</button>
+                      </div>        
+                    </div>           
+                  </ng-template>
+                </ion-modal>
               <button id="open-modal2" expand="block" class="mi-boton">
                 <div class="padre">
                  <div class="hijo"> 

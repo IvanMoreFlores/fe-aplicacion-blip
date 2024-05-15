@@ -1,5 +1,4 @@
 <ion-content [fullscreen]="true">
-  <div *ngIf="isNavbarOpen" class="dark-overlay"></div>
   <div class="top-bar">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -8,39 +7,44 @@
             <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
           </button>
           <div class="text-b">Calendario</div>
-          <button class="navbar-toggler shadow" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="/assets/images/calendar-btn.png" alt="Icono de navegación">
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <!-- Nuevo contenido dentro del navbar-collapse -->
-            <div class="menu-above">Vista del calendario</div>
+          <button  id="open-modal-calend-sema" class="shadow navbar-toggler" expand="block"><img src="/assets/images/calendar-btn.png" alt=""></button>
+            <ion-modal trigger="open-modal-calend-sema" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <div class="menu-above">Vista del calendario</div>
             <hr class="separator-line">
             <div class="button-container">
-              <button class="custom-btn">               
-                <span class="btn-text">Año</span>
-                <label class="container-1">
-                  <input type="checkbox" checked="checked">
-                  <span class="checkmark"></span>
-                </label>
-              </button>
-              <button routerLink="/calendario-mes" class="custom-btn">
-                <span class="btn-text">Mes</span>
-                <label class="container-1">
-                  <input type="checkbox" checked="checked">
-                  <span class="checkmark"></span>
-                </label>
-              </button>
-              <button class="custom-btn">
+              <button  (click)="retu()" class="custom-btn">      
+                <img src="/assets/images/fi-sr-calendar.png" alt="">         
                 <span class="btn-text">Semana</span>
-                <label class="container-1">
-                  <input type="checkbox" checked="checked">
-                  <span class="checkmark"></span>
-                </label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                  <label class="form-check-label" for="flexRadioDefault1">
+                  </label>
+                </div>
+              </button>
+              <button  (click)="retu()" routerLink="/calendario-mes" class="custom-btn">
+                <img src="/assets/images/fi-sr-calendar.png" alt="">
+                <span class="btn-text">Mes</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                  </label>
+                </div>
+              </button>
+              <button (click)="retu()" routerLink="/calendario" class="custom-btn">
+                <img src="/assets/images/fi-sr-calendar.png" alt="">
+                <span class="btn-text">Año</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault3">
+                  </label>
+                </div>
               </button>
             </div>
-          </div>
+                </div>
+              </ng-template>
+            </ion-modal>
         </div>
       </div>
     </nav>
@@ -73,7 +77,7 @@
                 <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
               </button>
               <div class="dot"></div>
-              <button class="image-button">
+              <button routerLink="/panel-anfitrion" class="image-button">
                 <img class="num4" src="/assets/images/signal.png" alt="Button 4">
               </button>
             </div>

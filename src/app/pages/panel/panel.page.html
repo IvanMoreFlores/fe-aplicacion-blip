@@ -7,6 +7,18 @@
             <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
           </button>
           <div class="text-b">Panel de Anfitrión</div>
+          
+          <!-- Nuevo código agregado -->
+          
+          
+            <button  id="open-modal" class="shadow navbar-toggler" expand="block"><img src="/assets/images/btn-punto.png" alt=""></button>
+            <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">Block of Content</div>
+              </ng-template>
+            </ion-modal>
+          
+          
         </div>
       </div>
     </nav>
@@ -17,61 +29,9 @@
       <div class="col-12">
         <div class="content">
           <h1 class="title"></h1>
-          <div class="boton-panel">
-            <button class="btn-custom">Oportunidades</button>
-            <button class="btn-custom-inverse">Datos</button>
-            <h2 class="subtitle">Recomendaciones para <br> alquilar ahora </h2>
-        </div>
-
-        <div class="nuevo-div">
-          <button class="btn-nuevo"> <img class="white" src="/assets/images/Rectangle.png" alt=""></button>
-          <div class="texto-enlace">
-            <p class="texto">Elije la política de cancelación más adecuada para ti</p>
-            <a href="#" class="enlace">Más información</a>
-            <img src="/assets/images/Vector-1.png" alt="">
-          </div>
-        </div>
-
-        <div class="nuevo-div">
-          <button class="btn-nuevo"><img class="white" src="/assets/images/Rectangle.png" alt=""></button>
-          <div class="texto-enlace">
-            <p class="texto">¿Cómo simplificar el proceso de check-in?</p>
-            <a href="#" class="enlace">Más información</a>
-            <img src="/assets/images/Vector-1.png" alt="">
-          </div>
-        </div>
-
-        <div class="nuevo-div">
-          <button class="btn-nuevo"><img class="white" src="/assets/images/Rectangle.png" alt=""></button>
-          <div class="texto-enlace">
-            <p class="texto">Recomendaciones para tener buenas reseñas</p>
-            <a href="#" class="enlace">Más información</a>
-            <img src="/assets/images/Vector-1.png" alt="">
-          </div>
-        </div>
-        
-        <div class="menu-black">
-          <div class="image-buttons">
-            <button routerLink="/home" class="image-button">
-              <img class="num1" src="/assets/images/home.png" alt="Button 1">
-            </button>
-            <button routerLink="/mensajes" class="image-button">
-              <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
-            </button>
-            <button routerLink="/calendario-mes" class="image-button">
-              <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
-            </button>
-            <button class="image-button-4">
-              <img class="num4" src="/assets/images/signal.png" alt="Button 4">
-            </button>
-            <div class="dot"></div>
-          </div>
-        </div>
-        
-        
-
-
-
+          
+          
+          
         </div>
       </div>
     </div>

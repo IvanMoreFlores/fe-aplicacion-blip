@@ -108,7 +108,7 @@ const routes: Routes = [
   },
   {
     path: 'mensajes-archivados-desarchivar',
-    loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
+    loadChildren: () => import('./pages/mensajes-archivados-desarchivar/mensajes-archivados-desarchivar.module').then( m => m.MensajesArchivadosDesarchivarPageModule)
   },
   {
     path: 'mensajes-destacados',
@@ -235,11 +235,55 @@ const routes: Routes = [
    {
     path: 'ubicacion',
     loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
-  },  {
+  },
+  {
     path: 'horario-personalizado',
     loadChildren: () => import('./pages/horario-personalizado/horario-personalizado.module').then( m => m.HorarioPersonalizadoPageModule)
-  }
-
+  },
+   {
+    path: 'panel-anfitrion',
+    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
+  },
+  {
+    path: 'panel',
+    loadChildren: () => import('./pages/panel/panel.module').then( m => m.PanelPageModule)
+  },
+  {
+    path: 'inf-perso',
+    loadChildren: () => import('./pages/inf-perso/inf-perso.module').then( m => m.InfPersoPageModule)
+  },
+  {
+    path: 'pressed',
+    loadChildren: () => import('./pages/pressed/pressed.module').then( m => m.PressedPageModule)
+  },
+  {
+    path: 'pressed-chat',
+    loadChildren: () => import('./pages/pressed-chat/pressed-chat.module').then( m => m.PressedChatPageModule)
+  },
+  {
+    path: 'pressed-chat-component',
+    loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
+  },
+  {
+    path: 'acre-pro',
+    loadChildren: () => import('./pages/acre-pro/acre-pro.module').then( m => m.AcreProPageModule)
+  },
+  {
+    path: 'soporte56',
+    loadChildren: () => import('./pages/soporte56/soporte56.module').then( m => m.Soporte56PageModule)
+  },
+  {
+    path: 'ayuda57',
+    loadChildren: () => import('./pages/ayuda57/ayuda57.module').then( m => m.Ayuda57PageModule)
+  },
+  {
+    path: 'ini-seg-se',
+    loadChildren: () => import('./pages/ini-seg-se/ini-seg-se.module').then( m => m.IniSegSePageModule)
+  },
+  {
+    path: 'notifi',
+    loadChildren: () => import('./pages/notifi/notifi.module').then( m => m.NotifiPageModule)
+  },
 
 
 

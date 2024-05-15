@@ -1,5 +1,4 @@
 <ion-content [fullscreen]="true">
-  <div  *ngIf="isNavbarOpen" class="dark-overlay"></div>
   <div class="top-bar">
     <div class="overlay"></div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -10,23 +9,19 @@
         </button>
         <div class="text-b">Laura<br> <span style="font-size: 10px; font-weight: 500;">Tiempo de respuesta: 5 horas</span></div>
         
-          <button class="navbar-toggler shadow" type="button" (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="/assets/images/btn-punto.png" alt="Icono de navegación">
-          </button>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <!-- Nuevo contenido dentro del navbar-collapse -->
-            <div class="menu-above">Filtrar mensajes</div>
+        <button  id="open-modal" class="shadow navbar-toggler" expand="block"><img src="/assets/images/btn-punto.png" alt=""></button>
+        <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+          <ng-template>
+            <div class="block">
+              <div class="menu-above">Más Opciones</div>
             <hr class="separator-line">
             <div class="button-container">
               <button class="custom-btn">
-                <img src="/assets/images/envelope-ban.png" alt="">
+                <img src="/assets/images/eye-1.png" alt="">
                 <span class="btn-text">Marcar como no leído</span>         
               </button>
               <button class="custom-btn">
-                <img src="/assets/images/star.png" alt=""> 
+                <img src="/assets/images/star-1.png" alt=""> 
                 <span class="btn-text">Destacar Mensaje</span>              
               </button>
               <button class="custom-btn">
@@ -34,7 +29,9 @@
                 <span class="btn-text">Archivar</span>               
               </button>         
           </div>
-          </div>
+            </div>
+          </ng-template>
+        </ion-modal>
         </div>
       </div>
     </nav>

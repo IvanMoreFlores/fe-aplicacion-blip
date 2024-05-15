@@ -4,7 +4,7 @@
       <div class="inicio">
         <a class="regresar" href="#">
           <div class="left-arrow">
-            <img src="/assets/images/left-arrow.svg" alt="" />
+            <img src="/assets/images/left-arrow.svg" alt="" routerLink="/anuncio-caracteristicas" />
           </div>
         </a>
       </div>
@@ -24,14 +24,14 @@
 
       <!-- ------------------------------HORARIO PERSONALIZADO CONTENEDOR------------------------------ -->
       <div class="horario-personalizado-container">
-        <button class="cross" id="open-modal1">
+        <button class="cross" id="open-modal-elimnar-horario">
           <img src="/assets/images/cross.png" alt="" />
         </button>
 
           <!-- START MODAL -->
 
           <ion-modal
-          trigger="open-modal1"
+          trigger="open-modal-elimnar-horario"
           [initialBreakpoint]="1"
           [breakpoints]="[0, 1]"
         >
@@ -45,7 +45,7 @@
                 <button class="button-eliminar-modal">
                   Eliminar Horario
                 </button>
-                <button>Cancelar</button>
+                <button (click)="exit()">Cancelar</button>
               </div>
             </div>
           </ng-template>

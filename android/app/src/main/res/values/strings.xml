@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">bliphostfrontend</string>
+    <string name="title_activity_main">bliphostfrontend</string>
+    <string name="package_name">host.blip.pe</string>
+    <string name="custom_url_scheme">host.blip.pe</string>
+</resources>
