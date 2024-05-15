@@ -179,181 +179,285 @@
             <img src="/assets/images/upload.svg" alt="" />
           </div>
         </div>
+
         <div class="descripcion">
+          <!-- ----------------------------------OPEN MODAL 1---------------------------------- -->
           <h3>Descripción</h3>
           <p>
             Estacionamiento en cochera privada cómodo y seguro para disfrutar de
             tus actividades diarias.
           </p>
-          <div class="enlace">
-            <p class="tex-pagina">
-              <a class="servicios" routerLink=""
-                >Editar descripción
-                <img src="/assets/images/right-arrow.svg" alt="" />
-              </a>
-            </p>
-          </div>
-          <div *ngIf="showContentEdit" class="pop-edit">
-            <h1 class="cabecera1">Edita tu descripción</h1>
-            <div class="linea"></div>
-            <div class="form-descrip">
-              <div class="descrip">Descripción de Espacio</div>
-              <div class="false-txtSdescrip">
-                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">
-  Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
-                  </textarea
-                >
-              </div>
-            </div>
-            <button class="btn-guardar">Guardar Cambios</button>
-          </div>
+          <a class="servicios" id="open-modal-descripcion">
+            Editar descripción
+            <img src="/assets/images/right-arrow.svg" alt="" />
+          </a>
 
+          <ion-modal
+            trigger="open-modal-descripcion"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+          >
+            <ng-template>
+              <div class="modal-descripcion">
+                <h1>Edita tu descripción</h1>
+
+                <hr />
+
+                <div class="button-container-modal">
+                  <div class="form-regla">
+                    <div class="num-regla">Descripción de Espacio</div>
+                    <div class="false-textarea1">
+                      <textarea
+                        placeholder="Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias."
+                      ></textarea>
+                    </div>
+                  </div>
+                  <button>Guardar Cambios</button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+
+          <!-- ----------------------------------OPEN MODAL 2---------------------------------- -->
           <h3>¿Qué lugares están cerca?</h3>
-          <div class="enlace">
-            <p class="tex-pagina">
-              <a class="servicios" routerLink=""
-                >Agregar lugares
-                <img src="/assets/images/right-arrow.svg" alt="" />
-              </a>
-            </p>
-          </div>
-          <div *ngIf="showContentLugares" class="pop-lugares">
-            <h1 class="cabecera1">Agregar Lugares</h1>
-            <div class="linea"></div>
-            <div class="form-descrip">
-              <div class="descrip">Agrega Lugares Cerca</div>
-              <div class="false-txtSdescrip">
-                <textarea [style.min-height]="getPlaceholderHeight()" rows="4">
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
-                  </textarea
-                >
+          <a class="servicios" id="open-modal-lugares">
+            Agregar lugares
+            <img src="/assets/images/right-arrow.svg" alt="" />
+          </a>
+
+          <ion-modal
+            trigger="open-modal-lugares"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+          >
+            <ng-template>
+              <div class="modal-lugares">
+                <h1>Agregar Lugares</h1>
+
+                <hr />
+
+                <div class="button-container-modal">
+                  <div class="form-regla">
+                    <div class="num-regla">Agregar Lugares Cerca</div>
+                    <div class="false-textarea">
+                      <textarea
+                        placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sapiente est sed!"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <button>Guardar Cambios</button>
+                </div>
               </div>
-              <div *ngIf="showContentEdit" class="darken-background"></div>
-              <div *ngIf="showContentEdit" class="pop-edit">
-                <h1 class="cabecera1">Edita tu descripción</h1>
-                <div class="linea"></div>
-                <div class="form-descrip">
-                  <div class="descrip">Descripción de Espacio</div>
-                  <div class="false-txtSdescrip">
-                    <textarea
-                      [style.min-height]="getPlaceholderHeight()"
-                      rows="4"
+            </ng-template>
+          </ion-modal>
+
+          <!-- ----------------------------------OPEN MODAL 3---------------------------------- -->
+          <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
+          <p>
+            2.10 m de Ancho<br />
+            5 m de Largo<br />
+            2.10 de Altura<br />
+          </p>
+          <a class="servicios" id="open-modal-dimensiones">
+            Editar dimensiones
+            <img src="/assets/images/right-arrow.svg" alt="" />
+          </a>
+
+          <ion-modal
+            trigger="open-modal-dimensiones"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+          >
+            <ng-template>
+              <div class="modal-dimensiones">
+                <h1>Editar dimensiones</h1>
+
+                <hr />
+
+                <div class="button-container-modal">
+                  <div class="form-regla">
+                    <label class="num-regla">Medida (Ancho x Largo)</label>
+                    <input class="false-textarea" placeholder="2.5 m x 5 m" />
+                  </div>
+                  <div class="form-regla">
+                    <label class="num-regla"
+                      >Altura (en caso sea techado)</label
                     >
-  Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.
-                      </textarea
-                    >
+                    <input class="false-textarea" placeholder="2.1 m" />
+                  </div>
+                  <button>Guardar Cambios</button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+
+          <!-- ----------------------------------OPEN MODAL 4---------------------------------- -->
+          <h3>¿Qué servicios también ofreces?</h3>
+          <ul class="lista-servicios">
+            <li>
+              <img src="/assets/images/shop-icon.svg" alt="" />
+              <span>Autoboutique</span>
+            </li>
+
+            <li>
+              <img src="/assets/images/eye-icon.svg" alt="" />
+              <span>Sistema de vigilancia</span>
+            </li>
+
+            <li>
+              <img src="/assets/images/layers-icon.svg" alt="" />
+              <span>Techado</span>
+            </li>
+          </ul>
+
+          <a class="servicios" id="open-modal-servicios">
+            Editar servicios
+            <img src="/assets/images/right-arrow.svg" alt="" />
+          </a>
+
+          <ion-modal
+            trigger="open-modal-servicios"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+          >
+            <ng-template>
+              <div class="modal-servicios">
+                <h1>Edita tus servicios</h1>
+
+                <hr />
+
+                <div class="block2-container">
+                  <div class="checkbox-anuncio-container">
+                    <div class="checkbox-anuncio">
+                      <label for="checkbox">
+                        <div>
+                          <img src="/assets/images/user-icon2.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Servicios Higiénicos</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                        />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/shop-icon2.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Autoboutique</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          class="checkbox-round"
+                        />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/car-icon2.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Lavado de Auto</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          class="checkbox-round"
+                        />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/eye-icon2.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Sistema de vigilancia</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          class="checkbox-round"
+                        />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/shopcart-icon.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Tienda</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          class="checkbox-round"
+                        />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/layers-icon2.svg" alt="icono" />
+                          <span class="checkbox-text"
+                            >Techado</span
+                          >
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          class="checkbox-round"
+                        />
+                      </label>
+                    </div>
+
+                    <button>Guardar Cambios</button>
+
                   </div>
                 </div>
-                <button class="btn-guardar">Guardar Cambios</button>
               </div>
+            </ng-template>
+          </ion-modal>
 
-              <h3>¿Qué lugares están cerca?</h3>
-              <div class="enlace">
-                <p class="tex-pagina">
-                  <a class="servicios" (click)="toggleContentLugares()"
-                    >Agregar lugares
-                    <img src="/assets/images/right-arrow.svg" alt="" />
-                  </a>
-                </p>
-              </div>
-              <div *ngIf="showContentLugares" class="darken-background"></div>
-              <div *ngIf="showContentLugares" class="pop-lugares">
-                <h1 class="cabecera1">Agregar Lugares</h1>
-                <div class="linea"></div>
-                <div class="form-descrip">
-                  <div class="descrip">Agrega Lugares Cerca</div>
-                  <div class="false-txtSdescrip">
-                    <textarea
-                      [style.min-height]="getPlaceholderHeight()"
-                      rows="4"
-                    >
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's sta Ipsum has been the indu Ipsum has been the indu
-                      </textarea
-                    >
+          <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
+          <h3>Ubicación</h3>
+          <p>Av. Alfredo Mendiola 3698</p>
+          <a class="servicios" id="open-modal-dirección">
+            Editar dirección
+            <img src="/assets/images/right-arrow.svg" alt="" />
+          </a>
+
+          <ion-modal
+            trigger="open-modal-dirección"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+          >
+            <ng-template>
+              <div class="block">
+                <h1>Editar dirección</h1>
+
+                <hr />
+
+                <div class="button-container-modal">
+                  <div class="form-regla">
+                    <label class="num-regla">Direccion</label>
+                    <input
+                      class="false-textarea"
+                      placeholder="Av. Alfredo Mendiola 3698"
+                    />
                   </div>
+                  <button>Guardar Cambios</button>
                 </div>
-                <button class="btn-guardar">Guardar Cambios</button>
               </div>
-
-              <!---->
-              <!---->
-              <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
-              <p>2.10 m de Ancho</p>
-              <p>5 m de Largo</p>
-              <p>2.10 de Altura</p>
-              <div class="enlace">
-                <p class="tex-pagina">
-                  <a class="servicios" (click)="toggleContentDimension()"
-                    >Editar dimensiones
-                    <img src="/assets/images/right-arrow.svg" alt="" />
-                  </a>
-                </p>
-              </div>
-              <div *ngIf="showContentDimension" class="darken-background"></div>
-              <div *ngIf="showContentDimension" class="pop-dimension">
-                <h1 class="cabecera1">Editar dimensiones</h1>
-                <div class="linea"></div>
-                <div class="input1">
-                  <ion-label class="lblmedida"
-                    >Medida (Ancho x Largo)</ion-label
-                  >
-                  <ion-input class="txtmedida"></ion-input>
-                </div>
-                <div class="input2">
-                  <ion-label class="lblaltura"
-                    >Altura (en caso sea techado)</ion-label
-                  >
-                  <ion-input class="txtaltura"></ion-input>
-                </div>
-                <button class="btn-guardar">Guardar Cambios</button>
-              </div>
-
-              <h3>¿Qué servicios también ofreces?</h3>
-              <div class="txtservicio">
-                <img src="/assets/images/tienda.svg" alt="" />
-                <p>Autoboutique</p>
-              </div>
-
-              <div class="txtservicio">
-                <img src="/assets/images/ojo.svg" alt="" />
-                <p>Sistema de vigilancia</p>
-              </div>
-
-              <div class="txtservicio">
-                <img src="/assets/images/capas.svg" alt="" />
-                <p>Techado</p>
-              </div>
-              <div class="enlace">
-                <p class="tex-pagina">
-                  <a class="servicios" routerLink=""
-                    >Editar servicios
-                    <img src="/assets/images/right-arrow.svg" alt="" />
-                  </a>
-                </p>
-              </div>
-
-              <h3>Ubicación</h3>
-              <p>Av. Alfredo Mendiola 3698</p>
-              <div class="enlace">
-                <p class="tex-pagina">
-                  <a class="servicios" (click)="toggleContentDirec()"
-                    >Editar dirección
-                    <img src="/assets/images/right-arrow.svg" alt="" />
-                  </a>
-                </p>
-              </div>
-              <div *ngIf="showContentDirec" class="darken-background"></div>
-              <div *ngIf="showContentDirec" class="pop-direccion">
-                <h1 class="cabecera1">Editar dirección</h1>
-                <div class="linea"></div>
-                <div class="input3">
-                  <ion-label class="lbldireccion">Dirección</ion-label>
-                  <ion-input class="txtdireccion"></ion-input>
-                </div>
-                <button class="btn-guardar">Guardar Cambios</button>
-              </div>
-            </div>
-          </div>
+            </ng-template>
+          </ion-modal>
         </div>
       </div>
       <!--                 -----REGLAS-----              -->
@@ -554,7 +658,7 @@
             <ion-toggle justify="space-between">
               <div class="toggle-info">
                 Horas restringidas
-                <img src="/assets/images/icon-info2.svg" alt="">
+                <img src="/assets/images/icon-info2.svg" alt="" />
               </div>
             </ion-toggle>
           </ion-item>
@@ -597,13 +701,9 @@
             </div>
           </div>
 
-          <hr>
+          <hr />
 
-          <button class="button-personalizar">
-            Personalizar Horarios (0)
-          </button>
-
-
+          <button class="button-personalizar">Personalizar Horarios (0)</button>
         </div>
       </div>
 
