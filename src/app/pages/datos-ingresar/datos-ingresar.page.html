@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <div class="centro">
+            <h1 class="title">Ingrese su documento de Identidad</h1>
+          </div>
+          
+          <div class="input-bar">
+            <p class="label-text">Tipo de Documento</p>
+            <select>
+              <option value="dni">DNI</option>
+              <option value="pasaporte">Pasaporte</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="input-bar">
+            <p class="label-text">Nro. de Documento</p>
+            <input type="text" placeholder="">
+          </div>
+
+
+          <button routerLink="/datos-registro" class="more-info-btn">Atrás</button>
+          <button routerLink="/datos-numero" class="next-btn">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

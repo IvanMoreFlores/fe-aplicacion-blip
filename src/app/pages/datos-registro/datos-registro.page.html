@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <div class="centro">
+            <h1 class="title">Hola, ingresa tus datos de registro</h1>
+          </div>  
+          <div class="input-bar">
+            <p class="label-text">Nombre Completo</p>
+            <input type="text" placeholder="Ingresa tu nombre">
+          </div> 
+
+          <div class="input-bar">
+            <p class="label-text">Apellidos</p>
+            <input type="text" placeholder="Costa Jimenez">
+          </div>
+          <div class="input-bar-f">
+            <img class="calendar" src="/assets/images/fi-calendar.png" alt="">
+            <p class="label-text">Fecha de Nacimiento</p>
+            <input type="date" placeholder="Selecciona tu fecha de nacimiento">
+          </div>
+
+          <div class="input-bar-g">
+            <p class="label-text">Género</p>
+            <select>
+              <option value="femenino">Femenino</option>
+              <option value="masculino">Masculino</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          
+          <button routerLink="/terminos-y-condiciones" class="more-info-btn">Atrás</button>
+          <button routerLink="/datos-ingresar" class="next-btn">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

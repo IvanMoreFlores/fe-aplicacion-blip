@@ -7,13 +7,41 @@
           <h2 class="subtitle">Te pedimos que te comprometas con lo siguiente:</h2>
           <p class="description">Acepto tratar a todos en la comunidad de Blip con respeto y sin prejuicios, sin importar la raza, religión, nacionalidad, etnia, color de piel, sexo, discapacidad, identidad de género, orientación sexual o edad.</p>
           <button routerLink="/terminos-y-condiciones-mas-informacion" class="more-info-btn subrayado">Ver Términos y Condiciones</button>
-          <button routerLink="/terminos-y-condiciones-empezar" class="next-btn" [disabled]="!isChecked" [ngClass]="{ 'disabled-btn': !isChecked }">Siguiente</button>
+          <!-- inicio -->
+          <button  id="back-log" class="more-info-btn2" expand="block">
+            Atras
+          </button>
+          <ion-modal trigger="back-log" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block">
+                <div class="menu-above">Estas seguro que quieres empezar desde el inicio?</div>
+                <hr class="separator-line">
+                <div class="center-content">
+                  <button class="BE33">
+                    <p (click)="dismissModal()" class="text34" routerLink="/login">Si</p>
+                  </button>
+                </div>
+                <div class="center-content37">
+                  <button class="BC38">
+                    <p (click)="dismissModal()" class="text39">Cancelar</p>
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+            <!-- fin -->
+             
+            <!-- Botón "Siguiente" -->
+          <button routerLink="/datos-registro" class="next-btn" [disabled]="!isChecked" [ngClass]="{ 'disabled-btn': !isChecked }">Siguiente</button>
+
+          <!-- Checkbox de aceptar términos y condiciones -->
           <div class="custom-checkbox" (click)="toggleCheckbox()">
             <div class="checkbox-icon" [ngClass]="{'checked': isChecked}">
               <ion-icon name="checkmark"></ion-icon>
             </div>
             <div class="checkbox-label"><h3 class="tamano">Acepto los términos y condiciones</h3> </div>
           </div>
+  
         </div>
       </div>
     </div>

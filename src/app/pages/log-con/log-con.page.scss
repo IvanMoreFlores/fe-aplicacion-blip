@@ -1,0 +1,86 @@
+ion-content{
+    --background: #FFFFFF;
+    .inicio{
+        height: 100vh;
+        padding: 50px;
+        h1{
+            margin-top: 50px;
+            width: 100%;
+            font-size: 30px;
+            font-family: Poppinsmedium;
+            margin-bottom: 20px;
+        }
+        p{
+            width: 100%;
+            font-size: 16px;
+            font-family: Poppins;
+        }
+        .input-bar {
+            position: relative;
+            padding: 15px 20px;
+            display: flex;
+            border: 1px solid #212121;
+            height: 56px;
+            border-radius: 30px;
+            justify-content: center;
+            align-items: center;
+            margin-block: 40px;
+            color: #212121;
+            input[type="text"] {
+                flex: 1;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                font-size: 16px;
+              font-family: "Poppins", sans-serif;
+            }
+        }
+        .btn-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 400px;
+        }
+        .btn-atr{
+            border: 1px solid #212121;
+            border-radius: 20px;
+            padding-inline: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-radius: 30px;
+            width: 40%;
+            background-color: #FFFFFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .btn-sig.disabled {
+            border: 1px solid #C8C5CA;
+            border-radius: 20px;
+            padding-inline: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-radius: 30px;
+            width: 40%;
+            background-color: #FFFFFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: not-allowed;
+          }
+          
+        .btn-sig.enabled {
+            border: 1px solid #79FFAF;
+            border-radius: 20px;
+            width: 140px;
+            height: 40px;
+            background-color: #79FFAF;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+
+
+    }
+}

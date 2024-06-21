@@ -291,7 +291,59 @@ const routes: Routes = [
   {
     path: 'lds',
     loadChildren: () => import('./pages/lds/lds.module').then( m => m.LdsPageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'ing-cor',
+    loadChildren: () => import('./pages/ing-cor/ing-cor.module').then( m => m.IngCorPageModule)
+  },
+  {
+    path: 'recu-cuen',
+    loadChildren: () => import('./pages/recu-cuen/recu-cuen.module').then( m => m.RecuCuenPageModule)
+  },
+  {
+    path: 'log-con',
+    loadChildren: () => import('./pages/log-con/log-con.module').then( m => m.LogConPageModule)
+  },
+  {
+    path: 'log-bin',
+    loadChildren: () => import('./pages/log-bin/log-bin.module').then( m => m.LogBinPageModule)
+  },
+  {
+    path: 'olv-con',
+    loadChildren: () => import('./pages/olv-con/olv-con.module').then( m => m.OlvConPageModule)
+  },
+  {
+    path: 'otp',
+    loadChildren: () => import('./pages/otp/otp.module').then( m => m.OtpPageModule)
+  },
+  {
+    path: 'datos-registro',
+    loadChildren: () => import('./pages/datos-registro/datos-registro.module').then( m => m.DatosRegistroPageModule)
+  },
+  {
+    path: 'datos-ingresar',
+    loadChildren: () => import('./pages/datos-ingresar/datos-ingresar.module').then( m => m.DatosIngresarPageModule)
+  },
+  {
+    path: 'datos-verificacion',
+    loadChildren: () => import('./pages/datos-verificacion/datos-verificacion.module').then( m => m.DatosVerificacionPageModule)
+  },
+  {
+    path: 'datos-numero',
+    loadChildren: () => import('./pages/datos-numero/datos-numero.module').then( m => m.DatosNumeroPageModule)
+  },
+  {
+    path: 'datos-creacion-contra',
+    loadChildren: () => import('./pages/datos-creacion-contra/datos-creacion-contra.module').then( m => m.DatosCreacionContraPageModule)
+  },
+
 
 
 ];

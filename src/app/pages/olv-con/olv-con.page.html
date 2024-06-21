@@ -1,0 +1,68 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">    
+          <div class="inicio">
+            <h1>Hola de nuevo,
+              Camila</h1>
+            <h3>Ingresa el código de 4 dígitos enviado a: <span class="d2a">{{ displayedText2 }}</span>  </h3>
+            <div class="code-inputs">
+              <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+              <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+              <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+              <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+            </div>
+            
+            <button [ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+              {{ buttonText }}
+              <div class="TIME">
+                {{ minutes }}:{{ seconds | number: '2.0' }}
+              </div>
+            </button>
+            <ion-toast
+            trigger="open-toast"
+            [duration]="3000"
+            message="Código enviado satisfactoriamente."
+            class="custom-toast"
+            
+            position="top"
+            ></ion-toast>
+
+            <button routerLink="/otp" id="mas-opc" class="ini-con">He cambiado de correo
+            </button>
+            <!-- <ion-modal
+            trigger="mas-opc"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+            >
+            <ng-template>
+              <div class="PART">
+                <h1 class="mad">Más opciones</h1>
+                <div class="line"></div>
+                <div class="button-container">
+                  <button class="custom-button password-button">
+                    <img src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
+                    Contraseña
+                  </button>
+                  <button class="custom-button google-button">
+                    <img src="assets/images/GLE.svg" alt="Contraseña" class="button-icon">
+                    Google
+                  </button>
+                  <button class="custom-button cancel-button">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal> -->
+            <div class="bnt-dow">
+              <button routerLink="/log-bin" class="bac">Atrás</button>
+              <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

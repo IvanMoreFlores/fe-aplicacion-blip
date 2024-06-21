@@ -1,0 +1,111 @@
+.container {
+    background-color: #FFFFFF;
+    height: 100%;
+}
+  
+* {
+    color: #212121;
+}
+  
+.content {
+    width: 80%;
+    margin: 80px auto 0px;
+    display: block;
+}
+  
+.centro {
+    display: flex;
+    align-items: center;
+}
+  
+.title {
+    font-size: 30px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+}
+  
+.description {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    margin-block: 20px;
+}
+  
+.label-text {
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    background-color: #FFFFFF;
+    padding: 0 10px;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    color: #212121;
+}
+  
+.input-bar {
+    position: relative;
+    padding: 15px 20px;
+    display: flex;
+    border: 1px solid #212121;
+    height: 56px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-block: 40px;
+    color: #212121;
+  
+    .phone-prefix {
+      padding: 0px 10px 0px 0px;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+      color: #212121;
+      font-weight: 500;
+    }
+  
+    input[type="tel"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+    }
+}
+  
+.more-info-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    border: 1px solid #212121;
+    background-color: #FFFFFF;
+    color: #212121;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 150px;
+    height: 45px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+  
+.more-info-btn:hover {
+    background-color: #363636;
+}
+  
+.next-btn {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    border: 1px solid #79FFAF;
+    background-color: #79FFAF;
+    color: #212121;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 150px;
+    height: 45px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+  
+.next-btn:hover {
+    background-color: rgba(163, 163, 163, 0.2);
+}
+  

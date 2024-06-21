@@ -1,0 +1,140 @@
+ion-content{
+    --background: #FFFFFF;
+
+    .wrapper{
+        height: 100vh;
+        padding: 50px;
+
+        .login{
+            h3{
+                margin: 0px;
+                margin-bottom: 30px;
+                font-family: PoppinsMedium;
+                font-size: 31px;
+            }
+
+            .phone-selection{
+                position: relative;
+                border-radius: 25px;
+                border: 1px solid rgba(121, 116, 126, 1);
+
+                .country-select{
+                    position: relative;
+                    display: inline-block;
+                    width: 40%;
+                    padding: 5px 20px;
+                    border-radius: 25px;
+                    background-color: rgba(100, 212, 145, 0.4);
+                    border: 1px solid rgba(100, 212, 145, 0.4);
+
+                    .flag{
+                        margin-top: 5px;
+                        width: 30px;
+                    }
+
+                    .dropdown{
+                        position: absolute;
+                        right: 15px;
+                        top: 12px;
+                    }
+                }
+
+                .phone-input{
+                    position: absolute;
+                    top: 15px;
+                    display: inline-block;
+                    width: 60%;
+
+                    input{
+                        font-family: PoppinsRegular;
+                        font-size: 14px;
+                        border: unset;
+                        background-color: transparent;
+                        text-align: center;
+                        width: 90%;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+
+            .continue{
+                width: 100%;
+                margin-top: 20px;                
+                
+                button{
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    font-family: PoppinsSemiBold;
+                    font-size: 14px;
+                    padding: 15px 40px;
+                    border-radius: 25px;
+                    background-color: #212121;
+                    color: #FFF;
+                    border: 1px solid #212121;
+                }
+            }
+        }
+
+        .separator{
+            margin: 30px 0px;
+        }
+
+        .social-signin{
+            div{
+                a{
+                    position: relative;
+                    width: 100%;
+                    display: block;
+                    text-align: center;                                
+                    padding: 15px 40px;
+                    height: 50px;
+                    border-radius: 25px;
+                    background-color: #FFF;
+                    color: #212121;
+                    border: 1px solid rgba(224, 224, 233, 1);
+                    margin-bottom: 20px;
+
+                    img{
+                        position: absolute;
+                        left: 50px;
+                    }
+
+                    span{
+                        position: absolute;
+                        left: 70px;
+                        font-family: PoppinsMedium;
+                        font-size: 14px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+
+        .signup{
+            margin: 30px 0px;
+
+            p{
+                text-align: center;
+                font-family: PoppinsRegular;
+                font-size: 13px;
+
+                a{
+                    color: #212121;
+                }
+            }
+        }
+
+        .terms-and-conditions{
+            p{
+                text-align: justify;
+                font-family: PoppinsMedium;
+                font-size: 10px;
+
+                a{
+                    color: #212121;
+                }
+            }
+        }
+    }
+}
