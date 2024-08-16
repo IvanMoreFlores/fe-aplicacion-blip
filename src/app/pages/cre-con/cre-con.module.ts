@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LdsPageRoutingModule } from './lds-routing.module';
+import { CreConPageRoutingModule } from './cre-con-routing.module';
 
-import { LdsPage } from './lds.page';
+import { CreConPage } from './cre-con.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LdsPageRoutingModule
+    CreConPageRoutingModule
   ],
-  declarations: [LdsPage],
-
+  declarations: [CreConPage]
 })
-export class LdsPageModule {}
+export class CreConPageModule {}

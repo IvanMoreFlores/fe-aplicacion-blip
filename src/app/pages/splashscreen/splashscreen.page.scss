@@ -1,0 +1,36 @@
+ion-content{
+    --background: #212121;
+
+    .wrapper{
+        height: 100vh;
+        padding: 0px 70px;
+
+        .animated-circle{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-color: #71EEA3;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transition-duration: 2s;
+            transition-property: all;
+            transition-timing-function: ease-in-out;            
+        }
+
+        .animated-circle.run{
+            width: 2000px;
+            height: 2000px;
+            top: -500px;
+            left: -800px;
+        }
+
+        .logo{
+            position: absolute;
+            width: 300px;
+            display: inline-block;
+            top: 33%;
+            display: none;
+        }
+    }
+}

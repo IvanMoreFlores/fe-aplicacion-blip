@@ -9,7 +9,7 @@ ion-content{
             h3{
                 margin: 0px;
                 margin-bottom: 30px;
-                font-family: PoppinsMedium;
+                font-family: 'Poppins Medium', sans-serif;
                 font-size: 31px;
             }
 
@@ -46,7 +46,8 @@ ion-content{
                     width: 60%;
 
                     input{
-                        font-family: PoppinsRegular;
+                        font-family: 'Poppins', sans-serif;
+                        font-weight: 400; /* Regular */
                         font-size: 14px;
                         border: unset;
                         background-color: transparent;
@@ -65,7 +66,7 @@ ion-content{
                     width: 100%;
                     display: block;
                     text-align: center;
-                    font-family: PoppinsSemiBold;
+                    font-family: 'Poppins SemiBold', sans-serif;
                     font-size: 14px;
                     padding: 15px 40px;
                     border-radius: 25px;
@@ -103,7 +104,7 @@ ion-content{
                     span{
                         position: absolute;
                         left: 70px;
-                        font-family: PoppinsMedium;
+                        font-family: 'Poppins Medium', sans-serif;
                         font-size: 14px;
                         margin-left: 10px;
                     }
@@ -116,7 +117,8 @@ ion-content{
 
             p{
                 text-align: center;
-                font-family: PoppinsRegular;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 400; /* Regular */
                 font-size: 13px;
 
                 a{
@@ -128,7 +130,7 @@ ion-content{
         .terms-and-conditions{
             p{
                 text-align: justify;
-                font-family: PoppinsMedium;
+                font-family: 'Poppins Medium', sans-serif;
                 font-size: 10px;
 
                 a{

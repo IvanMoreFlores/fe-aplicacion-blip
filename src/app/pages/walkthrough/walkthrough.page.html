@@ -1,0 +1,46 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div class="animation">
+      <img src="/assets/images/auto-animation 200x66.png" alt="">
+      <div class="overlay-x">
+        <div class="close-button" routerLink="/login">
+          <span>x</span>
+        </div>        
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="swiper-pagination"></div>
+        <div class="card-content">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <h3>Publica tu cochera en minutos.</h3>
+                <p>Crea un anuncio de tu espacio de estacionamiento en pocos pasos y comienza a recibir reservas.</p>
+              </div>
+              <div class="swiper-slide">
+                <h3>Conecta y aumenta tus ingresos.</h3>
+                <p>Conecta con conductores que buscan estacionamiento y recibe notificaciones cuando alguien reserva tu cochera.</p>
+              </div>
+              <div class="swiper-slide">
+                <h3>Administra tus reservas con facilidad.</h3>
+                <p>Controla la disponibilidad, resuelve consultas y asegura una experiencia positiva desde una sola plataforma.</p>  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-buttons">
+          <button 
+            [disabled]="!isButtonEnabled"
+            [ngClass]="{ 'disabled-btn': !isButtonEnabled, 'enabled-btn': isButtonEnabled }" 
+            class="next-btn"
+            routerLink="/login"
+          >
+            Comenzar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

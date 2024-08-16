@@ -85,7 +85,7 @@ ion-content{
                 display: flex;
                 justify-content: space-between;
                 .bac{
-                    border: 1px solid black;
+                    border: 1px solid #212121;
                     background-color: #FFFFFF;
                     padding-inline: 10px;
                     padding-top: 15px;
@@ -125,3 +125,9 @@ ion-content{
     }
 
 }
+.custom-toast {
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.25),  /* Medium shadow */
+    0px 16px 40px rgba(0, 0, 0, 0.4); /* Stronger and darker shadow */
+
+  }
+  

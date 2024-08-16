@@ -343,6 +343,18 @@ const routes: Routes = [
     path: 'datos-creacion-contra',
     loadChildren: () => import('./pages/datos-creacion-contra/datos-creacion-contra.module').then( m => m.DatosCreacionContraPageModule)
   },
+  {
+    path: 'splashscreen',
+    loadChildren: () => import('./pages/splashscreen/splashscreen.module').then( m => m.SplashscreenPageModule)
+  },
+  {
+    path: 'walkthrough',
+    loadChildren: () => import('./pages/walkthrough/walkthrough.module').then( m => m.WalkthroughPageModule)
+  },
+  {
+    path: 'cre-con',
+    loadChildren: () => import('./pages/cre-con/cre-con.module').then( m => m.CreConPageModule)
+  },
 
 
 

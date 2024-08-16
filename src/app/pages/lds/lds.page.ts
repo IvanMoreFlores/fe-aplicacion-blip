@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Dropzone from 'dropzone';
 
 @Component({
@@ -7,17 +7,25 @@ import Dropzone from 'dropzone';
   styleUrls: ['./lds.page.scss'],
 })
 export class LdsPage implements OnInit {
+  @ViewChild('sliderContainer') sliderContainer!: ElementRef;
+  currentSlide = 0;
+
+  constructor() {}
+
   ngAfterViewInit() {
-    Dropzone.autoDiscover = false;
-    new Dropzone('#my-dropzone', {
-      url: '/upload', // Cambia esto a tu URL de subida
-      paramName: 'file',
-      maxFilesize: 2, // Tamaño máximo de archivo en MB
-      addRemoveLinks: true
-    });
+    this.updateSliderPosition();
   }
 
-  constructor() { }
+  goToSlide(index: number) {
+    const slideWidth = this.sliderContainer.nativeElement.querySelector('.slide').offsetWidth;
+    this.sliderContainer.nativeElement.querySelector('.slider').style.transform = `translateX(-${slideWidth * index}px)`;
+    this.currentSlide = index;
+  }
+
+  private updateSliderPosition() {
+    const slideWidth = this.sliderContainer.nativeElement.querySelector('.slide').offsetWidth;
+    this.sliderContainer.nativeElement.querySelector('.slider').style.transform = `translateX(-${slideWidth * this.currentSlide}px)`;
+  }
 
   ngOnInit() {
   }

@@ -1,12 +1,40 @@
-.circular-button {
-    width: 100px; /* Ancho del botón */
-    height: 100px; /* Altura del botón */
-    border-radius: 50%; /* Hace que el botón sea circular */
-    font-size: 16px; /* Tamaño de la fuente */
-    font-weight: bold; /* Peso de la fuente */
-  }
-  
-  .circular-button.active {
-    border-width: 3px; /* Grosor del borde cuando el botón está activo */
-    border-color: black; /* Color del borde cuando el botón está activo */
-  }
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333;
+}

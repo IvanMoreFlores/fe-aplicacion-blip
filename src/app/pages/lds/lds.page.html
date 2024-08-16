@@ -1,17 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>App</ion-title>
+    <ion-title>Custom Slider</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <ion-button id="open-modal" expand="block">Open Sheet Modal</ion-button>
 
-  <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-    <ng-template>
-      <div class="block">Block of Content</div>
-      <h1>jlkasjlkasjlkasmnm </h1>
-      <p>kasj mnnx mk,n </p>
-    </ng-template>
-  </ion-modal>
-  <form id="my-dropzone" class="dropzone"></form>
+<ion-content>
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide">Slide 1</div>
+      <div class="slide">Slide 2</div>
+      <div class="slide">Slide 3</div>
+    </div>
+    <div class="pagination">
+      <div class="dot" (click)="goToSlide(0)" [class.active]="currentSlide === 0"></div>
+      <div class="dot" (click)="goToSlide(1)" [class.active]="currentSlide === 1"></div>
+      <div class="dot" (click)="goToSlide(2)" [class.active]="currentSlide === 2"></div>
+    </div>
+  </div>
 </ion-content>
