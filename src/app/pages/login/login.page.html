@@ -1,40 +1,46 @@
 <ion-content [fullscreen]="true">
   <div class="wrapper">
     <div class="login">
-      <h3>Ingresa tu número<br>de teléfono</h3>
+      <h3>Ingresa tu número de teléfono para continuar</h3>
       <div class="phone-selection">
-        <div class="country-select">
-          <img class="flag" src="/assets/images/login/peru.png" alt="">
-          <img class="dropdown" src="/assets/images/login/dropdown.png" alt="">
-        </div>
-        <div class="phone-input">
-          <input type="text" value="+51 933 439 760" class="masked">
-        </div>        
+        <div class="prub">
+          <div class="country-select">
+            <img class="flag" src="/assets/images/login/peru.png" alt="">
+          </div>
+          <div class="phone-input">
+            <input   type="text"
+            placeholder="+51 933 439 760"
+            class="masked"
+            pattern="[0-9]*"
+            maxlength="9">
+          </div>
+       </div>        
       </div>
       <div class="continue">
         <button routerLink="/registro">Continuar</button>
       </div>
     </div>
-    <div class="separator">
-      <img src="/assets/images/login/divider.png" alt="">
-    </div>
     <div class="social-signin">
-      <div class="facebook">
-        <a>
-          <img src="/assets/images/login/facebook.png" alt="">
-          <span>Ingresar con Facebook</span>
-        </a>
-      </div>
       <div class="google">
         <a>
           <img src="/assets/images/login/google.png" alt="">
           <span>Ingresar con Google</span>
         </a>
       </div>
+      <div class="facebook">
+        <a>
+          <img src="/assets/images/login/facebook.png" alt="">
+          <span>Ingresar con Facebook</span>
+        </a>
+      </div>
+
+      <div class="separator">
+        <img src="/assets/images/login/divider.png" alt="">
+      </div>
       <div routerLink="/log-con" class="email">
-        <a href="">
+        <a>
           <img src="/assets/images/login/email.png" alt="">
-          <span>Ingresar con Correo</span>
+          <span>Iniciar sesión con contraseña</span>
         </a>
       </div>
     </div>

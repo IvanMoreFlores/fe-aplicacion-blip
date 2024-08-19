@@ -7,50 +7,51 @@ ion-content{
 
         .login{
             h3{
+                padding-top: 50px;
                 margin: 0px;
                 margin-bottom: 30px;
                 font-family: 'Poppins Medium', sans-serif;
                 font-size: 31px;
             }
-
+            .prub{
+                display: flex;
+            }
             .phone-selection{
-                position: relative;
-                border-radius: 25px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                border-radius: 40px;
                 border: 1px solid rgba(121, 116, 126, 1);
 
                 .country-select{
                     position: relative;
                     display: inline-block;
-                    width: 40%;
-                    padding: 5px 20px;
-                    border-radius: 25px;
+
+                    padding: 13px 25px;
+                    border-radius: 37px;
                     background-color: rgba(100, 212, 145, 0.4);
                     border: 1px solid rgba(100, 212, 145, 0.4);
 
                     .flag{
-                        margin-top: 5px;
                         width: 30px;
-                    }
-
-                    .dropdown{
-                        position: absolute;
-                        right: 15px;
-                        top: 12px;
                     }
                 }
 
                 .phone-input{
-                    position: absolute;
-                    top: 15px;
-                    display: inline-block;
-                    width: 60%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 70%;
+
 
                     input{
                         font-family: 'Poppins', sans-serif;
                         font-weight: 400; /* Regular */
-                        font-size: 14px;
+                        font-size: 20px;    
                         border: unset;
                         background-color: transparent;
+
                         text-align: center;
                         width: 90%;
                         letter-spacing: 1px;
@@ -60,16 +61,17 @@ ion-content{
 
             .continue{
                 width: 100%;
-                margin-top: 20px;                
+                margin-top: 20px;  
+                margin-bottom: 20px;              
                 
                 button{
                     width: 100%;
                     display: block;
                     text-align: center;
                     font-family: 'Poppins SemiBold', sans-serif;
-                    font-size: 14px;
-                    padding: 15px 40px;
-                    border-radius: 25px;
+                    font-size: 16px;
+                    padding: 20px 40px;
+                    border-radius: 30px;
                     background-color: #212121;
                     color: #FFF;
                     border: 1px solid #212121;
@@ -78,39 +80,43 @@ ion-content{
         }
 
         .separator{
-            margin: 30px 0px;
+            margin: 20px auto ;
+            img{
+                width: 100%;
+            }
         }
 
-        .social-signin{
-            div{
-                a{
-                    position: relative;
+        .social-signin {
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                
+                a {
+                    display: flex;
+                    justify-content: center; /* Centra horizontalmente la imagen y el texto */
+                    align-items: center; /* Alinea verticalmente */
                     width: 100%;
-                    display: block;
-                    text-align: center;                                
-                    padding: 15px 40px;
-                    height: 50px;
-                    border-radius: 25px;
+                    padding: 18px 40px;
+                    border-radius: 30px;
                     background-color: #FFF;
                     color: #212121;
-                    border: 1px solid rgba(224, 224, 233, 1);
+                    border: 1px solid #E0E0E9;
                     margin-bottom: 20px;
+                    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
 
-                    img{
-                        position: absolute;
-                        left: 50px;
-                    }
-
-                    span{
-                        position: absolute;
-                        left: 70px;
+                    span {
                         font-family: 'Poppins Medium', sans-serif;
                         font-size: 14px;
-                        margin-left: 10px;
+                        text-align: center; /* Asegura que el texto esté centrado en su contenedor */
+                        width: 100%; /* Asegura que ocupe todo el ancho disponible */
                     }
                 }
             }
+            
         }
+        
 
         .signup{
             margin: 30px 0px;
