@@ -4,8 +4,7 @@
     <div class="login">
       
       <h1>
-        Ingresa el código de 
-4-digitos enviado al número *** *** 739
+        Ingresa el código de 4-digitos enviado al número *** *** 739
       </h1>
       <h1 class="LA" routerLink="/ing-cor">He cambiado mi número de teléfono</h1>
       <div class="code-inputs">
@@ -15,35 +14,28 @@
         <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
       </div>
       
-      <button id="open-toast"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+      <button id="open-toast2" [ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
         {{ buttonText }}
         <div class="TIME">
           {{ minutes }}:{{ seconds | number: '2.0' }}
         </div>
       </button>
       <ion-toast
-      trigger="open-toast"
+      trigger="open-toast2"
       [duration]="3000"
       message="Código enviado satisfactoriamente."
       class="custom-toast"
       
       position="top"
       ></ion-toast>
-      <!-- 
-<ion-toast
-      trigger="open-toast"
-      [duration]="3000"
-      message="Hello Styled World!"
-      class="custom-toast"
-      [buttons]="toastButtons"  ESTE MISMO  ES PARA DARLE A BOTONES 
-      position="top"
-      ></ion-toast> 
---> 
+    </div>
+    <footer class="footer-btn">
       <div class="bnt-dow">
         <button routerLink="/olv-con" class="bac">Atrás</button>
         <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
       </div> 
+    </footer>
 
-    </div>
+
   </div>
 </ion-content>

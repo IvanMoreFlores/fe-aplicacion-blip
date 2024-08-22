@@ -39,14 +39,17 @@
               </div>
             </ng-template>
           </ion-modal>
-            <div class="btn-container">
-              <button class="btn-atr" routerLink="/registro">Atrás</button>
-              <button  class="btn-sig" [disabled]="!isEmailValid"  [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="btn-container">
+        <button class="btn-atr" routerLink="/log-con">Atrás</button>
+        <button  class="btn-sig" [disabled]="!isEmailValid"  [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
+      </div>
+    </footer>
   </div>
   
 </ion-content>

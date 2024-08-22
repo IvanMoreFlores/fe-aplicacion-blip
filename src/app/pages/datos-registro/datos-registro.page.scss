@@ -1,6 +1,19 @@
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .container {
-    background-color: #FFFFFF;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 50px;
+  background-color: #FFFFFF;
   }
   
   * {
@@ -8,8 +21,8 @@
   }
   
   .content {
-    width: 80%;
-    margin: 80px auto 0px;
+    width: 100%;
+    margin-top: 50PX;
     display: block;
   }
   
@@ -22,6 +35,7 @@
     font-size: 30px;
     line-height: 42px;
     font-family: "Poppins", sans-serif;
+    margin: 0px;
   }
   
   .input-bar {
@@ -132,37 +146,38 @@
       background-position: right 30px center;
     }
   }
-  
+
   
   .more-info-btn {
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    border: 1px solid #212121;
-    background-color: #FFFFFF;
-    color: #212121;
-    font-size: 16px;
     border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 600;
+    border: 1px solid black;
+    background-color: #FFFFFF;
+    padding-inline: 10px;
+    color: #212121;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 40%;
     font-family: "Poppins", sans-serif;
+    font-weight: 600;
   }
   
   .next-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
     border: 1px solid #79FFAF;
     background-color: #79FFAF;
-    color: #212121;
-    font-size: 16px;
+    padding-inline: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-radius: 30px;
-    width: 150px;
-    height: 45px;
+    width: 40%;
     font-weight: 600;
+    color: #212121;
     font-family: "Poppins", sans-serif;
   }
-  
+.bnt-dow{
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+} 
   
   

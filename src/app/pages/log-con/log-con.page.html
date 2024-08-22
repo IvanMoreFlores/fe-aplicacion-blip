@@ -1,21 +1,23 @@
 <ion-content [fullscreen]="true">
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">    
-          <div class="inicio">
-            <h1>Ingresa tu dirección de Email</h1>
-            <div class="input-bar">
-              <input type="text" placeholder="name@example.com" [(ngModel)]="email2" (ngModelChange)="onEmailChange()">
-            </div> 
-
-            <div class="btn-container">
-              <button class="btn-atr" routerLink="/registro">Atrás</button>
-              <button class="btn-sig" [disabled]="!isEmailValid" (click)="goToDisplayPage()" [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
-            </div>
-          </div>
-        </div>
+    
+    <!-- Contenido principal -->
+    <div class="main-content">
+      <h1>Ingresa tu dirección de Email</h1>
+      
+      <!-- Campo de entrada -->
+      <div class="input-bar">
+        <input type="text" placeholder="name@example.com" [(ngModel)]="email2" (ngModelChange)="onEmailChange()">
       </div>
     </div>
+
+    <!-- Footer siempre en la parte inferior -->
+    <footer class="footer-btn">
+      <div class="btn-container">
+        <button class="btn-atr" routerLink="/login">Atrás</button>
+        <button class="btn-sig" [disabled]="!isEmailValid" (click)="goToDisplayPage()" [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
+      </div>
+    </footer>
+
   </div>
 </ion-content>

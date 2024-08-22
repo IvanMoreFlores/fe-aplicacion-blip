@@ -8,9 +8,14 @@
           <p class="description">Acepto tratar a todos en la comunidad de Blip con respeto y sin prejuicios, sin importar la raza, religión, nacionalidad, etnia, color de piel, sexo, discapacidad, identidad de género, orientación sexual o edad.</p>
           <button routerLink="/terminos-y-condiciones-mas-informacion" class="more-info-btn subrayado">Ver Términos y Condiciones</button>
           <!-- inicio -->
-          <button  id="back-log" class="more-info-btn2" expand="block">
-            Atras
-          </button>
+
+            <!-- Checkbox de aceptar términos y condiciones -->
+            <div class="custom-checkbox" (click)="toggleCheckbox()">
+              <div class="checkbox-icon" [ngClass]="{'checked': isChecked}">
+                <ion-icon name="checkmark"></ion-icon>
+              </div>
+              <div class="checkbox-label"><h3 class="tamano">Acepto los términos y condiciones</h3> </div>
+            </div>
           <ion-modal trigger="back-log" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
             <ng-template>
               <div class="block">
@@ -32,18 +37,16 @@
             <!-- fin -->
              
             <!-- Botón "Siguiente" -->
-          <button routerLink="/datos-registro" class="next-btn" [disabled]="!isChecked" [ngClass]="{ 'disabled-btn': !isChecked }">Siguiente</button>
 
-          <!-- Checkbox de aceptar términos y condiciones -->
-          <div class="custom-checkbox" (click)="toggleCheckbox()">
-            <div class="checkbox-icon" [ngClass]="{'checked': isChecked}">
-              <ion-icon name="checkmark"></ion-icon>
-            </div>
-            <div class="checkbox-label"><h3 class="tamano">Acepto los términos y condiciones</h3> </div>
-          </div>
-  
         </div>
+
       </div>
+    </div>
+    <div class="bnt-dow">
+      <button  id="back-log" class="more-info-btn2" expand="block">
+        Atrás
+      </button>
+      <button routerLink="/datos-registro" class="next-btn" [disabled]="!isChecked" [ngClass]="{ 'disabled-btn': !isChecked }">Siguiente</button>
     </div>
   </div>
 </ion-content>

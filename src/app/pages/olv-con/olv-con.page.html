@@ -14,7 +14,7 @@
               <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
             </div>
             
-            <button [ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+            <button  id="open-toast" [ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
               {{ buttonText }}
               <div class="TIME">
                 {{ minutes }}:{{ seconds | number: '2.0' }}
@@ -56,13 +56,15 @@
               </div>
             </ng-template>
           </ion-modal> -->
-            <div class="bnt-dow">
-              <button routerLink="/log-bin" class="bac">Atrás</button>
-              <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
-            </div> 
           </div>
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button routerLink="/log-bin" class="bac">Atrás</button>
+        <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
+      </div> 
+    </footer>
   </div>
 </ion-content>

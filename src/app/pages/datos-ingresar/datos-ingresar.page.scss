@@ -40,6 +40,46 @@
     font-family: "Poppins", sans-serif;
     color: #212121;
 }
+.input-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .label-text {
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  
+  .custom-select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .custom-select select {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* Espacio para la flecha */
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    appearance: none; /* Quita el estilo por defecto del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  .custom-select::after {
+    content: "\25BC"; /* Código Unicode de la flecha hacia abajo */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none; /* No permite hacer clic en la flecha */
+    font-size: 16px;
+    color: #333;
+  }
   
 .input-bar {
     position: relative;
@@ -48,8 +88,7 @@
     border: 1px solid #212121;
     height: 56px;
     border-radius: 30px;
-    justify-content: center;
-    align-items: center;
+
     margin-block: 40px;
     color: #212121;
   
