@@ -14,7 +14,7 @@ ion-content{
         padding: 50px;
         h1{
             margin-top: 50px;
-            width: 100%;
+            width: 200px;
             font-size: 30px;
             font-family: 'Poppins medium';
             margin-bottom: 20px;
@@ -105,6 +105,7 @@ ion-content{
                 padding-top: 15px;
                 padding-bottom: 15px;
                 border-radius: 30px;
+                font-size: 15px;
                 width: 40%;
                 font-weight: 600;
                 color: #212121;
@@ -118,6 +119,7 @@ ion-content{
                 color: #C8C5CA;
                 padding-top: 15px;
                 padding-bottom: 15px;
+                font-size: 15px;
                 width: 40%;
                 font-family: "Poppins", sans-serif;
                 font-weight: 600;
@@ -125,11 +127,13 @@ ion-content{
             .all-inputs-filled {
                 background-color: #79FFAF; /* Cambia el color del botón cuando todos los campos están llenos */
                 color: #212121;
+                font-size: 15px;
                 border: #79FFAF;
             }
             .all-inputs-filled {
                 background-color: #79FFAF; /* Cambia el color del botón cuando todos los campos están llenos */
                 color: #212121;
+                font-size: 15px;
                 border: #79FFAF;
             }
         }
@@ -143,7 +147,7 @@ ion-modal {
 }
 .PART{
     width: 100%;
-    height: 395px;
+    padding-bottom: 50px;
 }
 .line{
     width: 100%;
@@ -196,8 +200,24 @@ ion-modal {
   }
   .cancel-button {
     justify-content: center; /* Centrar el contenido del botón de cancelar */
-    background: #79FFAF;
+    background: #212121;
     border-width: 0;
-    font-family: "Poppins", sans-serif;
+    color: #FFFFFF;
+text-align: center;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 180%; /* 28.8px */
     padding-left: 0; /* Eliminar el padding izquierdo para centrar el texto */
   }
+  .custom-toast {
+    --background: #FFFFFF; /* Color de fondo */
+    --color: #212121; /* Color del texto */
+    border-radius: 8px; /* Bordes redondeados opcional */
+}
+
+/* Si hay un contenedor adicional */
+.custom-toast .toast-message {
+    padding: 10px; /* Espaciado interno opcional */
+}

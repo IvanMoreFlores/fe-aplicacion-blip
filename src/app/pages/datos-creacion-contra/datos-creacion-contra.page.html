@@ -9,13 +9,13 @@
           <p class="description">Incorporar 1 mayúscula y 1 carácter especial brinda mayor seguridad.</p>
           <div class="input-bar">
             <p class="label-text">Contraseña</p>
-            <ion-input [type]="passwordType"placeholder="Ingresa tu contraseña"   [(ngModel)]="password"></ion-input>
+            <ion-input [type]="passwordType"placeholder="Ingresa tu contraseña" maxlength="16"  [(ngModel)]="password"></ion-input>
             <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
           </div>
 
           <div class="input-bar">
             <p class="label-text">Confirmar Contraseña</p>
-            <ion-input [type]="passwordType2"placeholder="Confirma tu contraseña"  [(ngModel)]="password2"></ion-input> <!--2do  passwordType2 ,ngModal -->
+            <ion-input [type]="passwordType2"placeholder="Confirma tu contraseña" maxlength="16" [(ngModel)]="password2"></ion-input> <!--2do  passwordType2 ,ngModal -->
             <ion-icon [name]="passwordIcon2" slot="end" (click)="togglePasswordVisibility2()"></ion-icon>               <!--2do  passwordIcon2 ,togglePasswordVisibi -->
           </div>
           <!-- <div class="input-bar">
@@ -25,10 +25,15 @@
             <img class="ins" src="/assets/images/fi-eye.png" alt="" *ngIf="passwordType === 'text'" (click)="togglePasswordVisibility()">
           </div> -->
 
-          <button routerLink="/datos-verificacion" class="more-info-btn">Atrás</button>
-          <button routerLink="/cre-con" class="next-btn">Siguiente</button>
+
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button routerLink="/datos-verificacion" class="more-info-btn">Atrás</button>
+        <button routerLink="/cre-con" class="next-btn">Siguiente</button>
+      </div> 
+    </footer>
   </div>
 </ion-content>

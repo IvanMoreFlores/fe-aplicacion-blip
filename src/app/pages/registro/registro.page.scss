@@ -21,7 +21,7 @@ ion-content{
                 margin-bottom: 20px;
                 font-family: Poppins;
                 font-size: 31px;
-                width: 70%;
+                width: 200px;
             }
             p{
                 font-family: Poppins;
@@ -106,6 +106,7 @@ ion-content{
                 padding-bottom: 15px;
                 border-radius: 30px;
                 width: 40%;
+                font-size: 15px;
                 font-weight: 600;
                 color: #212121;
                 font-family: "Poppins", sans-serif;
@@ -118,6 +119,7 @@ ion-content{
                 color: #C8C5CA;
                 padding-top: 15px;
                 padding-bottom: 15px;
+                font-size: 15px;
                 width: 40%;
                 font-family: "Poppins", sans-serif;
                 font-weight: 600;
@@ -131,6 +133,7 @@ ion-content{
             .all-inputs-filled {
                 background-color: #79FFAF; /* Cambia el color del botón cuando todos los campos están llenos */
                 color: #212121;
+                font-size: 15px;
                 border: #79FFAF;
             }
         }
@@ -138,9 +141,15 @@ ion-content{
     }
 
 }
+/* Aplica un fondo específico al ion-toast */
 .custom-toast {
-    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.25),  /* Medium shadow */
-    0px 16px 40px rgba(0, 0, 0, 0.4); /* Stronger and darker shadow */
+    --background: #FFFFFF; /* Color de fondo */
+    --color: #212121; /* Color del texto */
+    border-radius: 8px; /* Bordes redondeados opcional */
+}
 
-  }
-  
+/* Si hay un contenedor adicional */
+.custom-toast .toast-message {
+    padding: 10px; /* Espaciado interno opcional */
+}
+

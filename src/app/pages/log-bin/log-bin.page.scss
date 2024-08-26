@@ -61,7 +61,7 @@ ion-content{
             width: 40%;
             background-color: #FFFFFF;
             font-family: "Poppins", sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
         }
         .btn-sig.disabled {
@@ -74,7 +74,7 @@ ion-content{
             width: 40%;
             background-color: #FFFFFF;
             font-family: "Poppins", sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             cursor: not-allowed;
           }
@@ -87,7 +87,7 @@ ion-content{
             padding-bottom: 15px;
             border-radius: 30px;
             width: 40%;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             background-color: #79FFAF;
             font-family: "Poppins", sans-serif;
@@ -186,8 +186,9 @@ ion-modal {
   }
   .cancel-button {
     justify-content: center; /* Centrar el contenido del botón de cancelar */
-    background: #79FFAF;
+    background: #212121;
     border-width: 0;
+    color: #FFFFFF;
     font-family: "Poppins", sans-serif;
     padding-left: 0; /* Eliminar el padding izquierdo para centrar el texto */
   }

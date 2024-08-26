@@ -11,51 +11,53 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   styleUrls: ['./presentacion.page.scss'],
 })
 export class PresentacionPage implements OnInit {
-  dniFront: string = '';
-  dniBack: string = '';
-
   slideOpts = {
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 400,
     slidesPerView: 1,
-    loop: true,
+    loop: false,
   };
+
+  isButtonEnabled: boolean = false;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      console.log(params);
-
-      this.dniFront = params['dnifront'];
-      this.dniBack = params['dniback'];
-
-      console.log('DNI FRONT:', this.dniFront);
-      console.log('DNI BACK:', this.dniBack);
-      this.initSwiper();
-    });
+    this.iniciarSwiper();
   }
 
-  initSwiper() {
-    const mySwiper = new Swiper('.swiper-container', {
-      // Configuración de Swiper
+  iniciarSwiper() {
+    // Inicializar el slider de texto (superior) con interacción deshabilitada
+    const swiperText = new Swiper('.swiper-text', {
       slidesPerView: 1,
       spaceBetween: 0,
+      loop: false,
       pagination: {
         el: '.swiper-pagination',
+        clickable: true,
       },
+      allowTouchMove: false, // Deshabilitar la interacción del usuario
     });
 
-    mySwiper.on('slideChange', () => {
-      const tercerSlide = mySwiper.activeIndex === 2; // Comprueba si estamos en el tercer slide
-      const button = document.querySelector('.next-btn') as HTMLElement; // Selecciona el botón "Comenzar"
+    // Inicializar el slider principal (inferior)
+    const swiperMain = new Swiper('.swiper-main', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      resistance: false, // Deshabilitar la resistencia para evitar el rebote
+      resistanceRatio: 0, // Asegura que no haya ningún rebote
+    });
 
-      if (tercerSlide) {
-        button.style.backgroundColor = '#212121'; // Cambia el color del botón a rojo si estamos en el tercer slide
-        button.style.color = 'white';
-      } else {
-        button.style.backgroundColor = ''; // Restablece el color del botón si no estamos en el tercer slide
-      }
+    // Conectar el slider inferior (swiperMain) con el superior (swiperText)
+    swiperMain.controller.control = swiperText;
+
+    // Habilitar el botón en el tercer slide del slider inferior
+    swiperMain.on('slideChange', () => {
+      this.isButtonEnabled = swiperMain.activeIndex === 2;
     });
   }
 }

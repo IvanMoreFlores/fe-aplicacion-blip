@@ -4,8 +4,8 @@
       <div class="col-12">
         <div class="content">    
           <div class="inicio">
-            <h1>Hola de nuevo,
-              Camila</h1>
+            <h1>Bienvenida,
+              de nuevo!</h1>
             <h3>Ingresa el código de 4 dígitos enviado a: <span class="d2a">{{ displayedText }}</span>  </h3>
             <div class="code-inputs">
               <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
@@ -14,15 +14,15 @@
               <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
             </div>
             
-            <button id="open-toast"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+            <button id="cuenta"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
               {{ buttonText }}
               <div class="TIME">
                 {{ minutes }}:{{ seconds | number: '2.0' }}
               </div>
             </button>
             <ion-toast
-            trigger="open-toast"
-            [duration]="3000"
+            trigger="cuenta"
+            [duration]="9000"
             message="Código enviado satisfactoriamente."
             class="custom-toast"
             
@@ -35,6 +35,7 @@
             trigger="mas-opc"
             [initialBreakpoint]="1"
             [breakpoints]="[0, 1]"
+            mode="ios"
             >
             <ng-template>
               <div class="PART">

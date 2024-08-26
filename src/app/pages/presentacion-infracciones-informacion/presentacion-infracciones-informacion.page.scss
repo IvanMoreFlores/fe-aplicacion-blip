@@ -1,58 +1,82 @@
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
-* {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 40px;
+  }
+.col-12{
+  padding: 0px;
 }
-
-
-
-.pantalla {
-  background-color: white;
-  padding: 20% 10% 5% 10%;
-  width: 100%;
-  min-height: 100%; /* Esto hace que el div ocupe el 100% de la altura de la pantalla */
-  color: #212121;
-}
-
-.texto{
-    font-size: 15px;
-    font-weight: 400;
-    margin-bottom: 20px;
-}
-
-.texto-principal{
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-.title{
-    margin-bottom: 30px;
-    font-size: 35px;
+.title {
+    font-size: 30px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 50px auto 20px;
+    display: block;
     font-weight: 600;
+    width: 79%;
 }
 
+.description {
+    font-size: 15px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin: 20px auto;
+    display: block;
+    width: 80%;
+    font-weight: 300;
+}
+.description2 {
+  font-size: 15px;
+  line-height: 23px;
+  font-family: "Poppins", sans-serif;
+  margin: 0px auto;
+  display: block;
+  width: 80%;
+  font-weight: 400;
+}
+.tamano{
+    font-size: 15px;
+    line-height: 23px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    display: block;
+}
+.bnt-dow{
+  padding-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
 .regresar{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #212121;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    margin-top: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #212121;
+  cursor: pointer;
+  overflow: hidden;
+
 }
 
 .regresar img{
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
+
+  object-fit: contain;
+}
+.scrollbar{
+    overflow: auto;
+    max-height: 550px;
 }

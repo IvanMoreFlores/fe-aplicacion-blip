@@ -42,9 +42,11 @@ ion-content{
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 70%;
-
-
+                    width: 60%;
+                    .phone-prefix{
+                        padding-left: 20px;
+                        font-size: 20px;
+                    }
                     input{
                         font-family: 'Poppins', sans-serif;
                         font-weight: 400; /* Regular */

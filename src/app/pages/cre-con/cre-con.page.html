@@ -1,16 +1,15 @@
-<ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <div class="centro">
-            <h1 class="title">Crea tu contraseña de 6 dígitos.</h1>
-          </div>
-
-          <button routerLink="/datos-verificacion" class="more-info-btn">Atrás</button>
-          <button routerLink="/presentacion" class="next-btn">Siguiente</button>
+<ion-content class="ion-padding">
+  <ion-grid class="centered-grid">
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <div class="checkmark-container">
+          <div class="checkmark"></div>
         </div>
-      </div>
-    </div>
-  </div>
+        <h2 class="ti">¡Tu Cuenta está Lista!</h2>
+        <p class="sub">Gracias por registrarte en BLIP.</p>
+        <p class="par">Explora estacionamientos y reserva tus espacios favoritos.</p>
+        <button routerLink="/lds" expand="block" fill="outline">Iniciar Sesión</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

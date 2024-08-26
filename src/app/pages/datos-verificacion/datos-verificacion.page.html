@@ -7,10 +7,10 @@
       <p class="description">Ingresa el código de 4 dígitos enviado al número <a class="n">+51 923 092 610.</a></p>
       
       <div class="code-inputs">
-        <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input1" type="number" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input2" type="number" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input3" type="number" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input4" type="number" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
       </div>
       
       <button id="open-toast5"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
@@ -37,11 +37,14 @@
       position="top"
       ></ion-toast> 
 --> 
+
+
+    </div>
+    <footer class="footer-btn">
       <div class="bnt-dow">
         <button routerLink="/datos-numero" class="bac">Atrás</button>
         <button routerLink="/datos-creacion-contra" [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
       </div> 
-
-    </div>
+    </footer>
   </div>
 </ion-content>

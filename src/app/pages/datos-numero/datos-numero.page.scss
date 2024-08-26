@@ -1,17 +1,20 @@
-.container {
-    background-color: #FFFFFF;
+ion-content {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-}
-  
-* {
-    color: #212121;
-}
-  
-.content {
-    width: 80%;
-    margin: 80px auto 0px;
-    display: block;
-}
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 50px;
+    background-color: #FFFFFF;
+    }
   
 .centro {
     display: flex;
@@ -19,6 +22,7 @@
 }
   
 .title {
+    margin-top: 50px;
     font-size: 30px;
     line-height: 42px;
     font-family: "Poppins", sans-serif;
@@ -61,7 +65,7 @@
       font-weight: 500;
     }
   
-    input[type="tel"] {
+    input[type="number"] {
       flex: 1;
       border: none;
       outline: none;
@@ -72,40 +76,35 @@
 }
   
 .more-info-btn {
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    border: 1px solid #212121;
-    background-color: #FFFFFF;
-    color: #212121;
-    font-size: 16px;
     border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 600;
+    border: 1px solid black;
+    background-color: #FFFFFF;
+    padding-inline: 10px;
+    color: #212121;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 40%;
+    font-size: 15px;
     font-family: "Poppins", sans-serif;
+    font-weight: 600;
   }
   
-.more-info-btn:hover {
-    background-color: #363636;
-}
-  
-.next-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
+  .next-btn {
     border: 1px solid #79FFAF;
     background-color: #79FFAF;
-    color: #212121;
-    font-size: 16px;
+    padding-inline: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-radius: 30px;
-    width: 150px;
-    height: 45px;
+    font-size: 15px;
+    width: 40%;
     font-weight: 600;
+    color: #212121;
     font-family: "Poppins", sans-serif;
-}
-  
-.next-btn:hover {
-    background-color: rgba(163, 163, 163, 0.2);
-}
-  
+  }
+  .bnt-dow{
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  } 
