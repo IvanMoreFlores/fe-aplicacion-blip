@@ -1,0 +1,51 @@
+ion-tab-bar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px; /* Esto es opcional para limitar el ancho máximo */
+    --border: none;
+    --background: #ffffff;
+    margin-bottom: 30px; /* Cambié margin a margin-bottom */
+    border-radius: 20px;
+    height: 71px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.02);
+    padding-inline: 12px;
+  }
+
+
+  
+  ion-tab-button {
+    --color: black; /* Icon color when not selected */
+    --color-selected: black; /* Icon color when selected */
+    position: relative; /* Necesario para posicionar el círculo correctamente */
+  
+    &::after {
+      background-color: transparent;
+      display: block;
+      content: "";
+      margin: 0 auto;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      position: absolute; /* Para posicionar el círculo correctamente */
+      bottom: -10px; /* Asegura que el círculo esté debajo del ícono */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    &.tab-selected::after {
+      background-color: black;
+    }
+
+  }
+  
+
+  ion-tab-button.selected {
+    background-color: #79FFAF;
+    border-radius: 30px;
+    width: 64px;
+    height: 39px;
+}
+

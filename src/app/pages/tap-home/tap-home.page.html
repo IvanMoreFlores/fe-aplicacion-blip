@@ -1,0 +1,28 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="home" layout="icon-start" [ngClass]="{'selected': selectedTab == 'home'}">
+      <ion-icon name="home-outline"></ion-icon>
+
+    </ion-tab-button>
+
+    <ion-tab-button tab="reservas" layout="icon-start" [ngClass]="{'selected': selectedTab == 'reservas'}">
+      <ion-icon name="ticket-outline"></ion-icon>
+      <ion-label *ngIf="selectedTab == 'search'">Search</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="explora" layout="icon-start" [ngClass]="{'selected': selectedTab == 'explora'}">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label *ngIf="selectedTab == 'orders'">Orders</ion-label>
+    </ion-tab-button>
+
+
+    <ion-tab-button tab="perfil" layout="icon-start" [ngClass]="{'selected': selectedTab == 'perfil'}">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label *ngIf="selectedTab == 'menu'">Menu</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

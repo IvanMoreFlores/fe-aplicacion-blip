@@ -1,0 +1,27 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="home" [ngClass]="{'selected': selectedTab == 'home'}">
+      <img *ngIf="selectedTab !== 'home'" src="/assets/images/home39.svg" alt="">
+      <img *ngIf="selectedTab === 'home'" src="/assets/images/home39-selected.svg" alt="">
+    </ion-tab-button>
+
+    <ion-tab-button tab="nuevo-anu-pone-alq" [ngClass]="{'selected': selectedTab == 'nuevo-anu-pone-alq'}">
+      <img *ngIf="selectedTab !== 'nuevo-anu-pone-alq'" src="/assets/images/ticket-outline.svg" alt="">
+      <img *ngIf="selectedTab === 'nuevo-anu-pone-alq'" src="/assets/images/ticket-outline-selected.svg" alt="">
+    </ion-tab-button>
+
+    <ion-tab-button tab="explora" [ngClass]="{'selected': selectedTab == 'explora'}">
+      <img *ngIf="selectedTab !== 'explora'" src="/assets/images/search-outline.svg" alt="">
+      <img *ngIf="selectedTab === 'explora'" src="/assets/images/search-outline-selected.svg" alt="">
+    </ion-tab-button>
+
+    <ion-tab-button tab="perfil" [ngClass]="{'selected': selectedTab == 'perfil'}">
+      <img *ngIf="selectedTab !== 'perfil'" src="/assets/images/person-outline.svg" alt="">
+      <img *ngIf="selectedTab === 'perfil'" src="/assets/images/person-outline-selected.svg" alt="">
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>
