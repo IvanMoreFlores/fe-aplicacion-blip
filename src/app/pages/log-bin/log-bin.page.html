@@ -47,7 +47,7 @@
     <footer class="footer-btn">
       <div class="btn-container">
         <button class="btn-atr" routerLink="/log-con">Atrás</button>
-        <button  class="btn-sig" [disabled]="!isEmailValid"  [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
+        <button  class="btn-sig" [disabled]="!isEmailValid" (click)="login()" [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
       </div>
     </footer>
   </div>

@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'menu-config',
+    redirectTo: 'splashscreen',
     pathMatch: 'full'
   },
   {
@@ -291,7 +291,8 @@ const routes: Routes = [
   {
     path: 'lds',
     loadChildren: () => import('./pages/lds/lds.module').then( m => m.LdsPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },

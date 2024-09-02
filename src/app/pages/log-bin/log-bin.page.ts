@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { JwtService } from '../../services/jwt.service';
 
 @Component({
   selector: 'app-log-bin',
@@ -24,7 +25,24 @@ export class LogBinPage implements OnInit {
   onEmailChange(): void {
     this.isEmailValid = this.password.trim().length > 0;
   }
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private jwtService: JwtService
+  ) { }
   ngOnInit() {
+  }
+
+  login() {
+    this.route.queryParams.subscribe(params => {
+      const paramValue = params['EMAIL2'];
+      if (paramValue == 'demo@gmail.com' && this.password == '123456') {
+        alert('hello there ' + paramValue + ' password: ' + this.password);
+        const payload = { userId: paramValue, pwd: this.password };
+        const token = this.jwtService.generateToken(payload);
+        console.log('Generated JWT:', token);
+      }
+    });
+
   }
 }
