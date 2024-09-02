@@ -363,6 +363,10 @@ const routes: Routes = [
     path: 'tab-home',
     loadChildren: () => import('./pages/tab-home/tab-home.module').then( m => m.TabHomePageModule)
   },
+  {
+    path: 'loader-comp',
+    loadChildren: () => import('./pages/loader-comp/loader-comp.module').then( m => m.LoaderCompPageModule)
+  },
 
 
 

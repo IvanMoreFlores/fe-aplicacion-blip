@@ -23,8 +23,8 @@ const routes: Routes = [
       //   loadChildren: () => import('../explora/explora.module').then(m => m.ExploraPageModule)
       // },
       {
-        path: 'perfil',
-        loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
+        path: 'inf-perso',
+        loadChildren: () => import('../inf-perso/inf-perso.module').then(m => m.InfPersoPageModule)
       },
 
 
@@ -45,7 +45,7 @@ const routes: Routes = [
       // },
       {
         path: '',
-        redirectTo: '/tab-home/perfil',
+        redirectTo: '/tab-home/inf-perso',
         pathMatch: 'full'
       },
 
