@@ -14,7 +14,61 @@
             </div>    
           </div>
           <button class="btn-mn" id="menu"><img src="/assets/images/menu-pun.svg" alt=""></button>
-            
+          <ion-modal trigger="menu" [initialBreakpoint]="1" [breakpoints]="[0, 1]" mode="ios">
+            <ng-template>
+              <div class="block"> 
+                <h1 class="menu-block">Menu</h1>
+              
+                  <hr class="separator-line">
+                  <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
+                  <div class="button-container">
+                    <button (click)="exit()" routerLink="/nuevo-anu-pone-alq" class="service-button">
+                        <div>
+                          <img class="button-image" src="/assets/images/edit.png" alt="Imagen 1">
+                          <span class="button-text">Crea un nuevo anuncio</span>
+                        </div>
+                        <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                        
+                    </button>
+                    <button (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/megaphone.png" alt="Imagen 2">
+                        <span class="button-text">Mis Anuncios</span>
+                      </div>
+
+                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                    </button>
+                </div>
+                <h2 class="subtitle">CUENTA</h2>
+                  <div class="button-container">
+                    <button (click)="exit()" routerLink="/menu-config" class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/settings.png" alt="Imagen 1">
+                        <span class="button-text">Configuración</span>
+                      </div>
+                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                    </button>
+                    <button routerLink="sopor56" class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/heart.png" alt="Imagen 2">
+                        <span class="button-text">Soporte</span>
+                      </div>
+                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                    </button>
+                  </div>
+                  <hr class="separator-line">
+                  <div class="button-container">
+                    <button class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/out-alt.png" alt="Imagen 1">
+                        <span class="button-text">Cerrar Sesión</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+            </ng-template>
+          </ion-modal>
+
         </div>
         <h1 class="tl-res">
           Tus Reservaciones

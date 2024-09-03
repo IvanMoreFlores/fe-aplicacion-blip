@@ -19,7 +19,10 @@ export class HomePage implements OnInit {
 
   }
   selectedContent: string = 'Todos'; // Inicializa con "Todos" seleccionado por defecto
-
+  async exit() {
+    
+    await this.modalController.dismiss();
+  }
   changeContent(content: string) {
     this.selectedContent = content; // Cambia el contenido seleccionado
   }

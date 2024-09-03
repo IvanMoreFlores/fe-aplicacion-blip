@@ -15,8 +15,8 @@ const routes: Routes = [
       },
 
       {
-         path: 'nuevo-anu-pone-alq',
-         loadChildren: () => import('../nuevo-anu-pone-alq/nuevo-anu-pone-alq.module').then(m => m.NuevoAnuPoneAlqPageModule)
+         path: 'loader-comp',
+         loadChildren: () => import('../loader-comp/loader-comp.module').then(m => m.LoaderCompPageModule)
       },
       // {
       //   path: 'explora',
