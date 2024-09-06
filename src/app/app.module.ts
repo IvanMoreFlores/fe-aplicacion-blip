@@ -6,10 +6,18 @@ import { SwiperModule } from 'swiper/angular';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, RouterModule, BrowserAnimationsModule,SwiperModule],
+  imports: [BrowserModule, 
+    IonicStorageModule.forRoot(),
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    RouterModule, 
+    BrowserAnimationsModule,
+    SwiperModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

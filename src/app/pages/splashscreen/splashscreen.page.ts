@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar } from '@capgo/capacitor-navigation-bar';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-splashscreen',
@@ -11,7 +12,7 @@ import { NavigationBar } from '@capgo/capacitor-navigation-bar';
 })
 export class SplashscreenPage implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private apiService: ApiService) {
     if (Capacitor.getPlatform() !== 'web') {
       StatusBar.setStyle({ style: Style.Light });
       StatusBar.setOverlaysWebView({ overlay: true });
@@ -21,6 +22,7 @@ export class SplashscreenPage implements OnInit {
   }
 
   ngOnInit() {
+    this.init_value();
     const btnPlay = document.getElementById('btnPlay') as HTMLButtonElement;
     const animationCircle = document.getElementById('animated-circle') as HTMLDivElement;
     const animationLogo = document.getElementById('animated-logo') as HTMLImageElement;
@@ -35,6 +37,16 @@ export class SplashscreenPage implements OnInit {
     }, 20);
   }
 
+  async init_value(){
+    const valor = await this.apiService.getItem('token');
+    if (valor) {
+      this.router.navigate(['/home']);
+      console.log('token desde el Storage:', valor);
+    } else {
+      this.router.navigate(['/walkthrough']);
+    }
+  }
+
   playCarlock() {
     const carlock = document.getElementById('carlock') as HTMLAudioElement;
     carlock.play();
@@ -42,6 +54,9 @@ export class SplashscreenPage implements OnInit {
       // Retrasar la redirección para asegurarse de que todo se haya completado
       setTimeout(() => {
         this.onSoundEnded();
+
+        //insertar logica aqui
+
       }, 500); // Retraso en milisegundos (ajustar según sea necesario)
     };
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-log-bin',
@@ -28,9 +29,11 @@ export class LogBinPage implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private apiService: ApiService
   ) { }
   ngOnInit() {
+    console.log('dentro de login');
   }
 
   login() {
@@ -40,9 +43,15 @@ export class LogBinPage implements OnInit {
         alert('hello there ' + paramValue + ' password: ' + this.password);
         const payload = { userId: paramValue, pwd: this.password };
         const token = this.jwtService.generateToken(payload);
+        this.saveData(token);
+
         console.log('Generated JWT:', token);
       }
     });
+  }
 
+  async saveData(token: any) {
+    await this.apiService.setItem('token', token);
+    console.log('Datos guardados');
   }
 }

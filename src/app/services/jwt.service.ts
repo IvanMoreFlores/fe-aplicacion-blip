@@ -12,7 +12,6 @@ export class JwtService {
   async generateToken(payload: object): Promise<string> {
     return new jose.SignJWT({payload})
       .setProtectedHeader({ alg: 'HS256' })
-      .setExpirationTime('1h')
       .sign(this.secretKey);
   }
 
