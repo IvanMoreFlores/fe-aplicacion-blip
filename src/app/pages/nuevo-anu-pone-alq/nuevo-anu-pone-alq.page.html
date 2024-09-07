@@ -4,30 +4,36 @@
       <div class="col-12">
         <div class="content">
           <h1 class="title">Poner en alquiler tu espacio en Blip es muy sencillo</h1>
-          <h2 class="subti">Sigue estos tres simples pasos:</h2>
+          <h2 class="subti">Mediante tres simples pasos:</h2>
           <p class="pasos">1. Confirma tu Identidad</p>
-          <p class="desciption">Te solicitaremos subir tu documento de identidad, antecedentes penales y judiciales.</p>
+          <p class="desciption">Te solicitaremos subir tu documento de identidad, tanto la cara frontal como reverso.</p>
           <p class="pasos">2. Describe tu estacionamiento</p>
           <p class="desciption">Incluirás detalles acerca de tu área de estacionamiento, como sus dimensiones y ubicación.</p>
           <p class="pasos">3. Terminar y Publicar</p>
           <p class="desciption">Responderás algunas preguntas sobre cómo te gustaría manejar ciertos aspectos como Host y subirás imágenes de tu espacio.</p>
-          <button id="open-modal_nuevoanu" expand="block" class="back-btn">Salir</button>
+          
           <ion-modal trigger="open-modal_nuevoanu" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
             <ng-template>
               <div class="block">
                 <h1 class="title-mo">Edita tu información</h1>
                 <div class="line"></div>
                 <p class="confir">Recuerda que puedes crear un anuncio en cualquier momento.</p>
-                <button routerLink="/home" class="salir" (click)="dismissModal()">Salir</button>
+                <button routerLink="/tab-home/home" class="salir" (click)="dismissModal()">Salir</button>
                 <button  class="continuar">Continuar</button>
               </div>
             </ng-template>
           </ion-modal>
 
-          <button class="next-btn" routerLink="/confirmacion-de-identidad">Siguiente</button>
+          
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button id="open-modal_nuevoanu" expand="block" class="bac">Salir</button>
+        <button class="nex" routerLink="/confirmacion-de-identidad">Siguiente</button>
+      </div>
+    </footer>
   </div>
 </ion-content>
 

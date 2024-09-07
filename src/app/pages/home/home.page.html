@@ -1,184 +1,151 @@
 <ion-content [fullscreen]="true">
-  <div class="top-bar">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="d-flex  align-items-center w-100">
-          <img src="/assets/images/backdrop-component.png" alt="Logo" class="navbar-logo">
-          <div class="text-b">Bienvenida <br> <span style="font-size: 25px;">Mariana D.</span></div>
-          <button routerLink="/home-notificaciones" class="btn-custom"> <img src="/assets/images/bell.png" alt=""></button>
-          <button  id="open-modal" class="shadow button-punto" expand="block"><img src="/assets/images/comment.png" alt=""></button>
-            <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-              <ng-template>
-                <div class="block"> 
-                  <h1 class="menu-block">Menu</h1>
-                
-            <hr class="separator-line">
-            <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
-            <div class="button-container">
-              <button (click)="exit()" routerLink="/nuevo-anu-pone-alq" class="service-button">
-                  <img class="button-image" src="/assets/images/edit.png" alt="Imagen 1">
-                  <span class="button-text">Crea un nuevo anuncio</span>
-                  <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-              <button (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
-                  <img class="button-image" src="/assets/images/megaphone.png" alt="Imagen 2">
-                  <span class="button-text">Mis Anuncios</span>
-                  <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-           </div>
-          <h2 class="subtitle">CUENTA</h2>
-            <div class="button-container">
-              <button (click)="exit()" routerLink="/menu-config" class="service-button">
-                <img class="button-image" src="/assets/images/settings.png" alt="Imagen 1">
-                <span class="button-text">Configuración</span>
-                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-              <button (click)="exit()" routerLink="/perfil" class="service-button">
-                <img class="button-image" src="/assets/images/woman-head.png" alt="Imagen 2">
-                <span class="button-text">Perfil</span>
-                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-              <button class="service-button">
-                <img class="button-image" src="/assets/images/ring.png" alt="Imagen 1">
-                <span class="button-text">Suscripción</span>
-                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-              <button (click)="exit()" routerLink="/soporte56" class="service-button">
-                <img class="button-image" src="/assets/images/heart.png" alt="Imagen 2">
-                <span class="button-text">Soporte</span>
-                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-              <button routerLink="/ayuda57" (click)="exit()" class="service-button">
-                <img class="button-image" src="/assets/images/interactive.png" alt="Imagen 1">
-                <span class="button-text">Ayuda</span>
-                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-              <button class="service-button">
-                <img class="button-image" src="/assets/images/interrogation.png" alt="Imagen 2">
-                <span class="button-text">Preguntas Frecuentes</span>
-                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-              </button>
-            </div>
-            <hr class="separator-line">
-            <div class="button-container">
-              <button class="service-button">
-                <img class="button-image" src="/assets/images/out-alt.png" alt="Imagen 1">
-                <span class="button-text">Cerrar Sesión</span>
-              </button>
-            </div>
-           </div>
-              </ng-template>
-            </ion-modal>
+  <div class="wrapper">
+    <div class="animation">
+      <img src="" alt="">
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="nav">
+          <div class="pers">
+            <img src="/assets/images/backdrop-component.png" alt=""> 
+            <div class="name">
+              <h1>Ivana Tremolada</h1>
+              <h3>Host</h3>
+            </div>    
+          </div>
+          <button class="btn-mn" id="menu"><img src="/assets/images/menu-pun.svg" alt=""></button>
+          <ion-modal trigger="menu" [initialBreakpoint]="1" [breakpoints]="[0, 1]" mode="ios">
+            <ng-template>
+              <div class="block"> 
+                <h1 class="menu-block">Menu</h1>
+              
+                  <hr class="separator-line">
+                  <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
+                  <div class="button-container">
+                    <button (click)="exit()" routerLink="/nuevo-anu-pone-alq" class="service-button">
+                        <div>
+                          <img class="button-image" src="/assets/images/edit.png" alt="Imagen 1">
+                          <span class="button-text">Crea un nuevo anuncio</span>
+                        </div>
+                        <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                        
+                    </button>
+                    <button (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/megaphone.png" alt="Imagen 2">
+                        <span class="button-text">Mis Anuncios</span>
+                      </div>
+
+                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                    </button>
+                </div>
+                <h2 class="subtitle">CUENTA</h2>
+                  <div class="button-container">
+                    <button (click)="exit()" routerLink="/menu-config" class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/settings.png" alt="Imagen 1">
+                        <span class="button-text">Configuración</span>
+                      </div>
+                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                    </button>
+                    <button routerLink="sopor56" class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/heart.png" alt="Imagen 2">
+                        <span class="button-text">Soporte</span>
+                      </div>
+                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                    </button>
+                  </div>
+                  <hr class="separator-line">
+                  <div class="button-container">
+                    <button class="service-button">
+                      <div>
+                        <img class="button-image" src="/assets/images/out-alt.png" alt="Imagen 1">
+                        <span class="button-text">Cerrar Sesión</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+            </ng-template>
+          </ion-modal>
+
         </div>
-      </div>
-    </nav>
-  </div>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <h1 class="title">Pasos adicionales</h1>
-          <p class="description">Revisa estos pasos, personalícelos según sus preferencias y mejore la experiencia para sus futuros arrendatarios</p>
-          
-          <div class="cuadro">
-            <div class="swiper-container">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide shadow">
-                  <label class="container-fluid">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                  </label>
-                  <h2 class="checktext">Elige tu política de cancelación</h2>
-                  <p class="checkdescripcion">Ten control de elegir como supervisar tus reservaciones</p>
-                </div>
-
-                <div class="swiper-slide shadow">
-                  <label class="container-fluid">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                  </label>
-                  <h2 class="checktext">Añade tus reglas del estacionamiento</h2>
-                  <p class="checkdescripcion">Expresa claramente tus expectativas de los arrendatarios.</p>
-                </div>
-
-                <div class="swiper-slide shadow">
-                  <label class="container-fluid">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                  </label>
-                  <h2 class="checktext">Ofrece ofertas  especiales</h2>
-                  <p class="checkdescripcion">Incluye descuentos para atraer a posibles arrendatarios.</p>
-                </div>
-
-                <div class="swiper-slide shadow">
-                  <img class="calendario" src="/assets/images/fi-sr-calendar.png" alt="">
-                  <h2 class="checktex">Configura tu calendario</h2>
-                  <p class="checkdescripcion">Organiza y modifica los horarios disponibles</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <h1 class="reservaciones">Tus reservaciones</h1>
-
-          <div class="container-slider">
-
-
-            <div class="swiper-container slider">
-              <div class="swiper-wrapper">
-                <button class="swiper-slide fitcontent" (click)="changeContent('Todos')"
-                  [ngClass]="{'active': selectedContent === 'Todos'}">Todos <div class="cantidad">0</div></button>
-                <button class="swiper-slide fitcontent" (click)="changeContent('Terminan Pronto')"
-                  [ngClass]="{'active': selectedContent === 'Terminan Pronto'}">Terminan Pronto <div class="cantidad">0</div></button>
-                <button class="swiper-slide fitcontent" (click)="changeContent('En Curso')"
-                  [ngClass]="{'active': selectedContent === 'En Curso'}">En Curso <div class="cantidad">0</div></button>
-                <button class="swiper-slide fitcontent" (click)="changeContent('Comienzan Pronto')"
-                  [ngClass]="{'active': selectedContent === 'Comienzan Pronto'}">Comienzan Pronto <div class="cantidad">0</div></button>
-              </div>
-            </div>
-
-            
-          </div>
-          
-          <div class="info">
-            <div class="cochera-estado" *ngIf="selectedContent === 'Todos'">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <p>Ninguna cochera disponible.</p>
-            </div>
-            <div class="cochera-estado" *ngIf="selectedContent === 'Terminan Pronto'">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <p>Ninguna cochera próxima a vencer.</p>
-            </div>
-            <div class="cochera-estado" *ngIf="selectedContent === 'En Curso'">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <p>Ninguna cochera en curso.</p>
-            </div>
-            <div class="cochera-estado" *ngIf="selectedContent === 'Comienzan Pronto'">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <p>Ninguna cochera programada.</p>
+        <h1 class="tl-res">
+          Tus Reservaciones
+        </h1>
+        <div class="card-content">
+          <div class="swiper-container swiper-main">
+            <div class="horizontal-scroll">
+              <button 
+                class="swip" 
+                (click)="changeContent('Todos')" 
+                [ngClass]="{'active': selectedContent === 'Todos'}">
+                <h1 class="res-de">Todos </h1>
+                <button class="lda">
+                  <h1 class="descrip">2</h1>
+                </button>
+              </button>
+              <button 
+                class="swip" 
+                (click)="changeContent('Terminan Pronto')" 
+                [ngClass]="{'active': selectedContent === 'Terminan Pronto'}">
+                <h1 class="res-de">Terminan Pronto</h1>
+                <button class="lda">
+                  <h1 class="descrip">0</h1>
+                </button>
+              </button>
+              <button 
+                class="swip" 
+                (click)="changeContent('En Curso')" 
+                [ngClass]="{'active': selectedContent === 'En Curso'}">
+                <h1 class="res-de">En Curso</h1>
+                <button class="lda">
+                  <h1 class="descrip">1</h1>
+                </button>
+              </button>
+              <button 
+                class="swip" 
+                (click)="changeContent('Comienza Pronto')" 
+                [ngClass]="{'active': selectedContent === 'Comienza Pronto'}">
+                <h1 class="res-de">Comienza Pronto</h1>
+                <button class="lda">
+                  <h1 class="descrip">1</h1>
+                </button>
+              </button>
             </div>
           </div>
           
+          <!-- Contenido dinámico -->
+          <div class="content-display">
+            <div *ngIf="selectedContent === 'Todos'">
+              <!-- Contenido para "Todos" -->
+              <img src="/assets/images/icon-calendar2.svg" alt="">
+              <h1 class="par">Ninguna cochera disponible.</h1>
+              <!-- Aquí puedes añadir el contenido relacionado a "Todos" -->
+            </div>
 
-          <div class="menu-black">
-            
-            <div class="image-buttons">
-              <button class="image-button-1">
-                <img class="num1" src="/assets/images/home.png" alt="Button 1">
-              </button>
-              <div class="dot"></div>
-              <button routerLink="/mensajes" class="image-button">
-                <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
-              </button>
-              <button routerLink="/calendario-mes" class="image-button">
-                <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
-              </button>
-              <button routerLink="/panel-anfitrion" class="image-button">
-                <img class="num4" src="/assets/images/signal.png" alt="Button 4">
-              </button>
+            <div *ngIf="selectedContent === 'Terminan Pronto'">
+              <!-- Contenido para "Terminan Pronto" -->
+              <img src="/assets/images/icon-calendar2.svg" alt="">
+              <h1 class="par">Ninguna cochera termina pronto.</h1>
+              <!-- Aquí puedes añadir el contenido relacionado a "Terminan Pronto" -->
+            </div>
+
+            <div *ngIf="selectedContent === 'En Curso'">
+              <!-- Contenido para "En Curso" -->
+              <img src="/assets/images/icon-calendar2.svg" alt="">
+              <h1 class="par">Ninguna cochera en curso.</h1>
+              <!-- Aquí puedes añadir el contenido relacionado a "En Curso" -->
+            </div>
+
+            <div *ngIf="selectedContent === 'Comienza Pronto'">
+              <!-- Contenido para "Comienza Pronto" -->
+              <img src="/assets/images/icon-calendar2.svg" alt="">
+              <h1 class="par">Ninguna cochera programada.</h1>
+              <!-- Aquí puedes añadir el contenido relacionado a "Comienza Pronto" -->
             </div>
           </div>
+          
         </div>
       </div>
     </div>

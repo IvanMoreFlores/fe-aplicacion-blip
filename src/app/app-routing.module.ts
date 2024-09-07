@@ -356,6 +356,18 @@ const routes: Routes = [
     path: 'cre-con',
     loadChildren: () => import('./pages/cre-con/cre-con.module').then( m => m.CreConPageModule)
   },
+  {
+    path: 'tap-home',
+    loadChildren: () => import('./pages/tap-home/tap-home.module').then( m => m.TapHomePageModule)
+  },
+  {
+    path: 'tab-home',
+    loadChildren: () => import('./pages/tab-home/tab-home.module').then( m => m.TabHomePageModule)
+  },
+  {
+    path: 'loader-comp',
+    loadChildren: () => import('./pages/loader-comp/loader-comp.module').then( m => m.LoaderCompPageModule)
+  },
 
 
 
