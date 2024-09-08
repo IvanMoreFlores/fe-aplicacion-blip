@@ -22,7 +22,7 @@ export class SplashscreenPage implements OnInit {
   }
 
   ngOnInit() {
-    this.init_value();
+    //this.init_value();
     const btnPlay = document.getElementById('btnPlay') as HTMLButtonElement;
     const animationCircle = document.getElementById('animated-circle') as HTMLDivElement;
     const animationLogo = document.getElementById('animated-logo') as HTMLImageElement;
@@ -39,9 +39,11 @@ export class SplashscreenPage implements OnInit {
 
   async init_value(){
     const valor = await this.apiService.getItem('token');
+    const code = await this.apiService.getItem('code-sms');
     if (valor) {
       this.router.navigate(['/home']);
       console.log('token desde el Storage:', valor);
+      console.log('code desde el Storage:', code);
     } else {
       this.router.navigate(['/walkthrough']);
     }
@@ -53,7 +55,7 @@ export class SplashscreenPage implements OnInit {
     carlock.onended = () => {
       // Retrasar la redirección para asegurarse de que todo se haya completado
       setTimeout(() => {
-        this.onSoundEnded();
+        this.init_value();
 
         //insertar logica aqui
 

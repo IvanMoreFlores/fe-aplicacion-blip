@@ -33,20 +33,15 @@ export class LogBinPage implements OnInit {
     private apiService: ApiService
   ) { }
   ngOnInit() {
-    console.log('dentro de login');
+    console.log('dentro de log-pwd');
   }
 
   login() {
     this.route.queryParams.subscribe(params => {
       const paramValue = params['EMAIL2'];
-      if (paramValue == 'demo@gmail.com' && this.password == '123456') {
-        alert('hello there ' + paramValue + ' password: ' + this.password);
-        const payload = { userId: paramValue, pwd: this.password };
-        const token = this.jwtService.generateToken(payload);
-        this.saveData(token);
-
-        console.log('Generated JWT:', token);
-      }
+      const token = this.jwtService.generateToken_log_email('CORREO',paramValue,this.password, false );
+      this.saveData(token);
+      this.router.navigate(['/home']);
     });
   }
 

@@ -1,4 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { JwtService } from '../../services/jwt.service';
+import { ApiService } from '../../services/api.service';
+import { SmsService } from '../../services/sms.service';
 
 @Component({
   selector: 'app-registro', // Selector del componente
@@ -17,6 +21,14 @@ export class RegistroPage implements OnInit, OnDestroy {
   input3: string = ''; // Tercer dígito del código de verificación
   input4: string = ''; // Cuarto dígito del código de verificación
   inputsFilled: boolean = false; // Indicador de si todos los campos del código están llenos
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private jwtService: JwtService,
+    private apiService: ApiService,
+    private sms: SmsService
+  ) { }
 
   // Método que se ejecuta al inicializar el componente
   ngOnInit() {
@@ -38,8 +50,33 @@ export class RegistroPage implements OnInit, OnDestroy {
   // Método asincrónico para reenviar el código de verificación
   async reenviarCodigo() {
     if (this.isExpired) { // Si el temporizador ha expirado
+
+      this.route.queryParams.subscribe(params => {
+        const phone = '+51' + params['PHONE2'];
+        const code = Math.floor(1000 + Math.random() * 9000);
+        const body = 'Blip informa: el codigo solicitado es ' + code;
+
+        this.saveDataSms(code);
+
+        this.sms.sendSms(phone, body).subscribe(
+          (response: any) => {
+            console.log(response);
+          },
+          (error: any) => {
+            console.error('Error al enviar el mensaje:', error);
+          }
+        );
+
+      });
+
       this.resetTimer(); // Reinicia el temporizador
     }
+  }
+
+  async saveDataSms(code: any) {
+    await this.apiService.removeItem('code-sms');
+    await this.apiService.setItem('code-sms', code);
+    console.log('Datos guardados');
   }
 
   // Método para iniciar el temporizador

@@ -9,7 +9,8 @@
           </div>
           <div class="phone-input">
             <div class="phone-prefix">+51</div>
-            <input   type="text"
+            <input type="text"
+            [(ngModel)]="phone2"
             placeholder=" 933 439 760"
             class="masked"
             pattern="[0-9]*"
@@ -18,7 +19,9 @@
        </div>        
       </div>
       <div class="continue">
-        <button routerLink="/registro">Continuar</button>
+        
+        <!--<button routerLink="/registro">Continuar</button>-->
+        <button  class="btn-sig" (click)="send_otk()" >Continuar</button>
       </div>
     </div>
     <div class="social-signin">

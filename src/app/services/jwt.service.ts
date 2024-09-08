@@ -9,7 +9,14 @@ export class JwtService {
 
   constructor() {}
 
+  async generateToken_log_email(type_login: string, email: string, password: string, isLogged: boolean): Promise<string> {
+    return new jose.SignJWT({type_login, email, password, isLogged})
+      .setProtectedHeader({ alg: 'HS256' })
+      .sign(this.secretKey);
+  }
+
   async generateToken(payload: object): Promise<string> {
+
     return new jose.SignJWT({payload})
       .setProtectedHeader({ alg: 'HS256' })
       .sign(this.secretKey);
