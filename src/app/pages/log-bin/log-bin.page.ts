@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-log-bin',
@@ -14,6 +15,9 @@ export class LogBinPage implements OnInit {
   passwordIcon: string = 'eye-off';
   con: string = '';
   isEmailValid: boolean = false;
+  email: string = '';
+  data: any;
+
   togglePasswordVisibility() {
     if (this.passwordType === 'password') {
       this.passwordType = 'text';
@@ -30,18 +34,54 @@ export class LogBinPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private jwtService: JwtService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private api: ApiService
   ) { }
   ngOnInit() {
-    console.log('dentro de log-pwd');
+    this.setMail();
   }
 
-  login() {
-    this.route.queryParams.subscribe(params => {
-      const paramValue = params['EMAIL2'];
-      const token = this.jwtService.generateTokenLogEmail('CORREO',paramValue,this.password, false );
-      this.saveDataToken(token);
-      this.router.navigate(['/home']);
+  async setMail() {
+    await this.route.queryParams.subscribe(params => {
+      this.email = params['EMAIL2'];
+      console.log(this.email);
+    });
+  }
+
+  async login() {
+    const token = await this.jwtService.generateTokenLogEmail('CORREO', this.email, this.password, false);
+
+    this.api.getValidate(token).subscribe(
+      async (response: any) => {
+        this.data = response.data;
+        const validate = this.data.isValidate;
+        if (validate === true) {
+          const id_user: number = await this.getUserData(token);
+          const token_main = this.jwtService.generateTokenMain('CORREO', id_user, true);
+          await this.storageService.setItem('token', token_main);
+          this.router.navigate(['/home']);
+        }else{
+          alert('usuario incorrecto!');
+        }
+      }
+    )
+  }
+
+  async getUserData(token: string): Promise<number> {
+    return new Promise((resolve, reject) => {
+      this.api.getInformation(token).subscribe(
+        (response: any) => {
+          this.data = response.data;
+          this.storageService.removeItem('user');
+          this.storageService.setItem('user', this.data);
+          const id: number = Number(this.data.usu_id); // Convertir a número
+          resolve(id); // Devolver el id convertido como una promesa
+        },
+        (error: any) => {
+          console.error('Error al consumir el servicio:', error);
+          reject(error.message); // Rechazar en caso de error
+        }
+      );
     });
   }
 

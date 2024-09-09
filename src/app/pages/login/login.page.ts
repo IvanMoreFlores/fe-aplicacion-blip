@@ -60,5 +60,9 @@ export class LoginPage implements OnInit {
     await this.storageService.setItem('token', token);
   }
 
+  async redirectFinal (){
+    this.router.navigate(['/terminos-y-condiciones']);
+  }
+
 }
 
