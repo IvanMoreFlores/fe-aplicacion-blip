@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
+import { StorageService } from '../../services/storage.service';
 
 
 @Component({
@@ -15,7 +15,10 @@ export class LogConPage implements OnInit {
   onEmailChange(): void {
     this.isEmailValid = this.email2.trim().length > 0;
   }
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(
+    private router: Router, 
+    private storageService: StorageService
+  ) { }
   goToDisplayPage() {
     this.router.navigate(['/log-bin'], { queryParams: { EMAIL2: this.email2 } });
   }
@@ -24,7 +27,7 @@ export class LogConPage implements OnInit {
   }
 
   async init_value(){
-    const valor = await this.apiService.getItem('token');
+    const valor = await this.storageService.getItem('token');
     if (valor) {
       console.log('token desde el Storage:', valor);
     } else {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import Swiper from 'swiper';///sliders
+import { StorageService } from '../../services/storage.service';
+import { Router } from '@angular/router';
 
 import SwiperCore, { Pagination } from 'swiper';
 SwiperCore.use([Pagination]);
@@ -13,7 +15,11 @@ SwiperCore.use([Pagination]);
 export class HomePage implements OnInit {
 
 
-  constructor(private modalController: ModalController) {} // Inyecta el ModalController
+  constructor(
+    private router: Router,
+    private modalController: ModalController,
+    private storageService: StorageService
+  ) {} // Inyecta el ModalController
 
   ngOnInit() {
 
@@ -25,6 +31,12 @@ export class HomePage implements OnInit {
   }
   changeContent(content: string) {
     this.selectedContent = content; // Cambia el contenido seleccionado
+  }
+
+ async sesion_close(){
+     await this.storageService.removeItem('token');
+     await this.modalController.dismiss();
+     this.router.navigate(['/login']);
   }
 
 }

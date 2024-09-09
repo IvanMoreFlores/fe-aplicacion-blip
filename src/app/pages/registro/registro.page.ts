@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
-import { ApiService } from '../../services/api.service';
+import { StorageService } from '../../services/storage.service';
 import { SmsService } from '../../services/sms.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-registro', // Selector del componente
@@ -21,13 +22,15 @@ export class RegistroPage implements OnInit, OnDestroy {
   input3: string = ''; // Tercer dígito del código de verificación
   input4: string = ''; // Cuarto dígito del código de verificación
   inputsFilled: boolean = false; // Indicador de si todos los campos del código están llenos
+  data: any; // Datos que se esperan de llamada al API
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private jwtService: JwtService,
-    private apiService: ApiService,
-    private sms: SmsService
+    private storageService: StorageService,
+    private sms: SmsService,
+    private api: ApiService
   ) { }
 
   // Método que se ejecuta al inicializar el componente
@@ -49,16 +52,17 @@ export class RegistroPage implements OnInit, OnDestroy {
 
   // Método asincrónico para reenviar el código de verificación
   async reenviarCodigo() {
+    let token = await this.storageService.getItem('token');
+
     if (this.isExpired) { // Si el temporizador ha expirado
 
       this.route.queryParams.subscribe(params => {
-        const phone = '+51' + params['PHONE2'];
-        const code = Math.floor(1000 + Math.random() * 9000);
-        const body = 'Blip informa: el codigo solicitado es ' + code;
-
+        let phone = '+51' + params['PHONE2'];
+        let code = Math.floor(1000 + Math.random() * 9000);
+        let body = 'Blip informa: el codigo solicitado es ' + code;
         this.saveDataSms(code);
 
-        this.sms.sendSms(phone, body).subscribe(
+        this.sms.sendSms(phone, body, token).subscribe(
           (response: any) => {
             console.log(response);
           },
@@ -71,12 +75,6 @@ export class RegistroPage implements OnInit, OnDestroy {
 
       this.resetTimer(); // Reinicia el temporizador
     }
-  }
-
-  async saveDataSms(code: any) {
-    await this.apiService.removeItem('code-sms');
-    await this.apiService.setItem('code-sms', code);
-    console.log('Datos guardados');
   }
 
   // Método para iniciar el temporizador
@@ -106,4 +104,60 @@ export class RegistroPage implements OnInit, OnDestroy {
     this.isExpired = false; // Restablece el indicador de temporizador expirado
     this.startTimer(); // Reinicia el temporizador
   }
+
+  async saveDataSms(code: any) {
+    await this.storageService.removeItem('code-sms');
+    await this.storageService.setItem('code-sms', code);
+  }
+
+  async verifyOTP() {
+    const code_front = parseInt(this.input1 + '' + this.input2 + '' + this.input3 + '' + this.input4);
+    console.log(code_front);
+    const original_code = await this.storageService.getItem('code-sms');
+    console.log(original_code)
+    const token = await this.storageService.getItem('token');
+    if (code_front === original_code) {
+      this.api.getValidate(token).subscribe(
+        async (response: any) => {
+          this.data = response.data;
+          const validate = this.data.isValidate;
+          if (validate === true) {
+            const id_user: number = await this.getUserData(token);
+            const token_main = this.jwtService.generateTokenMain('TELEFONO', id_user, true);
+            await this.storageService.removeItem('token');
+            await this.storageService.setItem('token', token_main);
+            this.router.navigate(['/home']);
+          } else {
+            this.router.navigate(['/terminos-y-condiciones']);
+          }
+
+        },
+        (error: any) => {
+          console.error('Error al consumir el servicio:', error);
+        }
+      )
+    } else {
+      alert('codigo incorrecto');
+    }
+
+  }
+
+  async getUserData(token: string): Promise<number> {
+    return new Promise((resolve, reject) => {
+      this.api.getInformation(token).subscribe(
+        (response: any) => {
+          this.data = response.data;
+          this.storageService.removeItem('user');
+          this.storageService.setItem('user', this.data);
+          const id: number = Number(this.data.usu_id); // Convertir a número
+          resolve(id); // Devolver el id convertido como una promesa
+        },
+        (error: any) => {
+          console.error('Error al consumir el servicio:', error);
+          reject(error.message); // Rechazar en caso de error
+        }
+      );
+    });
+  }
+
 }

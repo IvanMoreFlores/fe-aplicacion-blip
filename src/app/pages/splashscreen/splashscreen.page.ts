@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar } from '@capgo/capacitor-navigation-bar';
-import { ApiService } from '../../services/api.service';
+import { StorageService } from '../../services/storage.service';
+import { JwtService } from '../../services/jwt.service';
 
 @Component({
   selector: 'app-splashscreen',
@@ -12,7 +13,11 @@ import { ApiService } from '../../services/api.service';
 })
 export class SplashscreenPage implements OnInit {
 
-  constructor(private router: Router,private apiService: ApiService) {
+  constructor(
+    private router: Router,
+    private storageService: StorageService,
+    private jwtService: JwtService
+  ) {
     if (Capacitor.getPlatform() !== 'web') {
       StatusBar.setStyle({ style: Style.Light });
       StatusBar.setOverlaysWebView({ overlay: true });
@@ -38,12 +43,15 @@ export class SplashscreenPage implements OnInit {
   }
 
   async init_value(){
-    const valor = await this.apiService.getItem('token');
-    const code = await this.apiService.getItem('code-sms');
+    const valor = await this.storageService.getItem('token');
+    const code = await this.storageService.getItem('code-sms');
     if (valor) {
       this.router.navigate(['/home']);
       console.log('token desde el Storage:', valor);
       console.log('code desde el Storage:', code);
+      console.log('descifrado del token');
+      const result = this.jwtService.decodeToken(valor);
+      console.log(result); 
     } else {
       this.router.navigate(['/walkthrough']);
     }

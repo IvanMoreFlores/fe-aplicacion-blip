@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SmsService } from '../../services/sms.service';
-import { ApiService } from '../../services/api.service';
-
+import { StorageService } from '../../services/storage.service';
+import { JwtService } from '../../services/jwt.service';
 
 @Component({
   selector: 'app-login',
@@ -11,26 +11,34 @@ import { ApiService } from '../../services/api.service';
 })
 export class LoginPage implements OnInit {
   phone2: string = '';
-  
+  data: any;
+
   constructor(
     private router: Router,
-    private apiService: ApiService, 
-    private sms:SmsService){
-    
+    private jwtService: JwtService,
+    private storageService: StorageService,
+    private sms: SmsService) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log('dentro de log-phone');
   }
 
-  send_otk(){
+  async send_otk() {
     const phone = '+51' + this.phone2;
-    const code = Math.floor(1000 + Math.random() * 9000); 
+    const code = Math.floor(1000 + Math.random() * 9000);
     const body = 'Blip informa: el codigo solicitado es ' + code;
+    const token = this.jwtService.generateTokenLogPhone('TELEFONO', phone, false);
+    await this.saveDataSms(code);
+    await this.saveDataToken(token);
 
-    this.saveDataSms(code);
+    const token_enviar = await this.storageService.getItem('token');
 
-    this.sms.sendSms(phone, body).subscribe(
+    console.log(phone);
+    console.log(body);
+    console.log(token_enviar);
+
+    this.sms.sendSms(phone, body, token_enviar).subscribe(
       (response: any) => {
         console.log(response);
       },
@@ -43,11 +51,14 @@ export class LoginPage implements OnInit {
   }
 
   async saveDataSms(code: any) {
-    await this.apiService.removeItem('code-sms');
-    await this.apiService.setItem('code-sms', code);
-    console.log('Datos guardados');
+    await this.storageService.removeItem('code-sms');
+    await this.storageService.setItem('code-sms', code);
+  }
+
+  async saveDataToken(token: any) {
+    await this.storageService.removeItem('token');
+    await this.storageService.setItem('token', token);
   }
 
 }
 
- 

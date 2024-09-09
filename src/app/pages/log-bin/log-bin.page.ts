@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
-import { ApiService } from '../../services/api.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-log-bin',
@@ -30,7 +30,7 @@ export class LogBinPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private jwtService: JwtService,
-    private apiService: ApiService
+    private storageService: StorageService
   ) { }
   ngOnInit() {
     console.log('dentro de log-pwd');
@@ -39,14 +39,14 @@ export class LogBinPage implements OnInit {
   login() {
     this.route.queryParams.subscribe(params => {
       const paramValue = params['EMAIL2'];
-      const token = this.jwtService.generateToken_log_email('CORREO',paramValue,this.password, false );
-      this.saveData(token);
+      const token = this.jwtService.generateTokenLogEmail('CORREO',paramValue,this.password, false );
+      this.saveDataToken(token);
       this.router.navigate(['/home']);
     });
   }
 
-  async saveData(token: any) {
-    await this.apiService.setItem('token', token);
-    console.log('Datos guardados');
+  async saveDataToken(token: any) {
+    await this.storageService.removeItem('token');
+    await this.storageService.setItem('token', token);
   }
 }
