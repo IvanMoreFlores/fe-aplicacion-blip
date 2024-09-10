@@ -20,7 +20,7 @@
           </div>
           <div class="input-bar">
             <p class="label-text">Nro. de Documento</p>
-            <input type="text" placeholder="">
+            <input type="text" [(ngModel)]="dni" placeholder="">
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
     <footer class="footer-btn">
       <div class="bnt-dow">
         <button routerLink="/datos-registro" class="more-info-btn">Atrás</button>
-        <button routerLink="/datos-numero" class="next-btn">Siguiente</button>
+        <button  class="next-btn" (click)="setDNI()">Siguiente</button>
       </div> 
     </footer>
   </div>

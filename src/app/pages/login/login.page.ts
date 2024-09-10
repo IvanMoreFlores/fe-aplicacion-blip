@@ -34,10 +34,6 @@ export class LoginPage implements OnInit {
 
     const token_enviar = await this.storageService.getItem('token');
 
-    console.log(phone);
-    console.log(body);
-    console.log(token_enviar);
-
     this.sms.sendSms(phone, body, token_enviar).subscribe(
       (response: any) => {
         console.log(response);

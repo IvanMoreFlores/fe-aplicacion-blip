@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-datos-ingresar',
@@ -7,9 +9,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatosIngresarPage implements OnInit {
 
-  constructor() { }
+  nombre: string = '';
+  apellido: string = '';
+  fecha_nac: string = '';
+  genero: string = '';
+  dni: string = '';
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.setData();
+  }
+
+  setData() {
+    this.route.queryParams.subscribe(params => {
+      this.nombre = params['nombre'];
+      this.apellido = params['apellido'];
+      this.fecha_nac = params['fecha_nac'];
+      this.genero = params['genero'];
+    });
+  }
+
+  setDNI(){
+    this.router.navigate(['/datos-numero'], {
+      queryParams: {
+        nombre: this.nombre,
+        apellido: this.apellido,
+        fecha_nac: this.fecha_nac,
+        genero: this.genero,
+        dni: this.dni
+      }
+    });
   }
 
 }

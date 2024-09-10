@@ -41,8 +41,8 @@ export class LogBinPage implements OnInit {
     this.setMail();
   }
 
-  async setMail() {
-    await this.route.queryParams.subscribe(params => {
+ setMail() {
+    this.route.queryParams.subscribe(params => {
       this.email = params['EMAIL2'];
       console.log(this.email);
     });
@@ -60,7 +60,7 @@ export class LogBinPage implements OnInit {
           const token_main = this.jwtService.generateTokenMain('CORREO', id_user, true);
           await this.storageService.setItem('token', token_main);
           this.router.navigate(['/home']);
-        }else{
+        } else {
           alert('usuario incorrecto!');
         }
       }
