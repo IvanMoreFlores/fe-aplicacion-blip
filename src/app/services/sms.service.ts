@@ -13,8 +13,6 @@ export class SmsService {
 
    sendSms(to: string, message: string, token: string): Observable<any> {
 
-    console.log(token);
-
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',

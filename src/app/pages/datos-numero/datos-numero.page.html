@@ -10,7 +10,7 @@
           <div class="input-bar">
             <p class="label-text">Número de Teléfono</p>
             <div class="phone-prefix">+51</div>
-            <input type="number" placeholder="">
+            <input type="number" [(ngModel)]="phone" placeholder="">
           </div>
 
         </div>
@@ -18,8 +18,8 @@
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
-        <button routerLink="/datos-ingresar" class="more-info-btn">Atrás</button>
-        <button routerLink="/datos-verificacion" class="next-btn">Siguiente</button>
+        <button (click)="return()" class="more-info-btn">Atrás</button>
+        <button (click)="setPhone()" class="next-btn">Siguiente</button>
       </div> 
     </footer>
   </div>

@@ -18,12 +18,7 @@
             <ion-input [type]="passwordType2"placeholder="Confirma tu contraseña" maxlength="16" [(ngModel)]="password2"></ion-input> <!--2do  passwordType2 ,ngModal -->
             <ion-icon [name]="passwordIcon2" slot="end" (click)="togglePasswordVisibility2()"></ion-icon>               <!--2do  passwordIcon2 ,togglePasswordVisibi -->
           </div>
-          <!-- <div class="input-bar">
-            <p class="label-text">Confirmar Contraseña</p>
-            <input [type]="passwordType" placeholder="Confirma tu contraseña" [(ngModel)]="confirmPassword">
-            <img class="ins" src="/assets/images/fi-eye.png" alt="" *ngIf="passwordType === 'password'" (click)="togglePasswordVisibility()">
-            <img class="ins" src="/assets/images/fi-eye.png" alt="" *ngIf="passwordType === 'text'" (click)="togglePasswordVisibility()">
-          </div> -->
+
 
 
         </div>
@@ -31,8 +26,8 @@
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
-        <button routerLink="/datos-verificacion" class="more-info-btn">Atrás</button>
-        <button routerLink="/cre-con" class="next-btn">Siguiente</button>
+        <button (click)="return()" class="more-info-btn">Atrás</button>
+        <button (click)="onCreate()" class="next-btn">Siguiente</button>
       </div> 
     </footer>
   </div>
