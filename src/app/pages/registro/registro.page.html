@@ -16,7 +16,6 @@
         <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
         <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
       </div>
-      
       <button id="open-toast"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
         {{ buttonText }}
         <div class="TIME">
@@ -31,15 +30,14 @@
       position="top"
       mode="md"
       ></ion-toast>
-      <button class="ini-con" routerLink="/log-con">iniciar sesión con contraseña 
+      <button class="ini-con" routerLink="/log-con" (click)="verifyOTP()">iniciar sesión con contraseña 
       </button>
       <h1 class="LA" routerLink="/ing-cor">He cambiado mi número de teléfono</h1>
-
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
         <button class="bac" routerLink="/login">Atrás</button>
-        <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
+        <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" (click)="verifyOTP()" class="nex" >Siguiente</button>
       </div> 
     </footer>
   </div>

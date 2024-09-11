@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar } from '@capgo/capacitor-navigation-bar';
+import { StorageService } from '../../services/storage.service';
+import { JwtService } from '../../services/jwt.service';
 
 @Component({
   selector: 'app-splashscreen',
@@ -11,7 +13,11 @@ import { NavigationBar } from '@capgo/capacitor-navigation-bar';
 })
 export class SplashscreenPage implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private storageService: StorageService,
+    private jwtService: JwtService
+  ) {
     if (Capacitor.getPlatform() !== 'web') {
       StatusBar.setStyle({ style: Style.Light });
       StatusBar.setOverlaysWebView({ overlay: true });
@@ -21,6 +27,7 @@ export class SplashscreenPage implements OnInit {
   }
 
   ngOnInit() {
+    //this.init_value();
     const btnPlay = document.getElementById('btnPlay') as HTMLButtonElement;
     const animationCircle = document.getElementById('animated-circle') as HTMLDivElement;
     const animationLogo = document.getElementById('animated-logo') as HTMLImageElement;
@@ -35,13 +42,31 @@ export class SplashscreenPage implements OnInit {
     }, 20);
   }
 
+  async init_value(){
+    const valor = await this.storageService.getItem('token');
+    const code = await this.storageService.getItem('code-sms');
+    if (valor) {
+      this.router.navigate(['/home']);
+      console.log('token desde el Storage:', valor);
+      console.log('code desde el Storage:', code);
+      console.log('descifrado del token');
+      const result = this.jwtService.decodeToken(valor);
+      console.log(result); 
+    } else {
+      this.router.navigate(['/walkthrough']);
+    }
+  }
+
   playCarlock() {
     const carlock = document.getElementById('carlock') as HTMLAudioElement;
     carlock.play();
     carlock.onended = () => {
       // Retrasar la redirección para asegurarse de que todo se haya completado
       setTimeout(() => {
-        this.onSoundEnded();
+        this.init_value();
+
+        //insertar logica aqui
+
       }, 500); // Retraso en milisegundos (ajustar según sea necesario)
     };
   }

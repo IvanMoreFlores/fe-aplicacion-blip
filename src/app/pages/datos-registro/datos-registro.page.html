@@ -8,36 +8,34 @@
           </div>  
           <div class="input-bar">
             <p class="label-text">Nombre Completo</p>
-            <input type="text" placeholder="Ingresa tu nombre">
+            <input type="text" [(ngModel)]="nombre" placeholder="Ingresa tu nombre">
           </div> 
 
           <div class="input-bar">
             <p class="label-text">Apellidos</p>
-            <input type="text" placeholder="Costa Jimenez">
+            <input type="text" [(ngModel)]="apellido" placeholder="Ingresa tu apellido">
           </div>
           <div class="input-bar-f">
             <img class="calendar" src="/assets/images/fi-calendar.png" alt="">
             <p class="label-text">Fecha de Nacimiento</p>
-            <input type="date" placeholder="Selecciona tu fecha de nacimiento">
+            <input type="date" [(ngModel)]="fecha_nac" placeholder="Selecciona tu fecha de nacimiento">
           </div>
 
           <div class="input-bar-g">
             <p class="label-text">Género</p>
-            <select>
+            <select [(ngModel)]="genero">
               <option value="femenino">Femenino</option>
               <option value="masculino">Masculino</option>
               <option value="otro">Otro</option>
             </select>
           </div>
-
-
         </div>
       </div>
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
         <button routerLink="/terminos-y-condiciones" class="more-info-btn">Atrás</button>
-        <button routerLink="/datos-ingresar" class="next-btn">Siguiente</button>
+        <button class="next-btn" (click)="getData()">Siguiente</button>
       </div> 
     </footer>
   </div>

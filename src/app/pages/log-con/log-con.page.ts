@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage.service';
+
 
 @Component({
   selector: 'app-log-con',
@@ -13,10 +15,23 @@ export class LogConPage implements OnInit {
   onEmailChange(): void {
     this.isEmailValid = this.email2.trim().length > 0;
   }
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router, 
+    private storageService: StorageService
+  ) { }
   goToDisplayPage() {
     this.router.navigate(['/log-bin'], { queryParams: { EMAIL2: this.email2 } });
   }
   ngOnInit() {
+    this.init_value();
+  }
+
+  async init_value(){
+    const valor = await this.storageService.getItem('token');
+    if (valor) {
+      console.log('token desde el Storage:', valor);
+    } else {
+      console.log('No hay datos almacenados con esa clave.');
+    }
   }
 }
