@@ -7,26 +7,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./loader-comp.page.scss'],
 })
 export class LoaderCompPage implements OnInit, OnDestroy {
-  private redirectTimeout: any; // Para almacenar el timeout
+  private redirectTimeout: any;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.startRedirectTimer();
-  }
-
-  ngOnDestroy(): void {
-    // Limpiar el timeout para evitar problemas cuando el componente se destruye
-    if (this.redirectTimeout) {
-      clearTimeout(this.redirectTimeout);
+    if (!this.redirectTimeout) {
+      this.startRedirectTimer();
     }
   }
 
+  ngOnDestroy(): void {
+    this.clearRedirectTimer();
+  }
+
   startRedirectTimer(): void {
-    // Iniciar el temporizador de redirección
+    this.clearRedirectTimer(); // Asegúrate de que no haya un temporizador previo
     this.redirectTimeout = setTimeout(() => {
-      this.router.navigate(['/nuevo-anu-pone-alq']); // Cambia '/nuevo-anu-pone-alq' por la ruta deseada
-    }, 1000); // Cambia el tiempo según sea necesario
+      this.router.navigate(['/nuevo-anu-pone-alq']);
+    }, 1000);
+  }
+
+  clearRedirectTimer(): void {
+    if (this.redirectTimeout) {
+      clearTimeout(this.redirectTimeout);
+      this.redirectTimeout = null;
+    }
   }
 }
-

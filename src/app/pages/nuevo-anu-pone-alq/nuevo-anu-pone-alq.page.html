@@ -12,14 +12,18 @@
           <p class="pasos">3. Terminar y Publicar</p>
           <p class="desciption">Responderás algunas preguntas sobre cómo te gustaría manejar ciertos aspectos como Host y subirás imágenes de tu espacio.</p>
           
-          <ion-modal trigger="open-modal_nuevoanu" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+          <ion-modal trigger="open-modal_nuevoanu" mode="ios" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
             <ng-template>
               <div class="block">
-                <h1 class="title-mo">Edita tu información</h1>
+                <h1 class="title-mo">¿Seguro que quieres salir?</h1>
                 <div class="line"></div>
-                <p class="confir">Recuerda que puedes crear un anuncio en cualquier momento.</p>
-                <button routerLink="/tab-home/home" class="salir" (click)="dismissModal()">Salir</button>
-                <button  class="continuar">Continuar</button>
+                <div class="confir">
+                  <p class="confir-TEX">Recuerda que puedes crear un anuncio en cualquier momento.</p>
+                  <div class="mdtn">
+                    <button routerLink="/tab-home/home" class="salir" (click)="dismissModal()">Salir</button>
+                    <button  class="continuar">Continuar</button>                 
+                  </div>
+                </div>
               </div>
             </ng-template>
           </ion-modal>

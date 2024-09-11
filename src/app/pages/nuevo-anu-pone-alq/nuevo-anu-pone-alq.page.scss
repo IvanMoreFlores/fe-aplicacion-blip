@@ -12,13 +12,13 @@ ion-content{
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: 50px;
+  padding: 40px;
 }
 .title {
     font-size: 28px;
     line-height: 40px;
     font-family: "Poppins", sans-serif;
-    margin-top: 50px;
+    margin-top: 60px;
     display: block;
     width: 95%;
     font-weight: 600;
@@ -96,42 +96,60 @@ ion-content{
     
   }
 .confir{
-    margin:40px ;
-    font-family: "Poppins", sans-serif;
-    color: rgba(33, 33, 33, 0.80);
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 23px; /* 164.286% */
+  margin-block: 40px;
+  margin-inline: 56px;
+}
+.confir-TEX{
+  color: rgba(33, 33, 33, 0.80);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px; /* 164.286% */
+  margin-bottom: 40px;
+  margin-left: 5px;
+  width: 100%;
+}
+.mdtn{
+display: flex;
+justify-content: space-between;
+width: 100%;
+align-items: center;
+
 }
 .salir{
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    border: 1px solid #212121; 
-    background-color: transparent; 
-    color: #212121;
-    font-size: 16px;
-    border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
+  border: 1px solid #212121;
+  background-color: #FFFFFF;
+  width: 45%;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 30px;
+
+  color: #212121;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 180%; /* 25.2px */
 }
 .continuar{
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    border: 1px solid #A7A7A7; 
-    background-color: #79FFAF; 
-    color: #212121;
-    font-size: 16px;
-    border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
+  border-radius: 30px;
+  border: 1px solid #212121;
+  background-color: #212121;
+  padding-inline: 10px;
+  color: #ffffff;
+  width: 45%;
+  height: 45px;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--Schemes-On-Primary, #FFF);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 180%; /* 25.2px */
 }
 .bnt-dow{
   width: 100%;

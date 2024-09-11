@@ -8,9 +8,37 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./adj-dt-dni.page.scss'],
 })
 export class AdjDtDniPage implements OnInit {
+
   dniFront: string = '';
   dniBack: string = '';
-  
+  files: File[] = [];
+  files2: File[] = []; // Para el segundo dropzone
+
+  onSelect(event: { addedFiles: File[] }) {
+      if (event.addedFiles.length) {
+          this.files = [event.addedFiles[0]]; // Solo almacena el primer archivo
+      }
+  }
+
+  onSelect2(event: { addedFiles: File[] }) {
+      if (event.addedFiles.length) {
+          this.files2 = [event.addedFiles[0]]; // Solo almacena el primer archivo para el segundo dropzone
+      }
+  }
+
+  onRemove(file: File) {
+      const index = this.files.indexOf(file);
+      if (index >= 0) {
+          this.files.splice(index, 1);
+      }
+  }
+
+  onRemove2(file: File) {
+      const index = this.files2.indexOf(file);
+      if (index >= 0) {
+          this.files2.splice(index, 1);
+      }
+  }
   constructor(private navCtrl: NavController) {}
 
   async captureImage(type: string) {

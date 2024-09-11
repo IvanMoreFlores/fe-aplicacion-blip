@@ -18,10 +18,10 @@ const routes: Routes = [
          path: 'loader-comp',
          loadChildren: () => import('../loader-comp/loader-comp.module').then(m => m.LoaderCompPageModule)
       },
-      // {
-      //   path: 'explora',
-      //   loadChildren: () => import('../explora/explora.module').then(m => m.ExploraPageModule)
-      // },
+      {
+         path: 'calendario-semanal',
+         loadChildren: () => import('../calendario-semanal/calendario-semanal.module').then(m => m.CalendarioSemanalPageModule)
+      },
       {
         path: 'inf-perso',
         loadChildren: () => import('../inf-perso/inf-perso.module').then(m => m.InfPersoPageModule)

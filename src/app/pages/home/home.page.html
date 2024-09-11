@@ -9,7 +9,7 @@
           <div class="pers">
             <img src="/assets/images/backdrop-component.png" alt=""> 
             <div class="name">
-              <h1>Ivana Tremolada</h1>
+              <h1>Ivana T.</h1>
               <h3>Host</h3>
             </div>    
           </div>
@@ -41,10 +41,23 @@
                 </div>
                 <h2 class="subtitle">CUENTA</h2>
                   <div class="button-container">
-                    <button (click)="exit()" routerLink="/menu-config" class="service-button">
+                    <button   class="service-button">
                       <div>
-                        <img class="button-image" src="/assets/images/settings.png" alt="Imagen 1">
-                        <span class="button-text">Configuración</span>
+                        <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
+                        <span class="button-text">Apagón General</span>
+                      </div>
+
+                      <label class="toggle-switch">
+                        <input type="checkbox">
+                        <div class="toggle-switch-background">
+                          <div class="toggle-switch-handle"></div>
+                        </div>
+                      </label>                      
+                    </button>
+                    <button (click)="exit()" routerLink="/finanzas" class="service-button">
+                      <div>
+                        <img class="button-image" src="assets/images/finanzas.svg" alt="Imagen 1">
+                        <span class="button-text">Finanzas</span>
                       </div>
                       <img class="second-image" src="/assets/images/Vector-1.png" alt="">
                     </button>
