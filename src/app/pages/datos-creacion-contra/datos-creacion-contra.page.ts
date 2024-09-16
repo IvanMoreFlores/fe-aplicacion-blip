@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
-import { SmsService } from '../../services/sms.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -24,16 +23,15 @@ export class DatosCreacionContraPage implements OnInit {
   apellido: string = '';
   fecha_nac: string = '';
   genero: string = '';
-  dni: string = '';
+  doc: string = '';
+  nro: string = '';
   phone: string = '';
-  pwd: string = '';
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private jwtService: JwtService,
     private storageService: StorageService,
-    private sms: SmsService,
     private api: ApiService
   ) {
 
@@ -49,7 +47,8 @@ export class DatosCreacionContraPage implements OnInit {
       this.apellido = params['apellido'];
       this.fecha_nac = params['fecha_nac'];
       this.genero = params['genero'];
-      this.dni = params['dni'];
+      this.doc = params['doc'];
+      this.nro = params['nro'];
       this.phone = params['phone'];
     });
   }
@@ -81,23 +80,15 @@ export class DatosCreacionContraPage implements OnInit {
 
     let token = await this.storageService.getItem('token');
 
-    let gen_num = 0;
-
-    if (this.genero === 'masculino') {
-      gen_num = 1;
-    } else {
-      gen_num = 2;
-    }
-
     this.api.postRegister(
-      this.dni,
-      1,
+      this.nro,
+      parseInt(this.doc),
       this.apellido,
       this.nombre,
-      this.phone,
-      this.pwd,
-      1,
-      gen_num,
+      '+51' + this.phone,
+      this.password,
+      4,
+      parseInt(this.genero),
       this.fecha_nac,
       token
     ).subscribe(
@@ -108,7 +99,6 @@ export class DatosCreacionContraPage implements OnInit {
         const token_main = this.jwtService.generateTokenMain('TELEFONO', id_user, true);
         await this.storageService.setItem('token', token_main);
         this.router.navigate(['/cre-con']);
-
       },
       (error: any) => {
         console.error('Error al enviar el mensaje:', error);
@@ -123,7 +113,8 @@ export class DatosCreacionContraPage implements OnInit {
         apellido: this.apellido,
         fecha_nac: this.fecha_nac,
         genero: this.genero,
-        dni: this.dni,
+        doc: this.doc,
+        nro: this.nro,
         phone: this.phone
       }
     });

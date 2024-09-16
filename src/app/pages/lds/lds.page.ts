@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Swiper, { Controller } from 'swiper';
+import { StorageService } from '../../services/storage.service';
+import { ApiService } from 'src/app/services/api.service';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Controller]);
@@ -11,6 +13,9 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Controller]);
   styleUrls: ['./lds.page.scss'],
 })
 export class LdsPage implements OnInit {
+  data: any;
+  nombre: string = '';
+
   slideOpts = {
     initialSlide: 0,
     speed: 400,
@@ -20,10 +25,35 @@ export class LdsPage implements OnInit {
 
   isButtonEnabled: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private storage: StorageService,
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
     this.iniciarSwiper();
+    this.getUserData();
+  }
+
+  async getUserData(): Promise<number> {
+    const token = await this.storage.getItem('token');
+    return new Promise((resolve, reject) => {
+      this.api.getInformation(token).subscribe(
+        (response: any) => {
+          this.data = response.data;
+          this.storage.removeItem('user');
+          this.storage.setItem('user', this.data);
+          this.nombre = this.data.usu_nombre;
+          const id: number = Number(this.data.usu_id); // Convertir a número
+          resolve(id); // Devolver el id convertido como una promesa
+        },
+        (error: any) => {
+          console.error('Error al consumir el servicio:', error);
+          reject(error.message); // Rechazar en caso de error
+        }
+      );
+    });
   }
 
   iniciarSwiper() {

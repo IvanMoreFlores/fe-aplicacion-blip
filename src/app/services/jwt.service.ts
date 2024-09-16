@@ -21,8 +21,8 @@ export class JwtService {
       .sign(this.secretKey);
   }
 
-  async generateTokenMain(type: string, idUser: number, isLogged: boolean): Promise<string> {
-    return new jose.SignJWT({ type, idUser, isLogged })
+  async generateTokenMain(type_login: string, idUser: number, isLogged: boolean): Promise<string> {
+    return new jose.SignJWT({ type_login, idUser, isLogged })
       .setProtectedHeader({ alg: 'HS256' })
       .sign(this.secretKey);
   }
@@ -43,12 +43,4 @@ export class JwtService {
     }
   }
 
-  decodeToken(token: string): object | null {
-    try {
-      return jose.decodeJwt(token);
-    } catch (err) {
-      console.error('Token decoding failed:', err);
-      return null;
-    }
-  }
 }

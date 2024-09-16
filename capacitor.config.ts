@@ -6,6 +6,12 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https'
+  },
+  plugins: {
+    Facebook: {
+      appId: "TU_APP_ID_DE_FACEBOOK",
+      appName: "Your App Name"
+    }
   }
 };
 

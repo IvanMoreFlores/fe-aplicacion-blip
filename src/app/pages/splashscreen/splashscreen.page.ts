@@ -42,16 +42,28 @@ export class SplashscreenPage implements OnInit {
     }, 20);
   }
 
-  async init_value(){
-    const valor = await this.storageService.getItem('token');
-    const code = await this.storageService.getItem('code-sms');
-    if (valor) {
-      this.router.navigate(['/home']);
-      console.log('token desde el Storage:', valor);
-      console.log('code desde el Storage:', code);
-      console.log('descifrado del token');
-      const result = this.jwtService.decodeToken(valor);
-      console.log(result); 
+  async init_value() {
+    const valor = await this.storageService.getItem('welcome');
+    if (valor === true) {
+
+      const token = await this.storageService.getItem('token');
+
+      if (token !== null) {
+        console.log('token desde el Storage:', token);
+        console.log('descifrado del token');
+        const result: any = await this.jwtService.verifyToken(token);
+        console.log(result);
+        const isLogged = result?.isLogged;
+
+        if (isLogged === true) {
+          this.router.navigate(['/lds']);
+        } else {
+          this.router.navigate(['/login']);
+        }
+      }else{
+        this.router.navigate(['/login']);
+      }
+
     } else {
       this.router.navigate(['/walkthrough']);
     }
@@ -64,9 +76,6 @@ export class SplashscreenPage implements OnInit {
       // Retrasar la redirección para asegurarse de que todo se haya completado
       setTimeout(() => {
         this.init_value();
-
-        //insertar logica aqui
-
       }, 500); // Retraso en milisegundos (ajustar según sea necesario)
     };
   }

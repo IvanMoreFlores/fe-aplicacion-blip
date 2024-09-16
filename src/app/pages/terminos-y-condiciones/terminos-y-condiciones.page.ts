@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-terminos-y-condiciones',
@@ -9,12 +10,14 @@ import { StorageService } from '../../services/storage.service';
   styleUrls: ['./terminos-y-condiciones.page.scss'],
 })
 export class TerminosYCondicionesPage implements OnInit {
+  data:any;
 
   isChecked: boolean = false;
   constructor(
     private modalcontroller: ModalController,
     private jwtService: JwtService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private api: ApiService
   ) { }
 
   toggleCheckbox() {
@@ -24,6 +27,50 @@ export class TerminosYCondicionesPage implements OnInit {
     this.modalcontroller.dismiss(null, 'back-log')
   }
   ngOnInit() {
+    this.init_value();
+  }
+
+  async init_value(){
+    const token = await this.storageService.getItem('token');
+    if(token !== null){
+      //obtener datos para llenar cbo boxs
+      this.api.getValidate(token).subscribe(
+        async (response: any) => {
+          this.data = response.data;
+          const typeGenders = await this.storageService.getItem('typeGenders');
+          console.log('typeGenders');
+          console.log(typeGenders);
+          if (typeGenders === null) {
+            console.log('guardarndo typeGenders')
+            await this.storageService.setItem('typeGenders', this.data.infoToRegister.typeGenders);
+          }
+          const typeDocuments = await this.storageService.getItem('typeDocuments');
+          if(typeDocuments === null){
+            console.log('guardarndo typeDocuments')
+            await this.storageService.setItem('typeDocuments', this.data.infoToRegister.typeDocuments);
+          }
+        }
+      )
+    }else{
+      const token = await this.jwtService.generateTokenLogPhone('TELEFONO', '99999999', false);
+      this.api.getValidate(token).subscribe(
+        async (response: any) => {
+          this.data = response.data;
+          const typeGenders = await this.storageService.getItem('typeGenders');
+          console.log('typeGenders');
+          console.log(typeGenders);
+          if (typeGenders === null) {
+            console.log('guardarndo typeGenders')
+            await this.storageService.setItem('typeGenders', this.data.infoToRegister.typeGenders);
+          }
+          const typeDocuments = await this.storageService.getItem('typeDocuments');
+          if(typeDocuments === null){
+            console.log('guardarndo typeDocuments')
+            await this.storageService.setItem('typeDocuments', this.data.infoToRegister.typeDocuments);
+          }
+        }
+      )
+    }
   }
 
 }
