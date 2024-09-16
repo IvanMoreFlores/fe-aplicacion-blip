@@ -9,8 +9,8 @@ const config: CapacitorConfig = {
   },
   plugins: {
     Facebook: {
-      appId: "TU_APP_ID_DE_FACEBOOK",
-      appName: "Your App Name"
+      appId: "479280344913959",
+      appName: "Blip"
     }
   }
 };

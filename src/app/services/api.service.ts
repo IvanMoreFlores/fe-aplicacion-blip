@@ -72,6 +72,30 @@ export class ApiService {
 
   }
 
+  getReservations(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+    });
 
+    return this.http.get(this.apiUrl + '/reserve/host', { headers });
+  }
+
+
+  // Enviar imágenes al servidor
+  sendDniFiles(token: string, frontImage:any, backImage:any) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    const formData = new FormData();
+
+    // Agregar las dos imágenes al FormData con los nombres 'front' y 'back'
+    formData.append('front', frontImage);
+    formData.append('back', backImage);
+
+    // Hacer la petición POST
+    return this.http.post(this.apiUrl + '/user/upload/document-confirmation', formData, { headers });
+  }
 
 }

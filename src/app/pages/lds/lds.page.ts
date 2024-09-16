@@ -50,7 +50,6 @@ export class LdsPage implements OnInit {
         },
         (error: any) => {
           console.error('Error al consumir el servicio:', error);
-          reject(error.message); // Rechazar en caso de error
         }
       );
     });

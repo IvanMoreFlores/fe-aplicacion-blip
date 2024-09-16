@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { ApiService } from 'src/app/services/api.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-adj-dt-dni',
@@ -13,6 +15,14 @@ export class AdjDtDniPage implements OnInit {
   dniBack: string = '';
   files: File[] = [];
   files2: File[] = []; // Para el segundo dropzone
+
+  constructor(
+    private navCtrl: NavController,
+    private api: ApiService,
+    private storage: StorageService
+  ) {}
+
+  ngOnInit() {}
 
   onSelect(event: { addedFiles: File[] }) {
       if (event.addedFiles.length) {
@@ -39,7 +49,7 @@ export class AdjDtDniPage implements OnInit {
           this.files2.splice(index, 1);
       }
   }
-  constructor(private navCtrl: NavController) {}
+  
 
   async captureImage(type: string) {
     try {
@@ -81,7 +91,32 @@ export class AdjDtDniPage implements OnInit {
       });
   }
 
-  ngOnInit() {}
+
+
+  async sendImages() {
+    //routerLink="/descripcion-del-estacionamiento"
+    // Asegúrate de tener ambos base64 de imágenes antes de enviar
+
+    if (this.files && this.files2) {
+      console.log(this.files);
+      console.log(this.files2);
+     await this.convertToBase64(this.files[0].name,this.files[0].type);
+     await this.convertToBase64(this.files2[0].name,this.files2[0].type);
+      const token = await this.storage.getItem('token');  // Obtén tu token de autenticación correctamente
+      this.api.sendDniFiles(token, this.dniFront, this.dniBack).subscribe(
+       async (response) => {
+          console.log('Imágenes enviadas exitosamente', response);
+          // Manejar la respuesta del servidor aquí
+        },
+        (error) => {
+          console.error('Error al enviar las imágenes', error);
+          // Manejar errores de la solicitud aquí
+        }
+      );
+    } else {
+      console.error('No se han capturado las imágenes necesarias.');
+    }
+  }
 
 }
 
