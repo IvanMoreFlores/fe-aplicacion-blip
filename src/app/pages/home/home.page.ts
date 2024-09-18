@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import Swiper from 'swiper';///sliders
+import Swiper from 'swiper'; // sliders
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 
@@ -13,30 +13,86 @@ SwiperCore.use([Pagination]);
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  switchValue: boolean = false; // Valor inicial del toggle
+  isMenuModalOpen: boolean = false; // Control de apertura del modal del menú
+  isToggleModalOpen: boolean = false; // Control de apertura del modal del toggle
+  initialSwitchValue: boolean = false; // Guardar el estado inicial del toggle
+  hasCardContent: boolean = false; // Cambia esto dependiendo si hay contenido o no
 
   constructor(
     private router: Router,
     private modalController: ModalController,
-    private storageService: StorageService
-  ) {} // Inyecta el ModalController
+    private storageService: StorageService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  ngOnInit() {
-
-  }
   selectedContent: string = 'Todos'; // Inicializa con "Todos" seleccionado por defecto
-  async exit() {
-    
-    await this.modalController.dismiss();
-  }
+
   changeContent(content: string) {
     this.selectedContent = content; // Cambia el contenido seleccionado
   }
 
- async sesion_close(){
-     await this.storageService.removeItem('token');
-     await this.modalController.dismiss();
-     this.router.navigate(['/login']);
+  ngOnInit() {}
+
+  // Abre el modal del menú
+  async openMenuModal() {
+    this.isMenuModalOpen = true;
   }
 
+  // Cierra el modal del menú
+  async dismissMenuModal() {
+    this.isMenuModalOpen = false;
+  }
+
+  // Abre el modal del toggle después de cerrar el modal del menú
+  async onToggleChange(event: any) {
+    if (event.detail.checked) {
+      // Guarda el estado actual del toggle antes de abrir el modal
+      this.initialSwitchValue = this.switchValue;
+      await this.dismissMenuModal(); // Cierra el modal del menú
+      this.isToggleModalOpen = true; // Abre el modal del toggle
+    } else {
+      // Si el toggle se desactiva sin abrir el modal, revertir el valor si el modal estaba abierto
+      if (!this.isToggleModalOpen) {
+        this.switchValue = false;
+      }
+    }
+  }
+
+  // Confirma la acción del apagón general
+  confirmAction() {
+    console.log("Apagón general confirmado");
+    // Aquí no cambies el estado del toggle, así se mantendrá activado
+    this.dismissToggleModal(); // Cierra el modal del toggle
+  }
+
+  // Maneja la cancelación de la acción
+  cancelAction() {
+    // Restaurar el estado del toggle al valor antes de abrir el modal
+    this.switchValue = false; // Cambia el valor del toggle a false al cancelar
+    this.dismissToggleModal(); // Cierra el modal del toggle
+  }
+
+
+
+  // Cierra sesión
+  async sesion_close() {
+    await this.storageService.removeItem('token');
+    await this.modalController.dismiss();
+    this.router.navigate(['/login']);
+  }
+  async dismissToggleModal(fromBackdrop: boolean = false) {
+    this.isToggleModalOpen = false; // Cierra el modal del toggle
+  
+    if (fromBackdrop) {
+      // Si el modal se cierra desde el backdrop, desactiva el toggle
+      this.switchValue = false;
+    }
+  
+    this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
+  }
+  // Salir de cualquier página/modal
+  async exit() {
+    await this.dismissMenuModal();
+  }
 }

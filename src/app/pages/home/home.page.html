@@ -13,76 +13,99 @@
               <h3>Host</h3>
             </div>    
           </div>
-          <button class="btn-mn" id="menu"><img src="/assets/images/menu-pun.svg" alt=""></button>
-          <ion-modal trigger="menu" [initialBreakpoint]="1" [breakpoints]="[0, 1]" mode="ios">
-            <ng-template>
-              <div class="block"> 
-                <h1 class="menu-block">Menu</h1>
-              
-                  <hr class="separator-line">
-                  <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
-                  <div class="button-container">
-                    <button (click)="exit()" routerLink="/nuevo-anu-pone-alq" class="service-button">
-                        <div>
-                          <img class="button-image" src="/assets/images/edit.png" alt="Imagen 1">
-                          <span class="button-text">Crea un nuevo anuncio</span>
-                        </div>
-                        <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-                        
-                    </button>
-                    <button (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
-                      <div>
-                        <img class="button-image" src="/assets/images/megaphone.png" alt="Imagen 2">
-                        <span class="button-text">Mis Anuncios</span>
-                      </div>
+          <button class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg" alt=""></button>
 
-                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-                    </button>
+          <!-- Modal del menú -->
+          <ion-modal mode="ios" [isOpen]="isMenuModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="dismissMenuModal()">
+            <ng-template>
+              <div class="block">
+                <h1 class="menu-block">Menu</h1>
+                <hr class="separator-line">
+                <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
+                <div class="button-container">
+                  <button (click)="exit()" routerLink="/nuevo-anu-pone-alq" class="service-button">
+                    <div>
+                      <img class="button-image" src="/assets/images/ticket-outline-selected.svg" alt="Imagen 1">
+                      <span class="button-text">Crea un nuevo anuncio</span>
+                    </div>
+                    <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                  </button>
+                  <button (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
+                    <div>
+                      <img class="button-image" src="/assets/images/megaphone.png" alt="Imagen 2">
+                      <span class="button-text">Mis Anuncios</span>
+                    </div>
+                    <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                  </button>
                 </div>
                 <h2 class="subtitle">CUENTA</h2>
-                  <div class="button-container">
-                    <button   class="service-button">
-                      <div>
-                        <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
-                        <span class="button-text">Apagón General</span>
-                      </div>
+                <div class="button-container">
+                  <button class="service-button">
+                    <div>
+                      <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
+                      <span class="button-text">Apagón General</span>
+                    </div>
+                    <ion-toggle 
+                    aria-label="Dark toggle" color="dark"
+                      mode="ios" 
+                      id="open-modal_apagongeneral" 
+                      expand="block" 
+                      [(ngModel)]="switchValue" 
+                      (ionChange)="onToggleChange($event)">
+                    </ion-toggle>
 
-                      <label class="toggle-switch">
-                        <input type="checkbox">
-                        <div class="toggle-switch-background">
-                          <div class="toggle-switch-handle"></div>
-                        </div>
-                      </label>                      
-                    </button>
-                    <button (click)="exit()" routerLink="/finanzas" class="service-button">
-                      <div>
-                        <img class="button-image" src="assets/images/finanzas.svg" alt="Imagen 1">
-                        <span class="button-text">Finanzas</span>
-                      </div>
-                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-                    </button>
-                    <button routerLink="sopor56" class="service-button">
-                      <div>
-                        <img class="button-image" src="/assets/images/heart.png" alt="Imagen 2">
-                        <span class="button-text">Soporte</span>
-                      </div>
-                      <img class="second-image" src="/assets/images/Vector-1.png" alt="">
-                    </button>
-                  </div>
-                  <hr class="separator-line">
-                  <div class="button-container">
-                    <button class="service-button" (click)="sesion_close()">
-                      <div>
-                        <img class="button-image" src="/assets/images/out-alt.png" alt="Imagen 1">
-                        <span class="button-text">Cerrar Sesión</span>
-                      </div>
-                    </button>
-                  </div>
+                  </button>
+                  <button (click)="exit()" routerLink="/finanzas" class="service-button">
+                    <div>
+                      <img class="button-image" src="assets/images/finanzas.svg" alt="Imagen 1">
+                      <span class="button-text">Finanzas</span>
+                    </div>
+                    <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                  </button>
+                  <button (click)="exit()" routerLink="/finanzas" class="service-button">
+                    <div>
+                      <img class="button-image" src="assets/images/ter-mi.svg" alt="Imagen 1">
+                      <span class="button-text">Términos y Condiciones</span>
+                    </div>
+                    <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                  </button>
+                  <button routerLink="sopor56" class="service-button">
+                    <div>
+                      <img class="button-image" src="/assets/images/heart.png" alt="Imagen 2">
+                      <span class="button-text">Soporte</span>
+                    </div>
+                    <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+                  </button>
                 </div>
+                <hr class="separator-line">
+                <div class="button-container">
+                  <button class="service-button" (click)="sesion_close()">
+                    <div>
+                      <img class="button-image" src="/assets/images/out-alt.png" alt="Imagen 1">
+                      <span class="button-text">Cerrar Sesión</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </ng-template>
           </ion-modal>
-
-        </div>
+          
+          <!-- Modal del toggle -->
+          <ion-modal mode="ios" [isOpen]="isToggleModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="dismissToggleModal(true)">
+            <ng-template>
+              <div class="block">
+                <h1 class="title-mo">¿Estás seguro de realizar el Apagón General?</h1>
+                <div class="line"></div>
+                <p class="parraf">Todas tus publicaciones se ocultarán, pero puedes mostrarlas en cualquier momento.</p>
+                <div class="button-container-modal">
+                  <button class="button-eliminar-modal" (click)="confirmAction()">Eliminar Anuncio</button>
+                  <button (click)="cancelAction()" class="mda">Cancelar</button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+          
+        </div>          
         <h1 class="tl-res">
           Tus Reservaciones
         </h1>
@@ -152,10 +175,93 @@
             </div>
 
             <div *ngIf="selectedContent === 'Comienza Pronto'">
-              <!-- Contenido para "Comienza Pronto" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera programada.</h1>
-              <!-- Aquí puedes añadir el contenido relacionado a "Comienza Pronto" -->
+
+              <!-- <img src="/assets/images/icon-calendar2.svg" alt="">
+              <h1 class="par">Ninguna cochera programada.</h1> -->
+
+              <ion-card mode="ios" class="custom-card">
+                <ion-card-header>
+                  <div class="header-flex">
+                    <div class="circle-icon">
+                      <h1>A</h1>
+                    </div>
+                    <div class="title-container">
+                      <ion-card-title>
+                        <h1 class="title-large">Cochera Av. Benavides 456</h1>
+                        <h2 class="subtitle-large">Av. Benavides 456</h2>
+                      </ion-card-title>
+                    </div>
+                  </div>
+                </ion-card-header>
+              
+                <!-- Contenedor de la imagen con flotantes -->
+                <div class="image-container">
+                  <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
+              
+                  <!-- Elementos flotantes -->
+                  <div class="floating-text time">
+                    <span>04:00:00</span>
+                  </div>
+                  <div class="floating-text status">
+                    <span>Confirmado <span class="dot"></span></span>
+                  </div>
+                </div>
+              
+                <ion-card-content class="content-large">
+                  <div class="res-bar">
+                    <div class="derz">
+                      <h1 class="sub-r"> Reserva:</h1>
+                      <h1 class="ctn">Ivana Tremolada </h1>
+                      <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                    </div>
+                  </div>
+                  <div class="res-bar">
+                    <div class="derz">
+                      <h1 class="sub-r">Vehículo:</h1>
+                      <h1 class="ctn">Toyota Corolla</h1>
+                      <h1>Placa:</h1>
+                      <h2 >AF4759JU</h2>
+                    </div>
+
+                  </div>
+                  <div class="det-asd">
+                    <div class="derz">
+                      <img src="/assets/images/sig-may.svg" alt="">
+                      <h1 class="s" >Reserva</h1>
+                      <h1>x</h1>
+                      <h1 class="m">hora</h1>
+                      <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                      <h1 class="m">4h</h1>
+                    </div>
+                    
+
+                  </div>
+                  <div class="det-asd">
+                    <div class="derz">
+                      <img src="/assets/images/can-card.svg" alt="">
+                      <h1 class="s" >16 de Marzo</h1>
+                    </div>
+                  </div>
+                  <div class="det-asd">
+                    <div class="derz">
+                      <img src="/assets/images/reloj-home.svg" alt="">
+                      <h1 class="s" >9:00 AM </h1>
+                      <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                      <h1>13:00 PM</h1>
+                    </div>
+                  </div>
+
+                  <div>
+                  </div>
+                </ion-card-content>
+                <div class="btn">
+                  <button class="bt-con">Confirmar</button>
+                  <button class="bt-can">Cancelar</button>
+                </div>
+              </ion-card>
+              
+              
+              
             </div>
           </div>
           
