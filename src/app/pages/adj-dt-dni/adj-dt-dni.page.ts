@@ -98,12 +98,10 @@ export class AdjDtDniPage implements OnInit {
     // Asegúrate de tener ambos base64 de imágenes antes de enviar
 
     if (this.files && this.files2) {
-      console.log(this.files);
-      console.log(this.files2);
-     await this.convertToBase64(this.files[0].name,this.files[0].type);
-     await this.convertToBase64(this.files2[0].name,this.files2[0].type);
+      console.log(this.files[0]);
+      console.log(this.files2[0]);
       const token = await this.storage.getItem('token');  // Obtén tu token de autenticación correctamente
-      this.api.sendDniFiles(token, this.dniFront, this.dniBack).subscribe(
+      this.api.sendDniFiles(token, this.files[0], this.files2[0]).subscribe(
        async (response) => {
           console.log('Imágenes enviadas exitosamente', response);
           // Manejar la respuesta del servidor aquí

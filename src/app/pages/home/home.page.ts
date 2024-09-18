@@ -4,6 +4,7 @@ import Swiper from 'swiper';///sliders
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 import SwiperCore, { Pagination } from 'swiper';
 SwiperCore.use([Pagination]);
@@ -17,16 +18,28 @@ export class HomePage implements OnInit {
 
   selectedContent: string = 'Todos';
   data: any;
+  token: string = '';
 
   constructor(
     private router: Router,
     private modalController: ModalController,
     private storage: StorageService,
-    private api: ApiService
+    private api: ApiService,
+    private socket: SocketService
   ) { } // Inyecta el ModalController
 
   ngOnInit() {
     this.getReservas();
+    //this.inicio();
+  }
+
+  async inicio() {
+    this.token = await this.storage.getItem('token');
+    console.log(this.token);
+    this.socket.connect(this.token);
+    this.socket.on('reservation', (data) => {
+      console.log('Mensaje recibido del servidor:', data);
+    });
   }
 
   async exit() {

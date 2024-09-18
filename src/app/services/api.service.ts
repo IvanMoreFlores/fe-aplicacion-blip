@@ -84,8 +84,7 @@ export class ApiService {
   // Enviar imágenes al servidor
   sendDniFiles(token: string, frontImage:any, backImage:any) {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     });
 
     const formData = new FormData();
