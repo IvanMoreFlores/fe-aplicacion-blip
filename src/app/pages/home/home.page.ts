@@ -29,7 +29,6 @@ export class HomePage implements OnInit {
     private modalController: ModalController,
     private storage: StorageService,
     private api: ApiService,
-    private storageService: StorageService,
     private cdr: ChangeDetectorRef
   ) { } // Inyecta el ModalController
 
@@ -78,7 +77,7 @@ export class HomePage implements OnInit {
 
   // Cierra sesión
   async sesion_close() {
-    await this.storageService.removeItem('token');
+    await this.storage.removeItem('token');
     await this.modalController.dismiss();
     this.router.navigate(['/login']);
   }

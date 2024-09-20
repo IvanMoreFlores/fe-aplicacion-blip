@@ -82,7 +82,7 @@ export class ApiService {
 
 
   // Enviar imágenes al servidor
-  sendDniFiles(token: string, frontImage:any, backImage:any) {
+  sendDniFiles(token: string, frontImage: any, backImage: any) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
@@ -95,6 +95,14 @@ export class ApiService {
 
     // Hacer la petición POST
     return this.http.post(this.apiUrl + '/user/upload/document-confirmation', formData, { headers });
+  }
+
+  getAdvertiseConfig(token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+    });
+
+    return this.http.get(this.apiUrl + '/advertisement/create/configurations', { headers });
   }
 
 }

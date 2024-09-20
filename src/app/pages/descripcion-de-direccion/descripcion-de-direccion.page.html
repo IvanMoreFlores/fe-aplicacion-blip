@@ -8,26 +8,22 @@
             <ion-label class="label-text">Dirección,linea 1</ion-label>
             <ion-input type="text" placeholder="Av. Benavides 456"></ion-input>
           </div>
-          
+
           <div class="form-group">
             <label for="ciudad" class="smaller-text1">Ciudad</label>
             <div class="select-wrapper">
-              <select id="ciudad" name="ciudad" class="form-control-1" >
-                <option value="ciudad1">Lima</option>
-                <option value="ciudad2">Ciudad 2</option>
-                <option value="ciudad3">Ciudad 3</option>
+              <select id="ciudad" name="ciudad" class="form-control-1">
+                <option value="1">Lima</option>
               </select>
               <i class="bi bi-caret-down-fill"></i>
             </div>
           </div>
-           
+
 
           <div class="form-group">
             <label for="distrito" class="smaller-text2">Distrito</label>
             <select id="distrito" name="distrito" class="form-control-2">
-              <option value="distrito1">Cercado de Lima</option>
-              <option value="distrito2">Distrito 2</option>
-              <option value="distrito3">Distrito 3</option>             
+              <option *ngFor="let distrito of distritoData" value="[distrito.id_distrito]">{{ distrito.nombre_distrito }}</option>
             </select>
             <i class="bilp bi-caret-down-fill"></i>
           </div>
@@ -41,7 +37,7 @@
             <label for="detalle" class="detalle-1">Detalles ( N° pisos u otros) </label>
             <textarea id="detalle" name="pregunta_ayuda" class="custom-textarea"></textarea>
           </div>
-          
+
           <button routerLink="/descripcion-del-espacio" class="more-info-btn">Atrás</button>
           <button routerLink="/descripcion-de-servicios-adicionales" class="next-btn">Siguiente</button>
         </div>
