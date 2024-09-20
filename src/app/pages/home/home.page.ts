@@ -92,8 +92,8 @@ export class HomePage implements OnInit {
     this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
   }
   // Salir de cualquier página/modal
-  async exit() {
-    await this.dismissMenuModal();
+  exit() {
+    this.modalController.dismiss(null,'isMenuModalOpen');
   }
 
   changeContent(content: string) {
