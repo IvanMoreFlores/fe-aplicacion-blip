@@ -1,7 +1,18 @@
-.container {
-    background-color: #FFFFFF;
+ion-content{
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
     display: flex;
+    flex-direction: column;
     height: 100%;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 40px;
 }
 
 img {
@@ -9,13 +20,14 @@ img {
 }
   
 .title {
-    font-size: 28px;
-    line-height: 42px;
-    font-family: "Poppins", sans-serif;
-    margin: 10px auto;
-    display: block;
-    width: 80%;
     color: #212121;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px; /* 133.333% */
+    width: 90%;
+
 }
   
 .subtitle {
@@ -24,7 +36,7 @@ img {
     font-family: "Poppins", sans-serif;
     margin: 20px auto 0px;
     display: block;
-    width: 80%;
+    width: 100%;
     color: #212121;
 }
   
@@ -34,26 +46,37 @@ img {
     font-family: "Poppins", sans-serif;
     margin: 10px auto;
     display: block;
-    width: 80%;
+    width: 100%;
     color: #212121;
 }
   
-.next-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    border: 1px solid #79FFAF; 
-    background-color: transparent; 
-    color: #212121;
-    font-size: 16px;
-    border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    background-color: #79FFAF;
-}
-  
-.next-btn:hover {
-    background-color: rgba(163, 163, 163, 0.2); /* Cambio de color de fondo en hover */
+.bnt-dow{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    .bac{
+        border: 1px solid black;
+        background-color: #FFFFFF;
+        font-size: 15px;
+        padding-inline: 30px;
+        padding-block: 18px;
+        border-radius: 30px;
+        font-size: 15px;
+
+        font-weight: 600;
+        color: #212121;
+        font-family: "Poppins", sans-serif;
+    }
+    .nex{
+        border-radius: 30px;
+        border: 1px solid #C8C5CA;
+        background-color: #FFFFFF;
+        color: #C8C5CA;
+        padding-block: 18px;
+        font-size: 15px;
+        padding-inline: 30px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+    }
 }
