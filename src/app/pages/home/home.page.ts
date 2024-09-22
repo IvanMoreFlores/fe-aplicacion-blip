@@ -20,9 +20,10 @@ export class HomePage implements OnInit {
   isToggleModalOpen: boolean = false; // Control de apertura del modal del toggle
   initialSwitchValue: boolean = false; // Guardar el estado inicial del toggle
   hasCardContent: boolean = false; // Cambia esto dependiendo si hay contenido o no
-
   selectedContent: string = 'Todos';
   data: any;
+  url_new: string = '/nuevo-anu-pone-alq';
+  userData: any;
 
   constructor(
     private router: Router,
@@ -30,10 +31,25 @@ export class HomePage implements OnInit {
     private storage: StorageService,
     private api: ApiService,
     private cdr: ChangeDetectorRef
-  ) { } // Inyecta el ModalController
+  ) { 
+
+  } // Inyecta el ModalController
 
   ngOnInit() {
     this.getReservas();
+    this.getDni();
+  }
+
+  async getDni(){
+    const userDni = await this.storage.getItem('userDni');
+    if (userDni) {
+      this.url_new = '/descripcion-del-espacio';
+    }else{
+      this.userData = await this.storage.getItem('user');
+      if(this.userData.esu_id.esu_descri !== 'REGISTRADO'){
+       this.url_new = '/descripcion-del-espacio';
+      }
+    }
   }
 
   // Abre el modal del menú

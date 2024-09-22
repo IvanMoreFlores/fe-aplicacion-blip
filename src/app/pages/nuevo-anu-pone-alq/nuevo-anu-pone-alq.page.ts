@@ -18,22 +18,8 @@ export class NuevoAnuPoneAlqPage implements OnInit {
     private api: ApiService,
     private router: Router
   ) { }
+  
   ngOnInit() {
-    this.checkValues();
-  }
-
-  async checkValues() {
-    const userDni = await this.storage.getItem('userDni');
-
-    if (userDni) {
-      this.router.navigate(['/descripcion-del-espacio']);
-    } else {
-      this.userData = await this.storage.getItem('user');
-      if (this.userData.esu_id.esu_descri !== 'REGISTRADO') {
-        this.router.navigate(['/descripcion-del-espacio']);
-      }
-
-    }
 
   }
 

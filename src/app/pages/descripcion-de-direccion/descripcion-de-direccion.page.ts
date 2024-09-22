@@ -8,8 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./descripcion-de-direccion.page.scss'],
 })
 export class DescripcionDeDireccionPage implements OnInit {
-  distritoData:any;
+  distritoData: any;
   tga_id: string = '';
+  direccion: string = '';
   distrito: string = '';
   ciudad: string = '';
   referencia: string = '';
@@ -18,13 +19,17 @@ export class DescripcionDeDireccionPage implements OnInit {
   constructor(
     private router: Router,
     private storage: StorageService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
 
-  ) { 
+  ) {
     this.setValues();
   }
 
-  async setValues(){
+  ngOnInit() {
+    console.log('');
+  }
+
+  async setValues() {
     const adConfig = await this.storage.getItem('adConfig');
     this.distritoData = adConfig.districts;
     this.route.queryParams.subscribe(params => {
@@ -32,7 +37,21 @@ export class DescripcionDeDireccionPage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  nextPage(){
+    this.router.navigate(['/descripcion-de-servicios-adicionales'], { queryParams: { 
+      tga_id: this.tga_id, 
+      direccion: this.direccion,
+      distrito: this.distrito,
+      ciudad: this.ciudad,
+      referencia: this.referencia,
+      detalles: this.detalles
+    } });
+  }
+
+  async return(){
+    this.router.navigate(['/descripcion-del-espacio'], { queryParams: { 
+      tga_id: this.tga_id,
+    } });
   }
 
 }

@@ -59,7 +59,7 @@ export class LogBinPage implements OnInit {
           const id_user: number = await this.getUserData(token);
           const token_main = this.jwtService.generateTokenMain('CORREO', id_user, true);
           await this.storageService.setItem('token', token_main);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/tab-home/home']);
         } else {
           alert('usuario incorrecto!');
         }

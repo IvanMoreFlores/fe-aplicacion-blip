@@ -127,7 +127,7 @@ export class RegistroPage implements OnInit, OnDestroy {
             const token_main = this.jwtService.generateTokenMain('TELEFONO', id_user, true);
             await this.storageService.removeItem('token');
             await this.storageService.setItem('token', token_main);
-            this.router.navigate(['/home']);
+            this.router.navigate(['/tab-home/home']);
           } /*else {
             this.router.navigate(['/terminos-y-condiciones']);
           }*/
