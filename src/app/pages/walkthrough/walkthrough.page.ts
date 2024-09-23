@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StorageService } from '../../services/storage.service';
 import Swiper from 'swiper';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -20,7 +21,11 @@ export class WalkthroughPage implements OnInit {
 
   isButtonEnabled: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private storageService: StorageService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.iniciarSwiper();
@@ -30,7 +35,7 @@ export class WalkthroughPage implements OnInit {
     const miSwiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
       spaceBetween: 0,
-      loop:false,
+      loop: false,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -46,5 +51,10 @@ export class WalkthroughPage implements OnInit {
         },
       },
     });
+  }
+
+ async confirmWelcome() {
+    await this.storageService.setItem('welcome', true);
+    this.router.navigate(['/login']);
   }
 }

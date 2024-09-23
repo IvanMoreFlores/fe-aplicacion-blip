@@ -7,11 +7,11 @@
       <div class="card">
         <div class="nav">
           <div class="pers">
-            <img src="/assets/images/backdrop-component.png" alt=""> 
+            <img src="/assets/images/backdrop-component.png" alt="">
             <div class="name">
               <h1>Ivana T.</h1>
               <h3>Host</h3>
-            </div>    
+            </div>
           </div>
           <button class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg" alt=""></button>
 
@@ -23,7 +23,8 @@
                 <hr class="separator-line">
                 <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
                 <div class="button-container">
-                  <button (click)="exit()" routerLink="/nuevo-anu-pone-alq" class="service-button">
+                  
+                  <button (click)="exit()" routerLink="{{ url_new }}" class="service-button">
                     <div>
                       <img class="button-image" src="/assets/images/ticket-outline-selected.svg" alt="Imagen 1">
                       <span class="button-text">Crea un nuevo anuncio</span>
@@ -112,36 +113,27 @@
         <div class="card-content">
           <div class="swiper-container swiper-main">
             <div class="horizontal-scroll">
-              <button 
-                class="swip" 
-                (click)="changeContent('Todos')" 
-                [ngClass]="{'active': selectedContent === 'Todos'}">
+              <button class="swip" (click)="changeContent('Todos')" [ngClass]="{'active': selectedContent === 'Todos'}">
                 <h1 class="res-de">Todos </h1>
                 <button class="lda">
                   <h1 class="descrip">2</h1>
                 </button>
               </button>
-              <button 
-                class="swip" 
-                (click)="changeContent('Terminan Pronto')" 
+              <button class="swip" (click)="changeContent('Terminan Pronto')"
                 [ngClass]="{'active': selectedContent === 'Terminan Pronto'}">
                 <h1 class="res-de">Terminan Pronto</h1>
                 <button class="lda">
                   <h1 class="descrip">0</h1>
                 </button>
               </button>
-              <button 
-                class="swip" 
-                (click)="changeContent('En Curso')" 
+              <button class="swip" (click)="changeContent('En Curso')"
                 [ngClass]="{'active': selectedContent === 'En Curso'}">
                 <h1 class="res-de">En Curso</h1>
                 <button class="lda">
                   <h1 class="descrip">1</h1>
                 </button>
               </button>
-              <button 
-                class="swip" 
-                (click)="changeContent('Comienza Pronto')" 
+              <button class="swip" (click)="changeContent('Comienza Pronto')"
                 [ngClass]="{'active': selectedContent === 'Comienza Pronto'}">
                 <h1 class="res-de">Comienza Pronto</h1>
                 <button class="lda">
@@ -150,14 +142,96 @@
               </button>
             </div>
           </div>
-          
+
+          <br><br>
+
           <!-- Contenido dinámico -->
           <div class="content-display">
             <div *ngIf="selectedContent === 'Todos'">
-              <!-- Contenido para "Todos" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera disponible.</h1>
-              <!-- Aquí puedes añadir el contenido relacionado a "Todos" -->
+
+              <ion-card mode="ios" class="custom-card" *ngFor="let item of data">
+                <ion-card-header>
+                  <div class="header-flex">
+                    <div class="circle-icon">
+                      <h1>A</h1>
+                    </div>
+                    <div class="title-container">
+                      <ion-card-title>
+                        <h1 class="title-large">{{ item.gar_descri }}</h1>
+                        <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                      </ion-card-title>
+                    </div>
+                  </div>
+                </ion-card-header>
+              
+                <!-- Contenedor de la imagen con flotantes -->
+                <div class="image-container">
+                  <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+              
+                  <!-- Elementos flotantes -->
+                  <div class="floating-text time">
+                    <span>04:00:00</span>
+                  </div>
+                  <div class="floating-text status">
+                    <span>Confirmado <span class="dot"></span></span>
+                  </div>
+                </div>
+              
+                <ion-card-content class="content-large">
+                  <div class="res-bar">
+                    <div class="derz">
+                      <h1 class="sub-r"> Reserva:</h1>
+                      <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
+                      <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                    </div>
+                  </div>
+                  <div class="res-bar">
+                    <div class="derz">
+                      <h1 class="sub-r">Vehículo:</h1>
+                      <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                      <h1>Placa:</h1>
+                      <h2 >{{ item.veh_placa }}</h2>
+                    </div>
+                  </div>
+                  <div class="det-asd">
+                    <div class="derz">
+                      <img src="/assets/images/sig-may.svg" alt="">
+                      <h1 class="s" >Reserva</h1>
+                      <h1>x</h1>
+                      <h1 class="m">{{ item.tip_descri }}</h1>
+                      <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                      <h1 class="m">{{ item.res_tiempo }}</h1>
+                    </div>
+                  </div>
+                  <div class="det-asd">
+                    <div class="derz">
+                      <img src="/assets/images/can-card.svg" alt="">
+                      <h1 class="s" >{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                    </div>
+                  </div>
+                  <div class="det-asd">
+
+                    <div class="derz">
+                      <img src="/assets/images/reloj-home.svg" alt="">
+                      <h1 class="s" >{{ item.res_fecini | date: 'shortTime' }}</h1>
+                      <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                      <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </ion-card-content>
+                <div class="btn">
+                  <button class="bt-con">Confirmar</button>
+                  <button class="bt-can">Cancelar</button>
+                </div>
+              </ion-card>
+
+              <div *ngIf="!data">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera disponible.</h1>
+              </div>
+
             </div>
 
             <div *ngIf="selectedContent === 'Terminan Pronto'">
@@ -176,9 +250,6 @@
 
             <div *ngIf="selectedContent === 'Comienza Pronto'">
 
-              <!-- <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera programada.</h1> -->
-
               <ion-card mode="ios" class="custom-card">
                 <ion-card-header>
                   <div class="header-flex">
@@ -222,7 +293,6 @@
                       <h1>Placa:</h1>
                       <h2 >AF4759JU</h2>
                     </div>
-
                   </div>
                   <div class="det-asd">
                     <div class="derz">
@@ -233,8 +303,6 @@
                       <img src="/assets/images/sig-may.svg" class="mayor" alt="">
                       <h1 class="m">4h</h1>
                     </div>
-                    
-
                   </div>
                   <div class="det-asd">
                     <div class="derz">
@@ -250,7 +318,6 @@
                       <h1>13:00 PM</h1>
                     </div>
                   </div>
-
                   <div>
                   </div>
                 </ion-card-content>
@@ -427,12 +494,10 @@
                   <button class="bt-can">Cancelar</button>
                 </div>
               </ion-card>
-              
-              
               
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>

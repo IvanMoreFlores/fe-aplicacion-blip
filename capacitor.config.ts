@@ -6,6 +6,12 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https'
+  },
+  plugins: {
+    Facebook: {
+      appId: "479280344913959",
+      appName: "Blip"
+    }
   }
 };
 

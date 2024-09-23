@@ -8,6 +8,7 @@ node_modules/
 dist/
 .angular/
 .vscode/
+android/
 
 # Compiled Java class files
 *.class

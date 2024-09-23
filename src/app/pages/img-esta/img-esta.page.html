@@ -5,20 +5,56 @@
         <div class="content">
           <h1 class="titlex">Incluye imágenes de tu área de estacionamiento.</h1>
           <h2 class="text-adj">Mínimo tres fotos, pero si tienes más, ¡será genial! </h2>
-          <button (click)="captureImage('Aest1')" class="custom-button bl">
-            <img src="assets/images/adj-est.png" alt="">
-          </button> 
-          <button (click)="captureImage('Aest2')" class="custom-button bl">
-            <img src="assets/images/adj-est.png" alt="">
-          </button> 
-          <button (click)="captureImage('Aest3')" class="custom-button bl">
-            <img src="assets/images/adj-est.png" alt="">
-          </button> 
+
+          <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+            <ngx-dropzone-label>
+              <div class="pad">
+                <img src="/assets/images/dowsl.svg" alt="" class="img-dow">
+                <div class="luck">
+                  <h1 class="mld">Subir Imagen 1</h1>
+                  <h1 class="cfd">Solo archivos JPEG O PNG</h1>
+                </div>
+              </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngIf="files.length > 0" [file]="files[0]"
+              [removable]="true" (removed)="onRemove(files[0])">
+            </ngx-dropzone-image-preview>
+          </div>
+
+          <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect2($event)">
+            <ngx-dropzone-label>
+              <div class="pad">
+                <img src="/assets/images/dowsl.svg" alt="" class="img-dow">
+                <div class="luck">
+                  <h1 class="mld">Subir Imagen 2</h1>
+                  <h1 class="cfd">Solo archivos JPEG O PNG</h1>
+                </div>
+              </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview2" *ngIf="files2.length > 0" [file]="files2[0]"
+              [removable]="true" (removed)="onRemove2(files2[0])">
+            </ngx-dropzone-image-preview>
+          </div>
+
+          <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect3($event)">
+            <ngx-dropzone-label>
+              <div class="pad">
+                <img src="/assets/images/dowsl.svg" alt="" class="img-dow">
+                <div class="luck">
+                  <h1 class="mld">Subir Imagen 3</h1>
+                  <h1 class="cfd">Solo archivos JPEG O PNG</h1>
+                </div>
+              </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview2" *ngIf="files3.length > 0" [file]="files3[0]"
+              [removable]="true" (removed)="onRemove2(files3[0])">
+            </ngx-dropzone-image-preview>
+          </div>
+
           <button routerLink="/configuracion-alquilar" class="more-info-btn">Atrás</button>
-          <button [routerLink]="['/mostra-esta']" [queryParams]="{esTa1: esta1, esTa2: esta2,esTa3: esta3}"  class="next-btn">Siguiente</button>
+          <button (click)="sendImages()" class="next-btn">Siguiente</button>
         </div>
       </div>
     </div>
   </div>
 </ion-content>
-

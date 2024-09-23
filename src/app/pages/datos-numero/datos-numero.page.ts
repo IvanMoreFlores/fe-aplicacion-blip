@@ -16,7 +16,8 @@ export class DatosNumeroPage implements OnInit {
   apellido: string = '';
   fecha_nac: string = '';
   genero: string = '';
-  dni: string = '';
+  doc: string = '';
+  nro: string = '';
   phone: string = '';
 
   constructor(
@@ -37,7 +38,8 @@ export class DatosNumeroPage implements OnInit {
       this.apellido = params['apellido'];
       this.fecha_nac = params['fecha_nac'];
       this.genero = params['genero'];
-      this.dni = params['dni'];
+      this.doc = params['doc'];
+      this.nro = params['nro'];
     });
   }
 
@@ -63,7 +65,8 @@ export class DatosNumeroPage implements OnInit {
             apellido: this.apellido,
             fecha_nac: this.fecha_nac,
             genero: this.genero,
-            dni: this.dni,
+            doc: this.doc,
+            nro: this.nro,
             phone: this.phone
           }
         });
@@ -82,7 +85,8 @@ export class DatosNumeroPage implements OnInit {
         apellido: this.apellido,
         fecha_nac: this.fecha_nac,
         genero: this.genero,
-        dni: this.dni,
+        doc: this.doc,
+        nro: this.nro,
         phone: this.phone
       }
     });

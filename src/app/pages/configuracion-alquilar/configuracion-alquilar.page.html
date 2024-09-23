@@ -6,9 +6,9 @@
           <h1 class="title">¿A quiénes te gustaría alquilar?</h1>
           <button class="custom-btn">
             <img src="/assets/images/car.png" alt="">
-            <span class="btn-text">Carros  Particulares</span>
+            <span class="btn-text">Carros Particulares</span>
             <label class="container">
-              <input type="checkbox" checked="checked">
+              <input type="checkbox" checked #checkbox1 (change)="onCheckboxChange(1, checkbox1.checked)">
               <span class="checkmark"></span>
             </label>
           </button>
@@ -16,7 +16,7 @@
             <img src="/assets/images/camioneta.png" alt=""> 
             <span class="btn-text">Camionetas</span>
             <label class="container">
-              <input type="checkbox" checked="checked">
+              <input type="checkbox" checked #checkbox2 (change)="onCheckboxChange(2, checkbox2.checked)">
               <span class="checkmark"></span>
             </label>
           </button>
@@ -24,7 +24,7 @@
             <img src="/assets/images/bicicleta.png" alt="">
             <span class="btn-text">Bicicletas</span>
             <label class="container">
-              <input type="checkbox" checked="checked">
+              <input type="checkbox" checked #checkbox3 (change)="onCheckboxChange(3, checkbox3.checked)">
               <span class="checkmark"></span>
             </label>
           </button>
@@ -32,13 +32,13 @@
             <img src="/assets/images/motorbike.png" alt=""> 
             <span class="btn-text">Motos</span>
             <label class="container">
-              <input type="checkbox" checked="checked">
+              <input type="checkbox" checked #checkbox4 (change)="onCheckboxChange(4, checkbox4.checked)">
               <span class="checkmark"></span>
             </label>
           </button>
           
-          <button routerLink="/configuracion" class="more-info-btn">Atrás</button>
-          <button routerLink="/img-esta" class="next-btn">Siguiente</button>
+          <button (click)="return()" class="more-info-btn">Atrás</button>
+          <button (click)="getValues()" class="next-btn">Siguiente</button>
         </div>
       </div>
     </div>

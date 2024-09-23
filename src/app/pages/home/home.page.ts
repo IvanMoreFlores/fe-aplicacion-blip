@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import Swiper from 'swiper'; // sliders
+import Swiper from 'swiper';///sliders
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 import SwiperCore, { Pagination } from 'swiper';
 SwiperCore.use([Pagination]);
@@ -13,26 +14,43 @@ SwiperCore.use([Pagination]);
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+
   switchValue: boolean = false; // Valor inicial del toggle
   isMenuModalOpen: boolean = false; // Control de apertura del modal del menú
   isToggleModalOpen: boolean = false; // Control de apertura del modal del toggle
   initialSwitchValue: boolean = false; // Guardar el estado inicial del toggle
   hasCardContent: boolean = false; // Cambia esto dependiendo si hay contenido o no
+  selectedContent: string = 'Todos';
+  data: any;
+  url_new: string = '/nuevo-anu-pone-alq';
+  userData: any;
 
   constructor(
     private router: Router,
     private modalController: ModalController,
-    private storageService: StorageService,
+    private storage: StorageService,
+    private api: ApiService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { 
 
-  selectedContent: string = 'Todos'; // Inicializa con "Todos" seleccionado por defecto
+  } // Inyecta el ModalController
 
-  changeContent(content: string) {
-    this.selectedContent = content; // Cambia el contenido seleccionado
+  ngOnInit() {
+    this.getReservas();
+    this.getDni();
   }
 
-  ngOnInit() {}
+  async getDni(){
+    const userDni = await this.storage.getItem('userDni');
+    if (userDni) {
+      this.url_new = '/descripcion-del-espacio';
+    }else{
+      this.userData = await this.storage.getItem('user');
+      if(this.userData.esu_id.esu_descri !== 'REGISTRADO'){
+       this.url_new = '/descripcion-del-espacio';
+      }
+    }
+  }
 
   // Abre el modal del menú
   async openMenuModal() {
@@ -73,26 +91,41 @@ export class HomePage implements OnInit {
     this.dismissToggleModal(); // Cierra el modal del toggle
   }
 
-
-
   // Cierra sesión
   async sesion_close() {
-    await this.storageService.removeItem('token');
+    await this.storage.removeItem('token');
     await this.modalController.dismiss();
     this.router.navigate(['/login']);
   }
   async dismissToggleModal(fromBackdrop: boolean = false) {
     this.isToggleModalOpen = false; // Cierra el modal del toggle
-  
+
     if (fromBackdrop) {
       // Si el modal se cierra desde el backdrop, desactiva el toggle
       this.switchValue = false;
     }
-  
+
     this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
   }
   // Salir de cualquier página/modal
   exit() {
     this.modalController.dismiss(null,'isMenuModalOpen');
   }
+
+  changeContent(content: string) {
+    this.selectedContent = content; // Cambia el contenido seleccionado
+  }
+
+  async getReservas() {
+    const token = await this.storage.getItem('token');
+    this.api.getReservations(token).subscribe(
+      async (response: any) => {
+        this.data = response.data;
+      },
+      (error: any) => {
+        console.error('Error al enviar el mensaje:', error);
+      }
+    );
+  }
+
 }

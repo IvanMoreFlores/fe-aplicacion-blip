@@ -119,6 +119,7 @@ export class RegistroPage implements OnInit, OnDestroy {
     if (code_front === original_code) {
       this.api.getValidate(token).subscribe(
         async (response: any) => {
+          console.log(response);
           this.data = response.data;
           const validate = this.data.isValidate;
           if (validate === true) {
@@ -126,10 +127,10 @@ export class RegistroPage implements OnInit, OnDestroy {
             const token_main = this.jwtService.generateTokenMain('TELEFONO', id_user, true);
             await this.storageService.removeItem('token');
             await this.storageService.setItem('token', token_main);
-            this.router.navigate(['/home']);
-          } else {
+            this.router.navigate(['/tab-home/home']);
+          } /*else {
             this.router.navigate(['/terminos-y-condiciones']);
-          }
+          }*/
 
         },
         (error: any) => {

@@ -1,10 +1,10 @@
 <ion-content [fullscreen]="true">
   <div class="container">
+    <div id="map"></div>
     <div class="row">
       <div class="col-12">
         <div class="content">
           <h1 class="title"></h1>
-
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <!-- Nuevo contenido dentro del navbar-collapse -->
@@ -13,14 +13,18 @@
               <div class="button-container">
                 <div class="box">
                   <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="text" placeholder="Calle 58 305" name="" >
+                  <input type="text" id="address-input" [(ngModel)]="uga_direcc" placeholder="Calle 58 305" name="">
                 </div>
-                
-                <button routerLink="/eli-pref"  class="custom-btn">
-                  <span class="btn-text">Listo</span>               
-                </button>      
 
-            </div>
+                <!--<button (click)="searchAddress()"  class="custom-btn">
+                  <span class="btn-text">Buscar</span>
+                </button>-->
+
+                <button class="custom-btn" (click)="sendData()">
+                  <span class="btn-text">Listo</span>
+                </button>
+
+              </div>
             </div>
           </div>
 
