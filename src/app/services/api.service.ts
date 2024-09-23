@@ -105,4 +105,57 @@ export class ApiService {
     return this.http.get(this.apiUrl + '/advertisement/create/configurations', { headers });
   }
 
+  createAdvertisement(
+    token: string,
+    file1: any,
+    file2: any,
+    file3: any,
+    tga_id: string,
+    gar_descri: string,
+    gar_largo: string,
+    gar_ancho: string,
+    gar_alto: string,
+    uga_direcc: string,
+    uga_lat: string,
+    uga_long: string,
+    dis_id: string,
+    services: any[],
+    tve_ids: any[]
+  ) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    const dis_value: number = parseInt(dis_id, 10);
+
+    const formData = new FormData();
+
+    formData.append('file', file1);
+    formData.append('file', file2);
+    formData.append('file', file3);
+    formData.append('tga_id', tga_id);
+    formData.append('gar_descri', gar_descri);
+    formData.append('gar_largo', gar_largo);
+    formData.append('gar_ancho', gar_ancho);
+    formData.append('gar_alto', gar_alto);
+    formData.append('uga_direcc', uga_direcc);
+    formData.append('uga_lat', uga_lat);
+    formData.append('uga_long', uga_long);
+    formData.append('dis_id', dis_id.trim());
+    formData.append('tga_id', tga_id.trim());
+    formData.append('tga_id', tga_id);
+
+    services.forEach((service: string) => {
+      formData.append('services', service.trim());
+    });
+
+    tve_ids.forEach((tve_id: string) => {
+      formData.append('tve_id', tve_id.trim());
+    });
+
+    console.log(formData);
+
+    return this.http.post(this.apiUrl + '/advertisement/create', formData, { headers });
+  }
+
 }

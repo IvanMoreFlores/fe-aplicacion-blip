@@ -31,7 +31,7 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.tga_id = params['tga_id'];
       this.direccion = params['direccion'];
-      this.distrito = params['direccion'];
+      this.distrito = params['distrito'];
       this.ciudad = params['ciudad'];
       this.referencia = params['referencia'];
       this.detalles = params['detalles'];
@@ -52,7 +52,6 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
         this.serviciosSeleccionados.push(servicioId);
         console.log(this.serviciosSeleccionados);
       }
-
       
     }
 

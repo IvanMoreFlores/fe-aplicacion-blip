@@ -9,24 +9,29 @@
             </h2>
       
           <div class="input-bar">
-            <ion-label class="label-text">Medida (Ancho x Largo)</ion-label>
-            <ion-input type="text" placeholder="2.5 m x 5 m"></ion-input>
+            <ion-label class="label-text">Medida Ancho (en metros)</ion-label>
+            <ion-input [(ngModel)]="gar_largo" type="text" placeholder="2.5 (Metros)"></ion-input>
           </div>  
 
           <div class="input-bar">
+            <ion-label class="label-text">Medida Largo (en metros)</ion-label>
+            <ion-input [(ngModel)]="gar_ancho" type="text" placeholder="5 (Metros)"></ion-input>
+          </div>
+
+          <div class="input-bar">
             <ion-label class="label-text">Altura (en caso sea techado)</ion-label>
-            <ion-input type="text" placeholder="2.1 m"></ion-input>
+            <ion-input [(ngModel)]="gar_alto" type="text" placeholder="2.1 (Metros)"></ion-input>
           </div>
 
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" routerLink="/descripcion-como-mido-mi-espacio">¿Cómo hacerlo?</a>
+              <a class="servicios" (click)="indicacion()">¿Cómo hacerlo?</a>
               <img src="/assets/images/right.png" alt="">
             </p>
           </div>
 
           <button routerLink="/descripcion-de-servicios-adicionales" class="more-info-btn">Atrás</button>
-          <button routerLink="/descripcion-de-ubicacion" class="next-btn">Siguiente</button>
+          <button (click)="getValues()" class="next-btn">Siguiente</button>
         </div>
       </div>
     </div>

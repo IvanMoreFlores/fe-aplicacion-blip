@@ -46,7 +46,7 @@ padding-left: 10px;
   left: 50px;
   border: 1px solid #212121; 
   background-color: #212121; 
-  color: #79FFAF;
+  //color: #79FFAF;
   font-size: 16px;
   border-radius: 30px;
   width: 150px;
@@ -108,3 +108,9 @@ padding-left: 10px;
   margin: 10px auto;
 }
 
+#map { 
+  background-color: #FFFFFF !important;
+  height: 62%; // O ajusta la altura según tus necesidades
+  width: 100%;
+  margin-top: 5%;
+}

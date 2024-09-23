@@ -18,7 +18,6 @@ export class AdjDtDniPage implements OnInit {
   files2: File[] = []; // Para el segundo dropzone
 
   constructor(
-    private navCtrl: NavController,
     private api: ApiService,
     private storage: StorageService,
     private router: Router,

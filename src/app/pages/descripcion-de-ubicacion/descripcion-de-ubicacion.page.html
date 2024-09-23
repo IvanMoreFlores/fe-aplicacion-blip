@@ -12,12 +12,12 @@
 	          <input type="text" placeholder="Introduce tu ubicación" name="" >
           </div>
           
-          <button class="custom-btn" routerLink="/descripcion-del-mapa">
+          <button class="custom-btn" (click)="selectMap()">
             <img src="/assets/images/map-marker-black.png" alt="">
             <span class="btn-text">Seleccionar en el mapa</span>
           </button>
-          <button class="custom-btn" >
-            <img src="/assets/images/marker-black.png" alt=""> 
+          <button class="custom-btn" (click)="getUbicacion()">
+            <img src="/assets/images/marker-black.png"  alt=""> 
             <span class="btn-text">Usar Ubicación real</span>   
           </button>
 
