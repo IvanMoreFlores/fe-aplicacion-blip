@@ -1,56 +1,34 @@
+ion-content{
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .container {
     background-color: #FFFFFF;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
+    padding: 40px;
   }
   
 .title {
-    font-size: 31px;
-    line-height: 42px;
-    font-family: "Poppins", sans-serif;
-    margin: 100px auto 50px;
-    display: block;
-    width: 80%;
+    color: #212121;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px; /* 133.333% */
+    margin: 50px auto 50px;
+    display: flex;
+    width: 100%;
     color: #212121;
 }
   
-.more-info-btn {
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    border: 1px solid #212121; 
-    background-color: #212121; 
-    color: #79FFAF;
-    font-size: 16px;
-    border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-}
-  
-.more-info-btn:hover {
-    background-color: #363636; 
-}
-
-.next-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    border: 1px solid #79FFAF; 
-    background-color: #79FFAF; 
-    color: #212121;
-    font-size: 16px;
-    border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-}
-  
-.next-btn:hover {
-    background-color: rgba(163, 163, 163, 0.2);
-}
   
 /* Botón personalizado */
 .custom-btn {
@@ -60,8 +38,8 @@
     font-size: 16px;
     border: 1px solid #A3A2A4; /* Borde predeterminado gris */
     border-radius: 30px;
-    width: 80%;
-    height: 49px;
+    width: 100%;
+    height: 55px;
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -104,3 +82,35 @@ border: 1px solid #212121;
     border-color: #000000; /* Borde negro del radio button */
 }
 
+.bnt-dow{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    .bac{
+        border: 1px solid #212121;
+        background-color: #FFFFFF;
+        padding-inline: 10px;
+        padding-top: 17px;
+        padding-bottom: 17px;
+        border-radius: 30px;
+        font-size: 15px;
+        width: 45%;
+        font-weight: 600;
+        color: #212121;
+        font-family: "Poppins", sans-serif;
+    }
+    .nex{
+        border-radius: 30px;
+        border: 1px solid #212121;
+        background-color: #212121;
+        padding-inline: 10px;
+        color: #ffffff;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 15px;
+        width: 45%;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+    }
+}

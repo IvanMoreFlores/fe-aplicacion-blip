@@ -1,16 +1,32 @@
+ion-content{
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .container {
   background-color: #FFFFFF;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
+  padding: 40px;
 }
 
 .title {
-  font-size: 30px;
-  line-height: 42px;
-  font-family: "Poppins", sans-serif;
-  margin: 100px auto 20px;
-  width: 80%;
   color: #212121;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px; /* 133.333% */
+  margin-top: 50px ;
+  width: 100%;
+  color: #212121;
+
 }
 
 .subtitle {
@@ -18,9 +34,10 @@
   line-height: 23px;
   font-family: "Poppins", sans-serif;
   margin: 20px auto 60px;
-  width: 80%;
+  width: 100%;
   color: #212121;
-  padding-right: 30px;
+  padding-right: 20PX;
+
 }
 
 .input-bar {
@@ -30,7 +47,7 @@
   border: 1px solid;
   height: 56px;
   border-radius: 30px;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   align-items: center;
   margin: 40px auto;
@@ -48,6 +65,37 @@
   color: #212121;
 }
 
+.input-bar {
+    position: relative;
+    padding: 15px 0;
+    display: flex;
+    border: 1px solid #212121;
+    height: 56px;
+    border-radius: 30px;
+
+    margin-block: 40px;
+    color: #212121;
+  
+select,
+input[type="text"] {
+      width: 100%;
+      padding: 0 20px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+    }
+  
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("/assets/images/vector-f.png");
+      background-repeat: no-repeat;
+      background-position: right 30px center;
+    }
+}
 .sc-ion-input-ios-h:not(.legacy-input) {
   min-height: 0px;
   font-family: "Poppins", sans-serif;
@@ -56,8 +104,6 @@
 }
 
 .tex-pagina {
-  margin: 20px auto;
-  width: 80%;
 }
 
 a.servicios {
@@ -113,3 +159,35 @@ a.servicios:hover {
   --highlight-color: black;
 }
 
+.bnt-dow{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  .bac{
+      border: 1px solid #212121;
+      background-color: #FFFFFF;
+      padding-inline: 10px;
+      padding-top: 17px;
+      padding-bottom: 17px;
+      border-radius: 30px;
+      font-size: 15px;
+      width: 45%;
+      font-weight: 600;
+      color: #212121;
+      font-family: "Poppins", sans-serif;
+  }
+  .nex{
+      border-radius: 30px;
+      border: 1px solid #212121;
+      background-color: #212121;
+      padding-inline: 10px;
+      color: #ffffff;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 15px;
+      width: 45%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+  }
+}

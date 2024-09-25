@@ -3,19 +3,23 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <h1 class="title">¿Cuánto mide tu estacionamiento?</h1>
-          <h2 class="subtitle">Recuerda que las medidas mínimas para poner en alquiler un espacio para estacionar es de 2.40 m Ancho x
-            5.00 m Largo
+          <h1 class="title">¿Cuáles son las  dimensiones de tu estacionamiento?</h1>
+          <h2 class="subtitle">Recuerda que las medidas mínimas para poner en alquiler tu espacio es de 2.10 m Alto x 2.40 m Ancho x 5.00 m Largo
+
             </h2>
       
           <div class="input-bar">
-            <ion-label class="label-text">Medida (Ancho x Largo)</ion-label>
-            <ion-input type="text" placeholder="2.5 m x 5 m"></ion-input>
+            <p class="label-text">Ancho del espacio</p>
+            <input type="text" placeholder="2.5 m ">
+          </div>  
+          <div class="input-bar">
+            <p class="label-text">Largo del espacio</p>
+            <input type="text" placeholder="2.1 m">
           </div>  
 
           <div class="input-bar">
-            <ion-label class="label-text">Altura (en caso sea techado)</ion-label>
-            <ion-input type="text" placeholder="2.1 m"></ion-input>
+            <p class="label-text">Altura (en caso sea techado)</p>
+            <input type="text" placeholder="2.1 m">
           </div>
 
           <div class="enlace">
@@ -24,11 +28,14 @@
               <img src="/assets/images/right.png" alt="">
             </p>
           </div>
-
-          <button routerLink="/descripcion-de-servicios-adicionales" class="more-info-btn">Atrás</button>
-          <button routerLink="/descripcion-de-ubicacion" class="next-btn">Siguiente</button>
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" routerLink="/descripcion-de-servicios-adicionales" >Atrás</button>
+        <button  routerLink="/descripcion-de-ubicacion" class="nex" >Siguiente</button>
+      </div>
+    </footer>
   </div>
 </ion-content>

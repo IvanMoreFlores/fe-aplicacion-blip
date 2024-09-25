@@ -3,53 +3,51 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <h1 class="title">¿Cuáles son otros servicios que también ofreces?</h1>
-          <button class="custom-btn">
-            <img src="/assets/images/user.png" alt="">
-            <span class="btn-text">Servicios  Higiénicos</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-          <button class="custom-btn">
-            <img src="/assets/images/shop.png" alt=""> 
-            <span class="btn-text">Autoboutique</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-          <button class="custom-btn">
-            <img src="/assets/images/layers.png" alt="">
-            <span class="btn-text">Techado</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-          <button class="custom-btn">
-            <img src="/assets/images/eye.png" alt=""> 
-            <span class="btn-text">Sistema  de  vigilancia</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-          <button class="custom-btn">
-            <img src="/assets/images/shopping-cart.png" alt=""> 
-            <span class="btn-text">Tienda</span>
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </button>
-
-          <button routerLink="/descripcion-de-direccion" class="more-info-btn">Atrás</button>
-          <button routerLink="/descripcion-de-medidas-del-espacio" class="next-btn">Siguiente</button>
+          <h1 class="title">¿Cuáles son los servicios que ofreces?</h1>
+          <div class="input-bar">
+            <div class="ing">
+                <img src="/assets/images/rejas.svg" alt="">
+                <h1>Rejas</h1>
+            </div>
+            <input type="checkbox" [(ngModel)]="isChecked" (ngModelChange)="onChange($event)" class="custom-checkbox"> 
+          </div>
+          <div class="input-bar">
+              <div class="ing">
+                  <img src="/assets/images/puntero.svg" alt="">
+                  <h1>Portón Manual</h1>
+              </div>
+              <input type="checkbox" [(ngModel)]="isChecked2" (ngModelChange)="onChange($event)" class="custom-checkbox">
+          </div>
+          <div class="input-bar">
+              <div class="ing">
+                  <img src="/assets/images/foco.svg" alt="">
+                  <h1>Portón Eléctrico</h1>
+              </div>
+              <input type="checkbox" [(ngModel)]="isChecked3" (ngModelChange)="onChange($event)" class="custom-checkbox">
+          </div>
+          <div class="input-bar">
+              <div class="ing">
+                  <img src="/assets/images/ojos.svg" alt="">
+                  <h1>Sistema de vigilancia</h1>
+              </div>
+              <input type="checkbox" [(ngModel)]="isChecked4" (ngModelChange)="onChange($event)" class="custom-checkbox">
+          </div>
+          <div class="input-bar">
+            <div class="ing">
+                <img src="/assets/images/slaps.svg" alt="">
+                <h1>Techado</h1>
+            </div>
+            <input type="checkbox" [(ngModel)]="isChecked5" (ngModelChange)="onChange($event)" class="custom-checkbox">
+          </div>
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" routerLink="/descripcion-de-direccion" >Atrás</button>
+        <button  routerLink="/descripcion-de-medidas-del-espacio" class="nex" >Siguiente</button>
+      </div>
+    </footer>
   </div>
 </ion-content>
 
