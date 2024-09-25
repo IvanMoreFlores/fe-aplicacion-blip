@@ -4,13 +4,13 @@
       <div class="col-12">
         <div class="content">
           <h1 class="title">¿Cómo prefieres recibir tus pagos?</h1>
-
           
             <button class="custom-btn right-align">
               <img src="/assets/images/calendar-black.png" alt="">
               <span class="btn-text">Mensual</span>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input class="form-check-input" type="radio"  (change)="onRadioChange(1)"
+                name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                 </label>
               </div>
@@ -20,7 +20,8 @@
               <img src="/assets/images/calendar-black.png" alt=""> 
               <span class="btn-text">Semanal</span>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input class="form-check-input" type="radio" (change)="onRadioChange(2)"
+                name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                 </label>
               </div>
@@ -31,8 +32,8 @@
           <p class="description">Con nuestro proceso de facturación de pagos, puedes elegir cómodamente el tipo de corte que mejor se adapte a tus necesidades financieras.</p>
           <p class="description">Tú decides cómo quieres gestionar tus ingresos en Blip, y estamos aquí para asegurarnos de que el proceso sea sencillo y transparente.</p>
       
-          <button routerLink="/configuracion" class="more-info-btn">Atrás</button>
-          <button routerLink="/configuracion-alquilar" class="next-btn">Siguiente</button>
+          <button (click)="return()" class="more-info-btn">Atrás</button>
+          <button (click)="sendData()" class="next-btn">Siguiente</button>
 
           
         </div>

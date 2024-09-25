@@ -20,14 +20,29 @@
           <div class="input-bar">
             <p class="label-text">Altura (en caso sea techado)</p>
             <input type="text" placeholder="2.1 m">
+            <ion-label class="label-text">Medida Ancho (en metros)</ion-label>
+            <ion-input [(ngModel)]="gar_largo" type="text" placeholder="2.5 (Metros)"></ion-input>
+          </div>  
+
+          <div class="input-bar">
+            <ion-label class="label-text">Medida Largo (en metros)</ion-label>
+            <ion-input [(ngModel)]="gar_ancho" type="text" placeholder="5 (Metros)"></ion-input>
+          </div>
+
+          <div class="input-bar">
+            <ion-label class="label-text">Altura (en caso sea techado)</ion-label>
+            <ion-input [(ngModel)]="gar_alto" type="text" placeholder="2.1 (Metros)"></ion-input>
           </div>
 
           <div class="enlace">
             <p class="tex-pagina">
-              <a class="servicios" routerLink="/descripcion-como-mido-mi-espacio">¿Cómo hacerlo?</a>
+              <a class="servicios" (click)="indicacion()">¿Cómo hacerlo?</a>
               <img src="/assets/images/right.png" alt="">
             </p>
           </div>
+
+          <button routerLink="/descripcion-de-servicios-adicionales" class="more-info-btn">Atrás</button>
+          <button (click)="getValues()" class="next-btn">Siguiente</button>
         </div>
       </div>
     </div>

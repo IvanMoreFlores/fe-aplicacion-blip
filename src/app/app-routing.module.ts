@@ -367,7 +367,11 @@ const routes: Routes = [
   {
     path: 'loader-comp',
     loadChildren: () => import('./pages/loader-comp/loader-comp.module').then( m => m.LoaderCompPageModule)
+  },  {
+    path: 'cre-anu',
+    loadChildren: () => import('./pages/cre-anu/cre-anu.module').then( m => m.CreAnuPageModule)
   },
+
 
 
 

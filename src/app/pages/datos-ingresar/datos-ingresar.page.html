@@ -11,16 +11,16 @@
             <p class="label-text">Tipo de Documento</p>
             
             <div class="custom-select">
-              <select>
-                <option value="dni">DNI</option>
-                <option value="pasaporte">Pasaporte</option>
-                <option value="otro">Carnet de Extranjería</option>
+              <select [(ngModel)]="doc">
+                <option value="1">DNI</option>
+                <option value="2">Pasaporte</option>
+                <option value="3">Carnet de Extranjería</option>
               </select>
             </div>
           </div>
           <div class="input-bar">
             <p class="label-text">Nro. de Documento</p>
-            <input type="text" [(ngModel)]="dni" placeholder="">
+            <input type="text" [(ngModel)]="nro" placeholder="">
           </div>
         </div>
       </div>

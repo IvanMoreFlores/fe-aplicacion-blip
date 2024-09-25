@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./descripcion-del-estacionamiento.page.scss'],
 })
 export class DescripcionDelEstacionamientoPage implements OnInit {
-  
+  data: any;
+  text: string = 'new';
 
   constructor(){}
 

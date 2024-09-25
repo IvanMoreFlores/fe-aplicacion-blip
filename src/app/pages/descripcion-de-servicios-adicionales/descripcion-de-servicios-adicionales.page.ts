@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-descripcion-de-servicios-adicionales',
@@ -14,10 +15,82 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
   onChange(event: any) {
     this.isChecked = event.target.checked;
     console.log('Checkbox checked:', this.isChecked);
+  }  distritoData: any;
+  tga_id: string = '';
+  direccion: string = '';
+  distrito: string = '';
+  ciudad: string = '';
+  referencia: string = '';
+  detalles: string = '';
+  serviciosSeleccionados: number[] = [];
+  checkBox1: any;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.setValues();
   }
-  constructor() { }
 
   ngOnInit() {
   }
 
+  async setValues() {
+    this.route.queryParams.subscribe(params => {
+      this.tga_id = params['tga_id'];
+      this.direccion = params['direccion'];
+      this.distrito = params['distrito'];
+      this.ciudad = params['ciudad'];
+      this.referencia = params['referencia'];
+      this.detalles = params['detalles'];
+    });
+  }
+
+    // Función para manejar los cambios en los checkboxes
+    onCheckboxChange(servicioId: number, isChecked: boolean) {
+      
+      if (isChecked) {
+        console.log('checked')
+        // Si el checkbox está seleccionado, agrega el servicio al array
+        this.serviciosSeleccionados = this.serviciosSeleccionados.filter(id => id !== servicioId);
+        console.log(this.serviciosSeleccionados);
+      } else {
+        console.log('unchecked')
+        // Si está deseleccionado, remuévelo del array
+        this.serviciosSeleccionados.push(servicioId);
+        console.log(this.serviciosSeleccionados);
+      }
+      
+    }
+
+  // Función para navegar y pasar los servicios seleccionados como query params
+  getServicios() {
+    console.log(this.serviciosSeleccionados)
+    this.router.navigate(['/descripcion-de-medidas-del-espacio'], {
+      queryParams: { tga_id: this.tga_id, 
+        direccion: this.direccion,
+        distrito: this.distrito,
+        ciudad: this.ciudad,
+        referencia: this.referencia,
+        detalles: this.detalles,
+        servicio: this.serviciosSeleccionados
+       }
+    });
+  }
+
+  return() {
+    this.router.navigate(['/descripcion-de-direccion'], { queryParams: { 
+      tga_id: this.tga_id, 
+      direccion: this.direccion,
+      distrito: this.distrito,
+      ciudad: this.ciudad,
+      referencia: this.referencia,
+      detalles: this.detalles
+    } });
+  }
+
 }
+
+
+
+

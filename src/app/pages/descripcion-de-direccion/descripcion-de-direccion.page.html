@@ -6,17 +6,15 @@
           <h1 class="title">¿Dónde se ubica tu estacionamiento y cómo es?</h1>
           <div class="input-bar">
             <p class="label-text">Dirección</p>
-            <input type="text"  placeholder="Av. Benavides 456">
+            <input type="text"  [(ngModel)]="direccion" placeholder="Av. Benavides 456">
           </div> 
-          
+
           <div class="input-bar">
             <p class="label-text">Ciudad</p>
             
             <div class="custom-select">
-              <select id="ciudad" name="ciudad"  >
-                <option value="ciudad1">Lima</option>
-                <option value="ciudad2">Ciudad 2</option>
-                <option value="ciudad3">Ciudad 3</option>
+              <select id="ciudad" [(ngModel)]="ciudad" name="ciudad" >
+                <option value="1">Lima</option>
               </select>
             </div>
           </div>
@@ -31,12 +29,34 @@
                 <option value="distrito3">Distrito 3</option>             
               </select>
             </div>
+
+          <div class="form-group">
+            <label for="distrito" class="smaller-text2">Distrito</label>
+            <select id="distrito" [(ngModel)]="distrito" name="distrito" class="form-control-2">
+              <option *ngFor="let distrito of distritoData" value="{{ distrito.id_distrito }}">{{ distrito.nombre_distrito
+                }}</option>
+            </select>
+            <i class="bilp bi-caret-down-fill"></i>
+          </div>
+
+          <div class="input-bar">
+            <ion-label class="label-text">Referencia</ion-label>
+            <ion-input type="text" [(ngModel)]="referencia" placeholder="E.j Cdra. 5 de la Av. Benavides"></ion-input>
           </div>
 
           <div class="input-container2">
             <label class="descripcion" for="descripcion">Descripción de Cochero (Detalles u otros)</label>
             <textarea maxlength="120" id="descripcion" rows="4"></textarea>
+          <div class="form-group detalle">
+            <label for="detalle" class="detalle-1">Detalles ( N° pisos u otros) </label>
+            <textarea id="detalle" name="pregunta_ayuda" [(ngModel)]="detalles" class="custom-textarea"></textarea>
           </div>
+
+          <div class="form-group">
+            <button  (click)="return()" class="more-info-btn">Atrás</button>
+            <button (click)="nextPage();" class="next-btn">Siguiente</button>
+          </div>
+
         </div>
       </div>
     </div>
