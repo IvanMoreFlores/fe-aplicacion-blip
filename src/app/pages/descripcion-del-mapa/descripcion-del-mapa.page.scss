@@ -1,14 +1,30 @@
-.container {
-  background-color: #79FFAF;
+ion-content{
+  --background:#E8FFEC;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
   display: flex;
+  flex-direction: column;
   height: 100%;
 }
-
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.superior{
+  position: relative;
+  height: 50%;
+  background-repeat: repeat-x;
+  width: 100%;
+}
 .title {
   font-size: 30px;
   line-height: 42px;
   font-family: "Poppins", sans-serif;
-  margin: 100px auto 40px;
+  margin: 70px auto 40px;
   display: block;
   width: 80%;
 }
@@ -61,10 +77,10 @@ padding-left: 10px;
 
 .custom-btn {
   margin: 30px auto; 
-  background-color: #79FFAF;
+  background-color: #212121;
   color: #212121;
   font-size: 16px;
-  border: 1px solid #A7A7A7;
+  border: 1px solid #212121;
   border-radius: 30px;
   width: 80%;
   height: 56px;
@@ -74,16 +90,20 @@ padding-left: 10px;
 }
 
 .btn-text {
-  font-size: 18px;
-  font-family: "Poppins", sans-serif;
+  color: var(--Schemes-On-Primary, #FFF);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 500;
+  line-height: 180%; /* 28.8px */
 }
 
 .navbar-collapse {
   background-color: #FFFFFF;
   z-index: 9;
   border-radius: 30px 30px 0 0;
-  width: 430px !important;
+  width: 100% !important;
   position: absolute;
   right: 0px;
   bottom: 0px;
@@ -107,10 +127,34 @@ padding-left: 10px;
   width: 100%;
   margin: 10px auto;
 }
+.overlay-x {
+  position: absolute;
+  top: 5%;  /* Ajusta según sea necesario */
+  left: 5%;  /* Ajusta según sea necesario */
+  z-index: 10;  /* Más alto que el mapa */
+}
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 11; /* Asegurarse que el botón esté encima del mapa */
+}
+.close-button img {
+  width: 20px; /* Ajustar el tamaño del icono */
+  height: 20px;
+}
 
 #map { 
   background-color: #FFFFFF !important;
   height: 62%; // O ajusta la altura según tus necesidades
   width: 100%;
   margin-top: 5%;
+  position: relative;
+  z-index: 1;  /* Más bajo que el botón */
 }

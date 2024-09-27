@@ -17,7 +17,7 @@ ion-content {
 }
 
 img {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .title {
@@ -28,7 +28,7 @@ img {
     font-weight: 500;
     line-height: 40px;
     /* 133.333% */
-    width: 90%;
+    width: 99%;
 
 }
 
@@ -59,14 +59,14 @@ img {
     padding-bottom: 20px;
 
     .bac {
-        border: 1px solid black;
+        border: 1px solid #212121;
         background-color: #FFFFFF;
-        font-size: 15px;
-        padding-inline: 30px;
-        padding-block: 18px;
+        padding-inline: 10px;
+        padding-top: 17px;
+        padding-bottom: 17px;
         border-radius: 30px;
         font-size: 15px;
-
+        width: 45%;
         font-weight: 600;
         color: #212121;
         font-family: "Poppins", sans-serif;
@@ -74,6 +74,12 @@ img {
 
     .nex {
         border-radius: 30px;
+        border: 1px solid #212121;
+        background-color: #212121;
+        padding-inline: 10px;
+        color: #ffffff;
+        padding-top: 15px;
+        padding-bottom: 15px;
         border: 1px solid #212121;
         background-color: #212121;
         padding-inline: 10px;

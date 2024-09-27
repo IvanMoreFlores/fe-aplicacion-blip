@@ -1,196 +1,176 @@
+ion-content{
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .container {
-    background-color: #FFFFFF;
-    display: flex;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 40px;
   }
   
   .title {
     font-size: 31px;
     line-height: 42px;
     font-family: "Poppins", sans-serif;
-    margin: 100px auto 50px;
+    margin: 50px auto 50px;
     display: block;
-    width: 80%;
+    width: 100%;
     color: #212121;
   }
   
-  .input-bar {
+.label-text {
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    background-color: #FFFFFF;
+    padding: 0 10px;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    color: #212121;
+}
+.input-bar {
     position: relative;
-    padding: 15px 0; 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .label-text {
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  
+  .custom-select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .custom-select select {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* Espacio para la flecha */
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    appearance: none; /* Quita el estilo por defecto del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  .custom-select::after {
+    content: url('/assets/images/flec.svg'); /* Usa `content` para incluir la imagen SVG */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none; /* No permite hacer clic en la flecha */
+    font-size: 16px;
+    color: #333;
+  }
+  
+.input-bar {
+    position: relative;
+    padding: 15px 0;
     display: flex;
     border: 1px solid #212121;
     height: 56px;
     border-radius: 30px;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin: 40px auto;
-  }
-  
-  .label-text {
-    font-size: 12px;
-    position: absolute;
-    top: -10px; 
-    background-color: #FFFFFF; 
-    padding: 0 10px; 
-    z-index: 1;
-    left: 15px;
-    font-family: "Poppins", sans-serif;
-    color: #212121;
-  }
 
-  .sc-ion-input-ios-h:not(.legacy-input) {
-    min-height: 0px;
-    left: 15px;
-    font-family: "Poppins", sans-serif;
+    margin-block: 40px;
     color: #212121;
-    width: 90%;
-  }
   
-  .smaller-text1 {
-    font-size: 12px;
-    position: absolute;
-    top: 322px; 
-    background-color: #FFFFFF; 
-    padding: 0 10px; 
-    z-index: 1;
-    left: 70px;
-    font-family: "Poppins", sans-serif;
-    color: #212121;
-  }
+select,
+input[type="text"] {
+      width: 100%;
+      padding: 0 20px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+    }
   
-  .smaller-text2 {
-    font-size: 12px;
-    position: absolute;
-    top: 418px; 
-    background-color: #FFFFFF; 
-    padding: 0 10px; 
-    z-index: 1;
-    left: 70px;
-    font-family: "Poppins", sans-serif;
-    color: #212121;
-  }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("/assets/images/vector-f.png");
+      background-repeat: no-repeat;
+      background-position: right 30px center;
+    }
+}
+  
+.input-container2 {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  margin-top: 20px;
+}
 
-  .detalle-1 {
-    font-size: 12px;
-    position: absolute;
-    bottom: 302px; 
-    background-color: #FFFFFF; 
-    padding: 0 10px; 
-    z-index: 1;
-    left: 70px;
-    font-family: "Poppins", sans-serif;
-    color: #212121;
-  }
-  
-  .form-control-1 {
-    background-color: transparent; 
-    border: 1px solid #212121; 
-    border-radius: 30px; 
-    padding: 15px; 
-    width: 80%;
-    height: 56px;
-    margin: 40px auto;
-    display: block;
-    appearance: none;
-    color: #212121;
-  }
+.descripcion {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #FFFFFF;
+  padding: 0 10px;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+  color: #212121;
+}
 
-  .select-wrapper {
-    position: relative;
-  }
-    
-  .select-wrapper i {
-    position: absolute;
-    top: 30px;
-    right: 70px;
-    transform: translateY(-50%);
-    color: #212121;
-  }
-
-  .form-control-2 {
-    background-color: transparent; 
-    border: 1px solid #212121; 
-    border-radius: 30px; 
-    padding: 15px; 
-    width: 80%;
-    height: 56px;
-    margin: 40px auto;
-    display: block;
-    appearance: none;
-    color: #212121;
-  }
+textarea {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid #000;
+  padding-inline: 10px;
+  padding-block: 25px;
+  font-size: 14px;
+  resize: none;
+  box-shadow: none;
+}
   
-  i.bilp {
-    position: absolute;
-    top: 49%;
-    right: 82px;
-    transform: translateY(-50%);
-    color: #212121;
+.bnt-dow{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  .bac{
+      border: 1px solid #212121;
+      background-color: #FFFFFF;
+      padding-inline: 10px;
+      padding-top: 17px;
+      padding-bottom: 17px;
+      border-radius: 30px;
+      font-size: 15px;
+      width: 45%;
+      font-weight: 600;
+      color: #212121;
+      font-family: "Poppins", sans-serif;
   }
-
-  .custom-textarea {
-    border: 1px solid #212121; 
-    background-color: transparent; 
-    padding: 15px; 
-    resize: none; 
-    width: 100%;
-    box-sizing: border-box; 
-    margin: 40px auto;
-    display: block;
-    width: 80%;
-    height: 138px;
-    border-radius: 30px;
-    color: #212121;
+  .nex{
+      border-radius: 30px;
+      border: 1px solid #212121;
+      background-color: #212121;
+      padding-inline: 10px;
+      color: #ffffff;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 15px;
+      width: 45%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
   }
-  
-  .more-info-btn {
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    border: 1px solid #212121; 
-    background-color: #212121; 
-    color: #79FFAF;
-    font-size: 16px;
-    border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .more-info-btn:hover {
-      background-color: #363636; 
-  }
-  
-  .next-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    border: 1px solid #79FFAF; 
-    background-color: #79FFAF; 
-    color: #212121;
-    font-size: 16px;
-    border-radius: 30px;
-    width: 150px;
-    height: 45px;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .next-btn:hover {
-    background-color: rgba(163, 163, 163, 0.2);
-  }
-  
-  ion-label.sc-ion-input-ios-h {
-    color: #212121;
-  }
-
-  .sc-ion-input-ios-h {
-    --highlight-color: black;
-  }
-  
+}
 
 
 
