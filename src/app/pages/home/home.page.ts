@@ -31,24 +31,28 @@ export class HomePage implements OnInit {
     private storage: StorageService,
     private api: ApiService,
     private cdr: ChangeDetectorRef
-  ) { 
+  ) {
 
   } // Inyecta el ModalController
 
   ngOnInit() {
+    this.getUserData();
     this.getReservas();
     this.getDni();
   }
 
-  async getDni(){
+  async getUserData() {
+    this.userData = await this.storage.getItem('user');
+  }
+
+  async getDni() {
     const userDni = await this.storage.getItem('userDni');
     if (userDni) {
       this.url_new = '/descripcion-del-espacio';
-    }else{
-      this.userData = await this.storage.getItem('user');
-      if(this.userData.esu_id.esu_descri !== 'REGISTRADO'){
-       this.url_new = '/descripcion-del-espacio';
-      }
+    }
+
+    if (this.userData.esu_id.esu_descri !== 'REGISTRADO') {
+      this.url_new = '/descripcion-del-espacio';
     }
   }
 
@@ -109,7 +113,7 @@ export class HomePage implements OnInit {
   }
   // Salir de cualquier página/modal
   exit() {
-    this.modalController.dismiss(null,'isMenuModalOpen');
+    this.modalController.dismiss(null, 'isMenuModalOpen');
   }
 
   changeContent(content: string) {

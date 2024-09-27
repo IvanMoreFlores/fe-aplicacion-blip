@@ -9,21 +9,23 @@
           <div class="pers">
             <img src="/assets/images/backdrop-component.png" alt="">
             <div class="name">
-              <h1>Ivana T.</h1>
+              <h1>{{ userData?.usu_nombre + ' ' + userData?.usu_apepat }}</h1>
               <h3>Host</h3>
             </div>
           </div>
-          <button class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg" alt=""></button>
+          <button class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg"
+              alt=""></button>
 
           <!-- Modal del menú -->
-          <ion-modal mode="ios" [isOpen]="isMenuModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="dismissMenuModal()">
+          <ion-modal mode="ios" [isOpen]="isMenuModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]"
+            (ionBackdropTap)="dismissMenuModal()">
             <ng-template>
               <div class="block">
                 <h1 class="menu-block">Menu</h1>
                 <hr class="separator-line">
                 <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
                 <div class="button-container">
-                  
+
                   <button (click)="exit()" routerLink="{{ url_new }}" class="service-button">
                     <div>
                       <img class="button-image" src="/assets/images/ticket-outline-selected.svg" alt="Imagen 1">
@@ -46,13 +48,8 @@
                       <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
                       <span class="button-text">Apagón General</span>
                     </div>
-                    <ion-toggle 
-                    aria-label="Dark toggle" color="dark"
-                      mode="ios" 
-                      id="open-modal_apagongeneral" 
-                      expand="block" 
-                      [(ngModel)]="switchValue" 
-                      (ionChange)="onToggleChange($event)">
+                    <ion-toggle aria-label="Dark toggle" color="dark" mode="ios" id="open-modal_apagongeneral"
+                      expand="block" [(ngModel)]="switchValue" (ionChange)="onToggleChange($event)">
                     </ion-toggle>
 
                   </button>
@@ -90,9 +87,10 @@
               </div>
             </ng-template>
           </ion-modal>
-          
+
           <!-- Modal del toggle -->
-          <ion-modal mode="ios" [isOpen]="isToggleModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="dismissToggleModal(true)">
+          <ion-modal mode="ios" [isOpen]="isToggleModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]"
+            (ionBackdropTap)="dismissToggleModal(true)">
             <ng-template>
               <div class="block">
                 <h1 class="title-mo">¿Estás seguro de realizar el Apagón General?</h1>
@@ -105,8 +103,8 @@
               </div>
             </ng-template>
           </ion-modal>
-          
-        </div>          
+
+        </div>
         <h1 class="tl-res">
           Tus Reservaciones
         </h1>
@@ -150,6 +148,7 @@
             <div *ngIf="selectedContent === 'Todos'">
 
               <ion-card mode="ios" class="custom-card" *ngFor="let item of data">
+
                 <ion-card-header>
                   <div class="header-flex">
                     <div class="circle-icon">
@@ -163,11 +162,11 @@
                     </div>
                   </div>
                 </ion-card-header>
-              
+
                 <!-- Contenedor de la imagen con flotantes -->
                 <div class="image-container">
                   <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
-              
+
                   <!-- Elementos flotantes -->
                   <div class="floating-text time">
                     <span>04:00:00</span>
@@ -176,7 +175,7 @@
                     <span>Confirmado <span class="dot"></span></span>
                   </div>
                 </div>
-              
+
                 <ion-card-content class="content-large">
                   <div class="res-bar">
                     <div class="derz">
@@ -190,13 +189,13 @@
                       <h1 class="sub-r">Vehículo:</h1>
                       <h1 class="ctn">{{ item.veh_modelo }}</h1>
                       <h1>Placa:</h1>
-                      <h2 >{{ item.veh_placa }}</h2>
+                      <h2>{{ item.veh_placa }}</h2>
                     </div>
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/sig-may.svg" alt="">
-                      <h1 class="s" >Reserva</h1>
+                      <h1 class="s">Reserva</h1>
                       <h1>x</h1>
                       <h1 class="m">{{ item.tip_descri }}</h1>
                       <img src="/assets/images/sig-may.svg" class="mayor" alt="">
@@ -206,14 +205,14 @@
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/can-card.svg" alt="">
-                      <h1 class="s" >{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                      <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
                     </div>
                   </div>
                   <div class="det-asd">
 
                     <div class="derz">
                       <img src="/assets/images/reloj-home.svg" alt="">
-                      <h1 class="s" >{{ item.res_fecini | date: 'shortTime' }}</h1>
+                      <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
                       <img src="/assets/images/flec-home.svg" class="mayor" alt="">
                       <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
                     </div>
@@ -221,6 +220,7 @@
                   <div>
                   </div>
                 </ion-card-content>
+
                 <div class="btn">
                   <button class="bt-con">Confirmar</button>
                   <button class="bt-can">Cancelar</button>
@@ -264,11 +264,11 @@
                     </div>
                   </div>
                 </ion-card-header>
-              
+
                 <!-- Contenedor de la imagen con flotantes -->
                 <div class="image-container">
                   <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
-              
+
                   <!-- Elementos flotantes -->
                   <div class="floating-text time">
                     <span>04:00:00</span>
@@ -277,7 +277,7 @@
                     <span>Confirmado <span class="dot"></span></span>
                   </div>
                 </div>
-              
+
                 <ion-card-content class="content-large">
                   <div class="res-bar">
                     <div class="derz">
@@ -291,13 +291,13 @@
                       <h1 class="sub-r">Vehículo:</h1>
                       <h1 class="ctn">Toyota Corolla</h1>
                       <h1>Placa:</h1>
-                      <h2 >AF4759JU</h2>
+                      <h2>AF4759JU</h2>
                     </div>
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/sig-may.svg" alt="">
-                      <h1 class="s" >Reserva</h1>
+                      <h1 class="s">Reserva</h1>
                       <h1>x</h1>
                       <h1 class="m">hora</h1>
                       <img src="/assets/images/sig-may.svg" class="mayor" alt="">
@@ -307,13 +307,13 @@
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/can-card.svg" alt="">
-                      <h1 class="s" >16 de Marzo</h1>
+                      <h1 class="s">16 de Marzo</h1>
                     </div>
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/reloj-home.svg" alt="">
-                      <h1 class="s" >9:00 AM </h1>
+                      <h1 class="s">9:00 AM </h1>
                       <img src="/assets/images/flec-home.svg" class="mayor" alt="">
                       <h1>13:00 PM</h1>
                     </div>
@@ -322,7 +322,7 @@
                   </div>
                 </ion-card-content>
 
-                
+
                 <div class="btn">
                   <button class="bt-con">Confirmar</button>
                   <button class="bt-can">Cancelar</button>
@@ -344,11 +344,11 @@
                     </div>
                   </div>
                 </ion-card-header>
-              
+
                 <!-- Contenedor de la imagen con flotantes -->
                 <div class="image-container">
                   <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
-              
+
                   <!-- Elementos flotantes -->
                   <div class="floating-text time">
                     <span>04:00:00</span>
@@ -357,7 +357,7 @@
                     <span>Confirmado <span class="dot"></span></span>
                   </div>
                 </div>
-              
+
                 <ion-card-content class="content-large">
                   <div class="res-bar">
                     <div class="derz">
@@ -371,32 +371,32 @@
                       <h1 class="sub-r">Vehículo:</h1>
                       <h1 class="ctn">Toyota Corolla</h1>
                       <h1>Placa:</h1>
-                      <h2 >AF4759JU</h2>
+                      <h2>AF4759JU</h2>
                     </div>
 
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/sig-may.svg" alt="">
-                      <h1 class="s" >Reserva</h1>
+                      <h1 class="s">Reserva</h1>
                       <h1>x</h1>
                       <h1 class="m">hora</h1>
                       <img src="/assets/images/sig-may.svg" class="mayor" alt="">
                       <h1 class="m">4h</h1>
                     </div>
-                    
+
 
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/can-card.svg" alt="">
-                      <h1 class="s" >16 de Marzo</h1>
+                      <h1 class="s">16 de Marzo</h1>
                     </div>
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/reloj-home.svg" alt="">
-                      <h1 class="s" >9:00 AM </h1>
+                      <h1 class="s">9:00 AM </h1>
                       <img src="/assets/images/flec-home.svg" class="mayor" alt="">
                       <h1>13:00 PM</h1>
                     </div>
@@ -406,7 +406,7 @@
                   </div>
                 </ion-card-content>
 
-                
+
                 <div class="btn">
                   <button class="bt-con">Confirmar</button>
                   <button class="bt-can">Cancelar</button>
@@ -426,11 +426,11 @@
                     </div>
                   </div>
                 </ion-card-header>
-              
+
                 <!-- Contenedor de la imagen con flotantes -->
                 <div class="image-container">
                   <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
-              
+
                   <!-- Elementos flotantes -->
                   <div class="floating-text time">
                     <span>04:00:00</span>
@@ -439,7 +439,7 @@
                     <span>Confirmado <span class="dot"></span></span>
                   </div>
                 </div>
-              
+
                 <ion-card-content class="content-large">
                   <div class="res-bar">
                     <div class="derz">
@@ -453,32 +453,32 @@
                       <h1 class="sub-r">Vehículo:</h1>
                       <h1 class="ctn">Toyota Corolla</h1>
                       <h1>Placa:</h1>
-                      <h2 >AF4759JU</h2>
+                      <h2>AF4759JU</h2>
                     </div>
 
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/sig-may.svg" alt="">
-                      <h1 class="s" >Reserva</h1>
+                      <h1 class="s">Reserva</h1>
                       <h1>x</h1>
                       <h1 class="m">hora</h1>
                       <img src="/assets/images/sig-may.svg" class="mayor" alt="">
                       <h1 class="m">4h</h1>
                     </div>
-                    
+
 
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/can-card.svg" alt="">
-                      <h1 class="s" >16 de Marzo</h1>
+                      <h1 class="s">16 de Marzo</h1>
                     </div>
                   </div>
                   <div class="det-asd">
                     <div class="derz">
                       <img src="/assets/images/reloj-home.svg" alt="">
-                      <h1 class="s" >9:00 AM </h1>
+                      <h1 class="s">9:00 AM </h1>
                       <img src="/assets/images/flec-home.svg" class="mayor" alt="">
                       <h1>13:00 PM</h1>
                     </div>
@@ -488,13 +488,13 @@
                   </div>
                 </ion-card-content>
 
-                
+
                 <div class="btn">
                   <button class="bt-con">Confirmar</button>
                   <button class="bt-can">Cancelar</button>
                 </div>
               </ion-card>
-              
+
             </div>
           </div>
 

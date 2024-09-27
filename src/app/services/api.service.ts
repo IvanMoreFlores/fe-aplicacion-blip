@@ -158,4 +158,21 @@ export class ApiService {
     return this.http.post(this.apiUrl + '/advertisement/create', formData, { headers });
   }
 
+  getAds(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+    });
+
+    return this.http.get(this.apiUrl + '/advertisement/host', { headers }); // Realiza la solicitud GET con los headers
+  }
+
+  deleteAd(token: string, id: string): Observable<any> {
+    // Definir los headers con el Bearer token
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete(this.apiUrl + '/advertisement/' + id, { headers });
+  }
+
 }
