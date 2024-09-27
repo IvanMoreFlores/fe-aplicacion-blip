@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <h1 class="title">¿Dónde está tu estacionamiento?</h1>
+          <h1 class="title">Introduce la ubicación exacta 
+            de tu cochera</h1>
 
           <!-- Barra de búsqueda -->
 
@@ -13,17 +14,30 @@
           </div>
           
           <button class="custom-btn" (click)="selectMap()">
-            <img src="/assets/images/map-marker-black.png" alt="">
-            <span class="btn-text">Seleccionar en el mapa</span>
+            <div class="oder">
+              <img src="/assets/images/map-ub.svg" alt="">
+              <span class="btn-text">Seleccionar en el mapa</span>
+            </div> 
+            <img src="/assets/images/flec-rig-desc.svg" alt="">
           </button>
           <button class="custom-btn" (click)="getUbicacion()">
-            <img src="/assets/images/marker-black.png"  alt=""> 
-            <span class="btn-text">Usar Ubicación real</span>   
+            <div class="order">
+              <img src="/assets/images/ubic.svg"  alt=""> 
+              <span class="btn-text">Usar Ubicación real</span>
+            </div>  
+            <img src="/assets/images/flec-rig-desc.svg" alt=""> 
           </button>
+
 
           
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" routerLink="/descripcion-de-medidas-del-espacio" >Atrás</button>
+        <button  routerLink="/eli-pref" class="nex" >Siguiente</button>
+      </div>
+    </footer>
   </div>
 </ion-content>

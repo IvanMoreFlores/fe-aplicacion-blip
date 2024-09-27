@@ -3,48 +3,57 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <h1 class="title">¿Dónde se ubica tu estacionamiento?</h1>
+          <h1 class="title">¿Dónde se ubica tu estacionamiento y cómo es?</h1>
           <div class="input-bar">
-            <ion-label class="label-text">Dirección,linea 1</ion-label>
-            <ion-input type="text" [(ngModel)]="direccion" placeholder="Av. Benavides 456"></ion-input>
-          </div>
+            <p class="label-text">Dirección</p>
+            <input type="text"  [(ngModel)]="direccion" placeholder="Av. Benavides 456">
+          </div> 
 
-          <div class="form-group">
-            <label for="ciudad" class="smaller-text1">Ciudad</label>
-            <div class="select-wrapper">
-              <select id="ciudad" [(ngModel)]="ciudad" name="ciudad" class="form-control-1">
+          <div class="input-bar">
+            <p class="label-text">Ciudad</p>
+            
+            <div class="custom-select">
+              <select id="ciudad" [(ngModel)]="ciudad" name="ciudad" >
                 <option value="1">Lima</option>
               </select>
-              <i class="bi bi-caret-down-fill"></i>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="distrito" class="smaller-text2">Distrito</label>
-            <select id="distrito" [(ngModel)]="distrito" name="distrito" class="form-control-2">
-              <option *ngFor="let distrito of distritoData" value="{{ distrito.id_distrito }}">{{ distrito.nombre_distrito
-                }}</option>
-            </select>
-            <i class="bilp bi-caret-down-fill"></i>
+          <div class="input-bar">
+            <p class="label-text">Distrito</p>
+            
+            <div class="custom-select">
+              <select id="distrito" [(ngModel)]="distrito" name="distrito" >
+                <option *ngFor="let distrito of distritoData" value="{{ distrito.id_distrito }}">{{ distrito.nombre_distrito
+                  }}</option>
+              </select>
+            </div>
           </div>
 
-          <div class="input-bar">
+          <!-- <div class="input-bar">
             <ion-label class="label-text">Referencia</ion-label>
             <ion-input type="text" [(ngModel)]="referencia" placeholder="E.j Cdra. 5 de la Av. Benavides"></ion-input>
-          </div>
+          </div> -->
 
-          <div class="form-group detalle">
+          <div class="input-container2">
+            <label class="descripcion" for="detalle" >Descripción de Cochero (Detalles u otros)</label>
+            <textarea [(ngModel)]="detalles" name="pregunta_ayuda" maxlength="120" id="detalle" rows="4"></textarea>
+          </div>
+          <!-- <div class="form-group detalle">
             <label for="detalle" class="detalle-1">Detalles ( N° pisos u otros) </label>
             <textarea id="detalle" name="pregunta_ayuda" [(ngModel)]="detalles" class="custom-textarea"></textarea>
-          </div>
+          </div> -->
 
-          <div class="form-group">
-            <button  (click)="return()" class="more-info-btn">Atrás</button>
-            <button (click)="nextPage();" class="next-btn">Siguiente</button>
-          </div>
+
 
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" (click)="return()">Atrás</button>
+        <button   (click)="nextPage();" class="nex" >Siguiente</button>
+      </div>
+    </footer>
   </div>
 </ion-content>

@@ -1,7 +1,19 @@
+ion-content{
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 .container {
     background-color: #FFFFFF;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
+    padding: 40px;
 }
 
 img {  
@@ -13,8 +25,9 @@ img {
     font-size: 31px;
     line-height: 37px;
     font-family: "Poppins", sans-serif;
-    margin: 100px auto 20px;
-    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 100%;
     color: #212121;
 }
 
@@ -22,7 +35,7 @@ img {
     font-size: 12px;
     line-height: 17px;
     font-family: "Poppins", sans-serif;
-    margin: 30px 100px 20px 50px;
+    
     color: #212121;
 }
   
@@ -43,4 +56,36 @@ img {
   
 .more-info-btn:hover {
     background-color: #363636;
+}
+.bnt-dow{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    .bac{
+        border: 1px solid #212121;
+        background-color: #FFFFFF;
+        padding-inline: 10px;
+        padding-top: 17px;
+        padding-bottom: 17px;
+        border-radius: 30px;
+        font-size: 15px;
+        width: 45%;
+        font-weight: 600;
+        color: #212121;
+        font-family: "Poppins", sans-serif;
+    }
+    .nex{
+        border-radius: 30px;
+        border: 1px solid #212121;
+        background-color: #212121;
+        padding-inline: 10px;
+        color: #ffffff;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 15px;
+        width: 45%;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+    }
 }
