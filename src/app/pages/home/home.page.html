@@ -158,12 +158,6 @@
                 (click)="changeContent('Canceladas')" 
                 [ngClass]="{'active': selectedContent === 'Canceladas'}">
                 <h1 class="res-de">Canceladas</h1>
-              <button class="swip" (click)="changeContent('Comienza Pronto')"
-                [ngClass]="{'active': selectedContent === 'Comienza Pronto'}">
-                <h1 class="res-de">Comienza Pronto</h1>
-                <button class="lda">
-                  <h1 class="descrip">1</h1>
-                </button>
               </button>
             </div>
           </div>
@@ -195,7 +189,7 @@
 
             <div *ngIf="selectedContent === 'Comienza Pronto'">
 
-              <ion-card mode="ios" class="custom-card">
+              <ion-card mode="ios" class="custom-card" *ngFor="let item of data">
                 <ion-card-header>
                   <div class="header-flex">
                     <div class="circle-icon">
@@ -280,23 +274,13 @@
 
             </div>
 
-            <div *ngIf="selectedContent === 'pendientes'">
-              <!-- Contenido para "Terminan Pronto" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera pendiente.</h1>
-              <!-- Aquí puedes añadir el contenido relacionado a "Terminan Pronto" -->
-            </div>
 
-            <div *ngIf="selectedContent === 'En Curso'">
-              <!-- Contenido para "En Curso" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera en curso.</h1>
-              <!-- Aquí puedes añadir el contenido relacionado a "En Curso" -->
-            </div>
 
-            <div *ngIf="selectedContent === 'Comienza Pronto'">
 
-              <ion-card mode="ios" class="custom-card">
+
+            <!-- <div *ngIf="selectedContent === 'Comienza Pronto'"> -->
+
+              <!-- <ion-card mode="ios" class="custom-card">
                 <ion-card-header>
                   <div class="header-flex">
                     <div class="circle-icon">
@@ -311,11 +295,11 @@
                   </div>
                 </ion-card-header>
               
-                <!-- Contenedor de la imagen con flotantes -->
+
                 <div class="image-container">
                   <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
               
-                  <!-- Elementos flotantes -->
+
                   <div class="floating-text time">
                     <span>04:00:00</span>
                   </div>
@@ -373,25 +357,13 @@
                   <button class="bt-con">Confirmar</button>
                   <button class="bt-can">Cancelar</button>
                 </div>
-              </ion-card>
+              </ion-card> -->
 
 
              
 
               
-            </div>
-            <div *ngIf="selectedContent === 'Finalizadas'">
-              <!-- Contenido para "En Curso" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera finalizada.</h1>
-              <!-- Aquí puedes añadir el contenido relacionado a "En Curso" -->
-            </div>
-            <div *ngIf="selectedContent === 'Canceladas'">
-              <!-- Contenido para "En Curso" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera cancelada.</h1>
-              <!-- Aquí puedes añadir el contenido relacionado a "En Curso" -->
-            </div>
+            <!-- </div> -->
             <div *ngIf="selectedContent === 'Finalizadas'">
               <!-- Contenido para "En Curso" -->
               <img src="/assets/images/icon-calendar2.svg" alt="">

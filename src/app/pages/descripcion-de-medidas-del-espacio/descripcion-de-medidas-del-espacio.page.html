@@ -10,24 +10,12 @@
       
           <div class="input-bar">
             <p class="label-text">Ancho del espacio</p>
-            <input type="text" placeholder="2.5 m ">
+            <input  [(ngModel)]="gar_ancho" type="text" placeholder="2.5 m">
           </div>  
           <div class="input-bar">
             <p class="label-text">Largo del espacio</p>
-            <input type="text" placeholder="2.1 m">
+            <input [(ngModel)]="gar_largo" type="text" placeholder="2.1 m">
           </div>  
-
-          <div class="input-bar">
-            <p class="label-text">Altura (en caso sea techado)</p>
-            <input type="text" placeholder="2.1 m">
-            <ion-label class="label-text">Medida Ancho (en metros)</ion-label>
-            <ion-input [(ngModel)]="gar_largo" type="text" placeholder="2.5 (Metros)"></ion-input>
-          </div>  
-
-          <div class="input-bar">
-            <ion-label class="label-text">Medida Largo (en metros)</ion-label>
-            <ion-input [(ngModel)]="gar_ancho" type="text" placeholder="5 (Metros)"></ion-input>
-          </div>
 
           <div class="input-bar">
             <ion-label class="label-text">Altura (en caso sea techado)</ion-label>
@@ -41,15 +29,14 @@
             </p>
           </div>
 
-          <button routerLink="/descripcion-de-servicios-adicionales" class="more-info-btn">Atrás</button>
-          <button (click)="getValues()" class="next-btn">Siguiente</button>
+
         </div>
       </div>
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
         <button class="bac" routerLink="/descripcion-de-servicios-adicionales" >Atrás</button>
-        <button  routerLink="/descripcion-de-ubicacion" class="nex" >Siguiente</button>
+        <button  (click)="getValues()" class="nex" >Siguiente</button>
       </div>
     </footer>
   </div>

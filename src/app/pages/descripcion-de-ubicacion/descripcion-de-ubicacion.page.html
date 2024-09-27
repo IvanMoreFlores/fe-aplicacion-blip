@@ -13,27 +13,21 @@
 	          <input type="text" placeholder="Introduce tu ubicación" name="" >
           </div>
           
-          <button class="custom-btn" routerLink="/descripcion-del-mapa">
+          <button class="custom-btn" (click)="selectMap()">
             <div class="oder">
               <img src="/assets/images/map-ub.svg" alt="">
               <span class="btn-text">Seleccionar en el mapa</span>
             </div> 
             <img src="/assets/images/flec-rig-desc.svg" alt="">
           </button>
-          <button class="custom-btn" >
+          <button class="custom-btn" (click)="getUbicacion()">
             <div class="order">
-              <img src="/assets/images/ubic.svg" alt=""> 
+              <img src="/assets/images/ubic.svg"  alt=""> 
               <span class="btn-text">Usar Ubicación real</span>
             </div>  
             <img src="/assets/images/flec-rig-desc.svg" alt=""> 
-          <button class="custom-btn" (click)="selectMap()">
-            <img src="/assets/images/map-marker-black.png" alt="">
-            <span class="btn-text">Seleccionar en el mapa</span>
           </button>
-          <button class="custom-btn" (click)="getUbicacion()">
-            <img src="/assets/images/marker-black.png"  alt=""> 
-            <span class="btn-text">Usar Ubicación real</span>   
-          </button>
+
 
           
         </div>

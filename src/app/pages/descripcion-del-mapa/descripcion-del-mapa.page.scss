@@ -129,34 +129,32 @@ padding-left: 10px;
 }
 .overlay-x {
   position: absolute;
-  top: 15%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-  z-index: 1; /* Asegura que esté por encima de la imagen */
-
-  .close-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    position: relative;
-  }
-
-  .close-button span {
-    font-size: 20px;
-    color: #212121;
-    line-height: 0;
-    font-family: 'Poppins';
-  }
+  top: 5%;  /* Ajusta según sea necesario */
+  left: 5%;  /* Ajusta según sea necesario */
+  z-index: 10;  /* Más alto que el mapa */
 }
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 11; /* Asegurarse que el botón esté encima del mapa */
+}
+.close-button img {
+  width: 20px; /* Ajustar el tamaño del icono */
+  height: 20px;
+}
+
 #map { 
   background-color: #FFFFFF !important;
   height: 62%; // O ajusta la altura según tus necesidades
   width: 100%;
   margin-top: 5%;
+  position: relative;
+  z-index: 1;  /* Más bajo que el botón */
 }
