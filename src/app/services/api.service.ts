@@ -123,16 +123,15 @@ export class ApiService {
     tve_ids: any[]
   ) {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
 
-    const dis_value: number = parseInt(dis_id, 10);
-
     const formData = new FormData();
+    const files = [file1, file2, file3];
+    files.forEach((file, index) => {
+      formData.append('files', file[0]);
+    });
 
-    formData.append('file', file1);
-    formData.append('file', file2);
-    formData.append('file', file3);
     formData.append('tga_id', tga_id);
     formData.append('gar_descri', gar_descri);
     formData.append('gar_largo', gar_largo);
@@ -141,9 +140,7 @@ export class ApiService {
     formData.append('uga_direcc', uga_direcc);
     formData.append('uga_lat', uga_lat);
     formData.append('uga_long', uga_long);
-    formData.append('dis_id', dis_id.trim());
-    formData.append('tga_id', tga_id.trim());
-    formData.append('tga_id', tga_id);
+    formData.append('dis_id', dis_id);
 
     services.forEach((service: string) => {
       formData.append('services', service.trim());
@@ -155,7 +152,9 @@ export class ApiService {
 
     console.log(formData);
 
-    return this.http.post(this.apiUrl + '/advertisement/create', formData, { headers });
+    return this.http.post(this.apiUrl + '/advertisement/create', formData, {
+      headers,
+    });
   }
 
   getAds(token: string): Observable<any> {

@@ -132,8 +132,8 @@ export class ImgEstaPage implements OnInit {
   ngOnInit() {
   }
 
-  async setValues() {
-    await this.route.queryParams.subscribe(params => {
+  setValues() {
+    this.route.queryParams.subscribe(params => {
       this.tga_id = params['tga_id'];
       this.direccion = params['direccion'];
       this.distrito = params['distrito'];
@@ -189,14 +189,19 @@ export class ImgEstaPage implements OnInit {
         this.uga_long,
         this.distrito,
         this.servicio,
-        this.tve_id ).subscribe(
-        async (response) => {
-          console.log(response);
-        },
-        (error) => {
-
-        }
-      );
+        this.tve_id).subscribe(
+          async (response: any) => {
+            console.log(response);
+            if(response.status === "success"){
+              this.router.navigate(['/cre-anu']);
+            }else{
+              alert('Hubo un error')
+            }
+          },
+          (error: any) => {
+            alert('Hubo un error: ' + error.message)
+          }
+        );
     } else {
       console.error('Datos incompletos.');
     }

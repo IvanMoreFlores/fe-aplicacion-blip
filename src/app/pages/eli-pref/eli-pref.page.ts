@@ -51,21 +51,7 @@ export class EliPrefPage implements OnInit {
   }
 
   getValues(){
-    console.log(this.tga_id);
-    console.log(this.direccion); 
-    console.log(this.distrito);
-    console.log(this.ciudad);
-    console.log(this.referencia);
-    console.log(this.detalles);
-    console.log(this.servicio);
-    console.log(this.gar_largo);
-    console.log(this.gar_ancho);
-    console.log(this.gar_alto);
-    console.log(this.uga_direcc);
-    console.log(this.uga_lat);
-    console.log(this.gar_alto);
-
-    this.router.navigate(['/configuracion-pago'], {
+    this.router.navigate(['/configuracion-alquilar'], {
       queryParams: {
         tga_id: this.tga_id,
         direccion: this.direccion,
