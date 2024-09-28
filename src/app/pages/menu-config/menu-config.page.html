@@ -3,37 +3,31 @@
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <button routerLink="/tab-home/home" class="config"> Configuracion <div class="signo-menor"></div> </button>
-          <button routerLink="/inf-perso" class="menu-con"><img src="assets/images/personal.png" alt=""> Informacion personal <div class="signo-mayor1"></div> </button>
-          <button routerLink="/ini-seg-se" class="menu-con"><img src="assets/images/segurity.png" alt=""> Incio y seguridad <div class="signo-mayor2"></div></button>
-          <button routerLink="/notifi" class="menu-con"><img src="assets/images/campana.png" alt=""> Notificaciones <div class="signo-mayor3"></div> </button>
-          <button routerLink="/finanzas" class="menu-con"><img src="assets/images/finanzasconf.png" alt=""> Finanzas <div class="signo-mayor4"></div> </button>
-          <button routerLink="/ubicacion" class="menu-con"><img src="assets/images/ubicacion.png" alt=""> Ubicación <div class="signo-mayor5"></div> </button>
-          <buttom routerLink="" class="mi-boton">
-            <div class="padre">
-              <div class="hijo">
-                <img src="assets/images/eye.svg" alt="" class="lef">
-                <h1 class="AG"> Apagon General </h1>
-              </div>
-              <ion-toggle id="open-modal_apagongeneral" expand="block" class="right" [(ngModel)]="switchValue" ></ion-toggle>
-
-            </div> 
-          </buttom>
-            <ion-modal trigger="open-modal_apagongeneral" [initialBreakpoint]="1" [breakpoints]="[0, 1]"(ionBackdropTap)="dismissModal()">
-              <ng-template>
-                <div class="block">
-                  <h1 class="title-mo">¿Estás seguro de realizar el Apagón General?</h1>
-                    <div class="line"></div>
-                    <p class="parraf">Todas tus publicaciones se ocultarán, pero puedes mostrarlas en cualquier momento.</p>
-                    <div class="button-container-modal">
-                      <button class="button-eliminar-modal">
-                        Eliminar Anuncio
-                      </button>
-                      <button (click)="dismissModal()" class="mda">Cancelar</button>
-                    </div>
+          <button class="swip" (click)="changeContent('Todos')" [ngClass]="{'active': selectedContent === 'Todos'}">
+            <h1 class="res-de">Todos </h1>
+            <button class="lda">
+              <h1 class="descrip">2</h1>
+            </button>
+          </button>
+          <div *ngIf="selectedContent === 'Todos'">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <h3>Publica tu cochera en minutos.</h3>
+                  <p>Crea un anuncio de tu espacio de estacionamiento en pocos pasos y comienza a recibir reservas.</p>
                 </div>
-              </ng-template>
-            </ion-modal>
+                <div class="swiper-slide">
+                  <h3>Conecta y aumenta tus ingresos.</h3>
+                  <p>Conecta con conductores que buscan estacionamiento y recibe notificaciones cuando alguien reserva tu cochera.</p>
+                </div>
+                <div class="swiper-slide">
+                  <h3>Administra tus reservas con facilidad.</h3>
+                  <p>Controla la disponibilidad, resuelve consultas y asegura una experiencia positiva desde una sola plataforma.</p>  
+                </div>
+              </div>
+              <div class="swiper-pagination"></div> <!-- Asegúrate de tener la paginación aquí -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
