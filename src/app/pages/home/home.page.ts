@@ -1,13 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import Swiper from 'swiper';///sliders
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import Swiper from 'swiper';
 
-import SwiperCore, { Pagination } from 'swiper';
-SwiperCore.use([Pagination]);
-
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -24,7 +23,12 @@ export class HomePage implements OnInit {
   data: any;
   url_new: string = '/nuevo-anu-pone-alq';
   userData: any;
-
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    slidesPerView: 1,
+    loop: false,
+  };
   constructor(
     private router: Router,
     private modalController: ModalController,
@@ -34,11 +38,33 @@ export class HomePage implements OnInit {
   ) { 
 
   } // Inyecta el ModalController
-
+  changeContent(content: string) {
+    this.selectedContent = content; // Cambia el contenido seleccionado
+    if (this.selectedContent === 'Comienza Pronto') {
+      // Usa un timeout para asegurarte de que el DOM esté actualizado
+      setTimeout(() => {
+        this.iniciarSwiper();
+      }, 0);
+    }
+  }
+  iniciarSwiper() {
+    const miSwiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true, // Asegura que las bullets sean clicables
+        type: 'bullets', // Define el tipo como bullets
+      },
+    });
+  }
   ngOnInit() {
     this.getReservas();
     this.getDni();
+
   }
+
 
   async getDni(){
     const userDni = await this.storage.getItem('userDni');
@@ -112,9 +138,7 @@ export class HomePage implements OnInit {
     this.modalController.dismiss(null,'isMenuModalOpen');
   }
 
-  changeContent(content: string) {
-    this.selectedContent = content; // Cambia el contenido seleccionado
-  }
+
 
   async getReservas() {
     const token = await this.storage.getItem('token');
