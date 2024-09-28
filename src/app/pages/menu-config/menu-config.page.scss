@@ -192,3 +192,29 @@ padding-inline: 20px;
     font-weight: 500;
     margin-bottom: 24px;
 }
+@keyframes scroll {
+    to {
+      background-position: -649px 0;
+    }
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita que se vean partes fuera del contenedor */
+  }
+  
+  .swiper-slide {
+    width: 100%;
+    height: auto;
+
+    justify-content: center;
+    align-items: center;
+  }
+  
+.swiper-pagination-bullet-active{
+    
+    background:black;
+}
+.swiper-pagination{
+    position: inherit;
+}

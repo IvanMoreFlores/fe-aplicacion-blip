@@ -110,8 +110,8 @@
         <h1 class="tl-res">
           Tus Reservaciones
         </h1>
-        <div class="card-content">
-          <div class="swiper-container swiper-main">
+        <div class="cardba-content">
+          <div class="a">
             <div class="horizontal-scroll">
               <button class="swip" (click)="changeContent('Todos')" [ngClass]="{'active': selectedContent === 'Todos'}">
                 <h1 class="res-de">Todos </h1>
@@ -159,224 +159,320 @@
               </button>
             </div>
           </div>
-
-          <br><br>
-
           <!-- Contenido dinámico -->
-          <div class="content-display">
+
             <div *ngIf="selectedContent === 'Todos'">
               <!-- Contenido para "Todos" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera disponible.</h1>
+              <div class="content-display">
+                <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera disponible.</h1>
+                </div>
+              </div>
               <!-- Aquí puedes añadir el contenido relacionado a "Todos" -->
             </div>
 
             <div *ngIf="selectedContent === 'pendientes'">
               <!-- Contenido para "Terminan Pronto" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera pendiente.</h1>
+              <div class="content-display">
+                <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera pendiente.</h1>
+                </div>
+              </div>
               <!-- Aquí puedes añadir el contenido relacionado a "Terminan Pronto" -->
             </div>
 
             <div *ngIf="selectedContent === 'En Curso'">
               <!-- Contenido para "En Curso" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera en curso.</h1>
+              <div class="content-display">
+                <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera en curso.</h1>
+                </div>
               <!-- Aquí puedes añadir el contenido relacionado a "En Curso" -->
+              </div>
             </div>
+
 
             <div *ngIf="selectedContent === 'Comienza Pronto'">
+              <div class="cardz">
+                <div class="card-content">
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide"*ngFor="let item of data">
+                        <div class="backdo">
+                          <div class="header-flex">
+                            <div class="circle-icon">
+                              <h1>A</h1>
+                            </div>
+                            <div class="title-container">
+                              <ion-card-title>
+                                <h1 class="title-large">{{ item.gar_descri }}</h1>
+                                <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                              </ion-card-title>
+                            </div>
+                          </div>
+                          <div class="image-container">
+                            <img class="large-image" alt="Estacionamiento"src="{{ item.garage_photos[0] }}" />
+                        
+          
+                            <div class="floating-text time">
+                              <span>04:00:00</span>
+                            </div>
+                            <div class="floating-text status">
+                              <span>Confirmado <span class="dot"></span></span>
+                            </div>
+                          </div>
+                          <div class="contenido-card">
+                            <div class="res-bar">
+                              <div class="derz">
+                                <h1 class="sub-r"> Reserva:</h1>
+                                <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
+                                <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                              </div>
+                            </div>
+                            <div class="res-bar">
+                              <div class="derz">
+                                <h1 class="sub-r">Vehículo:</h1>
+                                <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                              </div>
+                            </div>
+                            <div class="res-bar">
+                              <div class="derz">
+                                <h1>Placa:</h1>
+                                <h2 >{{ item.veh_placa }}</h2>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/sig-may.svg" alt="">
+                                <h1 class="s" >Reserva</h1>
+                                <h1>x</h1>
+                                <h1 class="m">{{ item.tip_descri }}</h1>
+                                <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                                <h1 class="m">{{ item.res_tiempo }}</h1>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/can-card.svg" alt="">
+                                <h1 class="s" >{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/reloj-home.svg" alt="">
+                                <h1 class="s" >{{ item.res_fecini | date: 'shortTime' }}</h1>
+                                <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                                <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                              </div>
+                            </div>
+                            <div class="btn">
+                              <button class="bt-con">Confirmar</button>
+                              <button class="bt-can">Cancelar</button>
+                            </div>
+                          </div>
 
-              <ion-card mode="ios" class="custom-card" *ngFor="let item of data">
+                          <div>
+                          </div>
+                        </div>
+                       
+                      </div>
+                      <!-- <div class="swiper-slide">
+                        <div class="backdo">
+                          <div class="header-flex">
+                            <div class="circle-icon">
+                              <h1>A</h1>
+                            </div>
+                            <div class="title-container">
+                              <ion-card-title>
+                                <h1 class="title-large">Cochera Av. Benavides 456</h1>
+                                <h2 class="subtitle-large">Av. Benavides 456</h2>
+                              </ion-card-title>
+                            </div>
+                          </div>
+                          <div class="image-container">
+                            <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
+                        
+          
+                            <div class="floating-text time">
+                              <span>04:00:00</span>
+                            </div>
+                            <div class="floating-text status">
+                              <span>Confirmado <span class="dot"></span></span>
+                            </div>
+                          </div>
+                          <div class="contenido-card">
+                            <div class="res-bar">
+                              <div class="derz">
+                                <h1 class="sub-r"> Reserva:</h1>
+                                <h1 class="ctn">Ivana Tremolada </h1>
+                                <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                              </div>
+                            </div>
+                            <div class="res-bar">
+                              <div class="derz">
+                                <h1 class="sub-r">Vehículo:</h1>
+                                <h1 class="ctn">Toyota Corolla</h1>
 
-                <ion-card-header>
-                  <div class="header-flex">
-                    <div class="circle-icon">
-                      <h1>A</h1>
+                              </div>
+                            </div>
+                            <div class="res-bar">
+                              <div class="derz">
+
+                                <h1>Placa:</h1>
+                                <h2 >AF4759JU</h2>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/sig-may.svg" alt="">
+                                <h1 class="s" >Reserva</h1>
+                                <h1>x</h1>
+                                <h1 class="m">hora</h1>
+                                <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                                <h1 class="m">4h</h1>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/can-card.svg" alt="">
+                                <h1 class="s" >16 de Marzo</h1>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/reloj-home.svg" alt="">
+                                <h1 class="s" >9:00 AM </h1>
+                                <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                                <h1>13:00 PM</h1>
+                              </div>
+                            </div>
+                            <div class="btn">
+                              <button class="bt-con">Confirmar</button>
+                              <button class="bt-can">Cancelar</button>
+                            </div>
+                          </div>
+
+                          <div>
+                          </div>
+                        </div>
+                       
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="backdo">
+                          <div class="header-flex">
+                            <div class="circle-icon">
+                              <h1>A</h1>
+                            </div>
+                            <div class="title-container">
+                              <ion-card-title>
+                                <h1 class="title-large">Cochera Av. Benavides 456</h1>
+                                <h2 class="subtitle-large">Av. Benavides 456</h2>
+                              </ion-card-title>
+                            </div>
+                          </div>
+                          <div class="image-container">
+                            <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
+                        
+          
+                            <div class="floating-text time">
+                              <span>04:00:00</span>
+                            </div>
+                            <div class="floating-text status">
+                              <span>Confirmado <span class="dot"></span></span>
+                            </div>
+                          </div>
+                          <div class="contenido-card">
+                            <div class="res-bar">
+                              <div class="derz">
+                                <h1 class="sub-r"> Reserva:</h1>
+                                <h1 class="ctn">Ivana Tremolada </h1>
+                                <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                              </div>
+                            </div>
+                            <div class="res-bar">
+                              <div class="derz">
+                                <h1 class="sub-r">Vehículo:</h1>
+                                <h1 class="ctn">Toyota Corolla</h1>
+
+                              </div>
+                            </div>
+                            <div class="res-bar">
+                              <div class="derz">
+
+                                <h1>Placa:</h1>
+                                <h2 >AF4759JU</h2>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/sig-may.svg" alt="">
+                                <h1 class="s" >Reserva</h1>
+                                <h1>x</h1>
+                                <h1 class="m">hora</h1>
+                                <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                                <h1 class="m">4h</h1>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/can-card.svg" alt="">
+                                <h1 class="s" >16 de Marzo</h1>
+                              </div>
+                            </div>
+                            <div class="det-asd">
+                              <div class="derz">
+                                <img src="/assets/images/reloj-home.svg" alt="">
+                                <h1 class="s" >9:00 AM </h1>
+                                <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                                <h1>13:00 PM</h1>
+                              </div>
+                            </div>
+                            <div class="btn">
+                              <button class="bt-con">Confirmar</button>
+                              <button class="bt-can">Cancelar</button>
+                            </div>
+                          </div>
+
+                          <div>
+                          </div>
+                        </div>
+                       
+                      </div> -->
                     </div>
-                    <div class="title-container">
-                      <ion-card-title>
-                        <h1 class="title-large">{{ item.gar_descri }}</h1>
-                        <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
-                      </ion-card-title>
-                    </div>
-                  </div>
-                </ion-card-header>
-
-                <!-- Contenedor de la imagen con flotantes -->
-                <div class="image-container">
-                  <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
-
-                  <!-- Elementos flotantes -->
-                  <div class="floating-text time">
-                    <span>04:00:00</span>
-                  </div>
-                  <div class="floating-text status">
-                    <span>Confirmado <span class="dot"></span></span>
                   </div>
                 </div>
-
-                <ion-card-content class="content-large">
-                  <div class="res-bar">
-                    <div class="derz">
-                      <h1 class="sub-r"> Reserva:</h1>
-                      <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
-                      <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
-                    </div>
-                  </div>
-                  <div class="res-bar">
-                    <div class="derz">
-                      <h1 class="sub-r">Vehículo:</h1>
-                      <h1 class="ctn">{{ item.veh_modelo }}</h1>
-                      <h1>Placa:</h1>
-                      <h2>{{ item.veh_placa }}</h2>
-                    </div>
-                  </div>
-                  <div class="det-asd">
-                    <div class="derz">
-                      <img src="/assets/images/sig-may.svg" alt="">
-                      <h1 class="s">Reserva</h1>
-                      <h1>x</h1>
-                      <h1 class="m">{{ item.tip_descri }}</h1>
-                      <img src="/assets/images/sig-may.svg" class="mayor" alt="">
-                      <h1 class="m">{{ item.res_tiempo }}</h1>
-                    </div>
-                  </div>
-                  <div class="det-asd">
-                    <div class="derz">
-                      <img src="/assets/images/can-card.svg" alt="">
-                      <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
-                    </div>
-                  </div>
-                  <div class="det-asd">
-
-                    <div class="derz">
-                      <img src="/assets/images/reloj-home.svg" alt="">
-                      <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
-                      <img src="/assets/images/flec-home.svg" class="mayor" alt="">
-                      <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
-                    </div>
-                  </div>
-                  <div>
-                  </div>
-                </ion-card-content>
-
-                <div class="btn">
-                  <button class="bt-con">Confirmar</button>
-                  <button class="bt-can">Cancelar</button>
-                </div>
-              </ion-card>
-
-              <div *ngIf="!data">
-                <img src="/assets/images/icon-calendar2.svg" alt="">
-                <h1 class="par">Ninguna cochera disponible.</h1>
               </div>
-
+              <div *ngIf="!data" class="content-display">
+                <div class="board">
+                  <img src="/assets/images/icon-calendar2.svg" alt="">
+                  <h1 class="par">Ninguna cochera disponible.</h1>
+                </div>
+              </div>
             </div>
 
-
-
-
-
-            <!-- <div *ngIf="selectedContent === 'Comienza Pronto'"> -->
-
-              <!-- <ion-card mode="ios" class="custom-card">
-                <ion-card-header>
-                  <div class="header-flex">
-                    <div class="circle-icon">
-                      <h1>A</h1>
-                    </div>
-                    <div class="title-container">
-                      <ion-card-title>
-                        <h1 class="title-large">Cochera Av. Benavides 456</h1>
-                        <h2 class="subtitle-large">Av. Benavides 456</h2>
-                      </ion-card-title>
-                    </div>
-                  </div>
-                </ion-card-header>
-              
-
-                <div class="image-container">
-                  <img class="large-image" alt="Estacionamiento" src="/assets/images/estca.svg" />
-              
-
-                  <div class="floating-text time">
-                    <span>04:00:00</span>
-                  </div>
-                  <div class="floating-text status">
-                    <span>Confirmado <span class="dot"></span></span>
-                  </div>
-                </div>
-              
-                <ion-card-content class="content-large">
-                  <div class="res-bar">
-                    <div class="derz">
-                      <h1 class="sub-r"> Reserva:</h1>
-                      <h1 class="ctn">Ivana Tremolada </h1>
-                      <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
-                    </div>
-                  </div>
-                  <div class="res-bar">
-                    <div class="derz">
-                      <h1 class="sub-r">Vehículo:</h1>
-                      <h1 class="ctn">Toyota Corolla</h1>
-                      <h1>Placa:</h1>
-                      <h2 >AF4759JU</h2>
-                    </div>
-                  </div>
-                  <div class="det-asd">
-                    <div class="derz">
-                      <img src="/assets/images/sig-may.svg" alt="">
-                      <h1 class="s" >Reserva</h1>
-                      <h1>x</h1>
-                      <h1 class="m">hora</h1>
-                      <img src="/assets/images/sig-may.svg" class="mayor" alt="">
-                      <h1 class="m">4h</h1>
-                    </div>
-                  </div>
-                  <div class="det-asd">
-                    <div class="derz">
-                      <img src="/assets/images/can-card.svg" alt="">
-                      <h1 class="s" >16 de Marzo</h1>
-                    </div>
-                  </div>
-                  <div class="det-asd">
-                    <div class="derz">
-                      <img src="/assets/images/reloj-home.svg" alt="">
-                      <h1 class="s" >9:00 AM </h1>
-                      <img src="/assets/images/flec-home.svg" class="mayor" alt="">
-                      <h1>13:00 PM</h1>
-                    </div>
-                  </div>
-                  <div>
-                  </div>
-                </ion-card-content>
-
-                
-                <div class="btn">
-                  <button class="bt-con">Confirmar</button>
-                  <button class="bt-can">Cancelar</button>
-                </div>
-              </ion-card> -->
-
-
-             
-
-              
-            <!-- </div> -->
             <div *ngIf="selectedContent === 'Finalizadas'">
-              <!-- Contenido para "En Curso" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera finalizada.</h1>
+              <div class="content-display">
+                <div class="board">
+                  <img src="/assets/images/icon-calendar2.svg" alt="">
+                  <h1 class="par">Ninguna cochera finalizada.</h1>
+                </div>
+
+              </div>
               <!-- Aquí puedes añadir el contenido relacionado a "En Curso" -->
             </div>
             <div *ngIf="selectedContent === 'Canceladas'">
-              <!-- Contenido para "En Curso" -->
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera cancelada.</h1>
+              <div class="content-display">
+                <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera cancelada.</h1>
+                </div>
+              </div>
               <!-- Aquí puedes añadir el contenido relacionado a "En Curso" -->
             </div>
-          </div>
+
 
         </div>
       </div>
