@@ -23,7 +23,7 @@
 
                 <div class="button-container-modal">
                   <button class="button-eliminar-modal" (click)="deleteAd(mainAd?.gar_id)">
-                    Eliminar Anuncio 
+                    Eliminar Anuncio
                   </button>
                   <button (click)="cerrarContent()">Cancelar</button>
                 </div>
@@ -49,17 +49,15 @@
                       <label for="checkbox">
                         <div>
                           <img src="/assets/images/icon-car.svg" alt="icono" />
-                          <span class="checkbox-text" >
+                          <span class="checkbox-text">
                             {{ item.gar_nombre }}
                           </span>
                         </div>
-                        <input type="checkbox" 
-                        [checked]="item.gar_id === mainAd?.gar_id" 
-                        id="checkbox{{ item.gar_id }}" 
-                        class="checkbox-round" />
+                        <input type="checkbox" [checked]="item.gar_id === mainAd?.gar_id" id="checkbox{{ item.gar_id }}"
+                          class="checkbox-round" />
                       </label>
                     </div>
-                    
+
                   </div>
                   <div class="button-agregar-anuncio-container">
                     <button class="button-agregar-anuncio">
@@ -125,16 +123,26 @@
           </h2>
           <div class="form">
             <label class="anuncio-label" for="">Nombre del Anuncio</label>
-            <input type="text" class="outlinenone" value="{{ mainAd?.gar_nombre }}" placeholder="Parking Las Begonias" />
+            <input type="text" class="outlinenone" value="{{ mainAd?.gar_nombre }}"
+              placeholder="Parking Las Begonias" />
           </div>
           <h3>Fotos</h3>
           <h5>Mínimo tres fotos, pero si tienes más, ¡Genial!</h5>
         </div>
         <div class="boxes">
 
-          <div class="box1" *ngFor="let photo of mainAd?.photos">
-            <img src="{{ photo?.url }}" alt="" />
+          <div *ngFor="let photo of mainAd?.photos">
+            <div class="box1">
+              <img src="{{ photo?.url }}" alt="" />
+            </div>
           </div>
+
+          <div>
+            <div class="box1">
+              <img src="/assets/images/upload.svg" alt="" />
+            </div>
+          </div>
+
 
           <!--<div class="box1">
             <img src="/assets/images/upload.svg" alt="" />
@@ -145,9 +153,6 @@
           <div class="box3">
             <img src="/assets/images/upload.svg" alt="" />
           </div>-->
-          <div class="box4">
-            <img src="/assets/images/upload.svg" alt="" />
-          </div>
 
         </div>
 
@@ -208,7 +213,7 @@
                     <input class="false-textarea" value="mainAd?.gar_ancho" placeholder="2.5 m" />
                   </div>
                   <div class="form-regla">
-                    <label class="num-regla">Medida  Largo</label>
+                    <label class="num-regla">Medida Largo</label>
                     <input class="false-textarea" value="mainAd?.gar_largo" placeholder="5 m" />
                   </div>
                   <div class="form-regla">
@@ -325,41 +330,41 @@
             </ng-template>
           </ion-modal>
 
-                    <!-- ----------------------------------OPEN MODAL 2---------------------------------- -->
-                    <h3>¿A quíenes te gustaria alquilar?</h3>
+          <!-- ----------------------------------OPEN MODAL 2---------------------------------- -->
+          <h3>¿A quíenes te gustaria alquilar?</h3>
 
-                    <ul class="lista-servicios">
-                      <li *ngFor="let vehiculos of mainAd?.tipos_garages">
-                        <img src="/assets/images/shop-icon.svg" alt="" />
-                        <span>{{ vehiculos?.tve_descri }}</span>
-                      </li>
-                    </ul>
+          <ul class="lista-servicios">
+            <li *ngFor="let vehiculos of mainAd?.tipos_garages">
+              <img src="/assets/images/shop-icon.svg" alt="" />
+              <span>{{ vehiculos?.tve_descri }}</span>
+            </li>
+          </ul>
 
-                   <!--<a class="servicios" id="open-modal-lugares">
+          <!--<a class="servicios" id="open-modal-lugares">
                       Agregar lugares
                       <img src="/assets/images/right-arrow.svg" alt="" />
                     </a>-->
-          
-                    <ion-modal trigger="open-modal-lugares" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-                      <ng-template>
-                        <div class="modal-lugares">
-                          <h1>Agregar Lugares</h1>
-          
-                          <hr />
-          
-                          <div class="button-container-modal">
-                            <div class="form-regla">
-                              <div class="num-regla">Agregar Lugares Cerca</div>
-                              <div class="false-textarea">
-                                <textarea
-                                  placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sapiente est sed!"></textarea>
-                              </div>
-                            </div>
-                            <button>Guardar Cambios</button>
-                          </div>
-                        </div>
-                      </ng-template>
-                    </ion-modal>
+
+          <ion-modal trigger="open-modal-lugares" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="modal-lugares">
+                <h1>Agregar Lugares</h1>
+
+                <hr />
+
+                <div class="button-container-modal">
+                  <div class="form-regla">
+                    <div class="num-regla">Agregar Lugares Cerca</div>
+                    <div class="false-textarea">
+                      <textarea
+                        placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sapiente est sed!"></textarea>
+                    </div>
+                  </div>
+                  <button>Guardar Cambios</button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
 
           <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
           <h3>Ubicación</h3>
@@ -379,7 +384,7 @@
                 <div class="button-container-modal">
                   <div class="form-regla">
                     <label class="num-regla">Direccion</label>
-                    <input class="false-textarea" placeholder="Av. Alfredo Mendiola 3698" />
+                    <input class="false-textarea" placeholder="Av. Alfredo Mendiola 3698" value="{{ mainAd?.uga_direcc }}" />
                   </div>
                   <button>Guardar Cambios</button>
                 </div>

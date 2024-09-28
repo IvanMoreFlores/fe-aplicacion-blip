@@ -141,13 +141,12 @@ export class HomePage implements OnInit {
     this.modalController.dismiss(null, 'isMenuModalOpen');
   }
 
-
-
   async getReservas() {
     const token = await this.storage.getItem('token');
     this.api.getReservations(token).subscribe(
       async (response: any) => {
         this.data = response.data;
+        console.log(this.data);
       },
       (error: any) => {
         console.error('Error al enviar el mensaje:', error);
