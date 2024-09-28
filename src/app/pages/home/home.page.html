@@ -9,21 +9,23 @@
           <div class="pers">
             <img src="/assets/images/backdrop-component.png" alt="">
             <div class="name">
-              <h1>Ivana T.</h1>
+              <h1>{{ userData?.usu_nombre + ' ' + userData?.usu_apepat }}</h1>
               <h3>Host</h3>
             </div>
           </div>
-          <button class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg" alt=""></button>
+          <button class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg"
+              alt=""></button>
 
           <!-- Modal del menú -->
-          <ion-modal mode="ios" [isOpen]="isMenuModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="dismissMenuModal()">
+          <ion-modal mode="ios" [isOpen]="isMenuModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]"
+            (ionBackdropTap)="dismissMenuModal()">
             <ng-template>
               <div class="block">
                 <h1 class="menu-block">Menu</h1>
                 <hr class="separator-line">
                 <h2 class="subtitle">SERVICIOS DE ANFITRIÓN</h2>
                 <div class="button-container">
-                  
+
                   <button (click)="exit()" routerLink="{{ url_new }}" class="service-button">
                     <div>
                       <img class="button-image" src="/assets/images/ticket-outline-selected.svg" alt="Imagen 1">
@@ -46,13 +48,8 @@
                       <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
                       <span class="button-text">Apagón General</span>
                     </div>
-                    <ion-toggle 
-                    aria-label="Dark toggle" color="dark"
-                      mode="ios" 
-                      id="open-modal_apagongeneral" 
-                      expand="block" 
-                      [(ngModel)]="switchValue" 
-                      (ionChange)="onToggleChange($event)">
+                    <ion-toggle aria-label="Dark toggle" color="dark" mode="ios" id="open-modal_apagongeneral"
+                      expand="block" [(ngModel)]="switchValue" (ionChange)="onToggleChange($event)">
                     </ion-toggle>
 
                   </button>
@@ -90,9 +87,10 @@
               </div>
             </ng-template>
           </ion-modal>
-          
+
           <!-- Modal del toggle -->
-          <ion-modal mode="ios" [isOpen]="isToggleModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="dismissToggleModal(true)">
+          <ion-modal mode="ios" [isOpen]="isToggleModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]"
+            (ionBackdropTap)="dismissToggleModal(true)">
             <ng-template>
               <div class="block">
                 <h1 class="title-c">¿Estás seguro de realizar el Apagón General?</h1>
@@ -107,8 +105,8 @@
               </div>
             </ng-template>
           </ion-modal>
-          
-        </div>          
+
+        </div>
         <h1 class="tl-res">
           Tus Reservaciones
         </h1>
