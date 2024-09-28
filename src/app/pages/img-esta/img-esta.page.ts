@@ -204,6 +204,19 @@ export class ImgEstaPage implements OnInit {
         );
     } else {
       console.error('Datos incompletos.');
+      console.log(this.files);
+      console.log(this.files2);
+      console.log(this.files3);
+      console.log(this.tga_id);
+      console.log(this.direccion); ///////
+      console.log(this.gar_largo);
+      console.log(this.gar_ancho);
+      console.log(this.gar_alto);
+      console.log(this.uga_direcc);
+      console.log(this.uga_lat);
+      console.log(this.uga_long);
+      console.log(this.servicio);
+      console.log(this.tve_id);
     }
 
   }

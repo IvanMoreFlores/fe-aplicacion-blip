@@ -96,7 +96,7 @@ export class ConfiguracionAlquilarPage implements OnInit {
   }
 
   return(){
-    this.router.navigate(['/configuracion-pago'], {
+    this.router.navigate(['/eli-pref'], {
       queryParams: {
         tga_id: this.tga_id,
         direccion: this.direccion,
