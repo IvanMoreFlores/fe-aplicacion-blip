@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { AnuncioCaracteristicasPageRoutingModule } from './anuncio-caracteristicas-routing.module';
 
@@ -13,7 +13,8 @@ import { AnuncioCaracteristicasPage } from './anuncio-caracteristicas.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AnuncioCaracteristicasPageRoutingModule
+    AnuncioCaracteristicasPageRoutingModule,
+    NgxDropzoneModule
   ],
   declarations: [AnuncioCaracteristicasPage]
 })
