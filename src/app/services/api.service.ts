@@ -174,4 +174,14 @@ export class ApiService {
     return this.http.delete(this.apiUrl + '/advertisement/' + id, { headers });
   }
 
+  updateAd(token: string, formData: FormData) {
+
+    // Configura los headers con el Bearer Token
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch(this.apiUrl + '/advertisement/update', formData, { headers });
+  }
+
 }

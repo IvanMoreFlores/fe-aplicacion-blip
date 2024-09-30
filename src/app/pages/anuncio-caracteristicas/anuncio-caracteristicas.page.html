@@ -53,7 +53,8 @@
                             {{ item.gar_nombre }}
                           </span>
                         </div>
-                        <input type="checkbox" [checked]="item.gar_id === mainAd?.gar_id" id="checkbox{{ item.gar_id }}"
+                        <input type="checkbox" [checked]="item.gar_id === selectedGarId"
+                          (change)="onCheckboxChange(item.gar_id)" id="checkbox{{ item.gar_id }}"
                           class="checkbox-round" />
                       </label>
                     </div>
@@ -104,10 +105,8 @@
           </div>
 
           <!--<div class="swiper-slide">
-            <button
-              (click)="changeContent('Abonados')"
-              [ngClass]="{'active': isButtonActive('Abonados')}"
-            >
+            <button (click)="changeContent('Abonados')"
+              [ngClass]="{'active': isButtonActive('Abonados')}">
               Abonados
             </button>
           </div>-->
@@ -123,26 +122,49 @@
           </h2>
           <div class="form">
             <label class="anuncio-label" for="">Nombre del Anuncio</label>
-            <input type="text" class="outlinenone" value="{{ mainAd?.gar_nombre }}"
-              placeholder="Parking Las Begonias" />
+            <input type="text" class="outlinenone" id="open-modal-nombre" [(ngModel)]="gar_nombre"
+              value="{{ mainAd?.gar_nombre }}" placeholder="Parking Las Begonias" />
           </div>
+          <ion-modal trigger="open-modal-nombre" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block">
+                <h1>Editar nombre</h1>
+                <hr />
+                <div class="button-container-modal">
+                  <div class="form-regla">
+                    <label class="num-regla">Direccion</label>
+                    <input class="false-textarea" placeholder="Av. Alfredo Mendiola 3698"
+                      [(ngModel)]="gar_nombre_mod" />
+                  </div>
+                  <button (click)="sendUpdateName()">Guardar Cambios</button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
           <h3>Fotos</h3>
           <h5>Mínimo tres fotos, pero si tienes más, ¡Genial!</h5>
         </div>
-        <div class="boxes">
 
+        <div class="boxes">
           <div *ngFor="let photo of mainAd?.photos">
             <div class="box1">
               <img src="{{ photo?.url }}" alt="" />
             </div>
           </div>
 
-          <div>
+          <div class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+            <ngx-dropzone-label>
+              <div class="pad">
+                <img src="/assets/images/upload.svg" alt="" class="img-dow">
+              </div>
+            </ngx-dropzone-label>
+          </div>
+
+          <!--<div>
             <div class="box1">
               <img src="/assets/images/upload.svg" alt="" />
             </div>
-          </div>
-
+          </div>-->
 
           <!--<div class="box1">
             <img src="/assets/images/upload.svg" alt="" />
@@ -160,8 +182,7 @@
           <!-- ----------------------------------OPEN MODAL 1---------------------------------- -->
           <h3>Descripción</h3>
           <p>
-            Estacionamiento en cochera privada cómodo y seguro para disfrutar de
-            tus actividades diarias.
+            {{ mainAd?.gar_descri }}
           </p>
           <a class="servicios" id="open-modal-descripcion">
             Editar descripción
@@ -172,17 +193,15 @@
             <ng-template>
               <div class="modal-descripcion">
                 <h1>Edita tu descripción</h1>
-
                 <hr />
-
                 <div class="button-container-modal">
                   <div class="form-regla">
                     <div class="num-regla">Descripción de Espacio</div>
                     <div class="false-textarea1">
-                      <textarea placeholder="Descripcion del Estacionamiento.">{{ mainAd?.gar_descri }}</textarea>
+                      <textarea placeholder="Descripcion del Estacionamiento." [(ngModel)]="gar_descri"></textarea>
                     </div>
                   </div>
-                  <button>Guardar Cambios</button>
+                  <button (click)="sendUpdateDesc()">Guardar Cambios</button>
                 </div>
               </div>
             </ng-template>
@@ -204,23 +223,21 @@
             <ng-template>
               <div class="modal-dimensiones">
                 <h1>Editar dimensiones</h1>
-
                 <hr />
-
                 <div class="button-container-modal">
                   <div class="form-regla">
                     <label class="num-regla">Medida Ancho</label>
-                    <input class="false-textarea" value="mainAd?.gar_ancho" placeholder="2.5 m" />
+                    <input class="false-textarea" [(ngModel)]="gar_ancho" v placeholder="2.5 m" />
                   </div>
                   <div class="form-regla">
                     <label class="num-regla">Medida Largo</label>
-                    <input class="false-textarea" value="mainAd?.gar_largo" placeholder="5 m" />
+                    <input class="false-textarea" [(ngModel)]="gar_largo" placeholder="5 m" />
                   </div>
                   <div class="form-regla">
                     <label class="num-regla">Altura (en caso sea techado)</label>
-                    <input class="false-textarea" value="mainAd?.gar_alto" placeholder="2.1 m" />
+                    <input class="false-textarea" [(ngModel)]="gar_alto" placeholder="2.1 m" />
                   </div>
-                  <button>Guardar Cambios</button>
+                  <button (click)="sendUpdateDim()">Guardar Cambios</button>
                 </div>
               </div>
             </ng-template>
@@ -270,60 +287,64 @@
                     <div class="checkbox-anuncio">
                       <label for="checkbox">
                         <div>
-                          <img src="/assets/images/user-icon2.svg" alt="icono" />
-                          <span class="checkbox-text">Servicios Higiénicos</span>
+                          <img src="/assets/images/rejas.svg" alt="icono" />
+                          <span class="checkbox-text">Rejas</span>
                         </div>
-                        <input type="checkbox" id="checkbox" />
+                        <input *ngIf="chck_serv1 == true" type="checkbox" checked (change)="checkService($event, 1)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_serv1 == false" type="checkbox" (change)="checkService($event, 1)"
+                          class="checkbox-round" />
                       </label>
                     </div>
                     <div class="checkbox-anuncio">
                       <label>
                         <div>
-                          <img src="/assets/images/shop-icon2.svg" alt="icono" />
-                          <span class="checkbox-text">Autoboutique</span>
+                          <img src="/assets/images/puntero.svg" alt="icono" />
+                          <span class="checkbox-text">Portón Manual</span>
                         </div>
-                        <input type="checkbox" id="checkbox" class="checkbox-round" />
+                        <input *ngIf="chck_serv2 == true" type="checkbox" checked (change)="checkService($event, 2)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_serv2 == false" type="checkbox" (change)="checkService($event, 2)"
+                          class="checkbox-round" />
                       </label>
                     </div>
                     <div class="checkbox-anuncio">
                       <label>
                         <div>
-                          <img src="/assets/images/car-icon2.svg" alt="icono" />
-                          <span class="checkbox-text">Lavado de Auto</span>
+                          <img src="/assets/images/foco.svg" alt="icono" />
+                          <span class="checkbox-text">Portón Eléctrico</span>
                         </div>
-                        <input type="checkbox" id="checkbox" class="checkbox-round" />
+                        <input *ngIf="chck_serv3 == true" type="checkbox" checked (change)="checkService($event, 3)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_serv3 == false" type="checkbox" (change)="checkService($event, 3)"
+                          class="checkbox-round" />
                       </label>
                     </div>
                     <div class="checkbox-anuncio">
                       <label>
                         <div>
-                          <img src="/assets/images/eye-icon2.svg" alt="icono" />
+                          <img src="/assets/images/ojos.svg" alt="icono" />
                           <span class="checkbox-text">Sistema de vigilancia</span>
                         </div>
-                        <input type="checkbox" id="checkbox" class="checkbox-round" />
+                        <input *ngIf="chck_serv4 == true" type="checkbox" checked (change)="checkService($event, 4)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_serv4 == false" type="checkbox" (change)="checkService($event, 4)"
+                          class="checkbox-round" />
                       </label>
                     </div>
                     <div class="checkbox-anuncio">
                       <label>
                         <div>
-                          <img src="/assets/images/shopcart-icon.svg" alt="icono" />
-                          <span class="checkbox-text">Tienda</span>
-                        </div>
-                        <input type="checkbox" id="checkbox" class="checkbox-round" />
-                      </label>
-                    </div>
-                    <div class="checkbox-anuncio">
-                      <label>
-                        <div>
-                          <img src="/assets/images/layers-icon2.svg" alt="icono" />
+                          <img src="/assets/images/slaps.svg" alt="icono" />
                           <span class="checkbox-text">Techado</span>
                         </div>
-                        <input type="checkbox" id="checkbox" class="checkbox-round" />
+                        <input *ngIf="chck_serv5 == true" type="checkbox" checked (change)="checkService($event, 5)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_serv5 == false" type="checkbox" (change)="checkService($event, 5)"
+                          class="checkbox-round" />
                       </label>
                     </div>
-
-                    <button>Guardar Cambios</button>
-
+                    <button (click)="sendUpdateServ()">Guardar Cambios</button>
                   </div>
                 </div>
               </div>
@@ -340,12 +361,71 @@
             </li>
           </ul>
 
-          <!--<a class="servicios" id="open-modal-lugares">
-                      Agregar lugares
-                      <img src="/assets/images/right-arrow.svg" alt="" />
-                    </a>-->
+          <a class="servicios" id="open-modal-prefer">
+            Editar Preferencias
+            <img src="/assets/images/right-arrow.svg" alt="" />
+          </a>
 
-          <ion-modal trigger="open-modal-lugares" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+          <ion-modal trigger="open-modal-prefer" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="modal-servicios">
+                <h1>Edita tus Preferencias</h1>
+
+                <hr />
+
+                <div class="block2-container">
+                  <div class="checkbox-anuncio-container">
+                    <div class="checkbox-anuncio">
+                      <label for="checkbox">
+                        <div>
+                          <img src="/assets/images/car.png" alt="icono" />
+                          <span class="checkbox-text">Carros Particulares</span>
+                        </div>
+                        <input *ngIf="chck_pref1 == true" type="checkbox" checked (change)="checkPref($event, 1)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_pref1 == false" type="checkbox" (change)="checkPref($event, 1)"
+                          class="checkbox-round" />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/camioneta.png" alt="icono" />
+                          <span class="checkbox-text">Camionetas</span>
+                        </div>
+                        <input *ngIf="chck_pref2 == true" type="checkbox" checked (change)="checkPref($event, 2)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_pref2 == false" type="checkbox" (change)="checkPref($event, 2)"
+                          class="checkbox-round" />
+                      </label>
+                    </div>
+                    <div class="checkbox-anuncio">
+                      <label>
+                        <div>
+                          <img src="/assets/images/motorbike.png" alt="icono" />
+                          <span class="checkbox-text">Motos</span>
+                        </div>
+                        <input *ngIf="chck_pref3 == true" type="checkbox" checked (change)="checkPref($event, 3)"
+                          class="checkbox-round" />
+                        <input *ngIf="chck_pref3 == false" type="checkbox" (change)="checkPref($event, 3)"
+                          class="checkbox-round" />
+                      </label>
+                    </div>
+
+                    <button (click)="sendUpdateVe()">Guardar Cambios</button>
+
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+
+          <!--<a class="servicios" id="open-modal-lugares">
+            Agregar lugares
+            <img src="/assets/images/right-arrow.svg" alt="" />
+          </a>-->
+
+          <!--<ion-modal trigger="open-modal-lugares" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
             <ng-template>
               <div class="modal-lugares">
                 <h1>Agregar Lugares</h1>
@@ -364,7 +444,7 @@
                 </div>
               </div>
             </ng-template>
-          </ion-modal>
+          </ion-modal>-->
 
           <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
           <h3>Ubicación</h3>
@@ -378,15 +458,13 @@
             <ng-template>
               <div class="block">
                 <h1>Editar dirección</h1>
-
                 <hr />
-
                 <div class="button-container-modal">
                   <div class="form-regla">
                     <label class="num-regla">Direccion</label>
-                    <input class="false-textarea" placeholder="Av. Alfredo Mendiola 3698" value="{{ mainAd?.uga_direcc }}" />
+                    <input class="false-textarea" [(ngModel)]="uga_direcc" placeholder="Av. Alfredo Mendiola 3698" />
                   </div>
-                  <button>Guardar Cambios</button>
+                  <button (click)="sendUpdateUb()">Guardar Cambios</button>
                 </div>
               </div>
             </ng-template>
@@ -434,25 +512,33 @@
         <div>
           <div class="precio-base">
             <span class="simbolo">S/.</span>
-            <input class="monto" id="hora-fraccion" placeholde="0.00" type="number" />
+            <input class="monto" (blur)="onNumberInputChange($event, 1)" [(ngModel)]="precio_hora" id="hora-fraccion"
+              placeholde="0.00" type="number" />
             <label for="hora-fraccion" class="hora-fraccion">Hora o fracción</label>
           </div>
 
-          <div class="precio-personalizado">
+          <div class="precio-base">
+            <span class="simbolo">S/.</span>
+            <input class="monto" (blur)="onNumberInputChange($event, 2)" [(ngModel)]="precio_dia" id="hora-fraccion"
+              placeholde="0.00" type="number" />
+            <label for="hora-fraccion" class="hora-fraccion">Día (24h)</label>
+          </div>
+
+          <!--<div class="precio-personalizado">
             <input class="input-precio-personalizado" placeholder="Precio personalizado para fines de semana"
               type="number" />
             <label for="hora-fraccion" class="agregar">Agregar</label>
-          </div>
+          </div>-->
 
           <div class="recordatorio">
             <p>
-              Recuerda que la tarifa de servicio es 25% sobre el precio base.
-              Según el precio base x hr/fracc. <span>(S/.10)</span> ingresado
-              estarías ganando <span>S/.8.70</span> x hora.
+              Recuerda que la tarifa de servicio es 5% sobre el precio base.
+              E.j Si el precio base x h/f es de <span>S/10</span> ingresado,
+              estarías ganando <span>S/9.50</span> x hora.
             </p>
           </div>
 
-          <h1 class="secondary-title">Descuentos</h1>
+          <!--<h1 class="secondary-title">Descuentos</h1>
           <span class="descuentos-descripcion">Ajusta tus precios para atraer a más
           </span>
 
@@ -466,7 +552,7 @@
             <input class="input-descuento" placeholder="0%" type="number" />
             <label for="hora-fraccion" class="reserva">Reservación adelantada<br />con 1 día de adelanto</label>
             <label for="hora-fraccion" class="promedio">El promedio semanal<br />es de PEN00</label>
-          </div>
+          </div>-->
         </div>
       </div>
 
@@ -474,7 +560,7 @@
       <div *ngIf="selectedContent === 'Disponibilidad'">
         <div class="disponibilidad-container">
           <ion-item lines="none">
-            <ion-toggle justify="space-between">Días restringidos</ion-toggle>
+            <ion-toggle justify="space-between" [checked]="true">Días restringidos</ion-toggle>
           </ion-item>
           <p>
             Los arrendatarios no podrán reservar tu estacionamiento en estos
@@ -486,38 +572,58 @@
               <!-- Columna 1 -->
               <div class="checkbox-column">
                 <label for="domingo">
-                  <input type="checkbox" id="domingo" name="diasSemana" value="domingo" />
+                  <input *ngIf="chck_dom === true" type="checkbox" checked (change)="checkDia($event, 7)" id="domingo"
+                    name="diasSemana" value="domingo" class="checkbox-round" />
+                  <input *ngIf="chck_dom === false" type="checkbox" (change)="checkDia($event, 7)" id="domingo"
+                    name="diasSemana" value="domingo" class="checkbox-round" />
                   Domingo
                 </label>
                 <label for="lunes">
-                  <input type="checkbox" id="lunes" name="diasSemana" value="lunes" />
+                  <input *ngIf="chck_lun === true" type="checkbox" checked (change)="checkDia($event, 1)" id="lunes"
+                    name="diasSemana" value="lunes" class="checkbox-round" />
+                  <input *ngIf="chck_lun === false" type="checkbox" (change)="checkDia($event, 1)" id="lunes"
+                    name="diasSemana" value="lunes" class="checkbox-round" />
                   Lunes
                 </label>
                 <label for="martes">
-                  <input type="checkbox" id="martes" name="diasSemana" value="martes" />
+                  <input *ngIf="chck_mar === true" type="checkbox" checked (change)="checkDia($event, 2)" id="martes"
+                    name="diasSemana" value="martes" class="checkbox-round" />
+                  <input *ngIf="chck_mar === false" type="checkbox" (change)="checkDia($event, 2)" id="martes"
+                    name="diasSemana" value="martes" class="checkbox-round" />
                   Martes
                 </label>
               </div>
               <!-- Columna 2 -->
               <div class="checkbox-column">
                 <label for="miercoles">
-                  <input type="checkbox" id="miercoles" name="diasSemana" value="miercoles" />
+                  <input *ngIf="chck_mie === true" type="checkbox" checked (change)="checkDia($event, 3)" id="miercoles"
+                    name="diasSemana" value="miercoles" class="checkbox-round" />
+                  <input *ngIf="chck_mie === false" type="checkbox" (change)="checkDia($event, 3)" id="miercoles"
+                    name="diasSemana" value="miercoles" class="checkbox-round" />
                   Miércoles
                 </label>
                 <label for="jueves">
-                  <input type="checkbox" id="jueves" name="diasSemana" value="jueves" />
+                  <input *ngIf="chck_jue === true" type="checkbox" checked (change)="checkDia($event, 4)" id="jueves"
+                    name="diasSemana" value="jueves" class="checkbox-round" />
+                  <input *ngIf="chck_jue === false" type="checkbox" (change)="checkDia($event, 4)" id="jueves"
+                    name="diasSemana" value="jueves" class="checkbox-round" />
                   Jueves
                 </label>
-
                 <label for="viernes">
-                  <input type="checkbox" id="viernes" name="diasSemana" value="viernes" />
+                  <input *ngIf="chck_vie === true" type="checkbox" checked (change)="checkDia($event, 5)" id="viernes"
+                    name="diasSemana" value="viernes" class="checkbox-round" />
+                  <input *ngIf="chck_vie === false" type="checkbox" (change)="checkDia($event, 5)" id="viernes"
+                    name="diasSemana" value="viernes" class="checkbox-round" />
                   Viernes
                 </label>
               </div>
               <!-- Columna 3 -->
               <div class="checkbox-column">
                 <label for="sabado">
-                  <input type="checkbox" id="sabado" name="diasSemana" value="sabado" />
+                  <input *ngIf="chck_vie === true" type="checkbox" checked (change)="checkDia($event, 5)" id="sabado"
+                    name="diasSemana" value="Viernes" class="checkbox-round" />
+                  <input *ngIf="chck_vie === false" type="checkbox" (change)="checkDia($event, 5)" id="sabado"
+                    name="diasSemana" value="sabado" class="checkbox-round" />
                   Sábado
                 </label>
               </div>
@@ -525,7 +631,7 @@
           </div>
 
           <ion-item lines="none">
-            <ion-toggle justify="space-between">
+            <ion-toggle justify="space-between" [checked]="true">
               <div class="toggle-info">
                 Horas restringidas
                 <img src="/assets/images/icon-info2.svg" alt="" />
@@ -544,8 +650,8 @@
 
               <ion-modal [keepContentsMounted]="true">
                 <ng-template>
-                  <ion-datetime id="datetime1" presentation="time" hourCycle="h12"
-                    value="2024-04-17T00:00"></ion-datetime>
+                  <ion-datetime id="datetime1" presentation="time" hourCycle="h12" value="{{ this.convertToISO(hora_init) }}"
+                    (ionChange)="onTimeChange($event, 1)"></ion-datetime>
                 </ng-template>
               </ion-modal>
             </div>
@@ -556,8 +662,8 @@
 
               <ion-modal [keepContentsMounted]="true">
                 <ng-template>
-                  <ion-datetime id="datetime2" presentation="time" hourCycle="h12"
-                    value="2024-04-17T00:00"></ion-datetime>
+                  <ion-datetime id="datetime2" presentation="time" hourCycle="h12" value="{{ this.convertToISO(hora_end) }}"
+                    (ionChange)="onTimeChange($event, 2)"></ion-datetime>
                 </ng-template>
               </ion-modal>
             </div>
@@ -565,10 +671,9 @@
 
           <hr />
 
-          <button routerLink="/horario-personalizado" class="button-personalizar">
+          <!--<button routerLink="/horario-personalizado" class="button-personalizar">
             Personalizar Horarios (0)
-          </button>
-
+          </button>-->
 
         </div>
       </div>
