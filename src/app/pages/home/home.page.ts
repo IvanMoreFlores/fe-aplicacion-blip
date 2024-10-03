@@ -127,11 +127,13 @@ export class HomePage implements OnInit {
     const userDni = await this.storage.getItem('userDni');
     if (userDni) {
       this.url_new = '/descripcion-del-espacio';
+    } else {
+      this.getUserData();
+      if (this.userData.esu_id.esu_descri !== 'REGISTRADO') {
+        this.url_new = '/descripcion-del-espacio';
+      }
     }
 
-    if (this.userData.esu_id.esu_descri !== 'REGISTRADO') {
-      this.url_new = '/descripcion-del-espacio';
-    }
   }
 
   // Abre el modal del menú
