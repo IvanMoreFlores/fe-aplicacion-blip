@@ -51,10 +51,15 @@
             </ngx-dropzone-image-preview>
           </div>
 
-          <button routerLink="/configuracion-alquilar" class="more-info-btn">Atrás</button>
-          <button (click)="sendImages()" class="next-btn">Siguiente</button>
+
         </div>
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button routerLink="/configuracion-alquilar"  class="bac">Atrás</button>
+        <button class="nex" (click)="sendImages()">Siguiente</button>
+      </div>
+    </footer>
   </div>
 </ion-content>

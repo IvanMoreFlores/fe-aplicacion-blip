@@ -7,9 +7,15 @@
           <h2 class="subtitle">Paso 3</h2>
           <h1 class="title">Elige según tus preferencias</h1>
           <p class="description">Responde algunas preguntas que serán clave para establecer la tarifa de alquiler y conocer tus preferencias con respecto a los posibles inquilinos. Tu colaboración en este proceso nos permitirá personalizar de manera más precisa la configuración del alquiler.</p>         
-          <button (click)="getValues()" class="next-btn">Siguiente  </button>
         </div>
+
       </div>
     </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" (click)="return()">Atrás</button>
+        <button   (click)="getValues()" class="nex" >Siguiente</button>
+      </div>
+    </footer>
   </div>
 </ion-content>
