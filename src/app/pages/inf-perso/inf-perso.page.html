@@ -5,9 +5,20 @@
         <div class="content">
           <div class="inicio">
             <div class="left-arrow">
-              <img src="/assets/images/left-arrow.svg" alt="" routerLink="/menu-config" />
+              <img src="/assets/images/left-arrow.svg" alt="" routerLink="/tab-home/home" />
             </div>
             <h3 class="title">Información personal</h3>
+          </div>
+          <img *ngIf="img_url == ''" src="/assets/images/backdrop-component.png" alt="">
+          <img style="height: 80px; width: 80px;" *ngIf="img_url != ''" src="{{ img_url }}" alt="">
+          <div class="boxes">
+            <div class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+              <ngx-dropzone-label>
+                <div class="pad">
+                  <img src="/assets/images/upload.svg" alt="" class="img-dow">
+                </div>
+              </ngx-dropzone-label>
+            </div>
           </div>
           <div class="inf-peso">
             <div class="preguntas">
@@ -83,7 +94,6 @@
                   </div>
                 </ng-template>
               </ion-modal>
-
             </div>
             <div class="preguntas">
               <div class="cont-pre">
@@ -117,7 +127,7 @@
                 </div>
                 <button (click)="setOpen(true)" expand="block" class="model"><a class="editar">Agregar</a></button>
               </div>-->
-             <!--<ion-item>
+              <!--<ion-item>
                 <ion-text>{{ textoGuardado4 }}</ion-text>
               </ion-item>
               <ion-modal [isOpen]="isModalOpen">

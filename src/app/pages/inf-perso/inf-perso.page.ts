@@ -24,6 +24,8 @@ export class InfPersoPage implements OnInit {
   ape: string = '';
   telf: string = '';
   email: string = '';
+  files: File[] = [];
+  img_url: string = '';
 
   constructor(
     private modalController: ModalController,
@@ -40,6 +42,10 @@ export class InfPersoPage implements OnInit {
     this.ape = this.userData.usu_apepat;
     this.telf = this.userData.usu_nrotel;
     this.email = this.userData.usu_correo;
+    if(this.userData.photo){
+      this.img_url = this.userData.photo.url;
+      console.log(this.img_url);
+    }
   }
 
   async updateData() {
@@ -57,6 +63,31 @@ export class InfPersoPage implements OnInit {
     this.isModalOpen = isOpen;
   }
 
+  async onSelect(event: { addedFiles: File[] }) {
+    if (event.addedFiles.length) {
+      this.files = [event.addedFiles[0]];
+      await this.sendUpdatePic(this.files[0]);
+    }
+  }
+
+  async sendUpdatePic(file: File) {
+    const token = await this.storage.getItem('token');
+    const formData = new FormData();
+    console.log(file);
+    formData.append('photo', file);
+    this.api.updateUser(token, formData).subscribe(
+      async (response: any) => {
+        console.log(response);
+        this.img_url = response.data.photo.url;
+        await this.updateData();
+      },
+      (error: any) => {
+        alert('Hubo un error: ' + error.message)
+      }
+    );
+
+  }
+
   async guardarCambios() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
@@ -64,6 +95,7 @@ export class InfPersoPage implements OnInit {
     this.api.updateUser(token, formData).subscribe(
       (response: any) => {
         console.log(response)
+        this.updateData();
       },
       (error: any) => {
         alert('Hubo un error: ' + error.message)
@@ -78,7 +110,8 @@ export class InfPersoPage implements OnInit {
     formData.append('usu_apepat', this.ape);
     this.api.updateUser(token, formData).subscribe(
       (response: any) => {
-        console.log(response)
+        console.log(response);
+        this.updateData();
       },
       (error: any) => {
         alert('Hubo un error: ' + error.message)
@@ -94,6 +127,7 @@ export class InfPersoPage implements OnInit {
     this.api.updateUser(token, formData).subscribe(
       (response: any) => {
         console.log(response)
+        this.updateData();
       },
       (error: any) => {
         alert('Hubo un error: ' + error.message)
@@ -109,6 +143,7 @@ export class InfPersoPage implements OnInit {
     this.api.updateUser(token, formData).subscribe(
       (response: any) => {
         console.log(response);
+        this.updateData();
       },
       (error: any) => {
         alert('Hubo un error: ' + error.message)

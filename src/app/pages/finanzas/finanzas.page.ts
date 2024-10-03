@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Swiper from 'swiper';
+import { ApiService } from 'src/app/services/api.service';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -14,8 +15,6 @@ export class FinanzasPage implements OnInit {
   selectedContent: string = 'Ingresos'; // Inicializa la variable con el valor por defecto
   text = ''; // Texto del primer textarea
   textareas: string[] = []; // Array para almacenar los textareas adicionales
-
-
 
   constructor() {}
 

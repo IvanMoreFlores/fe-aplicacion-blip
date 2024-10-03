@@ -159,10 +159,10 @@ export class ApiService {
 
   getAds(token: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+      Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get(this.apiUrl + '/advertisement/host', { headers }); // Realiza la solicitud GET con los headers
+    return this.http.get(this.apiUrl + '/advertisement/host', { headers });
   }
 
   deleteAd(token: string, id: string): Observable<any> {
@@ -192,6 +192,23 @@ export class ApiService {
     });
 
     return this.http.patch(this.apiUrl + '/user', formData, { headers });
+  }
+
+  getCalendar(token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get(this.apiUrl + '/advertisement/calender', { headers });
+  }
+
+  updateReserve(token: string, res_id: string, rst_id: string) {
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch(this.apiUrl + '/reserve/' + res_id + '/status/' + rst_id, {}, { headers });
   }
 
 }
