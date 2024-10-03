@@ -7,7 +7,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./configuracion-alquilar.page.scss'],
 })
 export class ConfiguracionAlquilarPage implements OnInit {
-
+  isChecked: boolean = false;
+  isChecked2: boolean = false;
+  isChecked3: boolean = false;
+  onChange(event: any) {
+    this.isChecked = event.target.checked;
+    console.log('Checkbox checked:', this.isChecked);
+  } distritoData: any;
   tga_id: string = '';
   direccion: string = '';
   distrito: string = '';
@@ -59,12 +65,13 @@ export class ConfiguracionAlquilarPage implements OnInit {
     if (isChecked) {
       console.log('checked')
       // Si el checkbox está seleccionado, agrega el servicio al array
-      this.tve_id = this.tve_id.filter(id => id !== servicioId);
+      this.tve_id.push(servicioId);
       console.log(this.tve_id);
     } else {
       console.log('unchecked')
       // Si está deseleccionado, remuévelo del array
-      this.tve_id.push(servicioId);
+
+      this.tve_id = this.tve_id.filter(id => id !== servicioId);
       console.log(this.tve_id);
     }
     
