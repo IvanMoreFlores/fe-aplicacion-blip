@@ -39,7 +39,7 @@ export class DescripcionDelEspacioPage {
   onRadioChange(selectedIndex: number) {
     this.selectedIndex = selectedIndex; // Actualiza el índice seleccionado
     this.customBtns.forEach((btn, index) => {
-      if (index === selectedIndex) {
+      if (index === selectedIndex -1) {
         btn.nativeElement.classList.add('custom-btn-selected'); // Añade la clase seleccionada
       } else {
         btn.nativeElement.classList.remove('custom-btn-selected'); // Elimina la clase de los otros botones

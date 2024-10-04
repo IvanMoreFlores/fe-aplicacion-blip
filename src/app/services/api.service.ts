@@ -152,9 +152,7 @@ export class ApiService {
 
     console.log(formData);
 
-    return this.http.post(this.apiUrl + '/advertisement/create', formData, {
-      headers,
-    });
+    return this.http.post(this.apiUrl + '/advertisement/create', formData, { headers });
   }
 
   getAds(token: string): Observable<any> {
@@ -209,6 +207,46 @@ export class ApiService {
     });
 
     return this.http.patch(this.apiUrl + '/reserve/' + res_id + '/status/' + rst_id, {}, { headers });
+  }
+
+  getBanks(token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get(this.apiUrl + '/user/host/paid/information', { headers });
+  }
+
+  updatePaymentMethod(token: string, data: any) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch(this.apiUrl + '/user/host/paid/account', data, { headers });
+  }
+
+  getPayments(token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get(this.apiUrl + '/advertisement/paid', { headers });
+  }
+
+  reqPayment(token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.post(this.apiUrl + '/user/host/paid/request', null, { headers });
+  }
+
+  getDeposit(token: string){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get(this.apiUrl + '/user/host/paid', { headers });
   }
 
 }

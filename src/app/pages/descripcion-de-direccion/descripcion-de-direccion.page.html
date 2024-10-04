@@ -13,7 +13,8 @@
             <p class="label-text">Ciudad</p>
             
             <div class="custom-select">
-              <select id="ciudad" [(ngModel)]="ciudad" name="ciudad" >
+              <select id="ciudad" [(ngModel)]="ciudad" placeholder="Selecciona tu ciudad" name="ciudad" >
+                <option value="" disabled selected>Selecciona tu ciudad</option>
                 <option value="1">Lima</option>
               </select>
             </div>
@@ -23,7 +24,8 @@
             <p class="label-text">Distrito</p>
             
             <div class="custom-select">
-              <select id="distrito" [(ngModel)]="distrito" name="distrito" >
+              <select id="distrito" [(ngModel)]="distrito" placeholder="Selecciona tu distrito" name="distrito" >
+                <option value="" disabled selected>Selecciona tu distrito</option>
                 <option *ngFor="let distrito of distritoData" value="{{ distrito.id_distrito }}">{{ distrito.nombre_distrito }}</option>
               </select>
             </div>

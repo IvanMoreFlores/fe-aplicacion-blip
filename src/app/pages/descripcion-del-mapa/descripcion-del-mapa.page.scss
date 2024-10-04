@@ -1,9 +1,5 @@
 ion-content{
-  --background:#E8FFEC;
-  --padding-start: 0;
-  --padding-end: 0;
-  --padding-top: 0;
-  --padding-bottom: 0;
+  --background: transparent; /* Quitamos el fondo verde */
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,10 +10,9 @@ ion-content{
   flex-direction: column;
   justify-content: space-between;
 }
-.superior{
+.superior {
   position: relative;
-  height: 50%;
-  background-repeat: repeat-x;
+  height: 100%; /* El mapa ocupará todo el espacio */
   width: 100%;
 }
 .title {
@@ -130,8 +125,9 @@ padding-left: 10px;
 .overlay-x {
   position: absolute;
   top: 5%;  /* Ajusta según sea necesario */
-  left: 5%;  /* Ajusta según sea necesario */
+  left: 2%;  /* Ajusta según sea necesario */
   z-index: 10;  /* Más alto que el mapa */
+  margin-top: 20px;
 }
 .close-button {
   display: flex;
@@ -150,11 +146,11 @@ padding-left: 10px;
   height: 20px;
 }
 
-#map { 
-  background-color: #FFFFFF !important;
-  height: 62%; // O ajusta la altura según tus necesidades
+#map {
+  height: 100%; /* Aseguramos que el mapa ocupe el 100% del contenedor */
   width: 100%;
-  margin-top: 5%;
-  position: relative;
-  z-index: 1;  /* Más bajo que el botón */
+  position: absolute; /* Para que el mapa cubra completamente */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Mantenemos el mapa detrás de otros elementos */
 }
