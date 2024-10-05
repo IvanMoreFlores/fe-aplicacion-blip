@@ -45,12 +45,14 @@
                 <h2 class="subtitle">CUENTA</h2>
                 <div class="button-container">
                   <button class="service-button">
+                    
                     <div>
                       <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
                       <span class="button-text">Apagón General</span>
                     </div>
+
                     <ion-toggle aria-label="Dark toggle" color="dark" mode="ios" id="open-modal_apagongeneral"
-                      expand="block" [(ngModel)]="switchValue" (ionChange)="onToggleChange($event)">
+                     expand="block" [(ngModel)]="apagon_val" (ionChange)="onToggleChange($event)" [checked]="apagon_val">
                     </ion-toggle>
 
                   </button>
@@ -236,18 +238,18 @@
                               <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
                             </div>
                           </div>
-                            <div class="btn" *ngIf="item.rst_id == 1">
-                              <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
-                              <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
-                            </div>
-                            <div class="btn" *ngIf="item.rst_id == 2">
-                              <button disabled class="bt-con">Confirmar</button>
-                              <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
-                            </div>
-                            <div class="btn" *ngIf="item.rst_id == 3 || item.rst_id == 4">
-                              <button disabled class="bt-con">Confirmar</button>
-                              <button disabled class="bt-can">Cancelar</button>
-                            </div>
+                          <div class="btn" *ngIf="item.rst_id == 1">
+                            <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
+                            <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
+                          </div>
+                          <div class="btn" *ngIf="item.rst_id == 2">
+                            <button disabled class="bt-con">Confirmar</button>
+                            <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
+                          </div>
+                          <div class="btn" *ngIf="item.rst_id == 3 || item.rst_id == 4">
+                            <button disabled class="bt-con">Confirmar</button>
+                            <button disabled class="bt-can">Cancelar</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -360,179 +362,84 @@
 
           <div *ngIf="selectedContent === 'En Curso'">
             <div class="cardz">
-            <div class="card-content">
-              <div class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide" *ngFor="let item of data_encurso">
-                    <div class="backdo">
-                      <div class="header-flex">
-                        <div class="circle-icon">
-                          <h1>A</h1>
-                        </div>
-                        <div class="title-container">
-                          <ion-card-title>
-                            <h1 class="title-large">{{ item.gar_descri }}</h1>
-                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
-                          </ion-card-title>
-                        </div>
-                      </div>
-                      <div class="image-container">
-                        <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
-                        <div class="floating-text time">
-                          <span> {{ getHoraFormat(item.res_fecini) }} </span>
-                        </div>
-                        <div class="floating-text status">
-                          <span>En Curso
-                            <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
-                            <span *ngIf="item.rst_id === 2" class="dot"></span>
-                            <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
-                            <span *ngIf="item.rst_id === 4" class="dot"></span>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="contenido-card">
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r"> Reserva:</h1>
-                            <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
-                            <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+              <div class="card-content">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let item of data_encurso">
+                      <div class="backdo">
+                        <div class="header-flex">
+                          <div class="circle-icon">
+                            <h1>A</h1>
+                          </div>
+                          <div class="title-container">
+                            <ion-card-title>
+                              <h1 class="title-large">{{ item.gar_descri }}</h1>
+                              <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                            </ion-card-title>
                           </div>
                         </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r">Vehículo:</h1>
-                            <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                        <div class="image-container">
+                          <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                          <div class="floating-text time">
+                            <span> {{ getHoraFormat(item.res_fecini) }} </span>
+                          </div>
+                          <div class="floating-text status">
+                            <span>En Curso
+                              <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                              <span *ngIf="item.rst_id === 2" class="dot"></span>
+                              <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
+                              <span *ngIf="item.rst_id === 4" class="dot"></span>
+                            </span>
                           </div>
                         </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1>Placa:</h1>
-                            <h2>{{ item.veh_placa }}</h2>
+                        <div class="contenido-card">
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r"> Reserva:</h1>
+                              <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
+                              <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/sig-may.svg" alt="">
-                            <h1 class="s">Reserva</h1>
-                            <h1>x</h1>
-                            <h1 class="m">{{ item.tip_descri }}</h1>
-                            <img src="/assets/images/sig-may.svg" class="mayor" alt="">
-                            <h1 class="m">{{ item.res_tiempo }}</h1>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r">Vehículo:</h1>
+                              <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/can-card.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1>Placa:</h1>
+                              <h2>{{ item.veh_placa }}</h2>
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/reloj-home.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
-                            <img src="/assets/images/flec-home.svg" class="mayor" alt="">
-                            <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/sig-may.svg" alt="">
+                              <h1 class="s">Reserva</h1>
+                              <h1>x</h1>
+                              <h1 class="m">{{ item.tip_descri }}</h1>
+                              <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                              <h1 class="m">{{ item.res_tiempo }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="btn">
-                          <button (click)="getFinalizar(item.res_id)" class="bt-con">Confirmar</button>
-                          <button class="bt-can">Cancelar</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div *ngIf="!data_encurso" class="content-display">
-            <div class="board">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera disponible.</h1>
-            </div>
-          </div>
-        </div>
-
-
-        <div *ngIf="selectedContent === 'Comienza Pronto'">
-          <div class="cardz">
-            <div class="card-content">
-              <div class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide" *ngFor="let item of data_comienza_pronto">
-                    <div class="backdo">
-                      <div class="header-flex">
-                        <div class="circle-icon">
-                          <h1>A</h1>
-                        </div>
-                        <div class="title-container">
-                          <ion-card-title>
-                            <h1 class="title-large">{{ item.gar_descri }}</h1>
-                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
-                          </ion-card-title>
-                        </div>
-                      </div>
-                      <div class="image-container">
-                        <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
-                        <div class="floating-text time">
-                          <span> {{ getHoraFormat(item.res_fecini) }} </span>
-                        </div>
-                        <div class="floating-text status">
-                          <span>Comienza Pronto
-                            <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
-                            <span *ngIf="item.rst_id === 2" class="dot_blue"></span>
-                            <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
-                            <span *ngIf="item.rst_id === 4" class="dot"></span>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="contenido-card">
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r"> Reserva:</h1>
-                            <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
-                            <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/can-card.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r">Vehículo:</h1>
-                            <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/reloj-home.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
+                              <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                              <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1>Placa:</h1>
-                            <h2>{{ item.veh_placa }}</h2>
+                          <div class="btn">
+                            <button (click)="getFinalizar(item.res_id)" class="bt-con">Confirmar</button>
+                            <button class="bt-can">Cancelar</button>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/sig-may.svg" alt="">
-                            <h1 class="s">Reserva</h1>
-                            <h1>x</h1>
-                            <h1 class="m">{{ item.tip_descri }}</h1>
-                            <img src="/assets/images/sig-may.svg" class="mayor" alt="">
-                            <h1 class="m">{{ item.res_tiempo }}</h1>
-                          </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/can-card.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
-                          </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/reloj-home.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
-                            <img src="/assets/images/flec-home.svg" class="mayor" alt="">
-                            <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
-                          </div>
-                        </div>
-                        <div class="btn">
-                          <button class="bt-con">Confirmar</button>
-                          <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
                         </div>
                       </div>
                     </div>
@@ -540,94 +447,95 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div *ngIf="!data" class="content-display">
-            <div class="board">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera disponible.</h1>
+            <div *ngIf="!data_encurso" class="content-display">
+              <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera disponible.</h1>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div *ngIf="selectedContent === 'Canceladas'">
-          <div class="cardz">
-            <div class="card-content">
-              <div class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide" *ngFor="let item of data_canceladas">
-                    <div class="backdo">
-                      <div class="header-flex">
-                        <div class="circle-icon">
-                          <h1>A</h1>
-                        </div>
-                        <div class="title-container">
-                          <ion-card-title>
-                            <h1 class="title-large">{{ item.gar_descri }}</h1>
-                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
-                          </ion-card-title>
-                        </div>
-                      </div>
-                      <div class="image-container">
-                        <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
-                        <div class="floating-text time">
-                          <span> {{ getHoraFormat(item.res_fecini) }} </span>
-                        </div>
-                        <div class="floating-text status">
-                          <span>{{ item.rst_descri }}
-                            <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
-                            <span *ngIf="item.rst_id === 2" class="dot"></span>
-                            <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
-                            <span *ngIf="item.rst_id === 4" class="dot"></span>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="contenido-card">
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r"> Reserva:</h1>
-                            <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
-                            <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+
+          <div *ngIf="selectedContent === 'Comienza Pronto'">
+            <div class="cardz">
+              <div class="card-content">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let item of data_comienza_pronto">
+                      <div class="backdo">
+                        <div class="header-flex">
+                          <div class="circle-icon">
+                            <h1>A</h1>
+                          </div>
+                          <div class="title-container">
+                            <ion-card-title>
+                              <h1 class="title-large">{{ item.gar_descri }}</h1>
+                              <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                            </ion-card-title>
                           </div>
                         </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r">Vehículo:</h1>
-                            <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                        <div class="image-container">
+                          <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                          <div class="floating-text time">
+                            <span> {{ getHoraFormat(item.res_fecini) }} </span>
+                          </div>
+                          <div class="floating-text status">
+                            <span>Comienza Pronto
+                              <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                              <span *ngIf="item.rst_id === 2" class="dot_blue"></span>
+                              <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
+                              <span *ngIf="item.rst_id === 4" class="dot"></span>
+                            </span>
                           </div>
                         </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1>Placa:</h1>
-                            <h2>{{ item.veh_placa }}</h2>
+                        <div class="contenido-card">
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r"> Reserva:</h1>
+                              <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
+                              <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/sig-may.svg" alt="">
-                            <h1 class="s">Reserva</h1>
-                            <h1>x</h1>
-                            <h1 class="m">{{ item.tip_descri }}</h1>
-                            <img src="/assets/images/sig-may.svg" class="mayor" alt="">
-                            <h1 class="m">{{ item.res_tiempo }}</h1>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r">Vehículo:</h1>
+                              <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/can-card.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1>Placa:</h1>
+                              <h2>{{ item.veh_placa }}</h2>
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/reloj-home.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
-                            <img src="/assets/images/flec-home.svg" class="mayor" alt="">
-                            <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/sig-may.svg" alt="">
+                              <h1 class="s">Reserva</h1>
+                              <h1>x</h1>
+                              <h1 class="m">{{ item.tip_descri }}</h1>
+                              <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                              <h1 class="m">{{ item.res_tiempo }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="btn">
-                          <button class="bt-con">Confirmar</button>
-                          <button class="bt-can">Cancelar</button>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/can-card.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                            </div>
+                          </div>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/reloj-home.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
+                              <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                              <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                            </div>
+                          </div>
+                          <div class="btn">
+                            <button class="bt-con">Confirmar</button>
+                            <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -635,94 +543,94 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div *ngIf="!data" class="content-display">
-            <div class="board">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera disponible.</h1>
+            <div *ngIf="!data" class="content-display">
+              <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera disponible.</h1>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div *ngIf="selectedContent === 'Finalizadas'">
-          <div class="cardz">
-            <div class="card-content">
-              <div class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide" *ngFor="let item of data_finalizado">
-                    <div class="backdo">
-                      <div class="header-flex">
-                        <div class="circle-icon">
-                          <h1>A</h1>
-                        </div>
-                        <div class="title-container">
-                          <ion-card-title>
-                            <h1 class="title-large">{{ item.gar_descri }}</h1>
-                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
-                          </ion-card-title>
-                        </div>
-                      </div>
-                      <div class="image-container">
-                        <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
-                        <div class="floating-text time">
-                          <span> {{ getHoraFormat(item.res_fecini) }} </span>
-                        </div>
-                        <div class="floating-text status">
-                          <span>{{ item.rst_descri }}
-                            <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
-                            <span *ngIf="item.rst_id === 2" class="dot"></span>
-                            <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
-                            <span *ngIf="item.rst_id === 4" class="dot"></span>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="contenido-card">
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r"> Reserva:</h1>
-                            <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
-                            <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+          <div *ngIf="selectedContent === 'Canceladas'">
+            <div class="cardz">
+              <div class="card-content">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let item of data_canceladas">
+                      <div class="backdo">
+                        <div class="header-flex">
+                          <div class="circle-icon">
+                            <h1>A</h1>
+                          </div>
+                          <div class="title-container">
+                            <ion-card-title>
+                              <h1 class="title-large">{{ item.gar_descri }}</h1>
+                              <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                            </ion-card-title>
                           </div>
                         </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1 class="sub-r">Vehículo:</h1>
-                            <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                        <div class="image-container">
+                          <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                          <div class="floating-text time">
+                            <span> {{ getHoraFormat(item.res_fecini) }} </span>
+                          </div>
+                          <div class="floating-text status">
+                            <span>{{ item.rst_descri }}
+                              <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                              <span *ngIf="item.rst_id === 2" class="dot"></span>
+                              <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
+                              <span *ngIf="item.rst_id === 4" class="dot"></span>
+                            </span>
                           </div>
                         </div>
-                        <div class="res-bar">
-                          <div class="derz">
-                            <h1>Placa:</h1>
-                            <h2>{{ item.veh_placa }}</h2>
+                        <div class="contenido-card">
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r"> Reserva:</h1>
+                              <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
+                              <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/sig-may.svg" alt="">
-                            <h1 class="s">Reserva</h1>
-                            <h1>x</h1>
-                            <h1 class="m">{{ item.tip_descri }}</h1>
-                            <img src="/assets/images/sig-may.svg" class="mayor" alt="">
-                            <h1 class="m">{{ item.res_tiempo }}</h1>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r">Vehículo:</h1>
+                              <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/can-card.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1>Placa:</h1>
+                              <h2>{{ item.veh_placa }}</h2>
+                            </div>
                           </div>
-                        </div>
-                        <div class="det-asd">
-                          <div class="derz">
-                            <img src="/assets/images/reloj-home.svg" alt="">
-                            <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
-                            <img src="/assets/images/flec-home.svg" class="mayor" alt="">
-                            <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/sig-may.svg" alt="">
+                              <h1 class="s">Reserva</h1>
+                              <h1>x</h1>
+                              <h1 class="m">{{ item.tip_descri }}</h1>
+                              <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                              <h1 class="m">{{ item.res_tiempo }}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div class="btn">
-                          <button class="bt-con">Confirmar</button>
-                          <button class="bt-can">Cancelar</button>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/can-card.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                            </div>
+                          </div>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/reloj-home.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
+                              <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                              <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                            </div>
+                          </div>
+                          <div class="btn">
+                            <button class="bt-con">Confirmar</button>
+                            <button class="bt-can">Cancelar</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -730,17 +638,111 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div *ngIf="!data" class="content-display">
-            <div class="board">
-              <img src="/assets/images/icon-calendar2.svg" alt="">
-              <h1 class="par">Ninguna cochera disponible.</h1>
+            <div *ngIf="!data" class="content-display">
+              <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera disponible.</h1>
+              </div>
             </div>
           </div>
+
+          <div *ngIf="selectedContent === 'Finalizadas'">
+            <div class="cardz">
+              <div class="card-content">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let item of data_finalizado">
+                      <div class="backdo">
+                        <div class="header-flex">
+                          <div class="circle-icon">
+                            <h1>A</h1>
+                          </div>
+                          <div class="title-container">
+                            <ion-card-title>
+                              <h1 class="title-large">{{ item.gar_descri }}</h1>
+                              <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                            </ion-card-title>
+                          </div>
+                        </div>
+                        <div class="image-container">
+                          <img class="large-image" alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                          <div class="floating-text time">
+                            <span> {{ getHoraFormat(item.res_fecini) }} </span>
+                          </div>
+                          <div class="floating-text status">
+                            <span>{{ item.rst_descri }}
+                              <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                              <span *ngIf="item.rst_id === 2" class="dot"></span>
+                              <span *ngIf="item.rst_id === 3" class="dot_rojo"></span>
+                              <span *ngIf="item.rst_id === 4" class="dot"></span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="contenido-card">
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r"> Reserva:</h1>
+                              <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }} </h1>
+                              <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                            </div>
+                          </div>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1 class="sub-r">Vehículo:</h1>
+                              <h1 class="ctn">{{ item.veh_modelo }}</h1>
+                            </div>
+                          </div>
+                          <div class="res-bar">
+                            <div class="derz">
+                              <h1>Placa:</h1>
+                              <h2>{{ item.veh_placa }}</h2>
+                            </div>
+                          </div>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/sig-may.svg" alt="">
+                              <h1 class="s">Reserva</h1>
+                              <h1>x</h1>
+                              <h1 class="m">{{ item.tip_descri }}</h1>
+                              <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                              <h1 class="m">{{ item.res_tiempo }}</h1>
+                            </div>
+                          </div>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/can-card.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1>
+                            </div>
+                          </div>
+                          <div class="det-asd">
+                            <div class="derz">
+                              <img src="/assets/images/reloj-home.svg" alt="">
+                              <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1>
+                              <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                              <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1>
+                            </div>
+                          </div>
+                          <div class="btn">
+                            <button class="bt-con">Confirmar</button>
+                            <button class="bt-can">Cancelar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!data" class="content-display">
+              <div class="board">
+                <img src="/assets/images/icon-calendar2.svg" alt="">
+                <h1 class="par">Ninguna cochera disponible.</h1>
+              </div>
+            </div>
+          </div>
+
         </div>
-        
       </div>
     </div>
-  </div>
   </div>
 </ion-content>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +32,8 @@ export class ApiService {
 
     return this.http.get(this.apiUrl + '/user/information', { headers }); // Realiza la solicitud GET con los headers
   }
+
+
 
   // Metodo para registrar usuario
   postRegister(
@@ -77,7 +78,15 @@ export class ApiService {
       Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
     });
 
-    return this.http.get(this.apiUrl + '/reserve/host', { headers });
+    return this.http.get(this.apiUrl + '/reserve/host?showFromNowOn=true&status=1&status=2&status=3&status=4', { headers });
+  }
+
+  getReservations2(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+    });
+
+    return this.http.get(this.apiUrl + '/reserve/host?showFromNowOn=false&status=3&status=4', { headers });
   }
 
 
@@ -247,6 +256,16 @@ export class ApiService {
     });
 
     return this.http.get(this.apiUrl + '/user/host/paid', { headers });
+  }
+
+  turnBlackout(token: string, data: any){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    console.log(data);
+
+    return this.http.post(this.apiUrl + '/advertisement/turnOff', data, { headers });
   }
 
 }

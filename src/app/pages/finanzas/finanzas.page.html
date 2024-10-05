@@ -10,9 +10,8 @@
           <h1 class="title">Estacionamiento</h1>
         </a>
 
-
       </div>
-
+      
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -91,7 +90,7 @@
         </div>
 
         <div *ngFor="let reserva of data_reserve">
-          <div class="alquiler" *ngIf="reserva.rst_id == 4 || reserva.rst_id == 3">
+          <div class="alquiler">
             <div class="icon-alquiler circle">
               <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
             </div>

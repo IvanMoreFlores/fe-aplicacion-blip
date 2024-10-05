@@ -60,10 +60,10 @@ export class FinanzasPage implements OnInit {
 
   async getReserves() {
     const token = await this.storage.getItem('token');
-    this.api.getReservations(token).subscribe(
+    this.api.getReservations2(token).subscribe(
       async (response: any) => {
         this.data_reserve = response.data;
-        //console.log(this.data_reserve);
+        console.log(this.data_reserve);
       }
     )
 
@@ -97,11 +97,9 @@ export class FinanzasPage implements OnInit {
     const token = await this.storage.getItem('token');
     this.api.reqPayment(token).subscribe(
       (response: any) => {
-        //console.log(response);
         alert('Solicitud Enviada');
       },
-      (error:any) => {
-        //console.log(error);
+      (error: any) => {
         alert('Error. Solicitud previamente enviada')
       }
     )
@@ -132,11 +130,10 @@ export class FinanzasPage implements OnInit {
               fecha_pago.getUTCMonth() === fecha_hoy.getUTCMonth() &&
               fecha_pago.getUTCDate() === fecha_hoy.getUTCDate();
 
-            /*if (ad.gar_id === payment.gar_id && isSameDay === true) {
+            if (ad.gar_id === payment.gar_id) {
+              total += parseFloat(payment.monto_total);
+            }
 
-          }*/
-
-            total += parseFloat(payment.monto_total);
           });
 
           this.arr_payment.push({
@@ -149,9 +146,6 @@ export class FinanzasPage implements OnInit {
 
         });
 
-        //console.log(this.arr_payment);
-
-
       }
     )
   }
@@ -162,7 +156,6 @@ export class FinanzasPage implements OnInit {
       (response: any) => {
         const result = response.data;
         this.banks = result.banks;
-        //console.log(this.banks);
       }
     );
   }
@@ -172,7 +165,7 @@ export class FinanzasPage implements OnInit {
       // Configuración de Swiper
       slidesPerView: 'auto',
       spaceBetween: 10,
-      centeredSlides: false, // Deshabilita la centralización de las diapositivas
+      centeredSlides: false,
       pagination: {
         el: '.swiper-pagination',
       },
@@ -211,18 +204,20 @@ export class FinanzasPage implements OnInit {
     });
   }
 
-  async getDeposits(){
+  async getDeposits() {
     const token = await this.storage.getItem('token');
     this.api.getDeposit(token).subscribe(
       (response: any) => {
         this.data_deposit = response.data;
         console.log(this.data_deposit);
       },
-      (error:any) => {
+      (error: any) => {
         console.log(error);
       }
     )
   }
+
+
 
 
 }

@@ -494,9 +494,7 @@
       <!--                 -----DISPONIBILIDAD-----              -->
       <div *ngIf="selectedContent === 'Disponibilidad'">
         <div class="disponibilidad-container">
-          <ion-item lines="none">
-            <ion-toggle justify="space-between" [checked]="true">Días restringidos</ion-toggle>
-          </ion-item>
+          <h1 class="secondary-title">Días restringidos</h1>
           <p>
             Los arrendatarios no podrán reservar tu estacionamiento en estos
             días:
@@ -566,13 +564,14 @@
           </div>
 
           <ion-item lines="none">
-            <ion-toggle justify="space-between" [checked]="true">
+            <ion-toggle justify="space-between" [(ngModel)]="chck_hora">
               <div class="toggle-info">
                 Horas restringidas
                 <img src="/assets/images/icon-info2.svg" alt="" />
               </div>
             </ion-toggle>
           </ion-item>
+
           <p>
             Los arrendatarios no podrán reservar tu estacionamiento dentro del
             siguiente horario:
@@ -585,7 +584,8 @@
 
               <ion-modal [keepContentsMounted]="true">
                 <ng-template>
-                  <ion-datetime id="datetime1" presentation="time" hourCycle="h12" value="{{ this.convertToISO(hora_init) }}"
+                  <ion-datetime id="datetime1"
+                   presentation="time" hourCycle="h12" value="{{ this.convertToISO(hora_init) }}"
                     (ionChange)="onTimeChange($event, 1)"></ion-datetime>
                 </ng-template>
               </ion-modal>

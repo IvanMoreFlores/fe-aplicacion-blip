@@ -33,6 +33,8 @@ export class HomePage implements OnInit {
   data_canceladas: any[] = [];
   n_data_canceladas: number = 0;
   horasFormateadas: { [key: string]: string } = {};
+  data_apagon: any;
+  apagon_val: boolean = false;
 
   url_new: string = '/nuevo-anu-pone-alq';
   userData: any;
@@ -58,6 +60,7 @@ export class HomePage implements OnInit {
       this.iniciarSwiper();
     }, 0);
   }
+
   iniciarSwiper() {
     const miSwiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
@@ -117,6 +120,14 @@ export class HomePage implements OnInit {
     this.getUserData();
     this.getReservas();
     this.getDni();
+    this.getBlackout();
+  }
+
+  async getBlackout() {
+    let apagon = await this.storage.getItem('apagon');
+    if(apagon !== null){
+      this.apagon_val = apagon;
+    }
   }
 
   async getUserData() {
@@ -154,6 +165,7 @@ export class HomePage implements OnInit {
       await this.dismissMenuModal(); // Cierra el modal del menú
       this.isToggleModalOpen = true; // Abre el modal del toggle
     } else {
+      this.activateBlackout(false);
       // Si el toggle se desactiva sin abrir el modal, revertir el valor si el modal estaba abierto
       if (!this.isToggleModalOpen) {
         this.switchValue = false;
@@ -161,9 +173,42 @@ export class HomePage implements OnInit {
     }
   }
 
+  async activateBlackout(value: boolean) {
+    const token = await this.storage.getItem('token');
+    let mensaje = '';
+    if (value === true) {
+      this.data_apagon = {
+        "turnOff": true
+      };
+      mensaje = '¡Apagon activo!';
+      this.storage.setItem('apagon', true);
+      this.apagon_val = true;
+    } else {
+      this.data_apagon = {
+        "turnOff": false
+      };
+      mensaje = '¡Apagon inactivo!';
+      this.storage.setItem('apagon', false);
+      this.apagon_val = false;
+    }
+
+    this.api.turnBlackout(token, this.data_apagon).subscribe({
+      next: (response) => {
+        alert(mensaje);
+        console.log('Respuesta:', response)
+      },
+      error: (error) => {
+        alert('Ocurrio un error');
+        console.error('Error:', error)
+      }
+    });
+
+  }
+
   // Confirma la acción del apagón general
   confirmAction() {
     console.log("Apagón general confirmado");
+    this.activateBlackout(true);
     // Aquí no cambies el estado del toggle, así se mantendrá activado
     this.dismissToggleModal(); // Cierra el modal del toggle
   }

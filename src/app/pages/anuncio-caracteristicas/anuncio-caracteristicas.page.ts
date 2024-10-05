@@ -46,6 +46,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
   chck_sab: boolean = false;
   hora_init: any;
   hora_end: any;
+  chck_hora: boolean = false;
   //
   //
   showContent1: boolean = false;
@@ -60,7 +61,6 @@ export class AnuncioCaracteristicasPage implements OnInit {
     private storage: StorageService,
     private modalController: ModalController
   ) {
-    console.log('antes load');
     if (this.advertisements.length === 0) {
       this.loadContent();
     }
@@ -71,6 +71,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
     this.api.getAds(token).subscribe(
       (response: any) => {
         this.advertisements = response.data;
+        console.log(this.advertisements);
         this.mainAd = this.advertisements[0];
         this.selectedGarId = this.mainAd.gar_id;
         this.gar_nombre = this.mainAd.gar_nombre;
@@ -83,12 +84,18 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.precio_hora = this.mainAd.tipos_pagos[0].pag_monto;
         this.precio_dia = this.mainAd.tipos_pagos[1].pag_monto;
         this.checkServPref();
-        console.log(this.advertisements)
       },
       (error: any) => {
         console.error(error);
       }
     );
+  }
+
+  check_time(){
+
+    console.log(this.hora_init)
+    console.log(this.hora_end)
+
   }
 
   async updateContent() {
@@ -121,20 +128,17 @@ export class AnuncioCaracteristicasPage implements OnInit {
 
   async onTimeChange(event: any, type: number) {
     const selectedTime = event.detail.value;
-    console.log('Hora seleccionada:', selectedTime);
     const fecha_date = new Date(selectedTime);
     const hours = fecha_date.getHours().toString().padStart(2, '0');
     const minutes = fecha_date.getMinutes().toString().padStart(2, '0');
     const result = `${hours}:${minutes}`;
     const token = await this.storage.getItem('token');
     const formData = new FormData();
-    console.log(result);
     if (type === 1) {
       formData.append('rga_hora_inicio', result);
       formData.append('gar_id', this.mainAd.gar_id);
       this.api.updateAd(token, formData).subscribe(
         (response: any) => {
-          console.log(response);
           this.updateContent();
         },
         (error: any) => {
@@ -146,7 +150,6 @@ export class AnuncioCaracteristicasPage implements OnInit {
       formData.append('gar_id', this.mainAd.gar_id);
       this.api.updateAd(token, formData).subscribe(
         (response: any) => {
-          console.log(response);
           this.updateContent();
         },
         (error: any) => {
@@ -160,7 +163,6 @@ export class AnuncioCaracteristicasPage implements OnInit {
     const token = await this.storage.getItem('token');
     const newValue = event.target.value;
     if (newValue) {
-      console.log(newValue);
       const formData = new FormData();
       let pag_monto = "";
       if (type === 1) {
@@ -170,12 +172,10 @@ export class AnuncioCaracteristicasPage implements OnInit {
       if (type === 2) {
         pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"tip_id":2,"pag_monto":${newValue}}]`
       }
-      console.log(pag_monto);
       formData.append('pag_monto', pag_monto);
       formData.append('gar_id', this.mainAd.gar_id);
       this.api.updateAd(token, formData).subscribe(
         (response: any) => {
-          console.log(response);
           this.updateContent();
         },
         (error: any) => {
