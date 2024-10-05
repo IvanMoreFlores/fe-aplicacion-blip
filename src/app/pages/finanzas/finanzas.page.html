@@ -5,14 +5,13 @@
       <div class="inicio">
         <a class="regresar" href="#">
           <div class="left-arrow">
-            <img src="/assets/images/left-arrow.svg" alt="" routerLink="/menu-config" />
+            <img src="/assets/images/left-arrow.svg" alt="" routerLink="/tab-home/home" />
           </div>
           <h1 class="title">Estacionamiento</h1>
         </a>
 
-
       </div>
-
+      
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -41,34 +40,18 @@
       <!--                 -----Ingresos-----              -->
       <div *ngIf="selectedContent === 'Ingresos'">
 
-        <div class="anuncio">
+        <div class="anuncio" *ngFor="let card_pago of arr_payment">
           <div>
-            <h2>Anuncio 1</h2>
-            <p>Estacionamiento Las Begonias</p>
+            <h2>Anuncio {{ card_pago.id }}</h2>
+            <p>{{ card_pago.nombre }}</p>
           </div>
           <div class="anuncio-ingreso">
             <div>
               <h3>Ingreso del día</h3>
-              <p>Lunes, 15 de Abril 2024</p>
+              <p>{{ fecha_format_hoy }}</p>
             </div>
             <div>
-              <span>S/. 0.00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="anuncio">
-          <div>
-            <h2>Anuncio 1</h2>
-            <p>Estacionamiento Las Begonias</p>
-          </div>
-          <div class="anuncio-ingreso">
-            <div>
-              <h3>Ingreso del día</h3>
-              <p>Lunes, 15 de Abril 2024</p>
-            </div>
-            <div>
-              <span>S/. 0.00</span>
+              <span>S/. {{ card_pago.total }}</span>
             </div>
           </div>
         </div>
@@ -80,20 +63,22 @@
             <h3>Ingreso Final</h3>
             <p>Recuerda que el balance final se actualizará en base a la recurrencia de actividad y será acumulado para
               la forma de pago elegida en la sección de <span>pagos</span>.</p>
-            <span>S/. 0.00</span>
+            <span>S/. {{ total_final }}</span>
 
             <div class="deposito-pago">
               <div class="icon-info">
                 <img src="/assets/images/icon-info.svg" alt="">
               </div>
               <p>
-                Depósito de pago: S/. 0.00 el 6
-                de diciembre (actividad del 27 de Noviembre al 03 de Diciembre).
+                Recuerda que para solicitar el retiro de tu balance debes estar por encima de S/50
               </p>
             </div>
           </div>
         </div>
 
+        <div class="continue">
+          <button class="btn-sig" (click)="reqPayment()">Solicitar Retiro</button>
+        </div>
 
       </div>
 
@@ -104,86 +89,27 @@
           <h3>Esta semana</h3>
         </div>
 
-        <div class="alquiler">
-          <div class="icon-alquiler circle">
-            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
-          </div>
+        <div *ngFor="let reserva of data_reserve">
+          <div class="alquiler">
+            <div class="icon-alquiler circle">
+              <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+            </div>
 
-          <div class="info-alquiler">
-            <h3 class="date">04 DE DICIEMBRE</h3>
-            <h4 class="time">15:00 - 16:00</h4>
-            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
-          </div>
+            <div class="info-alquiler">
+              <h3 class="date"> {{ reserva.res_fecini | date: 'dd \'de\' MMMM' : 'es' }} : {{ reserva.rst_descri }}</h3>
+              <h4>{{ reserva.tip_descri }}</h4>
+              <h4 class="time">{{ reserva.res_fecini | date: 'hh:mm a' : 'es' }} - {{ reserva.res_fecfin | date: 'hh:mm
+                a' : 'es' }}</h4>
+              <p class="description">Alquiler <span>{{ reserva.gar_nombre }}</span></p>
+              <p class="description">Vehículo <span>{{ reserva.veh_modelo }} : {{ reserva.veh_placa }}</span></p>
+            </div>
 
-          <div class="alquiler-monto">
-            <span class="amount">S/. 0.00</span>
-          </div>
-        </div>
+            <div class="alquiler-monto">
+              <span class="amount">S/. {{ reserva.pag_monto_total }}</span>
+            </div>
 
-        <div class="alquiler">
-          <div class="icon-alquiler circle">
-            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
-          </div>
-
-          <div class="info-alquiler">
-            <h3 class="date">04 DE DICIEMBRE</h3>
-            <h4 class="time">15:00 - 16:00</h4>
-            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
-          </div>
-
-          <div class="alquiler-monto">
-            <span class="amount">S/. 0.00</span>
           </div>
         </div>
-
-        <div class="alquiler">
-          <div class="icon-alquiler circle">
-            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
-          </div>
-
-          <div class="info-alquiler">
-            <h3 class="date">04 DE DICIEMBRE</h3>
-            <h4 class="time">15:00 - 16:00</h4>
-            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
-          </div>
-
-          <div class="alquiler-monto">
-            <span class="amount">S/. 0.00</span>
-          </div>
-        </div>
-
-        <div class="alquiler">
-          <div class="icon-alquiler circle">
-            <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
-          </div>
-
-          <div class="info-alquiler">
-            <h3 class="date">04 DE DICIEMBRE</h3>
-            <h4 class="time">15:00 - 16:00</h4>
-            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
-          </div>
-
-          <div class="alquiler-monto">
-            <span class="amount">S/. 0.00</span>
-          </div>  
-        </div>
-
-        <div class="alquiler">
-          <div class="icon-alquiler circle">
-            <img src="/assets/images/icon-motorbike.svg" alt="" class="icon-car">
-          </div>
-
-          <div class="info-alquiler">
-            <h3 class="date">04 DE DICIEMBRE</h3>
-            <h4 class="time">15:00 - 16:00</h4>
-            <p class="description">Alquiler <span>Estacionamiento 1</span></p>
-          </div>
-
-          <div class="alquiler-monto">
-            <span class="amount">S/. 0.00</span>
-          </div>
-        </div>
-
 
       </div>
 
@@ -191,40 +117,45 @@
       <div *ngIf="selectedContent === 'Pagos'">
 
         <div>
-          <h1 class="pagos-title">¿En qué momento te gustaría recibir tu pago?</h1>
+          <h1 class="pagos-title">Configura tu método de pago</h1>
 
-          <ion-item lines="none">
-            <ion-toggle justify="space-between">PAGO MENSUAL</ion-toggle>
-          </ion-item>
-
-          <ion-item lines="none">
-            <ion-toggle justify="space-between">PAGO SEMANAL</ion-toggle>
-          </ion-item>
-
-          <div class="informacion-pagos">
-            <p>
-              Tu ganancia mensual será depositada puntualmente cada <span>día 6 de cada mes.</span> Prepárate para
-              recibir tu pago de manera regular y constante.
-            </p>
-          </div>
-
-          <h1 class="pagos-title">¿Cómo prefieres recibir tu pago?</h1>
+          <p>Transferencia a:</p>
 
           <div class="form-regla">
             <label class="num-regla">Banco de Destino</label>
-            <input placeholder="BCP" class="input-pago" placeholder="BCP">
+            <select class="input-pago" id="distrito" [(ngModel)]="banco" placeholder="Selecciona tu banco"
+              name="distrito">
+              <option value="" disabled selected>Selecciona tu distrito</option>
+              <option *ngFor="let banco of banks" value="{{ banco.mep_id }}">{{ banco.mep_descri }}</option>
+            </select>
           </div>
 
           <div class="form-regla">
             <label class="num-regla">Número de Cuenta</label>
-            <input type="number" class="input-pago" placeholder="*** ******* * **">
+            <input [(ngModel)]="cta" type="number" class="input-pago" placeholder="*** ******* * **">
           </div>
 
           <div class="form-regla">
             <label class="num-regla">Número de Cuenta Interbancaria (CCI)</label>
-            <input type="number" class="input-pago" placeholder="*** *** ************ **">
+            <input [(ngModel)]="cci" type="number" class="input-pago" placeholder="*** *** ************ **">
           </div>
 
+          <div class="continue">
+            <button class="btn-sig" (click)="save_method()">Guardar datos de pago</button>
+          </div>
+        </div>
+
+        <div class="informacion-pagos">
+          <div class="icon-info">
+            <img src="/assets/images/icon-info.svg" alt="">
+          </div>
+          <p>
+            Tu balance actualizado será depositado en el plazo de 2 días hábiles luego de solicitar el retiro en la
+            categoría de Ingresos.
+            Consideraremos una retención del 5% por el concepto de tarifa de servicio en cada retiro.
+            Es por eso que recomendamos retirar el balance total a fin de mes o cada 15 días para aprovechar al máximo
+            tu cochera.
+          </p>
         </div>
       </div>
 
@@ -235,67 +166,28 @@
 
           <h1 class="historial-title">Revisa tu histórico de pagos efectuados</h1>
 
-          <h3 class="historial-subtitle">Diciembre 2024</h3>
- 
-  
-          <div class="historial">
-            <div class="icon-historial">
-              <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
-            </div>
-  
-            <div class="info-historial">
-              <h3 class="date">6 DE DICIEMBRE</h3>
-              <p class="description">Pago del mes de diciembre por<br>alquiler de <span>Parking Las Begonias</span></p>
-              <h4 class="time">Pago Mensual</h4>
-            </div>
-  
-            <div class="historial-monto">
-              <span class="amount">S/. 500</span>
+          <div *ngFor="let pago of data_deposit">
+
+            <div class="historial">
+              <div class="icon-historial">
+                <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
+              </div>
+
+              <div class="info-historial">
+                <h3 class="date">{{ pago.pre_fecsol | date: 'dd \'de\' MMMM' : 'es' }}</h3>
+                <p class="description">Solicitud de retiro de balance</p>
+                <h4 class="time" *ngIf="pago.pre_estado == 1" style="color: red;">En espera</h4>
+                <h4 class="time" *ngIf="pago.pre_estado == 2" style="color: green;">Transferencia realizada</h4>
+              </div>
+
+              <div class="historial-monto">
+                <span class="amount">S/. {{ pago.pre_monto }}</span>
+              </div>
             </div>
           </div>
-
-          <h3 class="historial-subtitle">Marzo 2025</h3>
-
-          <div class="historial">
-            <div class="icon-historial">
-              <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
-            </div>
-  
-            <div class="info-historial">
-              <h3 class="date">LUNES 4 - VIERNES 8</h3>
-              <p class="description">Pago semanal de enero por<br>alquiler de <span>Estacionamiento 2</span></p>
-              <h4 class="time">Pago Semanal</h4>
-            </div>
-  
-            <div class="historial-monto">
-              <span class="amount">S/. 50</span>
-            </div>
-          </div>
-
-          <div class="historial">
-            <div class="icon-historial">
-              <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
-            </div>
-  
-            <div class="info-historial">
-              <h3 class="date">LUNES 11 - DOMINGO 27</h3>
-              <p class="description">Pago semanal de enero por<br>alquiler de <span>Estacionamiento 2</span></p>
-              <h4 class="time">Pago Semanal</h4>
-            </div>
-  
-            <div class="historial-monto">
-              <span class="amount">S/. 105</span>
-            </div>
-          </div>
-          
-
-
 
         </div>
       </div>
-
-
-
 
     </div>
   </div>

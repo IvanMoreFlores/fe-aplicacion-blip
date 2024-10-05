@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { InfPersoPageRoutingModule } from './inf-perso-routing.module';
-
 import { InfPersoPage } from './inf-perso.page';
 
 @NgModule({
@@ -13,7 +11,8 @@ import { InfPersoPage } from './inf-perso.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    InfPersoPageRoutingModule
+    InfPersoPageRoutingModule,
+    NgxDropzoneModule
   ],
   declarations: [InfPersoPage]
 })

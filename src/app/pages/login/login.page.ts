@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { SmsService } from '../../services/sms.service';
 import { StorageService } from '../../services/storage.service';
 import { JwtService } from '../../services/jwt.service';
-import { FaceAuthService } from 'src/app/services/face-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,6 @@ export class LoginPage implements OnInit {
     private jwtService: JwtService,
     private storageService: StorageService,
     private sms: SmsService,
-    private face: FaceAuthService
   ) {
   }
 
@@ -82,9 +80,7 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/terminos-y-condiciones']);
   }
 
-  async logFace() {
-    await this.face.loginWithFacebook();
-  }
+
 
 }
 
