@@ -91,13 +91,6 @@ export class AnuncioCaracteristicasPage implements OnInit {
     );
   }
 
-  check_time(){
-
-    console.log(this.hora_init)
-    console.log(this.hora_end)
-
-  }
-
   async updateContent() {
     const token = await this.storage.getItem('token');
     const id_select = this.mainAd.gar_id;
@@ -270,6 +263,12 @@ export class AnuncioCaracteristicasPage implements OnInit {
         } else {
           this.hora_init = restrict.rga_horainicio;
           this.hora_end = restrict.rga_horafin;
+
+          if(this.hora_init === '10:00:00' && this.hora_end === '17:00:00'){
+            this.chck_hora = true;
+          }else{
+            this.chck_hora = false;
+          }
         }
       }
     )
