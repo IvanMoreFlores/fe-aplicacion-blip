@@ -580,7 +580,7 @@
           <div class="time-range-container">
             <div class="time-input-group">
               <label for="inputDesde">Desde:</label>
-              <ion-datetime-button datetime="datetime1"></ion-datetime-button>
+              <ion-datetime-button [disabled]="chck_hora" datetime="datetime1"></ion-datetime-button>
 
               <ion-modal [keepContentsMounted]="true">
                 <ng-template>
@@ -593,7 +593,7 @@
 
             <div class="time-input-group">
               <label for="inputHasta">Hasta:</label>
-              <ion-datetime-button datetime="datetime2"></ion-datetime-button>
+              <ion-datetime-button [disabled]="chck_hora" datetime="datetime2"></ion-datetime-button>
 
               <ion-modal [keepContentsMounted]="true">
                 <ng-template>
