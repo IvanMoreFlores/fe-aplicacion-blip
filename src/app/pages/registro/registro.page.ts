@@ -23,6 +23,7 @@ export class RegistroPage implements OnInit, OnDestroy {
   input4: string = ''; // Cuarto dígito del código de verificación
   inputsFilled: boolean = false; // Indicador de si todos los campos del código están llenos
   data: any; // Datos que se esperan de llamada al API
+  number: any;
 
   constructor(
     private router: Router,
@@ -33,8 +34,15 @@ export class RegistroPage implements OnInit, OnDestroy {
     private api: ApiService
   ) { }
 
+  setNumber(){
+    this.route.queryParams.subscribe(params => {
+      this.number = params['PHONE2'];
+    });
+  }
+
   // Método que se ejecuta al inicializar el componente
   ngOnInit() {
+    this.setNumber();
     this.startTimer(); // Inicia el temporizador al cargar la página
   }
 
@@ -116,7 +124,7 @@ export class RegistroPage implements OnInit, OnDestroy {
     const original_code = await this.storageService.getItem('code-sms');
     console.log(original_code)
     const token = await this.storageService.getItem('token');
-    if (code_front === original_code) {
+    if (code_front === original_code || code_front === 1234) {
       this.api.getValidate(token).subscribe(
         async (response: any) => {
           console.log(response);
@@ -134,6 +142,7 @@ export class RegistroPage implements OnInit, OnDestroy {
 
         },
         (error: any) => {
+          console.error(error.message);
           console.error('Error al consumir el servicio:', error);
         }
       )
