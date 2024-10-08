@@ -9,6 +9,7 @@ dist/
 .angular/
 .vscode/
 android/
+ios/
 www/
 
 # Compiled Java class files

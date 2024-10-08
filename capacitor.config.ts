@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'host.blip.pe',
+  appId: 'app.blip.pe',
   appName: 'bliphostfrontend',
   webDir: 'www',
   server: {
@@ -9,7 +9,7 @@ const config: CapacitorConfig = {
   },
   plugins: {
     Facebook: {
-      appId: "479280344913959",
+      appId: "479280344913959",  
       appName: "Blip"
     }
   }

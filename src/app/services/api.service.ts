@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://44.213.46.131:3000'; // URL de tu API
+  private apiUrl = 'https://blip-backend.com'; //'http://44.213.46.131:3000'; // URL de tu API
 
   constructor(
     private http: HttpClient
@@ -21,6 +21,9 @@ export class ApiService {
       Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
     });
 
+    console.log('verificar URL');
+    console.log(this.apiUrl);
+    console.log('verificar URL');
     return this.http.get(this.apiUrl + '/user/validate', { headers }); // Realiza la solicitud GET con los headers
   }
 

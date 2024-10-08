@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SmsService {
-  private apiUrl = 'http://44.213.46.131:3000'; // URL de tu backend
+  private apiUrl = 'https://blip-backend.com'; // URL de tu backend
 
   constructor(private http: HttpClient) {
    }
