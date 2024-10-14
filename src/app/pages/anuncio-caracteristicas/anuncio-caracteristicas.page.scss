@@ -15,7 +15,7 @@ ion-content {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: 40px;
+  padding: 22px;
 }
 
 .pantalla {
@@ -121,7 +121,7 @@ ion-content {
 
 .block2 {
   width: 100%;
-  height: 335px;
+
   background-color: #ffffff;
   color: #212121;
   font-family: "Poppins", sans-serif;
@@ -129,17 +129,20 @@ ion-content {
 
   .block2-container {
     padding-inline: 36px;
+    padding-bottom: 20px;
   }
 
   h1 {
-    font-size: 16px;
-    font-weight: 400;
+    color: #212121;
     text-align: center;
-    margin: 0;
-    padding-inline: 60px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color: #524f4f;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 156.25% */
+    margin:0px;
+    padding-block: 20px;
+    padding-inline: 30px;
   }
 
   hr {
@@ -150,56 +153,68 @@ ion-content {
     margin-bottom: 23px;
   }
 }
-
 .checkbox-anuncio-container {
-  color: #49454f;
-
-  img {
-    margin-right: 18px;
-  }
-
-  .checkbox-anuncio {
-    margin-bottom: 17px;
-  }
-
-  .checkbox-anuncio label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    border: 1px solid #49454f;
-    border-radius: 30px;
-    padding-inline: 30px;
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  .checkbox-round {
-    width: 1.3em;
-    height: 1.3em;
-    background-color: white;
-    border-radius: 50%;
-    vertical-align: middle;
-    border: 1px solid #ddd;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-  .checkbox-round:checked {
-    background-color: #212121;
-    border: 1px solid #212121;
-  }
-
-  .checkbox-anuncio input[type="checkbox"]:checked + label:after {
-    opacity: 1;
+  width: 100%;
+  color: #212121;
+  font-family: Poppins, sans-serif;
+  font-size: 15px; 
+  font-weight: 400;
+  img{
+    margin-right: 10px;
   }
 }
+
+.checkbox-anuncio {
+  margin-bottom: 20px;
+}
+
+.checkbox-anuncio label {
+  display: flex;
+  align-items: center; /* Alinear el contenido verticalmente */
+  border: 1px solid #49454f;
+  border-radius: 30px;
+  padding: 15px 20px;
+}
+
+.checkbox-anuncio label div {
+  flex-grow: 1; /* El texto ocupará todo el espacio restante */
+  white-space: nowrap; /* Evita que el texto salte de línea */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es muy largo */
+  padding-right: 10px; /* Espacio entre el texto y el checkbox */
+}
+
+.checkbox-round {
+  flex-shrink: 0; /* Evita que el checkbox se reduzca */
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #A3A2A4;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.checkbox-round:checked {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.checkbox-round:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 .button-agregar-anuncio-container {
   height: 50px;
@@ -275,6 +290,8 @@ ion-modal {
 .scroll-container {
   max-height: 690px; /* Altura máxima del contenedor */
   overflow-y: auto;  /* Scroll vertical */
+  padding-inline: 9px;
+  padding-bottom: 20px;
 }
 .informacion h2 {
   font-size: 12px;
@@ -341,13 +358,31 @@ ion-modal {
   align-items: center;
   box-shadow: 0px 4px 4px 0px #21212140;
   border-radius: 20px;
+  position: relative; /* Permite posicionar el botón de cierre */
 }
+
 .box1 img {
   width: 100%; /* Ajusta el ancho al 100% del contenedor */
   height: 100%; /* Ajusta la altura al 100% del contenedor */
   object-fit: cover; /* Cubre todo el área del recuadro sin distorsionar la imagen */
   border-radius: 20px; /* Mantén las esquinas redondeadas del recuadro */
 }
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgb(255, 255, 255);
+  color: #212121;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  z-index: 1; /* Asegura que el botón esté por encima de la imagen */
+}
+
+
 
 
 .box2 {
@@ -1320,4 +1355,26 @@ ion-toggle::part(track) {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+.cont-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Espacio entre los botones */
+}
+.btn-eli{
+  width: 100%;
+  padding-block: 20px;
+  border-radius: 30px;
+  color: #212121;
+  background-color: #FFFFFF;
+  border: 1px solid #212121;
+}
+.btn-can{
+  width: 100%;
+  padding: 20px;
+  border-radius: 30px;
+  color: #FFFFFF;
+  background-color: #212121;
+  border: 1px solid #212121;
 }

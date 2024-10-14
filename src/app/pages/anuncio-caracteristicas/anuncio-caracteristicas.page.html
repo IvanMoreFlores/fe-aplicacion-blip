@@ -147,11 +147,32 @@
         </div>
 
         <div class="boxes">
-          <div *ngFor="let photo of mainAd?.photos">
+          <div *ngFor="let photo of mainAd?.photos; let i = index" class="photo-container">
             <div class="box1">
-              <img src="{{ photo?.url }}" alt="" />
+              <img [src]="photo?.url" alt="" />
+              <!-- Trigger único basado en el índice -->
+              <button class="close-button" [id]="'open-modal-eliminar-anuncio-' + i">X</button>
+              
+              <!-- Modal que solo se abrirá con el trigger único -->
+              <ion-modal [trigger]="'open-modal-eliminar-anuncio-' + i" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block2">
+                    <h1>¿Seguro que quieres eliminar 
+                      el anuncio?</h1>
+                    <hr />
+                    <div class="block2-container">
+                      <div class="cont-btn">
+                        <button class="btn-eli">Eliminar Anuncio</button>
+                        <button class="btn-can">Cancelar</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </ng-template>
+              </ion-modal>
             </div>
           </div>
+          
 
           <div class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
             <ngx-dropzone-label>
