@@ -7,9 +7,8 @@
       <div class="card">
         <div class="nav">
           <div class="pers">
-            <img *ngIf="userData?.photo.url == null" src="/assets/images/backdrop-component.png" alt="">
-            <img style="height: 66px; width: 66px;" *ngIf="userData?.photo.url != null" src="{{ userData?.photo.url }}"
-              alt="">
+            <img *ngIf="userData?.photo == null" src="/assets/images/backdrop-component.png" alt="">
+            <img style="height: 66px; width: 66px;" *ngIf="userData?.photo" src="{{ userData?.photo.url }}" alt="">
             <div class="name">
               <h1>{{ userData?.usu_nombre + ' ' + userData?.usu_apepat }}</h1>
               <h3>Host</h3>
@@ -257,7 +256,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!data" class="content-display">
+            <div *ngIf="!data || data.length === 0" class="content-display">
               <div class="board">
                 <img src="/assets/images/icon-calendar2.svg" alt="">
                 <h1 class="par">Ninguna cochera disponible.</h1>
@@ -352,7 +351,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!data_pendientes" class="content-display">
+            <div *ngIf="!data_pendientes || data_pendientes.length === 0" class="content-display">
               <div class="board">
                 <img src="/assets/images/icon-calendar2.svg" alt="">
                 <h1 class="par">Ninguna cochera disponible.</h1>
@@ -447,7 +446,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!data_encurso" class="content-display">
+            <div *ngIf="!data_encurso || data_encurso.length === 0" class="content-display">
               <div class="board">
                 <img src="/assets/images/icon-calendar2.svg" alt="">
                 <h1 class="par">Ninguna cochera disponible.</h1>
@@ -543,7 +542,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!data" class="content-display">
+            <div *ngIf="!data || data.length === 0" class="content-display">
               <div class="board">
                 <img src="/assets/images/icon-calendar2.svg" alt="">
                 <h1 class="par">Ninguna cochera disponible.</h1>
@@ -638,7 +637,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!data" class="content-display">
+            <div *ngIf="!data || data.length === 0" class="content-display">
               <div class="board">
                 <img src="/assets/images/icon-calendar2.svg" alt="">
                 <h1 class="par">Ninguna cochera disponible.</h1>
@@ -733,14 +732,13 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!data" class="content-display">
+            <div *ngIf="!data || data.length === 0" class="content-display">
               <div class="board">
                 <img src="/assets/images/icon-calendar2.svg" alt="">
                 <h1 class="par">Ninguna cochera disponible.</h1>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

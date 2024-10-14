@@ -18,7 +18,7 @@
           </div>  
           <div class="input-bar">
             <p class="label-text">Altura (en caso sea techado)</p>
-            <input [(ngModel)]="gar_alto" type="text" placeholder="2.1 (Metros)">>
+            <input [(ngModel)]="gar_alto" type="text" placeholder="2.1 (Metros)">
           </div>  
           <div class="enlace">
             <p class="tex-pagina">
@@ -26,14 +26,12 @@
               <img src="/assets/images/right.png" alt="">
             </p>
           </div>
-
-
         </div>
       </div>
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
-        <button class="bac" routerLink="/descripcion-de-servicios-adicionales" >Atrás</button>
+        <button class="bac" (click)="return()" >Atrás</button>
         <button  (click)="getValues()" class="nex" >Siguiente</button>
       </div>
     </footer>

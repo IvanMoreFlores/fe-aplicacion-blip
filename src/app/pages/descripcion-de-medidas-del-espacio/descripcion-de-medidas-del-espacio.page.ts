@@ -80,5 +80,22 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
     });
   }
 
+  return() {
+    this.router.navigate(['/descripcion-de-servicios-adicionales'], {
+      queryParams: {
+        tga_id: this.tga_id,
+        direccion: this.direccion,
+        distrito: this.distrito,
+        ciudad: this.ciudad,
+        referencia: this.referencia,
+        detalles: this.detalles,
+        servicio: this.servicio,
+        gar_largo: this.gar_largo,
+        gar_ancho: this.gar_ancho,
+        gar_alto: this.gar_alto
+      }
+    });
+  }
+
 
 }

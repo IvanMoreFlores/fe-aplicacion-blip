@@ -21,9 +21,6 @@ export class ApiService {
       Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
     });
 
-    console.log('verificar URL');
-    console.log(this.apiUrl);
-    console.log('verificar URL');
     return this.http.get(this.apiUrl + '/user/validate', { headers }); // Realiza la solicitud GET con los headers
   }
 

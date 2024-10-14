@@ -149,13 +149,11 @@ export class ImgEstaPage implements OnInit {
       this.uga_long = params['uga_long'];
       this.dis_id = params['dis_id'];
       this.tve_id = params['tve_id'];
-      console.log(this.uga_direcc);
     });
   }
 
   async sendImages() {
-    //[routerLink]="['/cre-anu']"
-
+    //colocar validacion de img vacio
     if (
       this.files &&
       this.files2 &&
@@ -192,9 +190,9 @@ export class ImgEstaPage implements OnInit {
         this.tve_id).subscribe(
           async (response: any) => {
             console.log(response);
-            if(response.status === "success"){
+            if (response.status === "success") {
               this.router.navigate(['/cre-anu']);
-            }else{
+            } else {
               alert('Hubo un error')
             }
           },
@@ -219,6 +217,28 @@ export class ImgEstaPage implements OnInit {
       console.log(this.tve_id);
     }
 
+  }
+
+  return() {
+    this.router.navigate(['/configuracion-alquilar'], {
+      queryParams: {
+        tga_id: this.tga_id,
+        direccion: this.direccion,
+        distrito: this.distrito,
+        ciudad: this.ciudad,
+        referencia: this.referencia,
+        detalles: this.detalles,
+        servicio: this.servicio,
+        gar_largo: this.gar_largo,
+        gar_ancho: this.gar_ancho,
+        gar_alto: this.gar_alto,
+        uga_direcc: this.uga_direcc,
+        uga_lat: this.uga_lat,
+        uga_long: this.uga_long,
+        dis_id: this.dis_id,
+        tve_id: this.tve_id
+      }
+    });
   }
 }
 

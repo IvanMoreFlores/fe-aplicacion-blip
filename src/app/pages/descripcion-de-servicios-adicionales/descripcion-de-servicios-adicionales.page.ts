@@ -65,7 +65,12 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
 
   // Función para navegar y pasar los servicios seleccionados como query params
   getServicios() {
-    console.log(this.serviciosSeleccionados)
+    
+    if (!this.serviciosSeleccionados || this.serviciosSeleccionados.length < 1) {
+      alert('Debes elegir una opcion.');
+      return;
+    }
+
     this.router.navigate(['/descripcion-de-medidas-del-espacio'], {
       queryParams: {
         tga_id: this.tga_id,
