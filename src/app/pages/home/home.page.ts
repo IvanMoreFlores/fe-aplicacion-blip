@@ -148,12 +148,12 @@ export class HomePage implements OnInit {
   }
 
   // Abre el modal del menú
-  async openMenuModal() {
+  openMenuModal() {
     this.isMenuModalOpen = true;
   }
 
   // Cierra el modal del menú
-  async dismissMenuModal() {
+  dismissMenuModal() {
     this.isMenuModalOpen = false;
   }
 
