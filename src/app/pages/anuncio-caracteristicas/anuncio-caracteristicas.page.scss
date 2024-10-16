@@ -79,14 +79,18 @@ ion-content {
   border-radius: 20px 20px 0px 0px;
 
   h1 {
-    font-size: 16px;
-    font-weight: 400;
+    color: #212121;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 166.667% */
     text-align: center;
     margin: 0;
     padding-inline: 60px;
     padding-top: 25px;
     padding-bottom: 25px;
-    color: #524f4f;
   }
 
   hr {
@@ -111,7 +115,7 @@ ion-content {
     height: 56px;
     border-radius: 30px;
     border: 1px solid #212121;
-    color: #79ffaf;
+    color: #FFFFFF;
     background-color: #212121;
     font-size: 16px;
     font-weight: 500;
@@ -957,7 +961,17 @@ a.servicios:hover {
   font-size: 12px;
   font-weight: 400;
 }
-
+span {
+  font-weight: 600;
+}
+.tex-hor{
+  color: #212121;
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 25px; /* 166.667% */
+}
 .input-descuento {
   width: 100%;
   height: 86px;
@@ -1078,6 +1092,47 @@ a.servicios:hover {
   font-weight: 500;
   font-size: 10px;
 }
+ion-modal {
+  --max-width: 100%;  // Establece un ancho máximo del 100% del viewport
+  --width: 100%;  // Establece un ancho fijo para el modal
+  --border-radius: 20px;  // Bordes redondeados para que luzca como en la imagen
+  --background: white;  // Fondo blanco para destacar
+}
+
+ion-datetime {
+  width: 100%;  // Hacer que el datetime ocupe todo el ancho disponible
+  max-width: 350px;  // Limitar el ancho máximo para evitar que sea demasiado ancho
+  margin: 0 auto;  // Centrar el datetime en el modal
+  --ion-text-align: center;  // Asegura que el texto esté centrado
+}
+
+
+ion-datetime::part(picker) {
+  font-size: 18px; // Tamaño del texto en el selector de hora
+  font-weight: 500; // Grosor del texto
+}
+ion-datetime::part(picker) .picker-opt-selected {
+  color: #000; // Color más oscuro para el número seleccionado
+  font-weight: bold; // Aumenta el grosor de la fuente del número seleccionado
+  font-size: 20px; // Aumenta el tamaño de la opción seleccionada
+}
+
+ion-datetime::part(picker) .picker-opt {
+  color: #aaa; // Color gris para las opciones no seleccionadas
+  opacity: 0.5; // Reducir la opacidad para los números no seleccionados
+}
+ion-datetime::part(picker) .picker-opt-am, 
+ion-datetime::part(picker) .picker-opt-pm {
+  color: #000; // Color del texto AM/PM
+  font-weight: bold; // Grosor del texto
+  font-size: 18px; // Tamaño del texto
+  margin-left: 10px; // Espaciado para separar un poco de los números
+}
+ion-modal {
+  --border-radius: 20px;
+  --background: white; // Fondo del modal
+  --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); // Sombra para el modal
+}
 
 ion-datetime-button::part(native) {
   border: 1px solid #212121;
@@ -1095,28 +1150,6 @@ ion-datetime-button::part(native) {
   font-family: "Poppins", sans-serif;
 }
 
-ion-modal {
-  --background: transparent !important;
-}
-
-::ng-deep ion-datetime {
-  --background: transparent !important;
-  --wheel-highlight-background: rgba(121, 255, 175, 0.8);
-  --wheel-highlight-border-radius: 48px;
-  --wheel-fade-background-rgb: transparent !important;
-  background-image: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 40%,
-    rgba(255, 255, 255, 1) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-ion-datetime::part(wheel-item) {
-  color: #212121;
-}
-
 .button-personalizar {
   height: 44px;
   width: 100%;
@@ -1129,6 +1162,7 @@ ion-datetime::part(wheel-item) {
   font-size: 14px;
   font-weight: 500;
 }
+
 
 // -------------------- ABONADOS ---------------------------------
 
@@ -1382,4 +1416,45 @@ ion-toggle::part(track) {
   color: #FFFFFF;
   background-color: #212121;
   border: 1px solid #212121;
+}
+.label-text {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #FFFFFF;
+  padding: 0 10px;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+  color: #212121;
+}
+.input-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  display: flex;
+  border: 1px solid #212121;
+  height: 56px;
+  border-radius: 30px;
+
+  margin-block: 25px;
+  color: #212121;
+  width: 100%;
+  input {
+    width: 100%;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+.label-text {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.btn-gurd2{
+  color: #FFFFFF;
 }
