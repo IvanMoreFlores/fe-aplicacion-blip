@@ -499,17 +499,46 @@
 
           <div class="precio-base">
             <span class="simbolo">S/.</span>
-            <input class="monto" (blur)="onNumberInputChange($event, 2)" [(ngModel)]="precio_dia" id="hora-fraccion"
+            <input class="monto" (blur)="onNumberInputChange($event, 2)" [(ngModel)]="precio_dia" id="hora-fraccion2"
               placeholde="0.00" type="number" />
             <label for="hora-fraccion" class="hora-fraccion">Día (24h)</label>
           </div>
+          <ion-modal trigger="hora-fraccion" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block">
+                <h1>Edita tu precio base 
+                  por hora o fracción</h1>
+                <hr />
+                <div class="button-container-modal">
+                  <div class="form-regla">
+
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+          <ion-modal trigger="hora-fraccion2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block">
+                <h1>Edita tu precio base 
+                  para reservas por día</h1>
+                <hr />
+                <div class="button-container-modal">
+                  <div class="form-regla">
+
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
 
           <div class="recordatorio">
-            <p>
-              Recuerda que la tarifa de servicio es 5% sobre el precio base.
-              E.j Si el precio base x h/f es de <span>S/10</span> ingresado,
-              estarías ganando <span>S/9.50</span> x hora.
-            </p>
+            <div class="esp-par">
+              <p>
+                Recuerda que la tarifa de servicio es 5% sobre el precio base. <span>E.j Si el precio base x  h/f es de S/10, estarías ganando S/9.50 x hora.</span>
+              </p>
+            </div>
+            
           </div>
         </div>
       </div>
