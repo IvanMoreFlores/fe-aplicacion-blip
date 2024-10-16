@@ -15,7 +15,7 @@ ion-content {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: 40px;
+  padding: 22px;
 }
 
 .pantalla {
@@ -79,14 +79,18 @@ ion-content {
   border-radius: 20px 20px 0px 0px;
 
   h1 {
-    font-size: 16px;
-    font-weight: 400;
+    color: #212121;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 166.667% */
     text-align: center;
     margin: 0;
     padding-inline: 60px;
     padding-top: 25px;
     padding-bottom: 25px;
-    color: #524f4f;
   }
 
   hr {
@@ -111,7 +115,7 @@ ion-content {
     height: 56px;
     border-radius: 30px;
     border: 1px solid #212121;
-    color: #79ffaf;
+    color: #FFFFFF;
     background-color: #212121;
     font-size: 16px;
     font-weight: 500;
@@ -121,7 +125,7 @@ ion-content {
 
 .block2 {
   width: 100%;
-  height: 335px;
+
   background-color: #ffffff;
   color: #212121;
   font-family: "Poppins", sans-serif;
@@ -129,17 +133,20 @@ ion-content {
 
   .block2-container {
     padding-inline: 36px;
+    padding-bottom: 20px;
   }
 
   h1 {
-    font-size: 16px;
-    font-weight: 400;
+    color: #212121;
     text-align: center;
-    margin: 0;
-    padding-inline: 60px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color: #524f4f;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 156.25% */
+    margin:0px;
+    padding-block: 20px;
+    padding-inline: 30px;
   }
 
   hr {
@@ -150,56 +157,68 @@ ion-content {
     margin-bottom: 23px;
   }
 }
-
 .checkbox-anuncio-container {
-  color: #49454f;
-
-  img {
-    margin-right: 18px;
-  }
-
-  .checkbox-anuncio {
-    margin-bottom: 17px;
-  }
-
-  .checkbox-anuncio label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    border: 1px solid #49454f;
-    border-radius: 30px;
-    padding-inline: 30px;
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  .checkbox-round {
-    width: 1.3em;
-    height: 1.3em;
-    background-color: white;
-    border-radius: 50%;
-    vertical-align: middle;
-    border: 1px solid #ddd;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-  .checkbox-round:checked {
-    background-color: #212121;
-    border: 1px solid #212121;
-  }
-
-  .checkbox-anuncio input[type="checkbox"]:checked + label:after {
-    opacity: 1;
+  width: 100%;
+  color: #212121;
+  font-family: Poppins, sans-serif;
+  font-size: 15px; 
+  font-weight: 400;
+  img{
+    margin-right: 10px;
   }
 }
+
+.checkbox-anuncio {
+  margin-bottom: 20px;
+}
+
+.checkbox-anuncio label {
+  display: flex;
+  align-items: center; /* Alinear el contenido verticalmente */
+  border: 1px solid #49454f;
+  border-radius: 30px;
+  padding: 15px 20px;
+}
+
+.checkbox-anuncio label div {
+  flex-grow: 1; /* El texto ocupará todo el espacio restante */
+  white-space: nowrap; /* Evita que el texto salte de línea */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es muy largo */
+  padding-right: 10px; /* Espacio entre el texto y el checkbox */
+}
+
+.checkbox-round {
+  flex-shrink: 0; /* Evita que el checkbox se reduzca */
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #A3A2A4;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.checkbox-round:checked {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.checkbox-round:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 .button-agregar-anuncio-container {
   height: 50px;
@@ -275,6 +294,8 @@ ion-modal {
 .scroll-container {
   max-height: 690px; /* Altura máxima del contenedor */
   overflow-y: auto;  /* Scroll vertical */
+  padding-inline: 9px;
+  padding-bottom: 20px;
 }
 .informacion h2 {
   font-size: 12px;
@@ -341,13 +362,31 @@ ion-modal {
   align-items: center;
   box-shadow: 0px 4px 4px 0px #21212140;
   border-radius: 20px;
+  position: relative; /* Permite posicionar el botón de cierre */
 }
+
 .box1 img {
   width: 100%; /* Ajusta el ancho al 100% del contenedor */
   height: 100%; /* Ajusta la altura al 100% del contenedor */
   object-fit: cover; /* Cubre todo el área del recuadro sin distorsionar la imagen */
   border-radius: 20px; /* Mantén las esquinas redondeadas del recuadro */
 }
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgb(255, 255, 255);
+  color: #212121;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  z-index: 1; /* Asegura que el botón esté por encima de la imagen */
+}
+
+
 
 
 .box2 {
@@ -891,22 +930,27 @@ a.servicios:hover {
 
 .recordatorio {
   width: 100%;
-  height: 87px;
+
   background-color: #88ffb8;
   border-radius: 15px;
   display: flex;
   align-items: center;
-  padding: 15px;
   margin-top: 20px;
   margin-bottom: 30px;
   box-shadow: 0px 4px 4px 0px #00000040;
 }
-
+.esp-par{
+  padding-block: 20px;
+  padding-inline: 20px;
+}
 .recordatorio p {
-  font-size: 12px;
-  margin: 0;
+  color: #212121;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 15px;
+  line-height: 25px; /* 178.571% */
+  margin: 0px;
 }
 
 .recordatorio span {
@@ -917,7 +961,17 @@ a.servicios:hover {
   font-size: 12px;
   font-weight: 400;
 }
-
+span {
+  font-weight: 600;
+}
+.tex-hor{
+  color: #212121;
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 25px; /* 166.667% */
+}
 .input-descuento {
   width: 100%;
   height: 86px;
@@ -1038,6 +1092,47 @@ a.servicios:hover {
   font-weight: 500;
   font-size: 10px;
 }
+ion-modal {
+  --max-width: 100%;  // Establece un ancho máximo del 100% del viewport
+  --width: 100%;  // Establece un ancho fijo para el modal
+  --border-radius: 20px;  // Bordes redondeados para que luzca como en la imagen
+  --background: white;  // Fondo blanco para destacar
+}
+
+ion-datetime {
+  width: 100%;  // Hacer que el datetime ocupe todo el ancho disponible
+  max-width: 350px;  // Limitar el ancho máximo para evitar que sea demasiado ancho
+  margin: 0 auto;  // Centrar el datetime en el modal
+  --ion-text-align: center;  // Asegura que el texto esté centrado
+}
+
+
+ion-datetime::part(picker) {
+  font-size: 18px; // Tamaño del texto en el selector de hora
+  font-weight: 500; // Grosor del texto
+}
+ion-datetime::part(picker) .picker-opt-selected {
+  color: #000; // Color más oscuro para el número seleccionado
+  font-weight: bold; // Aumenta el grosor de la fuente del número seleccionado
+  font-size: 20px; // Aumenta el tamaño de la opción seleccionada
+}
+
+ion-datetime::part(picker) .picker-opt {
+  color: #aaa; // Color gris para las opciones no seleccionadas
+  opacity: 0.5; // Reducir la opacidad para los números no seleccionados
+}
+ion-datetime::part(picker) .picker-opt-am, 
+ion-datetime::part(picker) .picker-opt-pm {
+  color: #000; // Color del texto AM/PM
+  font-weight: bold; // Grosor del texto
+  font-size: 18px; // Tamaño del texto
+  margin-left: 10px; // Espaciado para separar un poco de los números
+}
+ion-modal {
+  --border-radius: 20px;
+  --background: white; // Fondo del modal
+  --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); // Sombra para el modal
+}
 
 ion-datetime-button::part(native) {
   border: 1px solid #212121;
@@ -1055,28 +1150,6 @@ ion-datetime-button::part(native) {
   font-family: "Poppins", sans-serif;
 }
 
-ion-modal {
-  --background: transparent !important;
-}
-
-::ng-deep ion-datetime {
-  --background: transparent !important;
-  --wheel-highlight-background: rgba(121, 255, 175, 0.8);
-  --wheel-highlight-border-radius: 48px;
-  --wheel-fade-background-rgb: transparent !important;
-  background-image: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 40%,
-    rgba(255, 255, 255, 1) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-ion-datetime::part(wheel-item) {
-  color: #212121;
-}
-
 .button-personalizar {
   height: 44px;
   width: 100%;
@@ -1089,6 +1162,7 @@ ion-datetime::part(wheel-item) {
   font-size: 14px;
   font-weight: 500;
 }
+
 
 // -------------------- ABONADOS ---------------------------------
 
@@ -1320,4 +1394,67 @@ ion-toggle::part(track) {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+.cont-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Espacio entre los botones */
+}
+.btn-eli{
+  width: 100%;
+  padding-block: 20px;
+  border-radius: 30px;
+  color: #212121;
+  background-color: #FFFFFF;
+  border: 1px solid #212121;
+}
+.btn-can{
+  width: 100%;
+  padding: 20px;
+  border-radius: 30px;
+  color: #FFFFFF;
+  background-color: #212121;
+  border: 1px solid #212121;
+}
+.label-text {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #FFFFFF;
+  padding: 0 10px;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+  color: #212121;
+}
+.input-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  display: flex;
+  border: 1px solid #212121;
+  height: 56px;
+  border-radius: 30px;
+
+  margin-block: 25px;
+  color: #212121;
+  width: 100%;
+  input {
+    width: 100%;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+.label-text {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.btn-gurd2{
+  color: #FFFFFF;
 }
