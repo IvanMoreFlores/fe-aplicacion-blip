@@ -114,81 +114,82 @@
       </div>
 
       <div *ngIf="selectedContent === 'Características'">
-       <div class="scroll-container">
-        <div class="informacion">
-          <h1 class="secondary-title">Información del estacionamiento</h1>
-          <h2>
-            Los arrendatarios podrán ver esta información antes de alquilar tu
-            estacionamiento.
-          </h2>
-          <div class="form">
-            <label class="anuncio-label" for="">Nombre del Anuncio</label>
-            <input type="text" class="outlinenone" id="open-modal-nombre" [(ngModel)]="gar_nombre"
-              value="{{ mainAd?.gar_nombre }}" placeholder="Parking Las Begonias" />
-          </div>
-          <ion-modal trigger="open-modal-nombre" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="block">
-                <h1>Editar nombre</h1>
-                <hr />
-                <div class="button-container-modal">
-                  <div class="form-regla">
-                    <label class="num-regla">Direccion</label>
-                    <input class="false-textarea" placeholder="Av. Alfredo Mendiola 3698"
-                      [(ngModel)]="gar_nombre_mod" />
-                  </div>
-                  <button (click)="sendUpdateName()">Guardar Cambios</button>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-          <h3>Fotos</h3>
-          <h5>Mínimo tres fotos, pero si tienes más, ¡Genial!</h5>
-        </div>
-
-        <div class="boxes">
-          <div *ngFor="let photo of mainAd?.photos; let i = index" class="photo-container">
-            <div class="box1">
-              <img [src]="photo?.url" alt="" />
-              <!-- Trigger único basado en el índice -->
-              <button class="close-button" [id]="'open-modal-eliminar-anuncio-' + i">X</button>
-              
-              <!-- Modal que solo se abrirá con el trigger único -->
-              <ion-modal [trigger]="'open-modal-eliminar-anuncio-' + i" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-                <ng-template>
-                  <div class="block2">
-                    <h1>¿Seguro que quieres eliminar 
-                      el anuncio?</h1>
-                    <hr />
-                    <div class="block2-container">
-                      <div class="cont-btn">
-                        <button class="btn-eli">Eliminar Anuncio</button>
-                        <button class="btn-can">Cancelar</button>
-                      </div>
-
-                    </div>
-                  </div>
-                </ng-template>
-              </ion-modal>
+        <div class="scroll-container">
+          <div class="informacion">
+            <h1 class="secondary-title">Información del estacionamiento</h1>
+            <h2>
+              Los arrendatarios podrán ver esta información antes de alquilar tu
+              estacionamiento.
+            </h2>
+            <div class="form">
+              <label class="anuncio-label" for="">Nombre del Anuncio</label>
+              <input type="text" class="outlinenone" id="open-modal-nombre" [(ngModel)]="gar_nombre"
+                value="{{ mainAd?.gar_nombre }}" placeholder="Parking Las Begonias" />
             </div>
+            <ion-modal trigger="open-modal-nombre" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <h1>Editar nombre</h1>
+                  <hr />
+                  <div class="button-container-modal">
+                    <div class="form-regla">
+                      <label class="num-regla">Direccion</label>
+                      <input class="false-textarea" placeholder="Av. Alfredo Mendiola 3698"
+                        [(ngModel)]="gar_nombre_mod" />
+                    </div>
+                    <button (click)="sendUpdateName()">Guardar Cambios</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+            <h3>Fotos</h3>
+            <h5>Mínimo tres fotos, pero si tienes más, ¡Genial!</h5>
           </div>
-          
 
-          <div class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
-            <ngx-dropzone-label>
-              <div class="pad">
-                <img src="/assets/images/upload.svg" alt="" class="img-dow">
+          <div class="boxes">
+            <div *ngFor="let photo of mainAd?.photos; let i = index" class="photo-container">
+              <div class="box1">
+                <img [src]="photo?.url" alt="" />
+                <!-- Trigger único basado en el índice -->
+                <button class="close-button" [id]="'open-modal-eliminar-anuncio-' + i">X</button>
+
+                <!-- Modal que solo se abrirá con el trigger único -->
+                <ion-modal [trigger]="'open-modal-eliminar-anuncio-' + i" [initialBreakpoint]="1"
+                  [breakpoints]="[0, 1]">
+                  <ng-template>
+                    <div class="block2">
+                      <h1>¿Seguro que quieres eliminar
+                        el anuncio?</h1>
+                      <hr />
+                      <div class="block2-container">
+                        <div class="cont-btn">
+                          <button class="btn-eli">Eliminar Anuncio</button>
+                          <button class="btn-can">Cancelar</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </ng-template>
+                </ion-modal>
               </div>
-            </ngx-dropzone-label>
-          </div>
+            </div>
 
-          <!--<div>
+
+            <div class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+              <ngx-dropzone-label>
+                <div class="pad">
+                  <img src="/assets/images/upload.svg" alt="" class="img-dow">
+                </div>
+              </ngx-dropzone-label>
+            </div>
+
+            <!--<div>
             <div class="box1">
               <img src="/assets/images/upload.svg" alt="" />
             </div>
           </div>-->
 
-          <!--<div class="box1">
+            <!--<div class="box1">
             <img src="/assets/images/upload.svg" alt="" />
           </div>
           <div class="box2">
@@ -198,258 +199,258 @@
             <img src="/assets/images/upload.svg" alt="" />
           </div>-->
 
+          </div>
+
+          <div class="descripcion">
+            <!-- ----------------------------------OPEN MODAL 1---------------------------------- -->
+            <h3>Descripción</h3>
+            <p>
+              {{ mainAd?.gar_descri }}
+            </p>
+            <a class="servicios" id="open-modal-descripcion">
+              Editar descripción
+              <img src="/assets/images/right-arrow.svg" alt="" />
+            </a>
+
+            <ion-modal trigger="open-modal-descripcion" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="modal-descripcion">
+                  <h1>Edita tu descripción</h1>
+                  <hr />
+                  <div class="button-container-modal">
+                    <div class="form-regla">
+                      <div class="num-regla">Descripción de Espacio</div>
+                      <div class="false-textarea1">
+                        <textarea placeholder="Descripcion del Estacionamiento." [(ngModel)]="gar_descri"></textarea>
+                      </div>
+                    </div>
+                    <button (click)="sendUpdateDesc()">Guardar Cambios</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+
+            <!-- ----------------------------------OPEN MODAL 3---------------------------------- -->
+            <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
+            <p>
+              {{ mainAd?.gar_ancho }} m de Ancho<br />
+              {{ mainAd?.gar_largo }} m de Largo<br />
+              {{ mainAd?.gar_alto }} m de Altura<br />
+            </p>
+            <a class="servicios" id="open-modal-dimensiones">
+              Editar dimensiones
+              <img src="/assets/images/right-arrow.svg" alt="" />
+            </a>
+
+            <ion-modal trigger="open-modal-dimensiones" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="modal-dimensiones">
+                  <h1>Editar dimensiones</h1>
+                  <hr />
+                  <div class="button-container-modal">
+                    <div class="form-regla">
+                      <label class="num-regla">Medida Ancho</label>
+                      <input class="false-textarea" [(ngModel)]="gar_ancho" v placeholder="2.5 m" />
+                    </div>
+                    <div class="form-regla">
+                      <label class="num-regla">Medida Largo</label>
+                      <input class="false-textarea" [(ngModel)]="gar_largo" placeholder="5 m" />
+                    </div>
+                    <div class="form-regla">
+                      <label class="num-regla">Altura (en caso sea techado)</label>
+                      <input class="false-textarea" [(ngModel)]="gar_alto" placeholder="2.1 m" />
+                    </div>
+                    <button (click)="sendUpdateDim()">Guardar Cambios</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+
+            <!-- ----------------------------------OPEN MODAL 4---------------------------------- -->
+            <h3>¿Qué servicios también ofreces?</h3>
+
+            <ul class="lista-servicios">
+              <li *ngFor="let servicios of mainAd?.tipos_servicios">
+                <img src="/assets/images/shop-icon.svg" alt="" />
+                <span>{{ servicios?.sga_descri }}</span>
+              </li>
+            </ul>
+
+            <a class="servicios" id="open-modal-servicios">
+              Editar servicios
+              <img src="/assets/images/right-arrow.svg" alt="" />
+            </a>
+
+            <ion-modal trigger="open-modal-servicios" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="modal-servicios">
+                  <h1>Edita tus servicios</h1>
+
+                  <hr />
+
+                  <div class="block2-container">
+                    <div class="checkbox-anuncio-container">
+                      <div class="checkbox-anuncio">
+                        <label for="checkbox">
+                          <div>
+                            <img src="/assets/images/rejas.svg" alt="icono" />
+                            <span class="checkbox-text">Rejas</span>
+                          </div>
+                          <input *ngIf="chck_serv1 == true" type="checkbox" checked (change)="checkService($event, 1)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_serv1 == false" type="checkbox" (change)="checkService($event, 1)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+                      <div class="checkbox-anuncio">
+                        <label>
+                          <div>
+                            <img src="/assets/images/puntero.svg" alt="icono" />
+                            <span class="checkbox-text">Portón Manual</span>
+                          </div>
+                          <input *ngIf="chck_serv2 == true" type="checkbox" checked (change)="checkService($event, 2)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_serv2 == false" type="checkbox" (change)="checkService($event, 2)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+                      <div class="checkbox-anuncio">
+                        <label>
+                          <div>
+                            <img src="/assets/images/foco.svg" alt="icono" />
+                            <span class="checkbox-text">Portón Eléctrico</span>
+                          </div>
+                          <input *ngIf="chck_serv3 == true" type="checkbox" checked (change)="checkService($event, 3)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_serv3 == false" type="checkbox" (change)="checkService($event, 3)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+                      <div class="checkbox-anuncio">
+                        <label>
+                          <div>
+                            <img src="/assets/images/ojos.svg" alt="icono" />
+                            <span class="checkbox-text">Sistema de vigilancia</span>
+                          </div>
+                          <input *ngIf="chck_serv4 == true" type="checkbox" checked (change)="checkService($event, 4)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_serv4 == false" type="checkbox" (change)="checkService($event, 4)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+                      <div class="checkbox-anuncio">
+                        <label>
+                          <div>
+                            <img src="/assets/images/slaps.svg" alt="icono" />
+                            <span class="checkbox-text">Techado</span>
+                          </div>
+                          <input *ngIf="chck_serv5 == true" type="checkbox" checked (change)="checkService($event, 5)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_serv5 == false" type="checkbox" (change)="checkService($event, 5)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+                      <button (click)="sendUpdateServ()">Guardar Cambios</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+
+            <!-- ----------------------------------OPEN MODAL 2---------------------------------- -->
+            <h3>¿A quíenes te gustaria alquilar?</h3>
+
+            <ul class="lista-servicios">
+              <li *ngFor="let vehiculos of mainAd?.tipos_garages">
+                <img src="/assets/images/shop-icon.svg" alt="" />
+                <span>{{ vehiculos?.tve_descri }}</span>
+              </li>
+            </ul>
+
+            <a class="servicios" id="open-modal-prefer">
+              Editar Preferencias
+              <img src="/assets/images/right-arrow.svg" alt="" />
+            </a>
+
+            <ion-modal trigger="open-modal-prefer" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="modal-servicios">
+                  <h1>Edita tus Preferencias</h1>
+
+                  <hr />
+
+                  <div class="block2-container">
+                    <div class="checkbox-anuncio-container">
+                      <div class="checkbox-anuncio">
+                        <label for="checkbox">
+                          <div>
+                            <img src="/assets/images/car.png" alt="icono" />
+                            <span class="checkbox-text">Carros Particulares</span>
+                          </div>
+                          <input *ngIf="chck_pref1 == true" type="checkbox" checked (change)="checkPref($event, 1)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_pref1 == false" type="checkbox" (change)="checkPref($event, 1)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+                      <div class="checkbox-anuncio">
+                        <label>
+                          <div>
+                            <img src="/assets/images/camioneta.png" alt="icono" />
+                            <span class="checkbox-text">Camionetas</span>
+                          </div>
+                          <input *ngIf="chck_pref2 == true" type="checkbox" checked (change)="checkPref($event, 2)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_pref2 == false" type="checkbox" (change)="checkPref($event, 2)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+                      <div class="checkbox-anuncio">
+                        <label>
+                          <div>
+                            <img src="/assets/images/motorbike.png" alt="icono" />
+                            <span class="checkbox-text">Motos</span>
+                          </div>
+                          <input *ngIf="chck_pref3 == true" type="checkbox" checked (change)="checkPref($event, 3)"
+                            class="checkbox-round" />
+                          <input *ngIf="chck_pref3 == false" type="checkbox" (change)="checkPref($event, 3)"
+                            class="checkbox-round" />
+                        </label>
+                      </div>
+
+                      <button (click)="sendUpdateVe()">Guardar Cambios</button>
+
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+
+            <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
+            <h3>Ubicación</h3>
+            <p>{{ mainAd?.uga_direcc }}</p>
+            <a class="servicios" id="open-modal-dirección">
+              Editar dirección
+              <img src="/assets/images/right-arrow.svg" alt="" />
+            </a>
+
+            <ion-modal trigger="open-modal-dirección" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <h1>Editar dirección</h1>
+                  <hr />
+                  <div class="button-container-modal">
+                    <div class="form-regla">
+                      <label class="num-regla">Direccion</label>
+                      <input class="false-textarea" [(ngModel)]="uga_direcc" placeholder="Av. Alfredo Mendiola 3698" />
+                    </div>
+                    <button (click)="sendUpdateUb()">Guardar Cambios</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+          </div>
         </div>
-
-        <div class="descripcion">
-          <!-- ----------------------------------OPEN MODAL 1---------------------------------- -->
-          <h3>Descripción</h3>
-          <p>
-            {{ mainAd?.gar_descri }}
-          </p>
-          <a class="servicios" id="open-modal-descripcion">
-            Editar descripción
-            <img src="/assets/images/right-arrow.svg" alt="" />
-          </a>
-
-          <ion-modal trigger="open-modal-descripcion" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="modal-descripcion">
-                <h1>Edita tu descripción</h1>
-                <hr />
-                <div class="button-container-modal">
-                  <div class="form-regla">
-                    <div class="num-regla">Descripción de Espacio</div>
-                    <div class="false-textarea1">
-                      <textarea placeholder="Descripcion del Estacionamiento." [(ngModel)]="gar_descri"></textarea>
-                    </div>
-                  </div>
-                  <button (click)="sendUpdateDesc()">Guardar Cambios</button>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-
-          <!-- ----------------------------------OPEN MODAL 3---------------------------------- -->
-          <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
-          <p>
-            {{ mainAd?.gar_ancho }} m de Ancho<br />
-            {{ mainAd?.gar_largo }} m de Largo<br />
-            {{ mainAd?.gar_alto }} m de Altura<br />
-          </p>
-          <a class="servicios" id="open-modal-dimensiones">
-            Editar dimensiones
-            <img src="/assets/images/right-arrow.svg" alt="" />
-          </a>
-
-          <ion-modal trigger="open-modal-dimensiones" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="modal-dimensiones">
-                <h1>Editar dimensiones</h1>
-                <hr />
-                <div class="button-container-modal">
-                  <div class="form-regla">
-                    <label class="num-regla">Medida Ancho</label>
-                    <input class="false-textarea" [(ngModel)]="gar_ancho" v placeholder="2.5 m" />
-                  </div>
-                  <div class="form-regla">
-                    <label class="num-regla">Medida Largo</label>
-                    <input class="false-textarea" [(ngModel)]="gar_largo" placeholder="5 m" />
-                  </div>
-                  <div class="form-regla">
-                    <label class="num-regla">Altura (en caso sea techado)</label>
-                    <input class="false-textarea" [(ngModel)]="gar_alto" placeholder="2.1 m" />
-                  </div>
-                  <button (click)="sendUpdateDim()">Guardar Cambios</button>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-
-          <!-- ----------------------------------OPEN MODAL 4---------------------------------- -->
-          <h3>¿Qué servicios también ofreces?</h3>
-
-          <ul class="lista-servicios">
-            <li *ngFor="let servicios of mainAd?.tipos_servicios">
-              <img src="/assets/images/shop-icon.svg" alt="" />
-              <span>{{ servicios?.sga_descri }}</span>
-            </li>
-          </ul>
-
-          <a class="servicios" id="open-modal-servicios">
-            Editar servicios
-            <img src="/assets/images/right-arrow.svg" alt="" />
-          </a>
-
-          <ion-modal trigger="open-modal-servicios" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="modal-servicios">
-                <h1>Edita tus servicios</h1>
-
-                <hr />
-
-                <div class="block2-container">
-                  <div class="checkbox-anuncio-container">
-                    <div class="checkbox-anuncio">
-                      <label for="checkbox">
-                        <div>
-                          <img src="/assets/images/rejas.svg" alt="icono" />
-                          <span class="checkbox-text">Rejas</span>
-                        </div>
-                        <input *ngIf="chck_serv1 == true" type="checkbox" checked (change)="checkService($event, 1)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_serv1 == false" type="checkbox" (change)="checkService($event, 1)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-                    <div class="checkbox-anuncio">
-                      <label>
-                        <div>
-                          <img src="/assets/images/puntero.svg" alt="icono" />
-                          <span class="checkbox-text">Portón Manual</span>
-                        </div>
-                        <input *ngIf="chck_serv2 == true" type="checkbox" checked (change)="checkService($event, 2)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_serv2 == false" type="checkbox" (change)="checkService($event, 2)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-                    <div class="checkbox-anuncio">
-                      <label>
-                        <div>
-                          <img src="/assets/images/foco.svg" alt="icono" />
-                          <span class="checkbox-text">Portón Eléctrico</span>
-                        </div>
-                        <input *ngIf="chck_serv3 == true" type="checkbox" checked (change)="checkService($event, 3)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_serv3 == false" type="checkbox" (change)="checkService($event, 3)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-                    <div class="checkbox-anuncio">
-                      <label>
-                        <div>
-                          <img src="/assets/images/ojos.svg" alt="icono" />
-                          <span class="checkbox-text">Sistema de vigilancia</span>
-                        </div>
-                        <input *ngIf="chck_serv4 == true" type="checkbox" checked (change)="checkService($event, 4)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_serv4 == false" type="checkbox" (change)="checkService($event, 4)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-                    <div class="checkbox-anuncio">
-                      <label>
-                        <div>
-                          <img src="/assets/images/slaps.svg" alt="icono" />
-                          <span class="checkbox-text">Techado</span>
-                        </div>
-                        <input *ngIf="chck_serv5 == true" type="checkbox" checked (change)="checkService($event, 5)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_serv5 == false" type="checkbox" (change)="checkService($event, 5)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-                    <button (click)="sendUpdateServ()">Guardar Cambios</button>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-
-          <!-- ----------------------------------OPEN MODAL 2---------------------------------- -->
-          <h3>¿A quíenes te gustaria alquilar?</h3>
-
-          <ul class="lista-servicios">
-            <li *ngFor="let vehiculos of mainAd?.tipos_garages">
-              <img src="/assets/images/shop-icon.svg" alt="" />
-              <span>{{ vehiculos?.tve_descri }}</span>
-            </li>
-          </ul>
-
-          <a class="servicios" id="open-modal-prefer">
-            Editar Preferencias
-            <img src="/assets/images/right-arrow.svg" alt="" />
-          </a>
-
-          <ion-modal trigger="open-modal-prefer" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="modal-servicios">
-                <h1>Edita tus Preferencias</h1>
-
-                <hr />
-
-                <div class="block2-container">
-                  <div class="checkbox-anuncio-container">
-                    <div class="checkbox-anuncio">
-                      <label for="checkbox">
-                        <div>
-                          <img src="/assets/images/car.png" alt="icono" />
-                          <span class="checkbox-text">Carros Particulares</span>
-                        </div>
-                        <input *ngIf="chck_pref1 == true" type="checkbox" checked (change)="checkPref($event, 1)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_pref1 == false" type="checkbox" (change)="checkPref($event, 1)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-                    <div class="checkbox-anuncio">
-                      <label>
-                        <div>
-                          <img src="/assets/images/camioneta.png" alt="icono" />
-                          <span class="checkbox-text">Camionetas</span>
-                        </div>
-                        <input *ngIf="chck_pref2 == true" type="checkbox" checked (change)="checkPref($event, 2)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_pref2 == false" type="checkbox" (change)="checkPref($event, 2)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-                    <div class="checkbox-anuncio">
-                      <label>
-                        <div>
-                          <img src="/assets/images/motorbike.png" alt="icono" />
-                          <span class="checkbox-text">Motos</span>
-                        </div>
-                        <input *ngIf="chck_pref3 == true" type="checkbox" checked (change)="checkPref($event, 3)"
-                          class="checkbox-round" />
-                        <input *ngIf="chck_pref3 == false" type="checkbox" (change)="checkPref($event, 3)"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-
-                    <button (click)="sendUpdateVe()">Guardar Cambios</button>
-
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-
-          <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
-          <h3>Ubicación</h3>
-          <p>{{ mainAd?.uga_direcc }}</p>
-          <a class="servicios" id="open-modal-dirección">
-            Editar dirección
-            <img src="/assets/images/right-arrow.svg" alt="" />
-          </a>
-
-          <ion-modal trigger="open-modal-dirección" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="block">
-                <h1>Editar dirección</h1>
-                <hr />
-                <div class="button-container-modal">
-                  <div class="form-regla">
-                    <label class="num-regla">Direccion</label>
-                    <input class="false-textarea" [(ngModel)]="uga_direcc" placeholder="Av. Alfredo Mendiola 3698" />
-                  </div>
-                  <button (click)="sendUpdateUb()">Guardar Cambios</button>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-        </div>
-       </div>
       </div>
 
       <!--                 -----REGLAS-----              -->
@@ -492,48 +493,49 @@
         <div>
           <div class="precio-base">
             <span class="simbolo">S/.</span>
-            <input class="monto" (blur)="onNumberInputChange($event, 1)" [(ngModel)]="precio_hora" id="hora-fraccion"
-              placeholde="0.00" type="number" />
+            <input class="monto" id="hora-fraccion" id="hora-fraccion"
+              placeholde="0.00" type="number" value="{{ precio_hora }}" />
             <label for="hora-fraccion" class="hora-fraccion">Hora o fracción</label>
           </div>
 
-          <div class="precio-base">
-            <span class="simbolo">S/.</span>
-            <input class="monto" (blur)="onNumberInputChange($event, 2)" [(ngModel)]="precio_dia" id="hora-fraccion2"
-              placeholde="0.00" type="number" />
-            <label for="hora-fraccion" class="hora-fraccion">Día (24h)</label>
-          </div>
           <ion-modal trigger="hora-fraccion" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
             <ng-template>
               <div class="block">
-                <h1>Edita tu precio base 
+                <h1>Edita tu precio base
                   por h/f</h1>
                 <hr />
                 <div class="button-container-modal">
                   <div class="form-regla">
                     <div class="input-bar">
                       <p class="label-text">Hora o fracción</p>
-                      <input placeholder="S/ 5">
-                    </div> 
-                    <button class="btn-gurd2">Guardar Cambios</button>
+                      <input placeholder="S/ 5" [(ngModel)]="precio_hora">
+                    </div>
+                    <button class="btn-gurd2" (click)="onNumberInputChange()">Guardar Cambios</button>
                   </div>
                 </div>
               </div>
             </ng-template>
           </ion-modal>
+
+          <div class="precio-base">
+            <span class="simbolo">S/.</span>
+            <input class="monto" id="hora-fraccion2" placeholde="0.00" value="{{ precio_dia }}" type="number" />
+            <label for="hora-fraccion" class="hora-fraccion">Día (24h)</label>
+          </div>
+
           <ion-modal trigger="hora-fraccion2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
             <ng-template>
               <div class="block">
-                <h1>Edita tu precio base 
-                   por día</h1>
+                <h1>Edita tu precio base
+                  por día</h1>
                 <hr />
                 <div class="button-container-modal">
                   <div class="form-regla">
                     <div class="input-bar">
                       <p class="label-text">Día (24 horas)</p>
-                      <input placeholder="S/ 15">
-                    </div> 
-                    <button class="btn-gurd2">Guardar Cambios</button>
+                      <input placeholder="S/ 15" [(ngModel)]="precio_dia">
+                    </div>
+                    <button class="btn-gurd2" (click)="onNumberInputChange()">Guardar Cambios</button>
                   </div>
                 </div>
               </div>
@@ -543,10 +545,11 @@
           <div class="recordatorio">
             <div class="esp-par">
               <p>
-                Recuerda que la tarifa de servicio es 5% sobre el precio base. <span>E.j Si el precio base x  h/f es de S/10, estarías ganando S/9.50 x hora.</span>
+                Recuerda que la tarifa de servicio es 5% sobre el precio base. <span>E.j Si el precio base x h/f es de
+                  S/10, estarías ganando S/9.50 x hora.</span>
               </p>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -556,7 +559,7 @@
         <div class="disponibilidad-container">
           <h1 class="secondary-title">Días restringidos</h1>
           <p>
-            Los usuarios no podrán reservar tu cochera 
+            Los usuarios no podrán reservar tu cochera
             en los siguientes días:
           </p>
 
@@ -633,7 +636,8 @@
           </ion-item>
 
           <p class="tex-hor">
-            ¡Personaliza tu horario! Al habilitar esta opción podrás controlar tus tiempos. En caso de que no habilite esta opción, consideraremos tu disponibilidad de <span>10 AM a 5 PM.</span> 
+            ¡Personaliza tu horario! Al habilitar esta opción podrás controlar tus tiempos. En caso de que no habilite
+            esta opción, consideraremos tu disponibilidad de <span>10 AM a 5 PM.</span>
           </p>
 
           <div class="time-range-container">
@@ -643,12 +647,11 @@
 
               <ion-modal [initialBreakpoint]="1" [breakpoints]="[0, 1]" [keepContentsMounted]="true">
                 <ng-template>
-                  <ion-datetime id="datetime1"
-                   presentation="time" hourCycle="h12" value="{{ this.convertToISO(hora_init) }}"
-                    (ionChange)="onTimeChange($event, 1)"></ion-datetime>
+                  <ion-datetime id="datetime1" presentation="time" hourCycle="h12"
+                    value="{{ this.convertToISO(hora_init) }}" (ionChange)="onTimeChange($event, 1)"></ion-datetime>
                 </ng-template>
               </ion-modal>
-              
+
 
             </div>
 
@@ -658,17 +661,13 @@
 
               <ion-modal [initialBreakpoint]="1" [breakpoints]="[0, 1]" [keepContentsMounted]="true">
                 <ng-template>
-                  <ion-datetime 
-                    id="datetime2" 
-                    presentation="time" 
-                    hourCycle="h12" 
-                    value="{{ convertToISO(hora_end) }}" 
+                  <ion-datetime id="datetime2" presentation="time" hourCycle="h12" value="{{ convertToISO(hora_end) }}"
                     (ionChange)="onTimeChange($event, 2)">
                   </ion-datetime>
                 </ng-template>
               </ion-modal>
-              
-              
+
+
             </div>
           </div>
 

@@ -116,6 +116,7 @@ export class ApiService {
 
   createAdvertisement(
     token: string,
+    name: string,
     file1: any,
     file2: any,
     file3: any,
@@ -137,11 +138,12 @@ export class ApiService {
 
     const formData = new FormData();
     const files = [file1, file2, file3];
-    files.forEach((file, index) => {
+    files.forEach((file) => {
       formData.append('files', file[0]);
     });
 
     formData.append('tga_id', tga_id);
+    formData.append('gar_nombre', name);
     formData.append('gar_descri', gar_descri);
     formData.append('gar_largo', gar_largo);
     formData.append('gar_ancho', gar_ancho);
@@ -151,13 +153,25 @@ export class ApiService {
     formData.append('uga_long', uga_long);
     formData.append('dis_id', dis_id);
 
-    services.forEach((service: string) => {
-      formData.append('services', service.trim());
-    });
+    if (services && services.length > 0) {
+      if (services.length === 1) {
+        formData.append('services', services[0].trim()); // Un solo elemento
+      } else {
+        services.forEach((service: string) => {
+          formData.append('services', service.trim()); // Múltiples elementos
+        });
+      }
+    }
 
-    tve_ids.forEach((tve_id: string) => {
-      formData.append('tve_id', tve_id.trim());
-    });
+    if (tve_ids && tve_ids.length > 0) {
+      if (tve_ids.length === 1) {
+        formData.append('tve_id', tve_ids[0].trim()); // Un solo elemento
+      } else {
+        tve_ids.forEach((tve_id: string) => {
+          formData.append('tve_id', tve_id.trim()); // Múltiples elementos
+        });
+      }
+    }
 
     console.log(formData);
 
@@ -250,7 +264,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + '/user/host/paid/request', null, { headers });
   }
 
-  getDeposit(token: string){
+  getDeposit(token: string) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
@@ -258,7 +272,7 @@ export class ApiService {
     return this.http.get(this.apiUrl + '/user/host/paid', { headers });
   }
 
-  turnBlackout(token: string, data: any){
+  turnBlackout(token: string, data: any) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
