@@ -8,10 +8,10 @@
 
           <!-- Barra de búsqueda -->
 
-          <div class="box">
+          <!--<div class="box">
 	          <i class="fa fa-search" aria-hidden="true"></i>
 	          <input type="text" placeholder="Introduce tu ubicación" name="" >
-          </div>
+          </div>-->
           
           <button class="custom-btn" (click)="selectMap()">
             <div class="oder">
@@ -27,16 +27,14 @@
             </div>  
             <img src="/assets/images/flec-rig-desc.svg" alt=""> 
           </button>
-
-
           
         </div>
       </div>
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
-        <button class="bac" routerLink="/descripcion-de-medidas-del-espacio" >Atrás</button>
-        <button  routerLink="/eli-pref" class="nex" >Siguiente</button>
+        <button class="bac" (click)="return()" >Atrás</button>
+        <!--<button routerLink="/eli-pref" class="nex" >Siguiente</button>-->
       </div>
     </footer>
   </div>

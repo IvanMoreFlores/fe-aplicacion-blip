@@ -40,6 +40,7 @@ export class LoginPage implements OnInit {
       console.log(result);
       const isLogged = result?.isLogged;
       if (isLogged === true) {
+        console.log('esta logeado');
         this.router.navigate(['/lds']);
       }
     }
@@ -47,6 +48,12 @@ export class LoginPage implements OnInit {
   }
 
   async send_otk() {
+
+    if (!this.phone2 || this.phone2.length < 9) {
+      alert('El número no es valido.');
+      return;
+    }
+
     const phone = '+51' + this.phone2;
     const code = Math.floor(1000 + Math.random() * 9000);
     const body = 'Blip informa: el codigo solicitado es ' + code;

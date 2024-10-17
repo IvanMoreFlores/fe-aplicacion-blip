@@ -65,7 +65,7 @@ export class DescripcionDelMapaPage implements OnInit {
   }
 
   getUserLocation() {
-    console.log('obtener ubicacion')
+    console.log('obtener ubicacion');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -107,6 +107,9 @@ export class DescripcionDelMapaPage implements OnInit {
       this.gar_largo = params['gar_largo'];
       this.gar_ancho = params['gar_ancho'];
       this.gar_alto = params['gar_alto'];
+      this.uga_lat = params['uga_lat'];
+      this.uga_long = params['uga_long'];
+      this.uga_direcc = params['uga_direcc'];
     });
   }
 

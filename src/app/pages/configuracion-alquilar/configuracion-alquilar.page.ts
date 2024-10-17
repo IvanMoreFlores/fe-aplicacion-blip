@@ -78,7 +78,10 @@ export class ConfiguracionAlquilarPage implements OnInit {
   }
 
   getValues(){
-    //routerLink="/img-esta"
+    if(!this.tve_id || this.tve_id.length < 1){
+      alert('Debes elegir una opcion.');
+      return;
+    }
 
     this.router.navigate(['/img-esta'], {
       queryParams: {
