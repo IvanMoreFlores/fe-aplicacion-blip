@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-img-esta',
@@ -36,7 +34,6 @@ export class ImgEstaPage implements OnInit {
   esta1: string = '';
   esta2: string = '';
   esta3: string = '';
-
 
   constructor(
     private router: Router,
@@ -149,76 +146,111 @@ export class ImgEstaPage implements OnInit {
       this.uga_long = params['uga_long'];
       this.dis_id = params['dis_id'];
       this.tve_id = params['tve_id'];
-      console.log(this.uga_direcc);
     });
   }
 
+  generarCodigoAleatorio(): number {
+    return Math.floor(1000 + Math.random() * 9000);
+  }
+
   async sendImages() {
-    //[routerLink]="['/cre-anu']"
 
-    if (
-      this.files &&
-      this.files2 &&
-      this.files3 &&
-      this.tga_id != '' &&
-      this.direccion != '' &&
-      this.gar_largo != '' &&
-      this.gar_ancho != '' &&
-      this.gar_alto != '' &&
-      this.uga_direcc != '' &&
-      this.uga_lat != '' &&
-      this.uga_long != '' &&
-      this.servicio &&
-      this.tve_id
-    ) {
-
-      console.log(this.files[0]);
-      console.log(this.files2[0]);
-      console.log(this.files3[0]);
-      const token = await this.storage.getItem('token');
-      this.api.createAdvertisement(token, this.files,
-        this.files2,
-        this.files3,
-        this.tga_id,
-        this.direccion,
-        this.gar_largo,
-        this.gar_ancho,
-        this.gar_alto,
-        this.uga_direcc,
-        this.uga_lat,
-        this.uga_long,
-        this.distrito,
-        this.servicio,
-        this.tve_id).subscribe(
-          async (response: any) => {
-            console.log(response);
-            if(response.status === "success"){
-              this.router.navigate(['/cre-anu']);
-            }else{
-              alert('Hubo un error')
-            }
-          },
-          (error: any) => {
-            alert('Hubo un error: ' + error.message)
-          }
-        );
-    } else {
-      console.error('Datos incompletos.');
-      console.log(this.files);
-      console.log(this.files2);
-      console.log(this.files3);
-      console.log(this.tga_id);
-      console.log(this.direccion); ///////
-      console.log(this.gar_largo);
-      console.log(this.gar_ancho);
-      console.log(this.gar_alto);
-      console.log(this.uga_direcc);
-      console.log(this.uga_lat);
-      console.log(this.uga_long);
-      console.log(this.servicio);
-      console.log(this.tve_id);
+    if (!this.files || this.files.length === 0) {
+      alert('Debes incluir imagenes.');
+      return;
     }
 
+    if (!this.files2 || this.files2.length === 0) {
+      alert('Debes incluir imagenes.');
+      return;
+    }
+
+    if (!this.files3 || this.files3.length === 0) {
+      alert('Debes incluir imagenes.');
+      return;
+    }
+
+    //colocar validacion de img vacio
+
+    let name = '';
+
+    const token = await this.storage.getItem('token');
+
+    const arr_dist = await this.storage.getItem('adConfig');
+
+    arr_dist.districts.map((distrito: any) => {
+      if (distrito.id_distrito.toString() === this.distrito) {
+        name = 'Cochera ' + distrito.nombre_distrito + ' ' + this.generarCodigoAleatorio();
+      }
+
+    });
+
+    console.log(name);
+    console.log(this.files);
+    console.log(this.files2);
+    console.log(this.files3);
+    console.log(this.tga_id);
+    console.log(this.direccion);
+    console.log(this.gar_largo);
+    console.log(this.gar_ancho);
+    console.log(this.gar_alto);
+    console.log(this.uga_direcc);
+    console.log(this.uga_lat);
+    console.log(this.uga_long);
+    console.log(this.servicio);
+    console.log(this.tve_id);
+
+    this.api.createAdvertisement(token,
+      name,
+      this.files,
+      this.files2,
+      this.files3,
+      this.tga_id,
+      this.direccion,
+      this.gar_largo,
+      this.gar_ancho,
+      this.gar_alto,
+      this.uga_direcc,
+      this.uga_lat,
+      this.uga_long,
+      this.distrito,
+      this.servicio,
+      this.tve_id).subscribe(
+        async (response: any) => {
+          console.log(response);
+          if (response.status === "success") {
+            this.router.navigate(['/cre-anu']);
+          } else {
+            alert('Hubo un error')
+          }
+        },
+        (error: any) => {
+          alert('Hubo un error: ' + error.message)
+        }
+      );
+
+  }
+
+  return() {
+    this.router.navigate(['/configuracion-alquilar'], {
+      queryParams: {
+        tga_id: this.tga_id,
+        direccion: this.direccion,
+        distrito: this.distrito,
+        ciudad: this.ciudad,
+        referencia: this.referencia,
+        detalles: this.detalles,
+        servicio: this.servicio,
+        gar_largo: this.gar_largo,
+        gar_ancho: this.gar_ancho,
+        gar_alto: this.gar_alto,
+        uga_direcc: this.uga_direcc,
+        uga_lat: this.uga_lat,
+        uga_long: this.uga_long,
+        dis_id: this.dis_id,
+        tve_id: this.tve_id
+      }
+    });
   }
 }
 

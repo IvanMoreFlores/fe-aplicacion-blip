@@ -152,30 +152,23 @@ export class AnuncioCaracteristicasPage implements OnInit {
     }
   }
 
-  async onNumberInputChange(event: any, type: number) {
+  async onNumberInputChange() {
     const token = await this.storage.getItem('token');
-    const newValue = event.target.value;
-    if (newValue) {
-      const formData = new FormData();
-      let pag_monto = "";
-      if (type === 1) {
-        pag_monto = `[{"tip_id":1,"pag_monto":${newValue}},{"tip_id":2,"tip_id":2,"pag_monto":${this.precio_dia}}]`
+    const formData = new FormData();
+    let pag_monto = "";
+    pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"tip_id":2,"pag_monto":${this.precio_dia}}]`
+    formData.append('pag_monto', pag_monto);
+    formData.append('gar_id', this.mainAd.gar_id);
+    this.api.updateAd(token, formData).subscribe(
+      (response: any) => {
+        this.updateContent();
+        this.modalController.dismiss();
+      },
+      (error: any) => {
+        alert('Hubo un error: ' + error.message)
       }
+    );
 
-      if (type === 2) {
-        pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"tip_id":2,"pag_monto":${newValue}}]`
-      }
-      formData.append('pag_monto', pag_monto);
-      formData.append('gar_id', this.mainAd.gar_id);
-      this.api.updateAd(token, formData).subscribe(
-        (response: any) => {
-          this.updateContent();
-        },
-        (error: any) => {
-          alert('Hubo un error: ' + error.message)
-        }
-      );
-    }
   }
 
   async checkServPref() {
@@ -264,9 +257,9 @@ export class AnuncioCaracteristicasPage implements OnInit {
           this.hora_init = restrict.rga_horainicio;
           this.hora_end = restrict.rga_horafin;
 
-          if(this.hora_init === '10:00:00' && this.hora_end === '17:00:00'){
+          if (this.hora_init === '10:00:00' && this.hora_end === '17:00:00') {
             this.chck_hora = true;
-          }else{
+          } else {
             this.chck_hora = false;
           }
         }

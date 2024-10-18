@@ -34,7 +34,7 @@ export class RegistroPage implements OnInit, OnDestroy {
     private api: ApiService
   ) { }
 
-  setNumber(){
+  setNumber() {
     this.route.queryParams.subscribe(params => {
       this.number = params['PHONE2'];
     });
@@ -136,9 +136,11 @@ export class RegistroPage implements OnInit, OnDestroy {
             await this.storageService.removeItem('token');
             await this.storageService.setItem('token', token_main);
             this.router.navigate(['/tab-home/home']);
-          } /*else {
+            console.log('validate yes');
+          } else {
             this.router.navigate(['/terminos-y-condiciones']);
-          }*/
+            console.log('validate no');
+          }
 
         },
         (error: any) => {

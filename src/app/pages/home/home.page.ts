@@ -285,7 +285,7 @@ export class HomePage implements OnInit {
       const fechaEspecifica = reserva.res_fecini;
       const ahora = new Date();
       const ahoraMas30Minutos = new Date(ahora.getTime() + 30 * 60000);
-      if (ahoraMas30Minutos <= fechaEspecifica && reserva.rst_id == !3 && reserva.rst_id == !4) {
+      if (ahoraMas30Minutos <= fechaEspecifica && reserva.rst_id !== 3 && reserva.rst_id !== 4) {
         this.data_comienza_pronto.push(reserva);
       }
     });
@@ -299,7 +299,7 @@ export class HomePage implements OnInit {
       const fechaHoraInicio = new Date(reserva.res_fecini);
       const fechaHoraFin = new Date(reserva.res_fecfin);
 
-      if (fechaActual >= fechaHoraInicio && fechaActual <= fechaHoraFin && reserva.rst_id == !3 && reserva.rst_id == !4) {
+      if (fechaActual >= fechaHoraInicio && fechaActual <= fechaHoraFin && reserva.rst_id !== 3 && reserva.rst_id !== 4) {
         this.data_encurso.push(reserva);
       }
     });

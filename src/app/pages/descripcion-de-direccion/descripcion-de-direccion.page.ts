@@ -38,6 +38,21 @@ export class DescripcionDeDireccionPage implements OnInit {
   }
 
   nextPage(){
+    if (!this.direccion || this.direccion.length < 1) {
+      alert('Debes incluir una direccion.');
+      return;
+    }
+
+    if (!this.ciudad || this.ciudad.length < 1) {
+      alert('Debes incluir una ciudad.');
+      return;
+    }
+
+    if (!this.distrito || this.distrito.length < 1) {
+      alert('Debes incluir una ciudad.');
+      return;
+    }
+
     this.router.navigate(['/descripcion-de-servicios-adicionales'], { queryParams: { 
       tga_id: this.tga_id, 
       direccion: this.direccion,

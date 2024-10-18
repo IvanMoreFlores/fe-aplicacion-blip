@@ -61,7 +61,7 @@ export class LogBinPage implements OnInit {
           await this.storageService.setItem('token', token_main);
           this.router.navigate(['/tab-home/home']);
         } else {
-          alert('usuario incorrecto!');
+          alert('usuario o password incorrecto!');
         }
       }
     )

@@ -48,7 +48,11 @@ export class DescripcionDelEspacioPage {
   }
 
  getSpace(){
-  console.log(this.selectedIndex);
+  if (!this.selectedIndex) {
+    alert('Debes elegir una opcion.');
+    return;
+  }
+
   this.router.navigate(['/descripcion-de-direccion'], { queryParams: { tga_id: this.selectedIndex } });
 
  }

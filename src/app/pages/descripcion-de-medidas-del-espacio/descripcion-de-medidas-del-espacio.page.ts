@@ -64,7 +64,40 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
   }
 
   async getValues() {
+
+    if (!this.gar_largo || this.gar_largo.length < 0) {
+      alert('Debes incluir largo.');
+      return;
+    }
+
+    if (!this.gar_ancho || this.gar_ancho.length < 0) {
+      alert('Debes incluir ancho.');
+      return;
+    }
+
+    if (!this.gar_alto || this.gar_alto.length < 0) {
+      alert('Debes incluir alto.');
+      return;
+    }
+
     this.router.navigate(['/descripcion-de-ubicacion'], {
+      queryParams: {
+        tga_id: this.tga_id,
+        direccion: this.direccion,
+        distrito: this.distrito,
+        ciudad: this.ciudad,
+        referencia: this.referencia,
+        detalles: this.detalles,
+        servicio: this.servicio,
+        gar_largo: this.gar_largo,
+        gar_ancho: this.gar_ancho,
+        gar_alto: this.gar_alto
+      }
+    });
+  }
+
+  return() {
+    this.router.navigate(['/descripcion-de-servicios-adicionales'], {
       queryParams: {
         tga_id: this.tga_id,
         direccion: this.direccion,
