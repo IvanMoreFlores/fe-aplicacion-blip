@@ -51,7 +51,10 @@ export class HomePage implements OnInit {
     private readonly api: ApiService,
     private readonly cdr: ChangeDetectorRef
   ) {
-
+    this.getUserData();
+    this.getReservas();
+    this.getDni();
+    this.getBlackout();
   }
   // Inyecta el ModalController
   changeContent(content: string) {
@@ -75,6 +78,7 @@ export class HomePage implements OnInit {
   }
 
   async getConfirm(id: string) {
+    console.log('inside confirm');
     const token = await this.storage.getItem('token');
     this.api.updateReserve(token, id, '2').subscribe(
       async (response: any) => {
@@ -117,15 +121,12 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       this.iniciarSwiper();
     }, 0);
-    this.getUserData();
-    this.getReservas();
-    this.getDni();
-    this.getBlackout();
+
   }
 
   async getBlackout() {
     let apagon = await this.storage.getItem('apagon');
-    if(apagon !== null){
+    if (apagon !== null) {
       this.apagon_val = apagon;
     }
   }
@@ -222,7 +223,7 @@ export class HomePage implements OnInit {
 
   // Cierra sesión
   async sesion_close() {
-    await this.storage.removeItem('token');
+    await this.storage.clear();
     await this.modalController.dismiss();
     this.router.navigate(['/login']);
   }

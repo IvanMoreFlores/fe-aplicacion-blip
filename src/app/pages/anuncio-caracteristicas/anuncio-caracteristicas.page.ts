@@ -6,6 +6,7 @@ import { StorageService } from '../../services/storage.service';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-anuncio-caracteristicas',
@@ -57,6 +58,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
   showContentDirec: boolean = false;
 
   constructor(
+    private router: Router,
     private api: ApiService,
     private storage: StorageService,
     private modalController: ModalController
@@ -72,6 +74,13 @@ export class AnuncioCaracteristicasPage implements OnInit {
       (response: any) => {
         this.advertisements = response.data;
         console.log(this.advertisements);
+        console.log(this.advertisements.length);
+
+        if(this.advertisements.length <= 0){
+          alert('Debes crear un Anuncio antes!');
+          this.router.navigate(['/tab-home/home']);
+        }
+
         this.mainAd = this.advertisements[0];
         this.selectedGarId = this.mainAd.gar_id;
         this.gar_nombre = this.mainAd.gar_nombre;
