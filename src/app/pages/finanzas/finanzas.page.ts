@@ -121,8 +121,6 @@ export class FinanzasPage implements OnInit {
 
           this.data_payment.map((payment: any) => {
 
-            count++;
-
             const fecha_pago = new Date(payment.res_fecini);
 
             const isSameDay =
@@ -136,11 +134,15 @@ export class FinanzasPage implements OnInit {
 
           });
 
-          this.arr_payment.push({
-            nombre: ad.gar_nombre,
-            total: total,
-            id: count
-          });
+          if (total > 0) {
+            count = count + 1;
+
+            this.arr_payment.push({
+              nombre: ad.gar_nombre,
+              total: total,
+              id: count
+            });
+          }
 
           this.total_final += total;
 
