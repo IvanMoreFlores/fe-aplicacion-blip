@@ -17,7 +17,8 @@ ion-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px;
+  padding-inline:  16px;
+  margin-block: 20px;
   height: 56px; /* Altura consistente para el header */
 
 }
