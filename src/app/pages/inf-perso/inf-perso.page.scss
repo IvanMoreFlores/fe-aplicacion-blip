@@ -1,21 +1,137 @@
-.container{
-  background-color: #79FFAF; 
+/* Estilos para el header */
+h1,h1,h3{
+  margin: 0px;
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+  
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+
+ion-toolbar {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ion-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline:  22px;
+  margin-block: 10px;
+  height: 56px; /* Altura consistente para el header */
+
+}
+
+.custom-title{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+.btn-idn{
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+  border-radius: 10px;
+  margin-right: 0px;
+  align-items: center;
   display: flex;
   justify-content: center;
-
-  height: 100%;
+  background-color: #ffffff;
 }
-.content{
-  border: 1px solid #ccc;
-  border-radius: 30px 30px 0 0;
-  width: 432px;
-  margin-top: 50px;
-  height: 882px;
-  display: block;
-  background-color: #FFFFFF;
+ion-buttons {
+  display: flex;
+  align-items: center;
+}
+
+ion-icon {
+  font-size: 24px; /* Tamaño adecuado para los iconos */
+  color: #000;
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: none; /* Eliminar el fondo del botón */
+  --ripple-color: transparent; /* Sin efecto ripple */
+}
+ion-conten{
+  padding-inline: 40px;
+}
+.container-pef{
+  padding-inline: 22px;
+}
+.avatar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Ajusta el espacio superior si lo necesitas */
+}
+.avatar img {
+  height: 180px; /* Aumenta el tamaño según lo necesites */
+  width: 180px; /* Mantén el aspecto cuadrado */
+  border-radius: 20px; /* Mantén los bordes medio redondos */
+}
+
+.image-wrapper {
+  position: relative;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 15px; /* Medio redondeado */
   padding: 20px;
-
+  max-width: 200px; /* Controla el tamaño máximo del contenedor */
 }
+
+.image-wrapper img {
+  width: 100%; /* Ajusta la imagen al tamaño del contenedor */
+  height: auto;
+  border-radius: 15px; /* Para medio redondear la imagen */
+}
+
+.boxes {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+
+
+
+.box1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Asegura que la imagen mantenga su proporción original */
+  border-radius: 5px;  /* Esto es opcional si deseas bordes redondeados */
+}
+.box1 {
+  height: 40px;  /* Ajusta el tamaño para que sea más acorde a la imagen */
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+  border:0px;
+}
+[_nghost-ng-c1856937885] ngx-dropzone-label{
+  margin: 0px;
+}
+
+
 .title {
 font-size: 18px;
 font-family: "Poppins", sans-serif;
@@ -37,19 +153,35 @@ margin-right: 20px;
 margin-left: 19px;
 }
 .pg{
-font-size: 12px;
-margin:0;
+  color: #212121;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 137.5% */
 }
 
-
+ion-text{
+  color: #212121;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 25px; /* 178.571% */
+}
 .cont-pre{
-background-color: transparent;
+background-color: #ffffff;
 display: flex;
 justify-content: space-between;
 align-items: center;
 padding-right: 0px;
-padding-left: 20px;
 margin-top: 23px;
+}
+::ng-deep ion-item::part(native) {
+  padding-left: 0 !important; /* Sobrescribe el padding interno */
+}
+.preguntas{
+  margin-top: 40px;
 }
 .preg{
 display: flex;
@@ -68,10 +200,14 @@ ion-modal {
   --height: auto;
 }
 .title-mo{
+  color: #212121;
   text-align: center;
-  font-family: "Poppins", sans-serif; 
-  font-size: 18px;
-  color: #524F4F;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 166.667% */
+  padding-block: 20px;
 
 }
 .line{
@@ -132,14 +268,14 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin: 0;
+color: #212121;
+text-align: right;
 font-family: Poppins;
-  font-size: 9px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 19px; /* 211.111% */
-  letter-spacing: 0.18px;
-  text-decoration-line: underline;
-  color: #212121;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px; /* 183.333% */
+text-decoration-line: underline;
 }
 .model{
 background-color: transparent;
@@ -293,12 +429,3 @@ line-height: 180%; /* 28.8px */
 
 
 
-.box1 {
-  height: 35px;
-  width: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 4px 4px 0px #21212140;
-  border-radius: 20px;
-}

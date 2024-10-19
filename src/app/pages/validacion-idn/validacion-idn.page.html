@@ -1,0 +1,29 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tab-home/home">
+        <img src="/assets/images/left-arrow.svg" alt="Atrás" />
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Verificación de Identidad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container-pef">
+    <h3 class="status-header">Estado de Validación</h3>
+    <p class="status-text">
+      Para garantizar la seguridad y autenticidad de nuestros hosts, necesitamos validar tu identidad antes de publicar anuncios. Sube los documentos requeridos nuevamente en caso la validación inicial haya sido rechazada.
+    </p>
+    <p class="status-text">
+      Una vez que tu identidad sea verificada, tu anuncio se publicará automáticamente. Si no podemos validar tu identidad, te notificaremos para que puedas corregir los datos y volver a intentarlo.
+    </p>
+
+    <h4 class="documents-header">Identificación (Documentos)</h4>
+    <div class="document-status">
+      <ion-icon name="close-circle" color="danger"></ion-icon>
+      <span class="document-label">Verificación de Identidad (ej. DNI, otros)</span>
+      <a href="#" class="update-link">Actualizar</a>
+    </div>
+  </div>
+</ion-content>

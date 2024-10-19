@@ -1,42 +1,40 @@
-<ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="pantalla">
-
-      <div class="inicio">
-        <a class="regresar" href="#">
-          <div class="left-arrow">
-            <img src="/assets/images/left-arrow.svg" alt="" routerLink="/tab-home/home" />
-          </div>
-          <h1 class="title">Estacionamiento</h1>
-        </a>
-
+<ion-header mode="ios">
+  <ion-toolbar>
+    <a class="regresar" href="#">
+      <div class="left-arrow">
+        <img src="/assets/images/left-arrow.svg" alt="" routerLink="/tab-home/home" />
       </div>
-      
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <button (click)="changeContent('Ingresos')"
-              [ngClass]="{'active': isButtonActive('Ingresos')}">Ingresos</button>
-          </div>
+      <h1 class="title">Finanzas</h1>
+    </a>
+  </ion-toolbar>
+</ion-header>
+<ion-content scrollY="false">
+  <div class="pantalla">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <button (click)="changeContent('Ingresos')"
+            [ngClass]="{'active': isButtonActive('Ingresos')}">Ingresos</button>
+        </div>
 
-          <div class="swiper-slide">
-            <button (click)="changeContent('Historial de Alquiler')"
-              [ngClass]="{'active': isButtonActive('Historial de Alquiler')}">Historial de Alquiler</button>
-          </div>
+        <div class="swiper-slide">
+          <button (click)="changeContent('Historial de Alquiler')"
+            [ngClass]="{'active': isButtonActive('Historial de Alquiler')}">Historial de Alquiler</button>
+        </div>
 
-          <div class="swiper-slide">
-            <button (click)="changeContent('Pagos')" [ngClass]="{'active': isButtonActive('Pagos')}">Pagos</button>
-          </div>
+        <div class="swiper-slide">
+          <button (click)="changeContent('Pagos')" [ngClass]="{'active': isButtonActive('Pagos')}">Pagos</button>
+        </div>
 
-          <div class="swiper-slide">
-            <button (click)="changeContent('Historial de Pago')"
-              [ngClass]="{'active': isButtonActive('Historial de Pago')}">Historial de Pago</button>
-          </div>
-
+        <div class="swiper-slide">
+          <button (click)="changeContent('Historial de Pago')"
+            [ngClass]="{'active': isButtonActive('Historial de Pago')}">Historial de Pago</button>
         </div>
 
       </div>
 
+    </div>
+    <div class="scroll-container">
       <!--                 -----Ingresos-----              -->
       <div *ngIf="selectedContent === 'Ingresos'">
 
@@ -46,7 +44,7 @@
             <p>{{ card_pago.nombre }}</p>
           </div>
           <div class="anuncio-ingreso">
-            <div>
+            <div class="cont-anun">
               <h3>Ingreso del día</h3>
               <p>{{ fecha_format_hoy }}</p>
             </div>
@@ -61,17 +59,13 @@
         <div class="ingreso-final">
           <div>
             <h3>Ingreso Final</h3>
-            <p>Recuerda que el balance final se actualizará en base a la recurrencia de actividad y será acumulado para
-              la forma de pago elegida en la sección de <span>pagos</span>.</p>
-            <span>S/. {{ total_final }}</span>
+            <p>El balance se actualizará en base a la actividad de tu(s) anuncio(s)..</p>
+            <h1>S/. {{ total_final }}</h1>
 
             <div class="deposito-pago">
-              <div class="icon-info">
-                <img src="/assets/images/icon-info.svg" alt="">
-              </div>
-              <p>
-                Recuerda que para solicitar el retiro de tu balance debes estar por encima de S/50
-              </p>
+              <h2>Retención del 5%</h2>
+              <h2>Balance mínimo requerido S/50</h2>
+
             </div>
           </div>
         </div>
@@ -91,24 +85,43 @@
 
         <div *ngFor="let reserva of data_reserve">
           <div class="alquiler">
-            <div class="icon-alquiler circle">
-              <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+            <div class="h-alq">
+              <h3 class="date"> {{ reserva.res_fecini | date: 'dd \'de\' MMMM' : 'es' }} </h3>
+              <div class="chip">
+                <h3>{{ reserva.rst_descri }}</h3>
+              </div>
             </div>
-
-            <div class="info-alquiler">
-              <h3 class="date"> {{ reserva.res_fecini | date: 'dd \'de\' MMMM' : 'es' }} : {{ reserva.rst_descri }}</h3>
-              <h4>{{ reserva.tip_descri }}</h4>
-              <h4 class="time">{{ reserva.res_fecini | date: 'hh:mm a' : 'es' }} - {{ reserva.res_fecfin | date: 'hh:mm
-                a' : 'es' }}</h4>
-              <p class="description">Alquiler <span>{{ reserva.gar_nombre }}</span></p>
-              <p class="description">Vehículo <span>{{ reserva.veh_modelo }} : {{ reserva.veh_placa }}</span></p>
+            <div class="nomb-host">
+              <div>
+                <div class="aut">
+                  <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+                  <h1>Host Name</h1>
+                </div>
+                <div class="veiculo">
+                  <h1>{{ reserva.veh_modelo }}</h1>
+                  <h1>{{ reserva.veh_placa }}</h1>
+                </div>
+                <div class="tiempo">
+                  <h1>Reserva </h1>
+                  <span>x</span>
+                  <h1>{{ reserva.tip_descri }}</h1>
+                  <img src="/assets/images/der-reser.svg" alt="">
+                  <h1>1h</h1>
+                </div>
+                <div class="horas">
+                  <h1>{{ reserva.res_fecini | date: 'hh:mm a' : 'es' }}</h1>
+                  <img src="/assets/images/flec-hist.svg" alt="">
+                  <h1>{{ reserva.res_fecfin | date: 'hh:mm
+                a' : 'es' }}</h1>
+                </div>
+                <h1 class="description">Alquiler <span>{{ reserva.gar_nombre }}</span></h1>
+              </div>  
+              <h1 class="precio">S/. {{ reserva.pag_monto_total }} 
+              </h1>
+              
             </div>
-
-            <div class="alquiler-monto">
-              <span class="amount">S/. {{ reserva.pag_monto_total }}</span>
-            </div>
-
           </div>
+          <hr>
         </div>
 
       </div>
@@ -122,12 +135,8 @@
           <p>Transferencia a:</p>
 
           <div class="form-regla">
-            <label class="num-regla">Banco de Destino</label>
-            <select class="input-pago" id="distrito" [(ngModel)]="banco" placeholder="Selecciona tu banco"
-              name="distrito">
-              <option value="" disabled selected>Selecciona tu distrito</option>
-              <option *ngFor="let banco of banks" value="{{ banco.mep_id }}">{{ banco.mep_descri }}</option>
-            </select>
+            <label class="num-regla">Titular de la Cuenta</label>
+            <input  type="text" class="input-pago" placeholder="Nombre del Titular">
           </div>
 
           <div class="form-regla">
@@ -139,24 +148,19 @@
             <label class="num-regla">Número de Cuenta Interbancaria (CCI)</label>
             <input [(ngModel)]="cci" type="number" class="input-pago" placeholder="*** *** ************ **">
           </div>
-
+          <div class="form-regla">
+            <label class="num-regla">Banco de Destino</label>
+            <select class="input-pago2" id="distrito" [(ngModel)]="banco" placeholder="Selecciona tu banco"
+              name="distrito">
+              <option value="" disabled selected>Selecciona tu distrito</option>
+              <option *ngFor="let banco of banks" value="{{ banco.mep_id }}">{{ banco.mep_descri }}</option>
+            </select>
+          </div>
           <div class="continue">
             <button class="btn-sig" (click)="save_method()">Guardar datos de pago</button>
           </div>
         </div>
 
-        <div class="informacion-pagos">
-          <div class="icon-info">
-            <img src="/assets/images/icon-info.svg" alt="">
-          </div>
-          <p>
-            Tu balance actualizado será depositado en el plazo de 2 días hábiles luego de solicitar el retiro en la
-            categoría de Ingresos.
-            Consideraremos una retención del 5% por el concepto de tarifa de servicio en cada retiro.
-            Es por eso que recomendamos retirar el balance total a fin de mes o cada 15 días para aprovechar al máximo
-            tu cochera.
-          </p>
-        </div>
       </div>
 
       <!--                 -----Historial de Pago-----              -->
@@ -170,7 +174,7 @@
 
             <div class="historial">
               <div class="icon-historial">
-                <img src="/assets/images/icon-card.svg" alt="" class="icon-car">
+                <img src="/assets/images/tarj-blac.svg" alt="" class="icon-car">
               </div>
 
               <div class="info-historial">
@@ -184,11 +188,13 @@
                 <span class="amount">S/. {{ pago.pre_monto }}</span>
               </div>
             </div>
+            <hr>
           </div>
 
         </div>
       </div>
-
     </div>
   </div>
+
+
 </ion-content>

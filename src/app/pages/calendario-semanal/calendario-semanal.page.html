@@ -1,97 +1,42 @@
-<ion-content [fullscreen]="true">
-  <div class="top-bar">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center w-100">
-          <button routerLink="/tab-home/home" class="vector-mensaje">
-            <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
-          </button>
-          <div class="text-b">Calendario</div>
-          <!--<button  id="open-modal-calend-sema" class="shadow navbar-toggler" expand="block"><img src="/assets/images/calendar-btn.png" alt=""></button>-->
-          <ion-modal trigger="open-modal-calend-sema" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="block">
-                <div class="menu-above">Vista del calendario</div>
-                <hr class="separator-line">
-                <div class="button-container">
-                  <button (click)="retu()" class="custom-btn">
-                    <img src="/assets/images/fi-sr-calendar.png" alt="">
-                    <span class="btn-text">Semana</span>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                        checked>
-                      <label class="form-check-label" for="flexRadioDefault1">
-                      </label>
-                    </div>
-                  </button>
-                  <button (click)="retu()" routerLink="/calendario-mes" class="custom-btn">
-                    <img src="/assets/images/fi-sr-calendar.png" alt="">
-                    <span class="btn-text">Mes</span>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      <label class="form-check-label" for="flexRadioDefault2">
-                      </label>
-                    </div>
-                  </button>
-                  <button (click)="retu()" routerLink="/calendario" class="custom-btn">
-                    <img src="/assets/images/fi-sr-calendar.png" alt="">
-                    <span class="btn-text">Año</span>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      <label class="form-check-label" for="flexRadioDefault3">
-                      </label>
-                    </div>
-                  </button>
-                </div>
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-button routerLink="/tab-home/home">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Calendario</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="funnel-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="calendar-container">
+    <div class="month-year">{{ mesActual }} {{ anioActual }}</div>
+    <div class="week" *ngFor="let semana of semanas2024">
+      <div class="day" *ngFor="let dia of semana.dias">
+        <div class="day-header">
+          <div class="date-details">
+            <p class="date-number">{{ dia.numero }}</p>
+            <p class="day-name">{{ dia.nombre }}</p>
+          </div>
+          <div>
+            <div class="reservations" *ngFor="let reserva of data">
+              <div *ngIf="compararFechas(dia.fecha, reserva.res_fecfin)">
+                <div class="parking-details">{{ reserva.gar_descri }}</div>
+                <p class="reserva-detalle">{{ convertirHora(reserva.res_fecini) }} - {{ convertirHora(reserva.res_fecfin) }}</p>
               </div>
-            </ng-template>
-          </ion-modal>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <h1 class="title"></h1>
-          <!-- Mostrar el mes y el año -->
-          <div class="mes-anio">{{ mesActual }} {{ anioActual }}</div>
-          <!-- Calendario semanal -->
-          <div class="calendario-semanal">
-            <div class="semana" *ngFor="let semana of semanas2024">
-              <div *ngFor="let dia of semana.dias" class="dia-semana">
-                <p class="numero">{{ dia.numero }}<span class="reservacion">
-                    sin reserva <span class="monto">S/{{ dia.total_dia }}</span></span></p>
-                <p class="nombre">{{ dia.nombre }}</p>
-                <div id="data_reservas" *ngFor="let reserva of data">
-                  <div id="data_reservas" *ngIf="compararFechas(dia.fecha, reserva.res_fecfin)">
-                    <p>{{ reserva.gar_descri }}<br>
-                    {{ convertirHora(reserva.res_fecini) }} - {{ convertirHora(reserva.res_fecfin) }}<br></p>
-                  </div>
-                </div>
-              </div>
-              <br>
             </div>
           </div>
-          <div class="menu-black">
-            <div class="image-buttons">
-              <button routerLink="/tab-home/home" class="image-button">
-                <img class="num1" src="/assets/images/home.png" alt="Button 1">
-              </button>
-              <button routerLink="/mensajes" class="image-button">
-                <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
-              </button>
-              <button routerLink="/calendario" class="image-button-3">
-                <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
-              </button>
-              <div class="dot"></div>
-              <button routerLink="/panel-anfitrion" class="image-button">
-                <img class="num4" src="/assets/images/signal.png" alt="Button 4">
-              </button>
-            </div>
-          </div>
+
+          <div class="amount" *ngIf="dia.total_dia > 0">S/{{ dia.total_dia }}</div>
+          <div class="no-reservation" *ngIf="dia.total_dia === 0">S/0</div>
         </div>
+        
       </div>
     </div>
   </div>
