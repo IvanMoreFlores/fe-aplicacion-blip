@@ -371,6 +371,10 @@ const routes: Routes = [
     path: 'cre-anu',
     loadChildren: () => import('./pages/cre-anu/cre-anu.module').then( m => m.CreAnuPageModule)
   },
+  {
+    path: 'validacion-idn',
+    loadChildren: () => import('./pages/validacion-idn/validacion-idn.module').then( m => m.ValidacionIdnPageModule)
+  },
 
 
 
