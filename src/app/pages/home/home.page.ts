@@ -67,7 +67,7 @@ export class HomePage implements OnInit {
   iniciarSwiper() {
     const miSwiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
-      spaceBetween: 0,
+      spaceBetween: 10,
       loop: false,
       pagination: {
         el: '.swiper-pagination',

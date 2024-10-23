@@ -1,160 +1,62 @@
-ion-content {
-  --background: #FFFFFF;
-  --padding-start: 0;
-  --padding-end: 0;
-  --padding-top: 0;
-  --padding-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+ion-content{
+  padding-inline: 22px;
+
+  --overflow: hidden;
+
+}
+.cont-hom{
+  padding-inline: 22px;
 }
 
-.wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .animation {}
-
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .pers {
-      display: flex;
-
-      .name {
-        margin-left: 20px;
-      }
-
-      h1 {
-        margin: 0px;
-        color: #212121;
-        font-family: Poppins;
-        font-size: 25px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 20px;
-        /* 100% */
-        padding-block: 10px;
-      }
-
-      h3 {
-        margin: 0px;
-        color: #646464;
-        font-family: Poppins;
-        font-size: 17px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 20px;
-        /* 117.647% */
-      }
-
-    }
-
-    .btn-mn {
-      background-color: #ffffff;
-      box-shadow: 0px 4px 4px 0px rgba(33, 33, 33, 0.10);
-      border-radius: 20%;
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-    }
-  }
-
-  .card-container {
-    background-color: #ffffff;
-    color: #79FFAF;
-    height: 95%;
-    width: 100%;
-    padding: 20px;
-
-    // box-shadow: 0px -6px 15px rgba(0, 0, 0, 0.3); /* Sombra más notoria */
-    .card {
-      border: 0px;
-
-      .cardba-content {
-        h3 {
-          font-size: 40px;
-          font-family: 'Poppins SemiBold';
-          margin: 0px;
-        }
-
-        p {
-          font-size: 14px;
-          font-family: 'Poppins Medium';
-        }
-      }
-
-      .stepper-dots {
-        ul {
-          margin: 0px;
-          padding: 0px;
-          list-style-type: none;
-
-          li {
-            display: inline-block;
-            margin-right: 10px;
-
-            span {
-              display: block;
-              width: 8px;
-              height: 8px;
-              border-radius: 50%;
-              border: 1px solid #79FFAF;
-            }
-
-            span.active {
-              background-color: #79FFAF;
-            }
-          }
-        }
-      }
-
-      .card-buttons {
-        margin-top: 50px;
-
-        .card-button {
-          width: 100%;
-          display: inline-block;
-
-          button {
-            display: block;
-            text-align: center;
-            font-family: 'Poppins SemiBold';
-            font-size: 14px;
-            padding: 15px 40px;
-            border-radius: 25px;
-            border: 1px solid #79FFAF;
-          }
-
-          #startButton {
-            display: none;
-          }
-        }
-
-        .card-button.card-button-left {
-          button {
-            margin-right: auto;
-            background-color: #212121;
-            color: #79FFAF;
-          }
-        }
-
-        .card-button.card-button-right {
-          button {
-            margin-left: auto;
-            color: #212121;
-            background-color: #79FFAF;
-          }
-        }
-      }
-    }
-  }
+.btn-mn {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px 0px rgba(33, 33, 33, 0.10);
+  border-radius: 20%;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex; /* Usar flexbox */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  text-align: center; /* Asegura que el texto también esté centrado */
+}
+/* Estilos para el header */
+h1,h1,h3{
+  margin: 0px;
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
 }
 
+ion-toolbar {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+  margin-block: 20px;
+  padding-inline: 22px;
+  h1{
+    color: #212121;
+    /* Subtitle 2 */
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  h3{
+    color: #646464;
+    /* Body 3 */
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px; /* 166.667% */
+    letter-spacing: 0.15px;
+  }
+}
 
 
 .next-btn {
@@ -180,18 +82,7 @@ ion-content {
   cursor: pointer;
 }
 
-.title {
-  color: #212121;
 
-  font-family: Poppins;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 47px;
-  /* 130.556% */
-  letter-spacing: 0.09px;
-
-}
 
 .subtitle {
   color: rgba(33, 33, 33, 0.60);
@@ -255,7 +146,6 @@ ion-content {
 
 .tl-res {
   text-align: left;
-  padding-top: 20px;
   color: #212121;
   font-family: Poppins;
   font-size: 21px;
@@ -328,7 +218,19 @@ ion-content {
   font-size: 14px;
   /* Asegura que el tamaño de fuente sea adecuado */
 }
+.image-container {
+  position: relative;  /* Importante para posicionar los elementos flotantes */
+  width: 100%;         /* Ocupa todo el ancho disponible */
+  max-width: 500px;    /* Puedes ajustar este valor según necesites */
+  height: 150px;       /* Altura fija del contenedor */
+  overflow: hidden;    /* Asegura que nada salga del contenedor */
+}
 
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* La imagen cubre el contenedor sin distorsionarse */
+}
 .board img {
   margin-right: 10px;
 }
@@ -508,25 +410,11 @@ ion-modal {
   overflow: visible;
   /* Asegura que el contenido que sobresale sea visible */
   position: relative;
-  padding-right: 60px;
   /* Añade un padding extra a la derecha para evitar que el último slide esté pegado al borde */
 }
 
 .swiper-slide {
-  width: calc(80% - 40px);
-  /* Ajusta el ancho para las tarjetas */
-  margin: 0 20px;
-  /* Espacio entre las tarjetas */
-  height: auto;
 
-  overflow: visible;
-  /* Asegura que el contenido dentro de la tarjeta no se corte */
-  z-index: 1;
-  opacity: 1;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #C8C5CA;
 }
 
 .swiper-wrapper {
@@ -548,13 +436,7 @@ ion-modal {
 
 
 
-/* Para pantallas más pequeñas */
-@media (max-width: 768px) {
-  .swiper-slide {
-    width: calc(80% - 20px);
-    margin: 0 10px;
-  }
-}
+
 
 .header-flex {
   display: flex;
@@ -854,4 +736,9 @@ ion-modal {
 
 .contenido-card {
   padding: 10px;
+}
+ion-card {
+  flex: 0 0 auto; /* Evita que las tarjetas se expandan verticalmente */
+  border: 1px solid #CAC4D0;
+  margin: 0px;
 }
