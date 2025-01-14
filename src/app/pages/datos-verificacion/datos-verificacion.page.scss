@@ -18,18 +18,33 @@ ion-content{
         padding: 10%;
         .login{
             h1{
+                color: #212121;
                 margin-top: 50px;
-                font-size: 30px;
-                font-family: 'Poppins medium';
-                margin-bottom: 20px;
+                /* Title Screens 2 */
                 font-family: Poppins;
-                font-size: 31px;
-                width: 200px;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 50px; /* 142.857% */
             }
             h2{
+                color: var(--system-surface-primary, #212121);
+
+                /* Body 1 */
                 font-family: Poppins;
-                font-size: 16px;
-                font-weight: 0;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 30px; /* 166.667% */
+                letter-spacing: 0.18px;
+            }
+            a{
+                color: var(--system-surface-primary, #212121);
+                font-family: Poppins;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 30px;
             }
             .code-inputs {
                 display: flex;
