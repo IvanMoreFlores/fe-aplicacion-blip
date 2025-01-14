@@ -19,7 +19,47 @@ export class DatosNumeroPage implements OnInit {
   doc: string = '';
   nro: string = '';
   phone: string = '';
+// Función principal para formatear el número de teléfono
+formatPhoneNumber() {
+  // Remover todo lo que no sea un número
+  let phone = this.phone.replace(/\D/g, '');
+  
+  // Limitar a 9 dígitos
+  if (phone.length > 9) {
+    phone = phone.slice(0, 9);
+  }
 
+  // Aplicar el formato 999 999 999
+  phone = this.applyPhoneFormat(phone);
+  
+  // Asignar el número formateado
+  this.phone = phone;
+}
+// Función para aplicar el formato de 3 dígitos
+  applyPhoneFormat(phone: string): string {
+    if (phone.length > 6) {
+      return phone.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+    } else if (phone.length > 3) {
+      return phone.replace(/(\d{3})(\d{3})/, '$1 $2');
+    }
+    return phone;
+  }
+
+  // Prevent typing anything that is not a number (Keydown)
+  onKeyDown(event: KeyboardEvent) {
+    // Solo permitir números y teclas de borrado
+    if (!/[\d]/.test(event.key) && event.key !== 'Backspace' && event.key !== 'Delete' && event.key !== 'Tab') {
+      event.preventDefault();
+    }
+  }
+
+  // Para cuando el usuario pega texto (Clipboard/Paste event)
+  onPaste(event: ClipboardEvent) {
+    const pastedText = event.clipboardData?.getData('text');
+    if (pastedText && !/^\d+$/.test(pastedText)) {
+      event.preventDefault(); // Impedir pegar texto no numérico
+    }
+  }
   constructor(
     private router: Router,
     private route: ActivatedRoute,

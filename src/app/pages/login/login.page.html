@@ -1,54 +1,32 @@
-<ion-content [fullscreen]="true">
-  <div class="wrapper">
-    <div class="login">
-      <h3>Ingresa tu número de teléfono para continuar</h3>
-      <div class="phone-selection">
-        <div class="prub">
-          <div class="country-select">
-            <img class="flag" src="/assets/images/login/peru.png" alt="">
-          </div>
-          <div class="phone-input">
-            <div class="phone-prefix">+51</div>
-            <input type="text"
-            [(ngModel)]="phone2"
-            placeholder=" 933 439 760"
-            class="masked"
-            pattern="[0-9]*"
-            maxlength="9">
-          </div>
-       </div>        
-      </div>
-      <div class="continue">
-        <button  class="btn-sig" (click)="send_otk()" >Continuar</button>
-      </div>
-    </div>
-    <div class="social-signin">
-      <!--<div class="google">
-        <a>
-          <img src="/assets/images/login/google.png" alt="">
-          <span>Ingresar con Google</span>
-        </a>
-      </div>-->
-      <!--<div class="facebook">
-        <a (click)="logFace()">
-          <img src="/assets/images/login/facebook.png" alt="">
-          <span>Ingresar con Facebook</span>
-        </a>
-      </div>-->
-
-      <div class="separator">
-        <img src="/assets/images/login/divider.png" alt="">
-      </div>
-      <div routerLink="/log-con" class="email">
-        <a>
-          <img src="/assets/images/login/email.png" alt="">
-          <span>Iniciar sesión con contraseña</span>
-        </a>
-      </div>
-    </div>
-    <div class="signup">
-      <p>¿No tienes una cuenta?, <a href="" routerLink="/terminos-y-condiciones">registrate aqui</a></p>
-    </div>
-
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Ingresa tu número para continuar</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+     <div class="phone-input">
+    <span class="country-code">+51</span>
+    <ion-input  
+     [(ngModel)]="phone2" 
+     mode="ios" 
+     type="tel" 
+     placeholder="Número de teléfono" 
+     class="input"
+     pattern="[0-9]*"
+     ></ion-input>
+  </div>
+  <ion-button mode="md" style="text-transform: none;" class="primary-button" (click)="send_otk()" >Continuar</ion-button>
+  <div style="width: 100%;" class="divider">
+    <img style="width: 100%;" src="/assets/images/login/divider.png" alt="">
+  </div>
+  <ion-button routerLink="/ing-cor"  mode="md" expand="block" fill="outline"style="text-transform: none;" class="secondary-button">
+    <img  style="padding-right:10px ;" slot="start" src="/assets/images/login/email.png" alt="">
+    Iniciar sesión con contraseña
+  </ion-button>
+  <p class="footer-text">
+    ¿No tienes una cuenta aún? <a href="#" routerLink="/terminos-y-condiciones" class="register-link">Regístrate</a>
+  </p>
   </div>
 </ion-content>
+

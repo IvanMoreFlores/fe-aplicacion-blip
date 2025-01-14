@@ -1,5 +1,4 @@
 ion-content{
-    --background: #FFFFFF;
     --padding-start: 0;
     --padding-end: 0;
     --padding-top: 0;
@@ -7,7 +6,7 @@ ion-content{
     display: flex;
     flex-direction: column;
     height: 100%;
-    .container {
+    .container{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -17,7 +16,7 @@ ion-content{
             margin-top: 50px;
             width: 100%;
             font-size: 30px;
-            font-family: 'Poppins medium';
+            font-family: Poppins;
             margin-bottom: 20px;
         }
         p{
@@ -86,8 +85,9 @@ ion-content{
             padding-top: 15px;
             padding-bottom: 15px;
             border-radius: 30px;
-            width: 40%;
             font-size: 15px;
+            width: 40%;
+
             font-weight: 600;
             background-color: #79FFAF;
             font-family: "Poppins", sans-serif;
@@ -95,5 +95,58 @@ ion-content{
 
 
 
+    }
+}
+.footer-btn {
+    position: fixed; /* Fija el footer */
+    bottom: 0; /* Empieza desde abajo */
+    width: 100%; /* Ancho completo */
+    z-index: 10; /* Asegura que esté por encima del contenido */
+    background: white; /* Fondo blanco, o lo que prefieras */
+  }
+  
+.bnt-dow{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 10%;
+    padding-inline: 10%;
+    .bac{
+        border: 1px solid #212121;
+        background-color: #FFFFFF;
+        padding-inline: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 30px;
+        width: 40%;
+        font-size: 15px;
+        font-weight: 600;
+        color: #212121;
+        font-family: "Poppins", sans-serif;
+    }
+    .nex{
+        border-radius: 30px;
+        border: 1px solid #C8C5CA;
+        background-color: #FFFFFF;
+        padding-inline: 10px;
+        color: #C8C5CA;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 15px;
+        width: 40%;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+    }
+
+    .all-inputs-filled {
+        background-color: #79FFAF; /* Cambia el color del botón cuando todos los campos están llenos */
+        color: #212121;
+        border: #79FFAF;
+    }
+    .all-inputs-filled {
+        background-color: #212121; /* Cambia el color del botón cuando todos los campos están llenos */
+        color: #FFFFFF;
+        font-size: 15px;
+        border: #212121;
     }
 }

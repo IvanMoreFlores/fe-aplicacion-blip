@@ -1,0 +1,10 @@
+<svg width="100" height="101" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M50 100.633C77.6142 100.633 100 78.247 100 50.6328C100 23.0186 77.6142 0.632812 50 0.632812C22.3858 0.632812 0 23.0186 0 50.6328C0 78.247 22.3858 100.633 50 100.633ZM50 92.2995C73.0119 92.2995 91.6667 73.6447 91.6667 50.6328C91.6667 27.6209 73.0119 8.96615 50 8.96615C26.9881 8.96615 8.33333 27.6209 8.33333 50.6328C8.33333 73.6447 26.9881 92.2995 50 92.2995Z" fill="url(#paint0_angular_17715_38817)"/>
+<defs>
+<radialGradient id="paint0_angular_17715_38817" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(50 50.6328) scale(50)">
+<stop stop-color="white"/>
+<stop offset="0.0001" stop-color="#212121" stop-opacity="0.65"/>
+<stop offset="1" stop-color="#212121"/>
+</radialGradient>
+</defs>
+</svg>

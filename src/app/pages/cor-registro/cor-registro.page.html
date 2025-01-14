@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    
+    <!-- Contenido principal -->
+    <div class="main-content">
+      <h1>Ingresa tu correo
+        electrónico</h1>
+      <!-- Campo de entrada -->
+      <div class="input-bar">
+        <input type="text" placeholder="name@example.com" [(ngModel)]="email4" (ngModelChange)="onEmailChange()">
+      </div> 
+    </div>
+
+
+
+  </div>
+</ion-content>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <button class="bac" routerLink="/datos-registro">Atrás</button>
+    <button
+    [disabled]="!isEmailValid" (click)="goToDisplayPage()" [ngClass]="{ 'all-inputs-filled': isEmailValid, 'not-all-inputs-filled': !isEmailValid }"
+      class="nex"
+    >
+      Siguiente
+    </button>
+  </div>
+</ion-footer>

@@ -1,92 +1,106 @@
+ion-header{
+  margin: 0px;
+  ion-toolbar{
+      padding-inline: 32px;
+      --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+      background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+  }
+  h2{
+      margin: 0px;
+      margin-top: 20%;
+      margin-bottom: 30px;
+      color: #212121;
 
-.centered-grid {
-  padding: 40px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      /* Title Screens 2 */
+      font-family: Poppins;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 50px; /* 142.857% */
+      width: 100%;
+
   }
   
-  .checkmark-container {
-    display: flex;
-    justify-content: center; /* Asegura que el check esté en el centro horizontal */
-    align-items: center; /* Centra el contenido verticalmente */
-    margin-bottom: 20px;
+}
+ion-footer{
+  margin: 0px;
+  margin-block: 40px;
+  ion-toolbar{
+      padding-inline: 32px;
+      --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+      background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
   }
+}
+.footer-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+/* Estilos para el header */
+h1,h1,h3{
+  margin: 0px;
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+ion-header {
+  --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+}
+ion-content{
+  padding-inline: 22px;
+
+  --overflow: hidden;
+
+
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.icon {
+  font-size: 140px;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #212121;
+  text-align: center;
   
-  .checkmark {
-    width: 100px;
-    height: 100px;
-    background-color: #000;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: scale(0);
-    animation: popIn 0.6s ease forwards;
-  }
-  
-  .checkmark::before {
-    content: '✓';
-    font-size: 60px;
-    color: white;
-  }
-  .ti{
-    color: #212121;
-text-align: center;
-font-family: Poppins;
-font-size: 40px;
-font-style: normal;
-font-weight: 500;
-line-height: 50px; /* 125% */
-margin-block: 25px;
-  }
-  .sub{
-    color: #212121;
-text-align: center;
-font-family: Poppins;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 20px; /* 111.111% */
-letter-spacing: 0.25px;
-  }
-  .par{
-    color: #5F5D5D;
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 300;
-line-height: 20px;
-letter-spacing: 0.25px;
-padding-top: 30px;
-width: 95%;
-padding-block: 25px;
-margin: 0px auto;
-  }
-  @keyframes popIn {
-    0% {
-      opacity: 0;
-      transform: scale(0);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  button {
-    margin-top: 20px;
-    border-radius: 30px;
-    border: 1px solid #212121;
-    font-family: "Poppins", sans-serif;
-    width: 100%;
-    padding-top: 20px;
-    background-color: #ffffff;
-    color: #212121;
-    padding-bottom: 20px;
-    font-weight: 600;
-    font-size: normal;
-  }
-  
+  /* Title Screens 2 */
+  font-family: Poppins;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 50px; /* 142.857% */
+}
+
+p {
+  margin-block: 40px;
+  color: #141414;
+  text-align: center;
+  padding-inline: 30px;
+  /* Body 3 */
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 166.667% */
+  letter-spacing: 0.15px;
+}
+
+.btn-atr {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  padding: 20px 20px;
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+  display: inline-block;
+}

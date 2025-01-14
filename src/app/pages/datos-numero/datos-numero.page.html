@@ -1,26 +1,30 @@
-<ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <div class="centro">
-            <h1 class="title">Ingresa tu número de teléfono</h1>
-          </div>
-          <p class="description">Verificaremos tu número de teléfono luego.</p>
-          <div class="input-bar">
-            <p class="label-text">Número de Teléfono</p>
-            <div class="phone-prefix">+51</div>
-            <input type="number" [(ngModel)]="phone" placeholder="">
-          </div>
-
-        </div>
-      </div>
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Ingresa tu número de teléfono</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    <div class="phone-input">
+      <span class="country-code">+51</span>
+      <ion-input
+      mode="ios"
+      type="text"
+      placeholder="Ingrese su número"
+      [(ngModel)]="phone"
+      (ionInput)="formatPhoneNumber()"
+      (keydown)="onKeyDown($event)"
+      (paste)="onPaste($event)"
+      class="input"
+      pattern="[0-9]*" 
+      maxlength="9"    
+    ></ion-input>
     </div>
-    <footer class="footer-btn">
-      <div class="bnt-dow">
-        <button (click)="return()" class="more-info-btn">Atrás</button>
-        <button (click)="setPhone()" class="next-btn">Siguiente</button>
-      </div> 
-    </footer>
   </div>
 </ion-content>
+<ion-footer class="footer-btn">
+  <div class="bnt-dow">
+    <button (click)="return()"  class="bac">Atrás</button>
+    <button class="nex" (click)="setPhone()">Siguiente</button>
+  </div> 
+</ion-footer>

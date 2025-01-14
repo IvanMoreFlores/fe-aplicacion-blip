@@ -375,6 +375,30 @@ const routes: Routes = [
     path: 'validacion-idn',
     loadChildren: () => import('./pages/validacion-idn/validacion-idn.module').then( m => m.ValidacionIdnPageModule)
   },
+  {
+    path: 'cor-controlv',
+    loadChildren: () => import('./pages/cor-controlv/cor-controlv.module').then( m => m.CorControlvPageModule)
+  },
+  {
+    path: 'loader-olvcon',
+    loadChildren: () => import('./pages/loader-olvcon/loader-olvcon.module').then( m => m.LoaderOlvconPageModule)
+  },
+  {
+    path: 'succes-cor',
+    loadChildren: () => import('./pages/succes-cor/succes-cor.module').then( m => m.SuccesCorPageModule)
+  },
+  {
+    path: 'contra-cor',
+    loadChildren: () => import('./pages/contra-cor/contra-cor.module').then( m => m.ContraCorPageModule)
+  },
+  {
+    path: 'succes-restcon',
+    loadChildren: () => import('./pages/succes-restcon/succes-restcon.module').then( m => m.SuccesRestconPageModule)
+  },
+  {
+    path: 'cor-registro',
+    loadChildren: () => import('./pages/cor-registro/cor-registro.module').then( m => m.CorRegistroPageModule)
+  },
 
 
 

@@ -1,0 +1,29 @@
+.content-container {
+  height: 100vh; /* Asegura que el ion-content ocupe toda la pantalla */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center; /* Centrado horizontal del spinner */
+  align-items: center; /* Centrado vertical del spinner */
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 100%; /* Ocupa toda la altura del contenedor */
+}
+
+img {
+    animation: rotate 1s linear infinite; /* Aplica la animación infinita */  
+    height: 70px; 
+}
+
+@keyframes rotate  {
+  from {
+    transform: rotate(0deg); /* Inicio de la rotación */
+  }
+  to {
+    transform: rotate(360deg); /* Rotación completa */
+  }
+}

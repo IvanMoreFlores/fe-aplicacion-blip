@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
   
   <div class="wrapper">
     <div class="login">
@@ -29,15 +29,44 @@
       position="top"
       mode="md"
       ></ion-toast>
-      <button class="ini-con" routerLink="/log-con" (click)="verifyOTP()">iniciar sesión con contraseña 
-      </button>
-      <h1 class="LA" routerLink="/ing-cor">He cambiado mi número de teléfono</h1>
+      <button class="ini-con" id="modal-opc-inicio" >más opciones de inicio</button>
+      <ion-modal trigger="modal-opc-inicio" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+        <ng-template>
+          <div class="PART">
+            <h1 class="mad">Más opciones</h1>
+            <div class="line"></div>
+            <div class="button-container">
+              <button (click)="dismissModal()"  routerLink="/log-con" (click)="verifyOTP()" class="custom-button password-button">
+                <img src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
+                iniciar sesión con contraseña
+              </button>
+              <button (click)="dismissModal()" class="custom-button google-button" routerLink="/ing-cor">
+                <img src="/assets/images/login/email.png" alt="Contraseña" class="button-icon">
+                Ingresar con correo
+              </button>
+              <button (click)="dismissModal()" class="custom-button cancel-button">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ion-modal>
+      <!-- <button class="ini-con" routerLink="/log-con" (click)="verifyOTP()">iniciar sesión con contraseña 
+      </button> -->
+      <h1 class="LA" routerLink="/log-con">He cambiado mi número de teléfono</h1>
     </div>
-    <footer class="footer-btn">
-      <div class="bnt-dow">
-        <button class="bac" routerLink="/login">Atrás</button>
-        <button [disabled]="!inputsFilled" [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" (click)="verifyOTP()" class="nex" >Siguiente</button>
-      </div> 
-    </footer>
   </div>
 </ion-content>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <button class="bac" routerLink="/login">Atrás</button>
+    <button
+      [disabled]="!inputsFilled"
+      [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}"
+      (click)="verifyOTP()"
+      class="nex"
+    >
+      Siguiente
+    </button>
+  </div>
+</ion-footer>

@@ -1,110 +1,184 @@
-ion-content {
-    --padding-start: 0;
-    --padding-end: 0;
-    --padding-top: 0;
-    --padding-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+ion-header{
+  margin: 0px;
+  ion-toolbar{
+      padding-inline: 32px;
+      --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+      background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
   }
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 50px;
-    background-color: #FFFFFF;
-    }
-  
-.centro {
-    display: flex;
-    align-items: center;
-}
-  
-.title {
-    margin-top: 50px;
-    font-size: 30px;
-    line-height: 42px;
-    font-family: "Poppins", sans-serif;
-}
-  
-.description {
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    margin-block: 20px;
-}
-  
-.label-text {
-    font-size: 12px;
-    position: absolute;
-    top: -10px;
-    background-color: #FFFFFF;
-    padding: 0 10px;
-    left: 15px;
-    font-family: "Poppins", sans-serif;
-    color: #212121;
-}
-  
-.input-bar {
-    position: relative;
-    padding: 15px 20px;
-    display: flex;
-    border: 1px solid #212121;
-    height: 56px;
-    border-radius: 30px;
-    justify-content: center;
-    align-items: center;
-    margin-block: 40px;
-    color: #212121;
-  
-    .phone-prefix {
-      padding: 0px 10px 0px 0px;
-      font-size: 16px;
-      font-family: "Poppins", sans-serif;
+  h2{
+      margin: 0px;
+      margin-top: 20%;
+      margin-bottom: 30px;
       color: #212121;
+
+      /* Title Screens 2 */
+      font-family: Poppins;
+      font-size: 35px;
+      font-style: normal;
       font-weight: 500;
-    }
+      line-height: 50px; /* 142.857% */
+      width: 100%;
+
+  }
   
-    input[type="number"] {
-      flex: 1;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      font-size: 16px;
-      font-family: "Poppins", sans-serif;
-    }
 }
-  
-.more-info-btn {
-    border-radius: 30px;
-    border: 1px solid black;
-    background-color: #FFFFFF;
-    padding-inline: 10px;
-    color: #212121;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 40%;
-    font-size: 15px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
+ion-footer{
+  margin: 0px;
+  margin-block: 10px;
+  ion-toolbar{
+      padding-inline: 32px;
+      --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+      background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+      .btn-atr{
+          border: 1px solid #212121;
+          border-radius: 20px;
+          padding-inline: 10px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          border-radius: 30px;
+          width: 100%;
+          background-color: #FFFFFF;
+          font-family: "Poppins", sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+      }
+      .btn-sig{
+          border: 1px solid #212121;
+          border-radius: 30px;
+          padding-inline: 10px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          color: #FFFFFF;
+          width: 100%;
+          background-color: #212121;
+          font-family: "Poppins", sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: not-allowed;
+        }
+
+
+
   }
-  
-  .next-btn {
-    border: 1px solid #79FFAF;
-    background-color: #79FFAF;
-    padding-inline: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-radius: 30px;
-    font-size: 15px;
-    width: 40%;
-    font-weight: 600;
-    color: #212121;
-    font-family: "Poppins", sans-serif;
+}
+.keyboard-open {
+  margin-bottom: 77%; /* Ajusta este valor según sea necesario */
+}
+.footer-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+/* Estilos para el header */
+h1,h1,h3{
+  margin: 0px;
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+ion-header {
+  --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+}
+ion-content{
+  padding-inline: 22px;
+
+  --overflow: hidden;
+
+
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 32px;
+  h1{
+      color: #141414;
+
+      /* Body 1 */
+      font-family: Poppins;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 30px; /* 166.667% */
+      letter-spacing: 0.18px;
+      margin-bottom: 30px;
   }
-  .bnt-dow{
-    padding-bottom: 20px;
+}
+
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #1f1f1f;
+  border-radius: 30px;
+  padding:5px 15px;
+  margin-bottom: 0px; // Reducir el margen inferior
+  .country-code {
+      color: #212121;
+      font-family: Poppins;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    margin-right: 10px;
+  }
+
+  .input {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-  } 
+    font-size: 1rem;
+  }
+}
+.footer-btn {
+  position: fixed; /* Fija el footer */
+  bottom: 0; /* Empieza desde abajo */
+  width: 100%; /* Ancho completo */
+  z-index: 10; /* Asegura que esté por encima del contenido */
+  background: white; /* Fondo blanco, o lo que prefieras */
+}
+
+.bnt-dow{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-block: 10%;
+  padding-inline: 10%;
+  .bac{
+      border: 1px solid #212121;
+      background-color: #FFFFFF;
+      padding-inline: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-radius: 30px;
+      width: 40%;
+      font-size: 15px;
+      font-weight: 600;
+      color: #212121;
+      font-family: "Poppins", sans-serif;
+  }
+  .nex{
+      border-radius: 30px;
+      border: 1px solid #212121;
+      background-color: #212121;
+      padding-inline: 10px;
+      color: #ffffff;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 15px;
+      width: 40%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+  }
+
+  .all-inputs-filled {
+      background-color: #79FFAF; /* Cambia el color del botón cuando todos los campos están llenos */
+      color: #212121;
+      border: #79FFAF;
+  }
+  .all-inputs-filled {
+      background-color: #212121; /* Cambia el color del botón cuando todos los campos están llenos */
+      color: #FFFFFF;
+      font-size: 15px;
+      border: #212121;
+  }
+}

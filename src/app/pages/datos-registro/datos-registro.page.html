@@ -1,43 +1,33 @@
-<ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <div class="centro">
-            <h1 class="title">Hola, ingresa tus datos de registro</h1>
-          </div>  
-          <div class="input-bar">
-            <p class="label-text">Nombre Completo</p>
-            <input type="text" [(ngModel)]="nombre" placeholder="Ingresa tu nombre">
-          </div> 
-
-          <div class="input-bar">
-            <p class="label-text">Apellidos</p>
-            <input type="text" [(ngModel)]="apellido" placeholder="Ingresa tu apellido">
-          </div>
-          <div class="input-bar-f">
-            <img class="calendar" src="/assets/images/fi-calendar.png" alt="">
-            <p class="label-text">Fecha de Nacimiento</p>
-            <input type="date" [(ngModel)]="fecha_nac" placeholder="Selecciona tu fecha de nacimiento">
-          </div>
-
-          <div class="input-bar-g">
-            <p class="label-text">Género</p>
-            <select [(ngModel)]="genero">
-              <option value="2">Femenino</option>
-              <option value="1">Masculino</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Ingresa tus datos de registro</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+        <div class="phone-input">
+          <ion-input [(ngModel)]="nombre" mode="ios" type="text" placeholder="Nombre(s)"  class="input"></ion-input>
+        </div>
+        <div class="phone-input">
+          <ion-input [(ngModel)]="apellido" mode="ios" type="text" placeholder="Apellido(s)"  class="input"></ion-input>
+        </div>
+        <div class="phone-input">
+          <label class="label-text" for="birthdate">Genero</label>
+          <ion-select [(ngModel)]="genero" mode="md" interface="popover" value="Masculino" label-placement="floating" >
+            <ion-select-option value="Masculino">Masculino</ion-select-option>
+            <ion-select-option value="Femenino">Femenino</ion-select-option>
+            <ion-select-option value="Otros">Otros</ion-select-option>
+          </ion-select>
+        </div>
+        <div class="phone-input">
+          <label class="label-text" >Fecha de Nacimiento</label>
+          <ion-input mode="ios" [(ngModel)]="fecha_nac" type="date"  placeholder="DD/MM/AAAA" class="input"></ion-input>
         </div>
       </div>
-    </div>
-    <footer class="footer-btn">
-      <div class="bnt-dow">
-        <button routerLink="/terminos-y-condiciones" class="more-info-btn">Atrás</button>
-        <button class="next-btn" (click)="getData()">Siguiente</button>
-      </div> 
-    </footer>
-  </div>
-  
 </ion-content>
+<ion-footer class="footer-btn">
+  <div class="bnt-dow">
+    <button routerLink="/terminos-y-condiciones" class="bac">Atrás</button>
+    <button class="nex" (click)="getData()">Siguiente</button>
+  </div> 
+</ion-footer>

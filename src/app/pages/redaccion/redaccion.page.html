@@ -1,10 +1,10 @@
-<ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <h1 class="title">Términos y Condiciones para la comunidad</h1>
-          <div class="scrollbar">
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Revisa nuestros Términos y Condiciones antes de unirte a nuestra comunidad</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
             <div class="description">
               <h4 class="tamano">1. Aceptación de los Términos </h4>
               Bienvenido a Blip. El uso de nuestra aplicación móvil y plataforma web (en adelante, "la aplicación") está
@@ -110,9 +110,16 @@
               Número de teléfono de contacto: +51 933 391 372
             </div>
           </div>
-          <button routerLink="/terminos-y-condiciones" class="next-btn">Atrás</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <button routerLink="/terminos-y-condiciones" id="atr-salir" class="btn-atr">Atrás</button>
+        </ion-col>
+        <ion-col >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-toolbar>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
   selector: 'app-datos-ingresar',
@@ -23,8 +23,37 @@ export class DatosIngresarPage implements OnInit {
 
   ngOnInit() {
     this.setData();
+    this.initializeKeyboardListeners();
+  }
+  initializeKeyboardListeners() {
+    const content = document.querySelector('ion-content') as HTMLElement;
+    const footer = document.querySelector('.footer-btn') as HTMLElement;
+
+    Keyboard.addListener('keyboardWillShow', (info) => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      if (footer) {
+        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
+      }
+    });
+    
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      const content = document.querySelector('ion-content') as HTMLElement;
+    
+      if (footer) {
+        footer.style.bottom = '0px'; // Restaura el footer
+      }
+      if (content) {
+        content.style.paddingBottom = '0px'; // Restaura el padding
+      }
+    });
+    
   }
 
+  ngOnDestroy() {
+    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
+  }
   setData() {
     this.route.queryParams.subscribe(params => {
       this.nombre = params['nombre'];

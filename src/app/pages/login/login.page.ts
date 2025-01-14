@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { SmsService } from '../../services/sms.service';
 import { StorageService } from '../../services/storage.service';
 import { JwtService } from '../../services/jwt.service';
-
+import { Keyboard } from '@capacitor/keyboard';
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -20,10 +21,38 @@ export class LoginPage implements OnInit {
     private sms: SmsService,
   ) {
   }
+  initializeKeyboardListeners() {
+    const content = document.querySelector('ion-content') as HTMLElement;
+    const footer = document.querySelector('.footer-btn') as HTMLElement;
 
+    Keyboard.addListener('keyboardWillShow', (info) => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      if (footer) {
+        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
+      }
+    });
+    
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      const content = document.querySelector('ion-content') as HTMLElement;
+    
+      if (footer) {
+        footer.style.bottom = '0px'; // Restaura el footer
+      }
+      if (content) {
+        content.style.paddingBottom = '0px'; // Restaura el padding
+      }
+    });
+    
+  }
   ngOnInit() {
     console.log('dentro de log-phone');
     this.init_value();
+    this.initializeKeyboardListeners();
+  }
+  ngOnDestroy() {
+    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
   }
 
   async init_value() {
