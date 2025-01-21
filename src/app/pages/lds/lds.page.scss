@@ -1,30 +1,19 @@
 ion-content{
   --background:#E8FFEC;
-  --padding-start: 0;
-  --padding-end: 0;
-  --padding-top: 0;
-  --padding-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 
 .wrapper {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
+  overflow: hidden;
   .animation {
     position: relative;
-    height: 50%;
     background-repeat: repeat-x;
     width: 100%;
     animation: scroll 4s linear infinite;
 
     .overlay-x {
       position: absolute;
-      top: 12%;
+      top: 20%;
       right: 0%;
       transform: translate(-50%, -50%);
       z-index: 1; /* Asegura que esté por encima de la imagen */
@@ -54,15 +43,14 @@ ion-content{
   .card-container {
     background-color: #ffffff;
     color: #79FFAF;
-    height: 60%;
-    padding: 40px;
-    border-top-left-radius: 20px; /* Esquina superior izquierda */
-    border-top-right-radius: 20px; /* Esquina superior derecha */
+    height: 100%;
+    padding-inline: 10%;
+    padding-block: 5%;
     box-shadow: 0px -6px 15px  rgba(33, 33, 33, 0.15);
     // box-shadow: 0px -6px 15px rgba(0, 0, 0, 0.3); /* Sombra más notoria */
     .card {
       border: 0px;
-
+      margin-bottom: 10%;
       .card-content {
         h3 {
           font-size: 40px;
@@ -102,11 +90,15 @@ ion-content{
       }
 
       .card-buttons {
-        margin-top: 50px;
+        padding-block: 5%;
+        position: fixed; /* Fija la posición */
+        bottom: 0; /* Posiciónalo en la parte inferior */
+        left: 0;
+        width: 100%;
+        padding-inline:10%;
 
         .card-button {
           width: 50%;
-          display: inline-block;
 
           button {
             display: block;
@@ -163,7 +155,7 @@ ion-content{
 }
 
 .swiper-text {
-  margin-top: 50px; /* Agrega margen superior al slider */
+padding-block: 10%;
 }
 
 .swiper-pagination-bullet-active {
@@ -209,30 +201,39 @@ letter-spacing: 0.09px;
 }
 .subtitle{
   color: #212121;
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 500;
-line-height: 22px; /* 146.667% */
-letter-spacing: 0.038px;
+
+  /* Subtitle 5 [Bolder] */
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: 0.16px;
+  margin: 0px;
 }
 .description{
-  color: #141414;
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 300;
-line-height: 22px; /* 157.143% */
-letter-spacing: 0.035px;
+  color: #212121;
+  margin: 0px;
+  /* Subtitle 5 */
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 156.25% */
+  letter-spacing: 0.16px;
 }
 .servicios{
   color: #212121;
-font-family: Poppins;
-font-size: 10px;
-font-style: normal;
-font-weight: 400;
-line-height: 19px; /* 190% */
-letter-spacing: 0.2px;
-text-decoration-line: underline;
-padding-right: 40px;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.15px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
 }
