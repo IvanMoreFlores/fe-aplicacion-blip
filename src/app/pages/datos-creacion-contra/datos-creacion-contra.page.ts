@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
 import { ApiService } from 'src/app/services/api.service';
+import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
   selector: 'app-datos-creacion-contra',
@@ -39,6 +40,7 @@ export class DatosCreacionContraPage implements OnInit {
 
   ngOnInit() {
     this.setData();
+    this.initializeKeyboardListeners();
   }
 
   setData() {
@@ -52,7 +54,34 @@ export class DatosCreacionContraPage implements OnInit {
       this.phone = params['phone'];
     });
   }
+  ngOnDestroy() {
+    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
+  }
+  initializeKeyboardListeners() {
+    const content = document.querySelector('ion-content') as HTMLElement;
+    const footer = document.querySelector('.footer-btn') as HTMLElement;
 
+    Keyboard.addListener('keyboardWillShow', (info) => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      if (footer) {
+        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
+      }
+    });
+    
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      const content = document.querySelector('ion-content') as HTMLElement;
+    
+      if (footer) {
+        footer.style.bottom = '0px'; // Restaura el footer
+      }
+      if (content) {
+        content.style.paddingBottom = '0px'; // Restaura el padding
+      }
+    });
+    
+  }
   togglePasswordVisibility() {
     if (this.passwordType === 'password') {
       this.passwordType = 'text';

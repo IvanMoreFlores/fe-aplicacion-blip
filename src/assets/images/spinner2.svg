@@ -1,0 +1,13 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="state=7">
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.3726 18.6274 1.52588e-05 12 1.52588e-05C5.37258 1.52588e-05 0 5.3726 0 12ZM2 12C2 17.5229 6.47715 22 12 22C17.5228 22 22 17.5229 22 12C22 6.47717 17.5228 2.00002 12 2.00002C6.47715 2.00002 2 6.47717 2 12Z" fill="url(#paint0_angular_13519_27235)"/>
+<path id="Ellipse 8 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M14.3994 22.7816C14.4701 23.3294 14.0833 23.8307 13.5356 23.9014C13.0264 23.9671 12.5135 24 12.0001 24C11.4478 24 11.0001 23.5523 11.0001 23C11.0001 22.4477 11.4478 22 12.0001 22C12.4279 22 12.8553 21.9726 13.2796 21.9178C13.8274 21.8471 14.3287 22.2339 14.3994 22.7816Z" fill="#212121"/>
+</g>
+<defs>
+<radialGradient id="paint0_angular_13519_27235" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 12) rotate(90) scale(12)">
+<stop stop-color="white"/>
+<stop offset="0.0001" stop-color="#212121" stop-opacity="0.65"/>
+<stop offset="1" stop-color="#212121"/>
+</radialGradient>
+</defs>
+</svg>

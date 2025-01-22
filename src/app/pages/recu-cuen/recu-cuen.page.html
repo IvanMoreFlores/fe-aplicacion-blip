@@ -1,9 +1,8 @@
-<ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">    
-          <div class="inicio">
+
+  <ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
+  
+    <div class="wrapper">
+      <div class="login">
             <h1>Bienvenida,
               de nuevo!</h1>
             <h3>Ingresa el código de 4 dígitos enviado a: <span class="d2a">{{ displayedText }}</span>  </h3>
@@ -35,22 +34,22 @@
             trigger="mas-opc"
             [initialBreakpoint]="1"
             [breakpoints]="[0, 1]"
-            mode="ios"
+            mode="md"
             >
             <ng-template>
               <div class="PART">
                 <h1 class="mad">Más opciones</h1>
                 <div class="line"></div>
                 <div class="button-container">
-                  <button class="custom-button password-button">
+                  <button (click)="dismissModal()"  routerLink="/log-con"  class="custom-button password-button">
                     <img src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
-                    Contraseña
+                    iniciar sesión con contraseña
                   </button>
-                  <button class="custom-button google-button">
-                    <img src="assets/images/GLE.svg" alt="Contraseña" class="button-icon">
-                    Google
+                  <button (click)="dismissModal()" class="custom-button google-button" routerLink="/ing-cor">
+                    <img src="/assets/images/login/email.png" alt="Contraseña" class="button-icon">
+                    Ingresar con correo
                   </button>
-                  <button class="custom-button cancel-button">
+                  <button (click)="dismissModal()" class="custom-button cancel-button">
                     Cancelar
                   </button>
                 </div>
@@ -59,13 +58,16 @@
           </ion-modal>
           </div>
         </div>
-      </div>
-    </div>
-    <footer class="footer-btn">
-      <div class="bnt-dow">
-        <button class="bac" routerLink="/ing-cor">Atrás</button>
-        <button  [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
-      </div>
-    </footer>
-  </div>
-</ion-content>
+      </ion-content>
+      <ion-footer class="footer-btn" mode="md">
+        <div class="bnt-dow">
+          <button class="bac" routerLink="/ing-cor">Atrás</button>
+          <button
+          [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" 
+            class="nex"
+          >
+            Siguiente
+          </button>
+        </div>
+      </ion-footer>
+

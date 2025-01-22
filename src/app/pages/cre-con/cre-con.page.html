@@ -1,15 +1,25 @@
-<ion-content class="ion-padding">
-  <ion-grid class="centered-grid">
-    <ion-row>
-      <ion-col size="12" class="ion-text-center">
-        <div class="checkmark-container">
-          <div class="checkmark"></div>
-        </div>
-        <h2 class="ti">¡Tu Cuenta está Lista!</h2>
-        <p class="sub">Gracias por registrarte en BLIP.</p>
-        <p class="par">Explora estacionamientos y reserva tus espacios favoritos.</p>
-        <button routerLink="/lds" expand="block" fill="outline">Iniciar Sesión</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-header mode="ios">
+  <ion-toolbar></ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content ion-padding">
+  <div class="container">
+    <ion-icon name="checkmark-circle" class="icon"></ion-icon>
+    <h1>¡Cuenta Lista!</h1>
+    <p>¡Gracias por registrate en blip! 
+      Explora estacionamientos y reserva 
+      tus espacios favoritos.</p>
+  </div>
 </ion-content>
+
+<ion-footer mode="ios">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button routerLink="/bienvenido-blip" class="btn-atr">Iniciar Sesión  <img slot="end" style="padding-left: 10px;" src="assets/images/flec-succes.svg" alt=""></button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

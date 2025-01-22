@@ -1,35 +1,29 @@
-<ion-content [fullscreen]="true">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <div class="centro">
-            <h1 class="title">Ingrese su documento de Identidad</h1>
-          </div>
-          
-          <div class="input-bar">
-            <p class="label-text">Tipo de Documento</p>
-            
-            <div class="custom-select">
-              <select [(ngModel)]="doc">
-                <option value="1">DNI</option>
-                <option value="2">Pasaporte</option>
-                <option value="3">Carnet de Extranjería</option>
-              </select>
-            </div>
-          </div>
-          <div class="input-bar">
-            <p class="label-text">Nro. de Documento</p>
-            <input type="text" [(ngModel)]="nro" placeholder="">
-          </div>
-        </div>
+
+<ion-header  mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Ingresa tu documento de identidad</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    
+
+      <div class="phone-input">
+        <label class="label-text" for="birthdate">Tipo de documento</label>
+        <ion-select [(ngModel)]="doc" mode="md" interface="popover" value="DNI" label-placement="floating" >
+          <ion-select-option value="DNI">DNI</ion-select-option>
+          <ion-select-option value="Pasaporte">Pasaporte</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="phone-input">
+        <ion-input mode="ios" [(ngModel)]="nro" type="text" placeholder="Nro. de documento"  class="input"></ion-input>
       </div>
     </div>
-    <footer class="footer-btn">
-      <div class="bnt-dow">
-        <button routerLink="/datos-registro" class="more-info-btn">Atrás</button>
-        <button  class="next-btn" (click)="setDNI()">Siguiente</button>
-      </div> 
-    </footer>
-  </div>
 </ion-content>
+<ion-footer class="footer-btn">
+  <div class="bnt-dow">
+    <button routerLink="/datos-registro" class="bac">Atrás</button>
+    <button class="nex" (click)="setDNI()">Siguiente</button>
+  </div> 
+</ion-footer>
+

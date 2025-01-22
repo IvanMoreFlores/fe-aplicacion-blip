@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
 import { ApiService } from 'src/app/services/api.service';
-
+import { ModalController } from '@ionic/angular';
+import { Keyboard } from '@capacitor/keyboard';
 @Component({
   selector: 'app-log-bin',
   templateUrl: './log-bin.page.html',
@@ -39,15 +40,42 @@ export class LogBinPage implements OnInit {
   ) { }
   ngOnInit() {
     this.setMail();
+    this.initializeKeyboardListeners();
   }
-
+  ngOnDestroy() {
+    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
+  }
  setMail() {
     this.route.queryParams.subscribe(params => {
       this.email = params['EMAIL2'];
       console.log(this.email);
     });
   }
+  initializeKeyboardListeners() {
+    const content = document.querySelector('ion-content') as HTMLElement;
+    const footer = document.querySelector('.footer-btn') as HTMLElement;
 
+    Keyboard.addListener('keyboardWillShow', (info) => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      if (footer) {
+        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
+      }
+    });
+    
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      const content = document.querySelector('ion-content') as HTMLElement;
+    
+      if (footer) {
+        footer.style.bottom = '0px'; // Restaura el footer
+      }
+      if (content) {
+        content.style.paddingBottom = '0px'; // Restaura el padding
+      }
+    });
+    
+  }
   async login() {
     const token = await this.jwtService.generateTokenLogEmail('CORREO', this.email, this.password, false);
 
