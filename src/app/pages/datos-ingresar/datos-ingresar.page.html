@@ -1,0 +1,32 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Ingresa tu documento de identidad</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Tipo de documento</label>
+      <ion-select mode="md" interface="popover" value="DNI" label-placement="floating" >
+        <ion-select-option value="DNI">DNI</ion-select-option>
+        <ion-select-option value="Pasaporte">Pasaporte</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <ion-input mode="ios" type="text" placeholder="Nro. de documento"  class="input"></ion-input>
+    </div>
+  </div>
+</ion-content>
+<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <button routerLink="/cor-electr" class="btn-atr">Atrás</button>
+        </ion-col>
+        <ion-col >
+          <button class="btn-sig" routerLink="/datos-numero">Siguiente</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>

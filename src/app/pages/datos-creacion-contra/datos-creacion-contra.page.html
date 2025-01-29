@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <div class="centro">
+            <h1 class="title">Establece tu Contraseña</h1>
+          </div>
+          <p class="description">Crea una contraseña segura y confírmala.</p>
+          <div class="input-bar">
+            <p class="label-text">Contraseña</p>
+            <ion-input [type]="passwordType"placeholder="Ingresa tu contraseña"   [(ngModel)]="password"></ion-input>
+            <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+          </div>
+
+          <div class="input-bar">
+            <p class="label-text">Confirmar Contraseña</p>
+            <ion-input [type]="passwordType2"placeholder="Confirma tu contraseña"  [(ngModel)]="password2"></ion-input> <!--2do  passwordType2 ,ngModal -->
+            <ion-icon [name]="passwordIcon2" slot="end" (click)="togglePasswordVisibility2()"></ion-icon>               <!--2do  passwordIcon2 ,togglePasswordVisibi -->
+          </div>
+          <!-- <div class="input-bar">
+            <p class="label-text">Confirmar Contraseña</p>
+            <input [type]="passwordType" placeholder="Confirma tu contraseña" [(ngModel)]="confirmPassword">
+            <img class="ins" src="/assets/images/fi-eye.png" alt="" *ngIf="passwordType === 'password'" (click)="togglePasswordVisibility()">
+            <img class="ins" src="/assets/images/fi-eye.png" alt="" *ngIf="passwordType === 'text'" (click)="togglePasswordVisibility()">
+          </div> -->
+
+          <button routerLink="/datos-verificacion" class="more-info-btn">Atrás</button>
+          <button routerLink="/walktrough1" class="next-btn">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

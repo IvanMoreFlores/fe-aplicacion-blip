@@ -1,0 +1,43 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Ingresa tus datos de registro</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    <div class="phone-input">
+      <ion-input mode="ios" type="text" placeholder="Nombre(s)"  class="input"></ion-input>
+    </div>
+    
+    <div class="phone-input">
+      <ion-input mode="ios" type="text" placeholder="Apellido(s)"  class="input"></ion-input>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Genero</label>
+      <ion-select mode="md" interface="popover" value="Masculino" label-placement="floating" >
+        <ion-select-option value="Masculino">Masculino</ion-select-option>
+        <ion-select-option value="Femenino">Femenino</ion-select-option>
+        <ion-select-option value="Otros">Otros</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" >Fecha de Nacimiento</label>
+      <ion-input mode="ios" type="date"  placeholder="DD/MM/AAAA" class="input"></ion-input>
+    </div>
+  </div>
+</ion-content>
+<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <button class="btn-atr" routerLink="/termino-y-condiciones">Atrás</button>
+        </ion-col>
+        <ion-col >
+          <button class="btn-sig" routerLink="/cor-electr">Siguiente</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+

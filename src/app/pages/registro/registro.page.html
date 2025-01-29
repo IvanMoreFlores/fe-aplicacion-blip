@@ -1,0 +1,82 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h1 slot="start">
+        Bienvenida, Camila
+    </h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div class="login">
+      <p>
+        Ingresa el código de 4 dígitos enviado al número +51 923 092 610.
+      </p>
+      <div class="code-inputs">
+        <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+      </div>
+      
+      <button id="open-toast"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+        {{ buttonText }}
+        <div class="TIME">
+          {{ minutes }}:{{ seconds | number: '2.0' }}
+        </div>
+      </button>
+      <ion-toast
+      trigger="open-toast"
+      [duration]="3000"
+      message="Código enviado satisfactoriamente."
+      class="custom-toast"
+      mode="md"
+      position="top"
+      ></ion-toast>
+      <button mode="md" class="ini-con" id="mas-opc2">más opciones de inicio
+      </button>
+      <h1 class="LA"  routerLink="/log-con">He cambiado mi número de teléfono</h1>
+
+    </div>
+  </div>
+</ion-content>
+<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <button class="bac" routerLink="/login">Atrás</button>
+        </ion-col>
+        <ion-col >
+          <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+<ion-modal
+trigger="mas-opc2"
+[initialBreakpoint]="1"
+[breakpoints]="[0, 1]"
+mode="md"
+>
+  <ng-template mode="md">
+    <div class="PART">
+      <h1 class="mad">Más opciones</h1>
+      <div class="line"></div>
+      <div class="button-container">
+        <button (click)="exit()" routerLink="/log-con" class="custom-button password-button">
+          <img src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
+          Ingresar con contraseña
+        </button>
+        <button (click)="exit()"  routerLink="/ing-cor" class="custom-button google-button">
+          <img src="/assets/images/cor-neg.svg" alt="Contraseña" class="button-icon">
+          Ingresar con correo
+        </button>
+        <button class="custom-button cancel-button">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

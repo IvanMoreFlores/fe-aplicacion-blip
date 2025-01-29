@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  .swiper {
+    border-radius: 15px;
+    width: 132px;
+    height: 128px;
+  }
+  
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: green !important;
+}

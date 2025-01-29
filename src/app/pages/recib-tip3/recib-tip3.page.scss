@@ -1,0 +1,164 @@
+ion-content {
+    --background: #ffffff;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+  
+  /* Fondo de agradecimiento */
+  .agradecimiento-container {
+    position: relative;
+    margin-bottom: 16px;
+    .fecha {
+        color: #212121;
+
+        /* Body 4 [Medium] */
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 25px; /* 178.571% */
+        letter-spacing: 0.14px;
+        margin: 0px;
+        width: 100%;
+        background-color:#79FFAF;
+        padding-left: 25px;
+        padding-top: 25px;
+      }
+    img {
+      width: 100%;
+    }
+  
+
+  }
+  
+  /* Total */
+/* Total */
+/* Total */
+.total-container {
+    display: flex; /* Para alinear en una línea horizontal */
+    justify-content: space-between; /* Espacio entre "Total" y el monto */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 16px;
+    padding-inline: 5px;
+  
+    .total-label {
+      font-size: 16px; /* Tamaño adecuado para el texto */
+      color: #000; /* Color negro para destacar */
+      font-weight: 500; /* Peso medio para el texto "Total" */
+      margin: 0;
+    }
+  
+    .total-value {
+      font-size: 16px; /* Igual tamaño que el texto "Total" */
+      color: #000; /* Color negro para el monto */
+      font-weight: bold; /* Negrita para el monto */
+      margin: 0;
+    }
+  }
+  
+  
+  
+  /* Detalles del recibo */
+  .detalles-recibo {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+
+    ion-row {
+      padding: 8px 0;
+  
+      strong {
+        font-weight: bold;
+        color: #000;
+      }
+    }
+  
+    .text-right {
+      text-align: right;
+    }
+  }
+  
+  /* Método de pago */
+  /* Método de Pago */
+/* Método de Pago */
+.metodo-pago {
+    margin-bottom: 16px;
+    padding-inline: 10px;
+  
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #000;
+    }
+  
+    .pago-info {
+      display: flex;
+      align-items: flex-start; /* Alineación superior */
+      justify-content: space-between;
+      gap: 12px; /* Espacio entre logo, texto y monto */
+      margin-top: 8px;
+  
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #25459A; /* Fondo azul para el logo de Visa */
+        border-radius: 4px;
+        padding: 4px 8px;
+        height: 24px;
+      }
+  
+      img {
+        height: 100%;
+      }
+  
+      .descripcion-fecha {
+        flex: 1; /* Ocupa el espacio restante */
+        display: flex;
+        flex-direction: column; /* Organiza la descripción y la fecha verticalmente */
+        justify-content: center;
+  
+        .descripcion-pago {
+          font-size: 14px;
+          margin: 0;
+          color: #212121;
+        }
+  
+        .fecha-pago {
+          font-size: 12px;
+          margin: 0;
+          color: #999;
+        }
+      }
+  
+      .monto-pago {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0;
+        color: #212121;
+        text-align: right;
+      }
+    }
+  }
+  
+  
+  /* Opciones de recibo */
+  ion-list {
+    ion-item {
+      --padding-start: 0;
+      --inner-padding-end: 0;
+  
+      ion-icon {
+        font-size: 20px;
+        color: #666;
+      }
+  
+      ion-label {
+        font-size: 14px;
+      }
+    }
+  }
+  

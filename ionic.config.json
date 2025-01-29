@@ -1,0 +1,7 @@
+{
+  "name": "Blip",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

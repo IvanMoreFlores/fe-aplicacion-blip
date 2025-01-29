@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">    <!--Parte blanca ini -->
+          <div class="inicio">
+            <div class="nav-arrow-btn">
+              <img src="/assets/images/reserva-tu-cochera/logo-x.svg" alt="" routerLink="/reserva-tu-cochera">
+            </div>
+            <h1 class="title">Método de pago</h1>   
+          </div>
+          <ion-content>
+            <div class="range-container">
+              
+              <ion-range aria-label="Custom range" min="0" max="24" step="1" [value]="12" [pin]="true"></ion-range>
+            </div>
+
+            <div class="time-range-container">
+              <div class="time-input-group">
+                <label for="inputDesde">Desde:</label>
+                <ion-datetime-button datetime="datetime1"></ion-datetime-button>
+  
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime
+                      id="datetime1"
+                      presentation="time"
+                      hourCycle="h12"
+                      value="2024-04-17T00:00"
+                    ></ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </div>
+  
+              <div class="time-input-group">
+                <label for="inputHasta">Hasta:</label>
+                <ion-datetime-button datetime="datetime2"></ion-datetime-button>
+  
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime
+                      id="datetime2"
+                      presentation="time"
+                      hourCycle="h12"
+                      value="2024-04-17T00:00"
+                    ></ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </div>
+            </div>
+          </ion-content>
+
+
+
+        </div>
+        
+      </div>
+    </div>
+
+  </div>

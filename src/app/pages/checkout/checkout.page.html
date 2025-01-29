@@ -1,0 +1,162 @@
+<ion-content>
+  <!-- Título y botón de cierre -->
+  <div class="header">
+    <ion-icon name="close-outline" class="close-button"></ion-icon>
+    <h2>Finaliza tu reserva</h2>
+  </div>
+  <div class="cont-as">
+  <!-- Selección de vehículo -->
+    <button id="open-vehicle-modal" class="vehicle-button" expand="block">
+      <div class="button-content">
+        <img src="/assets/images/car-black.svg" alt="Car Icon" class="icon-left">
+        <span class="button-text">Selecciona tu vehículo</span>
+        <img src="/assets/images/desple-as.svg" alt="Arrow Icon" class="icon-right">
+      </div>
+    </button>
+    <ion-modal trigger="open-vehicle-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+      <ng-template>
+        <div class="vehicle-modal">
+          <div class="modal-header">
+            <h3>Selecciona tu vehículo</h3>
+          </div>
+        
+          <div class="vehicle-list">
+            <!-- Vehículo -->
+            <div
+              class="vehicle-item"
+              [class.selected]="selectedVehicle === vehicle"
+              *ngFor="let vehicle of vehicles"
+              (click)="selectVehicle(vehicle)"
+            >
+              <div class="vehicle-info-wrapper">
+                <div class="vehicle-info">
+                  <div class="vehicle-icon">
+                    <ion-icon name="car-outline"></ion-icon>
+                  </div>
+                  <div class="vehicle-details">
+                    <p class="vehicle-name">{{ vehicle.name }}</p>
+                    <p class="vehicle-plate">{{ vehicle.plate }}</p>
+                  </div>
+                </div>
+                <div class="vehicle-actions">
+                  <input type="radio" name="vehicle" [checked]="selectedVehicle === vehicle" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </ng-template>
+    </ion-modal>
+
+    <div class="tipo-reserva">
+      <h3>Tipo de reservación</h3>
+      <div class="tipo-opciones">
+        <button
+          class="reserva-btn"
+          [class.activo]="tipoReserva === 'Por Hora'"
+          (click)="cambiarTipoReserva('Por Hora')"
+        >
+          Por Hora
+        </button>
+        <button
+          class="reserva-btn"
+          [class.activo]="tipoReserva === 'Por Día'"
+          (click)="cambiarTipoReserva('Por Día')"
+        >
+          Por Día
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenido dinámico según el tipo de reserva -->
+    <div *ngIf="tipoReserva === 'Por Hora'">
+      <!-- Tarifa por hora -->
+      <div class="tarifa">
+        <p>Tarifa x hora</p>
+        <h2>S/10.50</h2>
+      </div>
+      <ion-item lines="none">
+        <ion-label>Seleccionar Fecha</ion-label>
+        <div class="custom-datetime-container">
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        </div>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime" presentation="date"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+        
+        
+      </ion-item>
+      <!-- Disponibilidad de horarios -->
+      <div class="disponibilidad">
+        <h3>Disponibilidad</h3>
+        <div class="horarios">
+          <button class="horario-btn" disabled>9 AM - 10 AM</button>
+          <button class="horario-btn activo">10 AM - 11 AM</button>
+          <button class="horario-btn">11 AM - 12 PM</button>
+          <button class="horario-btn">12 PM - 1 PM</button>
+          <button class="horario-btn">1 PM - 2 PM</button>
+          <button class="horario-btn" disabled>2 PM - 3 PM</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tipoReserva === 'Por Día'">
+      <!-- Tarifa por día -->
+      <div class="tarifa">
+        <p>Tarifa x día</p>
+        <h2>S/15</h2>
+      </div>
+    
+      <!-- Fecha de inicio -->
+      <ion-item lines="none">
+        <ion-label>Fecha de Inicio</ion-label>
+        <div class="custom-datetime-container">
+          <ion-datetime-button datetime="fechaInicio"></ion-datetime-button>
+        </div>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="fechaInicio" presentation="date"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+    
+      <!-- Fecha de término -->
+      <ion-item lines="none">
+        <ion-label>Fecha de Término</ion-label>
+        <div class="custom-datetime-container">
+          <ion-datetime-button datetime="fechaTermino"></ion-datetime-button>
+        </div>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="fechaTermino" presentation="date"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+    
+      <!-- Información -->
+      <div class="informacion">
+        <p>
+          Se te cobrará por el tiempo que estaciones. Por favor, reserva según tu
+          horario ya que exceder el tiempo de reserva llevará a multas.
+        </p>
+      </div>
+    
+    </div>
+    
+
+    <!-- Total y botón de reserva -->
+    <div class="footer">
+      <div class="total">
+        <p *ngIf="tipoReserva === 'Por Hora'">Total x 2h</p>
+        <p *ngIf="tipoReserva === 'Por Día'">Total x 1 día</p>
+        <h2>S/21</h2>
+      </div>
+      <ion-button expand="block" color="primary" class="reservar-btn">
+        Reservar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,164 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/pantalla-busqueda">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ubicaciones Guardadas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- Primera ubicación -->
+    <ion-item routerLink="/parke-sit-gurd" >
+      <ion-icon name="star" slot="start"></ion-icon>
+      <ion-label>
+        <h2>Casa Mafer</h2>
+        <p>Av. Santo Toribio, 481, San Isidro</p>
+      </ion-label>
+      <ion-button id="popover-button" fill="clear" slot="end">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <!-- Segunda ubicación -->
+    <ion-item routerLink="/parke-sit-gurd" >
+      <ion-icon name="star" slot="start"></ion-icon>
+      <ion-label>
+        <h2>Casa Mafer</h2>
+        <p>Av. Santo Toribio, 481, San Isidro</p>
+      </ion-label>
+      <ion-button id="popover-button" fill="clear" slot="end">
+        <ion-icon  name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <!-- Agregar nueva ubicación -->
+    <ion-item routerLink="/nueva-ubicacion" lines="none">
+      <ion-icon name="add-circle" slot="start"></ion-icon>
+      <ion-label>Agregar nueva ubicación</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Menú contextual simulado -->
+  <ion-popover mode="ios" trigger="popover-button" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false">Editar</ion-item>
+          <ion-item [button]="true" [detail]="false">Eliminar</ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+</ion-content>
+
+<!-- <ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">    
+          <div class="inicio">
+            <div class="nav-arrow-btn">
+              <img src="/assets/images/sitios-guardados/nav-arrow-btn.png" alt="" routerLink="/pantalla-busqueda">
+            </div>
+            <h1 class="title">Sitios Guardados</h1>   
+          </div>
+
+          <div expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p">
+                <img src="assets/images/sitios-guardados/icon-casita.svg" alt="" class="img-class-h">
+              </div>
+
+
+              <div class="hijo">
+                <h1 class="t1">Casa</h1>
+                <p class="c1">Alameda Constancio Bollar,315</p> 
+                
+              </div>
+              <button id="popover-button" class="boton-puntos">
+                <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+                  <ng-template>
+                    <ion-content>
+                      <ion-list>
+                        <ion-item [button]="true" [detail]="false">Editar</ion-item>
+                        <ion-item [button]="true" [detail]="false">Eliminar</ion-item>
+                      </ion-list>
+                    </ion-content>
+                  </ng-template>
+                </ion-popover>  
+                <img src="assets/images/sitios-guardados/icon-3puntos.svg" alt="" class="puntos">
+              </button> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+
+          <button expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p">
+              <img src="assets/images/sitios-guardados/icon-maleta.svg" alt="" class="img-class-h">
+              </div>
+
+              <div class="hijo">
+                <p class="t2">Agregar Trabajo</p>
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </button>
+
+          <button expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p">
+              <img src="assets/images/sitios-guardados/icon-star.svg" alt="" class="img-class-h">
+              </div>
+
+              <div class="hijo">
+                <h1 class="t1">Casa Mafer</h1>
+                <p class="c1">Av. Santo Toribio, 481,San Isidro</p> 
+                
+              </div>
+              <img src="assets/images/sitios-guardados/icon-3puntos.svg" alt="" class="puntos"> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </button>
+
+          <button expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p">
+              <img src="assets/images/sitios-guardados/icon-star.svg" alt="" class="img-class-h">
+              </div>
+
+              <div class="hijo">
+                <h1 class="t1">Casa Mafer</h1>
+                <p class="c1">Av. Santo Toribio, 481,San Isidro</p> 
+                
+              </div>
+              <img src="assets/images/sitios-guardados/icon-3puntos.svg" alt="" class="puntos"> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </button>
+
+          <button expand="block" class="mi-boton" routerLink="/nueva-ubicacion">
+            <div class="padre">
+              <div class="img-class-p">
+              <img src="assets/images/sitios-guardados/icon-suma.svg" alt="" class="img-class-h">
+              </div>
+
+              <div class="hijo">
+                <h1 class="t1">Agregar nueva ubicación</h1>
+                
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+  </div> -->

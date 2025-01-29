@@ -1,0 +1,135 @@
+ion-header{
+    margin: 0px;
+    ion-toolbar{
+        padding-inline: 32px;
+        --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+        background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+    }
+    h2{
+        margin: 0px;
+        margin-top: 20%;
+        margin-bottom: 30px;
+        color: #212121;
+
+        /* Title Screens 2 */
+        font-family: Poppins;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 50px; /* 142.857% */
+        width: 100%;
+
+    }
+    
+}
+ion-footer{
+    margin: 0px;
+    margin-block: 10px;
+    ion-toolbar{
+        padding-inline: 32px;
+        --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+        background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+        .btn-atr{
+            border: 1px solid #212121;
+            border-radius: 20px;
+            padding-inline: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-radius: 30px;
+            width: 100%;
+            background-color: #FFFFFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .btn-sig.disabled {
+            border: 1px solid #C8C5CA;
+            border-radius: 30px;
+            padding-inline: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+            width: 100%;
+            background-color: #FFFFFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: not-allowed;
+          }
+          
+        .btn-sig.enabled {
+            border: 1px solid #212121;
+            border-radius: 30px;
+            width: 100%;
+            padding-inline: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            color: #FFFFFF;
+            background-color: #212121;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+
+
+    }
+}
+.keyboard-open {
+    margin-bottom: 77%; /* Ajusta este valor según sea necesario */
+}
+.footer-ios ion-toolbar:last-of-type {
+    --border-width: 0px;
+}
+/* Estilos para el header */
+h1,h1,h3{
+    margin: 0px;
+}
+  .header-ios ion-toolbar:last-of-type {
+    --border-width: 0px;
+}
+ion-header {
+    --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
+    background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+}
+ion-content{
+    padding-inline: 22px;
+  
+    --overflow: hidden;
+  
+
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 32px;
+    margin-top: 10px;
+}
+
+  
+.phone-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #1f1f1f;
+    border-radius: 30px;
+    padding:5px 15px;
+    margin-bottom: 0px; // Reducir el margen inferior
+    .country-code {
+      color: #605D66;
+      font-family: Poppins;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      margin-right: 10px;
+    }
+
+    .input {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+

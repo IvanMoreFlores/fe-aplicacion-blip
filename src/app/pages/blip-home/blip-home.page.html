@@ -1,0 +1,474 @@
+
+  <!-- Buscador -->
+  <ion-header mode="ios">
+    <ion-toolbar>
+  <!-- Searchbar con debounce -->
+  <ion-searchbar
+  routerLink="/pantalla-busqueda"></ion-searchbar>
+
+
+
+  <!-- Lista flotante de sugerencias -->
+
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+
+
+  <!-- Lista de Secciones -->
+    <div class="cont-home">
+      <div class="section">
+        <div class="section-header">
+          <h2>Reserva Activa</h2>
+          <div class="orange"></div>
+        </div>
+        <div class="section-content">
+          <!-- Tarjeta con Efecto Ripple y Diseño 100% -->
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                        <div class="chip">
+
+                          Finalizada
+                          <span class="green"></span>
+                        </div>
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                        <div class="chip">
+
+                          Finalizada
+                          <span class="green"></span>
+                        </div>
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                        <div class="chip">
+
+                          Finalizada
+                          <span class="green"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <ion-grid>
+                        <ion-row>
+                          <button class="tiempo">01 : 00 : 00</button>
+                          <button routerLink="/time-park" class="ver-timp"><img src="/assets/images/rel-btn.svg" alt="">Ver tiempo</button>
+                        </ion-row>
+                      </ion-grid>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header" routerLink="/cerca-deti">
+          <h2>Cerca a Ti</h2>
+          <div class="blue"></div>
+        </div>
+        <div class="section-content">
+          <!-- Tarjeta con Efecto Ripple y Diseño 100% -->
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </div>
+      </div>
+      <!-- Repetir para otras secciones -->
+      <div class="section">
+        <div class="section-header" routerLink="/populares">
+          <h2>Populares</h2>
+          <span class="blue"></span>
+        </div>
+        <div class="section-content">
+          <!-- Tarjeta con Efecto Ripple y Diseño 100% -->
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header"routerLink="/todos-parki">
+          <h2>Todos los Parqueos</h2>
+          <span class="green"></span>
+        </div>
+        <div class="section-content">
+          <!-- Tarjeta con Efecto Ripple y Diseño 100% -->
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </div>
+      </div>
+    </div>
+</ion-content>

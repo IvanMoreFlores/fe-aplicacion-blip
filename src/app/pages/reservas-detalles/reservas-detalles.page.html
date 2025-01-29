@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles de reserva</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Información del host -->
+  <div class="host-info">
+    <ion-avatar class="avatar">
+      <img src="https://via.placeholder.com/150" alt="Host Avatar" />
+    </ion-avatar>
+    <div class="host-details">
+      <h2>Reserva con el host</h2>
+      <h3>hostname</h3>
+    </div>
+  </div>
+
+  <!-- Detalles de fecha, hora y precio -->
+  <div class="reservation-details">
+    <p>Nov 21, 2023 de 2:19PM a 4:19PM</p>
+    <p><strong>2h 45m</strong> <span>$15.75</span></p>
+  </div>
+
+  <!-- Botón de recibo -->
+  <ion-button routerLink="/reservas-detalles-recibo" expand="block" class="recibo-button">
+    <ion-icon slot="start" name="lock-closed"></ion-icon>
+    Recibo
+  </ion-button>
+
+  <!-- Tarjeta para el mapa -->
+  <ion-card class="map-card">
+    <div class="map-box">
+      <div class="map-placeholder">[Mapa]</div>
+    </div>
+    <ion-card-content>
+      <ion-icon name="location-outline"></ion-icon>
+      <div>
+        <p class="parking-name">ABC Parking</p>
+        <p class="parking-address">Constancio Bollar, 315, San Isidro</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sección de ayuda -->
+  <div class="help-section">
+    <h2>Ayuda</h2>
+    <ion-item routerLink="/reservas-reportar" lines="none" detail>
+      <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
+      <ion-label>Reportar Incidente</ion-label>
+    </ion-item>
+    <ion-item routerLink="/reservas-proporcionar" lines="none" detail>
+      <ion-icon slot="start" name="chatbubbles-outline"></ion-icon>
+      <ion-label>Proporciona Feedback</ion-label>
+    </ion-item>
+  </div>
+</ion-content>

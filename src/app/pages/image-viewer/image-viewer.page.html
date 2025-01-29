@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/pre-view-est">Cerrar</ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{ currentIndex + 1 }}/{{ totalSlides }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="image-slider swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Itera sobre las imágenes -->
+      <div class="swiper-slide" *ngFor="let photo of photos">
+        <img [src]="photo" alt="Parking" />
+      </div>
+    </div>
+    <!-- Paginación dentro de la imagen -->
+    <div class="swiper-pagination"></div>
+  </div>
+</ion-content>
+

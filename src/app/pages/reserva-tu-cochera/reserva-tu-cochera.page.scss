@@ -1,0 +1,423 @@
+.container{
+    background-color: #79FFAF; 
+    display: flex;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    height: 100%;
+    position: relative;
+ }
+ .content{
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    width: 432px;
+    margin-top: 50px;
+    height: 882px;
+    display: block;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    
+ }
+ .inicio {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 20px;
+ }
+ .nav-arrow-btn{
+    margin-right: 30px; /* Espacio entre la imagen y el título */
+ }
+ .title {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #212121;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+ }
+ h4{
+    margin-bottom: 30px;
+ }
+ .text1{
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 24px;
+    margin-bottom: 20px;
+ }
+ .btn-s{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+ }
+ .btn-hora{
+    background-color: #212121; /* color */
+    color: white;
+    padding: 15px 30px;
+    width: 130px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+
+ }
+ .btn-dia{
+    background-color: white; /* color */
+    color: #212121;
+    padding: 15px 30px;
+    width: 130px;
+    border: 1px solid #212121;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+ }
+ .btn-hoy{
+    background-color: #212121; /* color */
+    color: white;
+    padding: 15px 30px;
+    width: 130px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+
+ }
+ .btn-ma{
+    background-color: white; /* color */
+    color: #212121;
+    padding: 15px 30px;
+    width: 130px;
+    border: 1px solid #212121;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+ }
+ .btn-cale{
+    background-color: white; /* color */
+    color: #212121;
+    padding: 15px 30px;
+    width: 200px;
+    border: 1px solid #212121;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+
+ }
+ .price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: absolute; /* Posiciona el contenedor */
+    bottom: 0; /* Alinea al fondo del contenedor */
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil en la parte superior */
+    width: 100%; /* Ancho completo */
+    height: 140px; /* Altura fija */
+    left: 0px;
+
+  }
+  
+  .price {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .currency {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .amount {
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+  .unit {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  .text-p{
+    font-size: 16px;
+    margin-left: 5px;
+
+
+  }
+  .continue-button {
+    background-color: #212121; /* color */
+    color: white;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+/*********************************************************************************************************************/
+
+  .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+  }
+  .seleccionCarro{
+    border-radius: 30px;
+    border: solid 1px #79747E;
+    height: 60px;
+    width: 380px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.25px;
+    text-align: left;
+    margin-bottom: 20px;
+
+  }
+  .icn-1{
+    width: 30px;
+    height: 30px;
+    margin-left: 19px;
+    margin-bottom: 5px;
+  }
+  .icn-2{
+    padding-left: 100px;
+  }
+  .txt1{
+    width: 176px;
+    height: 24px;
+    margin-top: 18px;
+    margin-left: 10px;
+    font-size: 18px;
+  }  
+  .block2 {
+    width: 100%;
+    height: 395px;
+    background-color: #ffffff;
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    border-radius: 20px 20px 0px 0px;
+  
+    .block2-container {
+      padding-inline: 36px;
+    }
+  
+    h1 {
+      font-size: 16px;
+      font-weight: 400;
+      text-align: center;
+      margin: 0;
+      padding-inline: 60px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      color: #524f4f;
+    }
+  
+    hr {
+      background-color: #2c2c2c;
+      height: 1px;
+      border: 0;
+      margin-top: 0px;
+      margin-bottom: 23px;
+    }
+  }
+  .checkbox-anuncio-container {
+    color: #49454f;
+}
+
+.checkbox-anuncio {
+    margin-bottom: 17px;
+}
+
+.checkbox-anuncio label {
+    display: flex;
+    align-items: center;
+    height: 84px;
+    border: 1px solid #49454f;
+    border-radius: 30px;
+    padding: 0 30px;
+}
+
+.checkbox-anuncio label div {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+.icon-img{
+  margin-right:25px ;
+  padding: 7px;
+  background-color: #79FFAF4D;
+  border-radius: 15px;
+}
+.checkbox-anuncio img {
+    margin-right: 18px;
+}
+.lapizimg{
+  padding-top: 12px;
+  width:  24px;
+  height: 36px;
+}
+
+
+.checkbox-anuncio .checkbox-text {
+    justify-content: left;
+    flex-direction: column; /* Asegura que los span se alineen verticalmente */
+   
+}
+
+.checkbox-text-ttl {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.checkbox-text {
+  float: left;
+  font-size: 12px;
+}
+
+.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: auto; /* Empuja el checkbox hacia la derecha */
+}
+
+.checkbox-round:checked {
+    background-color: none;
+    border: 5px solid #212121;
+}
+
+.checkbox-anuncio input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+}
+
+  .button-agregar-anuncio-container {
+    height: 50px;
+    padding-inline: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .button-agregar-anuncio {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    span {
+      font-size: 16px;
+      font-weight: 450;
+      color: #212121;
+    }
+  }
+  
+  .false-button-agregar-anuncio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #79FFAF4D;
+    width: 43px;
+    height: 39px;
+    border-radius: 100px;
+    margin-right: 20px;
+  }
+  
+  ion-modal {
+    --height: auto;
+  }
+  .navbar-nav {
+    margin: 20px 0px;
+  }
+  
+  .menu-above {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .separator-line {
+    border-top: 2px solid #d4d4d4;
+    width: 100%;
+    margin: 10px auto;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-left: 30px;
+  }
+  .btn-mid-space{
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  hr{
+    
+    margin: 3px;
+  }
+  .btn-mid{
+    box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+    height:80px ;
+    width: 109px;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-right: 10px;
+  }
+  
+  .icn-1{
+    width: 30px;
+    height: 30px;
+    margin-left: 19px;
+    margin-bottom: 5px;
+  }
+  .custom-datetime {
+    --background: #000000; /* Cambiar el fondo del datetime */
+    --color: #333; /* Cambiar el color del texto */
+    --button-background-hover: #79FFAF; /* Cambiar el color de fondo al pasar el mouse sobre los botones */
+   
+
+    background-color: white; /* Asegura que el fondo de todo el componente sea negro */
+    font-family: "Poppins", sans-serif ;
+  }
+  
+  
+  ion-datetime {
+    --ion-background-color: #ffffff; /* Fondo del datetime */
+    --ion-color-primary: #15da1577; /* Color principal */
+    --ion-text-color: #000; /* Color del texto */
+    --ion-toolbar-background: #000000; /* Color de fondo de la barra de herramientas */
+    --ion-toolbar-color: #eb0000; /* Color del texto de la barra de herramientas */
+    --ion-border-color: #000000; /* Color del borde */
+  }
+  ion-modal::part(backdrop) {
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  }
+  
+  ion-modal .modal-wrapper {
+    border-radius: 10px; /* Bordes redondeados en el modal */
+    background-color: #ffffff; /* Fondo del modal */
+    padding: 20px;
+  }
+  
+
+  

@@ -1,0 +1,19 @@
+ion-content {
+    --background: #79FFAF; /* Color verde */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Hace que el contenedor del logo ocupe toda la altura */
+  }
+  
+  .logo {
+    width: 150px;
+    height: auto;
+  }

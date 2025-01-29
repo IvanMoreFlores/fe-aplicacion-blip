@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row class="header-row">
+        <ion-col size="auto">
+          <ion-avatar>
+            <img src="ruta-del-avatar.png" alt="Avatar">
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+          <h2 class="header-title">Bienvenida,</h2>
+          <p class="header-subtitle">Camila Dueñas</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="cont-as">
+  <!-- Botón simulado -->
+    <button id="open-vehicle-modal" class="vehicle-button" expand="block">
+      <div class="button-content">
+        <img src="/assets/images/car-black.svg" alt="Car Icon" class="icon-left">
+        <span class="button-text">Selecciona tu vehículo</span>
+        <img src="/assets/images/desple-as.svg" alt="Arrow Icon" class="icon-right">
+      </div>
+    </button>
+    <ion-modal trigger="open-vehicle-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+      <ng-template>
+        <div class="vehicle-modal">
+          <div class="modal-header">
+            <h3>Selecciona tu vehículo</h3>
+          </div>
+        
+          <div class="vehicle-list">
+            <!-- Vehículo -->
+            <div
+              class="vehicle-item"
+              [class.selected]="selectedVehicle === vehicle"
+              *ngFor="let vehicle of vehicles"
+              (click)="selectVehicle(vehicle)"
+            >
+              <div class="vehicle-info-wrapper">
+                <div class="vehicle-info">
+                  <div class="vehicle-icon">
+                    <ion-icon name="car-outline"></ion-icon>
+                  </div>
+                  <div class="vehicle-details">
+                    <p class="vehicle-name">{{ vehicle.name }}</p>
+                    <p class="vehicle-plate">{{ vehicle.plate }}</p>
+                  </div>
+                </div>
+                <div class="vehicle-actions">
+                  <input type="radio" name="vehicle" [checked]="selectedVehicle === vehicle" />
+                </div>
+              </div>
+              <!-- Ícono de edición fuera del borde -->
+              <div class="edit-button">
+                <img routerLink="/editar-veiculo" src="/assets/images/lapiz-edi.svg" alt="Editar" />
+              </div>
+            </div>
+          </div>
+        
+          <div routerLink="/agregar-vehiculo" class="add-vehicle" (click)="addVehicle()">
+            <ion-icon name="add-outline"></ion-icon>
+            <span>Agregar nuevo vehículo</span>
+          </div>
+        </div>
+        
+      </ng-template>
+    </ion-modal>
+    
+    <div class="conten-cards">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <ion-card style="margin: 0px;" mode="ios" class="custom-card">
+              <div class="card-content">
+                <div class="card-header">
+                  <div class="title-indicator">
+                    <h2>Verifica tu Identidad</h2>
+                    <div class="dot"></div>
+                  </div>
+                  <div class="status-indicator">
+                    <span>Nuevo</span>
+                  </div>
+                </div>
+                <p>Para empezar a reservar con nosotros debes verificar tu cuenta.</p>
+                <div class="card-footer">
+                  <button class="verify-button">Verificar</button>
+                  <img src="/assets/images/carnet-blip.png" alt="Imagen ilustrativa" class="card-image">
+                </div>
+              </div>
+            </ion-card>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <ion-card style="margin: 0px;" mode="ios" class="custom-card">
+              <div class="card-content">
+                <div class="card-header">
+                  <h2>Ahorra tiempo y dinero</h2>
+                  <div class="status-indicator">
+                    <span>Nuevo</span>
+                  </div>
+                </div>
+                <p>Para empezar a reservar con nosotros debes verificar tu cuenta.</p>
+                <div class="card-footer">
+                  <button class="verify-button">Verificar</button>
+                  <img src="/assets/images/carnet-blip.png" alt="Imagen ilustrativa" class="card-image">
+                </div>
+              </div>
+            </ion-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-group">
+      <button routerLink="/info-personal" class="menu-button">
+        <img style="margin-right: 10px;" src="/assets/images/avat-blac.svg" alt="">
+        <span class="label">Información de perfil</span>
+        <span class="arrow">›</span>
+      </button>
+      <button class="menu-button">
+        <img style="margin-right: 10px;" src="/assets/images/blac-cricle.svg" alt="">
+        <span class="label">Soporte</span>
+        <span class="arrow">›</span>
+      </button>
+      <button class="menu-button">
+        <img style="margin-right: 10px;" src="/assets/images/blac-dor.svg" alt="">
+        <span class="label">Cerrar Sesión</span>
+        <span class="arrow">›</span>
+      </button>
+    </div>
+    
+    
+  </div>
+</ion-content>

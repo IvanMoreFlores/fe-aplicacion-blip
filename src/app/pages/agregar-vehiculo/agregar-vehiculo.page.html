@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <img src="/assets/images/left-flec.svg" alt="">
+    </ion-buttons>
+    <ion-title>Agregar nuevo vehículo</ion-title>
+
+  </ion-toolbar>
+  
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Tipo de vehículo</label>
+      <ion-select mode="md" interface="popover" value="Masculino" label-placement="floating" >
+        <ion-select-option value="carro">Carro particular</ion-select-option>
+        <ion-select-option value="moto">Moto</ion-select-option>
+        <ion-select-option value="camioneta">Camioneta</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Seleccionar marca</label>
+      <ion-select mode="md" interface="popover" value="Masculino" label-placement="floating" >
+        <ion-select-option value="toyota">Toyota</ion-select-option>
+        <ion-select-option value="nissan">Nissan</ion-select-option>
+        <ion-select-option value="ford">Ford</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Seleccionar modelo</label>
+      <ion-select mode="md" interface="popover" value="Masculino" label-placement="floating" >
+        <ion-select-option value="fortuner">Fortuner</ion-select-option>
+        <ion-select-option value="hilux">Hilux</ion-select-option>
+        <ion-select-option value="rav4">RAV4</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" >Número de placa</label>
+      <ion-input mode="ios" type="text" placeholder="Ej. ABC123"  class="input"></ion-input>
+    </div>
+  </div>
+  <div class="btn-container">
+    <ion-button expand="block" class="custom-button">Guardar Vehículo</ion-button>
+  </div>
+</ion-content>

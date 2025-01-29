@@ -1,0 +1,47 @@
+ion-content {
+  --background: black;
+}
+
+/* Ajusta el contenedor principal */
+.image-slider {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: relative;
+}
+
+/* Ajusta las imágenes del slider */
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Asegura que la imagen se adapte sin distorsión */
+  background-color: black;
+}
+
+/* Paginación (oculta si no la necesitas en pantalla) */
+.swiper-pagination {
+  bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Estilo para el contador en la cabecera */
+ion-title {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Cerrar botón */
+ion-button {
+  color: white;
+}
+
+/* Botón cerrar alineado correctamente */
+ion-toolbar {
+  --background: transparent; /* Hace transparente la barra superior */
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}

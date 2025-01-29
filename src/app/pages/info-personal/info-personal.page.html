@@ -1,0 +1,286 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <div class="inicio">
+      <div class="nav-arrow-btn">
+        <img src="/assets/images/sitios-guardados/nav-arrow-btn.png" alt="" routerLink="/configuracion">
+      </div>
+      <h1 class="title">Información Personal</h1>   
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    <div class="content1">
+      <div class="profile-container">
+        <div class="profile-picture">
+          <ion-icon name="person-outline"></ion-icon>
+          <div class="edit-icon" id="mod-fot">
+            <img src="/assets/images/cre-perf.svg" alt="">
+          </div>
+          <ion-modal trigger="mod-fot" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+            <ng-template>
+              <div class="block2">
+                <div class="btn-cont">
+                  <button>
+                    Tomar una foto
+                  </button>
+                  
+                  <button class="selec-gal">
+                    Seleccionar de galería
+                  </button>  
+                </div>
+ 
+              </div>           
+            </ng-template>
+          </ion-modal>
+        </div>
+        <h3 class="profile-name">Camila Dueñas Q.</h3>
+        <ion-button fill="outline" id="mod-fullheig" shape="round" class="verify-button">
+          Verificar Perfil
+        </ion-button>
+        <div style="display: flex; justify-content:center ; width: 100%; align-items: center;text-align: center;">
+          <h1  class="gress">Verificado</h1><img src="/assets/images/check-gris.svg" alt="">
+        </div>
+        <div style="display: flex; justify-content:center ; width: 100%; align-items: center;text-align: center;">
+          <h1  class="gress">Verificación en Proceso</h1><img src="/assets/images/excla-gris.svg" alt="">
+        </div>
+        
+        <ion-modal trigger="mod-fullheig" [initialBreakpoint]="1" [breakpoints]="[0, 1]" class="full-height-modal">
+          <ng-template>
+            <div class="modal-container">
+              <div class="modal-header">
+                <ion-icon name="close-outline" class="close-icon" (click)="dismissModal()"></ion-icon>
+                <h3>Verificación de Información Personal</h3>
+              </div>
+        
+              <div class="modal-body">
+                <h5>Estado de Validación</h5>
+                <p>Para garantizar la seguridad y autenticidad de nuestra comunidad, necesitamos validar tu identidad. Si no podemos validar tu identidad, te notificaremos para que puedas corregir los datos y volver a intentarlo.
+                </p>
+                <!-- Dropzone para imagen de perfil -->
+                <div class="upload-section">
+                  <h5>Subir Imagen de Perfil</h5>
+                  <ngx-dropzone (change)="onSelectFront($event)" accept="image/*">
+                    <ngx-dropzone-label *ngIf="!profileImage">
+                      <ion-icon name="add-outline"></ion-icon>
+                      <p>Arrastra o selecciona una imagen</p>
+                    </ngx-dropzone-label>
+                    <img *ngIf="profileImage" [src]="profileImage" alt="Imagen de Perfil" class="uploaded-image" />
+                  </ngx-dropzone>
+                </div>
+        
+                <!-- Dropzone para imagen trasera -->
+                <div class="upload-section">
+                  <h5>Subir Imagen Trasera</h5>
+                  <ngx-dropzone (change)="onSelectBack($event)" accept="image/*">
+                    <ngx-dropzone-label *ngIf="!backImage">
+                      <ion-icon name="add-outline"></ion-icon>
+                      <p>Arrastra o selecciona una imagen</p>
+                    </ngx-dropzone-label>
+                    <img *ngIf="backImage" [src]="backImage" alt="Imagen Trasera" class="uploaded-image" />
+                  </ngx-dropzone>
+                </div>
+              </div>
+        
+              <div class="modal-footer">
+                <ion-button expand="block" [disabled]="!profileImage || !backImage" (click)="guardarImagenes()">
+                  Guardar Cambios
+                </ion-button>
+              </div>
+            </div>
+          </ng-template>
+        </ion-modal>
+        
+      </div>
+      <label class="label1">Nombre (s)</label>
+
+      <ion-item>
+        <ion-text class="text1">
+          {{ textoGuardado }}
+
+        </ion-text>
+        <button class="editar1" id="edit-nom" expand="block"><img src="/assets/images/lapiz-blac.svg" alt=""></button>
+      </ion-item>
+      <ion-modal trigger="edit-nom" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+        <ng-template>
+          <div class="block">
+            <h1 class="title-mo">Edita tu información</h1>
+            <div class="line"></div>
+            <div class="input-bar">
+              <ion-label class="label-text">Nombre y apellido</ion-label>
+              <ion-input [(ngModel)]="texto" class="ld" placeholder="Ingresar nombres y apellidos"></ion-input>
+            </div>    
+            <div class="btn2">
+              <button (click)="guardarCambios()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+             </div>    
+          </div>           
+        </ng-template>
+      </ion-modal>
+
+    </div>
+    <div class="content1">
+      <label class="label1">Apellido (s)</label>
+      <ion-item>
+        <ion-text class="text1">
+          {{ textoGuardado2 }}
+        </ion-text>
+        <button class="editar1" id="edit-nom2" expand="block"><img src="/assets/images/lapiz-blac.svg" alt=""></button>
+      </ion-item>
+      <ion-modal trigger="edit-nom2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+        <ng-template>
+          <div class="block">
+            <h1 class="title-mo">Edita tu información</h1>
+            <div class="line"></div>
+            <div class="input-bar">
+              <ion-label class="label-text">Número Telefónico</ion-label>
+              <ion-input [(ngModel)]="texto2" class="ld" placeholder="Ingresar su Número Telefónico"></ion-input>
+            </div>    
+            <div class="btn2">
+              <button (click)="guardarCambios2()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+             </div>    
+          </div>           
+        </ng-template>
+      </ion-modal>
+    </div>
+    <!-- ----- -->
+    <div class="content1">
+      <label class="label1">Número de teléfono</label>
+      <ion-item>
+        <ion-text class="text1">
+          {{ textoGuardado2 }}
+        </ion-text>
+        <button class="editar1"  expand="block" routerLink="/inf-telval" ><img src="/assets/images/lapiz-blac.svg" alt=""></button>
+      </ion-item>
+
+    </div>
+    <!-- ----- -->
+    <div class="content1">
+      <label class="label1">Correo electrónico</label>
+      
+      <ion-item>
+        <ion-text class="text1">
+          {{ textoGuardado3 }}
+        </ion-text>
+        <button class="editar1" routerLink="/inf-corval"  expand="block"><img src="/assets/images/lapiz-blac.svg" alt=""></button>
+      </ion-item>
+    </div>
+    <div class="content1">
+      <label class="label1">Contraseña</label>
+      
+      <ion-item>
+        <ion-text class="text1">
+          {{ textoGuardado3 }}
+        </ion-text>
+        <button class="editar1" routerLink="/inf-contcod" expand="block"><img src="/assets/images/lapiz-blac.svg" alt=""></button>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
+<!-- <ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">    
+          <div class="inicio">
+            <div class="nav-arrow-btn">
+              <img src="/assets/images/sitios-guardados/nav-arrow-btn.png" alt="" routerLink="/configuracion">
+            </div>
+            <h1 class="title">Información Personal</h1>   
+          </div>
+          <div class="content1">
+            <label class="label1">NOMBRE Y APELLIDO</label>
+
+            <ion-item>
+              <ion-text class="text1">
+                {{ textoGuardado }}
+
+              </ion-text>
+              <button class="editar1" id="edit-nom" expand="block">Editar</button>
+            </ion-item>
+            <ion-modal trigger="edit-nom" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <h1 class="title-mo">Edita tu información</h1>
+                  <div class="line"></div>
+                  <div class="input-bar">
+                    <ion-label class="label-text">Nombre y apellido</ion-label>
+                    <ion-input [(ngModel)]="texto" class="ld" placeholder="Ingresar nombres y apellidos"></ion-input>
+                  </div>    
+                  <div class="btn2">
+                    <button (click)="guardarCambios()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+                   </div>    
+                </div>           
+              </ng-template>
+            </ion-modal>
+
+          </div>
+          <div class="content1">
+            <label class="label1">NÚMERO TELEFÓNICO</label>
+            <button class="editar1" id="edit-nom2" expand="block">Editar</button>
+            <ion-item>
+              <ion-text class="text1">
+                {{ textoGuardado2 }}
+              </ion-text>
+            </ion-item>
+            <ion-modal trigger="edit-nom2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <h1 class="title-mo">Edita tu información</h1>
+                  <div class="line"></div>
+                  <div class="input-bar">
+                    <ion-label class="label-text">Número Telefónico</ion-label>
+                    <ion-input [(ngModel)]="texto2" class="ld" placeholder="Ingresar su Número Telefónico"></ion-input>
+                  </div>    
+                  <div class="btn2">
+                    <button (click)="guardarCambios2()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+                   </div>    
+                </div>           
+              </ng-template>
+            </ion-modal>
+          </div>
+
+          <div class="content1">
+            <label class="label1">CORREO ELECTRÓNICO</label>
+            <button class="editar1" id="edit-nom3" expand="block">Editar</button>
+            <ion-item>
+              <ion-text class="text1">
+                {{ textoGuardado3 }}
+              </ion-text>
+            </ion-item>
+            <ion-modal trigger="edit-nom3" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <h1 class="title-mo">Edita tu información</h1>
+                  <div class="line"></div>
+                  <div class="input-bar">
+                    <ion-label class="label-text">Correo Electrónico</ion-label>
+                    <ion-input [(ngModel)]="texto3" class="ld" placeholder="Ingresar su Correo Electrónico"></ion-input>
+                  </div>    
+                  <div class="btn2">
+                    <button (click)="guardarCambios3()"   expand="block" class="GuarCam2">Guardar Cambios</button>      
+                   </div>    
+                </div>           
+              </ng-template>
+            </ion-modal>
+
+          </div>
+
+          <div class="content1">
+
+            <label class="label1">IDENTIFICACIÓN (DOCUMENTOS)</label>
+
+            <label class="container1">
+              <ion-checkbox labelPlacement="end">Verificación de Identidad (ej. DNI, otros.)</ion-checkbox>
+              <button class="editar2">Actualizar</button>
+            </label>
+
+            <label class="container1">
+              <ion-checkbox class=clase-checkbox1 labelPlacement="end">Antecedentes Penales</ion-checkbox>
+              <button class="editar3">Agregar</button>
+            </label>
+          </div>
+          <div class="line"></div>
+        
+      </div>
+    </div>
+  </div> -->

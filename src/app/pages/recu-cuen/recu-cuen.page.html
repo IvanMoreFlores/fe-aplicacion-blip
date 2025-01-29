@@ -1,0 +1,60 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h1 slot="start">
+      Bienvenida, de nuevo!
+    </h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div class="login">
+  
+      <h3>Ingresa el código de 4 dígitos enviado a: <span class="d2a">{{ displayedText }}</span>  </h3>
+
+      <div class="code-inputs">
+        <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+      </div>
+      
+      <button id="open-toast2"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+        {{ buttonText }}
+        <div class="TIME">
+          {{ minutes }}:{{ seconds | number: '2.0' }}
+        </div>
+      </button>
+      <ion-toast
+      trigger="open-toast2"
+      [duration]="3000"
+      message="Código enviado satisfactoriamente."
+      class="custom-toast"
+      
+      position="top"
+      ></ion-toast>
+
+
+    </div>
+  </div>
+</ion-content>
+<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <button class="bac" routerLink="/olv-con">Atrás</button>
+        </ion-col>
+        <ion-col >
+          <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" 
+          [routerLink]="inputsFilled ? '/rest-contra' : null"
+          [disabled]="!inputsFilled"
+           class="nex" >Siguiente</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+
+
+

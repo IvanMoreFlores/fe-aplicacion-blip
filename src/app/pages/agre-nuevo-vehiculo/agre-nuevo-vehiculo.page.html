@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">    <!--Parte blanca ini -->
+          <div class="inicio">
+            <div class="nav-arrow-btn">
+              <img src="/assets/images/agregar-nueva-ubicacion/nav-arrow-btn.png" alt="" routerLink="">
+            </div>
+            <h3 class="title">Agregar nuevo vehiculo</h3>   
+          </div>
+
+          <div class="estilo1">     
+            <label class="label1">Seleccionar Marca</label>
+            <select class="input-class">
+              <option value="Toyota">Toyota</option>
+              <option value="Nissan">Nissan</option>
+            </select>
+          </div>
+
+          <div class="estilo1">
+            <label class="label1">Seleccionar Vehículo</label>
+            <select class="input-class">
+              <option value="Fortuner">Fortuner</option>
+              <option value="Ejemplo1">Ejemplo1</option>
+            </select>
+          </div>
+          
+          <div class="estilo1">
+            <label class="label1">Número de Placa</label>
+            <input class="input-class" placeholder="Ej. GR78983">
+          </div> 
+
+          <div class="estilo1">
+            <label class="label1">¿De quién es el vehículo</label>
+            <input class="input-class" placeholder="Ej. Mi vehículo">
+          </div>
+
+
+          
+          <div class="btn">
+              <button class="btn-seleccionar">Guardar</button>
+              <button class="btn-seleccionar2" id="open-modal-elimnar">Eliminar</button>  
+          </div>
+
+          <!-- START MODAL --> 
+          <ion-modal
+          trigger="open-modal-elimnar"
+          [initialBreakpoint]="1"
+          [breakpoints]="[0, 1]"
+          >
+          <ng-template>
+            <div class="block">
+              <h1>¿Estas seguro que deseas 
+                eliminar este vehículo?</h1>
+
+              <hr />
+
+              <div class="button-container-modal">
+                <button class="button-eliminar-modal">
+                  Si, eliminar
+                </button>
+                <button class="btn-ex" (click)="exit()">Cancelar</button>
+              </div>
+            </div>
+          </ng-template>
+        </ion-modal>
+        <!-- END MODAL -->
+
+          
+        </div>
+      </div>
+    </div>
+  </div> 
+</ion-content>
+
+  <!-- <div class="overlay" onclick="this.classList.toggle('show')">
+    <div class="overlay-content">
+      <h3>¿Estás seguro de que deseas eliminar este vehículo?</h3>
+      <button class="btn-eliminar" onclick="confirmDelete()">Eliminar</button>
+      <button class="btn-cancelar" onclick="document.querySelector('.overlay').classList.toggle('show')">Cancelar</button>
+    </div>
+  </div> -->

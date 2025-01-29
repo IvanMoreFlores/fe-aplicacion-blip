@@ -1,0 +1,194 @@
+.container {
+    background-color: #79ffaf;
+    height: 100%;
+    padding-top: 30px;
+}
+
+* {
+    color: #212121;
+}
+
+.row{
+    background-color: white;
+    border-radius: 30px 30px 0 0;
+    height: 100%;
+}
+
+.content {
+    width: 90%;
+    margin: 20px auto;
+    display: block;
+}
+
+.centro {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.vector-mensaje {
+    display: flex;
+    background-color: transparent;
+    margin-right: 20px;
+}
+
+.text-b {
+    font-size: 19px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #212121;
+}
+
+/* Boton */
+
+.botones {
+    margin-block: 20px;
+}
+
+.boton-todas,
+.boton-programados,
+.boton-historial {
+  background-color: #FFFFFF; 
+  color: #5F5D5D; 
+  border: 1px solid #5F5D5D; 
+  border-radius: 30px; 
+  padding: 12px 28px; 
+  font-size: 12px; 
+  font-weight: 600; 
+  font-family: "Poppins", sans-serif;
+}
+
+.boton-programados {
+    margin: 0px 10px 0px 10px;
+}
+
+.boton-todas:hover,
+.boton-programados:hover,
+.boton-historial:hover,
+.boton-todas:active,
+.boton-programados:active,
+.boton-historial:active {
+  background-color: #212121; 
+  color: #FFFFFF; 
+  border-color: #212121; 
+}
+
+.boton-todas.activo {
+  background-color: #212121; 
+  color: #FFFFFF; 
+}
+
+/* Card */
+
+.card {
+    margin-top: 20px;
+    border: none;
+}
+
+.no-gutters {
+    display: flex;
+    align-items: center;  
+}
+
+.not {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px 10px;
+    box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+    margin: 20px auto 00px;
+    width: 95%;
+    font-family: "Poppins", sans-serif;
+}
+
+.img-blip {
+    margin-right: 20px;
+    max-width: none;
+    border-radius: 18px;
+    box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+}
+
+.card-title {
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0px 00px 5px;
+}
+
+.card-text {
+    font-weight: 400;
+    font-size: 10px;
+    color: #6D6D6D;
+    line-height: 14px;
+    margin: 0px;
+}
+
+/* Card 2*/
+
+.not-1 {
+    display: flex;
+    border-radius: 15px;
+    padding: 15px 10px;
+    box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+    margin: 10px auto;
+    width: 95%;
+    font-family: "Poppins", sans-serif;
+}
+
+.img-icon {
+    margin-right: 20px;
+    max-width: none;
+    border-radius: 18px;
+}
+
+.cont {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.enlace {
+    margin-top: 2px;
+    font-weight: 500;
+    font-size: 8px;
+    text-decoration: none;
+    color: #212121;
+}
+
+.vector {
+    margin-left: 8px;
+}
+
+.boton-1 {
+    margin-top: 10px;
+}
+
+.aceptar {
+    border: 1px solid #212121;
+    background-color: #212121;
+    color: #FFFFFF;
+    padding: 6px 35px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.declinar {
+    border: 1px solid #FF4B55;
+    background-color: #FFFFFF;
+    color: #FF4B55;
+    padding: 6px 35px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.not-2 {
+    display: flex;
+    border-radius: 15px;
+    padding: 15px 10px;
+    box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+    margin: 20px auto;
+    width: 95%;
+    font-family: "Poppins", sans-serif;
+}

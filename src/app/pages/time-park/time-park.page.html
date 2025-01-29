@@ -1,0 +1,69 @@
+<ion-header mode="ios">
+  <ion-toolbar color="dark">
+    <button routerLink="/tab-home/blip-home" slot="start" style="margin-right:20px ;">
+      <img src="assets/images/left-flec.svg" alt="" style="margin: 0px;">
+    </button>
+    <h2 style="text-align: left;">Tiempo de Reserva</h2>
+    <ion-buttons slot="end">
+      <img src="assets/images/ticket-with.svg" alt=""style="margin: 0px;">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" class="ion-padding" >
+  <ion-card mode="ios" class="reservation-card">
+    <!-- Imagen con contador -->
+    <div class="card-image-container">
+      <img alt="Parqueo" src="assets/images/estc-card.png" />
+      <div class="timer-overlay">
+        <ion-text >
+          <h1>{{ hours }}:{{ minutes }}:{{ seconds }}</h1>
+        </ion-text>
+      </div>
+    </div>
+
+    <!-- Contenido -->
+    <ion-card-content>
+      <ion-text class="ion-text-center">
+        <h2 class="park-name">Nombre del Parqueo</h2>
+        <p class="address">Av. Los Andes 125</p>
+      </ion-text>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <strong>Horario</strong>
+            <p>1:00 PM - 4:00 PM</p>
+          </ion-col>
+          <ion-col style="text-align: end;">
+            <strong>Duración</strong>
+            <p>4 horas</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-text>
+        <strong>Fecha de Reserva</strong>
+        <p>16 de Diciembre, 2024</p>
+      </ion-text>
+      <div class="cont-host">
+        <img src="assets/images/Avatar-card.svg" alt="">
+        <ion-text>
+          <strong>Host</strong>
+          <p>Ricardo Martínez</p>
+        </ion-text>
+      </div>
+      <div class="button-container">
+        <button  class="cancel-button">
+          <img src="assets/images/proh-card.svg" alt="">
+          Cancelar Reserva
+        </button>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón Cancelar Reserva -->
+
+</ion-content>
+

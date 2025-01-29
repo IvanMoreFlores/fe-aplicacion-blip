@@ -1,0 +1,120 @@
+.container{
+    background-color: #79FFAF; 
+    display: flex;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    height: 100%;
+    position: relative;
+ }
+ .content{
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    width: 432px;
+    margin-top: 50px;
+    height: 882px;
+    display: block;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    
+ }
+ .inicio {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 20px;
+ }
+ .nav-arrow-btn{
+    margin-right: 30px; /* Espacio entre la imagen y el título */
+ }
+ .title {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #212121;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+ }
+ /*************************************************************************************************************************************/
+ .range-container {
+    display: flex; /* Usa Flexbox para centrar el ion-range si es necesario */
+    justify-content: center; /* Centra el ion-range horizontalmente */
+    width: 80%;
+    margin-left: 20px;
+  }
+  
+  /* Estilo para el ion-range */
+  ion-range {
+    /*width: 60%; Ancho del ion-range en relación al contenedor padre */
+    --bar-background: #d3d3d3; /* Color de la barra inactiva */
+    --bar-background-active: #080808; /* Color de la barra activa */
+    --bar-height: 10px; /* Altura de la barra */
+    --bar-border-radius: 10px; /* Radio de borde de la barra */
+  
+    --knob-background: #ffffff; /* Color de fondo del control deslizante */
+    --knob-size: 33px; /* Tamaño del control deslizante */
+    --knob-border-radius: 50%; /* Forma redonda del control deslizante */
+  
+    --pin-background: #000000; /* Color de fondo del pin */
+    --pin-color: #ffffff; /* Color del texto del pin */
+    --pin-border-radius: 10px; /* Radio de borde del pin */
+  }
+ /*************************************************************************************************************************************/
+ .time-range-container {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+  }
+  
+  .time-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .time-input-group label {
+    font-weight: 500;
+    font-size: 10px;
+  }
+  
+  ion-datetime-button::part(native) {
+    border: 1px solid #212121;
+    width: 116px;
+    height: 27px;
+    border-radius: 30px;
+    margin-right: 40px;
+    background-color: #ffff;
+    color: #212121;
+    font-weight: 500;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  ion-modal {
+    --background: transparent !important;
+  }
+  
+  ::ng-deep ion-datetime {
+    --background: transparent !important;
+    --wheel-highlight-background: rgba(121, 255, 175, 0.8);
+    --wheel-highlight-border-radius: 48px;
+    --wheel-fade-background-rgb: transparent !important;
+    background-image: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 40%,
+      rgba(255, 255, 255, 1) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+  
+  ion-datetime::part(wheel-item) {
+    color: #212121;
+  }

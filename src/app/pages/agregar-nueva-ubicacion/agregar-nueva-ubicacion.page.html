@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Ubicación</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <!-- Campo para el nombre de la ubicación -->
+    <ion-item>
+      <ion-label position="stacked">Nombre de la ubicación</ion-label>
+      <ion-input placeholder="Ej. Trabajo"></ion-input>
+    </ion-item>
+
+    <!-- Campo para la dirección -->
+    <ion-item>
+      <ion-icon name="location-outline" slot="start"></ion-icon>
+      <ion-input placeholder="Calle Los Almendros 123"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón Guardar -->
+  <div class="button-container">
+    <ion-button expand="block" color="medium" disabled>Guardar Ubicación</ion-button>
+  </div>
+</ion-content>
+
+<!-- <ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">    
+          <div class="inicio">
+            <div class="nav-arrow-btn">
+              <img src="/assets/images/agregar-nueva-ubicacion/nav-arrow-btn.png" alt="" routerLink="/ubicacion-en-el-mapa">
+            </div>
+            <h3 class="title">Agregar nueva ubicación</h3>   
+          </div>
+
+          <div class="input-bar">
+            <ion-label class="label-text">Nueva Ubicación</ion-label>
+            <ion-input type="text" placeholder=""></ion-input>
+          </div>
+          
+          <button expand="block" class="mi-boton" routerLink="">
+            <div class="padre">
+              <div class="img-class-p">
+                <img src="assets/images/agregar-nueva-ubicacion/icon-hojita-lapiz.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <h1 class="t2">Dirección</h1>
+                <p class="c1">Calle Torre de Panamá 515</p>
+                <p class="c1">San Isidro</p> 
+                
+              </div>
+              <div class="img-class-p2">
+                <img src="assets/images/agregar-nueva-ubicacion/small-right.svg" alt="" class="img-class-h2">
+              </div>  
+            </div>
+            <div class="linea"></div>
+          </button>
+
+          <div class="espacio-del-mapa">
+            <div class="btn"><button class="btn-seleccionar">Guardar</button></div>
+            
+          </div>
+
+        </div>
+      </div> 
+    </div>
+  </div>
+</ion-content>           -->

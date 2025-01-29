@@ -1,0 +1,381 @@
+/* Estilos del header */
+.header-row {
+  align-items: center;
+  padding: 16px;
+}
+
+ion-avatar {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+}
+
+.header-title {
+  font-size: 16px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.header-subtitle {
+  font-size: 14px;
+  margin: 0;
+  color: #666666;
+}
+.cont-as{
+  padding: 22px;
+}
+
+/* Estilos de las tarjetas */
+.card {
+  border-radius: 16px;
+  margin: 16px;
+}
+
+.verify-card {
+  background: #f9f9f9;
+}
+
+.verify-image {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  margin-top: 8px;
+}
+
+/* Ajuste de listas */
+ion-list ion-item {
+  --border-radius: 8px;
+  margin: 8px 0;
+  padding: 12px;
+}
+/* Estilo general del botón */
+.vehicle-button {
+  background: #ffffff; /* Fondo blanco */
+  border: 1px solid #e0e0e0; /* Borde gris claro */
+  border-radius: 24px; /* Bordes redondeados */
+  display: flex;
+  align-items: center;
+  padding: 8px 16px; /* Espaciado interno */
+  width: 100%; /* Ocupa todo el ancho */
+  box-shadow: none; /* Sin sombras */
+  height: 48px; /* Altura fija */
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenido del botón (flex) */
+.button-content {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ícono izquierdo y derecho espaciados */
+  width: 100%;
+}
+
+/* Ícono redondeado a la izquierda */
+.icon-left {
+  width: 32px;
+  height: 32px;
+  background: #dff7e3; /* Fondo verde claro */
+  border-radius: 50%; /* Completamente redondeado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px; /* Separación del texto */
+  padding: 9px;
+}
+
+.icon-left img {
+
+}
+
+/* Texto del botón */
+.button-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #666666; /* Color gris suave */
+  flex-grow: 1; /* Ocupa el espacio disponible */
+}
+
+/* Ícono derecho (flecha) */
+.icon-right {
+
+  margin-left: 8px; /* Separación del texto */
+}
+.custom-card {
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px; /* Ajustado para el diseño */
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.conten-cards{
+  margin-top: 20px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-indicator .dot {
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.status-indicator span {
+  background-color: #FFD700;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+  margin: 10px 0;
+  flex-grow: 1;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between; /* Distribuye el botón y la imagen */
+  align-items: center;
+  margin-top: auto; /* Empuja el footer hacia la parte inferior */
+}
+
+.verify-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.title-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espacio entre el texto y la bolita */
+}
+.card-image {
+  margin-top: 20px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+}
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaciado entre botones */
+  width: 100%; /* Ajusta al contenedor */
+  margin-top: 40px
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff; /* Fondo blanco */
+  border: none; /* Sin bordes */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-button:hover {
+  background-color: #f9f9f9; /* Fondo más claro al pasar el cursor */
+}
+
+.icon {
+  font-size: 20px; /* Tamaño del ícono */
+  margin-right: 10px; /* Separación del texto */
+}
+
+.label {
+  flex-grow: 1; /* El texto ocupa el espacio restante */
+  font-size: 16px;
+  font-weight: 500;
+  color: #333; /* Color del texto */
+}
+
+.arrow {
+  font-size: 18px; /* Flecha de navegación */
+  color: #999; /* Color gris */
+}
+.block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-modal {
+  --height: auto;
+}
+.vehicle-modal {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+
+  .modal-header {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #333;
+  }
+
+  .vehicle-list {
+    .vehicle-item {
+      position: relative; /* Para posicionar el ícono de edición */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px; /* Espaciado interno uniforme */
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      margin-bottom: 16px; /* Espaciado entre tarjetas */
+      transition: border 0.3s, box-shadow 0.3s;
+      margin-right: 50px;
+      margin-left: 40px;
+
+      &.selected {
+        border: 2px solid #000000;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .vehicle-info-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%; /* Usar todo el ancho disponible */
+      }
+
+      .vehicle-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .vehicle-icon {
+          background-color: #d9f5e6;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+
+          ion-icon {
+            font-size: 24px;
+            color: #000000;
+          }
+        }
+
+        .vehicle-details {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+
+          .vehicle-name {
+            font-weight: 600;
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+          }
+
+          .vehicle-plate {
+            font-size: 14px;
+            color: #888888;
+            margin: 0;
+          }
+        }
+      }
+
+      .vehicle-actions {
+        display: flex;
+        align-items: center;
+
+        input[type='radio'] {
+          accent-color: #000000;
+          transform: scale(1.4); /* Tamaño más grande */
+        }
+      }
+
+      .edit-button {
+        position: absolute; /* Para colocarlo fuera del borde */
+        top: 50%;
+        right: -28px; /* Ajustar separación horizontal */
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  .add-vehicle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    padding: 12px;
+    margin-top: 16px;
+    color: #000000;
+    justify-content: center;
+
+    ion-icon {
+      font-size: 20px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+

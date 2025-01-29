@@ -1,0 +1,272 @@
+.container {
+    background-color: #E9E9E9;
+    height: 100%;
+    padding-top: 30px;
+}
+
+* {
+    color: #212121;
+}
+
+.row{
+    background-color: #E9E9E9;
+    height: 100%;
+}
+
+.content {
+    width: 90%;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Map */
+
+.buscador-contenedor {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+  
+.buscador {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #212121;
+}
+  
+.btn-tipo-mapa{
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.btn-puntero {
+    margin-top: 20px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+  
+.btn-puntero img {
+    border-radius: 50%; 
+}
+
+.box{
+    width: 253px;
+    height: 56px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+    
+.box > i {
+    font-size: 20px;
+    color: #8C8B8E;
+}
+    
+.box > input{
+    flex: 1;
+    width: 200px;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding-left: 10px;
+    font-family: "Poppins", sans-serif;
+    background: #ffffff;
+}
+
+.button-mas {
+    display: grid;
+}
+
+/* Tu código SCSS existente aquí */
+
+.swiper-container {
+    margin-top: 350px; /* Ajusta el valor según sea necesario */
+  }
+
+.card {
+    width: 351px;
+    height: 162px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    margin-top: 40px;
+    border: none;
+}
+
+.no-gutters {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.not {
+    display: flex;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    justify-content: space-between;
+}
+
+.img-card {
+    margin-right: 10px;
+    max-width: none;
+}
+
+.PDI32 {
+    display: flex;
+}
+
+.curso {
+    background-color: #79FFAF80;
+    color: #35764F;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 17px;
+    width: 80px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    margin: 3px 10px 8px 0px;
+}
+
+.curso-1 {
+    background-color: #FFFFFF;
+    color: #35764F;
+    border: 1px solid #35764F;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 17px;
+    width: 73px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    margin: 3px 10px 8px 0px;
+}
+
+.tip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-text {
+    margin: 0px 0px 5px 0px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #212121;
+    
+}
+
+img.punto {
+    margin-right: 8px;
+}
+
+.card-text-2 {
+    margin: 0px 0px 5px 0px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 10px;
+    display: flex;
+    align-items: center;
+    height: 15px;
+    color: #212121;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    margin-block: 5px;
+}
+
+.ins {
+    padding: 0px 3px;
+}
+
+.hr {
+    display: flex;
+    align-items: center;
+}
+
+.hora {
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+    display: flex;
+    align-items: center;
+    margin: 0px;
+}
+
+.separator-line {
+    border-top: 2px solid #D4D4D4;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.map {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+.img-map {
+    margin-right: 8px;
+}
+
+.tiempo {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    margin: 00px;
+}
+
+.tiempo-1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 00px 00px 00px 102px;
+    color: #212121;
+}
+
+.buton-re {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Poppins", sans-serif;
+    margin-top: 15px;
+}
+
+.extender {
+    background-color: #FFFFFF; 
+    color: #212121; 
+    border: 1px solid #212121; 
+    border-radius: 30px; 
+    padding: 12px 45px; 
+    font-size: 16px; 
+    font-weight: 500; 
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+  
+
+
+  
