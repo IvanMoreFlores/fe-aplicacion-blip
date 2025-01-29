@@ -11,7 +11,9 @@ export class StorageService {
   constructor(private storage: Storage) {
     this.init();
   }
+
   
+
   // Inicializar el Storage sin borrar los datos existentes
   async init() {
     if (this._storage === null) {  // Verifica si el almacenamiento ya ha sido inicializado

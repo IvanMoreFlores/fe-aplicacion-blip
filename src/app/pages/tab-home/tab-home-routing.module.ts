@@ -10,45 +10,45 @@ const routes: Routes = [
     component: TabHomePage,
     children: [
       {
-        path: 'blip-home',
-        loadChildren: () => import('../blip-home/blip-home.module').then(m => m.BlipHomePageModule)
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
 
       {
-        path: 'reservas',
-        loadChildren: () => import('../reservas/reservas.module').then(m => m.ReservasPageModule)
+         path: 'loader-comp',
+         loadChildren: () => import('../finanzas/finanzas.module').then(m => m.FinanzasPageModule)
       },
       {
-        path: 'explora',
-        loadChildren: () => import('../explora/explora.module').then(m => m.ExploraPageModule)
+         path: 'calendario-semanal',
+         loadChildren: () => import('../calendario-semanal/calendario-semanal.module').then(m => m.CalendarioSemanalPageModule)
       },
       {
-        path: 'perfil',
-        loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
+        path: 'inf-perso',
+        loadChildren: () => import('../inf-perso/inf-perso.module').then(m => m.InfPersoPageModule)
       },
 
 
       {
         path: '',
-        redirectTo: '/tab-home/blip-home',
+        redirectTo: '/tab-home/home',
         pathMatch: 'full'
       },
+      // {
+      //   path: '',
+      //   redirectTo: '/tab-home/reservas',
+      //   pathMatch: 'full'
+      // },
+      // {
+      //   path: '',
+      //   redirectTo: '/tab-home/explora',
+      //   pathMatch: 'full'
+      // },
       {
         path: '',
-        redirectTo: '/tab-home/reservas',
+        redirectTo: '/tab-home/inf-perso',
         pathMatch: 'full'
       },
-      {
-        path: '',
-        redirectTo: '/tab-home/explora',
-        pathMatch: 'full'
-      },
-      {
-        path: '',
-        redirectTo: '/tab-home/perfil',
-        pathMatch: 'full'
-      },
-      
+
     ]
   }
 ];
@@ -58,3 +58,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class TabHomePageRoutingModule {}
+

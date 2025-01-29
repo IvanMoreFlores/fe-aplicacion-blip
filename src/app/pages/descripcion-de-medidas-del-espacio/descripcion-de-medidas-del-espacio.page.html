@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">¿Cuáles son las  dimensiones de tu estacionamiento?</h1>
+          <h2 class="subtitle">Recuerda que las medidas mínimas para poner en alquiler tu espacio es de 2.10 m Alto x 2.40 m Ancho x 5.00 m Largo
+
+            </h2>
+      
+          <div class="input-bar">
+            <p class="label-text">Ancho del espacio</p>
+            <input  [(ngModel)]="gar_ancho" type="text" placeholder="2.5 m">
+          </div>  
+          <div class="input-bar">
+            <p class="label-text">Largo del espacio</p>
+            <input [(ngModel)]="gar_largo" type="text" placeholder="2.1 m">
+          </div>  
+          <div class="input-bar">
+            <p class="label-text">Altura (en caso sea techado)</p>
+            <input [(ngModel)]="gar_alto" type="text" placeholder="2.1 (Metros)">
+          </div>  
+          <div class="enlace">
+            <p class="tex-pagina">
+              <a class="servicios" (click)="indicacion()">¿Cómo hacerlo?</a>
+              <img src="/assets/images/right.png" alt="">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" (click)="return()" >Atrás</button>
+        <button  (click)="getValues()" class="nex" >Siguiente</button>
+      </div>
+    </footer>
+  </div>
+</ion-content>

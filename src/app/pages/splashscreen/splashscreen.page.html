@@ -1,8 +1,7 @@
-<ion-content class="splash-screen" fullscreen>
-  <div class="logo-container">
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
     <div id="animated-circle" class="animated-circle"></div>
     <img id="animated-logo" src="/assets/images/logo.png" class="logo animate__animated animate__fadeIn">
-    <audio id="carlock" src="/assets/sounds/car-lock.mp3">(ended)="onSoundEnded()"</audio>
-    <button id="btnPlay" (click)="playCarlock()"></button>
+    <audio id="carlock" src="/assets/sounds/car-lock.mp3"></audio>
   </div>
 </ion-content>

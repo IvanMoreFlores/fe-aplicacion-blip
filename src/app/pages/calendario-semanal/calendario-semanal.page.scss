@@ -1,0 +1,130 @@
+/* Estilos para el header */
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+
+ion-toolbar {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+
+ion-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline:  16px;
+  margin-block: 20px;
+  height: 56px; /* Altura consistente para el header */
+
+}
+
+ion-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+}
+
+ion-buttons {
+  display: flex;
+  align-items: center;
+}
+
+ion-icon {
+  font-size: 24px; /* Tamaño adecuado para los iconos */
+  color: #000;
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: none; /* Eliminar el fondo del botón */
+  --ripple-color: transparent; /* Sin efecto ripple */
+}
+
+/* Estilos para el contenedor del calendario */
+.calendar-container {
+  padding: 0 20px;
+}
+
+/* Encabezado de mes y año */
+.month-year {
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #333;
+}
+
+/* Contenedor de cada día */
+.day {
+  background-color: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.date-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.date-number {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.day-name {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Información del estacionamiento */
+.parking-details {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Estilo para el monto */
+.amount {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000;
+}
+
+.no-reservation {
+  font-size: 16px;
+  color: #bbb;
+}
+
+/* Detalles de la reserva */
+.reservations {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reserva-detalle {
+  color: #444;
+  font-size: 14px;
+  margin-left: 20px;
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+
+

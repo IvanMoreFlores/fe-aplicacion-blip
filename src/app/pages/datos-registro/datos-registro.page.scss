@@ -167,4 +167,56 @@ ion-content{
   color: #1f1f1f;
 }
 
+.footer-btn {
+  position: fixed; /* Fija el footer */
+  bottom: 0; /* Empieza desde abajo */
+  width: 100%; /* Ancho completo */
+  z-index: 10; /* Asegura que esté por encima del contenido */
+  background: white; /* Fondo blanco, o lo que prefieras */
+}
 
+.bnt-dow{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-block: 10%;
+  padding-inline: 10%;
+  .bac{
+      border: 1px solid #212121;
+      background-color: #FFFFFF;
+      padding-inline: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-radius: 30px;
+      width: 40%;
+      font-size: 15px;
+      font-weight: 600;
+      color: #212121;
+      font-family: "Poppins", sans-serif;
+  }
+  .nex{
+      border-radius: 30px;
+      border: 1px solid #212121;
+      background-color: #212121;
+      padding-inline: 10px;
+      color: #ffffff;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 15px;
+      width: 40%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+  }
+
+  .all-inputs-filled {
+      background-color: #79FFAF; /* Cambia el color del botón cuando todos los campos están llenos */
+      color: #212121;
+      border: #79FFAF;
+  }
+  .all-inputs-filled {
+      background-color: #212121; /* Cambia el color del botón cuando todos los campos están llenos */
+      color: #FFFFFF;
+      font-size: 15px;
+      border: #212121;
+  }
+}

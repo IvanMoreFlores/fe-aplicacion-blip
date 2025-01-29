@@ -8,7 +8,6 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./recu-cuen.page.scss'],
 })
 export class RecuCuenPage implements OnInit,OnDestroy {
-  keyboardOpen = false;
   displayedText: string = '';
   buttonText: string = '  reenviar código por SMS';
   minutes: number = 1;
@@ -36,6 +35,7 @@ export class RecuCuenPage implements OnInit,OnDestroy {
     if (this.interval) {
       clearInterval(this.interval);
     }
+    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
   }
 
   async reenviarCodigo() {
@@ -70,25 +70,40 @@ export class RecuCuenPage implements OnInit,OnDestroy {
     this.isExpired = false; // Restablecer el estado del botón
     this.startTimer(); // Reiniciar el temporizador
   }
-  constructor(private route: ActivatedRoute,private modalController: ModalController,) {
-    Keyboard.addListener('keyboardWillShow', () => {
-      this.keyboardOpen = true;
-    });
-
-    // Detecta cuando se cierra el teclado
-    Keyboard.addListener('keyboardWillHide', () => {
-      this.keyboardOpen = false;
-    });
+  constructor(private route: ActivatedRoute,private modalcontroller: ModalController,) {}
+  dismissModal() {
+    this.modalcontroller.dismiss(null, 'mas-opc')
   }
+  initializeKeyboardListeners() {
+    const content = document.querySelector('ion-content') as HTMLElement;
+    const footer = document.querySelector('.footer-btn') as HTMLElement;
 
+    Keyboard.addListener('keyboardWillShow', (info) => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      if (footer) {
+        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
+      }
+    });
+    
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      const content = document.querySelector('ion-content') as HTMLElement;
+    
+      if (footer) {
+        footer.style.bottom = '0px'; // Restaura el footer
+      }
+      if (content) {
+        content.style.paddingBottom = '0px'; // Restaura el padding
+      }
+    });
+    
+  }
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.displayedText = params['text'];
     });
     this.startTimer();
-  }
-  async exit() {
-    
-    await this.modalController.dismiss();
+    this.initializeKeyboardListeners();
   }
 }

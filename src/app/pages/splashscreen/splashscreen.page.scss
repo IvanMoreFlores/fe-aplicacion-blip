@@ -1,19 +1,33 @@
 ion-content {
-    --background: #79FFAF; /* Color verde */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
+    --background: #71EEA3; /* Fondo verde */
   
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* Hace que el contenedor del logo ocupe toda la altura */
-  }
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
   
-  .logo {
-    width: 150px;
-    height: auto;
+    .animated-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent; /* El color negro en el círculo */
+      width: 20%; /* Tamaño relativo al ancho de la pantalla */
+      height: 20%;
+      border-radius: 50%;
+      z-index: 1;
+    }
+  
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30%; /* Escala responsiva del logo */
+      z-index: 2;
+    }
   }

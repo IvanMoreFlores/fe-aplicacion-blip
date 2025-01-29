@@ -1,0 +1,96 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div class="animation">
+      <div class="card-content">
+        <div class="swiper-container swiper-text">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="img-contenedor">
+                <img class="img-principal" src="/assets/images/presentacion.png" alt="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img-contenedor">
+                <img class="img-principal" src="/assets/images/presentacion1.png" alt="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+          <div class="img-contenedor">
+            <img class="img-principal" src="/assets/images/presentacion2.png" alt="" />
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="overlay-x">
+        <div class="close-button" routerLink="/tab-home/home">
+          <span>x</span>
+        </div>        
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="swiper-pagination"></div>
+        <div class="card-content">
+          <div class="swiper-container swiper-main">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <h1 class="title">Bienvenid(a) a <br> Blip, {{ nombre }}</h1>
+
+                <h2 class="description">
+                  Ahora eres parte de nuestra 
+                  comunidad. 
+                </h2>
+                <h2 class="subtitle">
+                  Rentabiliza tu espacio y ofrece a los conductores una experiencia increíble.
+                </h2>
+              </div>
+              <div class="swiper-slide">
+                <h1 class="title">Manejo de Infracciones</h1>
+                <h2 class="description">
+                  Advertencias y desactivación de cuenta.
+                </h2>
+                <h2 class="subtitle">
+                  Nos comprometemos a mantener un entorno seguro para todos.
+                </h2>
+                <div class="enlace">
+                  <h1 class="tex-pagina">
+                    <h1 class="servicios" routerLink="/presentacion-infracciones-informacion">Leer Más </h1>
+
+                  </h1>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <h1 class="title">Atiende bien <br> a 
+                  los conductores.</h1>
+                <h2 class="description">
+                  Prioriza un servicio de excelencia.
+                </h2>
+                <h2 class="subtitle">
+                  La atención es esencial, recuerda que cuentas con 10 minutos para atenderlos.
+                </h2>
+                <div class="enlace">
+                  <h1 class="tex-pagina">
+                    <h1 class="servicios" routerLink="/presentacion-inquilinos-informacion">Leer Más </h1>
+
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-buttons">
+          <button 
+            [disabled]="!isButtonEnabled"
+            [ngClass]="{ 'disabled-btn': !isButtonEnabled, 'enabled-btn': isButtonEnabled }" 
+            class="next-btn"
+            routerLink="/tab-home/home"
+          >
+            Comenzar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

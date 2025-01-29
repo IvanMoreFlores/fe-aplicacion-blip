@@ -8,246 +8,297 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'img-mostrar',
+    loadChildren: () => import('./pages/img-mostrar/img-mostrar.module').then( m => m.ImgMostrarPageModule)
+  },
+  {
+    path: 'confirmacion-de-identidad',
+    loadChildren: () => import('./pages/confirmacion-de-identidad/confirmacion-de-identidad.module').then( m => m.ConfirmacionDeIdentidadPageModule)
+  },
+  {
+    path: 'adj-dt-dni',
+    loadChildren: () => import('./pages/adj-dt-dni/adj-dt-dni.module').then( m => m.AdjDtDniPageModule)
+  },
+  {
+    path: 'ante-penal',
+    loadChildren: () => import('./pages/ante-penal/ante-penal.module').then( m => m.AntePenalPageModule)
+  },
+  {
+    path: 'eli-pref',
+    loadChildren: () => import('./pages/eli-pref/eli-pref.module').then( m => m.EliPrefPageModule)
+  },
 
-    path: 'splashscreen',
-    loadChildren: () =>
-      import('./pages/splashscreen/splashscreen.module').then(
-        (m) => m.SplashscreenPageModule
-      ),
+  {
+    path: 'img-esta',
+    loadChildren: () => import('./pages/img-esta/img-esta.module').then( m => m.ImgEstaPageModule)
+  },
+
+  {
+    path: 'terminos-y-condiciones',
+    loadChildren: () => import('./pages/terminos-y-condiciones/terminos-y-condiciones.module').then( m => m.TerminosYCondicionesPageModule)
   },
   {
-    path: 'walkthrough',
-    loadChildren: () =>
-      import('./pages/walkthrough/walkthrough.module').then(
-        (m) => m.WalkthroughPageModule
-      ),
+    path: 'terminos-y-condiciones-mas-informacion',
+    loadChildren: () => import('./pages/redaccion/redaccion.module').then( m => m.RedaccionPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () =>
-      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+    path: 'terminos-y-condiciones-empezar',
+    loadChildren: () => import('./pages/terminos-y-condiciones-empezar/terminos-y-condiciones-empezar.module').then( m => m.TerminosYCondicionesEmpezarPageModule)
   },
   {
-    path: 'registro',
-    loadChildren: () =>
-      import('./pages/registro/registro.module').then(
-        (m) => m.RegistroPageModule
-      ),
+    path: 'descripcion-del-estacionamiento',
+    loadChildren: () => import('./pages/descripcion-del-estacionamiento/descripcion-del-estacionamiento.module').then( m => m.DescripcionDelEstacionamientoPageModule)
   },
   {
-    path: 'verificacion',
-    loadChildren: () =>
-      import('./pages/verificacion/verificacion.module').then(
-        (m) => m.VerificacionPageModule
-      ),
+    path: 'descripcion-del-espacio',
+    loadChildren: () => import('./pages/descripcion-del-espacio/descripcion-del-espacio.module').then( m => m.DescripcionDelEspacioPageModule)
   },
   {
-    path: 'termino-y-condiciones',
-    loadChildren: () =>
-      import('./pages/termino-y-condiciones/termino-y-condiciones.module').then(
-        (m) => m.TerminoYCondicionesPageModule
-      ),
+    path: 'descripcion-de-direccion',
+    loadChildren: () => import('./pages/descripcion-de-direccion/descripcion-de-direccion.module').then( m => m.DescripcionDeDireccionPageModule)
   },
   {
-    path: 'termino-y-condiciones-redaccion',
-    loadChildren: () =>
-      import(
-        './pages/termino-y-condiciones-redaccion/termino-y-condiciones-redaccion.module'
-      ).then((m) => m.TerminoYCondicionesRedaccionPageModule),
+    path: 'descripcion-de-servicios-adicionales',
+    loadChildren: () => import('./pages/descripcion-de-servicios-adicionales/descripcion-de-servicios-adicionales.module').then( m => m.DescripcionDeServiciosAdicionalesPageModule)
+  },
+  {
+    path: 'descripcion-de-medidas-del-espacio',
+    loadChildren: () => import('./pages/descripcion-de-medidas-del-espacio/descripcion-de-medidas-del-espacio.module').then( m => m.DescripcionDeMedidasDelEspacioPageModule)
+  },
+  {
+    path: 'descripcion-como-mido-mi-espacio',
+    loadChildren: () => import('./pages/descripcion-como-mido-mi-espacio/descripcion-como-mido-mi-espacio.module').then( m => m.DescripcionComoMidoMiEspacioPageModule)
+  },
+  {
+    path: 'descripcion-de-ubicacion',
+    loadChildren: () => import('./pages/descripcion-de-ubicacion/descripcion-de-ubicacion.module').then( m => m.DescripcionDeUbicacionPageModule)
+  },
+  {
+    path: 'descripcion-del-mapa',
+    loadChildren: () => import('./pages/descripcion-del-mapa/descripcion-del-mapa.module').then( m => m.DescripcionDelMapaPageModule)
+  },
+  {
+    path: 'configuracion',
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },
+  {
+    path: 'configuracion-pago',
+    loadChildren: () => import('./pages/configuracion-pago/configuracion-pago.module').then( m => m.ConfiguracionPagoPageModule)
+  },
+  {
+    path: 'configuracion-alquilar',
+    loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
+  },
+
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'mensajes',
+    loadChildren: () => import('./pages/mensajes/mensajes.module').then( m => m.MensajesPageModule)
+  },
+  {
+    path: 'mensajes-chat',
+    loadChildren: () => import('./pages/mensajes-chat/mensajes-chat.module').then( m => m.MensajesChatPageModule)
+  },
+  {
+    path: 'mensajes-archivados',
+    loadChildren: () => import('./pages/mensajes-archivados/mensajes-archivados.module').then( m => m.MensajesArchivadosPageModule)
+  },
+  {
+    path: 'mensajes-archivados-desarchivar',
+    loadChildren: () => import('./pages/mensajes-archivados-desarchivar/mensajes-archivados-desarchivar.module').then( m => m.MensajesArchivadosDesarchivarPageModule)
+  },
+  {
+    path: 'mensajes-destacados',
+    loadChildren: () => import('./pages/mensajes-destacados/mensajes-destacados.module').then( m => m.MensajesDestacadosPageModule)
+  },
+  {
+    path: 'mensajes-marcar-destacado',
+    loadChildren: () => import('./pages/mensajes-marcar-destacado/mensajes-marcar-destacado.module').then( m => m.MensajesMarcarDestacadoPageModule)
+  },
+  {
+    path: 'mensajes-marcar-leido',
+    loadChildren: () => import('./pages/mensajes-marcar-leido/mensajes-marcar-leido.module').then( m => m.MensajesMarcarLeidoPageModule)
+  },
+  {
+    path: 'mensajes-marcar-no-leido',
+    loadChildren: () => import('./pages/mensajes-marcar-no-leido/mensajes-marcar-no-leido.module').then( m => m.MensajesMarcarNoLeidoPageModule)
+  },
+  {
+    path: 'mensajes-atencion',
+    loadChildren: () => import('./pages/mensajes-atencion/mensajes-atencion.module').then( m => m.MensajesAtencionPageModule)
+  },
+  {
+    path: 'mensajes-programados',
+    loadChildren: () => import('./pages/mensajes-programados/mensajes-programados.module').then( m => m.MensajesProgramadosPageModule)
+  },
+  {
+    path: 'mensajes-respuestas',
+    loadChildren: () => import('./pages/mensajes-respuestas/mensajes-respuestas.module').then( m => m.MensajesRespuestasPageModule)
+  },
+  {
+    path: 'home-notificaciones',
+    loadChildren: () => import('./pages/home-notificaciones/home-notificaciones.module').then( m => m.HomeNotificacionesPageModule)
+  },
+  {
+    path: 'calendario',
+    loadChildren: () => import('./pages/calendario/calendario.module').then( m => m.CalendarioPageModule)
+  },
+  {
+    path: 'calendario-semanal',
+    loadChildren: () => import('./pages/calendario-semanal/calendario-semanal.module').then( m => m.CalendarioSemanalPageModule)
+  },
+  {
+    path: 'descripcion-de-direccion',
+    loadChildren: () => import('./pages/descripcion-de-direccion/descripcion-de-direccion.module').then( m => m.DescripcionDeDireccionPageModule)
+  },
+  {
+    path: 'descripcion-de-servicios-adicionales',
+    loadChildren: () => import('./pages/descripcion-de-servicios-adicionales/descripcion-de-servicios-adicionales.module').then( m => m.DescripcionDeServiciosAdicionalesPageModule)
+  },
+  {
+    path: 'descripcion-de-medidas-del-espacio',
+    loadChildren: () => import('./pages/descripcion-de-medidas-del-espacio/descripcion-de-medidas-del-espacio.module').then( m => m.DescripcionDeMedidasDelEspacioPageModule)
+  },
+  {
+    path: 'descripcion-como-mido-mi-espacio',
+    loadChildren: () => import('./pages/descripcion-como-mido-mi-espacio/descripcion-como-mido-mi-espacio.module').then( m => m.DescripcionComoMidoMiEspacioPageModule)
+  },
+  {
+    path: 'descripcion-de-ubicacion',
+    loadChildren: () => import('./pages/descripcion-de-ubicacion/descripcion-de-ubicacion.module').then( m => m.DescripcionDeUbicacionPageModule)
+  },
+  {
+    path: 'descripcion-del-mapa',
+    loadChildren: () => import('./pages/descripcion-del-mapa/descripcion-del-mapa.module').then( m => m.DescripcionDelMapaPageModule)
+  },
+  {
+    path: 'configuracion',
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },
+  {
+    path: 'configuracion-pago',
+    loadChildren: () => import('./pages/configuracion-pago/configuracion-pago.module').then( m => m.ConfiguracionPagoPageModule)
+  },
+  {
+    path: 'configuracion-alquilar',
+    loadChildren: () => import('./pages/configuracion-alquilar/configuracion-alquilar.module').then( m => m.ConfiguracionAlquilarPageModule)
+  },
+  {
+    path: 'mostra-esta',
+    loadChildren: () => import('./pages/mostra-esta/mostra-esta.module').then( m => m.MostraEstaPageModule)
+  },
+  {
+    path: 'nuevo-anu-pone-alq',
+    loadChildren: () => import('./pages/nuevo-anu-pone-alq/nuevo-anu-pone-alq.module').then( m => m.NuevoAnuPoneAlqPageModule)
+  },
+  {
+    path: 'menu-config',
+    loadChildren: () => import('./pages/menu-config/menu-config.module').then( m => m.MENUCONFIGPageModule)
+  },
+  {
+    path: 'inf-perso',
+    loadChildren: () => import('./pages/inf-perso/inf-perso.module').then( m => m.InfPersoPageModule)
+  },
+  {
+    path: 'calendario-mes',
+    loadChildren: () => import('./pages/calendario-mes/calendario-mes.module').then( m => m.CalendarioMesPageModule)
+  },
+  {
+    path: 'finanzas',
+    loadChildren: () => import('./pages/finanzas/finanzas.module').then( m => m.FinanzasPageModule)
+  },
+
+  {
+    path: 'anuncio-caracteristicas',
+    loadChildren: () => import('./pages/anuncio-caracteristicas/anuncio-caracteristicas.module').then( m => m.AnuncioCaracteristicasPageModule)
+  },
+
+  {
+    path: 'presentacion',
+    loadChildren: () => import('./pages/presentacion/presentacion.module').then( m => m.PresentacionPageModule)
+  },
+  {
+    path: 'presentacion-infracciones-informacion',
+    loadChildren: () => import('./pages/presentacion-infracciones-informacion/presentacion-infracciones-informacion.module').then( m => m.PresentacionInfraccionesInformacionPageModule)
+  },
+  {
+    path: 'presentacion-inquilinos-informacion',
+    loadChildren: () => import('./pages/presentacion-inquilinos-informacion/presentacion-inquilinos-informacion.module').then( m => m.PresentacionInquilinosInformacionPageModule)
   },
   {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
-  },
-  
-  //{ path: '', redirectTo: 'splashscreen', pathMatch: 'full' },
-  //{ path: '**', redirectTo: 'splashscreen', pathMatch: 'full' },
-  
-
-  
-
-  { path: 'pantalla-busqueda',loadChildren: () => import('./pages/pantalla-busqueda/pantalla-busqueda.module').then( m => m.PantallaBusquedaPageModule) },
-  {
-    path: 'sitios-guardados',
-    loadChildren: () =>
-      import('./pages/sitios-guardados/sitios-guardados.module').then(
-        (m) => m.SitiosGuardadosPageModule
-      ),
-  },
-
-  
-  // { path: '', redirectTo: 'splashscreen', pathMatch: 'full' },
-  // { path: '**', redirectTo: 'splashscreen', pathMatch: 'full' },
-
-  {
-    path: 'nueva-ubicacion',
-    loadChildren: () =>
-      import('./pages/nueva-ubicacion/nueva-ubicacion.module').then(
-        (m) => m.NuevaUbicacionPageModule
-      ),
+  } ,
+   {
+    path: 'ubicacion',
+    loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
   },
   {
-    path: 'tab-home',
-    loadChildren: () =>
-      import('./pages/tab-home/tab-home.module').then(
-        (m) => m.TabHomePageModule
-      ),
+    path: 'horario-personalizado',
+    loadChildren: () => import('./pages/horario-personalizado/horario-personalizado.module').then( m => m.HorarioPersonalizadoPageModule)
+  },
+   {
+    path: 'panel-anfitrion',
+    loadChildren: () => import('./pages/panel-anfitrion/panel-anfitrion.module').then( m => m.PanelAnfitrionPageModule)
   },
   {
-    path: 'ubicacion-en-el-mapa',
-    loadChildren: () =>
-      import('./pages/ubicacion-en-el-mapa/ubicacion-en-el-mapa.module').then(
-        (m) => m.UbicacionEnElMapaPageModule
-      ),
+    path: 'panel',
+    loadChildren: () => import('./pages/panel/panel.module').then( m => m.PanelPageModule)
   },
   {
-    path: 'agregar-nueva-ubicacion',
-    loadChildren: () =>
-      import(
-        './pages/agregar-nueva-ubicacion/agregar-nueva-ubicacion.module'
-      ).then((m) => m.AgregarNuevaUbicacionPageModule),
+    path: 'inf-perso',
+    loadChildren: () => import('./pages/inf-perso/inf-perso.module').then( m => m.InfPersoPageModule)
   },
   {
-    path: 'reservas',
-    loadChildren: () =>
-      import('./pages/reservas/reservas.module').then(
-        (m) => m.ReservasPageModule
-      ),
+    path: 'pressed',
+    loadChildren: () => import('./pages/pressed/pressed.module').then( m => m.PressedPageModule)
   },
   {
-    path: 'notificaciones',
-    loadChildren: () =>
-      import('./pages/notificaciones/notificaciones.module').then(
-        (m) => m.NotificacionesPageModule
-      ),
+    path: 'pressed-chat',
+    loadChildren: () => import('./pages/pressed-chat/pressed-chat.module').then( m => m.PressedChatPageModule)
   },
   {
-    path: 'favoritos',
-    loadChildren: () =>
-      import('./pages/favoritos/favoritos.module').then(
-        (m) => m.FavoritosPageModule
-      ),
+    path: 'pressed-chat-component',
+    loadChildren: () => import('./pages/pressed-chat-component/pressed-chat-component.module').then( m => m.PressedChatComponentPageModule)
   },
   {
-    path: 'reservas-loading',
-    loadChildren: () =>
-      import('./pages/reservas-loading/reservas-loading.module').then(
-        (m) => m.ReservasLoadingPageModule
-      ),
+    path: 'acre-pro',
+    loadChildren: () => import('./pages/acre-pro/acre-pro.module').then( m => m.AcreProPageModule)
   },
   {
-    path: 'reservas-detalles',
-    loadChildren: () =>
-      import('./pages/reservas-detalles/reservas-detalles.module').then(
-        (m) => m.ReservasDetallesPageModule
-      ),
+    path: 'soporte56',
+    loadChildren: () => import('./pages/soporte56/soporte56.module').then( m => m.Soporte56PageModule)
   },
   {
-    path: 'reservas-detalles-recibo',
-    loadChildren: () =>
-      import(
-        './pages/reservas-detalles-recibo/reservas-detalles-recibo.module'
-      ).then((m) => m.ReservasDetallesReciboPageModule),
+    path: 'ayuda57',
+    loadChildren: () => import('./pages/ayuda57/ayuda57.module').then( m => m.Ayuda57PageModule)
   },
   {
-    path: 'reservas-reportar',
-    loadChildren: () =>
-      import('./pages/reservas-reportar/reservas-reportar.module').then(
-        (m) => m.ReservasReportarPageModule
-      ),
-  },
-
-  {
-    path: 'blip-home',
-    loadChildren: () =>
-      import('./pages/blip-home/blip-home.module').then(
-        (m) => m.BlipHomePageModule
-      ),
-  },
-
-
-  {
-    path: 'tab-home',
-    loadChildren: () =>
-      import('./pages/tab-home/tab-home.module').then(
-        (m) => m.TabHomePageModule
-      ),
-  },
-
-
-
-  {
-    path: 'agreg-guar',
-    loadChildren: () => import('./pages/agreg-guar/agreg-guar.module').then( m => m.AgregGuarPageModule)
+    path: 'ini-seg-se',
+    loadChildren: () => import('./pages/ini-seg-se/ini-seg-se.module').then( m => m.IniSegSePageModule)
   },
   {
-    path: 'onboar',
-    loadChildren: () => import('./pages/onboar/onboar.module').then( m => m.OnboarPageModule)
+    path: 'notifi',
+    loadChildren: () => import('./pages/notifi/notifi.module').then( m => m.NotifiPageModule)
   },
   {
-    path: 'reservas-proporcionar',
-    loadChildren: () => import('./pages/reservas-proporcionar/reservas-proporcionar.module').then( m => m.ReservasProporcionarPageModule)
+    path: 'cancelacion-politica',
+    loadChildren: () => import('./pages/cancelacion-politica/cancelacion-politica.module').then( m => m.CancelacionPoliticaPageModule)
   },
   {
-    path: 'notificaciones-not',
-    loadChildren: () => import('./pages/notificaciones-not/notificaciones-not.module').then( m => m.NotificacionesNotPageModule)
+    path: 'lds',
+    loadChildren: () => import('./pages/lds/lds.module').then( m => m.LdsPageModule)
   },
   {
-    path: 'walktrough1',
-    loadChildren: () => import('./pages/walktrough1/walktrough1.module').then( m => m.Walktrough1PageModule)
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'vista-mapa',
-    loadChildren: () => import('./pages/vista-mapa/vista-mapa.module').then( m => m.VistaMapaPageModule)
-  },
-  {
-    path: 'explora',
-    loadChildren: () => import('./pages/explora/explora.module').then( m => m.ExploraPageModule)
-  },
-  {
-    path: 'agre-nuevo-vehiculo',
-    loadChildren: () => import('./pages/agre-nuevo-vehiculo/agre-nuevo-vehiculo.module').then( m => m.AgreNuevoVehiculoPageModule)
-  },
-  {
-    path: 'configuracion',
-    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
-  },
-  {
-    path: 'info-personal',
-    loadChildren: () => import('./pages/info-personal/info-personal.module').then( m => m.InfoPersonalPageModule)
-  },
-  {
-    path: 'inicio-seguridad',
-    loadChildren: () => import('./pages/inicio-seguridad/inicio-seguridad.module').then( m => m.InicioSeguridadPageModule)
-  },
-  {
-    path: 'notificaciones-confi',
-    loadChildren: () => import('./pages/notificaciones-confi/notificaciones-confi.module').then( m => m.NotificacionesConfiPageModule)
-  },
-  {
-    path: 'ubicacion-confi',
-    loadChildren: () => import('./pages/ubicacion-confi/ubicacion-confi.module').then( m => m.UbicacionConfiPageModule)
-  },
-
-  
-  // { path: '', redirectTo: 'splashscreen', pathMatch: 'full' },
-  // { path: '**', redirectTo: 'splashscreen', pathMatch: 'full' },
-
-  {
-    path: 'nueva-ubicacion',
-    loadChildren: () => import('./pages/nueva-ubicacion/nueva-ubicacion.module').then( m => m.NuevaUbicacionPageModule)
-  },
-  {
-    path: 'ubicacion-en-el-mapa',
-    loadChildren: () => import('./pages/ubicacion-en-el-mapa/ubicacion-en-el-mapa.module').then( m => m.UbicacionEnElMapaPageModule)
-  },
-  {
-    path: 'agregar-nueva-ubicacion',
-    loadChildren: () => import('./pages/agregar-nueva-ubicacion/agregar-nueva-ubicacion.module').then( m => m.AgregarNuevaUbicacionPageModule)
-  },
-  {
-    path: 'configuracion',
-    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
     path: 'ing-cor',
@@ -265,9 +316,25 @@ const routes: Routes = [
     path: 'log-bin',
     loadChildren: () => import('./pages/log-bin/log-bin.module').then( m => m.LogBinPageModule)
   },
-    {
+  {
+    path: 'olv-con',
+    loadChildren: () => import('./pages/olv-con/olv-con.module').then( m => m.OlvConPageModule)
+  },
+  {
+    path: 'otp',
+    loadChildren: () => import('./pages/otp/otp.module').then( m => m.OtpPageModule)
+  },
+  {
+    path: 'datos-registro',
+    loadChildren: () => import('./pages/datos-registro/datos-registro.module').then( m => m.DatosRegistroPageModule)
+  },
+  {
     path: 'datos-ingresar',
     loadChildren: () => import('./pages/datos-ingresar/datos-ingresar.module').then( m => m.DatosIngresarPageModule)
+  },
+  {
+    path: 'datos-verificacion',
+    loadChildren: () => import('./pages/datos-verificacion/datos-verificacion.module').then( m => m.DatosVerificacionPageModule)
   },
   {
     path: 'datos-numero',
@@ -278,192 +345,64 @@ const routes: Routes = [
     loadChildren: () => import('./pages/datos-creacion-contra/datos-creacion-contra.module').then( m => m.DatosCreacionContraPageModule)
   },
   {
-    path: 'datos-registro',
-    loadChildren: () => import('./pages/datos-registro/datos-registro.module').then( m => m.DatosRegistroPageModule)
+    path: 'splashscreen',
+    loadChildren: () => import('./pages/splashscreen/splashscreen.module').then( m => m.SplashscreenPageModule)
   },
   {
-    path: 'olv-con',
-    loadChildren: () => import('./pages/olv-con/olv-con.module').then( m => m.OlvConPageModule)
+    path: 'walkthrough',
+    loadChildren: () => import('./pages/walkthrough/walkthrough.module').then( m => m.WalkthroughPageModule)
   },
   {
-    path: 'otp',
-    loadChildren: () => import('./pages/otp/otp.module').then( m => m.OtpPageModule)
-  },
-    {
-    path: 'ing-cor',
-    loadChildren: () => import('./pages/ing-cor/ing-cor.module').then( m => m.IngCorPageModule)
+    path: 'cre-con',
+    loadChildren: () => import('./pages/cre-con/cre-con.module').then( m => m.CreConPageModule)
   },
   {
-    path: 'datos-verificacion',
-    loadChildren: () => import('./pages/datos-verificacion/datos-verificacion.module').then( m => m.DatosVerificacionPageModule)
+    path: 'tap-home',
+    loadChildren: () => import('./pages/tap-home/tap-home.module').then( m => m.TapHomePageModule)
   },
   {
-    path: 'mensajes-usuario',
-    loadChildren: () => import('./pages/mensajes-usuario/mensajes-usuario.module').then( m => m.MensajesUsuarioPageModule)
+    path: 'tab-home',
+    loadChildren: () => import('./pages/tab-home/tab-home.module').then( m => m.TabHomePageModule)
   },
   {
-    path: 'confir-creacion-cuenta',
-    loadChildren: () => import('./pages/confir-creacion-cuenta/confir-creacion-cuenta.module').then( m => m.ConfirCreacionCuentaPageModule)
-  },
-  {
-    path: 'reserva-tu-cochera',
-    loadChildren: () => import('./pages/reserva-tu-cochera/reserva-tu-cochera.module').then( m => m.ReservaTuCocheraPageModule)
-  },
-  {
-    path: 'reserva-tu-cochera2',
-    loadChildren: () => import('./pages/reserva-tu-cochera2/reserva-tu-cochera2.module').then( m => m.ReservaTuCochera2PageModule)
-  },
-  {
-    path: 'cronometro',
-    loadChildren: () => import('./pages/cronometro/cronometro.module').then( m => m.CronometroPageModule)
-  },
-
-  {
-    path: 'pru',
-    loadChildren: () => import('./pages/pru/pru.module').then( m => m.PruPageModule)
-  },
-  {
-    path: 'pruass',
-    loadChildren: () => import('./pages/pruass/pruass.module').then( m => m.PruassPageModule)
+    path: 'loader-comp',
+    loadChildren: () => import('./pages/loader-comp/loader-comp.module').then( m => m.LoaderCompPageModule)
   },  {
-    path: 'us-correo',
-    loadChildren: () => import('./pages/us-correo/us-correo.module').then( m => m.UsCorreoPageModule)
+    path: 'cre-anu',
+    loadChildren: () => import('./pages/cre-anu/cre-anu.module').then( m => m.CreAnuPageModule)
   },
   {
-    path: 'succes-corr',
-    loadChildren: () => import('./pages/succes-corr/succes-corr.module').then( m => m.SuccesCorrPageModule)
+    path: 'validacion-idn',
+    loadChildren: () => import('./pages/validacion-idn/validacion-idn.module').then( m => m.ValidacionIdnPageModule)
   },
   {
-    path: 'cor-electr',
-    loadChildren: () => import('./pages/cor-electr/cor-electr.module').then( m => m.CorElectrPageModule)
+    path: 'cor-controlv',
+    loadChildren: () => import('./pages/cor-controlv/cor-controlv.module').then( m => m.CorControlvPageModule)
   },
   {
-    path: 'creac-contra',
-    loadChildren: () => import('./pages/creac-contra/creac-contra.module').then( m => m.CreacContraPageModule)
+    path: 'loader-olvcon',
+    loadChildren: () => import('./pages/loader-olvcon/loader-olvcon.module').then( m => m.LoaderOlvconPageModule)
   },
   {
-    path: 'succet-home',
-    loadChildren: () => import('./pages/succet-home/succet-home.module').then( m => m.SuccetHomePageModule)
+    path: 'succes-cor',
+    loadChildren: () => import('./pages/succes-cor/succes-cor.module').then( m => m.SuccesCorPageModule)
   },
   {
-    path: 'rest-contra',
-    loadChildren: () => import('./pages/rest-contra/rest-contra.module').then( m => m.RestContraPageModule)
+    path: 'contra-cor',
+    loadChildren: () => import('./pages/contra-cor/contra-cor.module').then( m => m.ContraCorPageModule)
   },
   {
-    path: 'contra-verf',
-    loadChildren: () => import('./pages/contra-verf/contra-verf.module').then( m => m.ContraVerfPageModule)
+    path: 'succes-restcon',
+    loadChildren: () => import('./pages/succes-restcon/succes-restcon.module').then( m => m.SuccesRestconPageModule)
   },
   {
-    path: 'bienvenido-blip',
-    loadChildren: () => import('./pages/bienvenido-blip/bienvenido-blip.module').then( m => m.BienvenidoBlipPageModule)
-  },
-  {
-    path: 'time-park',
-    loadChildren: () => import('./pages/time-park/time-park.module').then( m => m.TimeParkPageModule)
-  },
-  {
-    path: 'populares',
-    loadChildren: () => import('./pages/populares/populares.module').then( m => m.PopularesPageModule)
-  },
-  {
-    path: 'cerca-deti',
-    loadChildren: () => import('./pages/cerca-deti/cerca-deti.module').then( m => m.CercaDetiPageModule)
-  },
-  {
-    path: 'todos-parki',
-    loadChildren: () => import('./pages/todos-parki/todos-parki.module').then( m => m.TodosParkiPageModule)
-  },
-  {
-    path: 'parke-sit-gurd',
-    loadChildren: () => import('./pages/parke-sit-gurd/parke-sit-gurd.module').then( m => m.ParkeSitGurdPageModule)
-  },
-  {
-    path: 'pre-view-est',
-    loadChildren: () => import('./pages/pre-view-est/pre-view-est.module').then( m => m.PreViewEstPageModule)
-  },
-  {
-    path: 'view-est',
-    loadChildren: () => import('./pages/view-est/view-est.module').then( m => m.ViewEstPageModule)
-  },
-  {
-    path: 'image-viewer',
-    loadChildren: () => import('./pages/image-viewer/image-viewer.module').then( m => m.ImageViewerPageModule)
-  },
-  {
-    path: 'succes-report',
-    loadChildren: () => import('./pages/succes-report/succes-report.module').then( m => m.SuccesReportPageModule)
-  },
-  {
-    path: 'succes-proporcion',
-    loadChildren: () => import('./pages/succes-proporcion/succes-proporcion.module').then( m => m.SuccesProporcionPageModule)
-  },
-  {
-    path: 'recib-tip2',
-    loadChildren: () => import('./pages/recib-tip2/recib-tip2.module').then( m => m.RecibTip2PageModule)
-  },
-  {
-    path: 'recib-tip3',
-    loadChildren: () => import('./pages/recib-tip3/recib-tip3.module').then( m => m.RecibTip3PageModule)
-  },
-  {
-    path: 'editar-veiculo',
-    loadChildren: () => import('./pages/editar-veiculo/editar-veiculo.module').then( m => m.EditarVeiculoPageModule)
-  },
-  {
-    path: 'agregar-vehiculo',
-    loadChildren: () => import('./pages/agregar-vehiculo/agregar-vehiculo.module').then( m => m.AgregarVehiculoPageModule)
-  },
-  {
-    path: 'inf-telval',
-    loadChildren: () => import('./pages/inf-telval/inf-telval.module').then( m => m.InfTelvalPageModule)
-  },
-  {
-    path: 'inf-telcod',
-    loadChildren: () => import('./pages/inf-telcod/inf-telcod.module').then( m => m.InfTelcodPageModule)
-  },
-  {
-    path: 'inf-telsucces',
-    loadChildren: () => import('./pages/inf-telsucces/inf-telsucces.module').then( m => m.InfTelsuccesPageModule)
-  },
-  {
-    path: 'inf-corval',
-    loadChildren: () => import('./pages/inf-corval/inf-corval.module').then( m => m.InfCorvalPageModule)
-  },
-  {
-    path: 'inf-corcod',
-    loadChildren: () => import('./pages/inf-corcod/inf-corcod.module').then( m => m.InfCorcodPageModule)
-  },
-  {
-    path: 'inf-corsucces',
-    loadChildren: () => import('./pages/inf-corsucces/inf-corsucces.module').then( m => m.InfCorsuccesPageModule)
-  },
-  {
-    path: 'inf-contcod',
-    loadChildren: () => import('./pages/inf-contcod/inf-contcod.module').then( m => m.InfContcodPageModule)
-  },
-  {
-    path: 'inf-contrest',
-    loadChildren: () => import('./pages/inf-contrest/inf-contrest.module').then( m => m.InfContrestPageModule)
-  },
-  {
-    path: 'inf-contsuces',
-    loadChildren: () => import('./pages/inf-contsuces/inf-contsuces.module').then( m => m.InfContsucesPageModule)
-  },
-  {
-    path: 'checkout',
-    loadChildren: () => import('./pages/checkout/checkout.module').then( m => m.CheckoutPageModule)
-  },
-  {
-    path: 'loader-olvco',
-    loadChildren: () => import('./pages/loader-olvco/loader-olvco.module').then( m => m.LoaderOlvcoPageModule)
+    path: 'cor-registro',
+    loadChildren: () => import('./pages/cor-registro/cor-registro.module').then( m => m.CorRegistroPageModule)
   },
 
 
 
 
-  
-  // { path: '', redirectTo: 'spla/*  */shscreen', pathMatch: 'full' },
-  // // { path: '**', redirectTo: 'splashscreen', pathMatch: 'full' },
 ];
 
 @NgModule({

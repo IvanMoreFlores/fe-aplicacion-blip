@@ -7,27 +7,47 @@ import { Keyboard } from '@capacitor/keyboard';
   styleUrls: ['./ing-cor.page.scss'],
 })
 export class IngCorPage implements OnInit {
-  keyboardOpen = false;
   email: string = '';
   isEmailValid: boolean = false;
 
   onEmailChange(): void {
     this.isEmailValid = this.email.trim().length > 0;
   }
-  constructor(private router: Router) {
-    Keyboard.addListener('keyboardWillShow', () => {
-      this.keyboardOpen = true;
-    });
-
-    // Detecta cuando se cierra el teclado
-    Keyboard.addListener('keyboardWillHide', () => {
-      this.keyboardOpen = false;
-    });
-  }
+  constructor(private router: Router) {}
   goToDisplayPage() {
-    this.router.navigate(['/otp'], { queryParams: { text: this.email } });
+    this.router.navigate(['/recu-cuen'], { queryParams: { text: this.email } });
+  }
+  initializeKeyboardListeners() {
+    const content = document.querySelector('ion-content') as HTMLElement;
+    const footer = document.querySelector('.footer-btn') as HTMLElement;
+
+    Keyboard.addListener('keyboardWillShow', (info) => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      if (footer) {
+        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
+      }
+    });
+    
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      const content = document.querySelector('ion-content') as HTMLElement;
+    
+      if (footer) {
+        footer.style.bottom = '0px'; // Restaura el footer
+      }
+      if (content) {
+        content.style.paddingBottom = '0px'; // Restaura el padding
+      }
+    });
+    
   }
   ngOnInit() {
+
+    this.initializeKeyboardListeners();
+  }
+  ngOnDestroy() {
+    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
   }
 
 }

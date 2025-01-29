@@ -1,51 +1,29 @@
-// ion-tab-bar {
-//     position: absolute;
-//     bottom: 0;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     width: 90%;
-//     max-width: 400px; /* Esto es opcional para limitar el ancho máximo */
-//     --border: none;
-//     --background: #ffffff;
-//     margin-bottom: 30px; /* Cambié margin a margin-bottom */
-//     border-radius: 20px;
-//     height: 71px;
-//     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.02);
-//     padding-inline: 12px;
-//   }
-
-
+ion-tab-bar {
+    --background: #ffffff; /* Fondo general de la barra */
+    --color: #ccc; /* Color de iconos no seleccionados */
+  }
   
-//   ion-tab-button {
-//     --color: black; /* Icon color when not selected */
-//     --color-selected: black; /* Icon color when selected */
-//     position: relative; /* Necesario para posicionar el círculo correctamente */
+  ion-tab-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
   
-//     &::after {
-//       background-color: transparent;
-//       display: block;
-//       content: "";
-//       margin: 0 auto;
-//       width: 4px;
-//       height: 4px;
-//       border-radius: 50%;
-//       position: absolute; /* Para posicionar el círculo correctamente */
-//       bottom: -10px; /* Asegura que el círculo esté debajo del ícono */
-//       left: 50%;
-//       transform: translateX(-50%);
-//     }
+  ion-tab-button.selected {
+    --color: #000; /* Cambia el color del icono seleccionado */
+  }
   
-//     &.tab-selected::after {
-//       background-color: black;
-//     }
-
-//   }
+  ion-tab-button.selected::after {
+    content: "";
+    position: absolute;
+    width: 60%; /* Tamaño del fondo redondeado */
+    height: 60%;
+    background: #79FFAF; /* Color del fondo redondeado */
+    border-radius: 50px; /* Hace el fondo completamente redondo */
+    z-index: -1; /* Coloca el fondo detrás del icono */
+    top: 50%; /* Centrado verticalmente */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translate(-50%, -50%);
+  }
   
-
-//   ion-tab-button.selected {
-//     background-color: #79FFAF;
-//     border-radius: 30px;
-//     width: 64px;
-//     height: 39px;
-// }
-

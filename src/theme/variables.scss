@@ -3,6 +3,7 @@
 
 /** Ionic CSS Variables **/
 :root {
+  --ion-font-family: 'Poppins', sans-serif;
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -191,6 +192,8 @@
   }
 
 
+
+
   /*
    * Material Design Dark Theme
    * -------------------------------------------
@@ -233,4 +236,12 @@
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+html {
+  /* 
+   * For more information on dynamic font scaling, visit the documentation:
+   * https://ionicframework.com/docs/layout/dynamic-font-scaling
+   */
+  --ion-dynamic-font: var(--ion-default-dynamic-font);
 }

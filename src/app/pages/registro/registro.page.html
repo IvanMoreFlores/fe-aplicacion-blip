@@ -1,16 +1,13 @@
-<ion-header mode="ios">
-  <ion-toolbar>
-    <h1 slot="start">
-        Bienvenida, Camila
-    </h1>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+<ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
+  
   <div class="wrapper">
     <div class="login">
+      <h1>
+        Bienvenida ,
+        de nuevo!
+      </h1>
       <p>
-        Ingresa el código de 4 dígitos enviado al número +51 923 092 610.
+        Ingresa el código de 4 dígitos enviado al número +51 {{ number }}.
       </p>
       <div class="code-inputs">
         <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
@@ -18,7 +15,6 @@
         <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
         <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
       </div>
-      
       <button id="open-toast"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
         {{ buttonText }}
         <div class="TIME">
@@ -30,53 +26,47 @@
       [duration]="3000"
       message="Código enviado satisfactoriamente."
       class="custom-toast"
-      mode="md"
       position="top"
+      mode="md"
       ></ion-toast>
-      <button mode="md" class="ini-con" id="mas-opc2">más opciones de inicio
-      </button>
-      <h1 class="LA"  routerLink="/log-con">He cambiado mi número de teléfono</h1>
-
+      <button class="ini-con" id="modal-opc-inicio" >más opciones de inicio</button>
+      <ion-modal trigger="modal-opc-inicio" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+        <ng-template>
+          <div class="PART">
+            <h1 class="mad">Más opciones</h1>
+            <div class="line"></div>
+            <div class="button-container">
+              <button (click)="dismissModal()"  routerLink="/log-con" (click)="verifyOTP()" class="custom-button password-button">
+                <img src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
+                iniciar sesión con contraseña
+              </button>
+              <button (click)="dismissModal()" class="custom-button google-button" routerLink="/ing-cor">
+                <img src="/assets/images/login/email.png" alt="Contraseña" class="button-icon">
+                Ingresar con correo
+              </button>
+              <button (click)="dismissModal()" class="custom-button cancel-button">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ion-modal>
+      <!-- <button class="ini-con" routerLink="/log-con" (click)="verifyOTP()">iniciar sesión con contraseña 
+      </button> -->
+      <h1 class="LA" routerLink="/log-con">He cambiado mi número de teléfono</h1>
     </div>
   </div>
 </ion-content>
-<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col >
-          <button class="bac" routerLink="/login">Atrás</button>
-        </ion-col>
-        <ion-col >
-          <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" >Siguiente</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <button class="bac" routerLink="/login">Atrás</button>
+    <button
+      [disabled]="!inputsFilled"
+      [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}"
+      (click)="verifyOTP()"
+      class="nex"
+    >
+      Siguiente
+    </button>
+  </div>
 </ion-footer>
-<ion-modal
-trigger="mas-opc2"
-[initialBreakpoint]="1"
-[breakpoints]="[0, 1]"
-mode="md"
->
-  <ng-template mode="md">
-    <div class="PART">
-      <h1 class="mad">Más opciones</h1>
-      <div class="line"></div>
-      <div class="button-container">
-        <button (click)="exit()" routerLink="/log-con" class="custom-button password-button">
-          <img src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
-          Ingresar con contraseña
-        </button>
-        <button (click)="exit()"  routerLink="/ing-cor" class="custom-button google-button">
-          <img src="/assets/images/cor-neg.svg" alt="Contraseña" class="button-icon">
-          Ingresar con correo
-        </button>
-        <button class="custom-button cancel-button">
-          Cancelar
-        </button>
-      </div>
-    </div>
-  </ng-template>
-</ion-modal>

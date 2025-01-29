@@ -1,0 +1,361 @@
+.container {
+    background: linear-gradient(to bottom, #79FFAF 10%, #FFFFFF 10%);
+    height: 100%;
+    overflow: hidden;
+}
+
+.top-bar {
+    position: absolute; 
+    top: 40px; 
+    left: 0; 
+    width: 100%; 
+    background-color: #ffffff; 
+    border-radius: 30px 30px 0 0; 
+    transition: bottom 0.5s ease;
+}
+
+.top-bar .navbar {
+    background-color: transparent !important; 
+    margin: 20px auto;
+    width: 90%;
+    display: block;
+}
+
+.navbar {
+    border: none; 
+    width: 100%;
+}
+
+.navbar-toggler {
+    border: none; 
+    background-color: transparent; 
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+
+.navbar-collapse {
+    background-color: #FFFFFF;
+    z-index: 9;
+    border-radius: 30px 30px 0 0;
+    bottom: -810px;
+    width: 430px !important;
+    position: absolute;
+    right: -20px;
+}
+
+.navbar-nav {
+    margin: 20px 0px;
+}
+
+.menu-above {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    color: #524F4F;
+    margin-block: 20px;
+}
+
+.separator-line {
+    border-top: 2px solid #D4D4D4;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-left: 30px;
+}
+
+.service-button {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 30px;
+}
+
+.button-image {
+    margin-left: 30px;
+    margin-right: 15px; 
+}
+
+.button-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px; 
+}
+
+.second-image {
+    position: absolute;
+    right: 80px;
+}
+
+.text-b {
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    width: 280px;
+    margin-right: 30px;
+    color: #212121;
+}
+
+.message-time{
+    position: absolute;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    display: flex;
+    left: 350px;
+    margin-bottom: 15px;
+}
+
+.img-blip {
+    margin-right: 15px;
+    background-color: transparent;
+    height: 40px;
+    width: 42px;
+}
+
+.mensaje {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin-block: 15px;
+    margin-left: 20px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+}
+
+.separator-line {
+    border-top: 2px solid #D4D4D4;
+    margin: 10px auto;
+}
+
+.vector-mensaje {
+    display: flex;
+    background-color: transparent;
+    margin-right: 20px;
+}
+
+.btn-custom {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 150px auto 0px;
+    display: block;
+    width: 90%;
+    font-weight: 600;
+}
+
+.menu-black {
+    display: block;
+    margin: 40px auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 35px;
+    bottom: 30px;
+    background-color: #fff;
+}
+
+.image-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.image-button {
+    margin: 15px 15px;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 60px;
+}
+
+.image-button-3 {
+    margin: 15px 15px 18px;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 60px;
+    background-color: #79FFAF;
+    border-radius: 40%;
+}
+
+.image-button:hover {
+    color: #79FFAF;
+    background-color: #79FFAF;
+    border-radius: 40%;
+}
+
+.dot {
+    position: absolute; 
+    bottom: 5px; 
+    right: 126px; 
+    transform: translateX(-50%); 
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    border: 1px solid #79FFAF;
+    border-radius: 50%;
+}
+
+.custom-btn {
+    margin: 30px auto; 
+    background-color: transparent;
+    color: #212121;
+    font-size: 16px;
+    border: 1px solid #212121;
+    border-radius: 30px;
+    width: 80%;
+    height: 49px;
+    padding: 10px 20px; 
+    display: flex; 
+    align-items: center; 
+}
+
+.custom-btn ion-icon {
+    margin-right: 10px; 
+}
+
+.custom-btn input[type="checkbox"] {
+    margin-left: auto; 
+    border: 1px solid #000; 
+    background-color: transparent; 
+    accent-color: #212121;
+}
+
+.btn-text {
+    margin-left: 20px; 
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.form-check-input[type=radio] {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 80px;
+}
+
+.form-check-input:checked {
+    background-color: #000000; 
+    border-color: #000000;
+}
+
+.form-check-input:focus {
+    border-color: #000000;
+    outline: 0;
+    box-shadow:none; 
+}
+
+
+  
+
+  .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 8; 
+    transition: opacity 0.3s ease;
+    pointer-events: none; 
+  }
+  
+  .navbar-collapse.show + .dark-overlay {
+    opacity: 1;
+    pointer-events: auto; 
+  }
+
+  /* Calendar */
+
+  #calendar {
+    width: 85%;
+    margin: 20px auto;
+    display: block;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+    overflow-y: auto; 
+    max-height: calc(100vh - 300px);
+  }
+  
+  .calendar-container h2 {
+    justify-content: space-between;
+    display: flex;
+    font-size: 16px;
+    width: 85%;
+    margin: 20px auto;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
+  
+  .calendar-container table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  table th {
+    font-weight: 600;
+  }
+
+  table td {
+    padding: 5px;
+  }
+
+
+/* Block */
+
+.menu-block {
+    display: flex;
+    justify-content: center;
+    font-size: 19px;
+    font-family: "Poppins", sans-serif;
+    margin-block: 20px;
+    font-weight: 500;
+  }
+  
+  .block {
+    width: 100%;
+    height: 370px; 
+    background-color: #FFFFFF;
+  }
+  
+  ion-modal {
+    --height: auto;
+  }
+  
+  .button-punto {
+    background-color: #79ffaf;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+  
+  

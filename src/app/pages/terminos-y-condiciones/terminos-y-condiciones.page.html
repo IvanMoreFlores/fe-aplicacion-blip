@@ -1,0 +1,53 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <h2 slot="start" class="title">Revisa nuestros Términos y Condiciones antes de unirte a nuestra comunidad</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    <h2 class="subtitle">Te pedimos que te comprometas con lo siguiente:</h2>
+    <p class="description">Acepto tratar a todos en la comunidad de Blip con respeto y sin prejuicios, sin importar la raza, religión, nacionalidad, etnia, color de piel, sexo, discapacidad, identidad de género, orientación sexual o edad.</p>
+    <button routerLink="/terminos-y-condiciones-mas-informacion" class="more-info-btn subrayado">Leer Términos y Condiciones</button>
+    <div class="custom-checkbox" (click)="toggleCheckbox()">
+      <div class="checkbox-icon" [ngClass]="{'checked': isChecked}">
+        <ion-icon name="checkmark"></ion-icon>
+      </div>
+      <div class="checkbox-label"><h3 class="tamano">Acepto los términos y condiciones</h3> </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <button  id="back-log" class="btn-atr">Atrás</button>
+        </ion-col>
+        <ion-col >
+          <button class="btn-sig" routerLink="/datos-registro"  [disabled]="!isChecked" [ngClass]="{ 'disabled-btn': !isChecked }">Siguiente</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-toolbar>
+<ion-modal
+  trigger="back-log"
+  [initialBreakpoint]="1"
+  [breakpoints]="[0, 1]"
+  >
+  <ng-template mode="md">
+    <div class="PART">
+      <h1 class="mad">Estas seguro que quieres 
+        empezar desde el inicio?</h1>
+      <div class="line"></div>
+      <div class="button-container">
+        <button (click)="dismissModal()" routerLink="/login" class="custom-button google-button">
+          Salir
+        </button>
+        <button (click)="dismissModal()"  class="custom-button cancel-button">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+

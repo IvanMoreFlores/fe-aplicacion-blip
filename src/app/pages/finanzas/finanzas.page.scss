@@ -1,0 +1,669 @@
+/* Estilos para el header */
+h1,h1,h3{
+  margin: 0px;
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+  
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+
+ion-toolbar {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+ion-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline:  22px;
+  margin-block: 10px;
+  height: 56px; /* Altura consistente para el header */
+
+}
+
+
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+
+.regresar {
+  display: flex;
+  text-decoration: none;
+}
+
+.title {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+}
+.pantalla {
+  background-color: #ffffff;
+  padding-inline: 22px;
+  width: 100%;
+  min-height: 100%; /* Esto hace que el div ocupe el 100% de la altura de la pantalla */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  color: #212121;
+}
+.inicio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribuye los elementos a lo largo del eje principal (horizontal) */
+  margin-bottom: 20px;
+  height: 37px;
+}
+
+.left-arrow {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.grid-small-button {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+
+.small-button {
+  box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+  border-radius: 10px;
+  margin-right: 0px;
+  width: 37px;
+  height: 37px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-container {
+  width: auto;
+}
+
+.swiper-slide {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: fit-content; /* Ajusta el ancho al contenido */
+}
+
+.swiper-wrapper button {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin: 0;
+  padding: 13px 20px;
+  background-color: #ffffff;
+  color: #5f5d5d;
+  border: 1px solid #5f5d5d;
+  border-radius: 30px;
+}
+
+.swiper-wrapper button.active {
+  color: #ffffff;
+  background-color: #212121;
+  border: 1px solid #212121;
+}
+
+.scroll-container {
+  height: 80vh; /* O puedes ajustar el tamaño que necesites */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  padding: 10px; /* Opcional, para darle algo de espacio alrededor */
+}
+//---------------------ANUNCIO-------------------------------
+
+.anuncio{
+  margin-bottom: 30px;
+}
+
+.anuncio h2 {
+  color: #808080;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+.anuncio p {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 160% */
+  text-decoration-line: underline;
+  text-decoration: underline;
+  padding-block: 10px;
+}
+p{
+  margin: 0px;
+}
+.anuncio-ingreso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 20px 0px #66666633;
+  padding: 20px 20px 20px 20px;
+  border-radius: 15px;
+  width: 100%;
+  height: 71px;
+}
+
+.anuncio-ingreso h3 {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 13px; /* 81.25% */
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+.cont-anun{
+  width: 70%;
+}
+.anuncio-ingreso p {
+  color: #575757;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 13px; /* 92.857% */
+  text-decoration: none;
+}
+
+.anuncio-ingreso span {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+  text-transform: uppercase;
+}
+
+.ingreso-final{
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0px 4px 20px 0px #66666633;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  margin-top: 30px  ;
+}
+
+.ingreso-final h3{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 13px; /* 81.25% */
+  padding-bottom: 10px;
+}
+
+.ingreso-final p{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+}
+
+.ingreso-final p span{
+  font-size: 10px;
+  font-weight: 600;
+  color: #6D6D6D;
+  text-decoration: underline;
+}
+
+.ingreso-final h1{
+  color: #212121;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 60% */
+  text-transform: uppercase;
+  padding-block: 40px;
+}
+
+.deposito-pago {
+  border-radius: 15px;
+
+  display: block;
+}
+.deposito-pago h2{
+  color: #575757;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 142.857% */
+margin:0px
+}
+
+.icon-info {
+  flex-shrink: 0; /* Evita que el icono se reduzca */
+}
+
+.icon-info img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.deposito-pago p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #212121;
+  margin: 0;
+  margin-left: 10px; /* Agregado para dar espacio entre el icono y el texto */
+}
+
+
+hr{
+ border-top: 1px solid #CDCDCD;
+}
+
+
+
+// ----------------HISTORIAL DE ALQUILER------------------------------
+
+.alquiler-title h3{
+  color: #575757;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+
+}
+
+
+.h-alq {
+  display: flex;                /* Usar flexbox para la alineación */
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center;         /* Alinear verticalmente al centro */
+  padding-block: 10px;
+  width: 100%;                 /* Asegúrate de que tenga un ancho del 100% */
+}
+
+.chip {
+  display: flex;               /* Asegúrate de que el chip también use flexbox si necesitas alineación interna */
+  background-color: #FFF;
+  padding: 13px 15px;         /* Agregar padding para que el botón se vea mejor */
+  border-radius: 15px;
+  
+/* M3/Elevation Light/2 */
+box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+.chip h3 {
+  color: #212121;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;                  /* Eliminar márgenes para evitar desajustes */
+}
+.nomb-host{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nomb-host div{
+width: 75%;
+}
+.aut{
+  display: flex;
+  padding-block: 5px;
+}
+.aut h1{
+  color: #212121;
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+margin-left: 10px;
+
+}
+.veiculo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 5px;
+}
+.veiculo h1{
+  color: #212121;
+font-family: Poppins;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+
+}
+.icon-alquiler {
+  margin-right: 10px; /* Espacio entre el icono y la información */
+}
+.tiempo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 5px;
+}
+.tiempo   h1{
+  color: #212121;
+font-family: Poppins;
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+
+}
+.tiempo span {
+  color: #212121;
+font-family: Poppins;
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+
+}
+.horas{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 5px;
+}
+.horas h1{
+  color: #212121;
+font-family: Poppins;
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+
+}
+.precio{
+  color: #212121;
+text-align: right;
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 25px; /* 166.667% */
+text-transform: uppercase;
+}
+.icon-alquiler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 29px; /* Ajusta el tamaño del círculo según tus necesidades */
+  height: 29px; /* Ajusta el tamaño del círculo según tus necesidades */
+  background-color: #79FFAF4D;
+  border-radius: 50%; /* Hace que el div sea un círculo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.h-alq h3 {
+  margin: 0; /* Elimina el margen superior e inferior de h3 */
+  color: #212121;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0px; /* 0% */
+}
+
+.info-alquiler h4 {
+  margin: 0; /* Elimina el margen superior e inferior de h4 */
+  font-size: 10px;
+  font-weight: 500;
+  color: #6D6D6D;
+}
+
+.description  {
+  margin: 0; /* Elimina el margen superior e inferior de p */
+  color: #212121;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0px; /* 0% */
+  padding-block: 15px;
+}
+
+.description span{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0px;
+  text-decoration-line: underline;
+
+}
+
+.alquiler-monto {
+  margin-left: auto; /* Empuja este contenedor hacia la derecha */
+}
+
+.alquiler-monto span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+// --------------------PAGOS------------------------------
+
+.pagos-title{
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.informacion-pagos{
+  background-color: #79FFAF;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 20px 0px #66666633;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.informacion-pagos p{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.informacion-pagos p span{
+  font-weight: 500;
+}
+
+
+ion-item::part(native) {
+  background: #FFFF;
+  color: #212121;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+ion-toggle {
+  --track-background: #ddd;
+  --track-background-checked: #212121;
+
+  --handle-background: #ffff;
+  --handle-background-checked: #ffff;
+
+  --handle-width: 25px;
+  --handle-height: 25px;
+  --handle-max-height: auto;
+  --handle-spacing: 5px;
+
+  --handle-border-radius: 50%;
+  --handle-box-shadow: none;
+}
+
+ion-toggle::part(track) {
+  height: 29px;
+  width: 53px;
+
+  /* Required for iOS handle to overflow the height of the track */
+  overflow: visible;
+}
+
+
+.num-regla {
+  position: absolute;
+  font-size: 12px;
+  color: 49454F;
+  background-color: #ffffff;
+  transform: translateY(-10px) translateX(15px);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.form-regla {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  position: relative;   
+}
+.input-pago {
+  height: auto;
+  width: 100%;
+  padding: 15px 22px;
+  border-color: #212121;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.input-pago2 {
+  appearance: none; /* Oculta la flecha predeterminada */
+  -webkit-appearance: none; /* Para navegadores WebKit */
+  -moz-appearance: none; /* Para navegadores Firefox */
+  background-image: url('/assets/images/flec-pago.svg'); /* Ruta a tu flecha */
+  background-repeat: no-repeat;
+  background-position: right 20px center; /* Posiciona la flecha */
+  height: auto;
+  width: 100%;
+  padding: 15px 22px;
+  border-color: #212121;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+// ------------------------HISTORIAL DE PAGO------------------------------
+
+
+.historial-title{
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.historial-subtitle{
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #49454F;
+}
+
+.historial {
+  display: flex;
+  align-items: flex-start; /* Alinea los elementos en la parte superior */
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.icon-historial {
+  margin-right: 10px; /* Espacio entre el icono y la información */
+
+}
+
+.icon-historial img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.info-historial{
+  flex-grow: 1; /* Permite que este contenedor ocupe todo el espacio disponible */
+}
+
+.info-historial h3 {
+  margin: 0; /* Elimina el margen superior e inferior de h3 */
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.info-historial h4 {
+  margin: 0; /* Elimina el margen superior e inferior de h4 */
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.info-historial p {
+  margin: 0; /* Elimina el margen superior e inferior de p */
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.info-historial p span{
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.historial-monto {
+  margin-left: auto; /* Empuja este contenedor hacia la derecha */
+}
+
+.historial-monto span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.continue{
+  width: 100%;
+  margin-top: 20px;  
+  margin-bottom: 20px;              
+  
+  button{
+      width: 100%;
+      display: block;
+      text-align: center;
+      font-family: 'Poppins SemiBold', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 20px 40px;
+      border-radius: 30px;
+      background-color: #212121;
+      color: #FFF;
+      border: 1px solid #212121;
+  }
+}

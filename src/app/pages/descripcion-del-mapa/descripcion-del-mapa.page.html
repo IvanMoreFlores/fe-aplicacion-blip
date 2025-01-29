@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+    <div id="map"></div>
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <div class="superior">
+            <h1 class="title"></h1>
+            <div class="overlay-x">
+              <div class="close-button" routerLink="/descripcion-de-ubicacion">
+                <span><img src="/assets/images/izqflec.svg" alt=""></span>
+              </div>        
+            </div>
+          </div>
+          
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <!-- Nuevo contenido dentro del navbar-collapse -->
+              <div class="menu-above">El estacionamiento se ubica en:</div>
+              <hr class="separator-line">
+              <div class="button-container">
+                <div class="box">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <input type="text" id="address-input" [(ngModel)]="uga_direcc" placeholder="Ingresar ubicación " name="">
+                </div>
+
+                <!--<button (click)="searchAddress()"  class="custom-btn">
+                  <span class="btn-text">Buscar</span>
+                </button>-->
+
+                <button class="custom-btn" (click)="sendData()">
+                  <span class="btn-text">Seleccionar Ubicación</span>
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</ion-content>

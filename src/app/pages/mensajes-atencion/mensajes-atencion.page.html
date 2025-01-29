@@ -1,0 +1,113 @@
+<ion-content [fullscreen]="true">
+  <div class="top-bar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center w-100">
+          <button  routerLink="/tab-home/home" class="vector-mensaje">
+          <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
+        </button>
+          <div class="text-b">Atención al cliente de Blip</div>
+        
+          <button  id="open-modal" class="shadow navbar-toggler" expand="block"><img src="/assets/images/btn-punto.png" alt=""></button>
+            <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <div class="menu-above">Opciones de chat</div>
+            <hr class="separator-line">
+            
+            <div class="button-container">
+              <button class="custom-btn">
+                <img src="/assets/images/envelope.png" alt="">
+                <span class="btn-text">Todos los mensajes</span>
+                <label class="container-1">
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/headset.png" alt=""> 
+                <span class="btn-text">Atención al cliente</span>
+                <label class="container-1">
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/home.png" alt="">
+                <span class="btn-text">Destacados</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button class="custom-btn">
+                <img src="/assets/images/comment-2.png" alt=""> 
+                <span class="btn-text">Archivados</span>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+          </div>
+
+          <div>
+            <h2 class="subtitle">CONFIGURACIÓN</h2>
+            <button class="custom-btn">
+              <img src="/assets/images/time-check.png" alt=""> 
+              <span class="btn-text">Programados</span>
+              <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+            </button>
+            
+            <button class="custom-btn">
+              <img src="/assets/images/envelope-open.png" alt=""> 
+              <span class="btn-text">Respuestas rápidas</span>
+              <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+            </button> 
+            </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="text-center title">24 nov 2023 </h1>
+          <div class="conversation">
+            <div class="message">
+              <div class="message-content">
+                <div class="message-bubble">
+                  <div class="message-text">¡Hola, Camila! Te damos la bienvenida al maravilloso mundo de Blip. <br>
+                    Queremos recordarte mediante este mensaje la importancia de tener precaución con las infracciones. La primera vez será considerada como una advertencia, pero en caso de una segunda infracción, nos veremos en la necesidad de desactivar temporalmente tu cuenta.</div>
+                    <a class="informacion" href="">Más información</a>
+                    <img src="/assets/images/Vector-1.png" alt="">
+                  <div class="message-time">12:25 p.m</div>
+                </div>
+                <div class="message-avatar">
+                  <img class="avatar" src="/assets/images/group.png" alt="Avatar">
+                  <div class="message-sender">Blip</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="bottom-bar">
+            <div class="left-button">
+              <button class="add-button">
+                <img src="/assets/images/plus-small.png" alt="Agregar">
+              </button>
+            </div>
+            <div class="input-area">
+              <input type="text" placeholder="Escribe un mensaje...">
+            </div>
+            <div class="right-button">
+              <button class="mic-button">
+                <img class="microphone" src="/assets/images/microphone.png" alt="Micrófono">
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

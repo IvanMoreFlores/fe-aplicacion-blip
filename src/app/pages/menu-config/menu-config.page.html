@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <button class="swip" (click)="changeContent('Todos')" [ngClass]="{'active': selectedContent === 'Todos'}">
+            <h1 class="res-de">Todos </h1>
+            <button class="lda">
+              <h1 class="descrip">2</h1>
+            </button>
+          </button>
+          <div *ngIf="selectedContent === 'Todos'">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <h3>Publica tu cochera en minutos.</h3>
+                  <p>Crea un anuncio de tu espacio de estacionamiento en pocos pasos y comienza a recibir reservas.</p>
+                </div>
+                <div class="swiper-slide">
+                  <h3>Conecta y aumenta tus ingresos.</h3>
+                  <p>Conecta con conductores que buscan estacionamiento y recibe notificaciones cuando alguien reserva tu cochera.</p>
+                </div>
+                <div class="swiper-slide">
+                  <h3>Administra tus reservas con facilidad.</h3>
+                  <p>Controla la disponibilidad, resuelve consultas y asegura una experiencia positiva desde una sola plataforma.</p>  
+                </div>
+              </div>
+              <div class="swiper-pagination"></div> <!-- Asegúrate de tener la paginación aquí -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

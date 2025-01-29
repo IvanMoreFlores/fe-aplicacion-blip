@@ -1,0 +1,888 @@
+ion-content{
+  padding-inline: 22px;
+
+  
+
+}
+.cont-hom{
+  padding-inline: 22px;
+}
+
+.btn-mn {
+  background-color: #ffffff;
+  border-radius: 20%;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex; /* Usar flexbox */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  text-align: center; /* Asegura que el texto también esté centrado */
+}
+/* Estilos para el header */
+h1,h1,h3{
+  margin: 0px;
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+
+ion-toolbar {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+  margin-top: 20%;
+  margin-bottom: 20px;
+  padding-inline: 22px;
+  h1{
+    color: #212121;
+    /* Subtitle 2 */
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  h3{
+    color: #646464;
+    /* Body 3 */
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px; /* 166.667% */
+    letter-spacing: 0.15px;
+  }
+}
+
+
+.next-btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  border: 1px solid #C8C5CA;
+  font-family: 'Poppins SemiBold';
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.disabled-btn {
+  background-color: #ffffff;
+  color: #C8C5CA;
+  cursor: not-allowed;
+}
+
+.enabled-btn {
+  background-color: #212121;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+
+
+.subtitle {
+  color: var(--system-grey, #8E8E93);
+
+  /* Body 4 [Medium] */
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 178.571% */
+}
+
+.description {
+  color: #141414;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 22px;
+  /* 157.143% */
+  letter-spacing: 0.035px;
+}
+
+.servicios {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  /* 190% */
+  letter-spacing: 0.2px;
+  text-decoration-line: underline;
+  padding-right: 40px;
+}
+
+.horizontal-scroll {
+  padding-block: 20px;
+  display: flex;
+  /* Utiliza flexbox para alinear los elementos en fila */
+  overflow-x: auto;
+  /* Habilita el scroll horizontal */
+  white-space: nowrap;
+  /* Evita que el contenido se ajuste en líneas múltiples */
+  scroll-behavior: smooth;
+  /* Hace que el scroll sea suave */
+  z-index: 999;
+}
+
+.horizontal-scroll>div {
+  flex: 0 0 auto;
+  /* Asegura que cada hijo ocupe su espacio y no se contraiga */
+  margin-right: 10px;
+  /* Espacio entre elementos */
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+  /* Oculta la barra de desplazamiento en Chrome, Safari, Opera */
+}
+
+.tl-res {
+  text-align: left;
+  color: #212121;
+  font-family: Poppins;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  /* 114.286% */
+}
+
+.swip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 30px;
+  background: var(--Schemes-On-Primary, #FFF);
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.30);
+  padding: 10px;
+
+  h1 {
+    margin: 0px;
+  }
+
+  .lda {
+    margin-left: 10px;
+    border-radius: 50%;
+    display: flex;
+    width: 19px;
+    height: 18px;
+    padding: 2px 7px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    background: #212121;
+    
+    .descrip {
+      margin: 0px;
+      padding: 5px;
+      color: var(--Schemes-On-Primary, #FFF);
+      font-family: Poppins;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      /* 14px */
+
+    }
+  }
+}
+
+.content-display {
+  display: flex;
+  width: 100%;
+  height: 55vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px solid rgba(199, 199, 204, 1);
+  margin: 20px 0;
+  overflow: auto;
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+.board {
+  display: flex; /* Asegúrate de que sea un contenedor flex */
+  flex-direction: column; /* Alinea el contenido verticalmente */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+}
+.image-container {
+  position: relative;  /* Importante para posicionar los elementos flotantes */
+  width: 100%;         /* Ocupa todo el ancho disponible */
+  max-width: 500px;    /* Puedes ajustar este valor según necesites */
+  height: 150px;       /* Altura fija del contenedor */
+  overflow: hidden;    /* Asegura que nada salga del contenedor */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* La imagen cubre el contenedor sin distorsionarse */
+}
+.board img {
+  margin-right: 10px;
+}
+
+.par {
+  margin: 0;
+  color: #A3A2A4;
+  text-align: center;
+  /* Body 3 */
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 166.667% */
+  /* Ajusta este tamaño según sea necesario */
+  line-height: 140%;
+}
+.create-anun{
+  display: flex;
+  align-items: center;
+  border: 1px solid #212121;
+  border-radius: 30px;
+  h1{
+    margin: 0px;
+    color: #212121;
+    text-align: center;
+
+    /* Small Button */
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 178.571% */
+    letter-spacing: 0.14px;
+  }
+  img{
+    margin: 0px;
+    padding-right: 10px;
+  }
+}
+.content-display * {
+  margin: 0;
+  padding: 0;
+}
+
+.swip.active {
+  border: 1px solid #212121;
+  /* Borde verde cuando está activo */
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  margin-left: 30px;
+}
+
+.separator-line {
+  border-top: 2px solid #d4d4d4;
+  width: 100%;
+  margin: 10px auto;
+}
+
+.service-button {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 30px;
+  width: 95%;
+}
+
+
+.button-image {
+  margin-right: 15px;
+}
+
+.button-text {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  /* 160% */
+}
+
+
+.text-b {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  margin-left: 15px;
+  width: 195px;
+  line-height: 22px;
+}
+
+.button-container {
+  margin: 0px auto;
+  width: 85%;
+  display: block;
+}
+
+.btn-custom {
+  background-color: transparent;
+  box-shadow: 0 5px 10px rgba(121, 118, 118, 0.4);
+  border-radius: 10px;
+}
+
+.menu-block {
+  display: flex;
+  justify-content: center;
+  color: #212121;
+  text-align: center;
+  
+  /* Subtitle 5 [Bolder] */
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 156.25% */
+  letter-spacing: 0.16px;
+  border-bottom: 1px solid rgba(212, 212, 212, 1);
+  padding-bottom: 20px;
+  margin-block: 20px;
+  font-weight: 500;
+  
+}
+
+.block {
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  flex-direction: column;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+.title-c {
+  padding-block: 15px 10px;
+  color: #212121;
+  text-align: center;
+  
+  /* Subtitle 5 [Bolder] */
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 156.25% */
+  letter-spacing: 0.16px;
+  /* 166.667% */
+  width: 75%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cont-ap {
+  margin: 30px auto;
+  padding-inline: 5%;
+}
+
+.parraf {
+  color: #212121;
+  padding-inline: 10%;
+  /* Body 3 */
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 166.667% */
+  letter-spacing: 0.15px;
+  /* 192.308% */
+
+}
+
+/* Contenedor de botones */
+.button-container-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Botón de Continuar */
+.button-continuar-modal {
+  border: 1px solid #212121;
+  background-color: #ffffff;
+  color: #212121;
+  width: 100%;
+  padding-block: 12px;
+  color: #212121;
+  text-align: center;
+  
+  /* Large Button */
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 138.889% */
+  letter-spacing: 0.18px;
+  border-radius: 25px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* Botón de Cancelar */
+.button-cancelar-modal {
+  background-color: #212121;
+  color: #ffffff;
+  width: 100%;
+  padding-block: 12px;
+  color: #FFF;
+  text-align: center;
+  
+  /* Large Button */
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 138.889% */
+  letter-spacing: 0.18px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.cardz {
+  margin-top: 10px;
+}
+
+.swiper-container {
+  width: 100%;
+  /* Ajusta el ancho del contenedor */
+  height: 100%;
+  overflow: visible;
+  /* Asegura que el contenido que sobresale sea visible */
+  position: relative;
+  /* Añade un padding extra a la derecha para evitar que el último slide esté pegado al borde */
+}
+
+.swiper-slide {
+
+}
+
+.swiper-wrapper {
+
+  padding-right: 80px;
+  /* Añade espacio extra al final del contenedor de slides */
+}
+
+/* Contenedor de las tarjetas */
+.card-container {
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+
+}
+
+
+
+
+
+.header-flex {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.circle-icon {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(29, 27, 32, 1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+  max-width: 40px;
+}
+
+.circle-icon h1 {
+  color: var(--Schemes-Surface, #FEF7FF);
+  text-align: center;
+  margin: 0px;
+  font-family: Poppins;
+  font-size: var(--Title-Medium-Size, 16px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--Title-Medium-Line-Height, 24px);
+  letter-spacing: var(--Title-Medium-Tracking, 0.15px);
+}
+
+.title-container {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.title-large,
+.subtitle-large {
+  margin: 0;
+}
+
+.title-large {
+  color: var(--Schemes-On-Surface, #1D1B20);
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+}
+
+.subtitle-large {
+  color: var(--Schemes-On-Surface, #1D1B20);
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.image-container {
+  position: relative;
+  /* Contenedor relativo para la imagen */
+}
+
+.floating-text {
+  position: absolute;
+  background-color: #FFFFFF;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: #212121;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+  /* 154.545% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  max-width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 10;
+  /* Se asegura que esté sobre otros elementos */
+}
+
+.floating-text.time {
+  top: 10px;
+  left: 10px;
+  background-color: #212121;
+  color: #FFFF;
+}
+
+.floating-text.status {
+  top: 10px;
+  right: 10px;
+}
+
+.res-de {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  /* 14px */
+}
+
+.floating-text .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Green, #34C759);
+
+  margin-left: 5px;
+  display: inline-block;
+  z-index: 11;
+  /* Se asegura que esté encima del texto */
+}
+
+.floating-text .dot_red {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Green, red);
+
+  margin-left: 5px;
+  display: inline-block;
+  z-index: 11;
+  /* Se asegura que esté encima del texto */
+}
+
+.floating-text .dot_yellow {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Orange, #FF9500);
+
+  margin-left: 5px;
+  display: inline-block;
+  z-index: 11;
+  /* Se asegura que esté encima del texto */
+}
+
+.floating-text .dot_blue {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Green, blue);
+
+  margin-left: 5px;
+  display: inline-block;
+  z-index: 11;
+  /* Se asegura que esté encima del texto */
+}
+
+.res-bar {
+  display: flex;
+  justify-content: flex-start;
+  /* Cambia esto a flex-start para alinear a la izquierda */
+
+  width: 100%;
+  /* Añadir otros estilos si es necesario */
+}
+
+.sub-r {
+  color: #212121;
+  font-family: Poppins, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  /* Asegúrate de que el texto esté alineado a la izquierda */
+  margin: 0px;
+}
+
+.derz {
+  display: flex;
+  justify-content: flex-start;
+  /* Alinear a la izquierda */
+  align-items: center;
+  /* Cambia a 'center' para alinear verticalmente en el centro */
+  flex-wrap: wrap;
+  /* Permitir que los elementos se envuelvan en una nueva línea */
+  text-align: left;
+  padding-bottom: 3px;
+}
+
+.ctn {
+  padding-left: 10px;
+  color: #212121;
+  font-family: Poppins, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  text-align: left;
+  /* Asegúrate de que el texto esté alineado a la izquierda */
+  margin: 0px;
+  padding-right: 10px;
+}
+
+.derz h1 {
+  padding-left: 7px;
+  color: #212121;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0px;
+  padding-block: 5px;
+}
+
+.derz h2 {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px;
+  padding-left: 5px;
+}
+
+.det-asd {
+  display: flex;
+  justify-content: flex-start;
+  /* Cambia esto a flex-start para alinear a la izquierda */
+  padding-left: 15px;
+  width: 100%;
+  /* Añadir otros estilos si es necesario */
+}
+
+.mayor {
+  padding-left: 10px;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  /* Distribuye los botones a los extremos */
+  align-items: center;
+  padding: 0;
+  /* Sin padding adicional en el contenedor */
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.bt-can,
+.bt-con {
+  width: 45%;
+  padding-block: 10px;
+
+}
+
+.bt-can {
+  margin-left: auto;
+  /* Para que el botón de la izquierda se mantenga en su lugar */
+  color: var(--primary-scheme-buttons-filled, #212121);
+  text-align: center;
+  font-family: Poppins;
+  font-size: var(--Label-Large-Size, 14px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--Label-Large-Line-Height, 20px);
+  /* 142.857% */
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid #212121;
+}
+
+.bt-con {
+  margin-right: auto;
+  color: var(--Schemes-On-Primary, #FFF);
+  text-align: center;
+  font-family: Poppins;
+  font-size: var(--Label-Large-Size, 14px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--Label-Large-Line-Height, 20px); /* 142.857% */
+  background-color: #212121;
+  border-radius: 20px;
+  border: 1px solid #212121;
+
+}
+
+.contenido-card {
+  padding: 10px;
+}
+ion-card {
+  flex: 0 0 auto; /* Evita que las tarjetas se expandan verticalmente */
+  border: 1px solid #CAC4D0;
+  margin: 0px;
+}
+.dat-anu{
+  color: var(--M3-sys-light-on-error, #FFF);
+text-align: center;
+
+/* M3/label/small */
+font-family: Roboto;
+font-size: 11px;
+font-style: normal;
+font-weight: 500;
+line-height: 16px; /* 145.455% */
+letter-spacing: 0.5px;
+padding-inline: 10px;
+}
+
+.adv-val{
+  color: #212121;
+
+/* Body 3 [Medium] */
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 25px; /* 166.667% */
+letter-spacing: 0.15px;
+padding-bottom: 20px;
+}
+.adv-val2{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 157.143% */
+  padding-bottom: 20px;
+}
+
+.parraf2{
+  color: #212121;
+
+/* Body 3 */
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 25px;
+letter-spacing: 0.15px;
+
+}
+.seg-info{
+  color: var(--system-surface-1-primary, #212121);
+
+/* Body 3 [Medium] */
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 25px; /* 166.667% */
+letter-spacing: 0.15px;
+}
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+  border-color: transparent;
+}
+.las-mas{
+  color: var(--Colors-Blue, var(--Colors-Blue, #007AFF));
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 22px;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: none;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+}
+span{
+  color: #212121;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 22px;
+}

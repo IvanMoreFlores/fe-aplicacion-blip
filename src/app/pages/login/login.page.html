@@ -7,18 +7,26 @@
   <div class="login-content" >
      <div class="phone-input">
     <span class="country-code">+51</span>
-    <ion-input mode="ios" type="tel" placeholder="Número de teléfono" class="input"></ion-input>
+    <ion-input  
+     [(ngModel)]="phone2" 
+     mode="ios" 
+     type="tel" 
+     placeholder="Número de teléfono" 
+     class="input"
+     pattern="[0-9]*"
+     ></ion-input>
   </div>
-  <ion-button mode="md" style="text-transform: none;" class="primary-button" (click)="goToRegistro()" >Continuar</ion-button>
+  <ion-button mode="md" style="text-transform: none;" class="primary-button" (click)="send_otk()" >Continuar</ion-button>
   <div style="width: 100%;" class="divider">
     <img style="width: 100%;" src="/assets/images/login/divider.png" alt="">
   </div>
-  <ion-button (click)="goTocorre()" mode="md" expand="block" fill="outline"style="text-transform: none;" class="secondary-button">
-    <img  style="padding-right:10px ;" slot="start" src="/assets/images/cor-neg.svg" alt="">
-    Continuar con correo
+  <ion-button routerLink="/ing-cor"  mode="md" expand="block" fill="outline"style="text-transform: none;" class="secondary-button">
+    <img  style="padding-right:10px ;" slot="start" src="/assets/images/login/email.png" alt="">
+    Iniciar sesión con contraseña
   </ion-button>
   <p class="footer-text">
-    ¿No tienes una cuenta aún? <a href="#" routerLink="/termino-y-condiciones" class="register-link">Regístrate</a>
+    ¿No tienes una cuenta aún? <a href="#" routerLink="/terminos-y-condiciones" class="register-link">Regístrate</a>
   </p>
   </div>
 </ion-content>
+

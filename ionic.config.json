@@ -1,7 +1,8 @@
 {
-  "name": "Blip",
+  "name": "bliphostfrontend",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

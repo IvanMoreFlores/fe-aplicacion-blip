@@ -1,4 +1,3 @@
-
 <ion-header mode="ios">
   <ion-toolbar>
     <h2 slot="start" class="title">Ingresa tu número de teléfono</h2>
@@ -12,7 +11,7 @@
       mode="ios"
       type="text"
       placeholder="Ingrese su número"
-      [(ngModel)]="phoneNumber"
+      [(ngModel)]="phone"
       (ionInput)="formatPhoneNumber()"
       (keydown)="onKeyDown($event)"
       (paste)="onPaste($event)"
@@ -23,17 +22,9 @@
     </div>
   </div>
 </ion-content>
-<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col >
-          <button routerLink="/datos-ingresar" class="btn-atr">Atrás</button>
-        </ion-col>
-        <ion-col >
-          <button class="btn-sig" routerLink="/datos-verificacion">Siguiente</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
+<ion-footer class="footer-btn">
+  <div class="bnt-dow">
+    <button (click)="return()"  class="bac">Atrás</button>
+    <button class="nex" (click)="setPhone()">Siguiente</button>
+  </div> 
 </ion-footer>

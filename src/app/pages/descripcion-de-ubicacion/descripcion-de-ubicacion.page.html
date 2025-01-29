@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">Introduce la ubicación exacta 
+            de tu cochera</h1>
+
+          <!-- Barra de búsqueda -->
+
+          <!--<div class="box">
+	          <i class="fa fa-search" aria-hidden="true"></i>
+	          <input type="text" placeholder="Introduce tu ubicación" name="" >
+          </div>-->
+          
+          <button class="custom-btn" (click)="selectMap()">
+            <div class="oder">
+              <img src="/assets/images/map-ub.svg" alt="">
+              <span class="btn-text">Seleccionar en el mapa</span>
+            </div> 
+            <img src="/assets/images/flec-rig-desc.svg" alt="">
+          </button>
+          <button class="custom-btn" (click)="getUbicacion()">
+            <div class="order">
+              <img src="/assets/images/ubic.svg"  alt=""> 
+              <span class="btn-text">Usar Ubicación real</span>
+            </div>  
+            <img src="/assets/images/flec-rig-desc.svg" alt=""> 
+          </button>
+          
+        </div>
+      </div>
+    </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" (click)="return()" >Atrás</button>
+        <!--<button routerLink="/eli-pref" class="nex" >Siguiente</button>-->
+      </div>
+    </footer>
+  </div>
+</ion-content>

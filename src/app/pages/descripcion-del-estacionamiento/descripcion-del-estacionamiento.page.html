@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <img src="/assets/images/paso2.png" alt="">
+          <h2 class="subtitle">Paso 2</h2>
+          <h1 class="title">Describe tu anuncio
+            de estacionamiento</h1>
+          <p class="description">En este paso, te haremos algunas preguntas que contribuyen a ofrecer una descripción más detallada de tu estacionamiento. Proporciona las dimensiones y señala la ubicación exacta de tu espacio.</p>         
+        </div>
+      </div>
+    </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" id="open-modal_nuevoanu" >Atrás</button>
+        <ion-modal trigger="open-modal_nuevoanu" mode="md" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+          <ng-template>
+            <div class="block">
+              <h1 class="title-mo">¿Estás seguro que quieres salir?</h1>
+              <div class="line"></div>
+              <div class="confir">
+                <p class="confir-TEX">Recuerda que puedes crear un anuncio en cualquier momento.</p>
+                <div class="mdtn">
+                  <button routerLink="/tab-home/home" class="salir" (click)="dismissModal()">Salir</button>
+                  <button  class="continuar">Continuar</button>                 
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ion-modal>
+
+        <button  routerLink="/descripcion-del-espacio" class="nex" >Siguiente</button>
+      </div>
+    </footer>
+  </div>
+</ion-content>

@@ -2,25 +2,24 @@
 
   <ion-tab-bar slot="bottom">
 
-    <ion-tab-button tab="blip-home" layout="icon-start" [ngClass]="{'selected': selectedTab == 'blip-home'}">
-      <ion-icon name="home-outline"></ion-icon>
-
+    <ion-tab-button tab="home" [ngClass]="{'selected': selectedTab == 'home'}">
+      <img *ngIf="selectedTab !== 'home'" src="/assets/images/home39.svg" alt="">
+      <img *ngIf="selectedTab === 'home'" src="/assets/images/home39-selected.svg" alt="">
     </ion-tab-button>
 
-    <ion-tab-button tab="reservas" layout="icon-start" [ngClass]="{'selected': selectedTab == 'reservas'}">
-      <ion-icon name="ticket-outline"></ion-icon>
-      <ion-label *ngIf="selectedTab == 'search'">Search</ion-label>
+    <ion-tab-button tab="loader-comp" [ngClass]="{'selected': selectedTab == 'loader-comp'}">
+      <img *ngIf="selectedTab !== 'loader-comp'" src="/assets/images/finanzas.svg" alt="">
+      <img *ngIf="selectedTab === 'loader-comp'" src="/assets/images/tab-selefinanza.svg" alt="">
     </ion-tab-button>
 
-    <ion-tab-button tab="explora" layout="icon-start" [ngClass]="{'selected': selectedTab == 'explora'}">
-      <ion-icon name="search-outline"></ion-icon>
-      <ion-label *ngIf="selectedTab == 'orders'">Orders</ion-label>
+    <ion-tab-button tab="calendario-semanal" [ngClass]="{'selected': selectedTab == 'calendario-semanal'}">
+      <img *ngIf="selectedTab !== 'calendario-semanal'" src="/assets/images/search-outline.svg" alt="">
+      <img *ngIf="selectedTab === 'calendario-semanal'" src="/assets/images/search-outline-selected.svg" alt="">
     </ion-tab-button>
 
-
-    <ion-tab-button tab="perfil" layout="icon-start" [ngClass]="{'selected': selectedTab == 'perfil'}">
-      <ion-icon name="person-outline"></ion-icon>
-      <ion-label *ngIf="selectedTab == 'menu'">Menu</ion-label>
+    <ion-tab-button tab="inf-perso" [ngClass]="{'selected': selectedTab == 'inf-perso'}">
+      <img *ngIf="selectedTab !== 'inf-perso'" src="/assets/images/person-outline.svg" alt="">
+      <img *ngIf="selectedTab === 'inf-perso'" src="/assets/images/person-outline-selected.svg" alt="">
     </ion-tab-button>
 
   </ion-tab-bar>

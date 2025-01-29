@@ -1,0 +1,100 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">¿Cuáles son los servicios que ofreces?</h1>
+          <div class="input-bar">
+            <div class="ing">
+                <img src="/assets/images/rejas.svg" alt="">
+                <h1>Rejas</h1>
+            </div>
+            <input type="checkbox" #checkbox1 (change)="onCheckboxChange(1, checkbox1.checked)" class="custom-checkbox"> 
+          </div>
+          <div class="input-bar">
+              <div class="ing">
+                  <img src="/assets/images/puntero.svg" alt="">
+                  <h1>Portón Manual</h1>
+              </div>
+              <input type="checkbox" #checkbox2 (change)="onCheckboxChange(2, checkbox2.checked)"class="custom-checkbox">
+          </div>
+          <div class="input-bar">
+              <div class="ing">
+                  <img src="/assets/images/foco.svg" alt="">
+                  <h1>Portón Eléctrico</h1>
+              </div>
+              <input type="checkbox" #checkbox3 (change)="onCheckboxChange(3, checkbox3.checked)" class="custom-checkbox">
+          </div>
+          <div class="input-bar">
+              <div class="ing">
+                  <img src="/assets/images/ojos.svg" alt="">
+                  <h1>Sistema de vigilancia</h1>
+              </div>
+              <input type="checkbox" #checkbox4 (change)="onCheckboxChange(4, checkbox4.checked)" class="custom-checkbox">
+          </div>
+          <div class="input-bar">
+            <div class="ing">
+                <img src="/assets/images/slaps.svg" alt="">
+                <h1>Techado</h1>
+            </div>
+            <input type="checkbox" #checkbox5 (change)="onCheckboxChange(5, checkbox5.checked)" class="custom-checkbox">
+          </div>
+          <!-- <h1 class="title">¿Cuáles son otros servicios que también ofreces?</h1>
+           
+          <button class="custom-btn">
+            <img src="/assets/images/user.png" alt="">
+            <span class="btn-text">Servicios Higiénicos</span>
+            <label class="container">
+              <input type="checkbox" checked #checkbox1 (change)="onCheckboxChange(1, checkbox1.checked)">
+              <span class="checkmark"></span>
+            </label>
+          </button>
+          
+          <button class="custom-btn">
+            <img src="/assets/images/shop.png" alt=""> 
+            <span class="btn-text">Autoboutique</span>
+            <label class="container">
+              <input type="checkbox" checked #checkbox2 (change)="onCheckboxChange(2, checkbox2.checked)">
+              <span class="checkmark"></span>
+            </label>
+          </button>
+          
+          <button class="custom-btn">
+            <img src="/assets/images/layers.png" alt="">
+            <span class="btn-text">Techado</span>
+            <label class="container">
+              <input type="checkbox" checked #checkbox3 (change)="onCheckboxChange(3, checkbox3.checked)">
+              <span class="checkmark"></span>
+            </label>
+          </button>
+          
+          <button class="custom-btn">
+            <img src="/assets/images/eye.png" alt=""> 
+            <span class="btn-text">Sistema de vigilancia</span>
+            <label class="container">
+              <input type="checkbox" checked #checkbox4 (change)="onCheckboxChange(4, checkbox4.checked)">
+              <span class="checkmark"></span>
+            </label>
+          </button>
+          
+          <button class="custom-btn">
+            <img src="/assets/images/shopping-cart.png" alt=""> 
+            <span class="btn-text">Tienda</span>
+            <label class="container">
+              <input type="checkbox" checked #checkbox5 (change)="onCheckboxChange(5, checkbox5.checked)">
+              <span class="checkmark"></span>
+            </label>
+          </button> -->
+        </div>
+      </div>
+    </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" (click)="return()">Atrás</button>
+        <button  (click)="getServicios()" class="nex" >Siguiente</button>
+      </div>
+    </footer>
+  </div>
+</ion-content>
+
+

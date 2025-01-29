@@ -1,20 +1,16 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.blip.pe',
-  appName: 'Blip',
+  appId: 'apphost.blip.pe',
+  appName: 'bliphostfrontend',
   webDir: 'www',
   server: {
     androidScheme: 'https'
   },
   plugins: {
-    "GoogleAuth": {
-      "scopes": [
-        "profile",
-        "email"
-      ],
-      "serverClientId": "1065508143243-0nnjgpqihtstvqt17lulhtkh682587of.apps.googleusercontent.com",
-      "forceCodeForRefreshToken": true
+    Facebook: {
+      appId: "479280344913959",  
+      appName: "Blip"
     }
   }
 };

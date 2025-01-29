@@ -1,0 +1,431 @@
+/* Estilos para el header */
+h1,h1,h3{
+  margin: 0px;
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+  
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+
+ion-toolbar {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ion-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline:  22px;
+  margin-block: 10px;
+  height: 56px; /* Altura consistente para el header */
+
+}
+
+.custom-title{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+.btn-idn{
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+  border-radius: 10px;
+  margin-right: 0px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+ion-buttons {
+  display: flex;
+  align-items: center;
+}
+
+ion-icon {
+  font-size: 24px; /* Tamaño adecuado para los iconos */
+  color: #000;
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: none; /* Eliminar el fondo del botón */
+  --ripple-color: transparent; /* Sin efecto ripple */
+}
+ion-conten{
+  padding-inline: 40px;
+}
+.container-pef{
+  padding-inline: 22px;
+}
+.avatar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Ajusta el espacio superior si lo necesitas */
+}
+.avatar img {
+  height: 180px; /* Aumenta el tamaño según lo necesites */
+  width: 180px; /* Mantén el aspecto cuadrado */
+  border-radius: 20px; /* Mantén los bordes medio redondos */
+}
+
+.image-wrapper {
+  position: relative;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 15px; /* Medio redondeado */
+  padding: 20px;
+  max-width: 200px; /* Controla el tamaño máximo del contenedor */
+}
+
+.image-wrapper img {
+  width: 100%; /* Ajusta la imagen al tamaño del contenedor */
+  height: auto;
+  border-radius: 15px; /* Para medio redondear la imagen */
+}
+
+.boxes {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+
+
+
+.box1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Asegura que la imagen mantenga su proporción original */
+  border-radius: 5px;  /* Esto es opcional si deseas bordes redondeados */
+}
+.box1 {
+  height: 40px;  /* Ajusta el tamaño para que sea más acorde a la imagen */
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+  border:0px;
+}
+[_nghost-ng-c1856937885] ngx-dropzone-label{
+  margin: 0px;
+}
+
+
+.title {
+font-size: 18px;
+font-family: "Poppins", sans-serif;
+color: #212121;
+margin-right: auto;
+margin-top: 0;
+margin-bottom: 0;
+}
+
+.inicio {
+margin-top: 10px;
+display: flex;
+align-items: center; 
+margin-bottom: 64px;
+}
+
+.left-arrow {
+margin-right: 20px; 
+margin-left: 19px;
+}
+.pg{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 137.5% */
+}
+
+ion-text{
+  color: #212121;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 25px; /* 178.571% */
+}
+.cont-pre{
+background-color: #ffffff;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-right: 0px;
+margin-top: 23px;
+}
+::ng-deep ion-item::part(native) {
+  padding-left: 0 !important; /* Sobrescribe el padding interno */
+}
+.preguntas{
+  margin-top: 40px;
+}
+.preg{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+.block{
+  width: 100%;
+  height: 301px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+ion-modal {
+  --height: auto;
+}
+.title-mo{
+  color: #212121;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 166.667% */
+  padding-block: 20px;
+
+}
+.line{
+  border-bottom: solid 1px #D4D4D4;
+}
+.parraf{
+  margin-top: 20px;
+  margin-right: 40px;
+  margin-left: 40px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: rgba(33, 33, 33, 0.8);/* Color con 80% de opacidad */
+}
+.input-bar {
+  position: relative;
+  padding: 15px 0; 
+  display: flex;
+  border: 1px solid #212121;
+  height: 56px;
+  border-radius: 30px;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: 40px auto;
+}
+.input-bar2{
+  position: relative;
+  padding: 15px 0; 
+  display: flex;
+  border: 1px solid #212121;
+  height: 56px;
+  border-radius: 30px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: 49px auto;
+}
+.label-text {
+  font-size: 12px;
+  position: absolute;
+  top: -10px; 
+  background-color: #FFFFFF; 
+  padding: 0 10px; 
+  z-index: 1;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+  color: #212121;
+}
+
+.ld{
+  margin-left: 10px;
+  bottom: 8px;
+}
+.editar{
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0;
+color: #212121;
+text-align: right;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px; /* 183.333% */
+text-decoration-line: underline;
+}
+.model{
+background-color: transparent;
+}
+.iden{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 200% */
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  padding-inline: 15px;
+  margin-top: 23px;
+}
+
+/* Estilo personalizado para el checkbox */
+ion-checkbox {
+  --size: 15px;
+  --checkbox-background-checked: #6D6D6D;
+  color: #6D6D6D;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 300;
+line-height: 23px; /* 191.667% */
+}
+
+ion-checkbox::part(container) {
+  border-radius: 3px;
+  border: 2px solid #6D6D6D;
+}
+
+/* Aumentar el grosor y tamaño del marcador de verificación */
+ion-checkbox::part(indeterminate) {
+  transform: scale(1.5); /* Aumenta el tamaño del marcador de verificación */
+  border-width: 1px; /* Ajusta el grosor del borde del marcador de verificación */
+}
+.doc{
+  background-color: transparent;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-right: 0px;
+padding-left: 20px;
+margin-top: 10px;
+}
+.textos{
+  display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+.cont{
+  background-color: #79FFAF; 
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+}
+.subcont{
+  background-color: white;
+  padding-top: 5%;
+  padding-left: 7%;
+  padding-right: 7%;
+  margin-top: 50px;
+  width: 100%;
+  height: 882px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.t1-0{
+display: flex;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+color: #000;
+font-family: Poppins;
+font-size: 19px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 126.316% */
+letter-spacing: 0.048px;
+padding-left: 20px;
+padding-right: 20px;
+}
+.p01{
+color: #212121;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 300;
+line-height: 18px; /* 150% */
+letter-spacing: 0.03px;
+margin-top: 22px;
+padding-inline: 20px;
+}
+.btn {
+  position: relative;
+  padding: 15px 0; 
+  display: flex;
+  border: 1px solid #212121;
+  background-color: #212121;
+  height: 56px;
+  border-radius: 30px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: 49px auto;
+  
+}
+
+.GuarCam {
+  color: #fff;
+  background: transparent;
+  color: #FFF;
+text-align: center;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 180%; /* 28.8px */
+}
+
+.btn2 {
+  position: relative;
+  padding: 15px 0; 
+  border: 1px solid #212121;
+  height: 56px;
+  border-radius: 30px;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: 49px auto; /* Centra vertical y horizontalmente */
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+.GuarCam2 {
+  color: #565656;
+  background: transparent;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 180%; /* 28.8px */
+}
+
+
+

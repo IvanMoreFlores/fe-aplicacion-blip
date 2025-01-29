@@ -24,17 +24,12 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-@import "~animate.css/animate.min.css";
-
-@import "assets/fonts/fonts.css";
-@import 'swiper/css/bundle';
 @import 'swiper/scss';
 @import 'swiper/scss/navigation';
 @import 'swiper/scss/pagination';
+@import "~dropzone/dist/dropzone.css";
+@import "~leaflet/dist/leaflet.css";
 
-*:focus {
-  outline: none;
-}
 // swiper-container {
 //     --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
 //     --swiper-pagination-color: var(--ion-color-primary, #0054e9);
@@ -82,109 +77,101 @@
 //     max-height: 100%;
 //     margin: 120px 90px 90px;
 //   } 
-.swiper-pagination-bullet-active{
-    background-color: #79FFAF;
-}
+// *:focus {
+//   outline: none;
+// }
+ .swiper-pagination-bullet-active{
+     background-color: black;
+    bottom:0px;
+ }
 
-
-
-
-.custom-action-sheet {
-    .action-sheet-container {
-          background-color: #f4f4f4; /* Cambia el color de fondo del menú */
-        }
+// .custom-action-sheet {
+//     .action-sheet-container {
+//           background-color: #f4f4f4; /* Cambia el color de fondo del menú */
+//         }
       
-    .action-sheet-group {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end; /* Alinea los botones a la derecha */
-          padding: 0 20px; /* Ajusta el espaciado lateral */
-        }
+//     .action-sheet-group {
+//           display: flex;
+//           flex-direction: column;
+//           align-items: flex-end; /* Alinea los botones a la derecha */
+//           padding: 0 20px; /* Ajusta el espaciado lateral */
+//         }
       
-    .action-sheet-button {
-          color: #007bff; /* Cambia el color del texto de los botones */
-          margin-bottom: 10px; /* Ajusta el espaciado entre los botones */
-        }
+//     .action-sheet-button {
+//           color: #007bff; /* Cambia el color del texto de los botones */
+//           margin-bottom: 10px; /* Ajusta el espaciado entre los botones */
+//         }
       
-    .action-sheet-button.cancel-button {
-          color: #dc3545; /* Cambia el color del texto del botón de cancelar */
-        } 
-    }
+//     .action-sheet-button.cancel-button {
+//           color: #dc3545; /* Cambia el color del texto del botón de cancelar */
+//         } 
+//     }
 
     
-  .calendar-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center; 
-    overflow-y: auto; 
-    max-height: calc(100vh - 300px);
-    color: #212121;
-  }
+//   .calendar-container {
+//     display: flex;
+//     flex-direction: column;
+//     text-align: center; 
+//     overflow-y: auto; 
+//     max-height: calc(100vh - 100px);
+//     color: #212121;
+//   }
   
-  .calendar-container h2 {
-    justify-content: space-between;
-    display: flex;
-    font-size: 16px;
-    width: 85%;
-    margin: 20px auto;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-  }
+//   .calendar-container h2 {
+//     font-size: 16px;
+//     width: 85%;
+//     margin: 20px auto;
+//     font-family: "Poppins", sans-serif;
+//     font-weight: 600;
+//   }
   
-  .calendar-container table {
-    border-collapse: collapse;
-    margin-bottom: 30px;
-    font-family: "Poppins", sans-serif;
-  }
+//   .calendar-container table {
+//     border-collapse: collapse;
+//     margin-bottom: 30px;
+//     font-family: "Poppins", sans-serif;
+//   }
 
-  table th {
-    font-weight: 600;
-  }
+//   table th {
+//     font-weight: 600;
+//     font-size: 14px;
+//   }
 
-  table td {
-    padding: 5px;
-  }
-  .inner-scroll {
-    padding: 0;
-}
-.button-inner {
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -ms-flex-flow: row nowrap;
-  flex-flow: row nowrap;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: center;
-  /* justify-content: center; */
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-ion-toast.custom-toast {
-  --background: #FFFFFF;
-  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
-  --color: #4b4a50;
-  margin-top: 30px;
-  font-family: "Poppins", sans-serif;
-  width: 80%;
-  left: 40px;
-  --border-radius: 5px;
+//   table td {
+//     font-size: 14px;
+//     padding: 1px 10px;
+//   }
+//   .inner-scroll {
+//     padding: 0;
+// }
+// .button-inner {
+//   display: -ms-flexbox;
+//   display: flex;
+//   position: relative;
+//   -ms-flex-flow: row nowrap;
+//   flex-flow: row nowrap;
+//   -ms-flex-negative: 0;
+//   flex-shrink: 0;
+//   -ms-flex-align: center;
+//   align-items: center;
+//   -ms-flex-pack: center;
+//   /* justify-content: center; */
+//   width: 100%;
+//   height: 100%;
+//   z-index: 1;
+// }
+
+
+
+//   td {
+//     width: 30px;
+//     height: 40px;
+//     text-align: center;
+//     vertical-align: middle;
+//     border-radius: 50%;
+//     cursor: pointer;
+//   }
   
-}
-
-ion-toast.custom-toast::part(message) {
-  font-family: "Poppins", sans-serif;
-  color: #212121;
-}
-ion-input {
-  --icon-color: red; /* Cambia 'red' al color que desees */
-}
-
-ion-input ion-input-password-toggle {
-  color: var(--icon-color);
-}
-
-
+//   td.highlight {
+//     background-color: #79FFAF; 
+//   }
+  

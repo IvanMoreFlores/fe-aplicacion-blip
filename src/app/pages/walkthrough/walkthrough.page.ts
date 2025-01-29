@@ -1,6 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { StorageService } from '../../services/storage.service';
 import Swiper from 'swiper';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -23,6 +23,7 @@ export class WalkthroughPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private storageService: StorageService,
     private router: Router
   ) { }
 
@@ -53,5 +54,7 @@ export class WalkthroughPage implements OnInit {
   }
 
  async confirmWelcome() {
+    await this.storageService.setItem('welcome', true);
+    this.router.navigate(['/login']);
   }
 }

@@ -1,0 +1,178 @@
+ion-content{
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 40px;
+  }
+  
+  .title {
+    font-size: 31px;
+    line-height: 42px;
+    font-family: "Poppins", sans-serif;
+    margin: 50px auto 50px;
+    display: block;
+    width: 100%;
+    color: #212121;
+  }
+  
+.label-text {
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    background-color: #FFFFFF;
+    padding: 0 10px;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    color: #212121;
+}
+.input-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .label-text {
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  
+  .custom-select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .custom-select select {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* Espacio para la flecha */
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    appearance: none; /* Quita el estilo por defecto del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  .custom-select::after {
+    content: url('/assets/images/flec.svg'); /* Usa `content` para incluir la imagen SVG */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none; /* No permite hacer clic en la flecha */
+    font-size: 16px;
+    color: #333;
+  }
+  
+.input-bar {
+    position: relative;
+    padding: 15px 0;
+    display: flex;
+    border: 1px solid #212121;
+    height: 56px;
+    border-radius: 30px;
+
+    margin-block: 40px;
+    color: #212121;
+  
+select,
+input[type="text"] {
+      width: 100%;
+      padding: 0 20px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+    }
+  
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("/assets/images/vector-f.png");
+      background-repeat: no-repeat;
+    }
+}
+  
+.input-container2 {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  margin-top: 20px;
+}
+
+.descripcion {
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  background-color: #FFFFFF;
+  padding: 0 10px;
+  left: 15px;
+  font-family: "Poppins", sans-serif;
+  color: #212121;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid #000;
+  padding-inline: 10px;
+  padding-block: 25px;
+  font-size: 14px;
+  resize: none;
+  box-shadow: none;
+}
+  
+.bnt-dow{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  .bac{
+      border: 1px solid #212121;
+      background-color: #FFFFFF;
+      padding-inline: 10px;
+      padding-top: 17px;
+      padding-bottom: 17px;
+      border-radius: 30px;
+      font-size: 15px;
+      width: 45%;
+      font-weight: 600;
+      color: #212121;
+      font-family: "Poppins", sans-serif;
+  }
+  .nex{
+      border-radius: 30px;
+      border: 1px solid #212121;
+      background-color: #212121;
+      padding-inline: 10px;
+      color: #ffffff;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 15px;
+      width: 45%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+  }
+}
+
+
+
+
+  
+  

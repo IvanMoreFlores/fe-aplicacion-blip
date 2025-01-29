@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimationController, IonicModule } from '@ionic/angular';
-
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab-home',
@@ -8,8 +7,7 @@ import { AnimationController, IonicModule } from '@ionic/angular';
   styleUrls: ['./tab-home.page.scss'],
 })
 export class TabHomePage implements OnInit {
-
-  selectedTab: any;
+  selectedTab: string = 'home'; // Selecciona la pestaña predeterminada
 
   constructor(private animationCtrl: AnimationController) { }
 
@@ -18,22 +16,24 @@ export class TabHomePage implements OnInit {
 
   setCurrentTab(event: any) {
     this.selectedTab = event.tab;
+
+    // Encontrar el botón de la pestaña seleccionada
     const tabButton = document.querySelector(`ion-tab-button[tab="${this.selectedTab}"]`);
-    const fadeInAnimation = this.createFadeInAnimation(tabButton as HTMLElement);
-    fadeInAnimation.keyframes([
-      { offset: 0, transform: 'scale(1)' },
-      { offset: 0.5, transform: 'scale(1.2)' },
-      { offset: 1, transform: 'scale(1)' }
-    ]);
+
+    // Aplicar la animación de escalado
+    const fadeInAnimation = this.createScaleAnimation(tabButton as HTMLElement);
     fadeInAnimation.play();
   }
 
-  private createFadeInAnimation(baseEl: HTMLElement) {
+  private createScaleAnimation(baseEl: HTMLElement) {
     return this.animationCtrl.create()
       .addElement(baseEl)
       .duration(300)
-      .easing('ease-in-out');
-      // .fromTo('opacity', '0', '1');
+      .easing('ease-in-out')
+      .keyframes([
+        { offset: 0, transform: 'scale(1)' },
+        { offset: 0.5, transform: 'scale(1.2)' },
+        { offset: 1, transform: 'scale(1)' }
+      ]);
   }
-
 }

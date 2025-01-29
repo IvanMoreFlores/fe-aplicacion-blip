@@ -1,0 +1,55 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title">¿Cuál de estas opciones describe mejor tu espacio?</h1>
+
+          <button #customBtn class="custom-btn">
+            <img src="/assets/images/home.png" alt="">
+            <span class="btn-text">Casa</span>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (change)="onRadioChange(1)">
+              <label class="form-check-label" for="flexRadioDefault1"></label>
+            </div>
+          </button>
+
+          <button #customBtn class="custom-btn">
+            <img src="/assets/images/building.png" alt="">
+            <span class="btn-text">Departamento</span>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" (change)="onRadioChange(2)">
+              <label class="form-check-label" for="flexRadioDefault2"></label>
+            </div>
+          </button>
+
+          <button #customBtn class="custom-btn">
+            <img src="/assets/images/urbanizacion.png" alt="">
+            <span class="btn-text">Urbanización</span>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" (change)="onRadioChange(3)">
+              <label class="form-check-label" for="flexRadioDefault3"></label>
+            </div>
+          </button>
+
+          <button #customBtn class="custom-btn">
+            <img src="/assets/images/cond31.png" alt="">
+            <span class="btn-text">Condominio</span>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" (change)="onRadioChange(4)">
+              <label class="form-check-label" for="flexRadioDefault4"></label>
+            </div>
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button class="bac" routerLink="/tab-home/home">Atrás</button>
+        <button  (click)="getSpace()" class="nex" >Siguiente</button>
+      </div>
+    </footer>
+  </div>
+</ion-content>

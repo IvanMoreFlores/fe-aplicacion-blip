@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { JwtService } from '../../services/jwt.service';
+import { StorageService } from '../../services/storage.service';
+import { ApiService } from 'src/app/services/api.service';
+import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
   selector: 'app-datos-creacion-contra',
@@ -15,6 +19,69 @@ export class DatosCreacionContraPage implements OnInit {
   passwordIcon2: string = 'eye-off';
   con: string = '';
   isEmailValid: boolean = false;
+  data: any; // Datos que se esperan de llamada al API
+  nombre: string = '';
+  apellido: string = '';
+  fecha_nac: string = '';
+  genero: string = '';
+  doc: string = '';
+  nro: string = '';
+  phone: string = '';
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private jwtService: JwtService,
+    private storageService: StorageService,
+    private api: ApiService
+  ) {
+
+  }
+
+  ngOnInit() {
+    this.setData();
+    this.initializeKeyboardListeners();
+  }
+
+  setData() {
+    this.route.queryParams.subscribe(params => {
+      this.nombre = params['nombre'];
+      this.apellido = params['apellido'];
+      this.fecha_nac = params['fecha_nac'];
+      this.genero = params['genero'];
+      this.doc = params['doc'];
+      this.nro = params['nro'];
+      this.phone = params['phone'];
+    });
+  }
+  ngOnDestroy() {
+    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
+  }
+  initializeKeyboardListeners() {
+    const content = document.querySelector('ion-content') as HTMLElement;
+    const footer = document.querySelector('.footer-btn') as HTMLElement;
+
+    Keyboard.addListener('keyboardWillShow', (info) => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      if (footer) {
+        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
+      }
+    });
+    
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      const footer = document.querySelector('.footer-btn') as HTMLElement;
+      const content = document.querySelector('ion-content') as HTMLElement;
+    
+      if (footer) {
+        footer.style.bottom = '0px'; // Restaura el footer
+      }
+      if (content) {
+        content.style.paddingBottom = '0px'; // Restaura el padding
+      }
+    });
+    
+  }
   togglePasswordVisibility() {
     if (this.passwordType === 'password') {
       this.passwordType = 'text';
@@ -36,40 +103,50 @@ export class DatosCreacionContraPage implements OnInit {
   onEmailChange(): void {
     this.isEmailValid = this.password.trim().length > 0;
   }
-  constructor(private router: Router) {}
-  ngOnInit() {
+
+  async onCreate() {
+    //routerLink="/cre-con" 
+
+    let token = await this.storageService.getItem('token');
+
+    this.api.postRegister(
+      this.nro,
+      parseInt(this.doc),
+      this.apellido,
+      this.nombre,
+      '+51' + this.phone,
+      this.password,
+      4,
+      parseInt(this.genero),
+      this.fecha_nac,
+      token
+    ).subscribe(
+      async (response: any) => {
+        await this.storageService.removeItem('token');
+        let data = response.data;
+        let id_user = data.usu_id;
+        const token_main = this.jwtService.generateTokenMain('TELEFONO', id_user, true);
+        await this.storageService.setItem('token', token_main);
+        this.router.navigate(['/cre-con']);
+      },
+      (error: any) => {
+        console.error('Error al enviar el mensaje:', error);
+      }
+    );
   }
+
+  async return() {
+    this.router.navigate(['/datos-verificacion'], {
+      queryParams: {
+        nombre: this.nombre,
+        apellido: this.apellido,
+        fecha_nac: this.fecha_nac,
+        genero: this.genero,
+        doc: this.doc,
+        nro: this.nro,
+        phone: this.phone
+      }
+    });
+  }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   passwordType: string = 'password';
-//   password: string = '';
-//   confirmPassword: string = '';
-
-//   constructor() {}
-
-//   ngOnInit() {}
-
-//   togglePasswordVisibility() {
-//     this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
-//   }
-// }

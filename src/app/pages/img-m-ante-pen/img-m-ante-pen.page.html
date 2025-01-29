@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="titlex">Estas son las imágenes tomadas</h1>
+            <div class="cuadro shadow">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img [src]="antePen" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="swiper-pagination"></div>
+         <button routerLink="/adj-dt-dni" class="back-btn">Atrás</button> 
+         <button routerLink="/inf-perso"  [queryParams]="{ imagesAttached: true }" class="next-btn">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

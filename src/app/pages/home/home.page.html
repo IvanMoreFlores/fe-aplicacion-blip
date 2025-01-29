@@ -1,0 +1,1231 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+      <ion-avatar slot="start">
+        <img  *ngIf="userData?.photo == null" src="/assets/images/backdrop-component.png" alt="">
+        <img  *ngIf="userData?.photo" src="{{ userData?.photo.url }}" alt="">
+      </ion-avatar>
+    <h3 style="padding-inline: 10px;">Bienvenido(a)</h3>
+    <h1 style="padding-inline: 10px;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ userData?.usu_nombre + ' ' + userData?.usu_apepat }}</h1>
+    
+    <button slot="end"  class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg"
+    alt=""></button>
+        <ion-modal trigger="menu" mode="md" [isOpen]="isMenuModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]"
+        (ionBackdropTap)="dismissMenuModal()">
+        <ng-template>
+          <div class="block">
+            <h1 class="menu-block">Menu</h1>
+            <h2 class="subtitle">Servicios de Anfitrión</h2>
+            <div class="button-container">
+
+              <button (click)="exit()" routerLink="{{ url_new }}" class="service-button">
+                <div>
+                  <img class="button-image" src="/assets/images/ticket-outline-selected.svg" alt="Imagen 1">
+                  <span class="button-text">Crea un nuevo anuncio</span>
+                </div>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
+                <div>
+                  <img class="button-image" src="/assets/images/megaphone.svg" alt="Imagen 2">
+                  <span class="button-text">Mis Anuncios</span>
+                </div>
+                <div>
+                  <button class="lda" style="border-radius: 30px; background: var(--M3-sys-light-error, #B3261E);">
+                    <h1 class="dat-anu"  >5</h1>
+                  </button>
+                  <img style="padding-left: 20px;" class="second-image" src="/assets/images/Vector-1.png" alt="">
+                </div>
+
+              </button>
+            </div>
+            <div class="button-container">
+              <button id="mod-apag"  (click)="exit()" class="service-button" style="padding-bottom: 30px; border-bottom: 1px solid rgba(212, 212, 212, 1); " >
+              <ion-modal  mode="md" trigger="mod-apag"[initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                <ng-template>
+                  <div class="block">
+                    <h1 class="title-c">¿Estás seguro de realizar el Apagón General?</h1>
+                    <hr class="separator-line">
+                    <div class="cont-ap">
+                      <p class="parraf">Ocultaremos tus publicaciones y tu cuenta quedará en pausa. 
+                      </p>
+                      <div class="button-container-modal">
+                        <button class="button-continuar-modal" (click)="confirmAction()">Continuar</button>
+                        <button (click)="cancelAction()" class="button-cancelar-modal">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ion-modal>
+                <div>
+                  <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
+                  <span class="button-text">Apagón General</span>
+                </div>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button routerLink="sopor56" class="service-button">
+                <div>
+                  <img class="button-image" src="/assets/images/heart.svg" alt="Imagen 2">
+                  <span class="button-text">Soporte</span>
+                </div>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+              <button (click)="exit()" routerLink="/finanzas" class="service-button">
+                <div>
+                  <img class="button-image" src="assets/images/inter-terminos.svg" alt="Imagen 1">
+                  <span class="button-text">Términos y Condiciones</span>
+                </div>
+                <img class="second-image" src="/assets/images/Vector-1.png" alt="">
+              </button>
+            </div>
+            <div class="button-container">
+              <button class="service-button" (click)="sesion_close()">
+                <div>
+                  <img class="button-image" src="/assets/images/cerra-seciom.svg" alt="Imagen 1">
+                  <span class="button-text">Cerrar Sesión</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ion-modal>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="cont-hom">
+    <h1 class="tl-res">
+      Tus Reservaciones
+    </h1>
+    <div class="cardba-content">
+      <div class="a">
+        <div class="horizontal-scroll">
+          <button class="swip" (click)="changeContent('Todos')" [ngClass]="{'active': selectedContent === 'Todos'}">
+            <h1 class="res-de">Todos </h1>
+            <button class="lda">
+              <h1 class="descrip">{{ n_data }}</h1>
+            </button>
+          </button>
+          <button class="swip" (click)="changeContent('pendientes')"
+            [ngClass]="{'active': selectedContent === 'pendientes'}">
+            <h1 class="res-de">Pendientes</h1>
+            <button class="lda">
+              <h1 class="descrip">{{ n_data_pendientes }}</h1>
+            </button>
+          </button>
+          <button class="swip" (click)="changeContent('Comienza Pronto')"
+            [ngClass]="{'active': selectedContent === 'Comienza Pronto'}">
+            <h1 class="res-de">Programados</h1>
+            <button class="lda">
+              <h1 class="descrip">{{ n_data_comienza }}</h1>
+            </button>
+          </button>
+          <button class="swip" (click)="changeContent('En Curso')"
+            [ngClass]="{'active': selectedContent === 'En Curso'}">
+            <h1 class="res-de">En Curso</h1>
+            <button class="lda">
+              <h1 class="descrip">{{ n_data_encurso }}</h1>
+            </button>
+          </button>
+          <button class="swip" (click)="changeContent('Finalizadas')"
+            [ngClass]="{'active': selectedContent === 'Finalizadas'}">
+            <h1 class="res-de">Finalizadas</h1>
+            <button class="lda">
+              <h1 class="descrip">{{ n_data_finalizado }}</h1>
+            </button>
+          </button>
+          <!-- <button class="swip" (click)="changeContent('Canceladas')"
+            [ngClass]="{'active': selectedContent === 'Canceladas'}">
+            <h1 class="res-de">Canceladas</h1>
+            <button class="lda">
+              <h1 class="descrip">{{ n_data_canceladas }}</h1>
+            </button>
+          </button> -->
+        </div>
+      </div>
+      <!-- Contenido dinámico -->
+
+      <div *ngIf="selectedContent === 'Todos'">
+        <div class="cardz">
+          <div class="card-content">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of data">
+                  <ion-card mode="ios">
+                    <ion-card-header>
+                      <div class="header-flex">
+                        <div class="circle-icon">
+                          <h1>A</h1>
+                        </div>
+                        <div class="title-container">
+                          <ion-card-title>
+                            <h1 class="title-large">{{ item.gar_descri }}</h1>
+                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                          </ion-card-title>
+                        </div>
+                      </div>
+                    </ion-card-header>
+                    <div class="image-container">
+                      <img width="100%" height="150px"  alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                    <div class="floating-text time">
+                      <span> {{ getHoraFormat(item.res_fecini) }}</span>
+                    </div>
+                    <div class="floating-text status">
+                      <span>{{ item.rst_descri }}
+                        <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                        <span *ngIf="item.rst_id === 2" class="dot"></span>
+                        <span *ngIf="item.rst_id === 3" class="dot_red"></span>
+                        <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
+                      </span>
+                    </div>
+                    <div class="floating-text status " style="top: 50px; ">
+                      <div style="display: flex;align-items: center;">
+                        <img src="/assets/images/diner-card.svg" style="padding-right: 5px;" alt="">
+                        <span>S/20</span>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <ion-card-content>
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r"> Reserva:</h1>
+                          <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }}</h1> <!-- Nombre y apellido en texto estático -->
+                          <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r">Vehículo:</h1>
+                          <h1 class="ctn">{{ item.veh_modelo }}</h1> <!-- Modelo de vehículo en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1>Placa:</h1>
+                          <h2>{{ item.veh_placa }}</h2> <!-- Placa en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/sig-may.svg" alt="">
+                          <h1 class="s">Reserva</h1>
+                          <h1>x</h1>
+                          <h1 class="m">{{ item.tip_descri }}</h1> <!-- Tipo de reserva en texto estático -->
+                          <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                          <h1 class="m">{{ item.res_tiempo }}</h1> <!-- Tiempo de reserva en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/can-card.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1> <!-- Fecha de inicio en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/reloj-home.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1> <!-- Hora de inicio en texto estático -->
+                          <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                          <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1> <!-- Hora de fin en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="btn" *ngIf="item.rst_id == 1">
+                        <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button> <!-- Botón de confirmar sin acción -->
+                        <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button> <!-- Botón de cancelar sin acción -->
+                      </div>
+                      <div class="btn" *ngIf="item.rst_id == 2">
+                        <button disabled class="bt-con">Confirmar</button>
+                        <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
+                      </div>
+                      <div class="btn" *ngIf="item.rst_id == 3 || item.rst_id == 4">
+                        <button disabled class="bt-con">Confirmar</button>
+                        <button disabled id="mod-confirmado" class="bt-can">Cancelar</button>
+                        <ion-modal mode="md" trigger="mod-confirmado" [initialBreakpoint]="1" [breakpoints]="[0, 1]" >
+                          <ng-template>
+                            <div class="block">
+                              <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                                <img src="/assets/images/impo-pen.svg" alt="" style="margin-top: 25px;">
+                                <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">¿Estás seguro que deseas cancelar 
+                                  esta reserva?</h1>
+                              </div>
+                              
+                              <div class="cont-ap">
+                                <div style="padding-inline: 5%;">
+                                  <h1 class="adv-val2">Cancelar puede afectar tu visibilidad y ganancias en la plataforma.</h1>
+                                  <h1 class="parraf2">Cancelar en este estado nuevamente incurrirá en una  <span>penalización del 10% en base al valor de esta reserva   reflejada en tus ingresos para las próximas dos reservas. </span> </h1>
+                                  <h1 class="las-mas">Lee más sobre nuestras políticas
+                                    de cancelación.</h1>
+                                    <h1 style="color: #212121;
+                                    font-family: Poppins;
+                                    font-size: 14px;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    line-height: 22px; padding-top: 20px;">
+                                      ¿Deseas continuar?
+                                    </h1>
+                                </div>
+                                <div class="button-container-modal">
+                                  <button class="button-continuar-modal" >Cancelar Reserva</button>
+                                  <button  class="button-cancelar-modal">Continuar</button>
+                                </div>
+
+                              </div>
+                            </div>
+                          </ng-template>
+                        </ion-modal>
+                      </div>                     
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+                <div class="swiper-slide" >
+                  <ion-card mode="ios">
+                    <ion-card-header>
+                      <div class="header-flex">
+                        <div class="circle-icon">
+                          <h1>A</h1>
+                        </div>
+                        <div class="title-container">
+                          <ion-card-title>
+                            <h1 class="title-large">qweqweqweqwe</h1>
+                            <h2 class="subtitle-large">qweqweqweqweqweqwe</h2>
+                          </ion-card-title>
+                        </div>
+                      </div>
+                    </ion-card-header>
+                    <div class="image-container">
+                      <img width="100%" height="150px"  alt="Estacionamiento" src="/assets/images/IMG-20250123-WA0147.jpg" />
+                    <div class="floating-text time">
+                      <span style="color: #ffff;"> 02:00:00</span>
+                    </div>
+                    <div class="floating-text status">
+                      <span>asdfasdasdas
+                        <span  class="dot_yellow"></span>
+                        <span  class="dot"></span>
+                        <span  class="dot_red"></span>
+                        <span  class="dot_blue"></span>
+                      </span>
+                    </div>
+                    <div class="floating-text status " style="top: 50px; ">
+                      <div style="display: flex;align-items: center;">
+                        <img src="/assets/images/diner-card.svg" style="padding-right: 5px;" alt="">
+                        <span>S/20</span>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <ion-card-content>
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r"> Reserva:</h1>
+                          <h1 class="ctn">2KLAKJAKJAKJAKLASX C XZZZ</h1> <!-- Nombre y apellido en texto estático -->
+                          <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r">Vehículo:</h1>
+                          <h1 class="ctn">MERCES</h1> <!-- Modelo de vehículo en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1>Placa:</h1>
+                          <h2>A123-FG2</h2> <!-- Placa en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/sig-may.svg" alt="">
+                          <h1 class="s">Reserva</h1>
+                          <h1>x</h1>
+                          <h1 class="m">HORA</h1> <!-- Tipo de reserva en texto estático -->
+                          <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                          <h1 class="m">4H</h1> <!-- Tiempo de reserva en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/can-card.svg" alt="">
+                          <h1 class="s">21:11 </h1> <!-- Fecha de inicio en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/reloj-home.svg" alt="">
+                          <h1 class="s">12:00</h1> <!-- Hora de inicio en texto estático -->
+                          <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                          <h1>2:00</h1> <!-- Hora de fin en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="btn" >
+                        <button  class="bt-con">Confirmar</button> <!-- Botón de confirmar sin acción -->
+                        <button  id="mod-confirmado" class="bt-can">Cancelar</button> <!-- Botón de cancelar sin acción -->
+                        <ion-modal mode="md" trigger="mod-confirmado" [initialBreakpoint]="1" [breakpoints]="[0, 1]" >
+                          <ng-template>
+                            <div class="block">
+                              <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                                <img src="/assets/images/impo-pen.svg" alt="" style="margin-top: 25px;">
+                                <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">¿Estás seguro que deseas cancelar 
+                                  esta reserva?</h1>
+                              </div>
+                              
+                              <div class="cont-ap">
+                                <div style="padding-inline: 5%;">
+                                  <h1 class="adv-val2">Cancelar puede afectar tu visibilidad y ganancias en la plataforma.</h1>
+                                  <h1 class="parraf2">Cancelar en este estado nuevamente incurrirá en una  <span>penalización del 10% en base al valor de esta reserva   reflejada en tus ingresos para las próximas dos reservas. </span> </h1>
+                                  <h1 class="las-mas">Lee más sobre nuestras políticas
+                                    de cancelación.</h1>
+                                    <h1 style="color: #212121;
+                                    font-family: Poppins;
+                                    font-size: 14px;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    line-height: 22px; padding-top: 20px;">
+                                      ¿Deseas continuar?
+                                    </h1>
+                                </div>
+                                <div class="button-container-modal">
+                                  <button class="button-continuar-modal" >Cancelar Reserva</button>
+                                  <button  class="button-cancelar-modal">Continuar</button>
+                                </div>
+
+                              </div>
+                            </div>
+                          </ng-template>
+                        </ion-modal>
+                      </div>
+                 
+
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!data || data.length === 0" class="content-display">
+          <div class="board">
+            <img src="/assets/images/none-anu.svg" alt="">
+            <h1 style="margin-block: 15px;" class="par">Ninguna cochera disponible.</h1>
+            <button (click)="openinfoModal()" style="padding-inline: 10px; padding-block: 5px; background-color: #ffff;" class="create-anun">
+              <img src="/assets/images/add-anun.svg" alt="">
+              <h1>Crear nuevo anuncio</h1>
+            </button>
+            <ion-modal mode="md" [isOpen]="isinfoModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="closeinfoModal()">
+              <ng-template>
+                <div class="block">
+                  <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                    <img src="/assets/images/seg-iden.svg" alt="" style="margin-top: 25px;">
+                    <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">Verifica tu identidad para continuar</h1>
+                  </div>
+                  
+                  <div class="cont-ap">
+                    <div style="padding-inline: 5%;">
+                      <h1 class="adv-val">Antes de publicar un anuncio, debes verificar tu identidad. </h1>
+                      <p class="parraf2">Esto ayuda a mantener un espacio seguro y confiable para toda nuestra comunidad.</p>
+                      <div style="display: flex;">
+                        <img src="/assets/images/cand-iden.svg" alt="" style="padding-right: 10px;">
+                        <div>
+                          <h1 class="seg-info">Tus datos están protegidos y se usan únicamente para el proceso de verificación. </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-container-modal">
+                      <button class="button-continuar-modal" (click)="timeout()">Lo haré luego</button>
+                      <button (click)="confirminfo()" class="button-cancelar-modal">Validar Identidad</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedContent === 'pendientes'">
+        <div class="cardz">
+          <div class="card-content">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of data_pendientes">
+                  <ion-card mode="ios">
+                    <ion-card-header>
+                      <div class="header-flex">
+                        <div class="circle-icon">
+                          <h1>A</h1>
+                        </div>
+                        <div class="title-container">
+                          <ion-card-title>
+                            <h1 class="title-large">{{ item.gar_descri }}</h1>
+                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                          </ion-card-title>
+                        </div>
+                      </div>
+                    </ion-card-header>
+                    <div class="image-container">
+                      <img width="100%" height="150px"  alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                    <div class="floating-text time">
+                      <span> {{ getHoraFormat(item.res_fecini) }}</span>
+                    </div>
+                    <div class="floating-text status">
+                      <span>{{ item.rst_descri }}
+                        <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                        <span *ngIf="item.rst_id === 2" class="dot"></span>
+                        <span *ngIf="item.rst_id === 3" class="dot_red"></span>
+                        <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
+                      </span>
+                    </div>
+                    <div class="floating-text status " style="top: 50px; ">
+                      <div style="display: flex;align-items: center;">
+                        <img src="/assets/images/diner-card.svg" style="padding-right: 5px;" alt="">
+                        <span>S/20</span>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <ion-card-content>
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r"> Reserva:</h1>
+                          <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }}</h1> <!-- Nombre y apellido en texto estático -->
+                          <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r">Vehículo:</h1>
+                          <h1 class="ctn">{{ item.veh_modelo }}</h1> <!-- Modelo de vehículo en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1>Placa:</h1>
+                          <h2>{{ item.veh_placa }}</h2> <!-- Placa en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/sig-may.svg" alt="">
+                          <h1 class="s">Reserva</h1>
+                          <h1>x</h1>
+                          <h1 class="m">{{ item.tip_descri }}</h1> <!-- Tipo de reserva en texto estático -->
+                          <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                          <h1 class="m">{{ item.res_tiempo }}</h1> <!-- Tiempo de reserva en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/can-card.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1> <!-- Fecha de inicio en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/reloj-home.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1> <!-- Hora de inicio en texto estático -->
+                          <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                          <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1> <!-- Hora de fin en texto estático -->
+                        </div>
+                      </div>
+                      <div class="btn">
+                        <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
+                        <button (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
+                      </div>                    
+
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!data_pendientes || data_pendientes.length === 0" class="content-display">
+          <div class="board">
+            <img src="/assets/images/none-anu.svg" alt="">
+            <h1 style="margin-block: 15px;" class="par">Ninguna cochera disponible.</h1>
+            <button (click)="openinfoModal()" style="padding-inline: 10px; padding-block: 5px; background-color: #ffff;" class="create-anun">
+              <img src="/assets/images/add-anun.svg" alt="">
+              <h1>Crear nuevo anuncio</h1>
+            </button>
+            <ion-modal mode="md" [isOpen]="isinfoModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="closeinfoModal()">
+              <ng-template>
+                <div class="block">
+                  <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                    <img src="/assets/images/seg-iden.svg" alt="" style="margin-top: 25px;">
+                    <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">Verifica tu identidad para continuar</h1>
+                  </div>
+                  
+                  <div class="cont-ap">
+                    <div style="padding-inline: 5%;">
+                      <h1 class="adv-val">Antes de publicar un anuncio, debes verificar tu identidad. </h1>
+                      <p class="parraf2">Esto ayuda a mantener un espacio seguro y confiable para toda nuestra comunidad.</p>
+                      <div style="display: flex;">
+                        <img src="/assets/images/cand-iden.svg" alt="" style="padding-right: 10px;">
+                        <div>
+                          <h1 class="seg-info">Tus datos están protegidos y se usan únicamente para el proceso de verificación. </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-container-modal">
+                      <button class="button-continuar-modal" (click)="timeout()">Lo haré luego</button>
+                      <button (click)="confirminfo()" class="button-cancelar-modal">Validar Identidad</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedContent === 'En Curso'">
+        <div class="cardz">
+          <div class="card-content">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of data_encurso">
+                  <ion-card mode="ios">
+                    <ion-card-header>
+                      <div class="header-flex">
+                        <div class="circle-icon">
+                          <h1>A</h1>
+                        </div>
+                        <div class="title-container">
+                          <ion-card-title>
+                            <h1 class="title-large">{{ item.gar_descri }}</h1>
+                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                          </ion-card-title>
+                        </div>
+                      </div>
+                    </ion-card-header>
+                    <div class="image-container">
+                      <img width="100%" height="150px"  alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                    <div class="floating-text time">
+                      <span> {{ getHoraFormat(item.res_fecini) }}</span>
+                    </div>
+                    <div class="floating-text status">
+                      <span>{{ item.rst_descri }}
+                        <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                        <span *ngIf="item.rst_id === 2" class="dot"></span>
+                        <span *ngIf="item.rst_id === 3" class="dot_red"></span>
+                        <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
+                      </span>
+                    </div>
+                    <div class="floating-text status " style="top: 50px; ">
+                      <div style="display: flex;align-items: center;">
+                        <img src="/assets/images/diner-card.svg" style="padding-right: 5px;" alt="">
+                        <span>S/20</span>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <ion-card-content>
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r"> Reserva:</h1>
+                          <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }}</h1> <!-- Nombre y apellido en texto estático -->
+                          <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r">Vehículo:</h1>
+                          <h1 class="ctn">{{ item.veh_modelo }}</h1> <!-- Modelo de vehículo en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1>Placa:</h1>
+                          <h2>{{ item.veh_placa }}</h2> <!-- Placa en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/sig-may.svg" alt="">
+                          <h1 class="s">Reserva</h1>
+                          <h1>x</h1>
+                          <h1 class="m">{{ item.tip_descri }}</h1> <!-- Tipo de reserva en texto estático -->
+                          <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                          <h1 class="m">{{ item.res_tiempo }}</h1> <!-- Tiempo de reserva en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/can-card.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1> <!-- Fecha de inicio en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/reloj-home.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1> <!-- Hora de inicio en texto estático -->
+                          <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                          <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1> <!-- Hora de fin en texto estático -->
+                        </div>
+                      </div>
+                      <div class="btn">
+                        <button (click)="getFinalizar(item.res_id)" class="bt-con">Confirmar</button>
+                        <button  id="mod-confirmado" class="bt-can">Cancelar</button>
+                        <ion-modal mode="md" trigger="mod-confirmado" [initialBreakpoint]="1" [breakpoints]="[0, 1]" >
+                          <ng-template>
+                            <div class="block">
+                              <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                                <img src="/assets/images/impo-pen.svg" alt="" style="margin-top: 25px;">
+                                <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">¿Estás seguro que deseas cancelar 
+                                  esta reserva?</h1>
+                              </div>
+                              
+                              <div class="cont-ap">
+                                <div style="padding-inline: 5%;">
+                                  <h1 class="adv-val2">Cancelar puede afectar tu visibilidad y ganancias en la plataforma.</h1>
+                                  <h1 class="parraf2">Cancelar en este estado nuevamente incurrirá en una  <span>penalización del 10% en base al valor de esta reserva   reflejada en tus ingresos para las próximas dos reservas. </span> </h1>
+                                  <h1 class="las-mas">Lee más sobre nuestras políticas
+                                    de cancelación.</h1>
+                                    <h1 style="color: #212121;
+                                    font-family: Poppins;
+                                    font-size: 14px;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    line-height: 22px; padding-top: 20px;">
+                                      ¿Deseas continuar?
+                                    </h1>
+                                </div>
+                                <div class="button-container-modal">
+                                  <button class="button-continuar-modal" >Cancelar Reserva</button>
+                                  <button  class="button-cancelar-modal">Continuar</button>
+                                </div>
+
+                              </div>
+                            </div>
+                          </ng-template>
+                        </ion-modal>
+                      </div>                    
+
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!data_encurso || data_encurso.length === 0" class="content-display">
+          <div class="board">
+            <img src="/assets/images/none-anu.svg" alt="">
+            <h1 style="margin-block: 15px;" class="par">Ninguna cochera disponible.</h1>
+            <button (click)="openinfoModal()" style="padding-inline: 10px; padding-block: 5px; background-color: #ffff;" class="create-anun">
+              <img src="/assets/images/add-anun.svg" alt="">
+              <h1>Crear nuevo anuncio</h1>
+            </button>
+            <ion-modal mode="md" [isOpen]="isinfoModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="closeinfoModal()">
+              <ng-template>
+                <div class="block">
+                  <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                    <img src="/assets/images/seg-iden.svg" alt="" style="margin-top: 25px;">
+                    <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">Verifica tu identidad para continuar</h1>
+                  </div>
+                  
+                  <div class="cont-ap">
+                    <div style="padding-inline: 5%;">
+                      <h1 class="adv-val">Antes de publicar un anuncio, debes verificar tu identidad. </h1>
+                      <p class="parraf2">Esto ayuda a mantener un espacio seguro y confiable para toda nuestra comunidad.</p>
+                      <div style="display: flex;">
+                        <img src="/assets/images/cand-iden.svg" alt="" style="padding-right: 10px;">
+                        <div>
+                          <h1 class="seg-info">Tus datos están protegidos y se usan únicamente para el proceso de verificación. </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-container-modal">
+                      <button class="button-continuar-modal" (click)="timeout()">Lo haré luego</button>
+                      <button (click)="confirminfo()" class="button-cancelar-modal">Validar Identidad</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="selectedContent === 'Comienza Pronto'">
+        <div class="cardz">
+          <div class="card-content">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of data_comienza_pronto">
+                  <ion-card mode="ios">
+                    <ion-card-header>
+                      <div class="header-flex">
+                        <div class="circle-icon">
+                          <h1>A</h1>
+                        </div>
+                        <div class="title-container">
+                          <ion-card-title>
+                            <h1 class="title-large">{{ item.gar_descri }}</h1>
+                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                          </ion-card-title>
+                        </div>
+                      </div>
+                    </ion-card-header>
+                    <div class="image-container">
+                      <img width="100%" height="150px"  alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                    <div class="floating-text time">
+                      <span> {{ getHoraFormat(item.res_fecini) }}</span>
+                    </div>
+                    <div class="floating-text status">
+                      <span>{{ item.rst_descri }}
+                        <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                        <span *ngIf="item.rst_id === 2" class="dot"></span>
+                        <span *ngIf="item.rst_id === 3" class="dot_red"></span>
+                        <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
+                      </span>
+                    </div>
+                    <div class="floating-text status " style="top: 50px; ">
+                      <div style="display: flex;align-items: center;">
+                        <img src="/assets/images/diner-card.svg" style="padding-right: 5px;" alt="">
+                        <span>S/20</span>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <ion-card-content>
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r"> Reserva:</h1>
+                          <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }}</h1> <!-- Nombre y apellido en texto estático -->
+                          <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r">Vehículo:</h1>
+                          <h1 class="ctn">{{ item.veh_modelo }}</h1> <!-- Modelo de vehículo en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1>Placa:</h1>
+                          <h2>{{ item.veh_placa }}</h2> <!-- Placa en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/sig-may.svg" alt="">
+                          <h1 class="s">Reserva</h1>
+                          <h1>x</h1>
+                          <h1 class="m">{{ item.tip_descri }}</h1> <!-- Tipo de reserva en texto estático -->
+                          <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                          <h1 class="m">{{ item.res_tiempo }}</h1> <!-- Tiempo de reserva en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/can-card.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1> <!-- Fecha de inicio en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/reloj-home.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1> <!-- Hora de inicio en texto estático -->
+                          <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                          <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1> <!-- Hora de fin en texto estático -->
+                        </div>
+                      </div>
+                      <div class="btn">
+                        <button class="bt-con">Confirmar</button>
+                        <button id="mod-comienzaPRO" (click)="getCancel(item.res_id)" class="bt-can">Cancelar</button>
+                        <ion-modal mode="md" trigger="mod-confirmado" [initialBreakpoint]="1" [breakpoints]="[0, 1]" >
+                          <ng-template>
+                            <div class="block">
+                              <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                                <img src="/assets/images/impo-pen.svg" alt="" style="margin-top: 25px;">
+                                <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">¿Estás seguro que deseas cancelar 
+                                  esta reserva?</h1>
+                              </div>
+                              
+                              <div class="cont-ap">
+                                <div style="padding-inline: 5%;">
+                                  <h1 class="adv-val2">Cancelar puede afectar tu visibilidad y ganancias en la plataforma.</h1>
+                                  <h1 class="parraf2">Cancelar en este estado incurrirá en una penalización <span>del 20% en base al valor de esta reserva reflejada en tus ingresos para las próximas dos reservas. </span> </h1>
+                                  <h1 class="las-mas">Lee más sobre nuestras políticas
+                                    de cancelación.</h1>
+                                  <h1 style="color: #212121;
+                                    font-family: Poppins;
+                                    font-size: 14px;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    line-height: 22px; padding-top: 20px;">
+                                      ¿Deseas continuar?
+                                  </h1>
+                                </div>
+                                <div class="button-container-modal">
+                                  <button class="button-continuar-modal" >Cancelar Reserva</button>
+                                  <button  class="button-cancelar-modal">Continuar</button>
+                                </div>
+
+                              </div>
+                            </div>
+                          </ng-template>
+                        </ion-modal>
+                      </div>                    
+
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!data || data.length === 0" class="content-display">
+          <div class="board">
+            <img src="/assets/images/none-anu.svg" alt="">
+            <h1 style="margin-block: 15px;" class="par">Ninguna cochera disponible.</h1>
+            <button (click)="openinfoModal()" style="padding-inline: 10px; padding-block: 5px; background-color: #ffff;" class="create-anun">
+              <img src="/assets/images/add-anun.svg" alt="">
+              <h1>Crear nuevo anuncio</h1>
+            </button>
+            <ion-modal mode="md" [isOpen]="isinfoModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="closeinfoModal()">
+              <ng-template>
+                <div class="block">
+                  <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                    <img src="/assets/images/seg-iden.svg" alt="" style="margin-top: 25px;">
+                    <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">Verifica tu identidad para continuar</h1>
+                  </div>
+                  
+                  <div class="cont-ap">
+                    <div style="padding-inline: 5%;">
+                      <h1 class="adv-val">Antes de publicar un anuncio, debes verificar tu identidad. </h1>
+                      <p class="parraf2">Esto ayuda a mantener un espacio seguro y confiable para toda nuestra comunidad.</p>
+                      <div style="display: flex;">
+                        <img src="/assets/images/cand-iden.svg" alt="" style="padding-right: 10px;">
+                        <div>
+                          <h1 class="seg-info">Tus datos están protegidos y se usan únicamente para el proceso de verificación. </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-container-modal">
+                      <button class="button-continuar-modal" (click)="timeout()">Lo haré luego</button>
+                      <button (click)="confirminfo()" class="button-cancelar-modal">Validar Identidad</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedContent === 'Canceladas'">
+        <div class="cardz">
+          <div class="card-content">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of data_canceladas">
+                  <ion-card mode="ios">
+                    <ion-card-header>
+                      <div class="header-flex">
+                        <div class="circle-icon">
+                          <h1>A</h1>
+                        </div>
+                        <div class="title-container">
+                          <ion-card-title>
+                            <h1 class="title-large">{{ item.gar_descri }}</h1>
+                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                          </ion-card-title>
+                        </div>
+                      </div>
+                    </ion-card-header>
+                    <div class="image-container">
+                      <img width="100%" height="150px"  alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                    <div class="floating-text time">
+                      <span> {{ getHoraFormat(item.res_fecini) }}</span>
+                    </div>
+                    <div class="floating-text status">
+                      <span>{{ item.rst_descri }}
+                        <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                        <span *ngIf="item.rst_id === 2" class="dot"></span>
+                        <span *ngIf="item.rst_id === 3" class="dot_red"></span>
+                        <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
+                      </span>
+                    </div>
+                    <div class="floating-text status " style="top: 50px; ">
+                      <div style="display: flex;align-items: center;">
+                        <img src="/assets/images/diner-card.svg" style="padding-right: 5px;" alt="">
+                        <span>S/20</span>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <ion-card-content>
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r"> Reserva:</h1>
+                          <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }}</h1> <!-- Nombre y apellido en texto estático -->
+                          <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r">Vehículo:</h1>
+                          <h1 class="ctn">{{ item.veh_modelo }}</h1> <!-- Modelo de vehículo en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1>Placa:</h1>
+                          <h2>{{ item.veh_placa }}</h2> <!-- Placa en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/sig-may.svg" alt="">
+                          <h1 class="s">Reserva</h1>
+                          <h1>x</h1>
+                          <h1 class="m">{{ item.tip_descri }}</h1> <!-- Tipo de reserva en texto estático -->
+                          <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                          <h1 class="m">{{ item.res_tiempo }}</h1> <!-- Tiempo de reserva en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/can-card.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1> <!-- Fecha de inicio en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/reloj-home.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1> <!-- Hora de inicio en texto estático -->
+                          <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                          <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1> <!-- Hora de fin en texto estático -->
+                        </div>
+                      </div>
+                      <div class="btn">
+                        <button class="bt-con">Confirmar</button>
+                        <button class="bt-can">Cancelar</button>
+                      </div>                    
+
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!data || data.length === 0" class="content-display">
+          <div class="board">
+            <img src="/assets/images/none-anu.svg" alt="">
+            <h1 style="margin-block: 15px;" class="par">Ninguna cochera disponible.</h1>
+            <button (click)="openinfoModal()" style="padding-inline: 10px; padding-block: 5px; background-color: #ffff;" class="create-anun">
+              <img src="/assets/images/add-anun.svg" alt="">
+              <h1>Crear nuevo anuncio</h1>
+            </button>
+            <ion-modal mode="md" [isOpen]="isinfoModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="closeinfoModal()">
+              <ng-template>
+                <div class="block">
+                  <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                    <img src="/assets/images/seg-iden.svg" alt="" style="margin-top: 25px;">
+                    <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">Verifica tu identidad para continuar</h1>
+                  </div>
+                  
+                  <div class="cont-ap">
+                    <div style="padding-inline: 5%;">
+                      <h1 class="adv-val">Antes de publicar un anuncio, debes verificar tu identidad. </h1>
+                      <p class="parraf2">Esto ayuda a mantener un espacio seguro y confiable para toda nuestra comunidad.</p>
+                      <div style="display: flex;">
+                        <img src="/assets/images/cand-iden.svg" alt="" style="padding-right: 10px;">
+                        <div>
+                          <h1 class="seg-info">Tus datos están protegidos y se usan únicamente para el proceso de verificación. </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-container-modal">
+                      <button class="button-continuar-modal" (click)="timeout()">Lo haré luego</button>
+                      <button (click)="confirminfo()" class="button-cancelar-modal">Validar Identidad</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedContent === 'Finalizadas'">
+        <div class="cardz">
+          <div class="card-content">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of data_finalizado">
+                                    <ion-card mode="ios">
+                    <ion-card-header>
+                      <div class="header-flex">
+                        <div class="circle-icon">
+                          <h1>A</h1>
+                        </div>
+                        <div class="title-container">
+                          <ion-card-title>
+                            <h1 class="title-large">{{ item.gar_descri }}</h1>
+                            <h2 class="subtitle-large">{{ item.uga_direcc }}</h2>
+                          </ion-card-title>
+                        </div>
+                      </div>
+                    </ion-card-header>
+                    <div class="image-container">
+                      <img width="100%" height="150px"  alt="Estacionamiento" src="{{ item.garage_photos[0] }}" />
+                    <div class="floating-text time">
+                      <span> {{ getHoraFormat(item.res_fecini) }}</span>
+                    </div>
+                    <div class="floating-text status">
+                      <span>{{ item.rst_descri }}
+                        <span *ngIf="item.rst_id === 1" class="dot_yellow"></span>
+                        <span *ngIf="item.rst_id === 2" class="dot"></span>
+                        <span *ngIf="item.rst_id === 3" class="dot_red"></span>
+                        <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
+                      </span>
+                    </div>
+                    <div class="floating-text status " style="top: 50px; ">
+                      <div style="display: flex;align-items: center;">
+                        <img src="/assets/images/diner-card.svg" style="padding-right: 5px;" alt="">
+                        <span>S/20</span>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <ion-card-content>
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r"> Reserva:</h1>
+                          <h1 class="ctn">{{ item.usu_nombre }} {{ item.Perez }}</h1> <!-- Nombre y apellido en texto estático -->
+                          <img src="/assets/images/cars-home.svg" class="img-cars" alt="">
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1 class="sub-r">Vehículo:</h1>
+                          <h1 class="ctn">{{ item.veh_modelo }}</h1> <!-- Modelo de vehículo en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="res-bar">
+                        <div class="derz">
+                          <h1>Placa:</h1>
+                          <h2>{{ item.veh_placa }}</h2> <!-- Placa en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/sig-may.svg" alt="">
+                          <h1 class="s">Reserva</h1>
+                          <h1>x</h1>
+                          <h1 class="m">{{ item.tip_descri }}</h1> <!-- Tipo de reserva en texto estático -->
+                          <img src="/assets/images/sig-may.svg" class="mayor" alt="">
+                          <h1 class="m">{{ item.res_tiempo }}</h1> <!-- Tiempo de reserva en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/can-card.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'dd/MM/yyyy' }}</h1> <!-- Fecha de inicio en texto estático -->
+                        </div>
+                      </div>
+                      
+                      <div class="det-asd">
+                        <div class="derz">
+                          <img src="/assets/images/reloj-home.svg" alt="">
+                          <h1 class="s">{{ item.res_fecini | date: 'shortTime' }}</h1> <!-- Hora de inicio en texto estático -->
+                          <img src="/assets/images/flec-home.svg" class="mayor" alt="">
+                          <h1>{{ item.res_fecfin | date: 'shortTime' }}</h1> <!-- Hora de fin en texto estático -->
+                        </div>
+                      </div>
+                      <div class="btn">
+                        <button class="bt-con">Confirmar</button>
+                        <button class="bt-can">Cancelar</button>
+                      </div>                    
+
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!data || data.length === 0" class="content-display">
+          <div class="board">
+            <img src="/assets/images/none-anu.svg" alt="">
+            <h1 style="margin-block: 15px;" class="par">Ninguna cochera disponible.</h1>
+            <button (click)="openinfoModal()" style="padding-inline: 10px; padding-block: 5px; background-color: #ffff;" class="create-anun">
+              <img src="/assets/images/add-anun.svg" alt="">
+              <h1>Crear nuevo anuncio</h1>
+            </button>
+            <ion-modal mode="md" [isOpen]="isinfoModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]" (ionBackdropTap)="closeinfoModal()">
+              <ng-template>
+                <div class="block">
+                  <div style=" justify-content: center; flex-direction: column; align-items: center; display: flex;width: 100%;   border-bottom: 1px solid rgba(212, 212, 212, 1);">
+                    <img src="/assets/images/seg-iden.svg" alt="" style="margin-top: 25px;">
+                    <h1 class="menu-block" style="padding-inline: 10%; text-align: center; border: 0px; margin-bottom: 10px;">Verifica tu identidad para continuar</h1>
+                  </div>
+                  
+                  <div class="cont-ap">
+                    <div style="padding-inline: 5%;">
+                      <h1 class="adv-val">Antes de publicar un anuncio, debes verificar tu identidad. </h1>
+                      <p class="parraf2">Esto ayuda a mantener un espacio seguro y confiable para toda nuestra comunidad.</p>
+                      <div style="display: flex;">
+                        <img src="/assets/images/cand-iden.svg" alt="" style="padding-right: 10px;">
+                        <div>
+                          <h1 class="seg-info">Tus datos están protegidos y se usan únicamente para el proceso de verificación. </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-container-modal">
+                      <button class="button-continuar-modal" (click)="timeout()">Lo haré luego</button>
+                      <button (click)="confirminfo()" class="button-cancelar-modal">Validar Identidad</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

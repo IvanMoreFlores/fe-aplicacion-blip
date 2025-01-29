@@ -1,0 +1,118 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <button routerLink="/tab-home/home" class="info-back">  <div class="signo-menor"></div>Panel de Anfitrión </button>
+          
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <button (click)="changeContent('Analisis')"
+                  [ngClass]="{'active': isButtonActive('Analisis')}">Análisis</button>
+              </div>
+            </div>
+          </div>
+          <div class="contenido-inf">
+            <h2 class="title">Resumen de Actividad</h2>
+            <div class="orientacion">
+                <ion-card class="tamano">
+                  <ion-card-header class="headercard">
+                    <ion-card-title class="espacio"><img class="simbolo1" src="/assets/images/estrella.png" alt="Button 1"><div class="numero">0.0</div></ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <div class="contenidoprinccard">
+                      Calificacion General
+                    </div>
+                    <div class="contenidoseccard">
+                      Visible a partir de 3 comentarios
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+                <ion-card class="tamano">
+                  <ion-card-header class="headercard">
+                    <ion-card-title class="espacio"><img class="simbolo2" src="/assets/images/comment-alt.png" alt="Button 2"><div class="numero">0</div></ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <div class="contenidoprinccard">
+                      Reseñas alcanzadas
+                    </div>
+                    <div class="contenidoseccard">
+                      Visible a partir de 3 comentarios
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+                <ion-card class="tamano">
+                  <ion-card-header class="headercard">
+                    <ion-card-title class="espacio"><div class="numero">0 min</div></ion-card-title>
+                  </ion-card-header>
+                
+                  <ion-card-content>
+                    <div class="contenidoprinccard">
+                      Tiempo prom. de respuesta
+                    </div>
+                    <div class="contenidoseccard">
+                      Rango aceptable (10 min)
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </div>
+            </div>
+            <div class="raya">
+            </div>
+            <div class="orientacion segundotecontenido">
+              <ion-card class="tamano noborde">
+                <ion-card-header class="headercard">
+                  <ion-card-title class="espacio"><div class="numero">S/0.00</div></ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <div class="contenidoseccardos">
+                    Ingresos totales
+                  </div>
+                </ion-card-content>
+              </ion-card>
+              <ion-card class="tamano noborde">
+                <ion-card-header class="headercard">
+                  <ion-card-title class="espacio"><div class="numero">0</div></ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <div class="contenidoseccardos">
+                    Vistas en los últimos 30 días
+                  </div>
+                </ion-card-content>
+              </ion-card>
+              <ion-card class="tamano noborde">
+                <ion-card-header class="headercard">
+                  <ion-card-title class="espacio"><div class="numero">0</div></ion-card-title>
+                </ion-card-header>
+              
+                <ion-card-content>
+                  <div class="contenidoseccardos">
+                    Reservaciones en los últimos 30 días
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          <div class="menu-black">
+            <div class="image-buttons">
+              <button routerLink="/tab-home/home" class="image-button">
+                <img class="num1" src="/assets/images/home.png" alt="Button 1">
+              </button>
+              <button routerLink="/mensajes" class="image-button">
+                <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
+              </button>
+              <button routerLink="/calendario-mes" class="image-button">
+                <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
+              </button>
+              <div class="dot"></div>
+              <button class="image-button-1">
+                <img class="num4" src="/assets/images/signal.png" alt="Button 4">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

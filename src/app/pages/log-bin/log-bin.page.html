@@ -1,35 +1,66 @@
-<ion-header mode="ios">
-  <ion-toolbar>
-    <h2 slot="start" class="title">Bienvenida,
-      de nuevo!</h2>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="login-content">
-  <div class="login-content" >
-     <div class="phone-input">
-      <ion-input mode="ios" 
-      type="{{showPassword ? 'text' : 'password'}}" 
-      [(ngModel)]="password" 
-      name="password" 
-      required 
-      (ngModelChange)="checkPassword()"
-      class="input"></ion-input>
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">    
+          <div class="inicio">
+            <h1>Bienvenida,
+              de nuevo!</h1>
+            <div class="input-bar">
+              <ion-input [type]="passwordType"placeholder="Ingresa tu contraseña" (ngModelChange)="onEmailChange()"  [(ngModel)]="password"></ion-input>
+              <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+            </div> 
+            <!-- <button id="mas-opc2" class="rev-cod">más opciones de inicio 
+            </button> -->
+            <button routerLink="/cor-controlv" class="ini-con">olvidé mi contraseña
+            </button>
+            <!-- <ion-modal
+            trigger="mas-opc2"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+            mode="ios">
+            <ng-template>
+              <div class="PART">
+                <h1 class="mad">Más opciones</h1>
+                <div class="line"></div>
+                <div class="button-container">
+                  <button class="custom-button password-button">
+                    <img src="assets/images/mail.svg" alt="Contraseña" class="button-icon">
+                    Email
+                  </button>
+                  <button class="custom-button google-button">
+                    <img src="assets/images/GLE.svg" alt="Contraseña" class="button-icon">
+                    Google
+                  </button>
+                  <button class="custom-button cancel-button">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal> -->
+
+          </div>
+        </div>
+      </div>
     </div>
-    <button  routerLink="/olv-con" class="ini-con">olvidé mi contraseña
+    <footer class="footer-btn">
+      <div class="btn-container">
+        <button class="btn-atr" routerLink="/log-con">Atrás</button>
+        <button  class="btn-sig" [disabled]="!isEmailValid" (click)="login()" [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
+      </div>
+    </footer>
+  </div>
+  
+</ion-content>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <button class="bac" routerLink="/log-con">Atrás</button>
+    <button
+    [disabled]="!isEmailValid" (click)="login()" [ngClass]="{ 'all-inputs-filled': isEmailValid, 'not-all-inputs-filled': !isEmailValid }"
+      class="nex"
+    >
+      Siguiente
     </button>
   </div>
-</ion-content>
-<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col >
-          <button class="btn-atr" routerLink="/log-con">Atrás</button>
-        </ion-col>
-        <ion-col >
-          <button  class="btn-sig" [disabled]="!isPasswordValid" >Siguiente</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
 </ion-footer>

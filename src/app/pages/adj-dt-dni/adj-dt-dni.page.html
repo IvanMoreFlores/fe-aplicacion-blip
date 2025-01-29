@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="titlex">Adjunta una foto de tu documento de identidad.</h1>
+          <h2 class="text-adj">Por favor, toma fotos horizontales de ambas caras de tu documento en un fondo blanco. Asegúrate de que las imágenes estén nítidas para garantizar un proceso eficiente. </h2>
+          <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+            <ngx-dropzone-label>
+                <div class="pad">
+                    <img src="/assets/images/dowsl.svg" alt="" class="img-dow"> 
+                    <div class="luck">
+                        <h1 class="mld">Sube la cara delantera</h1>
+                        <h1 class="cfd">Solo archivos JPEG O PNG</h1>
+                    </div>
+                </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngIf="files.length > 0" [file]="files[0]" [removable]="true" (removed)="onRemove(files[0])">
+            </ngx-dropzone-image-preview>
+        </div>
+        
+        <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect2($event)">
+            <ngx-dropzone-label>
+                <div class="pad">
+                    <img src="/assets/images/dowsl.svg" alt="" class="img-dow"> 
+                    <div class="luck">
+                        <h1 class="mld">Sube la cara trasera</h1>
+                        <h1 class="cfd">Solo archivos JPEG O PNG</h1>
+                    </div>
+                </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview2" *ngIf="files2.length > 0" [file]="files2[0]" [removable]="true" (removed)="onRemove2(files2[0])">
+            </ngx-dropzone-image-preview>
+        </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-btn">
+      <div class="bnt-dow">
+        <button routerLink="/confirmacion-de-identidad" class="bac">Atrás</button>
+        <button class="nex" (click)="sendImages()">Siguiente</button>
+      </div>
+    </footer>
+  </div>
+</ion-content>

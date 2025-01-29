@@ -1,60 +1,73 @@
-<ion-header mode="ios">
-  <ion-toolbar>
-    <h1 slot="start">
-      Bienvenida, de nuevo!
-    </h1>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <div class="wrapper">
-    <div class="login">
+  <ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
   
-      <h3>Ingresa el código de 4 dígitos enviado a: <span class="d2a">{{ displayedText }}</span>  </h3>
+    <div class="wrapper">
+      <div class="login">
+            <h1>Bienvenida,
+              de nuevo!</h1>
+            <h3>Ingresa el código de 4 dígitos enviado a: <span class="d2a">{{ displayedText }}</span>  </h3>
+            <div class="code-inputs">
+              <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+              <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+              <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+              <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+            </div>
+            
+            <button id="cuenta"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+              {{ buttonText }}
+              <div class="TIME">
+                {{ minutes }}:{{ seconds | number: '2.0' }}
+              </div>
+            </button>
+            <ion-toast
+            trigger="cuenta"
+            [duration]="9000"
+            message="Código enviado satisfactoriamente."
+            class="custom-toast"
+            
+            position="top"
+            ></ion-toast>
 
-      <div class="code-inputs">
-        <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-      </div>
-      
-      <button id="open-toast2"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
-        {{ buttonText }}
-        <div class="TIME">
-          {{ minutes }}:{{ seconds | number: '2.0' }}
+            <button id="mas-opc" class="ini-con">más opciones de inicio 
+            </button>
+            <ion-modal
+            trigger="mas-opc"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+            mode="md"
+            >
+            <ng-template>
+              <div class="PART">
+                <h1 class="mad">Más opciones</h1>
+                <div class="line"></div>
+                <div class="button-container">
+                  <button (click)="dismissModal()"  routerLink="/log-con"  class="custom-button password-button">
+                    <img src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
+                    iniciar sesión con contraseña
+                  </button>
+                  <button (click)="dismissModal()" class="custom-button google-button" routerLink="/ing-cor">
+                    <img src="/assets/images/login/email.png" alt="Contraseña" class="button-icon">
+                    Ingresar con correo
+                  </button>
+                  <button (click)="dismissModal()" class="custom-button cancel-button">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
+          </div>
         </div>
-      </button>
-      <ion-toast
-      trigger="open-toast2"
-      [duration]="3000"
-      message="Código enviado satisfactoriamente."
-      class="custom-toast"
-      
-      position="top"
-      ></ion-toast>
-
-
-    </div>
-  </div>
-</ion-content>
-<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col >
-          <button class="bac" routerLink="/olv-con">Atrás</button>
-        </ion-col>
-        <ion-col >
-          <button [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" 
-          [routerLink]="inputsFilled ? '/rest-contra' : null"
-          [disabled]="!inputsFilled"
-           class="nex" >Siguiente</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-footer>
-
-
+      </ion-content>
+      <ion-footer class="footer-btn" mode="md">
+        <div class="bnt-dow">
+          <button class="bac" routerLink="/ing-cor">Atrás</button>
+          <button
+          [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex" 
+            class="nex"
+          >
+            Siguiente
+          </button>
+        </div>
+      </ion-footer>
 

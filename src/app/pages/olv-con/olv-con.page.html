@@ -1,27 +1,47 @@
-<ion-header mode="ios">
-  <ion-toolbar>
-    <h2 slot="start" class="title">Ingresa tu correo
-      electrónico</h2>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="login-content">
-  <div class="login-content" >
-    <h1>Usaremos tu correo electrónico para recuperar tu cuenta</h1>
-    <div class="phone-input">
-      <ion-input mode="ios" type="text" placeholder="name@example.com" [(ngModel)]="email" (ngModelChange)="onEmailChange()" class="input"></ion-input>
+<ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
+  
+  <div class="wrapper">
+    <div class="login">
+      <h1>
+        Bienvenida ,
+        de nuevo!
+      </h1>
+      <p>
+        Ingresa el código de 4 dígitos enviado a: {{ displayedText2 }}.
+      </p>
+      <div class="code-inputs">
+        <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+        <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
+      </div>
+      <button id="open-toast"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
+        {{ buttonText }}
+        <div class="TIME">
+          {{ minutes }}:{{ seconds | number: '2.0' }}
+        </div>
+      </button>
+      <ion-toast
+      trigger="open-toast"
+      [duration]="3000"
+      message="Código enviado satisfactoriamente."
+      class="custom-toast"
+      position="top"
+      mode="md"
+      ></ion-toast>
     </div>
   </div>
 </ion-content>
-<ion-footer [class.keyboard-open]="keyboardOpen" mode="ios">
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col >
-          <button routerLink="/log-bin" class="btn-atr">Atrás</button>
-        </ion-col>
-        <ion-col >
-          <button class="btn-sig" [disabled]="!isEmailValid" (click)="goToDisplayPage()" [ngClass]="{ 'enabled': isEmailValid, 'disabled': !isEmailValid }">Siguiente</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <button class="bac" routerLink="/cor-controlv">Atrás</button>
+    <button
+      [disabled]="!inputsFilled"
+      [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}"
+      class="nex"
+      routerLink="/contra-cor" 
+    >
+      Siguiente
+    </button>
+  </div>
+</ion-footer>

@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true">
+  <div class="top-bar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center w-100">
+          <button  routerLink="/tab-home/home" class="vector-mensaje">
+          <img src="/assets/images/Vector-2.png" alt="Logo" class="navbar-logo">
+        </button>
+          <div class="text-b">Calendario</div>
+          <button  id="open-modal-opt-calend" class="shadow navbar-toggler" expand="block"><img src="/assets/images/calendar-btn.png" alt=""></button>
+            <ion-modal trigger="open-modal-opt-calend" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <div class="menu-above">Vista del calendario</div>
+            <hr class="separator-line">
+            <div class="button-container">
+              <button (click)="exit()" routerLink="/calendario-semanal" class="custom-btn">      
+                <img src="/assets/images/fi-sr-calendar.png" alt="">         
+                <span class="btn-text">Semana</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                  </label>
+                </div>
+              </button>
+              <button (click)="exit()" class="custom-btn">
+                <img src="/assets/images/fi-sr-calendar.png" alt="">
+                <span class="btn-text">Mes</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                  </label>
+                </div>
+              </button>
+              <button (click)="exit()"routerLink="/calendario" class="custom-btn">
+                <img src="/assets/images/fi-sr-calendar.png" alt="">
+                <span class="btn-text">Año</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault3">
+                  </label>
+                </div>
+              </button>
+          </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <h1 class="title"></h1>
+
+          
+          
+          <div id="calendar" (click)="highlightDate($event)">
+          </div>
+          
+          
+          
+          <div class="menu-black">
+            <div class="image-buttons">
+              <button routerLink="/tab-home/home" class="image-button">
+                <img class="num1" src="/assets/images/home.png" alt="Button 1">
+              </button>
+              <button routerLink="/mensajes" class="image-button">
+                <img class="num2" src="/assets/images/comment-alt.png" alt="Button 2">
+              </button>
+              <button routerLink="/calendario-mes" class="image-button-3">
+                <img class="num3" src="/assets/images/fi-sr-calendar.png" alt="Button 3">
+              </button>
+              <div class="dot"></div>
+              <button routerLink="/panel-anfitrion" class="image-button">
+                <img class="num4" src="/assets/images/signal.png" alt="Button 4">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

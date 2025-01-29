@@ -1,0 +1,154 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.pantalla {
+  background-color: white;
+  padding: 0px;
+  width: 100%;
+  min-height: 100%; /* Esto hace que el div ocupe el 100% de la altura de la pantalla */
+  color: #212121;
+}
+
+.img-contenedor {
+  position: relative;
+}
+
+.img-principal {
+  width: 100%;
+  background-color: #e8ffec;
+}
+
+.cross {
+  position: absolute;
+  top: 25px; /* Ajusta la posición vertical según tu preferencia */
+  right: 25px; /* Ajusta la posición horizontal según tu preferencia */
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.cross img {
+  width: 23px;
+  height: 23px;
+}
+
+
+.informacion-container{
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  background-color: white;
+}
+
+.backcolor{
+  background-color: #e8ffec;
+}
+
+.title {
+  font-size: 36px;
+  line-height: 47px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+  width: 100%;
+  color: #141414;
+  margin-top: 15px;
+  padding-right: 30px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 300;
+  width: 100%;
+  color: #141414;
+  margin-top: 15px;
+}
+
+.tex-pagina {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+a.servicios {
+  color: #212121;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+a.servicios:hover {
+  font-weight: 500;
+}
+
+.enlace img {
+  width: auto; /* Ancho deseado para la imagen aumentada */
+  height: auto; /* Mantener la proporción original */
+  margin-top: 2px;
+  margin-left: 20px;
+}
+
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 130px;
+  width: 100%;
+  text-align: center;
+  color: #79ffaf;
+  accent-color: black;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.next-btn {
+  border: 1px solid #c8c5ca;
+  background-color: #fff;
+  color: #c8c5ca;
+  font-size: 16px;
+  border-radius: 30px;
+  width: 80%; /* Ancho del botón */
+  height: 56px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  bottom: 20px;
+  position: absolute;
+  z-index: 3;
+}
+
+.next-btn:hover {
+  background-color: rgba(163, 163, 163, 0.2);
+  color: #212121;
+}

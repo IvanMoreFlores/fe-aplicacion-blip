@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar } from '@capgo/capacitor-navigation-bar';
+import { StorageService } from '../../services/storage.service';
+import { JwtService } from '../../services/jwt.service';
 
 @Component({
   selector: 'app-splashscreen',
@@ -10,44 +12,76 @@ import { NavigationBar } from '@capgo/capacitor-navigation-bar';
   styleUrls: ['./splashscreen.page.scss'],
 })
 export class SplashscreenPage implements OnInit {
-  carlock: any;
 
-  constructor(private router: Router){
-    if(Capacitor.getPlatform() != 'web'){
+  constructor(
+    private router: Router,
+    private storageService: StorageService,
+    private jwtService: JwtService
+  ) {
+    if (Capacitor.getPlatform() !== 'web') {
       StatusBar.setStyle({ style: Style.Light });
-      StatusBar.setOverlaysWebView({overlay: true})
-      StatusBar.setBackgroundColor({color: "#79FFAF"});
-      NavigationBar.setNavigationBarColor({color: '#79FFAF'});
+      StatusBar.setOverlaysWebView({ overlay: true });
+      StatusBar.setBackgroundColor({ color: "#79FFAF" });
+      NavigationBar.setNavigationBarColor({ color: '#79FFAF' });
     }
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    //this.init_value();
+    const btnPlay = document.getElementById('btnPlay') as HTMLButtonElement;
     const animationCircle = document.getElementById('animated-circle') as HTMLDivElement;
     const animationLogo = document.getElementById('animated-logo') as HTMLImageElement;
-  
+
     setTimeout(() => {
-      animationCircle.classList.add('run');  // Muestra el círculo
-  
+      animationCircle.classList.add('run');
+
       setTimeout(() => {
-        animationLogo.style.display = 'block';  // Muestra el logo después de la animación del círculo
-        this.playCarlock();  // Reproduce el sonido directamente
-      }, 1000);
+        animationLogo.style.display = 'block';
+        this.playCarlock();
+      }, 1000); // Tiempo para mostrar la animación antes de reproducir el sonido
     }, 20);
-  
-    // Redirige después de 1.5 segundos
-    setTimeout(() => {
-      if (localStorage.getItem("walkthrough")) {
-        // Si ya vio el walkthrough, va al login
-        this.router.navigate(['walkthrough']);
-      } else {
-        // Si no, va al walkthrough
-        this.router.navigate(['walkthrough']);
-        localStorage.setItem("walkthrough", "true"); // Guarda que ya pasó el walkthrough
-      }
-    }, 1500); // Ajusta el tiempo según el fin de la animación
   }
-  playCarlock(){
-    this.carlock = document.getElementById('carlock') as HTMLAudioElement;
-    this.carlock.play();
+
+  async init_value() {
+    const valor = await this.storageService.getItem('welcome');
+    if (valor === true) {
+
+      const token = await this.storageService.getItem('token');
+
+      if (token !== null) {
+        console.log('token desde el Storage:', token);
+        console.log('descifrado del token');
+        const result: any = await this.jwtService.verifyToken(token);
+        console.log(result);
+        const isLogged = result?.isLogged;
+
+        if (isLogged === true) {
+          this.router.navigate(['/lds']);
+        } else {
+          this.router.navigate(['/login']);
+        }
+      }else{
+        this.router.navigate(['/login']);
+      }
+
+    } else {
+      this.router.navigate(['/walkthrough']);
+    }
+  }
+
+  playCarlock() {
+    const carlock = document.getElementById('carlock') as HTMLAudioElement;
+    carlock.play();
+    carlock.onended = () => {
+      // Retrasar la redirección para asegurarse de que todo se haya completado
+      setTimeout(() => {
+        this.init_value();
+      }, 500); // Retraso en milisegundos (ajustar según sea necesario)
+    };
+  }
+
+  onSoundEnded() {
+    // Redirigir a la página deseada después de que el sonido termine
+    this.router.navigate(['/walkthrough']);
   }
 }
