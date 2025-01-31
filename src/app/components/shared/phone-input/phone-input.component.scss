@@ -9,7 +9,6 @@
 
   .country-code {
     color: #212121;
-    font-family: Poppins;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -17,9 +16,8 @@
     margin-right: 10px;
   }
 
-
   ion-input {
-    width: 100%;
-    font-size: 1rem;
+    font-size: 18px;
+    margin-bottom: 2px;
   }
 }

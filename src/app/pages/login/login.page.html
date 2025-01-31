@@ -6,16 +6,13 @@
 <ion-content class="login-content">
   <div class="login-content">
     <app-phone-input [(phoneNumber)]="phone2"></app-phone-input>
-    <ion-button mode="md" style="text-transform: none;" class="primary-button"
-      (click)="send_otk()">Continuar</ion-button>
-    <div style="width: 100%;" class="divider">
+    <default-custom-button (clicked)="send_otk()" [text]="'Continuar'">
+    </default-custom-button>
+    <div class="divider">
       <img style="width: 100%;" src="/assets/images/login/divider.png" alt="">
     </div>
-    <ion-button routerLink="/ing-cor" mode="md" expand="block" fill="outline" style="text-transform: none;"
-      class="secondary-button">
-      <img style="padding-right:10px ;" slot="start" src="/assets/images/login/email.png" alt="">
-      Iniciar sesión con contraseña
-    </ion-button>
+    <default-custom-button routerLink="/ing-cor" [withImg]="true" [imageUrl]="'/assets/images/login/email.png'"
+      [text]="'Iniciar sesión con contraseña'" [class]="'secondary-button'"></default-custom-button>
     <p class="footer-text">
       ¿No tienes una cuenta aún? <a href="#" routerLink="/terminos-y-condiciones" class="register-link">Regístrate</a>
     </p>
