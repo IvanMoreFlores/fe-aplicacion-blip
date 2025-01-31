@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AntePenalPageRoutingModule } from './ante-penal-routing.module';
 
 import { AntePenalPage } from './ante-penal.page';
-import { LoaderComponent } from 'src/app/component/loader/loader.component';
+import { LoaderComponent } from 'src/app/components/loader/loader.component';
 
 @NgModule({
   imports: [

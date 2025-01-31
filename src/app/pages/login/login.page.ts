@@ -1,56 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { SmsService } from '../../services/sms.service';
-import { StorageService } from '../../services/storage.service';
-import { JwtService } from '../../services/jwt.service';
+import { JwtService } from 'src/app/services/jwt.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { SmsService } from 'src/app/services/sms.service';
 import { Keyboard } from '@capacitor/keyboard';
-import { ModalController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
   phone2: string = '';
-  data: any;
+  phone3: string = ''; // Otra variable para otro input
 
   constructor(
     private router: Router,
     private jwtService: JwtService,
     private storageService: StorageService,
     private sms: SmsService,
-  ) {
-  }
-  initializeKeyboardListeners() {
-    const content = document.querySelector('ion-content') as HTMLElement;
-    const footer = document.querySelector('.footer-btn') as HTMLElement;
+  ) {}
 
-    Keyboard.addListener('keyboardWillShow', (info) => {
-      const footer = document.querySelector('.footer-btn') as HTMLElement;
-      if (footer) {
-        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
-      }
-    });
-    
-
-    Keyboard.addListener('keyboardWillHide', () => {
-      const footer = document.querySelector('.footer-btn') as HTMLElement;
-      const content = document.querySelector('ion-content') as HTMLElement;
-    
-      if (footer) {
-        footer.style.bottom = '0px'; // Restaura el footer
-      }
-      if (content) {
-        content.style.paddingBottom = '0px'; // Restaura el padding
-      }
-    });
-    
-  }
   ngOnInit() {
-    console.log('dentro de log-phone');
     this.init_value();
-    this.initializeKeyboardListeners();
   }
+
   ngOnDestroy() {
     Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
   }
@@ -73,11 +47,10 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/lds']);
       }
     }
-
   }
 
   async send_otk() {
-
+    console.log("🚀 ~ LoginPage ~ send_otk ~ this.phone2:", this.phone2)
     if (!this.phone2 || this.phone2.length < 9) {
       alert('El número no es valido.');
       return;
@@ -115,8 +88,4 @@ export class LoginPage implements OnInit {
   async redirectFinal() {
     this.router.navigate(['/terminos-y-condiciones']);
   }
-
-
-
 }
-

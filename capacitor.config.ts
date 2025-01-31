@@ -9,8 +9,11 @@ const config: CapacitorConfig = {
   },
   plugins: {
     Facebook: {
-      appId: "479280344913959",  
+      appId: "479280344913959",
       appName: "Blip"
+    },
+    Keyboard: {
+      resize: 'none' as any // Deshabilitar el ajuste automático del teclado
     }
   }
 };

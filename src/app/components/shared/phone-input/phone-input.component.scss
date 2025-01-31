@@ -1,0 +1,25 @@
+.phone-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #1f1f1f;
+  border-radius: 30px;
+  padding: 5px 15px;
+  margin-bottom: 25px; // Reducir el margen inferior
+
+  .country-code {
+    color: #212121;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin-right: 10px;
+  }
+
+
+  ion-input {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
