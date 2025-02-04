@@ -1,4 +1,7 @@
-<ion-button mode="md" [class]="class" (click)="onClick()">
+<ion-button mode="md" [class]="class" [disabled]="disabled" [id]="id" (click)="onClick()">
+  <img *ngIf="withImgPass" src="assets/images/contra.svg" alt="Contraseña" class="button-icon">
   <img *ngIf="withImg" slot="start" [src]="imageUrl" alt="">
-  {{text}}
+  {{text}} <div *ngIf="withTime" class="time">
+    {{ minutes }}:{{ seconds | number: '2.0' }}
+  </div>
 </ion-button>

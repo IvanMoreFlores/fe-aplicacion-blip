@@ -12,9 +12,10 @@
       <img style="width: 100%;" src="/assets/images/login/divider.png" alt="">
     </div>
     <default-custom-button routerLink="/ing-cor" [withImg]="true" [imageUrl]="'/assets/images/login/email.png'"
-      [text]="'Iniciar sesión con contraseña'" [class]="'secondary-button'"></default-custom-button>
+      [text]="'Continuar con correo'" [class]="'secondary-button'"></default-custom-button>
     <p class="footer-text">
       ¿No tienes una cuenta aún? <a href="#" routerLink="/terminos-y-condiciones" class="register-link">Regístrate</a>
     </p>
   </div>
 </ion-content>
+<app-loader *ngIf="isLoading"></app-loader> <!-- Mostrar el loader si isLoading es true -->

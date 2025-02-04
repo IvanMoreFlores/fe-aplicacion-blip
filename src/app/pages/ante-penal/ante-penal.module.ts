@@ -7,18 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { AntePenalPageRoutingModule } from './ante-penal-routing.module';
 
 import { AntePenalPage } from './ante-penal.page';
-import { LoaderComponent } from 'src/app/components/loader/loader.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AntePenalPageRoutingModule
-  ],
-  declarations: [
-    AntePenalPage,
-    LoaderComponent,
-  ]
+  imports: [CommonModule, FormsModule, IonicModule, AntePenalPageRoutingModule],
+  declarations: [AntePenalPage],
 })
 export class AntePenalPageModule {}

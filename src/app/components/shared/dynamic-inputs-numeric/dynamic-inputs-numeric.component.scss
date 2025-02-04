@@ -1,0 +1,15 @@
+.code-inputs {
+  display: flex;
+  margin-bottom: 10px;
+  ion-input {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 24px;
+    border: 1px solid rgba(138, 149, 158, 0.5);
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    --highlight-color-focused: #79FFAF;
+  }
+}

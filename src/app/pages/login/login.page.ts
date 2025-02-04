@@ -4,6 +4,8 @@ import { JwtService } from 'src/app/services/jwt.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { SmsService } from 'src/app/services/sms.service';
 import { Keyboard } from '@capacitor/keyboard';
+import { ToastController } from '@ionic/angular';
+import { ApiLoginService } from 'src/app/services/api-login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +14,15 @@ import { Keyboard } from '@capacitor/keyboard';
 })
 export class LoginPage implements OnInit, OnDestroy {
   phone2: string = '';
-  phone3: string = ''; // Otra variable para otro input
+  isLoading: boolean = false;
 
   constructor(
     private router: Router,
     private jwtService: JwtService,
     private storageService: StorageService,
     private sms: SmsService,
+    private apiLoginService: ApiLoginService,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -26,53 +30,53 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
+    Keyboard.removeAllListeners();
   }
 
   async init_value() {
-    const code = await this.storageService.getItem('code-sms');
-    if (code !== null) {
-      console.log('code desde el Storage:', code);
-    }
 
-    const token = await this.storageService.getItem('token');
-    if (token !== null) {
-      console.log('token desde el Storage:', token);
-      console.log('verificando del token');
-      const result: any = await this.jwtService.verifyToken(token);
-      console.log(result);
-      const isLogged = result?.isLogged;
-      if (isLogged === true) {
-        console.log('esta logeado');
-        this.router.navigate(['/lds']);
-      }
-    }
   }
 
   async send_otk() {
-    console.log("🚀 ~ LoginPage ~ send_otk ~ this.phone2:", this.phone2)
     if (!this.phone2 || this.phone2.length < 9) {
-      alert('El número no es valido.');
+      this.showToast('El número no es válido.');
       return;
     }
+    this.isLoading = true;
+    const tokenTemp = await this.jwtService.generateTokenTempHost({
+      usu_nrotel: this.phone2,
+    });
+    const { phone, messageSMS, code } = this.buildSMS(this.phone2);
 
-    const phone = '+51' + this.phone2;
-    const code = Math.floor(1000 + Math.random() * 9000);
-    const body = 'Blip informa: el codigo solicitado es ' + code;
-    const token = this.jwtService.generateTokenLogPhone('TELEFONO', phone, false);
-    await this.saveDataSms(code);
-    await this.saveDataToken(token);
-    const token_enviar = await this.storageService.getItem('token');
-    this.sms.sendSms(phone, body, token_enviar).subscribe(
-      (response: any) => {
-        console.log(response);
-      },
-      (error: any) => {
-        console.error('Error al enviar el mensaje:', error);
-      }
-    );
-
-    this.router.navigate(['/registro'], { queryParams: { PHONE2: this.phone2 } });
+    this.apiLoginService
+      .getTokenTemp(tokenTemp, { phone: this.phone2 })
+      .subscribe({
+        next: async (response) => {
+          const { token_temp } = response;
+          await this.saveDataToken(token_temp);
+          this.apiLoginService
+            .sendSMS(token_temp, { to: phone, text: messageSMS })
+            .subscribe({
+              next: (response) => {
+                const { message } = response;
+                this.isLoading = false;
+                this.router.navigate(['/registro'], {
+                  queryParams: { phone: this.phone2, code,message },
+                });
+              },
+              error: (error) => {
+                this.isLoading = false;
+                this.showToast('Error al enviar el mensaje');
+                console.error('Error al enviar el mensaje:', error);
+              },
+            });
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.showToast('Error al obtener el autorizador');
+          console.error('Error al obtener el token temporal:', error);
+        },
+      });
   }
 
   async saveDataSms(code: any) {
@@ -87,5 +91,25 @@ export class LoginPage implements OnInit, OnDestroy {
 
   async redirectFinal() {
     this.router.navigate(['/terminos-y-condiciones']);
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
+  }
+
+  buildSMS(phoneToSend: string) {
+    const phone = `+51${phoneToSend}`;
+    const code = Math.floor(1000 + Math.random() * 9000);
+    const messageSMS = 'Blip informa: el codigo solicitado es ' + code;
+    return {
+      phone,
+      messageSMS,
+      code,
+    };
   }
 }

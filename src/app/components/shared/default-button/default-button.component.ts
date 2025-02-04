@@ -12,6 +12,11 @@ export class DefaultButtonComponent {
   @Input() text: string = 'Ingresar';
   @Input() disabled: boolean = false;
   @Input() class: string = 'primary-button';
+  @Input() withTime: boolean = false;
+  @Input() minutes: number = 0;
+  @Input() seconds: number = 0;
+  @Input() id: string = '';
+  @Input() withImgPass: boolean = false;
 
   onClick() {
     this.clicked.emit(); // Emitimos el evento al padre
