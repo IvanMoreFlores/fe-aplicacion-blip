@@ -1,10 +1,7 @@
-<ion-header mode="ios">
-  <app-toolbar-login>
-    Ingresa tu número para continuar
-  </app-toolbar-login>
-</ion-header>
+<header-component [withArrowLeft]="true" [route]="'/walkthrough'"></header-component>
 <ion-content class="login-content">
   <div class="login-content">
+    <h2>Ingresa tu número para continuar</h2>
     <app-phone-input [(phoneNumber)]="phone2"></app-phone-input>
     <default-custom-button (clicked)="send_otk()" [text]="'Continuar'">
     </default-custom-button>

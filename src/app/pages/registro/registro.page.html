@@ -1,10 +1,7 @@
-<ion-header mode="ios" scroll-y="true">
-  <app-toolbar-login>
-    Bienvenido, de nuevo!
-  </app-toolbar-login>
-</ion-header>
+<header-component [withArrowLeft]="true" [route]="'/login'" (navigateTo)="handleNavigateTo($event)"></header-component>
 <ion-content scroll-y="true">
   <div class="validation-number">
+    <h2>Bienvenido, de nuevo!</h2>
     <p>
       Ingresa el código de 4 dígitos enviado al número +51 {{ number }}.
     </p>
@@ -14,8 +11,8 @@
       [text]="buttonTextTimer" [withTime]="buttonWithTimeTimer" [minutes]="minutes" [seconds]="seconds">
     </default-custom-button>
     <default-custom-button [class]="buttonClassOptions" [text]="buttonTextOptions"
-      id="modal-opc-inicio"></default-custom-button>
-    <ion-modal trigger="modal-opc-inicio" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+      id="modal-opc-inicio-registro"></default-custom-button>
+    <ion-modal trigger="modal-opc-inicio-registro" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
       <ng-template>
         <div class="modal-container">
           <div class="modal-header">
@@ -43,4 +40,4 @@
       (click)="verifyOTP()"></default-custom-button>
   </div>
 </ion-footer>
-<app-loader *ngIf="isLoading"></app-loader> 
+<app-loader *ngIf="isLoading"></app-loader>

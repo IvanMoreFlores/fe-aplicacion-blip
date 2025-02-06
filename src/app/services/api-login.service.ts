@@ -46,4 +46,22 @@ export class ApiLoginService {
       headers,
     });
   }
+
+  sendEmail(
+    token: string,
+    to: string,
+    subject: string,
+    text: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+    const data = {
+      to,
+      subject,
+      text,
+    };
+    return this.http.post(`${this.apiUrl}/mail/send`, data, { headers });
+  }
 }

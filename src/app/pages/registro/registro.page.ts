@@ -16,7 +16,7 @@ import { ApiLoginService } from 'src/app/services/api-login.service';
 export class RegistroPage implements OnInit, OnDestroy {
   buttonTextTimer: string = 'reenviar código';
   minutes: number = 0;
-  seconds: number = 5;
+  seconds: number = 59;
   interval: any;
   isExpired: boolean = false;
   inputs: string[] = ['', '', '', '']; // Inicializar los inputs
@@ -54,9 +54,13 @@ export class RegistroPage implements OnInit, OnDestroy {
   }
 
   dismissModal() {
-    this.modalcontroller.dismiss(null, 'modal-opc-inicio');
+    this.modalcontroller.dismiss(null, 'modal-opc-inicio-registro');
   }
-
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
   ngOnDestroy() {
     if (this.interval) {
       clearInterval(this.interval);
@@ -169,31 +173,6 @@ export class RegistroPage implements OnInit, OnDestroy {
           this.showToast('Error al obtener el autorizador');
         },
       });
-      //     async (response: any) => {
-      //       console.log(response);
-      //       this.data = response.data;
-      //       const validate = this.data.isValidate;
-      //       if (validate === true) {
-      //         const id_user: number = await this.getUserData(token);
-      //         const token_main = this.jwtService.generateTokenMain(
-      //           'TELEFONO',
-      //           id_user,
-      //           true
-      //         );
-      //         await this.storageService.removeItem('token');
-      //         await this.storageService.setItem('token', token_main);
-      //         this.router.navigate(['/tab-home/home']);
-      //         console.log('validate yes');
-      //       } else {
-      //         this.router.navigate(['/terminos-y-condiciones']);
-      //         console.log('validate no');
-      //       }
-      //     },
-      //     (error: any) => {
-      //       console.error(error.message);
-      //       console.error('Error al consumir el servicio:', error);
-      //     }
-      //   );
     } else {
       alert('codigo incorrecto');
     }
@@ -254,6 +233,7 @@ export class RegistroPage implements OnInit, OnDestroy {
                 const { message } = response;
                 console.log('message', message);
                 this.isLoading = false;
+                this.resetTimer();
                 this.showToast('Mensaje enviado correctamente');
               },
               error: (error) => {

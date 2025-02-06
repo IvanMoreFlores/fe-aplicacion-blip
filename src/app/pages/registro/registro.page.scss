@@ -11,10 +11,21 @@ ion-content {
     padding: 10px 32px 10px 32px;
     height: 100%;
 
+    h2 {
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 50px;
+      padding-bottom: 10px;
+    }
+
     p {
+      color: #141414;
       font-family: Poppins;
       font-size: 18px;
-      font-weight: 0;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 30px;
       letter-spacing: 0.18px;
     }
 
