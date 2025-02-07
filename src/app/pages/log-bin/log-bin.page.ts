@@ -11,13 +11,20 @@ import { Keyboard } from '@capacitor/keyboard';
   styleUrls: ['./log-bin.page.scss'],
 })
 export class LogBinPage implements OnInit {
+  isLoading: boolean = false;
   password: string = '';
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
   con: string = '';
-  isEmailValid: boolean = false;
+  isPasswordValid: boolean = false;
   email: string = '';
   data: any;
+
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
 
   togglePasswordVisibility() {
     if (this.passwordType === 'password') {
@@ -29,7 +36,7 @@ export class LogBinPage implements OnInit {
     }
   }
   onEmailChange(): void {
-    this.isEmailValid = this.password.trim().length > 0;
+    this.isPasswordValid = this.password.trim().length > 0;
   }
   constructor(
     private router: Router,
@@ -37,7 +44,7 @@ export class LogBinPage implements OnInit {
     private jwtService: JwtService,
     private storageService: StorageService,
     private api: ApiService
-  ) { }
+  ) {}
   ngOnInit() {
     this.setMail();
     this.initializeKeyboardListeners();
@@ -45,9 +52,9 @@ export class LogBinPage implements OnInit {
   ngOnDestroy() {
     Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
   }
- setMail() {
-    this.route.queryParams.subscribe(params => {
-      this.email = params['EMAIL2'];
+  setMail() {
+    this.route.queryParams.subscribe((params) => {
+      this.email = params['email'];
       console.log(this.email);
     });
   }
@@ -61,12 +68,11 @@ export class LogBinPage implements OnInit {
         footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
       }
     });
-    
 
     Keyboard.addListener('keyboardWillHide', () => {
       const footer = document.querySelector('.footer-btn') as HTMLElement;
       const content = document.querySelector('ion-content') as HTMLElement;
-    
+
       if (footer) {
         footer.style.bottom = '0px'; // Restaura el footer
       }
@@ -74,25 +80,33 @@ export class LogBinPage implements OnInit {
         content.style.paddingBottom = '0px'; // Restaura el padding
       }
     });
-    
   }
   async login() {
-    const token = await this.jwtService.generateTokenLogEmail('CORREO', this.email, this.password, false);
+    const token_temp=await this.storageService.getItem('token_temp');
 
-    this.api.getValidate(token).subscribe(
-      async (response: any) => {
-        this.data = response.data;
-        const validate = this.data.isValidate;
-        if (validate === true) {
-          const id_user: number = await this.getUserData(token);
-          const token_main = this.jwtService.generateTokenMain('CORREO', id_user, true);
-          await this.storageService.setItem('token', token_main);
-          this.router.navigate(['/tab-home/home']);
-        } else {
-          alert('usuario o password incorrecto!');
-        }
-      }
-    )
+    // const token = await this.jwtService.generateTokenLogEmail(
+    //   'CORREO',
+    //   this.email,
+    //   this.password,
+    //   false
+    // );
+
+    // this.api.getValidate(token).subscribe(async (response: any) => {
+    //   this.data = response.data;
+    //   const validate = this.data.isValidate;
+    //   if (validate === true) {
+    //     const id_user: number = await this.getUserData(token);
+    //     const token_main = this.jwtService.generateTokenMain(
+    //       'CORREO',
+    //       id_user,
+    //       true
+    //     );
+    //     await this.storageService.setItem('token', token_main);
+    //     this.router.navigate(['/tab-home/home']);
+    //   } else {
+    //     alert('usuario o password incorrecto!');
+    //   }
+    // });
   }
 
   async getUserData(token: string): Promise<number> {
@@ -116,5 +130,9 @@ export class LogBinPage implements OnInit {
   async saveDataToken(token: any) {
     await this.storageService.removeItem('token');
     await this.storageService.setItem('token', token);
+  }
+
+  goToDisplayPage() {
+    this.router.navigate(['/cor-controlv']);
   }
 }

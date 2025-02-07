@@ -1,28 +1,17 @@
-<ion-content [fullscreen]="true">
+<header-component [withArrowLeft]="true" [route]="'/login'" (navigateTo)="handleNavigateTo($event)"></header-component>
+<ion-content>
   <div class="container">
-    
-    <!-- Contenido principal -->
-    <div class="main-content">
-      <h1>Ingresa tu correo
-        electrónico</h1>
-      <!-- Campo de entrada -->
-      <div class="input-bar">
-        <input type="text" placeholder="name@example.com" [(ngModel)]="email2" (ngModelChange)="onEmailChange()">
-      </div> 
-    </div>
-
-
-
+    <h2>Ingresa tu correo electrónico</h2>
+    <default-input [(valueInput)]="email" (valueInputChange)="onEmailChange()" [type]="'password'"
+      [placeholder]="'nombre@ejemplo.com'" [pattern]="'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'"
+      [class]="'secundary-input'" [imageUrlRigth]="'assets/images/eye.svg'" [withImgRight]="true"
+      [classImgRight]="'eye-email'"></default-input>
   </div>
 </ion-content>
 <ion-footer class="footer-btn" mode="md">
   <div class="bnt-dow">
-    <button class="bac" routerLink="/registro">Atrás</button>
-    <button
-    [disabled]="!isEmailValid" (click)="goToDisplayPage()" [ngClass]="{ 'all-inputs-filled': isEmailValid, 'not-all-inputs-filled': !isEmailValid }"
-      class="nex"
-    >
-      Siguiente
-    </button>
+    <default-custom-button [text]="'Siguiente'" [disabled]="!isEmailValid"
+      (click)="goToDisplayPage()"></default-custom-button>
   </div>
 </ion-footer>
+<app-loader *ngIf="isLoading"></app-loader>
