@@ -3,8 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
 import { ApiService } from 'src/app/services/api.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Keyboard } from '@capacitor/keyboard';
+import { ApiLoginService } from 'src/app/services/api-login.service';
+
 @Component({
   selector: 'app-log-bin',
   templateUrl: './log-bin.page.html',
@@ -19,6 +21,16 @@ export class LogBinPage implements OnInit {
   isPasswordValid: boolean = false;
   email: string = '';
   data: any;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private jwtService: JwtService,
+    private storageService: StorageService,
+    private apiLoginService: ApiLoginService,
+    private api: ApiService,
+    private toastController: ToastController
+  ) {}
 
   handleNavigateTo(route: string) {
     if (route) {
@@ -38,13 +50,7 @@ export class LogBinPage implements OnInit {
   onEmailChange(): void {
     this.isPasswordValid = this.password.trim().length > 0;
   }
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private jwtService: JwtService,
-    private storageService: StorageService,
-    private api: ApiService
-  ) {}
+
   ngOnInit() {
     this.setMail();
     this.initializeKeyboardListeners();
@@ -82,57 +88,93 @@ export class LogBinPage implements OnInit {
     });
   }
   async login() {
-    const token_temp=await this.storageService.getItem('token_temp');
-
-    // const token = await this.jwtService.generateTokenLogEmail(
-    //   'CORREO',
-    //   this.email,
-    //   this.password,
-    //   false
-    // );
-
-    // this.api.getValidate(token).subscribe(async (response: any) => {
-    //   this.data = response.data;
-    //   const validate = this.data.isValidate;
-    //   if (validate === true) {
-    //     const id_user: number = await this.getUserData(token);
-    //     const token_main = this.jwtService.generateTokenMain(
-    //       'CORREO',
-    //       id_user,
-    //       true
-    //     );
-    //     await this.storageService.setItem('token', token_main);
-    //     this.router.navigate(['/tab-home/home']);
-    //   } else {
-    //     alert('usuario o password incorrecto!');
-    //   }
-    // });
-  }
-
-  async getUserData(token: string): Promise<number> {
-    return new Promise((resolve, reject) => {
-      this.api.getInformation(token).subscribe(
-        (response: any) => {
-          this.data = response.data;
-          this.storageService.removeItem('user');
-          this.storageService.setItem('user', this.data);
-          const id: number = Number(this.data.usu_id); // Convertir a número
-          resolve(id); // Devolver el id convertido como una promesa
-        },
-        (error: any) => {
-          console.error('Error al consumir el servicio:', error);
-          reject(error.message); // Rechazar en caso de error
-        }
-      );
+    this.isLoading = true;
+    const tokenTemp = await this.jwtService.generateTokenTempHost({
+      usu_correo: this.email.trim(),
+      usu_contra: this.password,
     });
+
+    this.apiLoginService
+      .getTokenTemp(tokenTemp, { email: this.email.trim() })
+      .subscribe({
+        next: async (response) => {
+          const { token_temp } = response;
+          if (token_temp) {
+            this.apiLoginService.getTokenSession(token_temp).subscribe({
+              next: async (response) => {
+                const { token, refreshToken } = response;
+                console.log('🚀 ~ RegistroPage ~ next: ~ token:', token);
+
+                await this.saveStorage('token', token);
+                await this.saveStorage('refreshToken', refreshToken);
+                const user = await this.getUserData(token)
+                  .then((response) => {
+                    console.log(
+                      '🚀 ~ RegistroPage ~ .then ~ response:',
+                      response
+                    );
+                    return response;
+                  })
+                  .catch((error) => {
+                    console.log('🚀 ~ RegistroPage ~ next: ~ error:', error);
+                    this.showToast('Error al obtener el autorizador');
+                  });
+                if (user) {
+                  await this.saveStorage('user', user);
+                  this.isLoading = false;
+                  this.router.navigate(['/tab-home/home']);
+                }
+              },
+              error: (error) => {
+                console.error(error);
+                this.isLoading = false;
+                this.showToast('Error al obtener el autorizador');
+              },
+            });
+          } else {
+            this.isLoading = false;
+            this.showToast('Error al obtener el autorizador');
+          }
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.showToast('Error al obtener el autorizador');
+          console.error(error);
+        },
+      });
+
   }
 
-  async saveDataToken(token: any) {
-    await this.storageService.removeItem('token');
-    await this.storageService.setItem('token', token);
+  async getUserData(token: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.api.getInformation(token).subscribe({
+        next: (response: any) => {
+          this.data = response.data;
+          resolve(this.data);
+        },
+        error: (error: any) => {
+          console.error('Error al consumir el servicio:', error);
+          reject(error.message);
+        },
+      });
+    });
   }
 
   goToDisplayPage() {
     this.router.navigate(['/cor-controlv']);
+  }
+
+  async saveStorage(index: string, value: any) {
+    await this.storageService.removeItem(index);
+    await this.storageService.setItem(index, value);
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
   }
 }

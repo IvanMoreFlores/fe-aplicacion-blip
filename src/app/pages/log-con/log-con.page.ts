@@ -24,6 +24,10 @@ export class LogConPage implements OnInit {
     private toastController: ToastController,
   ) {}
 
+  ionViewWillEnter() {
+    this.email = '';
+  }
+
   handleNavigateTo(route: string) {
     if (route) {
       this.router.navigate([route]);
@@ -77,7 +81,7 @@ export class LogConPage implements OnInit {
         error: (error) => {
           console.log(error);
           this.isLoading = false;
-          this.showToast('Error al obtener el autorizador');
+          this.showToast('El correo no se encuentra registrado');
         },
       });
   }

@@ -29,12 +29,16 @@ export class LoginPage implements OnInit, OnDestroy {
     this.init_value();
   }
 
+  ionViewWillEnter() {
+    this.init_value();
+  }
+
   ngOnDestroy() {
     Keyboard.removeAllListeners();
   }
 
   async init_value() {
-
+    this.phone2 = '';
   }
 
   async send_otk() {
@@ -61,7 +65,7 @@ export class LoginPage implements OnInit, OnDestroy {
                 const { message } = response;
                 this.isLoading = false;
                 this.router.navigate(['/registro'], {
-                  queryParams: { phone: this.phone2, code,message },
+                  queryParams: { phone: this.phone2, code, message },
                 });
               },
               error: (error) => {
@@ -111,5 +115,11 @@ export class LoginPage implements OnInit, OnDestroy {
       messageSMS,
       code,
     };
+  }
+
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
 }

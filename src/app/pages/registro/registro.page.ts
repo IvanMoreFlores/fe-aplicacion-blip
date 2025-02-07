@@ -174,7 +174,8 @@ export class RegistroPage implements OnInit, OnDestroy {
         },
       });
     } else {
-      alert('codigo incorrecto');
+      this.isLoading = false;
+      this.showToast('Error al codigo es incorrecto');
     }
   }
 

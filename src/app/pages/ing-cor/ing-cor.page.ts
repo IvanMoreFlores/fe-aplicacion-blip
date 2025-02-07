@@ -4,6 +4,7 @@ import { Keyboard } from '@capacitor/keyboard';
 import { JwtService } from 'src/app/services/jwt.service';
 import { ApiLoginService } from 'src/app/services/api-login.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { ModalController, ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-ing-cor',
   templateUrl: './ing-cor.page.html',
@@ -18,8 +19,13 @@ export class IngCorPage implements OnInit {
     private router: Router,
     private jwtService: JwtService,
     private apiLoginService: ApiLoginService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private toastController: ToastController
   ) {}
+
+  ionViewWillEnter() {
+    this.email = '';
+  }
 
   onEmailChange(): void {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -64,6 +70,7 @@ export class IngCorPage implements OnInit {
             });
         },
         error: (error) => {
+          this.showToast('El correo no se encuentra registrado');
           this.isLoading = false;
           console.error(error);
         },
@@ -111,5 +118,14 @@ export class IngCorPage implements OnInit {
   async saveStorage(index: string, value: any) {
     await this.storageService.removeItem(index);
     await this.storageService.setItem(index, value);
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
   }
 }

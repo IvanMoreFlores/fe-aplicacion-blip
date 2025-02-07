@@ -2,10 +2,9 @@
 <ion-content>
   <div class="container">
     <h2>Ingresa tu correo electrónico</h2>
-    <default-input [(valueInput)]="email" (valueInputChange)="onEmailChange()" [type]="'password'"
+    <default-input [(valueInput)]="email" (valueInputChange)="onEmailChange()" [type]="'email'"
       [placeholder]="'nombre@ejemplo.com'" [pattern]="'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'"
-      [class]="'secundary-input'" [imageUrlRigth]="'assets/images/eye.svg'" [withImgRight]="true"
-      [classImgRight]="'eye-email'"></default-input>
+      [class]="'secundary-input'" [withImgRight]="false"></default-input>
   </div>
 </ion-content>
 <ion-footer class="footer-btn" mode="md">
