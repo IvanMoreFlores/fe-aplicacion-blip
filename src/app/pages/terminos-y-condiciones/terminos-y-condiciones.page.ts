@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terminos-y-condiciones',
@@ -17,7 +18,8 @@ export class TerminosYCondicionesPage implements OnInit {
     private modalcontroller: ModalController,
     private jwtService: JwtService,
     private storageService: StorageService,
-    private api: ApiService
+    private api: ApiService,
+    private router: Router,
   ) { }
 
   toggleCheckbox() {
@@ -73,4 +75,16 @@ export class TerminosYCondicionesPage implements OnInit {
     }
   }
 
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
+  sendMoreInformation(){
+    this.router.navigate(['/terminos-y-condiciones-mas-informacion']);
+  }
+
+  goToDisplayPage() {
+    this.router.navigate(['/datos-registro']);
+  }
 }
