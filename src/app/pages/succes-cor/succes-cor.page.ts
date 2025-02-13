@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-succes-cor',
@@ -7,13 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./succes-cor.page.scss'],
 })
 export class SuccesCorPage implements OnInit {
-  constructor(private router: Router) {}
+  email: string = '';
+  code: string = '';
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-
-  ngOnInit() {
-    setTimeout(() => {
-      this.router.navigate(['/olv-con']); 
-    }, 2000); 
+  setMail() {
+    this.route.queryParams.subscribe((params) => {
+      this.code = params['code'];
+      this.email = params['email'];
+      console.log(this.email);
+    });
   }
-
+  ngOnInit() {
+    this.setMail();
+    setTimeout(() => {
+      this.router.navigate(['/olv-con'], {
+        queryParams: { email: this.email, code: this.code },
+      });
+    }, 2000);
+  }
 }

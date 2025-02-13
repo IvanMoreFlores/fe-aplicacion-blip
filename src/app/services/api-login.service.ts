@@ -47,6 +47,17 @@ export class ApiLoginService {
     });
   }
 
+  setNewPassword(token: string, data: any): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post(`${this.apiUrl}/host/password/change`, data, {
+      headers,
+    });
+  }
+
   sendEmail(
     token: string,
     to: string,

@@ -3,23 +3,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
-  private apiUrl = 'https://blip-backend.com'; //'http://44.213.46.131:3000'; // URL de tu API
+  private apiUrl = 'https://backend-demo.blip-backend.com';
+  // private apiUrl = 'https://blip-backend.com'; //'http://44.213.46.131:3000'; // URL de tu API
   // private apiUrl = 'http://localhost:3001';
 
-  constructor(
-    private http: HttpClient
-  ) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   // Método para validar token de usuario
   getValidate(token: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+      Authorization: `Bearer ${token}`, // Añadir el Bearer Token
     });
 
     return this.http.get(this.apiUrl + '/user/validate', { headers }); // Realiza la solicitud GET con los headers
@@ -28,13 +24,11 @@ export class ApiService {
   // Método para obtener informacion de usuario
   getInformation(token: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+      Authorization: `Bearer ${token}`, // Añadir el Bearer Token
     });
 
     return this.http.get(this.apiUrl + '/user/information', { headers }); // Realiza la solicitud GET con los headers
   }
-
-
 
   // Metodo para registrar usuario
   postRegister(
@@ -49,7 +43,6 @@ export class ApiService {
     usuc_fecnac: string,
     token: string
   ) {
-
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -59,42 +52,49 @@ export class ApiService {
       usu_numdoc: usu_numdoc,
       tdo_id: tdo_id,
       usu_apepat: usu_apepat,
-      usu_apemat: " ",
+      usu_apemat: ' ',
       usu_nombre: usu_nombre,
-      usu_direcc: "pendiente direccion",
+      usu_direcc: 'pendiente direccion',
       usu_nrotel: usu_nrotel,
-      usu_correo: "pendiente@blip.com",
+      usu_correo: 'pendiente@blip.com',
       usu_contra: usu_contra,
       tac_id: tac_id,
       tge_id: tge_id,
-      usuc_fecnac: usuc_fecnac
+      usuc_fecnac: usuc_fecnac,
     };
 
-    return this.http.post(this.apiUrl + '/user/register/host', body, { headers });
-
+    return this.http.post(this.apiUrl + '/user/register/host', body, {
+      headers,
+    });
   }
 
   getReservations(token: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+      Authorization: `Bearer ${token}`, // Añadir el Bearer Token
     });
 
-    return this.http.get(this.apiUrl + '/reserve/host?showFromNowOn=true&status=1&status=2&status=3&status=4', { headers });
+    return this.http.get(
+      this.apiUrl +
+        '/reserve/host?showFromNowOn=true&status=1&status=2&status=3&status=4',
+      { headers }
+    );
   }
 
   getReservations2(token: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+      Authorization: `Bearer ${token}`, // Añadir el Bearer Token
     });
 
-    return this.http.get(this.apiUrl + '/reserve/host?showFromNowOn=false&status=3&status=4', { headers });
+    return this.http.get(
+      this.apiUrl + '/reserve/host?showFromNowOn=false&status=3&status=4',
+      { headers }
+    );
   }
-
 
   // Enviar imágenes al servidor
   sendDniFiles(token: string, frontImage: any, backImage: any) {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
 
     const formData = new FormData();
@@ -104,15 +104,21 @@ export class ApiService {
     formData.append('back', backImage);
 
     // Hacer la petición POST
-    return this.http.post(this.apiUrl + '/user/upload/document-confirmation', formData, { headers });
+    return this.http.post(
+      this.apiUrl + '/user/upload/document-confirmation',
+      formData,
+      { headers }
+    );
   }
 
   getAdvertiseConfig(token: string) {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,  // Añadir el Bearer Token
+      Authorization: `Bearer ${token}`, // Añadir el Bearer Token
     });
 
-    return this.http.get(this.apiUrl + '/advertisement/create/configurations', { headers });
+    return this.http.get(this.apiUrl + '/advertisement/create/configurations', {
+      headers,
+    });
   }
 
   createAdvertisement(
@@ -176,7 +182,9 @@ export class ApiService {
 
     console.log(formData);
 
-    return this.http.post(this.apiUrl + '/advertisement/create', formData, { headers });
+    return this.http.post(this.apiUrl + '/advertisement/create', formData, {
+      headers,
+    });
   }
 
   getAds(token: string): Observable<any> {
@@ -190,24 +198,24 @@ export class ApiService {
   deleteAd(token: string, id: string): Observable<any> {
     // Definir los headers con el Bearer token
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
 
     return this.http.delete(this.apiUrl + '/advertisement/' + id, { headers });
   }
 
   updateAd(token: string, formData: FormData) {
-
     // Configura los headers con el Bearer Token
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.patch(this.apiUrl + '/advertisement/update', formData, { headers });
+    return this.http.patch(this.apiUrl + '/advertisement/update', formData, {
+      headers,
+    });
   }
 
   updateUser(token: string, formData: FormData) {
-
     // Configura los headers con el Bearer Token
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
@@ -225,12 +233,15 @@ export class ApiService {
   }
 
   updateReserve(token: string, res_id: string, rst_id: string) {
-
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.patch(this.apiUrl + '/reserve/' + res_id + '/status/' + rst_id, {}, { headers });
+    return this.http.patch(
+      this.apiUrl + '/reserve/' + res_id + '/status/' + rst_id,
+      {},
+      { headers }
+    );
   }
 
   getBanks(token: string) {
@@ -238,7 +249,9 @@ export class ApiService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get(this.apiUrl + '/user/host/paid/information', { headers });
+    return this.http.get(this.apiUrl + '/user/host/paid/information', {
+      headers,
+    });
   }
 
   updatePaymentMethod(token: string, data: any) {
@@ -246,7 +259,9 @@ export class ApiService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.patch(this.apiUrl + '/user/host/paid/account', data, { headers });
+    return this.http.patch(this.apiUrl + '/user/host/paid/account', data, {
+      headers,
+    });
   }
 
   getPayments(token: string) {
@@ -262,7 +277,9 @@ export class ApiService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.post(this.apiUrl + '/user/host/paid/request', null, { headers });
+    return this.http.post(this.apiUrl + '/user/host/paid/request', null, {
+      headers,
+    });
   }
 
   getDeposit(token: string) {
@@ -280,7 +297,8 @@ export class ApiService {
 
     console.log(data);
 
-    return this.http.post(this.apiUrl + '/advertisement/turnOff', data, { headers });
+    return this.http.post(this.apiUrl + '/advertisement/turnOff', data, {
+      headers,
+    });
   }
-
 }

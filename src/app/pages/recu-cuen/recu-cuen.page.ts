@@ -17,7 +17,7 @@ export class RecuCuenPage implements OnInit, OnDestroy {
   @Input() withArrowLeft: boolean = true;
   email: string = '';
   code: string = '';
-  buttonText: string = '  reenviar código por SMS';
+  buttonText: string = 'reenviar código por SMS';
   minutes: number = 0;
   seconds: number = 59;
   interval: any;

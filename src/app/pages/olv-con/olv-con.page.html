@@ -1,47 +1,35 @@
+<header-component [withArrowLeft]="true" [route]="'/login'" (navigateTo)="handleNavigateTo($event)"></header-component>
 <ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
-  
-  <div class="wrapper">
-    <div class="login">
-      <h1>
-        Bienvenida ,
-        de nuevo!
-      </h1>
-      <p>
-        Ingresa el código de 4 dígitos enviado a: {{ displayedText2 }}.
-      </p>
-      <div class="code-inputs">
-        <ion-input [(ngModel)]="input1" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input2" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input3" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-        <ion-input [(ngModel)]="input4" type="tel" maxlength="1" inputmode="numeric" (ionChange)="checkInputs()"></ion-input>
-      </div>
-      <button id="open-toast"[ngClass]="{'rev-cod': true, 'expired': isExpired}" [disabled]="!isExpired" (click)="reenviarCodigo()">
-        {{ buttonText }}
-        <div class="TIME">
-          {{ minutes }}:{{ seconds | number: '2.0' }}
-        </div>
-      </button>
-      <ion-toast
-      trigger="open-toast"
-      [duration]="3000"
-      message="Código enviado satisfactoriamente."
-      class="custom-toast"
-      position="top"
-      mode="md"
-      ></ion-toast>
-    </div>
+  <div class="container">
+    <h1>
+      Bienvenida, de nuevo!
+    </h1>
+    <p>
+      Ingresa el código de 4 dígitos enviado a: {{ email }}.
+    </p>
+    <app-dynamic-inputs-numeric [numInputs]="4"
+      (valoresChange)="handleValoresChange($event)"></app-dynamic-inputs-numeric>
+    <default-custom-button (clicked)="sendEmail()" [disabled]="isDisabled" [class]="buttonClassTimer"
+      [text]="buttonTextTimer" [withTime]="buttonWithTimeTimer" [minutes]="minutes" [seconds]="seconds">
+    </default-custom-button>
+    <ion-toast trigger="open-toast" [duration]="3000" message="Código enviado satisfactoriamente." class="custom-toast"
+      position="top" mode="md"></ion-toast>
   </div>
 </ion-content>
 <ion-footer class="footer-btn" mode="md">
   <div class="bnt-dow">
+    <default-custom-button [text]="'Siguiente'" [disabled]="!inputsFilled"
+      (click)="verifyOTP()"></default-custom-button>
+  </div>
+</ion-footer>
+<app-loader *ngIf="isLoading"></app-loader>
+<!-- <ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
     <button class="bac" routerLink="/cor-controlv">Atrás</button>
-    <button
-      [disabled]="!inputsFilled"
-      [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}"
-      class="nex"
-      routerLink="/contra-cor" 
-    >
+    <button [disabled]="!inputsFilled"
+      [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}" class="nex"
+      routerLink="/contra-cor">
       Siguiente
     </button>
   </div>
-</ion-footer>
+</ion-footer> -->
