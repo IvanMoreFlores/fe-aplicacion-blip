@@ -23,7 +23,7 @@ export class DatosNumeroPage implements OnInit {
 formatPhoneNumber() {
   // Remover todo lo que no sea un número
   let phone = this.phone.replace(/\D/g, '');
-  
+
   // Limitar a 9 dígitos
   if (phone.length > 9) {
     phone = phone.slice(0, 9);
@@ -31,7 +31,7 @@ formatPhoneNumber() {
 
   // Aplicar el formato 999 999 999
   phone = this.applyPhoneFormat(phone);
-  
+
   // Asignar el número formateado
   this.phone = phone;
 }
@@ -83,7 +83,7 @@ formatPhoneNumber() {
     });
   }
 
-  async setPhone() {
+  async verify() {
     const phone = '+51' + this.phone;
     const code = Math.floor(1000 + Math.random() * 9000);
     const body = 'Blip informa: el codigo solicitado es ' + code;
@@ -141,5 +141,9 @@ formatPhoneNumber() {
     await this.storageService.removeItem('token');
     await this.storageService.setItem('token', token);
   }
-
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
 }

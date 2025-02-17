@@ -20,6 +20,7 @@ export class DefaultInputComponent {
   @Output() valueInputChange = new EventEmitter<string>();
 
   mode: string = 'md';
+  isPasswordVisible: boolean = false;
 
   constructor(private platform: Platform) {}
 
@@ -32,6 +33,10 @@ export class DefaultInputComponent {
   }
 
   togglePasswordVisibility() {
-    this.type = this.type === 'password' ? 'text' : 'password';
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
+  get inputType() {
+    return this.type === 'password' && this.isPasswordVisible ? 'text' : this.type;
   }
 }

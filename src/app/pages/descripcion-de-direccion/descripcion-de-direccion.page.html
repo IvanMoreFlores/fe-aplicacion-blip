@@ -7,13 +7,13 @@
           <div class="input-bar">
             <p class="label-text">Dirección</p>
             <input type="text"  [(ngModel)]="direccion" placeholder="Av. Benavides 456">
-          </div> 
+          </div>
 
           <div class="input-bar">
             <p class="label-text">Ciudad</p>
-            
+
             <div class="custom-select">
-              <select id="ciudad" [(ngModel)]="ciudad" placeholder="Selecciona tu ciudad" name="ciudad" >
+              <select id="ciudad" [(ngModel)]="ciudad" placeholder="Selecciona tu ciudad" name="ciudad" title="Selecciona tu ciudad">
                 <option value="" disabled selected>Selecciona tu ciudad</option>
                 <option value="1">Lima</option>
               </select>
@@ -22,9 +22,9 @@
 
           <div class="input-bar">
             <p class="label-text">Distrito</p>
-            
+
             <div class="custom-select">
-              <select id="distrito" [(ngModel)]="distrito" placeholder="Selecciona tu distrito" name="distrito" >
+              <select id="distrito" [(ngModel)]="distrito" placeholder="Selecciona tu distrito" name="distrito" title="Selecciona tu distrito">
                 <option value="" disabled selected>Selecciona tu distrito</option>
                 <option *ngFor="let distrito of distritoData" value="{{ distrito.id_distrito }}">{{ distrito.nombre_distrito }}</option>
               </select>

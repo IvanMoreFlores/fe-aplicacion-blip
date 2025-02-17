@@ -1,7 +1,7 @@
 <div [class]="class">
   <span *ngIf="withCodeCountry" class="country-code">{{codeCountry}}</span>
-  <ion-input [value]="valueInput" (ionInput)="onValueChange($event)" [mode]="mode" [type]="type"
-    [placeholder]="placeholder" [pattern]="pattern">
+  <ion-input [value]="valueInput" (ionInput)="onValueChange($event)" [mode]="mode" [placeholder]="placeholder"
+    [pattern]="pattern">
   </ion-input>
   <img *ngIf="withImgRight" slot="start" [src]="imageUrlRigth" alt="" [class]="classImgRight"
     (click)="togglePasswordVisibility()">

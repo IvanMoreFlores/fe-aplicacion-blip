@@ -6,7 +6,10 @@ import { PhoneInputComponent } from './phone-input/phone-input.component';
 import { DefaultButtonComponent } from './default-button/default-button.component';
 import { LoaderComponent } from './loader/loader.component';
 import { DynamicInputsNumericComponent } from './dynamic-inputs-numeric/dynamic-inputs-numeric.component';
-import {DefaultInputComponent} from './default-input/default-input.component';
+import { DefaultInputComponent } from './default-input/default-input.component';
+import { DefaultSelectComponent } from './default-select/default-select.component';
+import { DefaultInputDateComponent } from './defaul-input-date/default-input-date.component';
+import { DatePickerPopoverComponent } from './defaul-input-date/date-picker-popover.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import {DefaultInputComponent} from './default-input/default-input.component';
     LoaderComponent,
     DynamicInputsNumericComponent,
     DefaultInputComponent,
+    DefaultSelectComponent,
+    DefaultInputDateComponent,
+    DatePickerPopoverComponent,
   ],
   imports: [CommonModule, IonicModule], // Importa los módulos necesarios
   exports: [
@@ -25,6 +31,9 @@ import {DefaultInputComponent} from './default-input/default-input.component';
     LoaderComponent,
     DynamicInputsNumericComponent,
     DefaultInputComponent,
+    DefaultSelectComponent,
+    DefaultInputDateComponent,
+    DatePickerPopoverComponent,
   ], // Exporta el componente para que pueda ser usado en otros módulos
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

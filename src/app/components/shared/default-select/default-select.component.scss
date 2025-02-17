@@ -1,0 +1,44 @@
+.default-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #1f1f1f;
+  border-radius: 30px;
+  padding: 5px 15px;
+  margin: 10px 0px 10px 0px;
+
+  .floating-label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: white;
+    font-size: 12px;
+    padding: 0 5px;
+    color: #666;
+  }
+
+  ion-select {
+    position: relative;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    --placeholder-color: #bfbfc2;
+  }
+
+  ion-select::part(icon) {
+    position: absolute;
+    right: 16px;
+    pointer-events: none;
+  }
+}
+
+.secundary-input {
+  @extend .default-input;
+  border-radius: 8px;
+  border: 1px solid #E6E6EB;
+  height: 40px;
+
+
+}

@@ -1,0 +1,19 @@
+.primary-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.secundary-input{
+  @extend .primary-input;
+  span {
+    color: #bfbfc2;
+  }
+}

@@ -1,222 +1,32 @@
-ion-header{
-  margin: 0px;
-  ion-toolbar{
-      padding-inline: 32px;
-      --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
-      background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
+ion-content {
+  overflow: auto;
+
+  .container {
+    padding: 10px 32px 10px 32px;
   }
-  h2{
-      margin: 0px;
-      margin-top: 20%;
-      margin-bottom: 30px;
-      color: #212121;
 
-      /* Title Screens 2 */
-      font-family: Poppins;
-      font-size: 35px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 50px; /* 142.857% */
-      width: 100%;
-
+  h2 {
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 50px;
+    padding-bottom: 10px;
   }
-  
-}
-ion-footer{
-  margin: 0px;
-  margin-block: 10px;
-  ion-toolbar{
-      padding-inline: 32px;
-      --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
-      background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
-      .btn-atr{
-          border: 1px solid #212121;
-          border-radius: 20px;
-          padding-inline: 10px;
-          padding-top: 15px;
-          padding-bottom: 15px;
-          border-radius: 30px;
-          width: 100%;
-          background-color: #FFFFFF;
-          font-family: "Poppins", sans-serif;
-          font-size: 16px;
-          font-weight: 600;
-      }
-      .btn-sig{
-          border: 1px solid #212121;
-          border-radius: 30px;
-          padding-inline: 10px;
-          padding-top: 15px;
-          padding-bottom: 15px;
-          color: #FFFFFF;
-          width: 100%;
-          background-color: #212121;
-          font-family: "Poppins", sans-serif;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: not-allowed;
-      }
 
+  default-input,
+  default-input-date,
+  default-select {
+    display: block;
+    /* Asegurarse de que los elementos sean bloques */
+    margin-bottom: 40px;
   }
 }
-.keyboard-open {
-  margin-bottom: 77%; /* Ajusta este valor según sea necesario */
-}
-.footer-ios ion-toolbar:last-of-type {
-  --border-width: 0px;
-}
-/* Estilos para el header */
-h1,h1,h3{
-  margin: 0px;
-}
-.header-ios ion-toolbar:last-of-type {
-  --border-width: 0px;
-}
-ion-header {
-  --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
-  background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
-}
-ion-content{
-  padding-inline: 22px;
 
-  --overflow: hidden;
-
-
-}
-.login-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-inline: 32px;
-  margin-top: 10px;
-}
-
-.label-text {
-  font-size: 12px;
-  position: absolute;
-  top: -10px;
-  background-color: #FFFFFF;
-  padding: 0 10px;
-  left: 15px;
-  font-family: "Poppins", sans-serif;
-  color: #212121;
-}
-.phone-input {
-  position: relative;
-  padding: 15px 20px;
-  display: flex;
-  border: 1px solid #212121;
-  width: 100%;
-  height: 56px;
-  border-radius: 30px;
-  justify-content: center;
-  align-items: center;
-  margin-block: 15px;
-  color: #212121;
-  input[type="text"] {
-    flex: 1;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-  }
-  input[type="date"],
-  select {
+ion-footer {
+  .bnt-dow {
     width: 100%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url("/assets/images/vector-f.png");
-    background-repeat: no-repeat;
-    background-position: right  center;
-  }
-  .full-width-select {
-    width: 100%;  /* Asegura que el ion-select ocupe todo el ancho */
-  }
-}
-.phone-input .input::-webkit-calendar-picker-indicator {
-  position: absolute;
-  left: 10px; /* Posiciona el icono hacia la izquierda */
-  top: 50%;
-  transform: translateY(-50%);
-}
-.input-wrapper {
-  width: 100%;
-  border: 1px solid #1f1f1f;
-  border-radius: 30px;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-}
-
-.input-wrapper ion-icon {
-  font-size: 1.2rem;
-  color: #1f1f1f;
-}
-
-.input-wrapper .input {
-  width: 100%;
-  font-size: 1rem;
-  font-family: Poppins, sans-serif;
-  color: #1f1f1f;
-}
-
-.footer-btn {
-  position: fixed; /* Fija el footer */
-  bottom: 0; /* Empieza desde abajo */
-  width: 100%; /* Ancho completo */
-  z-index: 10; /* Asegura que esté por encima del contenido */
-  background: white; /* Fondo blanco, o lo que prefieras */
-}
-
-.bnt-dow{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-block: 10%;
-  padding-inline: 10%;
-  .bac{
-      border: 1px solid #212121;
-      background-color: #FFFFFF;
-      padding-inline: 10px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      border-radius: 30px;
-      width: 40%;
-      font-size: 15px;
-      font-weight: 600;
-      color: #212121;
-      font-family: "Poppins", sans-serif;
-  }
-  .nex{
-      border-radius: 30px;
-      border: 1px solid #212121;
-      background-color: #212121;
-      padding-inline: 10px;
-      color: #ffffff;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      font-size: 15px;
-      width: 40%;
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-  }
-
-  .all-inputs-filled {
-      background-color: #79FFAF; /* Cambia el color del botón cuando todos los campos están llenos */
-      color: #212121;
-      border: #79FFAF;
-  }
-  .all-inputs-filled {
-      background-color: #212121; /* Cambia el color del botón cuando todos los campos están llenos */
-      color: #FFFFFF;
-      font-size: 15px;
-      border: #212121;
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 32px 7px 32px;
   }
 }
