@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiLoginService {
   // private apiUrl = 'https://login.blip-backend.com/';
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3001';
   constructor(private http: HttpClient) {}
 
   getTokenTemp(token: string, data: any): Observable<any> {
@@ -74,5 +74,25 @@ export class ApiLoginService {
       text,
     };
     return this.http.post(`${this.apiUrl}/mail/send`, data, { headers });
+  }
+
+  getTokenTempToRegister(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.get(`${this.apiUrl}/host/session/token/temp/register`, {
+      headers,
+    });
+  }
+
+  registerNewUser(token: string, data: any): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post(`${this.apiUrl}/host/register`, data, { headers });
   }
 }

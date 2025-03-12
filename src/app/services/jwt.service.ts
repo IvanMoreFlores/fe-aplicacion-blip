@@ -70,4 +70,11 @@ export class JwtService {
       return null;
     }
   }
+
+  async generateTokenTempToRegister(): Promise<string> {
+    const dataToSend = { usu_id: 0, usu_codigo: 0 };
+    return new jose.SignJWT(dataToSend)
+      .setProtectedHeader({ alg: 'HS256' })
+      .sign(this.secretKey);
+  }
 }

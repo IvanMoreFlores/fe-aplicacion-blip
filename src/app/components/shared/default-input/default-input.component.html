@@ -1,6 +1,6 @@
 <div [class]="class">
   <span *ngIf="withCodeCountry" class="country-code">{{codeCountry}}</span>
-  <ion-input [value]="valueInput" (ionInput)="onValueChange($event)" [mode]="mode" [placeholder]="placeholder"
+  <ion-input [value]="valueInput" (ionInput)="onValueChange($event)" [mode]="mode" [placeholder]="placeholder" [type]="inputType"
     [pattern]="pattern">
   </ion-input>
   <img *ngIf="withImgRight" slot="start" [src]="imageUrlRigth" alt="" [class]="classImgRight"

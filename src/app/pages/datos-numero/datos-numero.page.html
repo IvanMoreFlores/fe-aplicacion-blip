@@ -12,7 +12,7 @@
     <default-custom-button [text]="'Siguiente'" (click)="verify()"></default-custom-button>
   </div>
 </ion-footer>
-
+<app-loader *ngIf="isLoading"></app-loader> 
 <!-- <ion-footer class="footer-btn">
   <div class="bnt-dow">
     <button (click)="return()" class="bac">Atrás</button>

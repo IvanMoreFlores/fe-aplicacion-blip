@@ -160,6 +160,7 @@ export class RecuCuenPage implements OnInit, OnDestroy {
               return response;
             })
             .catch((error) => {
+              this.isLoading = false;
               console.log("🚀 ~ RegistroPage ~ next: ~ error:", error)
               this.showToast('Error al obtener el autorizador');
             });
