@@ -1,32 +1,18 @@
-<ion-header mode="ios">
-  <ion-toolbar>
-    <h2 slot="start" class="title">Ingresa tu número para continuar</h2>
-  </ion-toolbar>
-</ion-header>
+<header-component [withArrowLeft]="true" [route]="'/walkthrough'" (navigateTo)="handleNavigateTo($event)"></header-component>
 <ion-content class="login-content">
-  <div class="login-content" >
-     <div class="phone-input">
-    <span class="country-code">+51</span>
-    <ion-input  
-     [(ngModel)]="phone2" 
-     mode="ios" 
-     type="tel" 
-     placeholder="Número de teléfono" 
-     class="input"
-     pattern="[0-9]*"
-     ></ion-input>
-  </div>
-  <ion-button mode="md" style="text-transform: none;" class="primary-button" (click)="send_otk()" >Continuar</ion-button>
-  <div style="width: 100%;" class="divider">
-    <img style="width: 100%;" src="/assets/images/login/divider.png" alt="">
-  </div>
-  <ion-button routerLink="/ing-cor"  mode="md" expand="block" fill="outline"style="text-transform: none;" class="secondary-button">
-    <img  style="padding-right:10px ;" slot="start" src="/assets/images/login/email.png" alt="">
-    Iniciar sesión con contraseña
-  </ion-button>
-  <p class="footer-text">
-    ¿No tienes una cuenta aún? <a href="#" routerLink="/terminos-y-condiciones" class="register-link">Regístrate</a>
-  </p>
+  <div class="login-content">
+    <h2>Ingresa tu número para continuar</h2>
+    <app-phone-input [(phoneNumber)]="phone2"></app-phone-input>
+    <default-custom-button (clicked)="send_otk()" [text]="'Continuar'">
+    </default-custom-button>
+    <div class="divider">
+      <img style="width: 100%;" src="/assets/images/login/divider.png" alt="">
+    </div>
+    <default-custom-button routerLink="/ing-cor" [withImg]="true" [imageUrl]="'/assets/images/login/email.png'"
+      [text]="'Continuar con correo'" [class]="'secondary-button'"></default-custom-button>
+    <p class="footer-text">
+      ¿No tienes una cuenta aún? <a href="#" routerLink="/terminos-y-condiciones" class="register-link">Regístrate</a>
+    </p>
   </div>
 </ion-content>
-
+<app-loader *ngIf="isLoading"></app-loader> <!-- Mostrar el loader si isLoading es true -->

@@ -1,38 +1,24 @@
-<ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
-  
-  <div class="wrapper">
-    <div class="login">
-      <h1>
-        Reestablece tu
-contraseña
-      </h1>
+<header-component [withArrowLeft]="true" [route]="'/log-bin'"
+  (navigateTo)="handleNavigateTo($event)"></header-component>
+<ion-content>
 
+  <div class="container">
+    <h2>Reestablece tu contraseña</h2>
+    <p>Contraseña</p>
+    <default-input [(valueInput)]="password" (valueInputChange)="checkInputs()" [type]="'password'"
+      [placeholder]="'***'" [class]="'secundary-input'" [imageUrlRigth]="'assets/images/eye.svg'"
+      [withImgRight]="true" [classImgRight]="'eye-email'"></default-input>
+      <p>Confirmar contraseña</p>
+      <default-input [(valueInput)]="passwordConfirm" (valueInputChange)="checkInputs()" [type]="'password'"
+      [placeholder]="'***'" [class]="'secundary-input'" [imageUrlRigth]="'assets/images/eye.svg'"
+      [withImgRight]="true" [classImgRight]="'eye-email'"></default-input>
 
-        <div class="input-bar">
-          <p class="label-text">Contraseña</p>
-          <ion-input [type]="passwordType"placeholder="Ingresa tu contraseña" maxlength="16"  [(ngModel)]="password" (ngModelChange)="checkInputs()"></ion-input>
-          <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
-        </div>
-
-        <div class="input-bar">
-          <p class="label-text">Confirmar Contraseña</p>
-          <ion-input [type]="passwordType2"placeholder="Confirma tu contraseña" maxlength="16" [(ngModel)]="password2" (ngModelChange)="checkInputs()"></ion-input> <!--2do  passwordType2 ,ngModal -->
-          <ion-icon [name]="passwordIcon2" slot="end" (click)="togglePasswordVisibility2()"></ion-icon>               <!--2do  passwordIcon2 ,togglePasswordVisibi -->
-        </div>
-    </div>
   </div>
 </ion-content>
 <ion-footer class="footer-btn" mode="md">
   <div class="bnt-dow">
-    <button (click)="return()" class="bac" routerLink="/cor-controlv">Atrás</button>
-    <button
-      [disabled]="!inputsFilled"
-      [ngClass]="{'all-inputs-filled': inputsFilled, 'not-all-inputs-filled': !inputsFilled}"
-      class="nex"
-      (click)="onCreate()"
-    >
-      Siguiente
-    </button>
+    <default-custom-button [text]="'Siguiente'" [disabled]="!inputsFilled"
+      (click)="goToDisplayPage()"></default-custom-button>
   </div>
 </ion-footer>
-
+<app-loader *ngIf="isLoading"></app-loader>

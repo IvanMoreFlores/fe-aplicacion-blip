@@ -1,7 +1,7 @@
 ion-content{
   padding-inline: 22px;
 
-  
+  --overflow: hidden;
 
 }
 .cont-hom{
@@ -10,6 +10,7 @@ ion-content{
 
 .btn-mn {
   background-color: #ffffff;
+  box-shadow: 0px 4px 4px 0px rgba(33, 33, 33, 0.10);
   border-radius: 20%;
   width: 44px;
   height: 44px;
@@ -34,8 +35,7 @@ ion-header {
 ion-toolbar {
   --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
   background-color: #fff !important; /* Aplica directamente el color blanco */
-  margin-top: 20%;
-  margin-bottom: 20px;
+  margin-block: 20px;
   padding-inline: 22px;
   h1{
     color: #212121;
@@ -85,14 +85,14 @@ ion-toolbar {
 
 
 .subtitle {
-  color: var(--system-grey, #8E8E93);
-
-  /* Body 4 [Medium] */
+  color: rgba(33, 33, 33, 0.60);
   font-family: Poppins;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 25px; /* 178.571% */
+  font-weight: 700;
+  line-height: 23px;
+  /* 191.667% */
+  letter-spacing: 0.12px;
 }
 
 .description {
@@ -182,7 +182,7 @@ ion-toolbar {
     gap: 10px;
     flex-shrink: 0;
     background: #212121;
-    
+
     .descrip {
       margin: 0px;
       padding: 5px;
@@ -201,22 +201,22 @@ ion-toolbar {
 .content-display {
   display: flex;
   width: 100%;
-  height: 55vh;
+  height: 43vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  border: 1px solid rgba(199, 199, 204, 1);
+  border: 1px dashed #A3A2A4;
   margin: 20px 0;
   overflow: auto;
-  text-align: center; /* Centra el texto horizontalmente */
 }
 
 .board {
-  display: flex; /* Asegúrate de que sea un contenedor flex */
-  flex-direction: column; /* Alinea el contenido verticalmente */
-  justify-content: center; /* Centra verticalmente */
-  align-items: center; /* Centra horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  /* Asegura que el tamaño de fuente sea adecuado */
 }
 .image-container {
   position: relative;  /* Importante para posicionar los elementos flotantes */
@@ -237,40 +237,14 @@ ion-toolbar {
 
 .par {
   margin: 0;
-  color: #A3A2A4;
-  text-align: center;
-  /* Body 3 */
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 25px; /* 166.667% */
+  color: #212121;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
   /* Ajusta este tamaño según sea necesario */
+  font-weight: 400;
   line-height: 140%;
 }
-.create-anun{
-  display: flex;
-  align-items: center;
-  border: 1px solid #212121;
-  border-radius: 30px;
-  h1{
-    margin: 0px;
-    color: #212121;
-    text-align: center;
 
-    /* Small Button */
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 25px; /* 178.571% */
-    letter-spacing: 0.14px;
-  }
-  img{
-    margin: 0px;
-    padding-right: 10px;
-  }
-}
 .content-display * {
   margin: 0;
   padding: 0;
@@ -305,6 +279,7 @@ ion-toolbar {
 
 
 .button-image {
+  margin-left: 15px;
   margin-right: 15px;
 }
 
@@ -342,21 +317,10 @@ ion-toolbar {
 .menu-block {
   display: flex;
   justify-content: center;
-  color: #212121;
-  text-align: center;
-  
-  /* Subtitle 5 [Bolder] */
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25px; /* 156.25% */
-  letter-spacing: 0.16px;
-  border-bottom: 1px solid rgba(212, 212, 212, 1);
-  padding-bottom: 20px;
+  font-size: 19px;
+  font-family: "Poppins", sans-serif;
   margin-block: 20px;
   font-weight: 500;
-  
 }
 
 .block {
@@ -371,17 +335,13 @@ ion-modal {
 }
 
 .title-c {
-  padding-block: 15px 10px;
+
   color: #212121;
-  text-align: center;
-  
-  /* Subtitle 5 [Bolder] */
   font-family: Poppins;
-  font-size: 16px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 500;
-  line-height: 25px; /* 156.25% */
-  letter-spacing: 0.16px;
+  line-height: 25px;
   /* 166.667% */
   width: 75%;
   margin-inline: auto;
@@ -390,19 +350,17 @@ ion-modal {
 
 .cont-ap {
   margin: 30px auto;
-  padding-inline: 5%;
+  max-width: 75%;
 }
 
 .parraf {
   color: #212121;
-  padding-inline: 10%;
-  /* Body 3 */
+  text-align: center;
   font-family: Poppins;
-  font-size: 15px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
-  line-height: 25px; /* 166.667% */
-  letter-spacing: 0.15px;
+  line-height: 25px;
   /* 192.308% */
 
 }
@@ -417,21 +375,13 @@ ion-modal {
 
 /* Botón de Continuar */
 .button-continuar-modal {
-  border: 1px solid #212121;
-  background-color: #ffffff;
-  color: #212121;
   width: 100%;
-  padding-block: 12px;
+  padding-block: 15px;
+  border: 1px solid #212121;
+  background-color: white;
   color: #212121;
-  text-align: center;
-  
-  /* Large Button */
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25px; /* 138.889% */
-  letter-spacing: 0.18px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
   border-radius: 25px;
   margin-bottom: 15px;
   cursor: pointer;
@@ -439,20 +389,12 @@ ion-modal {
 
 /* Botón de Cancelar */
 .button-cancelar-modal {
-  background-color: #212121;
-  color: #ffffff;
   width: 100%;
-  padding-block: 12px;
-  color: #FFF;
-  text-align: center;
-  
-  /* Large Button */
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25px; /* 138.889% */
-  letter-spacing: 0.18px;
+  padding-block: 15px;
+  background-color: #212121;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
   border-radius: 25px;
   cursor: pointer;
 }
@@ -591,8 +533,6 @@ ion-modal {
 .floating-text.time {
   top: 10px;
   left: 10px;
-  background-color: #212121;
-  color: #FFFF;
 }
 
 .floating-text.status {
@@ -638,7 +578,7 @@ ion-modal {
   width: 6px;
   height: 6px;
   border-radius: var(--loader, 100px);
-  background: var(--Colors-Orange, #FF9500);
+  background: var(--Colors-Green, yellow);
 
   margin-left: 5px;
   display: inline-block;
@@ -781,14 +721,14 @@ ion-modal {
 
 .bt-con {
   margin-right: auto;
-  color: var(--Schemes-On-Primary, #FFF);
+  color: var(--primary-scheme-buttons-filled, #212121);
   text-align: center;
   font-family: Poppins;
   font-size: var(--Label-Large-Size, 14px);
   font-style: normal;
   font-weight: 500;
-  line-height: var(--Label-Large-Line-Height, 20px); /* 142.857% */
-  background-color: #212121;
+  line-height: var(--Label-Large-Line-Height, 20px);
+  background-color: transparent;
   border-radius: 20px;
   border: 1px solid #212121;
 
@@ -801,88 +741,4 @@ ion-card {
   flex: 0 0 auto; /* Evita que las tarjetas se expandan verticalmente */
   border: 1px solid #CAC4D0;
   margin: 0px;
-}
-.dat-anu{
-  color: var(--M3-sys-light-on-error, #FFF);
-text-align: center;
-
-/* M3/label/small */
-font-family: Roboto;
-font-size: 11px;
-font-style: normal;
-font-weight: 500;
-line-height: 16px; /* 145.455% */
-letter-spacing: 0.5px;
-padding-inline: 10px;
-}
-
-.adv-val{
-  color: #212121;
-
-/* Body 3 [Medium] */
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 500;
-line-height: 25px; /* 166.667% */
-letter-spacing: 0.15px;
-padding-bottom: 20px;
-}
-.adv-val2{
-  color: #212121;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 22px; /* 157.143% */
-  padding-bottom: 20px;
-}
-
-.parraf2{
-  color: #212121;
-
-/* Body 3 */
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: 25px;
-letter-spacing: 0.15px;
-
-}
-.seg-info{
-  color: var(--system-surface-1-primary, #212121);
-
-/* Body 3 [Medium] */
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 500;
-line-height: 25px; /* 166.667% */
-letter-spacing: 0.15px;
-}
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
-  border-color: transparent;
-}
-.las-mas{
-  color: var(--Colors-Blue, var(--Colors-Blue, #007AFF));
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: 22px;
-text-decoration-line: underline;
-text-decoration-style: solid;
-text-decoration-skip-ink: none;
-text-decoration-thickness: auto;
-text-underline-offset: auto;
-text-underline-position: from-font;
-}
-span{
-  color: #212121;
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: 22px;
 }

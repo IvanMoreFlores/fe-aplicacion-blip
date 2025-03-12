@@ -16,7 +16,7 @@ const routes: Routes = [
 
       {
          path: 'loader-comp',
-         loadChildren: () => import('../finanzas/finanzas.module').then(m => m.FinanzasPageModule)
+         loadChildren: () => import('../loader-comp/loader-comp.module').then(m => m.LoaderCompPageModule)
       },
       {
          path: 'calendario-semanal',

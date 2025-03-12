@@ -1,0 +1,12 @@
+<div class="phone-input">
+  <span class="country-code">+51</span>
+  <ion-input
+    [value]="phoneNumber"
+    (ionInput)="onPhoneChange($event)"
+    mode="ios"
+    type="tel"
+    placeholder="Número de teléfono"
+    class="input"
+    pattern="[0-9]*">
+  </ion-input>
+</div>

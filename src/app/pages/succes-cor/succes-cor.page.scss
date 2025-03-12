@@ -1,107 +1,40 @@
-ion-header{
-    margin: 0px;
-    ion-toolbar{
-        padding-inline: 32px;
-        --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
-        background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
-    }
-    h2{
-        margin: 0px;
-        margin-top: 20%;
-        margin-bottom: 30px;
-        color: #212121;
+ion-content {
+  padding-inline: 22px;
 
-        /* Title Screens 2 */
-        font-family: Poppins;
-        font-size: 35px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 50px; /* 142.857% */
-        width: 100%;
-
-    }
-    
-}
-ion-footer{
-    margin: 0px;
-    margin-block: 40px;
-    ion-toolbar{
-        padding-inline: 32px;
-        --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
-        background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
-    }
-}
-.footer-ios ion-toolbar:last-of-type {
-    --border-width: 0px;
-}
-/* Estilos para el header */
-h1,h1,h3{
-    margin: 0px;
-}
-  .header-ios ion-toolbar:last-of-type {
-    --border-width: 0px;
-}
-ion-header {
-    --background: #ffffff !important; /* Fuerza el color blanco como fondo usando !important */
-    background-color: #FFFFFF !important; /* Aplica directamente el color blanco */
-}
-ion-content{
-    padding-inline: 22px;
-  
-    --overflow: hidden;
-  
-
-}
-.container {
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
     text-align: center;
+
+    .icon {
+      font-size: 140px;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #212121;
+      text-align: center;
+      font-family: Poppins;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 50px;
+    }
+
+    p {
+      margin-block: 40px;
+      color: #212121;
+      text-align: center;
+      font-family: "Poppins";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 30px;
+      letter-spacing: 0.18px;
+    }
   }
-  
-  .icon {
-    font-size: 140px;
-    color: #000;
-    margin-bottom: 20px;
-  }
-  
-  h1 {
-    color: #212121;
-    text-align: center;
-    
-    /* Title Screens 2 */
-    font-family: Poppins;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 50px; /* 142.857% */
-  }
-  
-  p {
-    margin-block: 40px;
-    color: #141414;
-    text-align: center;
-    padding-inline: 30px;
-    /* Body 3 */
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 25px; /* 166.667% */
-    letter-spacing: 0.15px;
-  }
-  
-  .btn-atr {
-    background-color: #000;
-    color: #fff;
-    font-weight: bold;
-    padding: 20px 20px;
-    width: 100%;
-    border: none;
-    border-radius: 30px;
-    text-align: center;
-    display: inline-block;
-  }
-  
+}

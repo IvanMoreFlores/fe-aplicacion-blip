@@ -10,6 +10,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { FormsModule } from '@angular/forms';
 
 // Registrar localización en español
 registerLocaleData(localeEs);
@@ -17,6 +18,7 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),

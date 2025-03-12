@@ -13,23 +13,7 @@
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
-        <button class="bac" id="open-modal_nuevoanu" >Atrás</button>
-        <ion-modal trigger="open-modal_nuevoanu" mode="md" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-          <ng-template>
-            <div class="block">
-              <h1 class="title-mo">¿Estás seguro que quieres salir?</h1>
-              <div class="line"></div>
-              <div class="confir">
-                <p class="confir-TEX">Recuerda que puedes crear un anuncio en cualquier momento.</p>
-                <div class="mdtn">
-                  <button routerLink="/tab-home/home" class="salir" (click)="dismissModal()">Salir</button>
-                  <button  class="continuar">Continuar</button>                 
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </ion-modal>
-
+        <button class="bac" routerLink="/adj-dt-dni">Atrás</button>
         <button  routerLink="/descripcion-del-espacio" class="nex" >Siguiente</button>
       </div>
     </footer>

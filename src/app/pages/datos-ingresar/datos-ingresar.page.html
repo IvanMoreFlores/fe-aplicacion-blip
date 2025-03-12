@@ -1,29 +1,23 @@
-
-<ion-header  mode="ios">
-  <ion-toolbar>
-    <h2 slot="start" class="title">Ingresa tu documento de identidad</h2>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="login-content">
-  <div class="login-content" >
-    
-
-      <div class="phone-input">
-        <label class="label-text" for="birthdate">Tipo de documento</label>
-        <ion-select [(ngModel)]="doc" mode="md" interface="popover" value="DNI" label-placement="floating" >
-          <ion-select-option value="DNI">DNI</ion-select-option>
-          <ion-select-option value="Pasaporte">Pasaporte</ion-select-option>
-        </ion-select>
-      </div>
-      <div class="phone-input">
-        <ion-input mode="ios" [(ngModel)]="nro" type="text" placeholder="Nro. de documento"  class="input"></ion-input>
-      </div>
-    </div>
+<header-component [withArrowLeft]="true" [route]="'/terminos-y-condiciones'"
+  (navigateTo)="handleNavigateTo($event)"></header-component>
+<ion-content>
+  <div class="container">
+    <h2>Ingresa tu documento de identidad</h2>
+    <default-select label="Documentos" [options]="documentos" [(selectedValue)]="documento"
+      (selectionChange)="onDocumentoChange($event)" [class]="'secundary-input'" [placeholder]="'DNI'">
+    </default-select>
+    <default-input [(valueInput)]="nro" [type]="'text'" [placeholder]="'Nro. de documento'" [class]="'secundary-input'"
+      [withImgRight]="false"></default-input>
+  </div>
 </ion-content>
-<ion-footer class="footer-btn">
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <default-custom-button [text]="'Siguiente'" (click)="verify()"></default-custom-button>
+  </div>
+</ion-footer>
+<!-- <ion-footer class="footer-btn">
   <div class="bnt-dow">
     <button routerLink="/datos-registro" class="bac">Atrás</button>
     <button class="nex" (click)="setDNI()">Siguiente</button>
-  </div> 
-</ion-footer>
-
+  </div>
+</ion-footer> -->

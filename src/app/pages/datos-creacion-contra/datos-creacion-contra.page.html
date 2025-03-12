@@ -1,14 +1,21 @@
-<ion-content [fullscreen]="true" scroll="true" keyboardOffset="0">
-  
-  <div class="wrapper">
-    <div class="login">
-      <h1>
-        Reestablece tu
-contraseña
-      </h1>
+<header-component [withArrowLeft]="true" [route]="'/terminos-y-condiciones'"
+  (navigateTo)="handleNavigateTo($event)"></header-component>
+<ion-content >
 
 
-        <div class="input-bar">
+    <div class="container">
+      <h2>
+        Crea tu contraseña
+      </h2>
+      <p>Contraseña</p>
+      <default-input [(valueInput)]="password" (valueInputChange)="checkInputs()" [type]="'password'"
+      [placeholder]="'***'" [class]="'secundary-input'" [imageUrlRigth]="'assets/images/eye.svg'"
+      [withImgRight]="true" [classImgRight]="'eye-email'"></default-input>
+      <p>Confirmar contraseña</p>
+      <default-input [(valueInput)]="passwordConfirm" (valueInputChange)="checkInputs()" [type]="'password'"
+      [placeholder]="'***'" [class]="'secundary-input'" [imageUrlRigth]="'assets/images/eye.svg'"
+      [withImgRight]="true" [classImgRight]="'eye-email'"></default-input>
+        <!-- <div class="input-bar">
           <p class="label-text">Contraseña</p>
           <ion-input [type]="passwordType"placeholder="Ingresa tu contraseña" maxlength="16"  [(ngModel)]="password"></ion-input>
           <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
@@ -16,17 +23,24 @@ contraseña
 
         <div class="input-bar">
           <p class="label-text">Confirmar Contraseña</p>
-          <ion-input [type]="passwordType2"placeholder="Confirma tu contraseña" maxlength="16" [(ngModel)]="password2"></ion-input> <!--2do  passwordType2 ,ngModal -->
-          <ion-icon [name]="passwordIcon2" slot="end" (click)="togglePasswordVisibility2()"></ion-icon>               <!--2do  passwordIcon2 ,togglePasswordVisibi -->
-        </div>
+          <ion-input [type]="passwordType2"placeholder="Confirma tu contraseña" maxlength="16" [(ngModel)]="password2"></ion-input>
+          <ion-icon [name]="passwordIcon2" slot="end" (click)="togglePasswordVisibility2()"></ion-icon>
+        </div> -->
     </div>
-  </div>
+
 </ion-content>
 <ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <default-custom-button [text]="'Siguiente'" [disabled]="!inputsFilled"
+      (click)="goToDisplayPage()"></default-custom-button>
+  </div>
+</ion-footer>
+<app-loader *ngIf="isLoading"></app-loader>
+<!-- <ion-footer class="footer-btn" mode="md">
   <div class="bnt-dow">
     <button (click)="return()" class="bac" >Atrás</button>
     <button (click)="onCreate()"    routerLink="/cre-con"  class="nex">Siguiente</button>
   </div>
 </ion-footer>
-
+ -->
 

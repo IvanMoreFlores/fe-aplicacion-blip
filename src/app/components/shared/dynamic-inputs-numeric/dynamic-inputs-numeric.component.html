@@ -1,0 +1,5 @@
+<div class="code-inputs">
+  <ion-input *ngFor="let input of inputs; let i = index" [id]="'input-' + i" type="tel" maxlength="1"
+    inputmode="numeric" (ionInput)="onInputChange($event, i)" (keyup)="onKeyUp($event, i)">
+  </ion-input>
+</div>

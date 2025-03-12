@@ -1,0 +1,33 @@
+.content {
+  position: fixed;
+  background-color: #79FFAF;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 9998;
+}
+
+img {
+  width: 100px;
+  /* Ajustar el tamaño de la imagen del loader */
+  height: 100px;
+  animation: rotate 2s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+    /* Comienza sin rotación */
+  }
+
+  to {
+    transform: rotate(360deg);
+    /* Termina con una rotación completa */
+  }
+}

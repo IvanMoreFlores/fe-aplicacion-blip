@@ -35,8 +35,8 @@ export class HomePage implements OnInit {
   horasFormateadas: { [key: string]: string } = {};
   data_apagon: any;
   apagon_val: boolean = false;
-  isinfoModalOpen = false; 
-  url_new: string = '/descripcion-del-estacionamiento';
+
+  url_new: string = '/nuevo-anu-pone-alq';
   userData: any;
   slideOpts = {
     initialSlide: 0,
@@ -147,16 +147,12 @@ export class HomePage implements OnInit {
     }
 
   }
-  openinfoModal() {
-    this.isinfoModalOpen = true;
-  }
+
   // Abre el modal del menú
   openMenuModal() {
     this.isMenuModalOpen = true;
   }
-  closeinfoModal() {
-    this.isinfoModalOpen = false;
-  }
+
   // Cierra el modal del menú
   dismissMenuModal() {
     this.isMenuModalOpen = false;
@@ -217,13 +213,7 @@ export class HomePage implements OnInit {
     // Aquí no cambies el estado del toggle, así se mantendrá activado
     this.dismissToggleModal(); // Cierra el modal del toggle
   }
-  timeout() {
-    this.closeinfoModal(); // Cierra el modal del toggle
-  }
-  // Maneja la cancelación de la acción
-  confirminfo() {
-    this.closeinfoModal(); // Cierra el modal del toggle
-  }
+
   // Maneja la cancelación de la acción
   cancelAction() {
     // Restaurar el estado del toggle al valor antes de abrir el modal

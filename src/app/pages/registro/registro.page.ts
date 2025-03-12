@@ -5,26 +5,35 @@ import { StorageService } from '../../services/storage.service';
 import { SmsService } from '../../services/sms.service';
 import { ApiService } from 'src/app/services/api.service';
 import { Keyboard } from '@capacitor/keyboard';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
+import { ApiLoginService } from 'src/app/services/api-login.service';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit, OnDestroy {
-  buttonText: string = 'Reenviar código';
-  minutes: number = 1;
-  seconds: number = 0;
+  buttonTextTimer: string = 'reenviar código';
+  minutes: number = 0;
+  seconds: number = 59;
   interval: any;
   isExpired: boolean = false;
-  input1: string = '';
-  input2: string = '';
-  input3: string = '';
-  input4: string = '';
+  inputs: string[] = ['', '', '', '']; // Inicializar los inputs
   inputsFilled: boolean = false;
   data: any;
   number: any;
-
+  code: string = '';
+  message: string = '';
+  isDisabled: boolean = true;
+  buttonClassTimer: string = 'terciary-button-w-s';
+  buttonClassOptions: string = 'primary-button-w-s';
+  buttonTextOptions: string = 'más opciones de inicio';
+  buttonWithTimeTimer: boolean = true;
+  buttonTextNext: string = 'Siguiente';
+  buttonTextPassword: string = 'Ingresa con contraseña';
+  buttonClassPassword: string = 'secondary-button';
+  isLoading: boolean = false;
 
   constructor(
     private router: Router,
@@ -34,15 +43,23 @@ export class RegistroPage implements OnInit, OnDestroy {
     private sms: SmsService,
     private api: ApiService,
     private modalcontroller: ModalController,
+    private toastController: ToastController,
+    private apiLoginService: ApiLoginService
   ) {}
 
   ngOnInit() {
-    this.setNumber();
+    this.setValues();
     this.startTimer();
     this.initializeKeyboardListeners();
   }
+
   dismissModal() {
-    this.modalcontroller.dismiss(null, 'modal-opc-inicio')
+    this.modalcontroller.dismiss(null, 'modal-opc-inicio-registro');
+  }
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
   ngOnDestroy() {
     if (this.interval) {
@@ -51,9 +68,11 @@ export class RegistroPage implements OnInit, OnDestroy {
     Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
   }
 
-  setNumber() {
+  setValues() {
     this.route.queryParams.subscribe((params) => {
-      this.number = params['PHONE2'];
+      this.number = params['phone'];
+      this.code = params['code'];
+      this.message = params['message'];
     });
   }
 
@@ -67,12 +86,11 @@ export class RegistroPage implements OnInit, OnDestroy {
         footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
       }
     });
-    
 
     Keyboard.addListener('keyboardWillHide', () => {
       const footer = document.querySelector('.footer-btn') as HTMLElement;
       const content = document.querySelector('ion-content') as HTMLElement;
-    
+
       if (footer) {
         footer.style.bottom = '0px'; // Restaura el footer
       }
@@ -80,35 +98,13 @@ export class RegistroPage implements OnInit, OnDestroy {
         content.style.paddingBottom = '0px'; // Restaura el padding
       }
     });
-    
   }
 
-  // Métodos para el temporizador y verificación de código (sin cambios)
-  checkInputs() {
-    this.inputsFilled = this.input1 && this.input2 && this.input3 && this.input4 ? true : false;
-  }
-
-  async reenviarCodigo() {
-    let token = await this.storageService.getItem('token');
-
-    if (this.isExpired) {
-      this.route.queryParams.subscribe((params) => {
-        let phone = '+51' + params['PHONE2'];
-        let code = Math.floor(1000 + Math.random() * 9000);
-        let body = 'Blip informa: el codigo solicitado es ' + code;
-        this.saveDataSms(code);
-
-        this.sms.sendSms(phone, body, token).subscribe(
-          (response: any) => {
-            console.log(response);
-          },
-          (error: any) => {
-            console.error('Error al enviar el mensaje:', error);
-          }
-        );
-      });
-
-      this.resetTimer();
+  handleValoresChange(valores: string[]) {
+    this.inputs = valores;
+    this.inputsFilled = false;
+    if (valores.length === 4) {
+      this.inputsFilled = valores.every((input) => input !== '');
     }
   }
 
@@ -123,8 +119,11 @@ export class RegistroPage implements OnInit, OnDestroy {
         } else {
           clearInterval(this.interval);
           this.interval = null;
-          this.buttonText = 'Reenviar código';
+          this.buttonTextTimer = 'reenviar código';
           this.isExpired = true;
+          this.isDisabled = false;
+          this.buttonClassTimer = 'cuartary-button-w-s';
+          this.buttonWithTimeTimer = false;
         }
       }
     }, 1000);
@@ -133,65 +132,127 @@ export class RegistroPage implements OnInit, OnDestroy {
   resetTimer() {
     this.minutes = 1;
     this.seconds = 0;
-    this.buttonText = 'Reenviar código';
+    this.buttonTextTimer = 'reenviar código';
     this.isExpired = false;
+    this.isDisabled = true;
+    this.buttonClassTimer = 'terciary-button-w-s';
+    this.buttonWithTimeTimer = true;
     this.startTimer();
   }
 
-  async saveDataSms(code: any) {
-    await this.storageService.removeItem('code-sms');
-    await this.storageService.setItem('code-sms', code);
-  }
-
   async verifyOTP() {
-    const code_front = parseInt(this.input1 + '' + this.input2 + '' + this.input3 + '' + this.input4);
-    console.log(code_front);
-    const original_code = await this.storageService.getItem('code-sms');
-    console.log(original_code);
+    this.isLoading = true;
+    const code_front = this.inputs.join('');
     const token = await this.storageService.getItem('token');
-    if (code_front === original_code || code_front === 1234) {
-      this.api.getValidate(token).subscribe(
-        async (response: any) => {
-          console.log(response);
-          this.data = response.data;
-          const validate = this.data.isValidate;
-          if (validate === true) {
-            const id_user: number = await this.getUserData(token);
-            const token_main = this.jwtService.generateTokenMain('TELEFONO', id_user, true);
-            await this.storageService.removeItem('token');
-            await this.storageService.setItem('token', token_main);
+    if (code_front === this.code) {
+      this.apiLoginService.getTokenSession(token).subscribe({
+        next: async (response) => {
+          const { token, refreshToken } = response;
+          console.log("🚀 ~ RegistroPage ~ next: ~ token:", token)
+
+          await this.saveDataStorage('token', token);
+          await this.saveDataStorage('refreshToken', refreshToken);
+          const user = await this.getUserData(token)
+            .then((response) => {
+              console.log("🚀 ~ RegistroPage ~ .then ~ response:", response)
+              return response;
+            })
+            .catch((error) => {
+              console.log("🚀 ~ RegistroPage ~ next: ~ error:", error)
+              this.showToast('Error al obtener el autorizador');
+            });
+          if (user) {
+            await this.saveDataStorage('user', user);
+            this.isLoading = false;
             this.router.navigate(['/tab-home/home']);
-            console.log('validate yes');
-          } else {
-            this.router.navigate(['/terminos-y-condiciones']);
-            console.log('validate no');
           }
         },
-        (error: any) => {
-          console.error(error.message);
-          console.error('Error al consumir el servicio:', error);
-        }
-      );
+        error: (error) => {
+          console.error(error);
+          this.isLoading = false;
+          this.showToast('Error al obtener el autorizador');
+        },
+      });
     } else {
-      alert('codigo incorrecto');
+      this.isLoading = false;
+      this.showToast('Error al codigo es incorrecto');
     }
   }
 
-  async getUserData(token: string): Promise<number> {
+  async getUserData(token: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.api.getInformation(token).subscribe(
-        (response: any) => {
+      this.api.getInformation(token).subscribe({
+        next: (response: any) => {
           this.data = response.data;
-          this.storageService.removeItem('user');
-          this.storageService.setItem('user', this.data);
-          const id: number = Number(this.data.usu_id);
-          resolve(id);
+          resolve(this.data);
         },
-        (error: any) => {
+        error: (error: any) => {
           console.error('Error al consumir el servicio:', error);
           reject(error.message);
-        }
-      );
+        },
+      });
     });
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
+  }
+
+  buildSMS(phoneToSend: string) {
+    const phone = `+51${phoneToSend}`;
+    const code = Math.floor(1000 + Math.random() * 9000);
+    const messageSMS = 'Blip informa: el codigo solicitado es ' + code;
+    return {
+      phone,
+      messageSMS,
+      code,
+    };
+  }
+
+  async sendSMS() {
+    this.isLoading = true;
+    const tokenTemp = await this.jwtService.generateTokenTempHost({
+      usu_nrotel: this.number,
+    });
+    const { phone, messageSMS, code } = this.buildSMS(this.number);
+    this.code = code.toString();
+    this.apiLoginService
+      .getTokenTemp(tokenTemp, { phone: this.number })
+      .subscribe({
+        next: async (response) => {
+          const { token_temp } = response;
+          await this.saveDataStorage('token', token_temp);
+          this.apiLoginService
+            .sendSMS(token_temp, { to: phone, text: messageSMS })
+            .subscribe({
+              next: (response) => {
+                const { message } = response;
+                console.log('message', message);
+                this.isLoading = false;
+                this.resetTimer();
+                this.showToast('Mensaje enviado correctamente');
+              },
+              error: (error) => {
+                this.isLoading = false;
+                this.showToast('Error al enviar el mensaje');
+                console.error('Error al enviar el mensaje:', error);
+              },
+            });
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.showToast('Error al obtener el autorizador');
+          console.error('Error al obtener el token temporal:', error);
+        },
+      });
+  }
+  async saveDataStorage(index: string, data: any) {
+    await this.storageService.removeItem(index);
+    await this.storageService.setItem(index, data);
   }
 }
