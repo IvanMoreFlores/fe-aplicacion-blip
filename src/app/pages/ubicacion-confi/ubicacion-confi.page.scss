@@ -1,0 +1,104 @@
+.container{
+    background-color: #79FFAF; 
+    display: flex;
+    justify-content: center;
+    
+    height: 100%;
+    
+}
+.content{
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    width: 432px;
+    margin-top: 50px;
+    height: 882px;
+    display: block;
+    background-color: #FFFFFF;
+    padding: 20px;
+    
+}
+.inicio {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 20px;
+}
+.nav-arrow-btn{
+    margin-right: 20px; /* Espacio entre la imagen y el título */
+}
+.title {
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+}
+
+// --------------------TOGGLE------------------------------
+.ma{
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+ion-item::part(native) {
+    background: #FFFF;
+    color: #212121;
+    font-size: 19px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    padding: 0px;
+  }
+  
+  ion-toggle {
+    --track-background: #ddd;
+    --track-background-checked: #79FFAF; 
+  
+    --handle-background: #ffff;
+    --handle-background-checked: #ffff;
+  
+    --handle-width: 25px;
+    --handle-height: 25px;
+    --handle-max-height: auto;
+    --handle-spacing: 5px;
+  
+    --handle-border-radius: 50%;
+    --handle-box-shadow: none;
+  }
+  
+  ion-toggle::part(track) {
+    height: 29px;
+    width: 53px;
+  
+    /* Required for iOS handle to overflow the height of the track */
+    overflow: visible;
+    
+  }
+  
+  
+  p{
+    font-family: Poppins;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 18.5px;
+    color: #6D6D6D;
+    letter-spacing: 0.25%;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  
+  .block {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  ion-modal {
+    --height: auto;
+  }

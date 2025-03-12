@@ -1,0 +1,114 @@
+ion-content {
+    --background: #ffffff;
+  }
+  
+  /* Información del host */
+  .host-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .host-details h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .host-details h3 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+    margin: 0;
+  }
+  
+  /* Detalles de la reserva */
+  .reservation-details {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+  
+    strong {
+      font-weight: bold;
+      color: #000;
+    }
+  
+    span {
+      color: #000;
+    }
+  }
+  
+  /* Botón de recibo */
+  .recibo-button {
+    --background: #333;
+    --color: #fff;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  
+  /* Tarjeta del mapa */
+  .map-card {
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+    .map-box {
+      background-color: #f0f0f0;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    ion-card-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+  
+      ion-icon {
+        font-size: 20px;
+        color: #333;
+      }
+  
+      .parking-name {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0;
+      }
+  
+      .parking-address {
+        font-size: 12px;
+        color: #666;
+        margin: 0;
+      }
+    }
+  }
+  
+  /* Sección de ayuda */
+  .help-section {
+    margin-top: 16px;
+  
+    h2 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+  
+    ion-item {
+      --padding-start: 0;
+      font-size: 14px;
+  
+      ion-icon {
+        font-size: 20px;
+        color: #666;
+      }
+    }
+  }
+  

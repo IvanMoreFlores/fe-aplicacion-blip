@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recibo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Fondo del agradecimiento con fecha encima -->
+  <div class="agradecimiento-container">
+    <p class="fecha">5 de Febrero, 2024</p>
+    <img src="/assets/images/back-recibo.svg" alt="Fondo de agradecimiento" />
+  </div>
+
+  <!-- Total -->
+  <div class="total-container">
+    <p class="total-label">Total</p>
+    <p class="total-value">PEN 10.50</p>
+  </div>
+  
+
+  <!-- Detalles del recibo -->
+  <ion-grid class="detalles-recibo">
+    <ion-row style="border-block: 1px solid #E3D8D8;">
+      <ion-col size="8">Tarifa de parqueo x hora</ion-col>
+      <ion-col size="4" class="text-right">PEN 5</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8">Reserva x 2h</ion-col>
+      <ion-col size="4" class="text-right">PEN 10</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8"><strong>Subtotal</strong></ion-col>
+      <ion-col size="4" class="text-right"><strong>PEN 10</strong></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8">Tarifa de servicio</ion-col>
+      <ion-col size="4" class="text-right">PEN 0.50</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="metodo-pago">
+    <h3>Método de Pago</h3>
+    <div class="pago-info">
+      <div class="logo-container">
+        <img src="/assets/images/vise-reb.svg" alt="Visa" />
+      </div>
+      <div class="descripcion-fecha">
+        <p class="descripcion-pago">Visa --- 3630</p>
+        <p class="fecha-pago">1/5/24 3:39 PM</p>
+      </div>
+      <p class="monto-pago">PEN 10.50</p>
+    </div>
+  </div>
+  
+  
+
+  <!-- Opciones de recibo -->
+  <ion-list>
+    <ion-item button>
+      <ion-icon slot="start" name="download-outline"></ion-icon>
+      <ion-label>Descargar PDF</ion-label>
+    </ion-item>
+    <ion-item button>
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-label>Enviar a correo</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

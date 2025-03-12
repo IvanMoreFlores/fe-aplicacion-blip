@@ -1,0 +1,24 @@
+.button-container {
+   padding: 16px;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   background-color: #ffffff;
+   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+ ion-content {
+   --background: #f8f8f8; /* Fondo claro para todo el contenido */
+ }
+ 
+ ion-item {
+   background: #ffffff;
+   border-radius: 8px;
+   margin: 8px 16px;
+ }
+ 
+ ion-button {
+   border-radius: 20px;
+ }
+ 

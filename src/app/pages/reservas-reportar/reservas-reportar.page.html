@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Reportar incidente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Encabezado -->
+  <h2>En Blip nos importa tu seguridad</h2>
+  <p class="description">
+    Tu comodidad y seguridad son nuestra prioridad. Si tienes problemas al reservar un espacio de estacionamiento, desde inconvenientes menores hasta situaciones graves, estamos aquí para ayudarte.
+  </p>
+
+  <!-- Campo para el reporte -->
+  <ion-textarea
+    placeholder="Ingresa tu reporte"
+    maxlength="500"
+    [(ngModel)]="reporte"
+    rows="6"
+    class="reporte-input"
+  ></ion-textarea>
+  <div class="char-count">{{ reporte.length }}/500</div>
+
+  <!-- Adjuntar fotos -->
+  <h3>Adjunta fotos del incidente</h3>
+  <div class="photo-container">
+    <div *ngIf="!imagenCargada" class="upload-box" (click)="seleccionarImagen()">
+      <ion-icon name="add-outline"></ion-icon>
+    </div>
+    <div *ngIf="imagenCargada" class="image-preview">
+      <img [src]="imagenCargada" alt="Imagen cargada" />
+    </div>
+  </div>
+
+  <!-- Botón de enviar reporte -->
+  <ion-button expand="block" shape="round" color="dark" (click)="enviarReporte()">
+    Enviar Reporte
+    <ion-icon slot="end" name="arrow-forward"></ion-icon>
+  </ion-button>
+</ion-content>

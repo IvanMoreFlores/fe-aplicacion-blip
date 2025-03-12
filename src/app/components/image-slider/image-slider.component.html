@@ -1,0 +1,13 @@
+<swiper
+  
+  [slidesPerView]="1"
+  [spaceBetween]="0"
+  [pagination]="{ clickable: true }" id="custom-pagination"
+  class="mySwiper"
+>
+  <ng-container *ngFor="let imageUrl of imageUrls">
+    <ng-template swiperSlide>
+      <img [src]="imageUrl" alt="Imagen" />
+    </ng-template>
+  </ng-container>
+</swiper>

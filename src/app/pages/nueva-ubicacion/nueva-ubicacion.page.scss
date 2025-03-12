@@ -1,0 +1,126 @@
+.container{
+    background-color: #79FFAF; 
+    display: flex;
+    justify-content: center;
+    
+    height: 100%;
+    
+ }
+ .content{
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    width: 432px;
+    margin-top: 50px;
+    height: 882px;
+    display: block;
+    background-color: #FFFFFF;
+    padding: 20px;
+    
+ }
+ .inicio {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 20px;
+ }
+ .nav-arrow-btn{
+    margin-right: 0px; /* Espacio entre la imagen y el título */
+ }
+ .box{
+	width: 80%;
+	height: 56px;
+	background-color: #F5F5F5;
+	border-radius: 30px;
+	display: flex;
+	align-items: center;
+	padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #212121;
+    color: #212121;
+    
+ }
+ .box > i {
+	font-size: 20px;
+	color: #8C8B8E;
+ }
+ .box > input{
+	flex: 1;
+	height: 40px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	padding-left: 10px;
+    font-family: "Poppins", sans-serif;
+    background-color: #F5F5F5;
+ }
+ .mi-boton{
+    background-color: transparent;
+    width: 100%;
+ }
+ .padre{
+    background-color: transparent;
+    display: flex;
+                          /*justify-content: space-between;*/
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;  /*Relleno borde inferior-margin */
+    padding-inline: 20px; /*Relleno a ambos bordes-padding*/
+    height: 42px;    /*Altura*/
+    width: 95%;      /*95% de la clase mi-boton*/
+ }
+ .hijo{
+    display: flex-inline;
+                          /*justify-content: center;*/
+                          /*alineado al centro*/
+    margin: 0;
+ }
+ .img-class-p{
+    display: flex;
+    width: 42px;
+    height: 42px;
+    padding: 11.455px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background-color: rgba(121, 255, 175, 0.30);;
+    margin-right: 10px;
+ }
+
+ .img-class-p2{
+    display: flex;
+    width: 42px;
+    height: 42px;
+    padding: 11.455px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background-color: #ffffff;
+    margin-right: 10px;
+ }
+ .t1{
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    margin:0;
+ }
+ .t2{
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin:0;
+ }
+ .c1{
+    margin-left: 10px;
+    font-size: 15px;
+    color: #676767;
+    align-items: left;
+    text-align: left;
+    margin:0;
+ }
+ .linea2-delgado {
+    border: 1px solid rgba(220, 206, 206, 0.90);
+    margin-left: 18%;
+    
+ }

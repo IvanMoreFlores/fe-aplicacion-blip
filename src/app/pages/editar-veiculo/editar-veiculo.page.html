@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons routerLink="/tab-home/perfil" slot="start">
+      <img src="/assets/images/left-flec.svg" alt="">
+    </ion-buttons>
+    <ion-title>Editar vehículo</ion-title>
+    <ion-button id="tash-modal" slot="end">
+      <img src="/assets/images/tash-blac.svg" alt="">
+    </ion-button>
+    <ion-modal mode="md" trigger="tash-modal"[initialBreakpoint]="1" [breakpoints]="[0, 1]">
+      <ng-template>
+        <div class="cont-modal">
+          <div class="head-mod">
+            <h1>¿Estas seguro que deseas 
+              eliminar este vehículo?</h1>
+          </div>
+          <div class="cuerp-mod">
+            <button class="btn-eli">Eliminar</button>
+            <button class="btn-can">Cancelar</button>
+          </div>
+        </div>
+      </ng-template>
+    </ion-modal>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="login-content">
+  <div class="login-content" >
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Tipo de vehículo</label>
+      <ion-select mode="md" interface="popover" value="Masculino" label-placement="floating" >
+        <ion-select-option value="carro">Carro particular</ion-select-option>
+        <ion-select-option value="moto">Moto</ion-select-option>
+        <ion-select-option value="camioneta">Camioneta</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Seleccionar marca</label>
+      <ion-select mode="md" interface="popover" value="Masculino" label-placement="floating" >
+        <ion-select-option value="toyota">Toyota</ion-select-option>
+        <ion-select-option value="nissan">Nissan</ion-select-option>
+        <ion-select-option value="ford">Ford</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" for="birthdate">Seleccionar modelo</label>
+      <ion-select mode="md" interface="popover" value="Masculino" label-placement="floating" >
+        <ion-select-option value="fortuner">Fortuner</ion-select-option>
+        <ion-select-option value="hilux">Hilux</ion-select-option>
+        <ion-select-option value="rav4">RAV4</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="phone-input">
+      <label class="label-text" >Número de placa</label>
+      <ion-input mode="ios" type="text" placeholder="Ej. ABC123"  class="input"></ion-input>
+    </div>
+  </div>
+  <div class="btn-container">
+    <ion-button expand="block" class="custom-button">Guardar Vehículo</ion-button>
+  </div>
+</ion-content>
+<!-- <ion-content class="ion-padding">
+
+
+    <ion-item class="custom-item">
+      <ion-label position="floating">Tipo de vehículo</ion-label>
+      <ion-select placeholder="Seleccionar">
+        <ion-select-option value="carro">Carro particular</ion-select-option>
+        <ion-select-option value="moto">Moto</ion-select-option>
+        <ion-select-option value="camioneta">Camioneta</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item class="custom-item">
+      <ion-label position="floating">Seleccionar marca</ion-label>
+      <ion-select placeholder="Seleccionar">
+        <ion-select-option value="toyota">Toyota</ion-select-option>
+        <ion-select-option value="nissan">Nissan</ion-select-option>
+        <ion-select-option value="ford">Ford</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item class="custom-item">
+      <ion-label position="floating">Seleccionar modelo</ion-label>
+      <ion-select placeholder="Seleccionar">
+        <ion-select-option value="fortuner">Fortuner</ion-select-option>
+        <ion-select-option value="hilux">Hilux</ion-select-option>
+        <ion-select-option value="rav4">RAV4</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item class="custom-item">
+      <ion-label position="floating">Número de placa</ion-label>
+      <ion-input type="text" placeholder="Ej. ABC123"></ion-input>
+    </ion-item>
+
+    <div class="btn-container">
+      <ion-button expand="block" class="custom-button">Guardar Vehículo</ion-button>
+    </div>
+  </form>
+</ion-content> -->

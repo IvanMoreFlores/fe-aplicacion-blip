@@ -1,0 +1,91 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <div class="centro">
+            <button class="vector-mensaje">
+              <img src="/assets/images/vector-2.png" alt="Logo" class="navbar-logo" routerLink='/tab-home/perfil'>
+            </button>
+            <div class="text-b">Notificaciones</div>
+          </div>
+          <div class="botones">
+            <button (click)="mostrarTexto('Texto del botón 1')" [class.activo]="textoMostrado === 'Texto del botón 1'" class="boton-todas activo">Todas</button>
+            <button (click)="mostrarTexto('Texto del botón 2')" [class.activo]="textoMostrado === 'Texto del botón 2'" class="boton-programados">Mi Actividad</button>
+          </div>
+          <div class="texto-mostrado">
+            <!-- Contenido de notificaciones-not para el botón 1 -->
+            <div *ngIf="textoMostrado === 'Texto del botón 1'">
+              <div class="card">
+                <div class="row no-gutters">
+                  <div class="not">
+                    <div class="col-md-4">
+                      <img src="/assets/images/img-blip.png" class="img-blip" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-ty">
+                        <h5 class="card-title">Blip</h5>
+                        <p class="card-text">¡Gracias por registrarte con nosotros! Comienza tu experiencia y explora todas las funciones que ofrece nuestra plataforma.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="row no-gutters">
+                  <div class="not-1">
+                    <div class="col-md-4">
+                      <img src="/assets/images/icon.png" class="img-icon" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-ty">
+                        <h5 class="card-title">Camila Costa</h5>
+                        <p class="card-text">Realizó una contraoferta de de S/. 300 como abonado en uno de tus publicaciones: Estacionamiento 1</p>
+                        <div class="cont">
+                          <a class="enlace" href="">Ver oferta </a>
+                          <img class="vector" src="/assets/images/vector1.png" alt="">
+                        </div>
+                        <div class="boton-1">
+                          <button class="aceptar" routerLink="/notificaciones-not">Aceptar</button>
+                          <button class="declinar">Declinar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Contenido de notificaciones-not para el botón 2 -->
+            <div *ngIf="textoMostrado === 'Texto del botón 2'">
+              <div class="card">
+                <div class="row no-gutters">
+                  <div class="not-2">
+                    <div class="col-md-4">
+                      <img src="/assets/images/icon.png" class="img-icon" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-ty">
+                        <h5 class="card-title">Camila Costa</h5>
+                        <p class="card-text">Realizó una contraoferta de de S/. 300 como abonado en uno de tus publicaciones: Estacionamiento 1</p>
+                        <div class="cont">
+                          <a class="enlace" href="">Ver oferta </a>
+                          <img class="vector" src="/assets/images/vector1.png" alt="">
+                        </div>
+                        <div class="boton-1">
+                          <button class="aceptar">Aceptar</button>
+                          <button class="declinar">Declinar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

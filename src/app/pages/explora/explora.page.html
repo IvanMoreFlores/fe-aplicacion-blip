@@ -1,0 +1,516 @@
+<ion-content>
+  <!-- Barra de búsqueda y mapa -->
+  <div class="map-container">
+    <ion-searchbar placeholder="¿Dónde te gustaría estacionar?" class="searchbar"></ion-searchbar>
+    <div class="map-placeholder">
+      <!-- Espacio para el mapa con marcadores -->
+      <p>Mapa aquí</p>
+    </div>
+    <!-- Botón flotante -->
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="toggleView()">
+        <ion-icon [name]="isSettingsActive ? 'close-outline' : 'settings-outline'"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    
+  </div>
+
+  <!-- Modal Personalizado -->
+  <ion-modal 
+    mode="md"
+    #modal
+    [isOpen]="isModalOpen"
+    [initialBreakpoint]="0.5"
+    [breakpoints]="[0.25, 0.5]"
+    [backdropDismiss]="false"
+    [backdropBreakpoint]="0.5"
+    class="custom-modal"
+  >
+    <ng-template>
+        <div class="cards-container">
+          <div class="cont-home">
+            <div class="section">
+              <div class="section-content">
+                <!-- Tarjeta con Efecto Ripple y Diseño 100% -->
+                <div class="ion-activatable ripple-parent full-width-card-wrapper">
+                  <ion-card mode="md" class="full-width-card">
+                    <ion-card-content>
+                      <div class="card-content">
+                        <!-- Imagen (Slider opcional) -->
+                        <div class="image-slider swiper-container">
+                          <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                            </div>
+                          </div>
+                          <!-- Paginación dentro de la imagen -->
+                          <div class="swiper-pagination"></div>
+                        </div>
+              
+                        <!-- Detalles -->
+                        <div class="text-details">
+                          <h3>Nombre de Parqueo</h3>
+                          <div class="cont-pres">
+                            <img src="/assets/images/din-blac.svg" alt="">
+                            <h1>s/8.50 <span>h/f</span></h1>
+                            <h1>a 200m</h1>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/ubi-blac.svg" alt="">
+                            <h3>Calle Los Anades 155</h3>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/home/aut-line.svg" alt="">
+                            <img src="/assets/images/home/cam-line.svg" alt="">
+                            <img src="/assets/images/home/bici-line.svg" alt="">
+                            <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                            <h1>10 am - 7 pm</h1>
+                          </div>
+                        </div>
+                      </div>
+                    </ion-card-content>
+                  </ion-card>
+                  <!-- Efecto Ripple -->
+                  <ion-ripple-effect></ion-ripple-effect>
+                </div>
+                <div class="ion-activatable ripple-parent full-width-card-wrapper">
+                  <ion-card mode="md" class="full-width-card">
+                    <ion-card-content>
+                      <div class="card-content">
+                        <!-- Imagen (Slider opcional) -->
+                        <div class="image-slider swiper-container">
+                          <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                            </div>
+                          </div>
+                          <!-- Paginación dentro de la imagen -->
+                          <div class="swiper-pagination"></div>
+                        </div>
+              
+                        <!-- Detalles -->
+                        <div class="text-details">
+                          <h3>Nombre de Parqueo</h3>
+                          <div class="cont-pres">
+                            <img src="/assets/images/din-blac.svg" alt="">
+                            <h1>s/8.50 <span>h/f</span></h1>
+                            <h1>a 200m</h1>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/ubi-blac.svg" alt="">
+                            <h3>Calle Los Anades 155</h3>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/home/aut-line.svg" alt="">
+                            <img src="/assets/images/home/cam-line.svg" alt="">
+                            <img src="/assets/images/home/bici-line.svg" alt="">
+                            <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                            <h1>10 am - 7 pm</h1>
+                          </div>
+                        </div>
+                      </div>
+                    </ion-card-content>
+                  </ion-card>
+                  <!-- Efecto Ripple -->
+                  <ion-ripple-effect></ion-ripple-effect>
+                </div>
+                <div class="ion-activatable ripple-parent full-width-card-wrapper">
+                  <ion-card mode="md" class="full-width-card">
+                    <ion-card-content>
+                      <div class="card-content">
+                        <!-- Imagen (Slider opcional) -->
+                        <div class="image-slider swiper-container">
+                          <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                            </div>
+                          </div>
+                          <!-- Paginación dentro de la imagen -->
+                          <div class="swiper-pagination"></div>
+                        </div>
+              
+                        <!-- Detalles -->
+                        <div class="text-details">
+                          <h3>Nombre de Parqueo</h3>
+                          <div class="cont-pres">
+                            <img src="/assets/images/din-blac.svg" alt="">
+                            <h1>s/8.50 <span>h/f</span></h1>
+                            <h1>a 200m</h1>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/ubi-blac.svg" alt="">
+                            <h3>Calle Los Anades 155</h3>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/home/aut-line.svg" alt="">
+                            <img src="/assets/images/home/cam-line.svg" alt="">
+                            <img src="/assets/images/home/bici-line.svg" alt="">
+                            <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                            <h1>10 am - 7 pm</h1>
+                          </div>
+                        </div>
+                      </div>
+                    </ion-card-content>
+                  </ion-card>
+                  <!-- Efecto Ripple -->
+                  <ion-ripple-effect></ion-ripple-effect>
+                </div>
+                <div class="ion-activatable ripple-parent full-width-card-wrapper">
+                  <ion-card mode="md" class="full-width-card">
+                    <ion-card-content>
+                      <div class="card-content">
+                        <!-- Imagen (Slider opcional) -->
+                        <div class="image-slider swiper-container">
+                          <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                              <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                            </div>
+                          </div>
+                          <!-- Paginación dentro de la imagen -->
+                          <div class="swiper-pagination"></div>
+                        </div>
+              
+                        <!-- Detalles -->
+                        <div class="text-details">
+                          <h3>Nombre de Parqueo</h3>
+                          <div class="cont-pres">
+                            <img src="/assets/images/din-blac.svg" alt="">
+                            <h1>s/8.50 <span>h/f</span></h1>
+                            <h1>a 200m</h1>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/ubi-blac.svg" alt="">
+                            <h3>Calle Los Anades 155</h3>
+                          </div>
+                          <div class="cont-pres">
+                            <img src="/assets/images/home/aut-line.svg" alt="">
+                            <img src="/assets/images/home/cam-line.svg" alt="">
+                            <img src="/assets/images/home/bici-line.svg" alt="">
+                            <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                            <h1>10 am - 7 pm</h1>
+                          </div>
+                        </div>
+                      </div>
+                    </ion-card-content>
+                  </ion-card>
+                  <!-- Efecto Ripple -->
+                  <ion-ripple-effect></ion-ripple-effect>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Footer Personalizado -->
+  <div *ngIf="isFooterVisible" class="footer-container">
+    <div class="cards-container">
+      <div class="cont-home">
+        <div class="section">
+        <div class="section-content">
+          <!-- Tarjeta con Efecto Ripple y Diseño 100% -->
+          <div class="ion-activatable ripple-parent full-width-card-wrapper">
+            <ion-card mode="md" class="full-width-card">
+              <ion-card-content>
+                <div class="card-content">
+                  <!-- Imagen (Slider opcional) -->
+                  <div class="image-slider swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 2" />
+                      </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide">
+                        <img src="/assets/images/home/img-card.png" alt="Parking 3" />
+                      </div>
+                    </div>
+                    <!-- Paginación dentro de la imagen -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+        
+                  <!-- Detalles -->
+                  <div class="text-details">
+                    <h3>Nombre de Parqueo</h3>
+                    <div class="cont-pres">
+                      <img src="/assets/images/din-blac.svg" alt="">
+                      <h1>s/8.50 <span>h/f</span></h1>
+                      <h1>a 200m</h1>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/ubi-blac.svg" alt="">
+                      <h3>Calle Los Anades 155</h3>
+                    </div>
+                    <div class="cont-pres">
+                      <img src="/assets/images/home/aut-line.svg" alt="">
+                      <img src="/assets/images/home/cam-line.svg" alt="">
+                      <img src="/assets/images/home/bici-line.svg" alt="">
+                      <img src="/assets/images/home/relog-line.svg" alt="" class="derxs">
+                      <h1>10 am - 7 pm</h1>
+                    </div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+            <!-- Efecto Ripple -->
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+
+
+
+<!-- <ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <div class="buscador-contenedor">
+            <div class="box">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <input type="text" placeholder="¿A donde vas?" name="">
+            </div>
+            <div class="button-mas">
+              <button class="btn-tipo-mapa">
+                <img src="/assets/images/map-black.png" alt="Tipo de mapa" routerLink='/vista-mapa'>
+              </button>
+              <button class="btn-puntero">
+                <img src="/assets/images/location-btn.png" alt="Puntero">
+              </button>
+            </div>
+          </div>
+
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="card">
+                  <div class="row no-gutters">
+                    <div class="not">
+                      <div class="col-md-4">
+                        <div class="image-container">
+                          <img src="/assets/images/here.png" class="img-card" alt="...">
+                          <button class="btn-1 btn-left">
+                            <img src="/assets/images/reviews.png" alt="">
+                            <p class="reviews">0.00</p>
+                          </button>
+                          <button class="btn-2 btn-right btn-right-1">
+                            <img src="/assets/images/heart-b.png" alt="">
+                          </button>
+                          <button class="btn-2 btn-right btn-right-2">
+                            <img src="/assets/images/heart-b.png" alt="">
+                          </button>
+                          <button class="btn-2 btn-right btn-right-3">
+                            <img src="/assets/images/heart-n.png" alt="">
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-ty">
+                          <div class="DPI37">
+                            <div class="PDI32">
+                              <p class="curso-1">Playa</p>
+                              <p class="curso">Disponible</p>
+                            </div>
+                            <div class="icons">
+                              <img class="ins" src="/assets/images/car.png" alt="">
+                              <img class="ins" src="/assets/images/van.png" alt="">
+                              <img class="ins" src="/assets/images/moto.png" alt="">
+                              <img class="ins" src="/assets/images/bicicleta.png" alt="">
+                            </div>
+                          </div>
+                          <div class="ES49">
+                            <div class="tip">
+                              <p class="card-text">Estacionamiento La Mar</p>
+                            </div>
+                            <div class="hr">
+                              <p class="hora">s/8.50 <span style="font-weight: 300; font-size: 13px;margin-left: 5px;"> h/frac.</span></p>
+                            </div>
+                          </div>
+                          <hr class="separator-line">
+                          <div class="CC59">
+                            <div class="CM60">
+                              <img class="clock" src="/assets/images/fi-clock.png" alt="">
+                              <p class="min">a <span style="font-weight: 600; ">12</span> mins</p>
+                            </div>
+                            <div class="FIT64">
+                              <img class="fi-car" src="/assets/images/fi-car.png" alt="">
+                              <p class="t-car"><span style="font-weight: 600; ">28</span> espacios</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="card">
+                  <div class="row no-gutters">
+                    <div class="not">
+                      <div class="col-md-4">
+                        <div class="image-container">
+                          <img src="/assets/images/here.png" class="img-card" alt="...">
+                          <button class="btn-1 btn-left">
+                            <img src="/assets/images/reviews.png" alt="">
+                            <p class="reviews">0.00</p>
+                          </button>
+                          <button class="btn-2 btn-right btn-right-1">
+                            <img src="/assets/images/heart-b.png" alt="">
+                          </button>
+                          <button class="btn-2 btn-right btn-right-2">
+                            <img src="/assets/images/heart-b.png" alt="">
+                          </button>
+                          <button class="btn-2 btn-right btn-right-3">
+                            <img src="/assets/images/heart-n.png" alt="">
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-ty">
+                          <div class="DPI37">
+                            <div class="PDI32">
+                              <p class="curso-1">Playa</p>
+                              <p class="curso">Disponible</p>
+                            </div>
+                            <div class="icons">
+                              <img class="ins" src="/assets/images/car.png" alt="">
+                              <img class="ins" src="/assets/images/van.png" alt="">
+                              <img class="ins" src="/assets/images/moto.png" alt="">
+                              <img class="ins" src="/assets/images/bicicleta.png" alt="">
+                            </div>
+                          </div>
+                          <div class="ES49">
+                            <div class="tip">
+                              <p class="card-text">Cochera Miraflores</p>
+                            </div>
+                            <div class="hr">
+                              <p class="hora">s/8.50 <span style="font-weight: 300; font-size: 13px;margin-left: 5px;"> h/frac.</span></p>
+                            </div>
+                          </div>
+                          <hr class="separator-line">
+                          <div class="CC59">
+                            <div class="CM60">
+                              <img class="clock" src="/assets/images/fi-clock.png" alt="">
+                              <p class="min">a <span style="font-weight: 600; ">12</span> mins</p>
+                            </div>
+                            <div class="FIT64">
+                              <img class="fi-car" src="/assets/images/fi-car.png" alt="">
+                              <p class="t-car"><span style="font-weight: 600; ">28</span> espacios</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="card">
+                  <div class="row no-gutters">
+                    <div class="not">
+                      <div class="col-md-4">
+                        <div class="image-container">
+                          <img src="/assets/images/p-here.png" class="img-card" alt="...">
+                          <button class="btn-1 btn-left">
+                            <img src="/assets/images/reviews.png" alt="">
+                            <p class="reviews">4.55</p>
+                          </button>
+                          <button class="btn-2 btn-right btn-right-2">
+                            <img src="/assets/images/heart-b.png" alt="">
+                          </button>
+                          <button class="btn-2 btn-right btn-right-3">
+                            <img src="/assets/images/heart-n.png" alt="">
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-ty">
+                          <div class="DPI37">
+                            <div class="PDI32">
+                              <p class="curso-2">Particular</p>
+                              <p class="curso">Disponible</p>
+                            </div>
+                            <div class="icons">
+                              <img class="ins" src="/assets/images/car.png" alt="">
+                              <img class="ins" src="/assets/images/van.png" alt="">
+                              <img class="ins" src="/assets/images/moto.png" alt="">
+                            </div>
+                          </div>
+                          <div class="ES49">
+                            <div class="tip">
+                              <p class="card-text">Estacionamiento La Mar</p>
+                            </div>
+                            <div class="hr">
+                              <p class="hora">s/8.50 <span style="font-weight: 300; font-size: 13px;margin-left: 5px;"> h/frac.</span></p>
+                            </div>
+                          </div>
+                          <hr class="separator-line">
+                          <div class="CC59">
+                            <div class="CM60">
+                              <img class="clock" src="/assets/images/fi-clock.png" alt="">
+                              <p class="min">a <span style="font-weight: 600; ">12</span> mins</p>
+                            </div>
+                            <div class="FIT64">
+                              <p class="card-text-2"><img class="punto" src="/assets/images/sr-marker.png" alt="">Av. La Mar, 314</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content> -->

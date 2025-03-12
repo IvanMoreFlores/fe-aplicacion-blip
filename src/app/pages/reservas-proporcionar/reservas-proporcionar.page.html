@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Proporciona feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Encabezado -->
+  <h2>Ayúdanos a mejorar, comparte tus comentarios</h2>
+  <p class="description">
+    Valoramos tu experiencia y trabajamos para brindarte el mejor servicio. Si tienes comentarios o sugerencias, ¡nos encantaría escucharte!
+  </p>
+
+  <!-- Campo para comentarios -->
+  <ion-textarea
+    placeholder="Ingresa tus comentarios"
+    maxlength="500"
+    [(ngModel)]="comentarios"
+    rows="6"
+    class="comentarios-input"
+  ></ion-textarea>
+  <div class="char-count">{{ comentarios.length }}/500</div>
+
+  <!-- Botón de enviar feedback -->
+  <ion-button expand="block" shape="round" color="dark" (click)="enviarFeedback()">
+    Enviar Feedback
+    <ion-icon slot="end" name="arrow-forward"></ion-icon>
+  </ion-button>
+</ion-content>

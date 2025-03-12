@@ -1,0 +1,113 @@
+<ion-content>
+  <!-- Imagen de portada con opciones de compartir -->
+  <div class="cover-photo-container">
+    <ion-img [src]="'assets/images/estc-card.png'" class="cover-photo"></ion-img>
+    <div class="top-options">
+      <ion-icon name="arrow-back-circle" class="arrow-back"></ion-icon>
+      <ion-icon name="ellipsis-horizontal" class="share-options"></ion-icon>
+    </div>
+  </div>
+  <div>
+    particular
+  </div>
+  <!-- Tabs -->
+  <div class="tabs-container">
+    <ion-segment [(ngModel)]="selectedTab" class="custom-segment">
+      <ion-segment-button value="descripcion">
+        <ion-label>Acerca</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="fotos">
+        <ion-label>Fotos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Contenido Dinámico -->
+  <div *ngIf="selectedTab === 'descripcion'" class="content scroll-container">
+    <div class="info-section">
+      <h1>Estacionamiento Las Begonias</h1>
+      <p class="address">Av. Las Begonias 345, San Isidro, Lima</p>
+      <p class="schedule">Lunes - Miércoles - Viernes <br> 9:00 AM - 2:00 PM</p>
+      <div class="icons-row">
+        <img src="assets/images/reloj-blac.svg" alt="">
+        <span style="padding-right: 20px;">a 200m</span>
+        <img src="/assets/images/home/aut-line.svg" alt="">
+        <img src="/assets/images/home/bici-line.svg" alt="">
+        <img src="/assets/images/home/cam-line.svg" alt="">
+      </div>
+      <div class="cont-host">
+        <img src="assets/images/Avatar-card.svg" alt="">
+        <ion-text>
+          <strong>Host</strong>
+          <p>Ricardo Martínez</p>
+        </ion-text>
+      </div>
+    </div>
+
+    <div class="description-section">
+      <h3>Descripción</h3>
+      <p>Estacionamiento en cochera privada cómodo y seguro para disfrutar de tus actividades diarias.</p>
+    </div>
+
+    <!-- Dimensiones -->
+    <div class="dimensions-section">
+      <h3>Dimensiones</h3>
+      <div style="display:flex;">
+      <p>2.10 m de Ancho</p>
+      </div>
+        <p>5.00 m de Largo</p>
+        <p>2.10 m de Altura</p>
+
+
+    </div>
+
+    <!-- Servicios -->
+    <div class="services-section">
+      <h3>Servicios</h3>
+      <div style="display: flex;">
+        <img src="assets/images/foc-elec.svg" alt=""> <p>Portón Eléctrico</p>
+      </div>
+      <div style="display: flex;">
+        <img src="assets/images/ey-vig.svg" alt=""> <p>Sistema de Vigilancia</p>
+      </div>
+      <div style="display: flex;">
+        <img src="assets/images/tec-do.svg" alt=""> <p>Techado</p>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="selectedTab === 'fotos'" class="content scroll-container">
+    <div class="info-section">
+      <h1>Estacionamiento Las Begonias</h1>
+      <p class="address">Av. Las Begonias 345, San Isidro, Lima</p>
+      <p class="schedule">Lunes - Miércoles - Viernes <br> 9:00 AM - 2:00 PM</p>
+      <div class="icons-row">
+        <ion-icon name="location-outline"></ion-icon>
+        <span>200m</span>
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Camila Coronado</span>
+      </div>
+      
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" *ngFor="let photo of photos; let i = index">
+          <ion-img [src]="photo" class="photo-grid" (click)="viewImage(i)"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </div>
+
+  <!-- Footer Fijo -->
+  <div class="fixed-footer">
+    <div>
+      <h1>Precio</h1>
+    </div>
+    <div class="footer-content">
+
+      <p class="price">S/10.50 <small>h/t</small></p>
+      <ion-button routerLink="/checkout" expand="block" >Reservar</ion-button>
+    </div>
+  </div>
+</ion-content>

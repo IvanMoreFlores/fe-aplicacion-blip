@@ -1,0 +1,29 @@
+ion-tab-bar {
+    --background: #ffffff; /* Fondo general de la barra */
+    --color: #ccc; /* Color de iconos no seleccionados */
+  }
+  
+  ion-tab-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  ion-tab-button.selected {
+    --color: #000; /* Cambia el color del icono seleccionado */
+  }
+  
+  ion-tab-button.selected::after {
+    content: "";
+    position: absolute;
+    width: 60%; /* Tamaño del fondo redondeado */
+    height: 60%;
+    background: #79FFAF; /* Color del fondo redondeado */
+    border-radius: 50px; /* Hace el fondo completamente redondo */
+    z-index: -1; /* Coloca el fondo detrás del icono */
+    top: 50%; /* Centrado verticalmente */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translate(-50%, -50%);
+  }
+  

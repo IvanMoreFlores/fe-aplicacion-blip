@@ -1,0 +1,480 @@
+.container{
+    background-color: #79FFAF; 
+    display: flex;
+    justify-content: center;
+    
+    height: 100%;
+    
+}
+.content{
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 0 0;
+    width: 432px;
+    margin-top: 50px;
+    height: 882px;
+    display: block;
+    background-color: #FFFFFF;
+    padding: 20px;
+    
+}
+.inicio {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+
+}
+.nav-arrow-btn{
+    margin-right: 20px; /* Espacio entre la imagen y el título */
+}
+.title {
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+}
+.content1{
+    margin-top: 30px;
+}
+.label1{
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 24px;
+    
+}
+.label2{
+    color: #6D6D6D;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-left: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 23px;
+    
+}
+.text1{
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 18.5px;
+
+}
+.editar1{
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    float:right;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 19px;
+    text-align: right;
+    background-color: transparent;
+    text-decoration: underline;
+
+}
+.editar2{
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    float:right;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 19px;
+    text-align: right;
+    background-color: transparent;
+    text-decoration: underline;
+
+}
+.editar3{
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    float:right;
+    padding-left: 135px;
+    line-height: 19px;
+    text-align: right;
+    background-color: transparent;
+    text-decoration: underline;
+    
+}
+.container1 {
+  background-color: #FFFFFF;
+  display: flex;
+  height: 100%;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+// --------------
+.cont-pre{
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 0px;
+    padding-left: 20px;
+    margin-top: 23px;
+}
+.preg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.pg{
+    font-size: 12px;
+    margin:0;
+}
+.model{
+    background-color: transparent;
+}
+ion-modal {
+    --height: auto;
+}
+.editar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: Poppins;
+      font-size: 9px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 19px; /* 211.111% */
+      letter-spacing: 0.18px;
+      text-decoration-line: underline;
+      color: #212121;
+}
+
+.title-mo{
+    text-align: center;
+    font-family: "Poppins", sans-serif; 
+    font-size: 18px;
+    color: #524F4F;
+  
+}
+.block2{
+    width: 100%;
+    padding: 40px;
+    .btn-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        button{
+            width: 100%;
+            padding-block: 15px;
+
+            border: 1px solid #212121;
+            background-color: #FFFFFF;
+            border-radius: 30px;
+            color: #212121;
+            text-align: center;
+    
+            /* Large Button */
+            font-family: Poppins;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 25px; /* 138.889% */
+            letter-spacing: 0.18px;
+        }
+        .selec-gal{
+            background-color: #212121;
+            color: #FFFFFF;
+        }
+    }
+
+}
+.block{
+    width: 100%;
+    height: 301px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+.line{
+    border-bottom: solid 1px #D4D4D4;
+    height: 30px;/*altura de la line*/
+}
+.input-bar {
+    position: relative;
+    padding: 15px 0; 
+    display: flex;
+    border: 1px solid #212121;
+    height: 56px;
+    border-radius: 30px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: 40px auto;
+}
+.label-text {
+    font-size: 12px;
+    position: absolute;
+    top: -10px; 
+    background-color: #FFFFFF; 
+    padding: 0 10px; 
+    z-index: 1;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    color: #212121;
+}
+.btn2 {
+    position: relative;
+    padding: 15px 0; 
+    border: 1px solid #212121;
+    height: 56px;
+    border-radius: 30px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: 49px auto; /* Centra vertical y horizontalmente */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+.GuarCam2 {
+    color: #565656;
+    background: transparent;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 180%; /* 28.8px */
+}
+//--------------------------------
+.textos{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.iden{
+  color: #212121;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 200% */
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  padding-inline: 15px;
+  margin-top: 23px;
+}
+.doc{
+    background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0px;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.ld{
+    margin-left: 25px;
+}
+/* Estilo personalizado para el checkbox */
+ion-checkbox {
+  --size: 15px;
+  --checkbox-background-checked: #6D6D6D;
+  color: #6D6D6D;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px; /* 191.667% */
+}
+
+ion-checkbox::part(container) {
+  border-radius: 4px;
+  border: 1.5px solid #6D6D6D;
+}
+
+/* Aumentar el grosor y tamaño del marcador de verificación */
+ion-checkbox::part(indeterminate) {
+  transform: scale(1.5); /* Aumenta el tamaño del marcador de verificación */
+  border-width: 1px; /* Ajusta el grosor del borde del marcador de verificación */
+}
+/*---*/
+.clase-checkbox1{
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.profile-container {
+    text-align: center;
+    position: relative;
+    margin-top: 50px;
+  }
+  
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .profile-picture ion-icon {
+    font-size: 50px;
+    color: #ccc;
+  }
+  
+  .edit-icon {
+    position: absolute;
+    top: 65%; /* Centra el botón negro sobre la imagen */
+    right: 5%; /* Ajusta la posición horizontal */
+    background-color: rgba(33, 33, 33, 0.80);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    img{
+        padding-inline: 15px;
+        padding-block: 10px;
+    }
+  }
+  
+  .profile-name {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  
+  .verify-button {
+    margin-top: 15px;
+    --border-color: #000;
+    --color: #000;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --border-radius: 20px;
+    font-size: 14px;
+  }
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+  }
+  
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  
+    .close-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+  ion-modal.full-height-modal {
+    --height: 100%; /* Ocupa todo el alto */
+    --max-height: 100%; /* Asegura que no tenga límite de altura */
+    --border-radius: 0; /* Elimina esquinas redondeadas */
+  }
+  .modal-body {
+    flex: 1;
+    overflow-y: auto;
+  
+    .validation-text {
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  }
+  
+  .upload-section {
+    margin-bottom: 1.5rem;
+  
+    h5 {
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
+  
+    ngx-dropzone {
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-align: center;
+  
+      ngx-dropzone-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+  
+        ion-icon {
+          font-size: 2rem;
+          color: #ccc;
+        }
+  
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+        }
+      }
+  
+      img.uploaded-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+  }
+  .modal-footer {
+    margin-top: 1.5rem;
+  
+    ion-button {
+      width: 100%;
+    }
+  }
+  .gress{
+    margin: 0px;
+    padding-right: 20px;
+    color: var(--system-grey3, #C7C7CC);
+
+    /* Body 5 [Bolder] */
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 166.667% */
+  }

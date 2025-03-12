@@ -1,0 +1,160 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Ubicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input placeholder="Ingresa una dirección" (ionInput)="onSearch($event)"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <!-- Resultados de búsqueda -->
+    <ion-item *ngFor="let lugar of lugares" (click)="seleccionarLugar(lugar)">
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      <ion-label>
+        <h2>{{ lugar.nombre }}</h2>
+        <p>{{ lugar.direccion }}</p>
+      </ion-label>
+    </ion-item>
+
+    <!-- Opción para seleccionar en el mapa -->
+    <ion-item routerLink="/ubicacion-en-el-mapa" (click)="abrirMapa()">
+      <ion-icon slot="start" name="navigate-outline"></ion-icon>
+      <ion-label>Seleccionar en el mapa</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+
+<!-- <ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">  
+          <div class="inicio">
+            <div class="nav-arrow-btn">
+              <img src="/assets/images/pantalla-busqueda/nav-arrow-btn.png" alt="" routerLink="/sitios-guardados">
+            </div>
+            <div class="box">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <input type="text" placeholder="Av. Republica de Panamá..." name="">
+            </div>
+          </div> 
+
+          <div expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p">
+                <img src="assets/images/nueva-ubicacion/icon-casita.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <h1 class="t2">Casa</h1>
+                <p class="c1">Alameda Constancio Bollar,315</p> 
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+
+          <div expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p2">
+                <img src="assets/images/nueva-ubicacion/icon-star.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <h1 class="t2">Casa Mafer</h1>
+                <p class="c1">Av. Santo Toribio, 481, San Isidro</p> 
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+
+          <div expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p2">
+                <img src="assets/images/nueva-ubicacion/icon-star.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <h1 class="t2">Casa Mafer</h1>
+                <p class="c1">Av. Santo Toribio, 481, San Isidro</p> 
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+
+          <div expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p2">
+                <img src="assets/images/nueva-ubicacion/icon-ubic.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <h1 class="t2">Calle 44</h1>
+                <p class="c1">C.44, Bellavista</p> 
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+
+          <div expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p2">
+                <img src="assets/images/nueva-ubicacion/icon-ubic.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <h1 class="t2">Calle 44</h1>
+                <p class="c1">C.44, Bellavista</p> 
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+
+          <div expand="block" class="mi-boton">
+            <div class="padre">
+              <div class="img-class-p2">
+                <img src="assets/images/nueva-ubicacion/icon-ubic.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <p class="t2">Miraflores</p>
+                
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+
+          <div expand="block" class="mi-boton" routerLink="/ubicacion-en-el-mapa">
+            <div class="padre">
+              <div class="img-class-p2">
+                <img src="assets/images/nueva-ubicacion/icon-ubic.svg" alt="" class="img-class-h">
+              </div>
+              <div class="hijo">
+                <p class="t1">Seleccionar ubicación en el mapa</p>
+                
+                
+              </div> 
+            </div>
+            <div class="linea2-delgado"></div>
+          </div>
+          
+          
+
+
+
+
+
+
+
+
+
+        </div>     
+      </div>
+    </div>                  
+  </div>
+</ion-content>   -->
+           

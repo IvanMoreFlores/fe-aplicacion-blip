@@ -1,0 +1,90 @@
+ion-content{
+    padding-inline: 22px;
+  
+    --overflow: hidden;
+  
+  
+  }
+  .login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 32px;
+    margin-top: 10px;
+  }
+  
+  .label-text {
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    background-color: #FFFFFF;
+    padding: 0 10px;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    color: #212121;
+  }
+  .phone-input {
+    position: relative;
+    padding: 15px 20px;
+    display: flex;
+    border: 1px solid #212121;
+    width: 100%;
+    height: 56px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-block: 15px;
+    color: #212121;
+    input[type="text"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+    }
+    input[type="date"],
+    select {
+      width: 100%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("/assets/images/vector-f.png");
+      background-repeat: no-repeat;
+      background-position: right  center;
+    }
+    .full-width-select {
+      width: 100%;  /* Asegura que el ion-select ocupe todo el ancho */
+    }
+  }
+  .phone-input .input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 10px; /* Posiciona el icono hacia la izquierda */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .input-wrapper {
+    width: 100%;
+    border: 1px solid #1f1f1f;
+    border-radius: 30px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-wrapper ion-icon {
+    font-size: 1.2rem;
+    color: #1f1f1f;
+  }
+  
+  .input-wrapper .input {
+    width: 100%;
+    font-size: 1rem;
+    font-family: Poppins, sans-serif;
+    color: #1f1f1f;
+  }

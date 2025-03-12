@@ -1,0 +1,302 @@
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Asegura que el contenedor ocupe toda la pantalla */
+  }
+  
+  /* Contenedor del mapa */
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Ocupa el 60% de la pantalla */
+    background-color: #e0e0e0; /* Fondo gris para simular el mapa */
+  }
+  
+  /* Barra de búsqueda superpuesta */
+  .search-bar {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 10; /* Asegura que esté sobre el mapa */
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    padding: 8px 16px;
+  }
+  
+  .search-bar ion-input {
+    --padding-start: 0;
+    font-size: 14px;
+    color: #8e8e93;
+  }
+  
+  /* Contenedor de los cards con scroll */
+  .cards-container {
+    height: 40vh; /* Ocupa el 40% restante de la pantalla */
+    overflow-y: auto; /* Scroll solo en este contenedor */
+    padding: 16px;
+    background-color: #ffffff;
+  }
+  
+
+  .card-content {
+    position: relative;
+    display: flex;
+    gap: 16px;
+  }
+  
+  .image-slider {
+    width: 30%;
+    height:auto; /* Ajusta según tu diseño */
+    position: relative;
+  
+    overflow: hidden;
+  }
+  
+  .swiper-slide {
+    position: relative;
+  }
+  
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cont-home{
+    padding-inline: 22px;
+    .section{
+      .section-header{
+        display: flex; /* Hace que los elementos hijos se distribuyan en línea */
+        align-items: center; /* Centra verticalmente los elementos */
+        margin-top: 20px;
+        margin-bottom: 10px;
+        h2{
+          color: #212121;
+          /* Subtitle 1 [Medium] */
+          font-family: Poppins;
+          margin-right: 20px;
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 30px; /* 136.364% */
+          letter-spacing: 0.22px;
+        }
+        .blue{
+          width: 12px;
+          height: 12px;
+          flex-shrink: 0;
+          border-radius: 500px;
+  
+          background: var(--system-blue, #007BFE);
+          
+        }
+        .green{
+          width: 12px;
+          height: 12px;
+          flex-shrink: 0;
+          border-radius: 500px;
+  
+          background: var(--system-green, #31C859);
+        }
+        .orange{
+          width: 12px;
+          height: 12px;
+          flex-shrink: 0;
+          border-radius: 500px;
+  
+          background: var(--system-green, #FF9600);
+        }
+      }
+  
+    }
+  }
+  
+  .swiper-pagination {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+  }
+  
+  .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.7;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: green;
+    opacity: 1;
+  }
+  
+  .text-details {
+  
+    
+  }
+  
+  .text-details h3 {
+    color: #212121;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 160% */
+  }
+  
+  .text-details p {
+    font-size: 14px;
+    color: gray;
+    margin: 0;
+  }
+  .cont-pres{
+    display: flex;
+    img{
+      padding-right: 5px;
+    }
+    h3{
+      color: var(--system-surface-primary, #212121);
+  
+      /* Body 5 */
+      font-family: Poppins;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px; /* 166.667% */
+      letter-spacing: 0.12px;
+      margin:0px;
+    }
+    h1{
+      color: #212121;
+  
+      /* Body 4 [SemiBold] */
+      font-family: Poppins;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 25px; /* 178.571% */
+      letter-spacing: 0.14px;
+      margin: 0px;
+      span{
+        color: #212121;
+  
+        /* Body 5 */
+        font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.12px;
+        padding-right: 10px;
+      }
+    }
+    .derxs{
+      padding-left: 10px;
+    }
+  }
+  .ion-activatable {
+    position: relative;
+    overflow: hidden; /* El ripple se mantiene dentro de los bordes */
+  }
+  
+  .ripple-parent ion-ripple-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  /* Contenedor principal de la tarjeta */
+  .full-width-card-wrapper {
+    margin: 0 -22px; /* Neutraliza el padding del contenedor padre */
+    padding: 0; /* Evita padding adicional */
+  }
+  
+  .full-width-card {
+    width: 100%;
+    padding: 0; /* Elimina padding interno de la tarjeta */
+
+    margin: 12px 0; /* Espaciado entre tarjetas */
+    border-radius: 8px; /* Esquinas redondeadas para un diseño elegante */
+    box-shadow: none; /* Opcional: Elimina sombras */
+    overflow: hidden; /* Asegura que el ripple y la imagen estén dentro de la tarjeta */
+  }
+  ion-grid{
+    padding: 0;
+  }
+  .tiempo{
+    background-color: #212121;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 30px;
+    margin-right: 5px;
+    font-family: Poppins;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .ver-timp{
+    padding: 0px 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #212121;
+    border-radius: 30px;
+  //styleName: Body 5 [Bolder];
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  
+  }
+  
+  .chip {
+    position: absolute;
+    top: 10px; /* Distancia desde la parte superior */
+    left: 2px; /* Distancia desde el lado izquierdo */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+    color: #212121; /* Texto en verde */
+    font-family: Poppins;
+    font-family: Poppins;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  
+    padding: 4px 8px;
+    border-radius: 16px; /* Bordes redondeados */
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Espacio entre el punto y el texto */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    .green{
+      width: 5px;
+      height: 5px;
+      flex-shrink: 0;
+      border-radius: 500px;
+  
+      background: var(--system-green, #31C859);
+    }
+  }
+  ion-card {
+    box-shadow: none; /* Elimina la sombra */
+    border: none; /* Elimina cualquier borde */
+    border-radius: 0; /* Elimina esquinas redondeadas */
+    padding: 0; /* Elimina cualquier relleno interno */
+    margin: 0; /* Elimina el margen externo */
+    background: transparent; /* Si quieres eliminar el color de fondo */
+    margin-top:20px ;
+    margin-bottom: 20px;
+  }
+  ion-card-content {
+    padding: 0px;
+  }

@@ -1,0 +1,453 @@
+<ion-header mode="ios">
+  <ion-toolbar >
+    <button routerLink="/tab-home/blip-home" slot="start" style="margin-right:20px ;">
+      <img src="assets/images/left-flec.svg" alt="" style="margin: 0px;">
+    </button>
+    <h2 style="text-align: left;">Reservas</h2>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<!-- Lista de Secciones -->
+  <div class="cont-home">
+    <div class="section">
+      <div class="section-content">
+        <!-- Tarjeta con Efecto Ripple y Diseño 100% -->
+        <div class="ion-activatable ripple-parent full-width-card-wrapper">
+          <ion-card mode="md" class="full-width-card">
+            <ion-card-content>
+              <div class="card-content">
+                <!-- Imagen (Slider opcional) -->
+                <div class="image-slider swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      <div class="chip">
+                        Finalizada
+                        <span class="green"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+          
+                <!-- Detalles -->
+                <div class="text-details">
+                  <h3>Nombre de Parqueo</h3>
+                  <div class="cont-pres">
+                    <img src="/assets/images/din-blac.svg" alt="">
+                    <h1>s/8.50 <span>h/f</span></h1>
+                    <h1>a 200m</h1>
+                  </div>
+                  <div class="cont-pres">
+                    <img src="/assets/images/ubi-blac.svg" alt="">
+                    <h3>Calle Los Anades 155</h3>
+                  </div>
+                  <div class="cont-pres">
+                    <ion-grid>
+                      <ion-row>
+                        <button class="tiempo">01 : 00 : 00</button>
+                        <button routerLink="/time-park" class="ver-timp">
+                          <img src="/assets/images/rel-btn.svg" alt="">Ver tiempo
+                        </button>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div>
+              </div>
+              <!-- Div gris -->
+              <div class="additional-details">
+                <div class="reservation-info">
+                  <div style="display: flex;">
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>Reserva x hora</h4>
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>4h</h4>
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/cal-res.svg" alt=""><h4>16 de Marzo</h4>
+
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/reloj-blanc.svg"> <h4>9:00 AM → 1:00 PM</h4>
+                  </div>
+                </div>
+                <div class="action-buttons">
+                  <ion-button expand="block" fill="outline" class="cancel-button" disabled>
+                    <ion-icon name="close-outline"></ion-icon>
+                    Cancelar
+                  </ion-button>
+                  <ion-button routerLink="/reservas-detalles" expand="block" fill="solid" class="details-button">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    Ver detalles
+                  </ion-button>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          
+          <!-- Efecto Ripple -->
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+        <div class="ion-activatable ripple-parent full-width-card-wrapper">
+          <ion-card mode="md" class="full-width-card">
+            <ion-card-content>
+              <div class="card-content">
+                <!-- Imagen (Slider opcional) -->
+                <div class="image-slider swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      <div class="chip">
+                        En curso
+                        <span class="green"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+          
+                <!-- Detalles -->
+                <div class="text-details">
+                  <h3>Nombre de Parqueo</h3>
+                  <div class="cont-pres">
+                    <img src="/assets/images/din-blac.svg" alt="">
+                    <h1>s/8.50 <span>h/f</span></h1>
+                    <h1>a 200m</h1>
+                  </div>
+                  <div class="cont-pres">
+                    <img src="/assets/images/ubi-blac.svg" alt="">
+                    <h3>Calle Los Anades 155</h3>
+                  </div>
+                  <div class="cont-pres">
+                    <ion-grid>
+                      <ion-row>
+                        <button class="tiempo">01 : 00 : 00</button>
+                        <button routerLink="/time-park" class="ver-timp">
+                          <img src="/assets/images/rel-btn.svg" alt="">Ver tiempo
+                        </button>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div>
+              </div>
+              <!-- Div gris -->
+              <div class="additional-details">
+                <div class="reservation-info">
+                  <div style="display: flex;">
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>Reserva x hora</h4>
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>4h</h4>
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/cal-res.svg" alt=""><h4>16 de Marzo</h4>
+
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/reloj-blanc.svg"> <h4>9:00 AM → 1:00 PM</h4>
+                  </div>
+                </div>
+                <div class="action-buttons">
+                  <ion-button expand="block" fill="outline" class="cancel-button" disabled>
+                    <ion-icon name="close-outline"></ion-icon>
+                    Cancelar
+                  </ion-button>
+                  <ion-button routerLink="/reservas-detalles" expand="block" fill="solid" class="details-button">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    Ver detalles
+                  </ion-button>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          
+          <!-- Efecto Ripple -->
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+        <div class="ion-activatable ripple-parent full-width-card-wrapper">
+          <ion-card mode="md" class="full-width-card">
+            <ion-card-content>
+              <div class="card-content">
+                <!-- Imagen (Slider opcional) -->
+                <div class="image-slider swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      <div class="chip">
+                        Pendiente
+                        <span class="orange"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+          
+                <!-- Detalles -->
+                <div class="text-details">
+                  <h3>Nombre de Parqueo</h3>
+                  <div class="cont-pres">
+                    <img src="/assets/images/din-blac.svg" alt="">
+                    <h1>s/8.50 <span>h/f</span></h1>
+                    <h1>a 200m</h1>
+                  </div>
+                  <div class="cont-pres">
+                    <img src="/assets/images/ubi-blac.svg" alt="">
+                    <h3>Calle Los Anades 155</h3>
+                  </div>
+                  <div class="cont-pres">
+                    <ion-grid>
+                      <ion-row>
+                        <button class="tiempo">01 : 00 : 00</button>
+                        <button routerLink="/time-park" class="ver-timp">
+                          <img src="/assets/images/rel-btn.svg" alt="">Ver tiempo
+                        </button>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div>
+              </div>
+              <!-- Div gris -->
+              <div class="additional-details">
+                <div class="reservation-info">
+                  <div style="display: flex;">
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>Reserva x hora</h4>
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>4h</h4>
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/cal-res.svg" alt=""><h4>16 de Marzo</h4>
+
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/reloj-blanc.svg"> <h4>9:00 AM → 1:00 PM</h4>
+                  </div>
+                </div>
+                <div class="action-buttons">
+                  <ion-button expand="block" fill="outline" class="cancel-button" >
+                    <ion-icon name="close-outline"></ion-icon>
+                    Cancelar
+                  </ion-button>
+                  <ion-button disabled expand="block" fill="solid" class="details-button">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    Ver detalles
+                  </ion-button>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          
+          <!-- Efecto Ripple -->
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+        <div class="ion-activatable ripple-parent full-width-card-wrapper">
+          <ion-card mode="md" class="full-width-card">
+            <ion-card-content>
+              <div class="card-content">
+                <!-- Imagen (Slider opcional) -->
+                <div class="image-slider swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="/assets/images/home/img-card.png" alt="Parking 1" />
+                      <div class="chip">
+                        cancelada
+                        <span class="red"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+          
+                <!-- Detalles -->
+                <div class="text-details">
+                  <h3>Nombre de Parqueo</h3>
+                  <div class="cont-pres">
+                    <img src="/assets/images/din-blac.svg" alt="">
+                    <h1>s/8.50 <span>h/f</span></h1>
+                    <h1>a 200m</h1>
+                  </div>
+                  <div class="cont-pres">
+                    <img src="/assets/images/ubi-blac.svg" alt="">
+                    <h3>Calle Los Anades 155</h3>
+                  </div>
+                  <div class="cont-pres">
+                    <ion-grid>
+                      <ion-row>
+                        <button class="tiempo">01 : 00 : 00</button>
+                        <button routerLink="/time-park" class="ver-timp">
+                          <img src="/assets/images/rel-btn.svg" alt="">Ver tiempo
+                        </button>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div>
+              </div>
+              <!-- Div gris -->
+              <div class="additional-details">
+                <div class="reservation-info">
+                  <div style="display: flex;">
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>Reserva x hora</h4>
+                    <img src="/assets/images/flec-rigt.svg" alt=""><h4>4h</h4>
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/cal-res.svg" alt=""><h4>16 de Marzo</h4>
+
+                  </div>
+                  <div style="display: flex;">
+                    <img src="/assets/images/reloj-blanc.svg"> <h4>9:00 AM → 1:00 PM</h4>
+                  </div>
+                </div>
+                <div class="action-buttons">
+                  <ion-button expand="block" fill="outline" class="cancel-button" disabled>
+                    <ion-icon name="close-outline"></ion-icon>
+                    Cancelar
+                  </ion-button>
+                  <ion-button routerLink="/reservas-detalles" expand="block" fill="solid" class="details-button">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    Ver detalles
+                  </ion-button>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          
+          <!-- Efecto Ripple -->
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+
+<!-- <ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          <div class="centro">
+            <button class="vector-mensaje">
+              <img src="/assets/images/vector-2.png" alt="Logo" class="navbar-logo">
+            </button>
+            <div class="text-b">Reservas</div>
+          </div>
+          <div class="botones">
+            <button (click)="mostrarTexto('Texto del botón 1')" [class.activo]="textoMostrado === 'Texto del botón 1'" class="boton-todas activo">Todas</button>
+            <button (click)="mostrarTexto('Texto del botón 2')" [class.activo]="textoMostrado === 'Texto del botón 2'" class="boton-programados">Programados</button>
+            <button (click)="mostrarTexto('Texto del botón 3')" [class.activo]="textoMostrado === 'Texto del botón 3'" class="boton-historial">Historial</button>
+          </div>
+          <div class="texto-mostrado">
+            <div class="card">
+              <div class="row no-gutters">
+                <div class="not">
+                <div class="col-sm-4">
+                  <img src="/assets/images/fondo.png" class="img-card" alt="...">
+                </div>
+                <div class="col-sm-4">
+                  <div class="card-ty">
+                    <p class="card-text">ABC Parking</p>
+                    <p class="card-text-1">Alameda Padre Constancio Bollar, 315</p>
+                    <p class="card-text-2"><img class="punto" src="/assets/images/marker.png" alt="">San Isidro</p>
+                    <p class="card-text-3"><img class="punto" src="/assets/images/sr-car.png" alt="">Honda Civic</p>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card-ty">
+                    <button class="heart">
+                      <img class="img-h" src="/assets/images/recep.png" alt="">
+                    </button>
+                    <button class="heart-1">
+                      <img class="img-h" src="/assets/images/heart-btn-1.png" alt="">
+                    </button>
+                    <p class="curso-2">Programado</p>
+                    <p class="hora">S/5 <span style="font-weight: 300;">hr/frac.</span></p>
+                  </div>
+                </div>
+              </div>
+              
+              <hr class="separator-line">
+
+              <div class="map">
+                <img class="img-map" src="/assets/images/map-btn.png" alt="">
+                <p class="tiempo">Tiempo Restante</p>
+                <p class="tiempo-1">4h 00m 00s</p>
+              </div>
+
+              <div class="map">
+                <img class="img-cal" src="/assets/images/calendar-icon.png" alt="">
+                <div class="columna2">
+                  <p class="tex-cal">Martes 07, Mar.</p>
+                  <p class="tex-time">10:00 AM</p>
+                </div>
+                <img class="arrow" src="/assets/images/arrow-right.png" alt="">
+                <div class="columna2">
+                  <p class="tex-cal">Martes 07, Mar.</p>
+                  <p class="tex-time">16:00 AM</p>
+                </div>
+                <p class="PC65">4h</p>
+              </div>
+
+              <div class="buton-re">
+                <button class="extender" routerLink="/reservas-detalles">Extender</button>
+                <button class="cancelar" routerLink="/reservas-detalles">Cancelar</button>
+              </div>
+            </div>
+            </div>
+
+            <div class="card">
+              <div class="row no-gutters">
+                <div class="not">
+                <div class="col-sm-4">
+                  <img src="/assets/images/fondo.png" class="img-card" alt="...">
+                </div>
+                <div class="col-sm-4">
+                  <div class="card-ty">
+                    <p class="card-text">ABC Parking</p>
+                    <p class="card-text-1">Alameda Padre Constancio Bollar, 315</p>
+                    <p class="card-text-2"><img class="punto" src="/assets/images/marker.png" alt="">San Isidro</p>
+                    <p class="card-text-3"><img class="punto" src="/assets/images/sr-car.png" alt="">Honda Civic</p>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card-ty">
+                    <button class="heart">
+                      <img class="img-h" src="/assets/images/recep.png" alt="">
+                    </button>
+                    <button class="heart-1">
+                      <img class="img-h" src="/assets/images/heart-btn-1.png" alt="">
+                    </button>
+                    <p class="curso">En Curso</p>
+                    <p class="hora">S/5 <span style="font-weight: 300;">hr/frac.</span></p>
+                  </div>
+                </div>
+              </div>
+              
+              <hr class="separator-line">
+
+              <div class="map">
+                <img class="img-map" src="/assets/images/map-btn.png" alt="">
+                <p class="tiempo">Tiempo Restante</p>
+                <p class="tiempo-1">1h 49m 05s</p>
+              </div>
+
+              <div class="map">
+                <img class="img-cal" src="/assets/images/calendar-icon.png" alt="">
+                <div class="columna2">
+                  <p class="tex-cal">Martes 07, Mar.</p>
+                  <p class="tex-time">10:00 AM</p>
+                </div>
+                <img class="arrow" src="/assets/images/arrow-right.png" alt="">
+                <div class="columna2">
+                  <p class="tex-cal">Martes 07, Mar.</p>
+                  <p class="tex-time">16:00 AM</p>
+                </div>
+                <p class="PC65">4h</p>
+              </div>
+
+              <div class="buton-re">
+                <button class="extender">Extender</button>
+                <button class="cancelar">Cancelar</button>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content> -->

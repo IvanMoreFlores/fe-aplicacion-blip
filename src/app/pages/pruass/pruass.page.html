@@ -1,0 +1,42 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button> <!-- Botón de atrás -->
+    </ion-buttons>
+    <ion-title></ion-title> <!-- Dejar en blanco para simular el espacio vacío del header -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size="12" size-md="8" class="ion-text-center">
+        <h2>Bienvenida, de nuevo!</h2>
+        <p>Ingresa el código de 4 dígitos enviado al número <strong>+51 923 092 610</strong></p>
+
+        <!-- Inputs de OTP -->
+        <div class="otp-inputs">
+          <ion-input maxlength="1" inputmode="numeric" class="otp-box"></ion-input>
+          <ion-input maxlength="1" inputmode="numeric" class="otp-box"></ion-input>
+          <ion-input maxlength="1" inputmode="numeric" class="otp-box"></ion-input>
+          <ion-input maxlength="1" inputmode="numeric" class="otp-box"></ion-input>
+        </div>
+
+        <p><ion-button color="tertiary" fill="clear" class="timer-btn">reenviar código 1:00</ion-button></p>
+        <ion-button expand="block" color="primary">más opciones de inicio</ion-button>
+        <p><ion-button color="tertiary" fill="clear" class="change-number-btn">He cambiado mi número de teléfono</ion-button></p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Botones de navegación -->
+    <ion-row justify-content-between class="nav-buttons">
+      <ion-col size="6">
+        <ion-button expand="block" color="secondary">Atrás</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="primary">Siguiente</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
