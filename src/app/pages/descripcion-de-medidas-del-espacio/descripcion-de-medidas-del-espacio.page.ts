@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChildren,
+  ElementRef,
+  QueryList,
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,7 +13,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./descripcion-de-medidas-del-espacio.page.scss'],
 })
 export class DescripcionDeMedidasDelEspacioPage implements OnInit {
-
   tga_id: string = '';
   direccion: string = '';
   distrito: string = '';
@@ -19,20 +24,36 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
   gar_largo: string = '';
   gar_ancho: string = '';
   gar_alto: string = '';
+  descripcion: string = '';
 
+  @ViewChildren('customBtn') customBtns!: QueryList<ElementRef>;
+  selectedIndex: number | null = null; // Inicialmente ningún botón seleccionado
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-    this.setValues();
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
 
   ngOnInit() {
+    this.setValues();
+  }
+
+  onRadioChange(selectedIndex: number, position: number) {
+    this.selectedIndex = selectedIndex; // Actualiza el índice seleccionado
+    this.customBtns.forEach((btn, index) => {
+      if (index === position - 1) {
+        btn.nativeElement.classList.add('custom-btn-selected'); // Añade la clase seleccionada
+      } else {
+        btn.nativeElement.classList.remove('custom-btn-selected'); // Elimina la clase de los otros botones
+      }
+    });
   }
 
   async setValues() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.tga_id = params['tga_id'];
       this.direccion = params['direccion'];
       this.distrito = params['distrito'];
@@ -43,6 +64,7 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
       this.gar_largo = params['gar_largo'];
       this.gar_ancho = params['gar_ancho'];
       this.gar_alto = params['gar_alto'];
+      this.descripcion = params['descripcion'];
     });
   }
 
@@ -58,29 +80,30 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
         servicio: this.servicio,
         gar_largo: this.gar_largo,
         gar_ancho: this.gar_ancho,
-        gar_alto: this.gar_alto
-      }
+        gar_alto: this.gar_alto,
+      },
     });
   }
 
-  async getValues() {
+  async nextPage() {
 
-    if (!this.gar_largo || this.gar_largo.length < 0) {
-      alert('Debes incluir largo.');
-      return;
+    if(this.selectedIndex===1){
+      this.gar_largo = '1';
+      this.gar_ancho = '1';
+      this.gar_alto = '1';
+    }
+    if(this.selectedIndex===2){
+      this.gar_largo = '2';
+      this.gar_ancho = '2';
+      this.gar_alto = '2';
+    }
+    if(this.selectedIndex===3){
+      this.gar_largo = '3';
+      this.gar_ancho = '3';
+      this.gar_alto = '3';
     }
 
-    if (!this.gar_ancho || this.gar_ancho.length < 0) {
-      alert('Debes incluir ancho.');
-      return;
-    }
-
-    if (!this.gar_alto || this.gar_alto.length < 0) {
-      alert('Debes incluir alto.');
-      return;
-    }
-
-    this.router.navigate(['/descripcion-de-ubicacion'], {
+    this.router.navigate(['/eli-pref'], {
       queryParams: {
         tga_id: this.tga_id,
         direccion: this.direccion,
@@ -88,11 +111,12 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
         ciudad: this.ciudad,
         referencia: this.referencia,
         detalles: this.detalles,
+        descripcion: this.descripcion,
         servicio: this.servicio,
         gar_largo: this.gar_largo,
         gar_ancho: this.gar_ancho,
-        gar_alto: this.gar_alto
-      }
+        gar_alto: this.gar_alto,
+      },
     });
   }
 
@@ -108,10 +132,9 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
         servicio: this.servicio,
         gar_largo: this.gar_largo,
         gar_ancho: this.gar_ancho,
-        gar_alto: this.gar_alto
-      }
+        gar_alto: this.gar_alto,
+      },
     });
   }
-
 
 }

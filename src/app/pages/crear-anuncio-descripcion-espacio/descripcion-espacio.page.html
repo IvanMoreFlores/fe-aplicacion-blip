@@ -1,0 +1,28 @@
+<header-component [withArrowLeft]="true" [route]="'/descripcion-de-direccion'"
+  (navigateTo)="handleNavigateTo($event)"></header-component>
+<ion-content>
+  <div class="container">
+    <h1>¿Cómo es tu espacio de estacionamiento?</h1>
+
+    <div class="custom-textarea-container">
+      <ion-textarea
+        id="descripcion-textarea"
+        placeholder="Describe tu espacio de estacionamiento"
+        [autoGrow]="true"
+        [(ngModel)]="descripcion"
+        rows="6"
+        maxlength="300"
+        class="custom-textarea"
+      ></ion-textarea>
+    </div>
+
+    <div class="contador-caracteres">
+      {{ descripcion ? descripcion.length : 0 }}/300
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <default-custom-button [text]="'Siguiente'" (click)="nextPage()"></default-custom-button>
+  </div>
+</ion-footer>

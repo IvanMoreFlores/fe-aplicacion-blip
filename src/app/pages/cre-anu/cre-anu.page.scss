@@ -1,59 +1,65 @@
-
 .centered-grid {
-    padding: 40px;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .checkmark-container {
-      display: flex;
-      justify-content: center; /* Asegura que el check esté en el centro horizontal */
-      align-items: center; /* Centra el contenido verticalmente */
-      margin-bottom: 20px;
-    }
-    
-    .checkmark {
-      width: 100px;
-      height: 100px;
-      background-color: #000;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transform: scale(0);
-      animation: popIn 0.6s ease forwards;
-    }
-    
-    .checkmark::before {
-      content: '✓';
-      font-size: 60px;
-      color: white;
-    }
-    .ti{
-      color: #212121;
-      text-align: center;
-      font-family: Poppins;
-      font-size: 35px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 50px; /* 142.857% */
-    }
-    .sub{
-      color: #212121;
-      text-align: center;
-      font-family: Poppins;
-      padding-block: 30px;
-      font-size: 17px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 30px; /* 176.471% */
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    }
-    .par{
-      color: #5F5D5D;
+.checkmark-container {
+  display: flex;
+  justify-content: center;
+  /* Asegura que el check esté en el centro horizontal */
+  align-items: center;
+  /* Centra el contenido verticalmente */
+  margin-bottom: 20px;
+}
+
+.checkmark {
+  width: 100px;
+  height: 90px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0);
+  animation: popIn 0.6s ease forwards;
+}
+
+.checkmark::before {
+  content: '✓';
+  font-size: 60px;
+  color: white;
+}
+
+.ti {
+  color: #212121;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 50px;
+  /* 142.857% */
+}
+
+.sub {
+  color: #212121;
+  text-align: center;
+  font-family: Poppins;
+  padding-block: 30px;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  /* 176.471% */
+
+}
+
+.par {
+  color: #5F5D5D;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -64,29 +70,33 @@
   width: 95%;
   padding-block: 25px;
   margin: 0px auto;
-    }
-    @keyframes popIn {
-      0% {
-        opacity: 0;
-        transform: scale(0);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    
-    button {
-      margin-top: 20px;
-      border-radius: 30px;
-      border: 1px solid #212121;
-      font-family: "Poppins", sans-serif;
-      width: 100%;
-      padding-top: 20px;
-      background-color: #ffffff;
-      color: #212121;
-      padding-bottom: 20px;
-      font-weight: 600;
-      font-size: normal;
-    }
-    
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+button {
+  margin-top: 20px;
+  border-radius: 30px;
+  border: 1px solid #212121;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  padding-top: 20px;
+  background-color: #212121;
+  color: #fff;
+  padding-bottom: 20px;
+  font-size: normal;
+  img{
+    margin-left: 10px;
+    width: 20px;
+  }
+}

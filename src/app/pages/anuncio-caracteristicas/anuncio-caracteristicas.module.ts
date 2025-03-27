@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { AnuncioCaracteristicasPageRoutingModule } from './anuncio-caracteristicas-routing.module';
 import { AnuncioCaracteristicasPage } from './anuncio-caracteristicas.page';
+import { SharedModule } from 'src/app/components/shared/shared.module';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   imports: [
@@ -12,8 +14,10 @@ import { AnuncioCaracteristicasPage } from './anuncio-caracteristicas.page';
     FormsModule,
     IonicModule,
     AnuncioCaracteristicasPageRoutingModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    SharedModule,
+    SwiperModule,
   ],
-  declarations: [AnuncioCaracteristicasPage]
+  declarations: [AnuncioCaracteristicasPage],
 })
 export class AnuncioCaracteristicasPageModule {}

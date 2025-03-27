@@ -21,15 +21,21 @@ export class EliPrefPage implements OnInit {
   uga_direcc: string = '';
   uga_lat: string = '';
   uga_long: string = '';
+  descripcion: string = '';
 
   constructor(
     private router: Router,
     private route: ActivatedRoute
-  ) { 
-    this.setValues(); 
-  }
+  ) {
 
+  }
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
   ngOnInit() {
+    this.setValues();
   }
 
   async setValues() {
@@ -47,10 +53,11 @@ export class EliPrefPage implements OnInit {
       this.uga_direcc = params['uga_direcc'];
       this.uga_lat = params['uga_lat'];
       this.uga_long = params['uga_long'];
+      this.descripcion = params['descripcion'];
     });
   }
 
-  getValues(){
+  navigate(){
     this.router.navigate(['/configuracion-alquilar'], {
       queryParams: {
         tga_id: this.tga_id,
@@ -65,7 +72,8 @@ export class EliPrefPage implements OnInit {
         gar_alto: this.gar_alto,
         uga_direcc: this.uga_direcc,
         uga_lat: this.uga_lat,
-        uga_long: this.uga_long
+        uga_long: this.uga_long,
+        descripcion: this.descripcion,
       }
     });
 

@@ -8,8 +8,8 @@
         <span *ngIf="withTitleLeft">{{titleLeft}}</span>
       </div>
       <div class="right-content">
-        <img *ngIf="withTrash" src="assets/images/trash-black.svg" alt="Contraseña" class="icon-trash">
-        <img *ngIf="withArrowDown" src="assets/images/down-arrow.svg" alt="Contraseña" class="icon-arrow-right">
+        <img *ngIf="withTrash" src="assets/images/trash-black.svg" alt="Eliminar" class="icon-trash" (click)="openTrashModalById()">
+        <img *ngIf="withArrowDown" src="assets/images/down-arrow.svg" alt="Desplegar" class="icon-arrow-right" (click)="openModalById()">
       </div>
     </div>
   </ion-toolbar>

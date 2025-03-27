@@ -10,10 +10,7 @@ export class ConfiguracionAlquilarPage implements OnInit {
   isChecked: boolean = false;
   isChecked2: boolean = false;
   isChecked3: boolean = false;
-  onChange(event: any) {
-    this.isChecked = event.target.checked;
-    console.log('Checkbox checked:', this.isChecked);
-  } distritoData: any;
+  distritoData: any;
   tga_id: string = '';
   direccion: string = '';
   distrito: string = '';
@@ -29,16 +26,25 @@ export class ConfiguracionAlquilarPage implements OnInit {
   uga_long: string = '';
   dis_id: number = 0;
   tve_id: number[] = [];
+  descripcion: string = '';
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.setValues();
-   }
+  }
+
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
+  onChange(event: any) {
+    this.isChecked = event.target.checked;
+    console.log('Checkbox checked:', this.isChecked);
+  }
+
 
   async setValues() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.tga_id = params['tga_id'];
       this.direccion = params['direccion'];
       this.distrito = params['distrito'];
@@ -53,32 +59,30 @@ export class ConfiguracionAlquilarPage implements OnInit {
       this.uga_lat = params['uga_lat'];
       this.uga_long = params['uga_long'];
       this.dis_id = params['dis_id'];
+      this.descripcion = params['descripcion'];
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // Función para manejar los cambios en los checkboxes
   onCheckboxChange(servicioId: number, isChecked: boolean) {
-      
     if (isChecked) {
-      console.log('checked')
+      console.log('checked');
       // Si el checkbox está seleccionado, agrega el servicio al array
       this.tve_id.push(servicioId);
       console.log(this.tve_id);
     } else {
-      console.log('unchecked')
+      console.log('unchecked');
       // Si está deseleccionado, remuévelo del array
 
-      this.tve_id = this.tve_id.filter(id => id !== servicioId);
+      this.tve_id = this.tve_id.filter((id) => id !== servicioId);
       console.log(this.tve_id);
     }
-    
   }
 
-  getValues(){
-    if(!this.tve_id || this.tve_id.length < 1){
+  nextPage() {
+    if (!this.tve_id || this.tve_id.length < 1) {
       alert('Debes elegir una opcion.');
       return;
     }
@@ -98,14 +102,14 @@ export class ConfiguracionAlquilarPage implements OnInit {
         uga_direcc: this.uga_direcc,
         uga_lat: this.uga_lat,
         uga_long: this.uga_long,
-        dis_id : this.dis_id,
-        tve_id : this.tve_id
-      }
+        dis_id: this.dis_id,
+        tve_id: this.tve_id,
+        descripcion: this.descripcion,
+      },
     });
-
   }
 
-  return(){
+  return() {
     this.router.navigate(['/eli-pref'], {
       queryParams: {
         tga_id: this.tga_id,
@@ -121,9 +125,8 @@ export class ConfiguracionAlquilarPage implements OnInit {
         uga_direcc: this.uga_direcc,
         uga_lat: this.uga_lat,
         uga_long: this.uga_long,
-        dis_id : this.dis_id
-      }
+        dis_id: this.dis_id,
+      },
     });
   }
-
 }

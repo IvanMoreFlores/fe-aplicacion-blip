@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,OnDestroy } from '@angular/core';
 import Swiper from 'swiper';
-import { } from '@angular/router';
+import {} from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from '../../services/storage.service';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 import { ModalController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { IonModal } from '@ionic/angular';
+import { AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs'; // Importar Subscription
+import { filter } from 'rxjs/operators'; // Importar filter
 
 @Component({
   selector: 'app-anuncio-caracteristicas',
   templateUrl: './anuncio-caracteristicas.page.html',
   styleUrls: ['./anuncio-caracteristicas.page.scss'],
 })
-export class AnuncioCaracteristicasPage implements OnInit {
+export class AnuncioCaracteristicasPage
+  implements OnInit, OnDestroy
+{
   selectedContent: string = 'Características'; // Inicializa la variable con el valor por defecto
   text = ''; // Texto del primer textarea
   textareas: string[] = []; // Array para almacenar los textareas adicionales
@@ -48,37 +54,68 @@ export class AnuncioCaracteristicasPage implements OnInit {
   hora_init: any;
   hora_end: any;
   chck_hora: boolean = false;
-  //
-  //
+  isLoading: boolean = true; // Siempre comienza en true
+  private routerSubscription!: Subscription;
+  private swiperInstance: any;
   showContent1: boolean = false;
   showContent2: boolean = false;
   showContentEdit: boolean = false;
   showContentLugares: boolean = false;
   showContentDimension: boolean = false;
   showContentDirec: boolean = false;
+  @ViewChild('trashModal') trashModal!: IonModal;
+  @ViewChild('selectModal') selectModal!: IonModal;
 
   constructor(
     private router: Router,
     private api: ApiService,
     private storage: StorageService,
-    private modalController: ModalController
-  ) {
-    if (this.advertisements.length === 0) {
-      this.loadContent();
+    private modalController: ModalController,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  // Método para reiniciar el estado de la página
+  resetPageState() {
+    this.isLoading = true;
+    // Destruir la instancia anterior de Swiper si existe
+    if (this.swiperInstance) {
+      this.swiperInstance.destroy();
+      this.swiperInstance = null;
+    }
+    // Cargar el contenido
+    this.loadContent();
+  }
+
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
     }
   }
 
+  handleOpenModal(modalId: string) {
+    console.log(`Modal ${modalId} abierto`);
+    if (modalId === 'open-modal2') {
+      this.selectModal.present();
+    }
+  }
+
+  handleOpenTrashModal(modalId: string) {
+    console.log(`Modal de papelera ${modalId} abierto`);
+    this.trashModal.present();
+  }
+
   async loadContent() {
+    this.isLoading = true; // Asegurar que loading está activado
     const token = await this.storage.getItem('token');
+
     this.api.getAds(token).subscribe(
       (response: any) => {
         this.advertisements = response.data;
-        console.log(this.advertisements);
-        console.log(this.advertisements.length);
 
-        if(this.advertisements.length <= 0){
+        if (this.advertisements.length <= 0) {
           alert('Debes crear un Anuncio antes!');
           this.router.navigate(['/tab-home/home']);
+          return; // Salir del método para evitar errores
         }
 
         this.mainAd = this.advertisements[0];
@@ -93,14 +130,23 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.precio_hora = this.mainAd.tipos_pagos[0].pag_monto;
         this.precio_dia = this.mainAd.tipos_pagos[1].pag_monto;
         this.checkServPref();
+
+        // Esperar que el DOM se actualice
+        this.cdr.detectChanges();
+
+        // Inicializar Swiper después de que los datos estén cargados
+        this.initSwiper();
       },
       (error: any) => {
-        console.error(error);
+        console.error('Error al cargar los anuncios:', error);
+        this.isLoading = false; // Finalizar loading incluso en caso de error
+        this.cdr.detectChanges();
       }
     );
   }
 
   async updateContent() {
+    this.isLoading = true;
     const token = await this.storage.getItem('token');
     const id_select = this.mainAd.gar_id;
     this.api.getAds(token).subscribe(
@@ -121,6 +167,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
             this.checkServPref();
           }
         }
+        this.isLoading = false;
       },
       (error: any) => {
         console.error(error);
@@ -144,7 +191,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
           this.updateContent();
         },
         (error: any) => {
-          alert('Hubo un error: ' + error.message)
+          alert('Hubo un error: ' + error.message);
         }
       );
     } else {
@@ -155,7 +202,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
           this.updateContent();
         },
         (error: any) => {
-          alert('Hubo un error: ' + error.message)
+          alert('Hubo un error: ' + error.message);
         }
       );
     }
@@ -164,8 +211,8 @@ export class AnuncioCaracteristicasPage implements OnInit {
   async onNumberInputChange() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
-    let pag_monto = "";
-    pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"tip_id":2,"pag_monto":${this.precio_dia}}]`
+    let pag_monto = '';
+    pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"tip_id":2,"pag_monto":${this.precio_dia}}]`;
     formData.append('pag_monto', pag_monto);
     formData.append('gar_id', this.mainAd.gar_id);
     this.api.updateAd(token, formData).subscribe(
@@ -174,10 +221,9 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.modalController.dismiss();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
-
   }
 
   async checkServPref() {
@@ -196,102 +242,95 @@ export class AnuncioCaracteristicasPage implements OnInit {
     this.chck_vie = false;
     this.chck_sab = false;
 
-    this.mainAd.tipos_servicios.map(
-      (servicio: any) => {
-        if (servicio.sga_id === 1) {
-          this.chck_serv1 = true;
-        }
-
-        if (servicio.sga_id === 2) {
-          this.chck_serv2 = true;
-        }
-
-        if (servicio.sga_id === 3) {
-          this.chck_serv3 = true;
-
-        }
-
-        if (servicio.sga_id === 4) {
-          this.chck_serv4 = true;
-        }
-
-        if (servicio.sga_id === 5) {
-          this.chck_serv4 = true;
-        }
+    this.mainAd.tipos_servicios.map((servicio: any) => {
+      if (servicio.sga_id === 1) {
+        this.chck_serv1 = true;
       }
-    );
-    this.mainAd.tipos_garages.map(
-      (garage: any) => {
-        if (garage.tve_id === 1) {
-          this.chck_pref1 = true;
-        }
 
-        if (garage.tve_id === 2) {
-          this.chck_pref2 = true;
-        }
-
-        if (garage.tve_id === 3) {
-          this.chck_pref3 = true;
-        }
+      if (servicio.sga_id === 2) {
+        this.chck_serv2 = true;
       }
-    );
 
-    this.mainAd.tipos_restricciones.map(
-      (restrict: any) => {
-        if (restrict.rga_tipo === 1) {
-          switch (restrict.rga_dia) {
-            case 1:
-              this.chck_lun = true;
-              break;
-            case 2:
-              this.chck_mar = true;
-              break;
-            case 3:
-              this.chck_mie = true;
-              break;
-            case 4:
-              this.chck_jue = true;
-              break;
-            case 5:
-              this.chck_vie = true;
-              break;
-            case 6:
-              this.chck_sab = true;
-              break;
-            case 7:
-              this.chck_dom = true;
-              break;
-          }
+      if (servicio.sga_id === 3) {
+        this.chck_serv3 = true;
+      }
+
+      if (servicio.sga_id === 4) {
+        this.chck_serv4 = true;
+      }
+
+      if (servicio.sga_id === 5) {
+        this.chck_serv4 = true;
+      }
+    });
+    this.mainAd.tipos_garages.map((garage: any) => {
+      if (garage.tve_id === 1) {
+        this.chck_pref1 = true;
+      }
+
+      if (garage.tve_id === 2) {
+        this.chck_pref2 = true;
+      }
+
+      if (garage.tve_id === 3) {
+        this.chck_pref3 = true;
+      }
+    });
+
+    this.mainAd.tipos_restricciones.map((restrict: any) => {
+      if (restrict.rga_tipo === 1) {
+        switch (restrict.rga_dia) {
+          case 1:
+            this.chck_lun = true;
+            break;
+          case 2:
+            this.chck_mar = true;
+            break;
+          case 3:
+            this.chck_mie = true;
+            break;
+          case 4:
+            this.chck_jue = true;
+            break;
+          case 5:
+            this.chck_vie = true;
+            break;
+          case 6:
+            this.chck_sab = true;
+            break;
+          case 7:
+            this.chck_dom = true;
+            break;
+        }
+      } else {
+        this.hora_init = restrict.rga_horainicio;
+        this.hora_end = restrict.rga_horafin;
+
+        if (this.hora_init === '10:00:00' && this.hora_end === '17:00:00') {
+          this.chck_hora = true;
         } else {
-          this.hora_init = restrict.rga_horainicio;
-          this.hora_end = restrict.rga_horafin;
-
-          if (this.hora_init === '10:00:00' && this.hora_end === '17:00:00') {
-            this.chck_hora = true;
-          } else {
-            this.chck_hora = false;
-          }
+          this.chck_hora = false;
         }
       }
-    )
+    });
   }
 
   convertToISO(time: string): string {
-    const currentDate = new Date();  // Obtiene la fecha actual
-    const [hours, minutes] = time.split(':');  // Divide la cadena de tiempo en horas y minutos
+    const currentDate = new Date(); // Obtiene la fecha actual
+    const [hours, minutes] = time.split(':'); // Divide la cadena de tiempo en horas y minutos
     // Establece la hora y los minutos en la fecha actual
     currentDate.setUTCHours(parseInt(hours));
     currentDate.setUTCMinutes(parseInt(minutes));
-    currentDate.setUTCSeconds(0);  // Opcionalmente puedes establecer los segundos en 0
+    currentDate.setUTCSeconds(0); // Opcionalmente puedes establecer los segundos en 0
     // Convierte la fecha a formato ISO con los segundos (YYYY-MM-DDTHH:mm:00)
-    return currentDate.toISOString().split('.')[0];  // Retorna en formato YYYY-MM-DDTHH:mm:ss
+    return currentDate.toISOString().split('.')[0]; // Retorna en formato YYYY-MM-DDTHH:mm:ss
   }
 
   async checkDia(event: Event, num: number) {
     const checkbox = event.target as HTMLInputElement;
     const isChecked = checkbox.checked;
     if (isChecked) {
-      console.log('checked ' + num)
+      console.log('checked ' + num);
       const token = await this.storage.getItem('token');
       const formData = new FormData();
       formData.append('rga_dia_a', num.toString());
@@ -301,11 +340,11 @@ export class AnuncioCaracteristicasPage implements OnInit {
           console.log(response);
         },
         (error: any) => {
-          alert('Hubo un error: ' + error.message)
+          alert('Hubo un error: ' + error.message);
         }
       );
     } else {
-      console.log('unchecked ' + num)
+      console.log('unchecked ' + num);
       const token = await this.storage.getItem('token');
       const formData = new FormData();
       formData.append('rga_dia_d', num.toString());
@@ -315,7 +354,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
           console.log(response);
         },
         (error: any) => {
-          alert('Hubo un error: ' + error.message)
+          alert('Hubo un error: ' + error.message);
         }
       );
     }
@@ -416,7 +455,8 @@ export class AnuncioCaracteristicasPage implements OnInit {
   }
 
   getPlaceholderHeight(): string {
-    const placeholderText = "Ej. Ser puntal con las horas de reserva y salir al momento pactado"; // Cambia esto al texto real de tu placeholder
+    const placeholderText =
+      'Ej. Ser puntal con las horas de reserva y salir al momento pactado'; // Cambia esto al texto real de tu placeholder
     const placeholderHeight = placeholderText.length * 1; // Ajusta el factor según tus necesidades
     return `${placeholderHeight}px`;
   }
@@ -426,15 +466,19 @@ export class AnuncioCaracteristicasPage implements OnInit {
   }
 
   initSwiper() {
-    const mySwiper = new Swiper('.swiper-container', {
-      // Configuración de Swiper
-      slidesPerView: 'auto',
-      spaceBetween: 10,
-      centeredSlides: false, // Deshabilita la centralización de las diapositivas
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
+    // Crear nueva instancia de Swiper
+    setTimeout(() => {
+      this.swiperInstance = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        centeredSlides: false,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      });
+      this.isLoading = false; // Finalizar loading después de inicializar Swiper
+      this.cdr.detectChanges(); // Forzar detección de cambios
+    }, 200); // Tiempo suficiente para asegurar que el DOM esté listo
   }
 
   changeContent(content: string) {
@@ -472,13 +516,24 @@ export class AnuncioCaracteristicasPage implements OnInit {
       (error) => {
         console.error('Error al eliminar', error);
       }
-    )
+    );
 
     this.modalController.dismiss(null, 'open-modal-tash');
   }
 
   ngOnInit() {
-    this.initSwiper();
+    this.resetPageState();
+  }
+
+  ionViewWillEnter() {
+    // Restablecer el estado de la página
+    this.resetPageState();
+  }
+  ngOnDestroy() {
+    // Limpieza al destruir el componente
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 
   async sendUpdateName() {
@@ -494,7 +549,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.modalController.dismiss();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
   }
@@ -509,24 +564,22 @@ export class AnuncioCaracteristicasPage implements OnInit {
   async onCheckboxChange(garId: number) {
     this.selectedGarId = garId;
     console.log('Seleccionado:', garId);
-    this.advertisements.map(
-      (advice: any) => {
-        if (garId == advice.gar_id) {
-          this.mainAd = advice;
-          this.gar_nombre_mod = this.mainAd.gar_nombre;
-          this.gar_descri = this.mainAd.gar_descri;
-          this.gar_ancho = this.mainAd.gar_ancho;
-          this.gar_largo = this.mainAd.gar_largo;
-          this.gar_alto = this.mainAd.gar_alto;
-          this.uga_direcc = this.mainAd.uga_direcc;
-          this.precio_hora = this.mainAd.tipos_pagos[0].pag_monto;
-          this.precio_dia = this.mainAd.tipos_pagos[1].pag_monto;
-          this.checkServPref();
-          this.modalController.dismiss();
-          console.log(this.mainAd);
-        }
+    this.advertisements.map((advice: any) => {
+      if (garId == advice.gar_id) {
+        this.mainAd = advice;
+        this.gar_nombre = this.mainAd.gar_nombre;
+        this.gar_descri = this.mainAd.gar_descri;
+        this.gar_ancho = this.mainAd.gar_ancho;
+        this.gar_largo = this.mainAd.gar_largo;
+        this.gar_alto = this.mainAd.gar_alto;
+        this.uga_direcc = this.mainAd.uga_direcc;
+        this.precio_hora = this.mainAd.tipos_pagos[0].pag_monto;
+        this.precio_dia = this.mainAd.tipos_pagos[1].pag_monto;
+        this.checkServPref();
+        this.modalController.dismiss();
+        console.log(this.mainAd);
       }
-    )
+    });
   }
 
   async sendUpdatePic(file: File) {
@@ -536,11 +589,11 @@ export class AnuncioCaracteristicasPage implements OnInit {
     formData.append('gar_id', this.mainAd.gar_id);
     this.api.updateAd(token, formData).subscribe(
       (response: any) => {
-        console.log(response)
+        console.log(response);
         this.updateContent();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
   }
@@ -556,7 +609,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.modalController.dismiss();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
   }
@@ -574,7 +627,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.modalController.dismiss();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
   }
@@ -597,7 +650,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
     if (this.chck_serv5 == true) {
       formData.append('services[]', '5');
     }
-    console.log()
+    console.log();
     formData.append('gar_id', this.mainAd.gar_id);
     this.api.updateAd(token, formData).subscribe(
       (response: any) => {
@@ -606,7 +659,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.modalController.dismiss();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
   }
@@ -631,7 +684,7 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.modalController.dismiss();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
   }
@@ -648,9 +701,23 @@ export class AnuncioCaracteristicasPage implements OnInit {
         this.modalController.dismiss();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
   }
 
+  toCamelCase(str: string): string {
+    if (!str) return '';
+
+    // Dividir el string en palabras
+    const words = str.toLowerCase().split(' ');
+
+    // Primera palabra en minúsculas, resto con primera letra mayúscula
+    return words.map((word, index) => {
+      if (index === 0) {
+        return word.toLowerCase();
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join('');
+  }
 }

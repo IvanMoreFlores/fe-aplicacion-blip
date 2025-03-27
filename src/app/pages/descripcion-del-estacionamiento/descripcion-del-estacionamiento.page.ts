@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-descripcion-del-estacionamiento',
@@ -9,12 +10,16 @@ export class DescripcionDelEstacionamientoPage implements OnInit {
   data: any;
   text: string = 'new';
 
-  constructor(){}
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
-
-
-
-
+  navigate() {
+    this.router.navigate(['/descripcion-del-espacio']);
+  }
 }

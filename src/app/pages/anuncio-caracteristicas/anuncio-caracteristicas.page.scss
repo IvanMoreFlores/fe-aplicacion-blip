@@ -1,21 +1,12 @@
 ion-content {
-  --background: #FFFFFF;
-  --padding-start: 0;
-  --padding-end: 0;
-  --padding-top: 0;
-  --padding-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  overflow: auto;
 }
 
 .container {
+  padding: 0px 32px 10px 32px;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding: 22px;
 }
 
 .pantalla {
@@ -40,7 +31,8 @@ ion-content {
 .inicio {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribuye los elementos a lo largo del eje principal (horizontal) */
+  justify-content: space-between;
+  /* Distribuye los elementos a lo largo del eje principal (horizontal) */
   margin-bottom: 20px;
 }
 
@@ -85,7 +77,8 @@ ion-content {
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
-    line-height: 25px; /* 166.667% */
+    line-height: 25px;
+    /* 166.667% */
     text-align: center;
     margin: 0;
     padding-inline: 60px;
@@ -132,21 +125,22 @@ ion-content {
   border-radius: 20px 20px 0px 0px;
 
   .block2-container {
-    padding-inline: 36px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 20px;
   }
 
   h1 {
     color: #212121;
     text-align: center;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 25px; /* 156.25% */
-    margin:0px;
-    padding-block: 20px;
-    padding-inline: 30px;
+    font-family: "Poppins";
+    font-size: 18px;
+    //font-style: normal;
+    font-weight: normal;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* 156.25% */
+    margin: 0px;
   }
 
   hr {
@@ -157,41 +151,59 @@ ion-content {
     margin-bottom: 23px;
   }
 }
+
 .checkbox-anuncio-container {
   width: 100%;
   color: #212121;
-  font-family: Poppins, sans-serif;
-  font-size: 15px; 
+  font-family: "Poppins";
+  font-size: 15px;
   font-weight: 400;
-  img{
-    margin-right: 10px;
+
+  img {
+    margin-right: 20px;
+    width: 27px;
+    height: 25px;
+
   }
 }
 
 .checkbox-anuncio {
   margin-bottom: 20px;
+
+  label {
+    display: flex;
+    align-items: center;
+    /* Alinear el contenido verticalmente */
+    //border: 1px solid #49454f;
+    border: 1px solid #b6b1bd;
+    border-radius: 10px;
+    padding: 10px 25px 10px 25px;
+
+    //Cambiar borde si se activa
+    &.active {
+      border: 1px solid #49454f;
+    }
+  }
 }
 
-.checkbox-anuncio label {
-  display: flex;
-  align-items: center; /* Alinear el contenido verticalmente */
-  border: 1px solid #49454f;
-  border-radius: 30px;
-  padding: 15px 20px;
-}
 
 .checkbox-anuncio label div {
-  flex-grow: 1; /* El texto ocupará todo el espacio restante */
-  white-space: nowrap; /* Evita que el texto salte de línea */
+  flex-grow: 1;
+  /* El texto ocupará todo el espacio restante */
+  white-space: nowrap;
+  /* Evita que el texto salte de línea */
   overflow: hidden;
-  text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es muy largo */
-  padding-right: 10px; /* Espacio entre el texto y el checkbox */
+  text-overflow: ellipsis;
+  /* Agrega puntos suspensivos si el texto es muy largo */
+  padding-right: 10px;
+  /* Espacio entre el texto y el checkbox */
 }
 
 .checkbox-round {
-  flex-shrink: 0; /* Evita que el checkbox se reduzca */
+  flex-shrink: 0;
+  /* Evita que el checkbox se reduzca */
   width: 20px;
-  height: 20px;
+  height: 18px;
   background-color: white;
   border-radius: 50%;
   border: 1px solid #A3A2A4;
@@ -226,6 +238,7 @@ ion-content {
   display: flex;
   align-items: center;
 }
+
 .button-agregar-anuncio {
   border: 0;
   background-color: rgba(0, 0, 0, 0);
@@ -256,56 +269,139 @@ ion-modal {
 }
 
 .swiper-container {
-  width: auto;
+  width: 100%;
 }
 
 .swiper-slide {
-  display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 15px;
-  width: fit-content; /* Ajusta el ancho al contenido */
+  // display: inline-block;
+  // margin-right: 10px;
+  // margin-bottom: 15px;
+  // width: fit-content; /* Ajusta el ancho al contenido */
+  width: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .swiper-wrapper button {
-  font-size: 12px;
-  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #212121;
+  border: 1px solid #212121;
+  font-size: 13px;
+  font-family: "Poppins";
   font-weight: 500;
   margin: 0;
   padding: 13px 20px;
-  background-color: #ffffff;
-  color: #5f5d5d;
-  border: 1px solid #5f5d5d;
+
   border-radius: 30px;
+  letter-spacing: 0.6px;
+  height: auto; // Elimina la altura fija
+  padding: 8px 25px 8px 25px; // Mantén el mismo padding que los botones no activos
+  display: flex; // Añade display flex
+  align-items: center; // Centra los elementos verticalmente
+  opacity: 0.5;
+  /* Reduce la opacidad para indicar estado deshabilitado */
+  cursor: not-allowed;
+  /* Cambia el cursor */
+
+  .button-title {
+    // Elimina margin-top negativo
+    display: inline-block; // Asegura que sea tratado como bloque en línea
+    vertical-align: middle; // Centra verticalmente
+    line-height: normal;
+    font-weight: normal;
+  }
+
+  img {
+    margin-right: 10px;
+    // Elimina margin-top negativo
+    vertical-align: middle; // Centra verticalmente
+    display: inline-block; // Asegura que sea tratado como bloque en línea
+    filter: brightness(0)
+  }
 }
 
 .swiper-wrapper button.active {
   color: #ffffff;
   background-color: #212121;
   border: 1px solid #212121;
+  font-size: 13px;
+  font-family: "Poppins";
+  letter-spacing: 0.6px;
+  height: auto; // Elimina la altura fija
+  padding: 8px 25px 8px 25px; // Mantén el mismo padding que los botones no activos
+  display: flex; // Añade display flex
+  align-items: center; // Centra los elementos verticalmente
+  opacity: 1;
+  /* Opacidad completa */
+  cursor: pointer;
+  /* Cursor de puntero para indicar que es clickeable */
+  pointer-events: auto;
+
+  /* Permite interacciones */
+  .button-title {
+    // Elimina margin-top negativo
+    display: inline-block; // Asegura que sea tratado como bloque en línea
+    vertical-align: middle; // Centra verticalmente
+    line-height: normal;
+    font-weight: normal;
+  }
+
+  img {
+    margin-right: 10px;
+    // Elimina margin-top negativo
+    vertical-align: middle; // Centra verticalmente
+    display: inline-block; // Asegura que sea tratado como bloque en línea
+    filter: brightness(0) invert(1);
+  }
 }
 
-.secondary-title {
-  font-size: 19px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  color: #212121;
-  margin: 10px 0 5px 0;
-}
 .scroll-container {
-  max-height: 690px; /* Altura máxima del contenedor */
-  overflow-y: auto;  /* Scroll vertical */
-  padding-inline: 9px;
+  max-height: 690px;
+  /* Altura máxima del contenedor */
+  overflow-y: auto;
+  /* Scroll vertical */
   padding-bottom: 20px;
+  /* Ocultar la barra de desplazamiento en diferentes navegadores */
+  /* Para Firefox */
+  scrollbar-width: none;
+
+  /* Para Internet Explorer y Edge */
+  -ms-overflow-style: none;
+
+  /* Para Chrome, Safari y Opera */
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    background: transparent;
+  }
 }
-.informacion h2 {
-  font-size: 12px;
-  margin-top: auto;
-  margin-bottom: 15px;
-  line-height: 18.5px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  color: #212121;
-  margin-right: auto;
+
+.informacion {
+  h2 {
+    font-size: 15px;
+    margin-top: auto;
+    margin-bottom: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: normal;
+    color: #212121;
+    margin-right: auto;
+    line-height:normal;
+  }
+
+  h1 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-family: "Poppins", sans-serif;
+    margin-top: 15px;
+  }
+
+  h5 {
+    font-size: 11px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #49454f;
+    margin: auto;
+  }
 }
 
 .anuncio-label {
@@ -316,29 +412,21 @@ ion-modal {
   margin-right: auto;
 }
 
-.informacion h5 {
-  font-size: 11px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #49454f;
-  margin: auto;
-}
 
 .form input {
-  border-color: #212121;
-  border-radius: 30px;
+  border-color: #d0d0d3;
+  border-radius: 10px;
   border-style: solid;
   border-width: 1px;
-  height: 56px;
   align-items: center;
   display: flex;
-  width: 98%;
+  width: 100%;
   background-color: transparent;
-  padding: 12px 22px;
+  padding: 12px 10px 12px 10px;
   margin-bottom: 30px;
   margin-top: 8px;
-  font-size: 14px;
-  color: black;
+  font-size: 15px;
+  color: #d0d0d3;
 }
 
 .outlinenone {
@@ -348,42 +436,61 @@ ion-modal {
 
 .boxes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Distribuye las cajas en columnas flexibles */
-  gap: 15px; /* Espacio entre las cajas */
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  /* Distribuye las cajas en columnas flexibles */
+  gap: 15px;
+  /* Espacio entre las cajas */
   margin-bottom: 40px;
   margin-top: 25px;
 }
 
 .box1 {
-  height: 104px;
-  width: 100%; /* Ocupa el 100% de la celda del grid */
+  height: 90px;
+  width: 100px;
+  /* Ocupa el 100% de la celda del grid */
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 4px 0px #21212140;
-  border-radius: 20px;
-  position: relative; /* Permite posicionar el botón de cierre */
+  //box-shadow: 0px 4px 4px 0px #21212140;
+  border-radius: 15px;
+  position: relative;
+  border: none;
+  background: #F5F5F5;
+  /* Permite posicionar el botón de cierre */
 }
 
 .box1 img {
-  width: 100%; /* Ajusta el ancho al 100% del contenedor */
-  height: 100%; /* Ajusta la altura al 100% del contenedor */
-  object-fit: cover; /* Cubre todo el área del recuadro sin distorsionar la imagen */
-  border-radius: 20px; /* Mantén las esquinas redondeadas del recuadro */
+  width: 100px;
+  /* Ajusta el ancho al 100% del contenedor */
+  height: 90px;
+  /* Ajusta la altura al 100% del contenedor */
+  object-fit: cover;
+  /* Cubre todo el área del recuadro sin distorsionar la imagen */
+  border-radius: 20px;
+  /* Mantén las esquinas redondeadas del recuadro */
+  //filter: brightness(0) saturate(100%) invert(62%) sepia(6%) saturate(178%) hue-rotate(177deg) brightness(91%) contrast(87%);
+}
+
+.box1 img:last-child {
+  width: 26px;
+  /* Ajusta el ancho al 100% del contenedor */
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(62%) sepia(6%) saturate(178%) hue-rotate(177deg) brightness(91%) contrast(87%);
 }
 
 .close-button {
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255, 0.5);
   color: #212121;
   border: none;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 10px;
-  z-index: 1; /* Asegura que el botón esté por encima de la imagen */
+  width: 25px;
+  height: 23px;
+  font-size: 13px;
+  z-index: 1;
+  /* Asegura que el botón esté por encima de la imagen */
 }
 
 
@@ -399,6 +506,7 @@ ion-modal {
   box-shadow: 0px 4px 4px 0px #21212140;
   border-radius: 20px;
 }
+
 .box3 {
   grid-area: 1 / 3 / 2 / 4;
   height: 104px;
@@ -409,6 +517,7 @@ ion-modal {
   box-shadow: 0px 4px 4px 0px #21212140;
   border-radius: 20px;
 }
+
 .box4 {
   grid-area: 2 / 1 / 3 / 2;
   height: 104px;
@@ -421,60 +530,91 @@ ion-modal {
   border-radius: 20px;
 }
 
-.descripcion h3 {
-  font-size: 12px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #212121;
-  margin-right: auto;
-  margin-bottom: 3px;
-  margin-top: 35px;
-}
+.descripcion {
+  h3 {
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #212121;
+    margin-right: auto;
+    margin-bottom: 3px;
+    margin-top: 35px;
+  }
 
-.descripcion p {
-  font-size: 12px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  color: #212121;
-  margin-right: auto;
-  margin-bottom: 2px;
+  p {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: #212121;
+    margin-right: auto;
+    margin-bottom: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .dimensiones-detalle {
+    margin-left: 3px;
+    font-size: 14px;
+    font-family: "Poppins";
+    color: #8E8E93;
+    font-weight: 300;
+  }
+
+  .img-descripcion {
+    width: 25px;
+    padding-right: 8px;
+  }
+
+  hr {
+    background-color: #2c2c2c;
+    height: 1px;
+    border: 0;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
 }
 
 .servicios img {
-  margin-left: 5px;
+  margin-left: 15px;
+  width: 15px;
 }
 
 a.servicios {
   color: #212121;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   display: flex;
   align-items: center;
+  letter-spacing: 0.3px;
 }
 
 a.servicios:hover {
   font-weight: 800;
 }
 
-.lista-servicios{
+.lista-servicios {
   list-style-type: none;
-  padding: 0;
+  padding: 10px 0px 10px 0px;
   margin: 0;
-  
 
-  li{
-    font-size: 12px;
-    font-weight: 400;
-    margin-bottom: 4px;
 
+  li {
+    padding-bottom: 10px;
+
+    span {
+      font-size: 15px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      color: #212121;
+      margin-right: auto;
+      margin-bottom: 2px;
+      letter-spacing: 0.3px;
+    }
   }
 
-  li:last-child{
-    margin-bottom: 0;
-  }
-
-  img{
-      margin-right: 9px;
+  img {
+    margin-right: 9px;
   }
 }
 
@@ -757,11 +897,12 @@ a.servicios:hover {
     transition: background-color 0.3s ease-in-out;
     margin: 0px 5px 0px 0px;
   }
-  
+
   .checkbox-anuncio input:checked {
     background-color: #212121;
   }
 }
+
 // ---------------------------- REGLA -----------------------------------
 
 .num-regla {
@@ -791,6 +932,7 @@ a.servicios:hover {
   align-items: center;
   justify-content: center;
   margin-bottom: 25px;
+  background-color: #fff;
 }
 
 .form-regla textarea {
@@ -939,17 +1081,20 @@ a.servicios:hover {
   margin-bottom: 30px;
   box-shadow: 0px 4px 4px 0px #00000040;
 }
-.esp-par{
+
+.esp-par {
   padding-block: 20px;
   padding-inline: 20px;
 }
+
 .recordatorio p {
   color: #212121;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 25px; /* 178.571% */
+  line-height: 25px;
+  /* 178.571% */
   margin: 0px;
 }
 
@@ -961,17 +1106,21 @@ a.servicios:hover {
   font-size: 12px;
   font-weight: 400;
 }
+
 span {
   font-weight: 600;
 }
-.tex-hor{
+
+.tex-hor {
   color: #212121;
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: 25px; /* 166.667% */
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  /* 166.667% */
 }
+
 .input-descuento {
   width: 100%;
   height: 86px;
@@ -1043,7 +1192,8 @@ line-height: 25px; /* 166.667% */
 }
 
 .checkbox-column label {
-  margin-bottom: 0px; /* Ajusta este valor según lo necesites */
+  margin-bottom: 0px;
+  /* Ajusta este valor según lo necesites */
   font-size: 12px;
   font-weight: 400;
   display: flex;
@@ -1092,18 +1242,19 @@ line-height: 25px; /* 166.667% */
   font-weight: 500;
   font-size: 10px;
 }
+
 ion-modal {
-  --max-width: 100%;  // Establece un ancho máximo del 100% del viewport
-  --width: 100%;  // Establece un ancho fijo para el modal
-  --border-radius: 20px;  // Bordes redondeados para que luzca como en la imagen
-  --background: white;  // Fondo blanco para destacar
+  --max-width: 100%; // Establece un ancho máximo del 100% del viewport
+  --width: 100%; // Establece un ancho fijo para el modal
+  --border-radius: 20px; // Bordes redondeados para que luzca como en la imagen
+  --background: white; // Fondo blanco para destacar
 }
 
 ion-datetime {
-  width: 100%;  // Hacer que el datetime ocupe todo el ancho disponible
-  max-width: 350px;  // Limitar el ancho máximo para evitar que sea demasiado ancho
-  margin: 0 auto;  // Centrar el datetime en el modal
-  --ion-text-align: center;  // Asegura que el texto esté centrado
+  width: 100%; // Hacer que el datetime ocupe todo el ancho disponible
+  max-width: 350px; // Limitar el ancho máximo para evitar que sea demasiado ancho
+  margin: 0 auto; // Centrar el datetime en el modal
+  --ion-text-align: center; // Asegura que el texto esté centrado
 }
 
 
@@ -1111,6 +1262,7 @@ ion-datetime::part(picker) {
   font-size: 18px; // Tamaño del texto en el selector de hora
   font-weight: 500; // Grosor del texto
 }
+
 ion-datetime::part(picker) .picker-opt-selected {
   color: #000; // Color más oscuro para el número seleccionado
   font-weight: bold; // Aumenta el grosor de la fuente del número seleccionado
@@ -1121,17 +1273,19 @@ ion-datetime::part(picker) .picker-opt {
   color: #aaa; // Color gris para las opciones no seleccionadas
   opacity: 0.5; // Reducir la opacidad para los números no seleccionados
 }
-ion-datetime::part(picker) .picker-opt-am, 
+
+ion-datetime::part(picker) .picker-opt-am,
 ion-datetime::part(picker) .picker-opt-pm {
   color: #000; // Color del texto AM/PM
   font-weight: bold; // Grosor del texto
   font-size: 18px; // Tamaño del texto
   margin-left: 10px; // Espaciado para separar un poco de los números
 }
+
 ion-modal {
   --border-radius: 20px;
   --background: white; // Fondo del modal
-  --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); // Sombra para el modal
+  //--box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); // Sombra para el modal
 }
 
 ion-datetime-button::part(native) {
@@ -1173,7 +1327,8 @@ ion-datetime-button::part(native) {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   width: 100%;
-  height: 238px; /* Se mantiene la altura fija */
+  height: 238px;
+  /* Se mantiene la altura fija */
   box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   padding: 20px 20px 0px 20px;
@@ -1214,7 +1369,8 @@ ion-datetime-button::part(native) {
   height: 53px;
   box-shadow: 0px 3px 8px 1px rgba(88, 88, 88, 0.418);
   border-radius: 10px;
-  overflow: hidden; /* Oculta cualquier contenido que se salga del círculo */
+  overflow: hidden;
+  /* Oculta cualquier contenido que se salga del círculo */
 }
 
 .solicitud-img img {
@@ -1389,19 +1545,22 @@ ion-toggle::part(track) {
   overflow: visible;
 }
 
-.toggle-info{
+.toggle-info {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
+
 .cont-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; /* Espacio entre los botones */
+  gap: 15px;
+  /* Espacio entre los botones */
 }
-.btn-eli{
+
+.btn-eli {
   width: 100%;
   padding-block: 20px;
   border-radius: 30px;
@@ -1409,7 +1568,8 @@ ion-toggle::part(track) {
   background-color: #FFFFFF;
   border: 1px solid #212121;
 }
-.btn-can{
+
+.btn-can {
   width: 100%;
   padding: 20px;
   border-radius: 30px;
@@ -1417,6 +1577,7 @@ ion-toggle::part(track) {
   background-color: #212121;
   border: 1px solid #212121;
 }
+
 .label-text {
   font-size: 12px;
   position: absolute;
@@ -1427,6 +1588,7 @@ ion-toggle::part(track) {
   font-family: "Poppins", sans-serif;
   color: #212121;
 }
+
 .input-bar {
   position: relative;
   display: flex;
@@ -1440,6 +1602,7 @@ ion-toggle::part(track) {
   margin-block: 25px;
   color: #212121;
   width: 100%;
+
   input {
     width: 100%;
     padding: 0 20px;
@@ -1455,6 +1618,58 @@ ion-toggle::part(track) {
   margin-bottom: 4px;
   font-size: 14px;
 }
-.btn-gurd2{
+
+.btn-gurd2 {
   color: #FFFFFF;
+}
+
+.swiper-wrapper {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.title-list-ad {
+  display: flex;
+  flex-direction: column; // Coloca los elementos en columna (uno debajo del otro)
+  justify-content: center; // Centra los elementos verticalmente
+
+  span {
+    display: block; // Hace que cada span actúe como un bloque
+    margin-bottom: 4px; // Añade un pequeño espacio entre los spans
+    line-height: 1.2; // Ajusta el espaciado entre líneas
+  }
+
+  // Estilo específico para el primer span (título)
+  span.checkbox-text {
+    font-family: "Poppins";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    //line-height: 25px;
+    /* 166.667% */
+    letter-spacing: 0.15px;
+  }
+
+  // Estilo para el segundo span (dirección)
+  span:not(.checkbox-text) {
+    color: #8E8E93;
+    font-family: "Poppins";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    //line-height: 25px;
+    letter-spacing: 0.15px;
+  }
+
+  // Estilo para el ultimo span
+  span:last-child {
+    color: #8E8E93;
+    font-family: "Poppins";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    //line-height: 25px;
+    letter-spacing: 0.15px;
+    margin-bottom: 0px;
+  }
 }

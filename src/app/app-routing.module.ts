@@ -367,7 +367,8 @@ const routes: Routes = [
   {
     path: 'loader-comp',
     loadChildren: () => import('./pages/loader-comp/loader-comp.module').then( m => m.LoaderCompPageModule)
-  },  {
+  },
+  {
     path: 'cre-anu',
     loadChildren: () => import('./pages/cre-anu/cre-anu.module').then( m => m.CreAnuPageModule)
   },
@@ -399,7 +400,10 @@ const routes: Routes = [
     path: 'cor-registro',
     loadChildren: () => import('./pages/cor-registro/cor-registro.module').then( m => m.CorRegistroPageModule)
   },
-
+{
+  path:'app-descripcion-espacio',
+  loadChildren: () => import('./pages/crear-anuncio-descripcion-espacio/descripcion-espacio.module').then( m => m.DescripcionEspacioModule)
+}
 
 
 

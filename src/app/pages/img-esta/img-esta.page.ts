@@ -26,14 +26,13 @@ export class ImgEstaPage implements OnInit {
   uga_long: string = '';
   dis_id: number = 0;
   tve_id: string[] = [];
-
   files: File[] = [];
   files2: File[] = [];
   files3: File[] = [];
-
   esta1: string = '';
   esta2: string = '';
   esta3: string = '';
+  descripcion: string = '';
 
   constructor(
     private router: Router,
@@ -44,6 +43,11 @@ export class ImgEstaPage implements OnInit {
     this.setValues();
   }
 
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
   onSelect(event: { addedFiles: File[] }) {
     if (event.addedFiles.length) {
       this.files = [event.addedFiles[0]];
@@ -146,6 +150,9 @@ export class ImgEstaPage implements OnInit {
       this.uga_long = params['uga_long'];
       this.dis_id = params['dis_id'];
       this.tve_id = params['tve_id'];
+      this.descripcion = params['descripcion'];
+      this.uga_lat='-11.992837133211326';
+      this.uga_long='-77.00094774426941';
     });
   }
 
@@ -206,11 +213,11 @@ export class ImgEstaPage implements OnInit {
       this.files2,
       this.files3,
       this.tga_id,
-      this.direccion,
+      this.descripcion,
       this.gar_largo,
       this.gar_ancho,
       this.gar_alto,
-      this.uga_direcc,
+      this.direccion,
       this.uga_lat,
       this.uga_long,
       this.distrito,

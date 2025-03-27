@@ -1,115 +1,88 @@
-<ion-content [fullscreen]="true">
+<header-component [withArrowLeft]="true" [route]="'/tab-home'" (navigateTo)="handleNavigateTo($event)"
+  [withTrash]="true" [withArrowDown]="true" [modalId]="'open-modal2'" [trashModalId]="'open-modal-tash'"
+  (openModal)="handleOpenModal($event)" (openTrashModal)="handleOpenTrashModal($event)" [withTitleLeft]="true"
+  [titleLeft]="gar_nombre">
+</header-component>
+<ion-modal #trashModal [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+  <ng-template>
+    <div class="block">
+      <h1>¿Seguro que quieres eliminar el anuncio?</h1>
+
+      <hr />
+
+      <div class="button-container-modal">
+        <button class="button-eliminar-modal" (click)="deleteAd(mainAd?.gar_id)">
+          Eliminar Anuncio
+        </button>
+        <button (click)="cerrarContent()">Cancelar</button>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+<ion-modal #selectModal [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+  <ng-template>
+    <div class="block2">
+      <h1>Selecciona tu anuncio</h1>
+
+      <hr />
+
+      <div class="block2-container">
+        <div class="checkbox-anuncio-container">
+
+          <div class="checkbox-anuncio" *ngFor="let item of advertisements">
+            <label [for]="'checkbox' + item.gar_id" [ngClass]="{'active': item.gar_id === selectedGarId}">
+
+              <img src="/assets/images/fi-sr-home.svg" alt="icono" />
+              <div class="title-list-ad">
+                <span class="checkbox-text">
+                  {{ item.gar_nombre }}
+                </span>
+                <span>
+                  {{ item.uga_direcc }}
+                </span>
+              </div>
+              <input type="checkbox" [checked]="item.gar_id === selectedGarId" (change)="onCheckboxChange(item.gar_id)"
+                id="checkbox{{ item.gar_id }}" class="checkbox-round" />
+            </label>
+          </div>
+
+        </div>
+        <!-- <div class="button-agregar-anuncio-container">
+          <button class="button-agregar-anuncio">
+            <span class="false-button-agregar-anuncio"><img src="/assets/images/icon-plus2.svg" alt="" /></span>
+            <span>Agregar nuevo anuncio</span>
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+
+<ion-content>
   <div class="container">
     <div class="pantalla">
-      <div class="inicio">
-        <a class="regresar" href="#">
-          <div class="left-arrow">
-            <img src="/assets/images/left-arrow.svg" alt="" routerLink="/tab-home/home" />
-          </div>
-          <h1 class="title">{{ gar_nombre }}</h1>
-        </a>
-
-        <div class="grid-small-button">
-          <button class="small-button" id="open-modal-tash" expand="block">
-            <img src="/assets/images/trash.svg" alt="" />
-          </button>
-
-          <ion-modal trigger="open-modal-tash" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="block">
-                <h1>¿Seguro que quieres eliminar el anuncio?</h1>
-
-                <hr />
-
-                <div class="button-container-modal">
-                  <button class="button-eliminar-modal" (click)="deleteAd(mainAd?.gar_id)">
-                    Eliminar Anuncio
-                  </button>
-                  <button (click)="cerrarContent()">Cancelar</button>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-
-          <button class="small-button" id="open-modal2" expand="block">
-            <img src="/assets/images/down-arrow.svg" alt="" />
-          </button>
-
-          <ion-modal trigger="open-modal2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-            <ng-template>
-              <div class="block2">
-                <h1>Selecciona tu anuncio</h1>
-
-                <hr />
-
-                <div class="block2-container">
-                  <div class="checkbox-anuncio-container">
-
-                    <div class="checkbox-anuncio" *ngFor="let item of advertisements">
-                      <label for="checkbox">
-                        <div>
-                          <img src="/assets/images/icon-car.svg" alt="icono" />
-                          <span class="checkbox-text">
-                            {{ item.gar_nombre }}
-                          </span>
-                        </div>
-                        <input type="checkbox" [checked]="item.gar_id === selectedGarId"
-                          (change)="onCheckboxChange(item.gar_id)" id="checkbox{{ item.gar_id }}"
-                          class="checkbox-round" />
-                      </label>
-                    </div>
-
-                  </div>
-                  <div class="button-agregar-anuncio-container">
-                    <button class="button-agregar-anuncio">
-                      <span class="false-button-agregar-anuncio"><img src="/assets/images/icon-plus2.svg"
-                          alt="" /></span>
-                      <span>Agregar nuevo anuncio</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ion-modal>
-        </div>
-      </div>
-
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <button (click)="changeContent('Características')"
               [ngClass]="{'active': isButtonActive('Características')}">
-              Características
+              <img src="assets/images/fi-sr-pencil.svg" alt="" />
+              <span class="button-title">Características</span>
             </button>
           </div>
-
-          <!--<div class="swiper-slide">
-            <button
-              (click)="changeContent('Reglas')"
-              [ngClass]="{'active': isButtonActive('Reglas')}"
-            >
-              Reglas
-            </button>
-          </div>-->
-
           <div class="swiper-slide">
             <button (click)="changeContent('Precio')" [ngClass]="{'active': isButtonActive('Precio')}">
-              Precio
+              <img src="assets/images/fi-rr-dollar.svg" alt="" />
+              <span class="button-title">Precio</span>
             </button>
           </div>
 
           <div class="swiper-slide">
             <button (click)="changeContent('Disponibilidad')" [ngClass]="{'active': isButtonActive('Disponibilidad')}">
-              Disponibilidad
+              <img src="assets/images/fi-sr-clock.svg" alt="" />
+              <span class="button-title">Disponibilidad</span>
             </button>
           </div>
-
-          <!--<div class="swiper-slide">
-            <button (click)="changeContent('Abonados')"
-              [ngClass]="{'active': isButtonActive('Abonados')}">
-              Abonados
-            </button>
-          </div>-->
         </div>
       </div>
 
@@ -118,11 +91,10 @@
           <div class="informacion">
             <h1 class="secondary-title">Información del estacionamiento</h1>
             <h2>
-              Los arrendatarios podrán ver esta información antes de alquilar tu
-              estacionamiento.
+              Los conductores podrán ver esta información antes de alquilar tu cochera.
             </h2>
             <div class="form">
-              <label class="anuncio-label" for="">Nombre del Anuncio</label>
+              <h1 class="secondary-title">Nombre del anuncio</h1>
               <input type="text" class="outlinenone" id="open-modal-nombre" [(ngModel)]="gar_nombre"
                 value="{{ mainAd?.gar_nombre }}" placeholder="Parking Las Begonias" />
             </div>
@@ -133,7 +105,7 @@
                   <hr />
                   <div class="button-container-modal">
                     <div class="form-regla">
-                      <label class="num-regla">Direccion</label>
+                      <!-- <label class="num-regla">Direccion</label> -->
                       <input class="false-textarea" placeholder="Av. Alfredo Mendiola 3698"
                         [(ngModel)]="gar_nombre_mod" />
                     </div>
@@ -142,8 +114,7 @@
                 </div>
               </ng-template>
             </ion-modal>
-            <h3>Fotos</h3>
-            <h5>Mínimo tres fotos, pero si tienes más, ¡Genial!</h5>
+            <h3>Fotos de tu cochera</h3>
           </div>
 
           <div class="boxes">
@@ -151,7 +122,7 @@
               <div class="box1">
                 <img [src]="photo?.url" alt="" />
                 <!-- Trigger único basado en el índice -->
-                <button class="close-button" [id]="'open-modal-eliminar-anuncio-' + i">X</button>
+                <button class="close-button" [id]="'open-modal-eliminar-anuncio-' + i">x</button>
 
                 <!-- Modal que solo se abrirá con el trigger único -->
                 <ion-modal [trigger]="'open-modal-eliminar-anuncio-' + i" [initialBreakpoint]="1"
@@ -174,11 +145,10 @@
               </div>
             </div>
 
-
             <div class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
               <ngx-dropzone-label>
                 <div class="pad">
-                  <img src="/assets/images/upload.svg" alt="" class="img-dow">
+                  <img src="/assets/images/add-anun.svg" alt="" class="img-dow">
                 </div>
               </ngx-dropzone-label>
             </div>
@@ -203,15 +173,54 @@
 
           <div class="descripcion">
             <!-- ----------------------------------OPEN MODAL 1---------------------------------- -->
-            <h3>Descripción</h3>
+            <h3>Ubicación</h3>
             <p>
-              {{ mainAd?.gar_descri }}
+              <img class="img-descripcion" src="/assets/images/fi-sr-home.svg" alt="" *ngIf="mainAd?.tga_id===1" />
+              <img class="img-descripcion" src="/assets/images/fi-sr-building.svg" alt="" *ngIf="mainAd?.tga_id===2" />
+              <img class="img-descripcion" src="/assets/images/fi-sr-tree.svg" alt="" *ngIf="mainAd?.tga_id===3" />
+              <img class="img-descripcion" src="/assets/images/fi-sr-marker.svg" alt="" *ngIf="mainAd?.tga_id===4" />
+              <img class="img-descripcion" src="/assets/images/fi-sr-briefcase.svg" alt="" *ngIf="mainAd?.tga_id===5" />
+              <img class="img-descripcion" src="/assets/images/fi-sr-room-service.svg" alt=""
+                *ngIf="mainAd?.tga_id===6" />
+              {{ toCamelCase(mainAd?.tga_descri) }}
             </p>
-            <a class="servicios" id="open-modal-descripcion">
-              Editar descripción
-              <img src="/assets/images/right-arrow.svg" alt="" />
+            <a class="servicios" id="">
+              Editar ubicación
+              <img src="/assets/images/arrow-right.png" alt="" />
             </a>
 
+
+            <hr />
+            <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
+            <h3>Dirección Exacta</h3>
+            <p>{{ mainAd?.uga_direcc }}</p>
+            <a class="servicios" id="open-modal-dirección">
+              Editar dirección
+              <img src="/assets/images/arrow-right.png" alt="" />
+            </a>
+
+            <ion-modal trigger="open-modal-dirección" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="block">
+                  <h1>Editar dirección</h1>
+                  <hr />
+                  <div class="button-container-modal">
+                    <div class="form-regla">
+                      <label class="num-regla">Direccion</label>
+                      <input class="false-textarea" [(ngModel)]="uga_direcc" placeholder="Av. Alfredo Mendiola 3698" />
+                    </div>
+                    <button (click)="sendUpdateUb()">Guardar Cambios</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+            <hr />
+            <h3>Descripción</h3>
+            <p>{{ mainAd?.gar_descri }}</p>
+            <a class="servicios" id="open-modal-descripcion">
+              Editar descripción
+              <img src="/assets/images/arrow-right.png" alt="" />
+            </a>
             <ion-modal trigger="open-modal-descripcion" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
               <ng-template>
                 <div class="modal-descripcion">
@@ -229,56 +238,24 @@
                 </div>
               </ng-template>
             </ion-modal>
-
-            <!-- ----------------------------------OPEN MODAL 3---------------------------------- -->
-            <h3>¿Cuáles son las dimensiones de tu espacio?</h3>
-            <p>
-              {{ mainAd?.gar_ancho }} m de Ancho<br />
-              {{ mainAd?.gar_largo }} m de Largo<br />
-              {{ mainAd?.gar_alto }} m de Altura<br />
-            </p>
-            <a class="servicios" id="open-modal-dimensiones">
-              Editar dimensiones
-              <img src="/assets/images/right-arrow.svg" alt="" />
-            </a>
-
-            <ion-modal trigger="open-modal-dimensiones" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-              <ng-template>
-                <div class="modal-dimensiones">
-                  <h1>Editar dimensiones</h1>
-                  <hr />
-                  <div class="button-container-modal">
-                    <div class="form-regla">
-                      <label class="num-regla">Medida Ancho</label>
-                      <input class="false-textarea" [(ngModel)]="gar_ancho" v placeholder="2.5 m" />
-                    </div>
-                    <div class="form-regla">
-                      <label class="num-regla">Medida Largo</label>
-                      <input class="false-textarea" [(ngModel)]="gar_largo" placeholder="5 m" />
-                    </div>
-                    <div class="form-regla">
-                      <label class="num-regla">Altura (en caso sea techado)</label>
-                      <input class="false-textarea" [(ngModel)]="gar_alto" placeholder="2.1 m" />
-                    </div>
-                    <button (click)="sendUpdateDim()">Guardar Cambios</button>
-                  </div>
-                </div>
-              </ng-template>
-            </ion-modal>
-
+            <hr />
             <!-- ----------------------------------OPEN MODAL 4---------------------------------- -->
-            <h3>¿Qué servicios también ofreces?</h3>
+            <h3>Servicios</h3>
 
             <ul class="lista-servicios">
               <li *ngFor="let servicios of mainAd?.tipos_servicios">
-                <img src="/assets/images/shop-icon.svg" alt="" />
+                <img src="/assets/images/rejas.svg" alt="" *ngIf="servicios?.sga_id===1" />
+                <img src="/assets/images/fi-sr-cursor-finger.svg" alt="" *ngIf="servicios?.sga_id===2" />
+                <img src="/assets/images/fi-sr-bulb.svg" alt="" *ngIf="servicios?.sga_id===3" />
+                <img src="/assets/images/fi-sr-eye.svg" alt="" *ngIf="servicios?.sga_id===4" />
+                <img src="/assets/images/fi-sr-layers.svg" alt="" *ngIf="servicios?.sga_id===5" />
                 <span>{{ servicios?.sga_descri }}</span>
               </li>
             </ul>
 
             <a class="servicios" id="open-modal-servicios">
               Editar servicios
-              <img src="/assets/images/right-arrow.svg" alt="" />
+              <img src="/assets/images/arrow-right.png" alt="" />
             </a>
 
             <ion-modal trigger="open-modal-servicios" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
@@ -356,26 +333,73 @@
                 </div>
               </ng-template>
             </ion-modal>
+            <hr />
+            <!-- ----------------------------------OPEN MODAL 3---------------------------------- -->
+            <h3>Tamaño y Dimensiones</h3>
 
+            <p *ngIf="mainAd?.gar_largo==='1' && mainAd?.gar_ancho==='1' && mainAd?.gar_alto==='1'">
+              <img class="img-descripcion" src="/assets/images/fi-rr-compress.svg" alt="" />
+              Pequeña <span class="dimensiones-detalle">(hasta 4m de largo)</span>
+            </p>
+            <p *ngIf="mainAd?.gar_largo==='2' && mainAd?.gar_ancho==='2' && mainAd?.gar_alto==='2'">
+              <img class="img-descripcion" src="/assets/images/fi-rr-tool-marquee.svg" alt="" />
+              Mediana <span class="dimensiones-detalle">(de 4m a 5m de largo)</span>
+            </p>
+            <p *ngIf="mainAd?.gar_largo==='3' && mainAd?.gar_ancho==='3' && mainAd?.gar_alto==='3'">
+              <img class="img-descripcion" src="/assets/images/fi-rr-expand.svg" alt="" />
+              Grande <span class="dimensiones-detalle">(más de 5m de largo)</span>
+            </p>
+            <a class="servicios" id="open-modal-dimensiones">
+              Editar tamaño
+              <img src="/assets/images/arrow-right.png" alt="" />
+            </a>
+
+            <ion-modal trigger="open-modal-dimensiones" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+              <ng-template>
+                <div class="modal-dimensiones">
+                  <h1>Editar dimensiones</h1>
+                  <hr />
+                  <div class="button-container-modal">
+                    <div class="form-regla">
+                      <label class="num-regla">Medida Ancho</label>
+                      <input class="false-textarea" [(ngModel)]="gar_ancho" v placeholder="2.5 m" />
+                    </div>
+                    <div class="form-regla">
+                      <label class="num-regla">Medida Largo</label>
+                      <input class="false-textarea" [(ngModel)]="gar_largo" placeholder="5 m" />
+                    </div>
+                    <div class="form-regla">
+                      <label class="num-regla">Altura (en caso sea techado)</label>
+                      <input class="false-textarea" [(ngModel)]="gar_alto" placeholder="2.1 m" />
+                    </div>
+                    <button (click)="sendUpdateDim()">Guardar Cambios</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+
+            <hr />
             <!-- ----------------------------------OPEN MODAL 2---------------------------------- -->
-            <h3>¿A quíenes te gustaria alquilar?</h3>
+            <h3>Preferencias de Alquiler</h3>
 
             <ul class="lista-servicios">
               <li *ngFor="let vehiculos of mainAd?.tipos_garages">
-                <img src="/assets/images/shop-icon.svg" alt="" />
+                <img src="/assets/images/fi-sr-car.svg" alt="" *ngIf="vehiculos?.tve_id===1" />
+                <img src="/assets/images/camioneta.png" alt="" *ngIf="vehiculos?.tve_id===2" />
+                <img src="/assets/images/motorbike.png" alt="" *ngIf="vehiculos?.tve_id===3" />
                 <span>{{ vehiculos?.tve_descri }}</span>
               </li>
             </ul>
 
             <a class="servicios" id="open-modal-prefer">
-              Editar Preferencias
-              <img src="/assets/images/right-arrow.svg" alt="" />
+              Editar preferencia
+              <img src="/assets/images/arrow-right.png" alt="" />
             </a>
 
             <ion-modal trigger="open-modal-prefer" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
               <ng-template>
                 <div class="modal-servicios">
-                  <h1>Edita tus Preferencias</h1>
+                  <h1>Edita tus preferencia</h1>
 
                   <hr />
 
@@ -425,30 +449,6 @@
                 </div>
               </ng-template>
             </ion-modal>
-
-            <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
-            <h3>Ubicación</h3>
-            <p>{{ mainAd?.uga_direcc }}</p>
-            <a class="servicios" id="open-modal-dirección">
-              Editar dirección
-              <img src="/assets/images/right-arrow.svg" alt="" />
-            </a>
-
-            <ion-modal trigger="open-modal-dirección" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-              <ng-template>
-                <div class="block">
-                  <h1>Editar dirección</h1>
-                  <hr />
-                  <div class="button-container-modal">
-                    <div class="form-regla">
-                      <label class="num-regla">Direccion</label>
-                      <input class="false-textarea" [(ngModel)]="uga_direcc" placeholder="Av. Alfredo Mendiola 3698" />
-                    </div>
-                    <button (click)="sendUpdateUb()">Guardar Cambios</button>
-                  </div>
-                </div>
-              </ng-template>
-            </ion-modal>
           </div>
         </div>
       </div>
@@ -493,8 +493,8 @@
         <div>
           <div class="precio-base">
             <span class="simbolo">S/.</span>
-            <input class="monto" id="hora-fraccion" id="hora-fraccion"
-              placeholde="0.00" type="number" value="{{ precio_hora }}" />
+            <input class="monto" id="hora-fraccion" id="hora-fraccion" placeholde="0.00" type="number"
+              value="{{ precio_hora }}" />
             <label for="hora-fraccion" class="hora-fraccion">Hora o fracción</label>
           </div>
 
@@ -707,3 +707,4 @@
     </div>
   </div>
 </ion-content>
+<app-loader *ngIf="isLoading"></app-loader>

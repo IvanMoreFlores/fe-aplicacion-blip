@@ -19,6 +19,12 @@ export class DescripcionDelEspacioPage {
     private router: Router
   ) { }
 
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
+
   ngOnInit() {
     this.getInfo();
    }
@@ -36,10 +42,10 @@ export class DescripcionDelEspacioPage {
     }
   }
 
-  onRadioChange(selectedIndex: number) {
+  onRadioChange(selectedIndex: number,position: number) {
     this.selectedIndex = selectedIndex; // Actualiza el índice seleccionado
     this.customBtns.forEach((btn, index) => {
-      if (index === selectedIndex -1) {
+      if (index === position -1) {
         btn.nativeElement.classList.add('custom-btn-selected'); // Añade la clase seleccionada
       } else {
         btn.nativeElement.classList.remove('custom-btn-selected'); // Elimina la clase de los otros botones

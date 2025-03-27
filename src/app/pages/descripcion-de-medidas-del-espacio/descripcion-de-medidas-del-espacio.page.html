@@ -1,39 +1,66 @@
+<header-component [withArrowLeft]="true" [route]="'/tab-home'"
+  (navigateTo)="handleNavigateTo($event)"></header-component>
 <ion-content>
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <h1 class="title">¿Cuáles son las  dimensiones de tu estacionamiento?</h1>
-          <h2 class="subtitle">Recuerda que las medidas mínimas para poner en alquiler tu espacio es de 2.10 m Alto x 2.40 m Ancho x 5.00 m Largo
+    <h1 class="title">Indica el tamaño de tu cochera</h1>
+    <button #customBtn class="custom-btn">
+      <img src="/assets/images/fi-rr-compress.svg" alt="">
+      <span class="btn-text">Pequeña</span> <span class="btn-text-add">(hasta 4m de largo)</span>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+          (change)="onRadioChange(1,1)">
+        <label class="form-check-label" for="flexRadioDefault1"></label>
+      </div>
+    </button>
 
-            </h2>
-      
-          <div class="input-bar">
-            <p class="label-text">Ancho del espacio</p>
-            <input  [(ngModel)]="gar_ancho" type="text" placeholder="2.5 m">
-          </div>  
-          <div class="input-bar">
-            <p class="label-text">Largo del espacio</p>
-            <input [(ngModel)]="gar_largo" type="text" placeholder="2.1 m">
-          </div>  
-          <div class="input-bar">
-            <p class="label-text">Altura (en caso sea techado)</p>
-            <input [(ngModel)]="gar_alto" type="text" placeholder="2.1 (Metros)">
-          </div>  
-          <div class="enlace">
-            <p class="tex-pagina">
-              <a class="servicios" (click)="indicacion()">¿Cómo hacerlo?</a>
-              <img src="/assets/images/right.png" alt="">
-            </p>
-          </div>
-        </div>
+    <button #customBtn class="custom-btn">
+      <img src="/assets/images/fi-rr-tool-marquee.svg" alt="">
+      <span class="btn-text">Mediana</span> <span class="btn-text-add">(de 4m a 5m de largo)</span>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+          (change)="onRadioChange(1,1)">
+        <label class="form-check-label" for="flexRadioDefault1"></label>
       </div>
+    </button>
+
+    <button #customBtn class="custom-btn">
+      <img src="/assets/images/fi-rr-expand.svg" alt="">
+      <span class="btn-text">Grande</span> <span class="btn-text-add">(más de 5m de largo)</span>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+          (change)="onRadioChange(1,1)">
+        <label class="form-check-label" for="flexRadioDefault1"></label>
+      </div>
+    </button>
+
+    <!-- <div class="input-bar">
+      <p class="label-text">Ancho del espacio</p>
+      <input [(ngModel)]="gar_ancho" type="text" placeholder="2.5 m">
     </div>
-    <footer class="footer-btn">
+    <div class="input-bar">
+      <p class="label-text">Largo del espacio</p>
+      <input [(ngModel)]="gar_largo" type="text" placeholder="2.1 m">
+    </div>
+    <div class="input-bar">
+      <p class="label-text">Altura (en caso sea techado)</p>
+      <input [(ngModel)]="gar_alto" type="text" placeholder="2.1 (Metros)">
+    </div>
+    <div class="enlace">
+      <p class="tex-pagina">
+        <a class="servicios" (click)="indicacion()">¿Cómo hacerlo?</a>
+        <img src="/assets/images/right.png" alt="">
+      </p>
+    </div> -->
+    <!-- <footer class="footer-btn">
       <div class="bnt-dow">
-        <button class="bac" (click)="return()" >Atrás</button>
-        <button  (click)="getValues()" class="nex" >Siguiente</button>
+        <button class="bac" (click)="return()">Atrás</button>
+        <button (click)="getValues()" class="nex">Siguiente</button>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </ion-content>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <default-custom-button [text]="'Siguiente'" (click)="nextPage()"></default-custom-button>
+  </div>
+</ion-footer>

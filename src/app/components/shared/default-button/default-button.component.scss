@@ -34,6 +34,11 @@
   }
 }
 
+.primary-button-h {
+  @extend .primary-button;
+  height: auto;
+}
+
 .primary-button-w {
   @extend .primary-button;
   width: auto;
@@ -66,6 +71,16 @@
   width: auto;
 }
 
+.secondary-button-w-h {
+  @extend .secondary-button-w;
+  height: auto;
+}
+
+.secondary-button-w-h-small {
+  @extend .secondary-button-w-h;
+  font-size: 14px;
+}
+
 .terciary-button {
   @extend .primary-button;
   border: 1px solid #bfbdc0;
@@ -91,7 +106,7 @@
   width: auto;
 }
 
-.terciary-button-w-s{
+.terciary-button-w-s {
   @extend .terciary-button-w;
   font-size: 16px;
   height: 40px;
@@ -111,12 +126,13 @@
     border: #79FFAF;
   }
 }
+
 .cuartary-button-w {
   @extend .cuartary-button;
   width: auto;
 }
 
-.cuartary-button-w-s{
+.cuartary-button-w-s {
   @extend .cuartary-button-w;
   font-size: 16px;
   height: 40px;

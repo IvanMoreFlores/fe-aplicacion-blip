@@ -1,10 +1,11 @@
-ion-content{
+ion-content {
   padding-inline: 22px;
 
   --overflow: hidden;
 
 }
-.cont-hom{
+
+.cont-hom {
   padding-inline: 22px;
 }
 
@@ -15,45 +16,61 @@ ion-content{
   width: 44px;
   height: 44px;
   flex-shrink: 0;
-  display: flex; /* Usar flexbox */
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: center; /* Centra el contenido verticalmente */
-  text-align: center; /* Asegura que el texto también esté centrado */
+  display: flex;
+  /* Usar flexbox */
+  justify-content: center;
+  /* Centra el contenido horizontalmente */
+  align-items: center;
+  /* Centra el contenido verticalmente */
+  text-align: center;
+  /* Asegura que el texto también esté centrado */
 }
+
 /* Estilos para el header */
-h1,h1,h3{
+h1,
+h1,
+h3 {
   margin: 0px;
 }
+
 .header-ios ion-toolbar:last-of-type {
   --border-width: 0px;
 }
+
 ion-header {
-  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-  background-color: #fff !important; /* Aplica directamente el color blanco */
+  --background: #fff !important;
+  /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important;
+  /* Aplica directamente el color blanco */
+  padding: 10px 20px 20px 20px;
 }
 
 ion-toolbar {
-  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-  background-color: #fff !important; /* Aplica directamente el color blanco */
-  margin-block: 20px;
-  padding-inline: 22px;
-  h1{
+  .profile {
+    height: 60px;
+    width: 66px;
+    border-radius: 50%;
+  }
+
+  h1 {
     color: #212121;
     /* Subtitle 2 */
-    font-family: Poppins;
+    font-family: "Poppins";
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
   }
-  h3{
+
+  h3 {
     color: #646464;
     /* Body 3 */
-    font-family: Poppins;
+    font-family: "Poppins";
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
-    line-height: 25px; /* 166.667% */
+    line-height: 25px;
+    /* 166.667% */
     letter-spacing: 0.15px;
   }
 }
@@ -86,11 +103,10 @@ ion-toolbar {
 
 .subtitle {
   color: rgba(33, 33, 33, 0.60);
-  font-family: Poppins;
+  font-family: "Poppins";
   font-size: 12px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 23px;
+  font-weight: normal !important;
   /* 191.667% */
   letter-spacing: 0.12px;
 }
@@ -120,7 +136,8 @@ ion-toolbar {
 }
 
 .horizontal-scroll {
-  padding-block: 20px;
+  padding-top: 15px;
+  padding-bottom: 5px;
   display: flex;
   /* Utiliza flexbox para alinear los elementos en fila */
   overflow-x: auto;
@@ -147,7 +164,7 @@ ion-toolbar {
 .tl-res {
   text-align: left;
   color: #212121;
-  font-family: Poppins;
+  font-family: "Poppins";
   font-size: 21px;
   font-style: normal;
   font-weight: 500;
@@ -159,15 +176,17 @@ ion-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 5px;
-  margin-left: 5px;
+  border: 1px solid #C7C7CC;
   border-radius: 30px;
   background: var(--Schemes-On-Primary, #FFF);
-  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.30);
-  padding: 10px;
+  height: 30px;
+  padding: 18px 20px 18px 20px !important;
+  margin-right: 10px;
 
   h1 {
     margin: 0px;
+    color: #C7C7CC;
+    font-size: 14px;
   }
 
   .lda {
@@ -175,24 +194,36 @@ ion-toolbar {
     border-radius: 50%;
     display: flex;
     width: 19px;
-    height: 18px;
-    padding: 2px 7px;
+    height: 19px;
     justify-content: center;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    background: #212121;
+    background: #C7C7CC;
 
     .descrip {
       margin: 0px;
-      padding: 5px;
       color: var(--Schemes-On-Primary, #FFF);
       font-family: Poppins;
-      font-size: 10px;
       font-style: normal;
       font-weight: 700;
-      line-height: 140%;
+      font-size: 14px;
       /* 14px */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &.active {
+    border: 1px solid #212121;
+
+    h1 {
+      color: #212121;
+    }
+
+    .lda {
+      background: #212121;
 
     }
   }
@@ -201,36 +232,39 @@ ion-toolbar {
 .content-display {
   display: flex;
   width: 100%;
-  height: 43vh;
+  height: 60vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  border: 1px dashed #A3A2A4;
+  border: 1px solid #C7C7CC;
   margin: 20px 0;
   overflow: auto;
 }
 
 .board {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  gap: 10px;
+
+  img {
+    width: 25px;
+    height: 25px;
+    filter: invert(62%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(95%) contrast(85%);
+  }
+
+  h1 {
+    font-size: 15px;
+    font-family: "Poppins";
+    color: #C7C7CC;
+  }
+
   /* Asegura que el tamaño de fuente sea adecuado */
 }
-.image-container {
-  position: relative;  /* Importante para posicionar los elementos flotantes */
-  width: 100%;         /* Ocupa todo el ancho disponible */
-  max-width: 500px;    /* Puedes ajustar este valor según necesites */
-  height: 150px;       /* Altura fija del contenedor */
-  overflow: hidden;    /* Asegura que nada salga del contenedor */
-}
 
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* La imagen cubre el contenedor sin distorsionarse */
-}
 .board img {
   margin-right: 10px;
 }
@@ -248,11 +282,6 @@ ion-toolbar {
 .content-display * {
   margin: 0;
   padding: 0;
-}
-
-.swip.active {
-  border: 1px solid #212121;
-  /* Borde verde cuando está activo */
 }
 
 .subtitle {
@@ -285,11 +314,10 @@ ion-toolbar {
 
 .button-text {
   color: #212121;
-  font-family: Poppins;
-  font-size: 15px;
+  font-family: "Poppins";
+  font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
+  font-weight: normal;
   /* 160% */
 }
 
@@ -303,8 +331,10 @@ ion-toolbar {
 }
 
 .button-container {
-  margin: 0px auto;
-  width: 85%;
+  margin: 0px 0px;
+  padding-left: 22px;
+  padding-right: 22px;
+  width: 100%;
   display: block;
 }
 
@@ -317,10 +347,14 @@ ion-toolbar {
 .menu-block {
   display: flex;
   justify-content: center;
-  font-size: 19px;
-  font-family: "Poppins", sans-serif;
-  margin-block: 20px;
-  font-weight: 500;
+  font-size: 16px;
+  font-family: "Poppins";
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: normal;
+  text-align: center;
+  border: 0px;
+  margin-bottom: 10px;
 }
 
 .block {
@@ -346,11 +380,6 @@ ion-modal {
   width: 75%;
   margin-inline: auto;
   text-align: center;
-}
-
-.cont-ap {
-  margin: 30px auto;
-  max-width: 75%;
 }
 
 .parraf {
@@ -401,9 +430,12 @@ ion-modal {
 
 .cardz {
   margin-top: 10px;
+  // margin-right: 10px;
+  padding: 0px;
 }
 
 .swiper-container {
+  padding: 0px;
   width: 100%;
   /* Ajusta el ancho del contenedor */
   height: 100%;
@@ -414,7 +446,7 @@ ion-modal {
 }
 
 .swiper-slide {
-
+  margin-right: 10px !important;
 }
 
 .swiper-wrapper {
@@ -434,79 +466,8 @@ ion-modal {
 
 }
 
-
-
-
-
-.header-flex {
-  display: flex;
-  align-items: center;
-
-  padding: 10px;
-}
-
-.circle-icon {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(29, 27, 32, 1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 18px;
-  flex-shrink: 0;
-  max-width: 40px;
-}
-
-.circle-icon h1 {
-  color: var(--Schemes-Surface, #FEF7FF);
-  text-align: center;
-  margin: 0px;
-  font-family: Poppins;
-  font-size: var(--Title-Medium-Size, 16px);
-  font-style: normal;
-  font-weight: 500;
-  line-height: var(--Title-Medium-Line-Height, 24px);
-  letter-spacing: var(--Title-Medium-Tracking, 0.15px);
-}
-
-.title-container {
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
-  width: auto;
-}
-
-.title-large,
-.subtitle-large {
-  margin: 0;
-}
-
-.title-large {
-  color: var(--Schemes-On-Surface, #1D1B20);
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25px;
-}
-
-.subtitle-large {
-  color: var(--Schemes-On-Surface, #1D1B20);
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-.image-container {
-  position: relative;
-  /* Contenedor relativo para la imagen */
-}
-
 .floating-text {
+  box-shadow: none;
   position: absolute;
   background-color: #FFFFFF;
   padding: 5px 15px;
@@ -533,6 +494,8 @@ ion-modal {
 .floating-text.time {
   top: 10px;
   left: 10px;
+  background-color: #141414;
+  color: #fff;
 }
 
 .floating-text.status {
@@ -574,11 +537,11 @@ ion-modal {
   /* Se asegura que esté encima del texto */
 }
 
-.floating-text .dot_yellow {
+.floating-text .dot_orange {
   width: 6px;
   height: 6px;
   border-radius: var(--loader, 100px);
-  background: var(--Colors-Green, yellow);
+  background: var(--Colors-Green, orange);
 
   margin-left: 5px;
   display: inline-block;
@@ -627,7 +590,11 @@ ion-modal {
   flex-wrap: wrap;
   /* Permitir que los elementos se envuelvan en una nueva línea */
   text-align: left;
-  padding-bottom: 3px;
+
+  .separator_a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .ctn {
@@ -644,19 +611,21 @@ ion-modal {
 }
 
 .derz h1 {
-  padding-left: 7px;
+  padding-left: 5px;
   color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
+  font-family: "Poppins";
+  font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   margin: 0px;
-  padding-block: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  letter-spacing: 0.4px;
 }
 
 .derz h2 {
   color: #212121;
-  font-family: Poppins;
+  font-family: "Poppins";
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -664,17 +633,31 @@ ion-modal {
   padding-left: 5px;
 }
 
+.derz img {
+  padding-left: 5px;
+}
+
 .det-asd {
   display: flex;
   justify-content: flex-start;
   /* Cambia esto a flex-start para alinear a la izquierda */
-  padding-left: 15px;
+  padding-left: 10px;
+  padding-top: 5px;
   width: 100%;
   /* Añadir otros estilos si es necesario */
 }
 
+.det-add-top {
+  padding-top: 19px;
+}
+
+.det-add-bottom {
+  padding-bottom: 19px;
+}
+
 .mayor {
-  padding-left: 10px;
+  padding-left: 15px !important;
+  padding-right: 15px;
 }
 
 .btn {
@@ -721,24 +704,179 @@ ion-modal {
 
 .bt-con {
   margin-right: auto;
-  color: var(--primary-scheme-buttons-filled, #212121);
+  color: #fff;
   text-align: center;
   font-family: Poppins;
   font-size: var(--Label-Large-Size, 14px);
   font-style: normal;
   font-weight: 500;
   line-height: var(--Label-Large-Line-Height, 20px);
-  background-color: transparent;
+  background-color: rgb(29, 27, 32);
   border-radius: 20px;
   border: 1px solid #212121;
 
 }
 
-.contenido-card {
-  padding: 10px;
+.bt-can:disabled {
+  opacity: 0.5;
+  /* Reduce la opacidad para indicar estado deshabilitado */
+  cursor: not-allowed;
+  /* Cambia el cursor */
+  pointer-events: none;
+  /* Impide interacciones */
 }
+
+.bt-con:disabled {
+  opacity: 0.5;
+  /* Reduce la opacidad para indicar estado deshabilitado */
+  cursor: not-allowed;
+  /* Cambia el cursor */
+  pointer-events: none;
+  /* Impide interacciones */
+  background-color: transparent;
+  color: var(--primary-scheme-buttons-filled, #212121);
+}
+
+ion-content ion-card {
+  box-shadow: none;
+}
+
 ion-card {
-  flex: 0 0 auto; /* Evita que las tarjetas se expandan verticalmente */
+  flex: 0 0 auto;
+  /* Evita que las tarjetas se expandan verticalmente */
   border: 1px solid #CAC4D0;
   margin: 0px;
+
+  ion-card-content {
+    padding: 10px 15px 10px 15px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    height: 232px;
+  }
+
+  .image-container {
+    position: relative;
+    /* Importante para posicionar los elementos flotantes */
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+    height: 160px;
+    /* Altura fija del contenedor */
+    overflow: hidden;
+    /* Asegura que nada salga del contenedor */
+    //mejora
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  ion-card-header {
+    height: 79px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+
+    .header-flex {
+      display: flex;
+      align-items: left;
+      /* Centrar horizontalmente el contenido de header-flex */
+      width: 100%;
+
+      /* Asegurarse de que ocupe todo el ancho disponible */
+      .circle-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(29, 27, 32, 1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        flex-shrink: 0;
+        max-width: 40px;
+        margin-top: 5px;
+
+        h1 {
+          color: #FEF7FF;
+          text-align: center;
+          margin: 0px;
+          font-family: "Poppins";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: var(--Title-Medium-Line-Height, 24px);
+          letter-spacing: var(--Title-Medium-Tracking, 0.15px);
+        }
+      }
+
+      .title-container {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+
+        .title-large,
+        .subtitle-large {
+          margin: 0;
+        }
+
+        .title-large {
+          color: #1D1B20;
+          font-family: "Poppins";
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 25px;
+          padding-bottom: 8px;
+        }
+
+        .subtitle-large {
+          color: #1D1B20;
+          font-family: "Poppins";
+          font-size: 13px;
+          font-style: normal;
+          font-weight: normal;
+
+        }
+      }
+    }
+
+  }
+}
+
+.cont-header {
+  padding-left: 30px;
+  padding-right: 30px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid rgba(212, 212, 212, 1);
+
+  img {
+    margin-top: 25px;
+  }
+}
+
+.cont-ap {
+  padding: 30px 30px 30px 30px;
+
+  p {
+    font-size: 14px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.035px;
+    color: #141414;
+  }
 }

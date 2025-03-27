@@ -1,60 +1,72 @@
+<header-component [withArrowLeft]="true" [route]="'/tab-home'"
+  (navigateTo)="handleNavigateTo($event)"></header-component>
 <ion-content>
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <h1 class="title">¿Dónde se ubica tu estacionamiento y cómo es?</h1>
-          <div class="input-bar">
-            <p class="label-text">Dirección</p>
-            <input type="text"  [(ngModel)]="direccion" placeholder="Av. Benavides 456">
-          </div>
+    <h1 class="title">Indica la ubicación exacta de tu espacio de estacionamiento</h1>
+    <default-input [(valueInput)]="direccion" [type]="'text'" [placeholder]="'Buscar dirección'"
+      [class]="'secundary-input'" [withImgRight]="false"></default-input>
+    <!-- <div class="input-bar">
+      <p class="label-text">Dirección</p>
+      <input type="text" [(ngModel)]="direccion" placeholder="Av. Benavides 456">
+    </div> -->
 
-          <div class="input-bar">
-            <p class="label-text">Ciudad</p>
+    <!-- <div class="input-bar">
+      <p class="label-text">Ciudad</p>
 
-            <div class="custom-select">
-              <select id="ciudad" [(ngModel)]="ciudad" placeholder="Selecciona tu ciudad" name="ciudad" title="Selecciona tu ciudad">
-                <option value="" disabled selected>Selecciona tu ciudad</option>
-                <option value="1">Lima</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="input-bar">
-            <p class="label-text">Distrito</p>
-
-            <div class="custom-select">
-              <select id="distrito" [(ngModel)]="distrito" placeholder="Selecciona tu distrito" name="distrito" title="Selecciona tu distrito">
-                <option value="" disabled selected>Selecciona tu distrito</option>
-                <option *ngFor="let distrito of distritoData" value="{{ distrito.id_distrito }}">{{ distrito.nombre_distrito }}</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- <div class="input-bar">
-            <ion-label class="label-text">Referencia</ion-label>
-            <ion-input type="text" [(ngModel)]="referencia" placeholder="E.j Cdra. 5 de la Av. Benavides"></ion-input>
-          </div> -->
-
-          <div class="input-container2">
-            <label class="descripcion" for="detalle" >Descripción de Cochero (Detalles u otros)</label>
-            <textarea [(ngModel)]="detalles" name="pregunta_ayuda" maxlength="120" id="detalle" rows="4"></textarea>
-          </div>
-          <!-- <div class="form-group detalle">
-            <label for="detalle" class="detalle-1">Detalles ( N° pisos u otros) </label>
-            <textarea id="detalle" name="pregunta_ayuda" [(ngModel)]="detalles" class="custom-textarea"></textarea>
-          </div> -->
-
-
-
-        </div>
+      <div class="custom-select">
+        <select id="ciudad" [(ngModel)]="ciudad" placeholder="Selecciona tu ciudad" name="ciudad"
+          title="Selecciona tu ciudad">
+          <option value="" disabled selected>Selecciona tu ciudad</option>
+          <option value="1">Lima</option>
+        </select>
       </div>
-    </div>
-    <footer class="footer-btn">
-      <div class="bnt-dow">
-        <button class="bac" (click)="return()">Atrás</button>
-        <button   (click)="nextPage();" class="nex" >Siguiente</button>
+    </div> -->
+    <default-select label="Ciudad" [options]="ciudades" [(selectedValue)]="ciudad"
+      (selectionChange)="onCiudadChange($event)" [class]="'secundary-input'" [placeholder]="'Ciudad'">
+    </default-select>
+
+    <!-- <div class="input-bar">
+      <p class="label-text">Distrito</p>
+
+      <div class="custom-select">
+        <select id="distrito" [(ngModel)]="distrito" placeholder="Selecciona tu distrito" name="distrito"
+          title="Selecciona tu distrito">
+          <option value="" disabled selected>Selecciona tu distrito</option>
+          <option *ngFor="let distrito of distritoData" value="{{ distrito.id_distrito }}">{{ distrito.nombre_distrito
+            }}</option>
+        </select>
       </div>
-    </footer>
+    </div> -->
+    <default-select label="Distrito" [options]="distritos" [(selectedValue)]="distrito"
+      (selectionChange)="onDistritoChange($event)" [class]="'secundary-input'" [placeholder]="'Distrito'">
+    </default-select>
+    <!-- <div class="input-bar">
+          <ion-label class="label-text">Referencia</ion-label>
+          <ion-input type="text" [(ngModel)]="referencia" placeholder="E.j Cdra. 5 de la Av. Benavides"></ion-input>
+        </div> -->
+
+    <!-- <div class="input-container2">
+      <label class="descripcion" for="detalle">Descripción de Cochero (Detalles u otros)</label>
+      <textarea [(ngModel)]="detalles" name="pregunta_ayuda" maxlength="120" id="detalle" rows="4"></textarea>
+    </div> -->
+    <!-- <div class="form-group detalle">
+          <label for="detalle" class="detalle-1">Detalles ( N° pisos u otros) </label>
+          <textarea id="detalle" name="pregunta_ayuda" [(ngModel)]="detalles" class="custom-textarea"></textarea>
+        </div> -->
+
+    <default-custom-button [text]="'Seleccionar en el mapa'" [withImg]="true"
+    [imageUrl]="'/assets/images/icon-button.svg'" (click)="nextMap()" [class]="'primary-button-h'"></default-custom-button>
+
   </div>
+  <!-- <footer class="footer-btn">
+    <div class="bnt-dow">
+      <button class="bac" (click)="return()">Atrás</button>
+      <button (click)="nextPage();" class="nex">Siguiente</button>
+    </div>
+  </footer> -->
 </ion-content>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <default-custom-button [text]="'Siguiente'" (click)="nextPage()"></default-custom-button>
+  </div>
+</ion-footer>

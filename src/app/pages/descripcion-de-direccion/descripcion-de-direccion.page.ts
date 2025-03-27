@@ -15,29 +15,47 @@ export class DescripcionDeDireccionPage implements OnInit {
   ciudad: string = '';
   referencia: string = '';
   detalles: string = '';
+  ciudades: { key: string; value: string }[] = [{ key: '1', value: 'Lima' }];
+  distritos: { key: string; value: string }[] = [];
 
   constructor(
     private router: Router,
     private storage: StorageService,
     private route: ActivatedRoute
-
-  ) {
-    this.setValues();
+  ) {}
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
-
   ngOnInit() {
-    console.log('');
+    this.setValues();
   }
 
   async setValues() {
     const adConfig = await this.storage.getItem('adConfig');
     this.distritoData = adConfig.districts;
-    this.route.queryParams.subscribe(params => {
+    for (const item of this.distritoData) {
+      this.distritos.push({ key: item.id_distrito.toString(), value: item.nombre_distrito });
+    }
+    this.route.queryParams.subscribe((params) => {
       this.tga_id = params['tga_id'];
     });
   }
 
-  nextPage(){
+  nextMap(){
+    this.router.navigate(['/descripcion-del-mapa'], {
+      queryParams: {
+        tga_id: this.tga_id,
+        direccion: this.direccion,
+        distrito: this.distrito,
+        ciudad: this.ciudad,
+        referencia: this.referencia,
+        detalles: this.detalles,
+      },
+    });
+  }
+  nextPage() {
     if (!this.direccion || this.direccion.length < 1) {
       alert('Debes incluir una direccion.');
       return;
@@ -53,20 +71,44 @@ export class DescripcionDeDireccionPage implements OnInit {
       return;
     }
 
-    this.router.navigate(['/descripcion-de-servicios-adicionales'], { queryParams: { 
-      tga_id: this.tga_id, 
-      direccion: this.direccion,
-      distrito: this.distrito,
-      ciudad: this.ciudad,
-      referencia: this.referencia,
-      detalles: this.detalles
-    } });
+    this.router.navigate(['/app-descripcion-espacio'], {
+      queryParams: {
+        tga_id: this.tga_id,
+        direccion: this.direccion,
+        distrito: this.distrito,
+        ciudad: this.ciudad,
+        referencia: this.referencia,
+        detalles: this.detalles,
+      },
+    });
+
+    // this.router.navigate(['/descripcion-de-servicios-adicionales'], {
+    //   queryParams: {
+    //     tga_id: this.tga_id,
+    //     direccion: this.direccion,
+    //     distrito: this.distrito,
+    //     ciudad: this.ciudad,
+    //     referencia: this.referencia,
+    //     detalles: this.detalles,
+    //   },
+    // });
   }
 
-  async return(){
-    this.router.navigate(['/descripcion-del-espacio'], { queryParams: { 
-      tga_id: this.tga_id,
-    } });
+  async return() {
+    this.router.navigate(['/descripcion-del-espacio'], {
+      queryParams: {
+        tga_id: this.tga_id,
+      },
+    });
   }
 
+  onCiudadChange(selectedCiudad: { key: string; value: string }) {
+    this.ciudad = selectedCiudad.key;
+    console.log('Ciudad seleccionado:', selectedCiudad);
+  }
+
+  onDistritoChange(selectedDistrito: { key: string; value: string }) {
+    this.distrito = selectedDistrito.key;
+    console.log('Distrito seleccionado:', selectedDistrito);
+  }
 }

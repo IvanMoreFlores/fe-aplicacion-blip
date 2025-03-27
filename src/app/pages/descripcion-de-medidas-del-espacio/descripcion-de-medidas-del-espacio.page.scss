@@ -1,33 +1,22 @@
 ion-content{
-  --padding-start: 0;
-  --padding-end: 0;
-  --padding-top: 0;
-  --padding-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  overflow: auto;
 }
 .container {
+  padding: 10px 32px 10px 32px;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding: 40px;
+  .title {
+    color: #212121;
+    font-family: "Poppins";
+    font-size: 30px;
+    font-style: normal;
+    color: #212121;
+
+  }
 }
 
-.title {
-  color: #212121;
-  font-family: Poppins;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 40px; /* 133.333% */
-  margin-top: 50px ;
-  width: 100%;
-  color: #212121;
 
-}
 
 .subtitle {
   font-size: 15px;
@@ -75,7 +64,7 @@ ion-content{
 
     margin-block: 40px;
     color: #212121;
-  
+
 select,
 input[type="text"] {
       width: 100%;
@@ -86,7 +75,7 @@ input[type="text"] {
       font-size: 16px;
       font-family: "Poppins", sans-serif;
     }
-  
+
     select {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -189,5 +178,75 @@ a.servicios:hover {
       width: 45%;
       font-family: "Poppins", sans-serif;
       font-weight: 600;
+  }
+}
+
+.custom-btn {
+  margin-top: 30px;
+  background-color: #FFFFFF;
+  color: #212121;
+  border: 1px solid #A3A2A4;
+  /* Borde predeterminado gris */
+  border-radius: 10px;
+  width: 100%;
+  height: 45px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  transition: border-color 0.3s ease;
+  /* Transición suave del borde */
+  position: relative;
+}
+
+/* Clase para cuando el botón es seleccionado */
+.custom-btn-selected {
+  border-radius: 10px;
+  border: 1px solid #212121;
+}
+
+/* Estilo del texto y la imagen dentro del botón */
+.custom-btn img {
+  margin-right: 10px;
+}
+
+.btn-text {
+  margin-left: 10px;
+  font-size: 15px;
+  font-family: "Poppins";
+}
+
+.btn-text-add{
+  margin-left: 3px;
+  font-size: 14px;
+  font-family: "Poppins";
+  color:#8E8E93;
+}
+
+/* Estilo del radio button */
+.form-check-input[type="radio"] {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  /* Posiciona el radio button a la derecha */
+  border: 1px solid #A3A2A4;
+  background-color: transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilo cuando el radio button está seleccionado */
+.form-check-input:checked {
+  background-color: #000000;
+  /* Color de fondo del radio button seleccionado */
+  border-color: #000000;
+  /* Borde negro del radio button */
+}
+ion-footer {
+  .bnt-dow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 32px 7px 32px;
   }
 }

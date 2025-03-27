@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import Swiper from 'swiper';
+import { interval, Subscription } from 'rxjs';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -12,8 +13,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
-
+export class HomePage implements OnInit, OnDestroy {
   switchValue: boolean = false; // Valor inicial del toggle
   isMenuModalOpen: boolean = false; // Control de apertura del modal del menú
   isToggleModalOpen: boolean = false; // Control de apertura del modal del toggle
@@ -35,8 +35,9 @@ export class HomePage implements OnInit {
   horasFormateadas: { [key: string]: string } = {};
   data_apagon: any;
   apagon_val: boolean = false;
-
-  url_new: string = '/nuevo-anu-pone-alq';
+  saludo: string = '';
+  // url_new: string = '/nuevo-anu-pone-alq';
+  url_new: string = '/descripcion-del-estacionamiento';
   userData: any;
   slideOpts = {
     initialSlide: 0,
@@ -44,17 +45,24 @@ export class HomePage implements OnInit {
     slidesPerView: 1,
     loop: false,
   };
+  countdownTimers: {
+    [key: number]: { hours: number; minutes: number; seconds: number };
+  } = {};
+  timerSubscription: Subscription = new Subscription();
+
   constructor(
     private readonly router: Router,
     private readonly modalController: ModalController,
     private readonly storage: StorageService,
     private readonly api: ApiService,
     private readonly cdr: ChangeDetectorRef
-  ) {
-    this.getUserData();
-    this.getReservas();
-    this.getDni();
-    this.getBlackout();
+  ) {}
+
+  ngOnDestroy() {
+    // Limpiar la suscripción al destruir el componente
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
   // Inyecta el ModalController
   changeContent(content: string) {
@@ -97,6 +105,7 @@ export class HomePage implements OnInit {
       async (response: any) => {
         console.log(response);
         this.getReservas();
+        this.dismissAnyModal();
       },
       (error: any) => {
         console.error('Error al enviar el mensaje:', error);
@@ -118,12 +127,34 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserData();
+    this.getReservas();
+    this.getDni();
+    this.getBlackout();
     setTimeout(() => {
       this.iniciarSwiper();
     }, 0);
 
+    // Actualizar los temporizadores cada segundo
+    this.timerSubscription = interval(1000).subscribe(() => {
+      this.updateTimers();
+    });
   }
 
+  ionViewWillEnter() {
+    this.getUserData();
+    this.getReservas();
+    this.getDni();
+    this.getBlackout();
+    setTimeout(() => {
+      this.iniciarSwiper();
+    }, 0);
+
+    // Actualizar los temporizadores cada segundo
+    this.timerSubscription = interval(1000).subscribe(() => {
+      this.updateTimers();
+    });
+  }
   async getBlackout() {
     let apagon = await this.storage.getItem('apagon');
     if (apagon !== null) {
@@ -133,19 +164,22 @@ export class HomePage implements OnInit {
 
   async getUserData() {
     this.userData = await this.storage.getItem('user');
+    console.log('🚀 ~ HomePage ~ getUserData ~ userData:', this.userData);
+    this.setSaludo();
   }
 
   async getDni() {
     const userDni = await this.storage.getItem('userDni');
     if (userDni) {
       this.url_new = '/descripcion-del-espacio';
+      //this.url_new = '/nuevo-anu-pone-alq';
     } else {
       this.getUserData();
       if (this.userData.esu_id.esu_descri !== 'REGISTRADO') {
         this.url_new = '/descripcion-del-espacio';
+        //this.url_new = '/nuevo-anu-pone-alq';
       }
     }
-
   }
 
   // Abre el modal del menú
@@ -179,14 +213,14 @@ export class HomePage implements OnInit {
     let mensaje = '';
     if (value === true) {
       this.data_apagon = {
-        "turnOff": true
+        turnOff: true,
       };
       mensaje = '¡Apagon activo!';
       this.storage.setItem('apagon', true);
       this.apagon_val = true;
     } else {
       this.data_apagon = {
-        "turnOff": false
+        turnOff: false,
       };
       mensaje = '¡Apagon inactivo!';
       this.storage.setItem('apagon', false);
@@ -196,19 +230,18 @@ export class HomePage implements OnInit {
     this.api.turnBlackout(token, this.data_apagon).subscribe({
       next: (response) => {
         alert(mensaje);
-        console.log('Respuesta:', response)
+        console.log('Respuesta:', response);
       },
       error: (error) => {
         alert('Ocurrio un error');
-        console.error('Error:', error)
-      }
+        console.error('Error:', error);
+      },
     });
-
   }
 
   // Confirma la acción del apagón general
   confirmAction() {
-    console.log("Apagón general confirmado");
+    console.log('Apagón general confirmado');
     this.activateBlackout(true);
     // Aquí no cambies el estado del toggle, así se mantendrá activado
     this.dismissToggleModal(); // Cierra el modal del toggle
@@ -248,7 +281,7 @@ export class HomePage implements OnInit {
     return fecha.toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
-      hour12: true
+      hour12: true,
     });
   }
 
@@ -256,7 +289,11 @@ export class HomePage implements OnInit {
     const token = await this.storage.getItem('token');
     this.api.getReservations(token).subscribe(
       async (response: any) => {
-        this.data = response.data;
+        response.data.forEach((element: any) => {
+          element.res_fecini = this.addFiveHours(element.res_fecini);
+          element.res_fecfin = this.addFiveHours(element.res_fecfin);
+        });
+        this.data = this.addStateInCurse(response.data);
         console.log(this.data);
         this.n_data = Object.keys(this.data).length;
         this.getPendientes(this.data);
@@ -264,6 +301,7 @@ export class HomePage implements OnInit {
         this.getCanceladas(this.data);
         this.getComienzaPronto(this.data);
         this.getEnCurso(this.data);
+        this.initializeTimers();
       },
       (error: any) => {
         console.error('Error al enviar el mensaje:', error);
@@ -286,7 +324,11 @@ export class HomePage implements OnInit {
       const fechaEspecifica = reserva.res_fecini;
       const ahora = new Date();
       const ahoraMas30Minutos = new Date(ahora.getTime() + 30 * 60000);
-      if (ahoraMas30Minutos <= fechaEspecifica && reserva.rst_id !== 3 && reserva.rst_id !== 4) {
+      if (
+        ahoraMas30Minutos <= fechaEspecifica &&
+        reserva.rst_id !== 3 &&
+        reserva.rst_id !== 4
+      ) {
         this.data_comienza_pronto.push(reserva);
       }
     });
@@ -296,11 +338,15 @@ export class HomePage implements OnInit {
   getEnCurso(datos: any) {
     const fechaActual = new Date();
     datos.map((reserva: any) => {
-
       const fechaHoraInicio = new Date(reserva.res_fecini);
       const fechaHoraFin = new Date(reserva.res_fecfin);
 
-      if (fechaActual >= fechaHoraInicio && fechaActual <= fechaHoraFin && reserva.rst_id !== 3 && reserva.rst_id !== 4) {
+      if (
+        fechaActual >= fechaHoraInicio &&
+        fechaActual <= fechaHoraFin &&
+        reserva.rst_id !== 3 &&
+        reserva.rst_id !== 4
+      ) {
         this.data_encurso.push(reserva);
       }
     });
@@ -326,4 +372,306 @@ export class HomePage implements OnInit {
     console.log(this.data_canceladas);
     this.n_data_canceladas = Object.keys(this.data_canceladas).length;
   }
+
+  setSaludo() {
+    if (this.userData && this.userData.tge_id) {
+      this.saludo =
+        this.userData.tge_id.tge_id === 1 ? 'Bienvenido' : 'Bienvenida';
+    }
+  }
+
+  transformTipDescri(item: any): string {
+    let tipDescri = item.tip_descri.toLowerCase();
+    if (item.res_tiempo > 1) {
+      tipDescri += 's';
+    }
+    return tipDescri;
+  }
+
+  formatTime(date: string): string {
+    const options: Intl.DateTimeFormatOptions = {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    };
+    let timeString = new Date(date)
+      .toLocaleTimeString('es-US', options)
+      .replace(/\./g, '');
+    timeString = timeString.replace('a m', 'am').replace('p m', 'pm');
+    return timeString;
+  }
+
+  toCamelCase(text: string, capitalizeAfterSpace: boolean = false): string {
+    if (!text) return '';
+
+    // Convierte todo el texto a minúsculas primero
+    let result = text.toLowerCase();
+
+    // Convierte la primera letra a mayúscula
+    result = result.charAt(0).toUpperCase() + result.slice(1);
+
+    // Si se debe capitalizar después de espacios
+    if (capitalizeAfterSpace) {
+      result = result.replace(/ ([a-z])/g, function (match, group1) {
+        return ' ' + group1.toUpperCase();
+      });
+    }
+
+    return result;
+  }
+
+  toLowerCase(text: string): string {
+    switch (text) {
+      case 'DIA':
+        return 'DÍA'.toLowerCase();
+      case 'dia':
+        return 'día';
+      default:
+        return text.toLowerCase();
+    }
+  }
+
+  initializeTimers() {
+    // Para los datos principales
+    if (this.data) {
+      this.data.forEach((item: any) => {
+        this.initializeTimer(item);
+      });
+    }
+
+    // Para los datos pendientes
+    if (this.data_pendientes) {
+      this.data_pendientes.forEach((item) => {
+        this.initializeTimer(item);
+      });
+    }
+
+    if (this.data_encurso) {
+      this.data_encurso.forEach((item) => {
+        this.initializeTimer(item);
+      });
+    }
+
+    if (this.data_canceladas) {
+      this.data_canceladas.forEach((item) => {
+        this.initializeTimer(item);
+      });
+    }
+
+    if (this.data_comienza_pronto) {
+      this.data_comienza_pronto.forEach((item) => {
+        this.initializeTimer(item);
+      });
+    }
+
+    if (this.data_finalizado) {
+      this.data_finalizado.forEach((item) => {
+        this.initializeTimer(item);
+      });
+    }
+  }
+
+  initializeTimer(item: any) {
+    // Si el estado es EN CURSO (rst_id = 5), calcular el tiempo restante
+    if (item.rst_id === 5) {
+      const fechaInicio = new Date(item.res_fecini);
+      const fechaActual = new Date();
+      const tiempoTranscurridoMs =
+        fechaActual.getTime() - fechaInicio.getTime();
+
+      // Convertir el tiempo transcurrido a horas, minutos y segundos
+      const tiempoTranscurridoSegundos = Math.floor(
+        tiempoTranscurridoMs / 1000
+      );
+      const horasTranscurridas = Math.floor(tiempoTranscurridoSegundos / 3600);
+      const minutosTranscurridos = Math.floor(
+        (tiempoTranscurridoSegundos % 3600) / 60
+      );
+      const segundosTranscurridos = tiempoTranscurridoSegundos % 60;
+
+      // Convertir res_tiempo a segundos (asumiendo que está en horas)
+      const tiempoTotalSegundos = item.res_tiempo * 3600;
+
+      // Calcular tiempo restante en segundos
+      const tiempoRestanteSegundos =
+        tiempoTotalSegundos - tiempoTranscurridoSegundos;
+
+      // Si el tiempo restante es negativo, establecer a 0
+      if (tiempoRestanteSegundos <= 0) {
+        this.countdownTimers[item.res_id] = {
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        };
+      } else {
+        // Convertir el tiempo restante a horas, minutos y segundos
+        const horasRestantes = Math.floor(tiempoRestanteSegundos / 3600);
+        const minutosRestantes = Math.floor(
+          (tiempoRestanteSegundos % 3600) / 60
+        );
+        const segundosRestantes = tiempoRestanteSegundos % 60;
+
+        this.countdownTimers[item.res_id] = {
+          hours: horasRestantes,
+          minutes: minutosRestantes,
+          seconds: segundosRestantes,
+        };
+      }
+    } else {
+      // Para otros estados, mantener el comportamiento original
+      this.countdownTimers[item.res_id] = {
+        hours: Math.floor(item.res_tiempo),
+        minutes: 0,
+        seconds: 0,
+      };
+    }
+  }
+
+  updateTimers() {
+    Object.keys(this.countdownTimers).forEach((resId) => {
+      // Busca el elemento por su res_id
+      const item = this.findItemById(Number(resId));
+      if (!item) return;
+
+      const timer = this.countdownTimers[Number(resId)];
+
+      // Solo disminuir el tiempo si el estado es "EN CURSO" (rst_id = 5)
+      if (item.rst_id === 5) {
+        // Reducir un segundo
+        if (timer.seconds > 0) {
+          timer.seconds--;
+        } else {
+          if (timer.minutes > 0) {
+            timer.minutes--;
+            timer.seconds = 59;
+          } else {
+            if (timer.hours > 0) {
+              timer.hours--;
+              timer.minutes = 59;
+              timer.seconds = 59;
+            }
+          }
+        }
+      }
+    });
+  }
+
+  formatCountdown(resId: number): string {
+    // Busca el elemento por su res_id
+    const item = this.findItemById(resId);
+    if (!item) return '00:00:00';
+
+    // Si el estado es cancelado o finalizado, mostrar 00:00:00
+    if (item.rst_id === 3 || item.rst_id === 4) {
+      return '00:00:00';
+    }
+
+    // Obtiene el timer para este resId
+    const timer = this.countdownTimers[resId];
+    if (!timer) return '00:00:00';
+
+    const hours = timer.hours.toString().padStart(2, '0');
+    const minutes = timer.minutes.toString().padStart(2, '0');
+    const seconds = timer.seconds.toString().padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+  }
+  findItemById(resId: number): any {
+    // Buscar en todas las colecciones de datos
+    if (this.data) {
+      const found = this.data.find((item: any) => item.res_id === resId);
+      if (found) return found;
+    }
+
+    if (this.data_pendientes) {
+      const found = this.data_pendientes.find(
+        (item: any) => item.res_id === resId
+      );
+      if (found) return found;
+    }
+
+    if (this.data_encurso) {
+      const found = this.data_encurso.find(
+        (item: any) => item.res_id === resId
+      );
+      if (found) return found;
+    }
+
+    if (this.data_comienza_pronto) {
+      const found = this.data_comienza_pronto.find(
+        (item: any) => item.res_id === resId
+      );
+      if (found) return found;
+    }
+
+    if (this.data_finalizado) {
+      const found = this.data_finalizado.find(
+        (item: any) => item.res_id === resId
+      );
+      if (found) return found;
+    }
+
+    if (this.data_canceladas) {
+      const found = this.data_canceladas.find(
+        (item: any) => item.res_id === resId
+      );
+      if (found) return found;
+    }
+
+    return null;
+  }
+  addStateInCurse(list: [any]): any[] {
+    const fechaActual = new Date();
+    return list.map((item: any) => {
+      if (item.rst_id === 2) {
+        const fechaHoraInicio = new Date(item.res_fecini);
+        const fechaHoraFin = new Date(item.res_fecfin);
+
+        if (fechaActual >= fechaHoraInicio && fechaActual <= fechaHoraFin) {
+          return { ...item, rst_id: 5, rst_descri: 'EN CURSO' };
+        } else {
+          return item;
+        }
+      } else {
+        return item;
+      }
+    });
+  }
+
+  addFiveHours(date: string): string {
+    const fecha = new Date(date);
+    fecha.setHours(fecha.getHours() + 5);
+    return fecha.toISOString();
+  }
+
+  formatTimeToDisplay(item:any){
+    if(item.tip_id===1){
+      return `${item.res_tiempo}h`;
+    }else{
+      return `${item.res_tiempo/24}d`;
+    }
+  }
+
+  formatDateToDayMonth(date: string): string {
+    const months = [
+      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+
+    const fecha = new Date(date);
+    const day = fecha.getDate();
+    const month = months[fecha.getMonth()];
+
+    return `${day} de ${month}`;
+  }
+
+  dismissAnyModal() {
+    const modals = document.querySelectorAll('ion-modal');
+    modals.forEach(modal => {
+      if (modal) {
+        (modal as any).dismiss();
+      }
+    });
+  }
+
 }

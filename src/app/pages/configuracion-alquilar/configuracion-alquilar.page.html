@@ -1,38 +1,40 @@
-<ion-content [fullscreen]="true">
+<header-component [withArrowLeft]="true" [route]="'/tab-home'"
+  (navigateTo)="handleNavigateTo($event)"></header-component>
+<ion-content>
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          <h1 class="title">¿A quiénes te gustaría alquilar?</h1>
-          <div class="input-bar">
-            <div class="ing">
-                <img src="/assets/images/car.png" alt="">
-                <h1>Carros Particulares</h1>
-            </div>
-            <input type="checkbox"  #checkbox1 (change)="onCheckboxChange(1, checkbox1.checked)" class="custom-checkbox">
-          </div>
-          <div class="input-bar">
-            <div class="ing">
-                <img src="/assets/images/camioneta.png" alt="">
-                <h1>Camionetas</h1>
-            </div>
-            <input type="checkbox"  #checkbox2 (change)="onCheckboxChange(2, checkbox2.checked)" class="custom-checkbox">
-          </div>
-          <div class="input-bar">
-            <div class="ing">
-                <img src="/assets/images/motorbike.png" alt="">
-                <h1>Motos</h1>
-            </div>
-            <input type="checkbox"  #checkbox3 (change)="onCheckboxChange(3, checkbox3.checked)" class="custom-checkbox">
-          </div>
-        </div>
+    <h1 class="title">¿A quiénes te gustaría alquilar?</h1>
+    <p>Selecciona los tipos de vehículos que pueden utilizar tu cochera. Esta elección ayudará a mostrar tu espacio a los conductores adecuados.</p>
+    <div class="input-bar">
+      <div class="ing">
+        <img src="/assets/images/fi-sr-car.svg" alt="">
+        <h1>Carros Particulares</h1>
       </div>
+      <input type="checkbox" #checkbox1 (change)="onCheckboxChange(1, checkbox1.checked)" class="custom-checkbox">
     </div>
-    <footer class="footer-btn">
+    <div class="input-bar">
+      <div class="ing">
+        <img src="/assets/images/camioneta.png" alt="">
+        <h1>Camionetas</h1>
+      </div>
+      <input type="checkbox" #checkbox2 (change)="onCheckboxChange(2, checkbox2.checked)" class="custom-checkbox">
+    </div>
+    <div class="input-bar">
+      <div class="ing">
+        <img src="/assets/images/motorbike.png" alt="">
+        <h1>Motos</h1>
+      </div>
+      <input type="checkbox" #checkbox3 (change)="onCheckboxChange(3, checkbox3.checked)" class="custom-checkbox">
+    </div>
+    <!-- <footer class="footer-btn">
       <div class="bnt-dow">
         <button class="bac" (click)="return()">Atrás</button>
         <button  (click)="getValues()" class="nex" >Siguiente</button>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </ion-content>
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <default-custom-button [text]="'Siguiente'" (click)="nextPage()"></default-custom-button>
+  </div>
+</ion-footer>

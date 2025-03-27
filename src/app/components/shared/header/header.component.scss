@@ -15,39 +15,40 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-
-
     }
 
     .left-content {
       display: flex;
-      align-items: center;
+
+      justify-content: flex-start; // Asegura que los hijos estén alineados a la izquierda
+      padding: 0; // Elimina cualquier padding que pueda alejar del borde
+      margin: 0;  // Lo mismo con el margin
 
       .icon-container {
-        width: 40px; // Ajusta el tamaño del contenedor según sea necesario
-        height: 40px; // Ajusta el tamaño del contenedor según sea necesario
+        height: 40px;
         display: flex;
-        justify-content: center;
         align-items: center;
         cursor: pointer;
 
         .icon-arrow-left {
           width: 12px;
           height: 12px;
-          margin-right: 12px;
+          margin-right: 10px;
         }
       }
 
-
       span {
         color: #212121;
-        font-size: 17px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0.17px;
+        display: flex;
+        align-items: center;
       }
     }
+
 
     .right-content {
       display: flex;
