@@ -151,8 +151,8 @@ export class ImgEstaPage implements OnInit {
       this.dis_id = params['dis_id'];
       this.tve_id = params['tve_id'];
       this.descripcion = params['descripcion'];
-      this.uga_lat='-11.992837133211326';
-      this.uga_long='-77.00094774426941';
+      this.uga_lat=params['lat'];
+      this.uga_long=params['lng'];
     });
   }
 

@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   // private apiUrl = 'https://backend-demo.blip-backend.com';
-  private apiUrl = 'https://blip-backend.com'; //'http://44.213.46.131:3000'; // URL de tu API
-  //private apiUrl = 'http://localhost:3000';
+  //private apiUrl = 'https://blip-backend.com'; //'http://44.213.46.131:3000'; // URL de tu API
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -75,7 +75,7 @@ export class ApiService {
 
     return this.http.get(
       this.apiUrl +
-        '/reserve/host?showFromNowOn=true&status=1&status=2&status=3&status=4',
+        '/reserve/host?showFromNowOn=true&status=1&status=2&status=3&status=4&status=5',
       { headers }
     );
   }

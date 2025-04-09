@@ -22,6 +22,8 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
   serviciosSeleccionados: number[] = [];
   checkBox1: any;
   descripcion: string = '';
+  lat: number = 0;
+  lng: number = 0;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.setValues();
@@ -48,6 +50,8 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
       this.referencia = params['referencia'];
       this.detalles = params['detalles'];
       this.descripcion = params['descripcion'];
+      this.lat = params['lat'];
+      this.lng = params['lng'];
     });
   }
 
@@ -87,6 +91,9 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
         referencia: this.referencia,
         detalles: this.detalles,
         servicio: this.serviciosSeleccionados,
+        descripcion: this.descripcion,
+        lat: this.lat,
+        lng: this.lng,
       },
     });
   }
@@ -121,6 +128,8 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
         detalles: this.detalles,
         descripcion: this.descripcion,
         servicio: this.serviciosSeleccionados,
+        lat: this.lat,
+        lng: this.lng,
       },
     });
   }

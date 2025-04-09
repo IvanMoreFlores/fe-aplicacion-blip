@@ -51,7 +51,7 @@ export class JwtService {
     let dataToSend: any = { type: 'temp' };
     if (usu_nrotel) {
       dataToSend = { ...dataToSend, usu_nrotel };
-    } else if (usu_correo && !usu_contra) {
+    } else if (usu_correo && usu_contra) {
       dataToSend = { ...dataToSend, usu_correo, usu_contra };
     } else {
       dataToSend = { ...dataToSend, usu_correo };

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import Swiper from 'swiper';
 import {} from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,9 +17,7 @@ import { filter } from 'rxjs/operators'; // Importar filter
   templateUrl: './anuncio-caracteristicas.page.html',
   styleUrls: ['./anuncio-caracteristicas.page.scss'],
 })
-export class AnuncioCaracteristicasPage
-  implements OnInit, OnDestroy
-{
+export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   selectedContent: string = 'Características'; // Inicializa la variable con el valor por defecto
   text = ''; // Texto del primer textarea
   textareas: string[] = []; // Array para almacenar los textareas adicionales
@@ -88,7 +86,7 @@ export class AnuncioCaracteristicasPage
 
   handleNavigateTo(route: string) {
     if (route) {
-      this.router.navigate([route]);
+      this.router.navigateByUrl(route,{replaceUrl: true});
     }
   }
 
@@ -302,15 +300,18 @@ export class AnuncioCaracteristicasPage
             this.chck_dom = true;
             break;
         }
-      } else {
+      }
+      if (restrict.rga_tipo === 2) {
         this.hora_init = restrict.rga_horainicio;
         this.hora_end = restrict.rga_horafin;
 
         if (this.hora_init === '10:00:00' && this.hora_end === '17:00:00') {
-          this.chck_hora = true;
-        } else {
           this.chck_hora = false;
+        } else {
+          this.chck_hora = true;
         }
+      }else{
+        this.chck_hora = false;
       }
     });
   }
@@ -565,6 +566,7 @@ export class AnuncioCaracteristicasPage
     this.selectedGarId = garId;
     console.log('Seleccionado:', garId);
     this.advertisements.map((advice: any) => {
+
       if (garId == advice.gar_id) {
         this.mainAd = advice;
         this.gar_nombre = this.mainAd.gar_nombre;
@@ -713,11 +715,13 @@ export class AnuncioCaracteristicasPage
     const words = str.toLowerCase().split(' ');
 
     // Primera palabra en minúsculas, resto con primera letra mayúscula
-    return words.map((word, index) => {
-      if (index === 0) {
-        return word.toLowerCase();
-      }
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    }).join('');
+    return words
+      .map((word, index) => {
+        if (index === 0) {
+          return word.toLowerCase();
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join('');
   }
 }

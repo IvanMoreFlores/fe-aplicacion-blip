@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccionar en el mapa</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="map-container">
+    <!-- El div donde se cargará el mapa -->
+    <div #mapElement id="map"></div>
+
+    <!-- Indicador central -->
+    <div class="map-marker">
+      <ion-icon name="location-sharp" color="danger"></ion-icon>
+    </div>
+
+    <!-- Información de la dirección -->
+    <div class="address-info" *ngIf="currentAddress">
+      <p>{{currentAddress}}</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="button-container">
+      <!-- <ion-button expand="block" (click)="getCurrentLocation()" color="secondary">
+        <ion-icon name="locate-outline" slot="start"></ion-icon>
+        Mi ubicación
+      </ion-button> -->
+      <ion-button expand="block" (click)="confirmLocation()" color="primary">
+        Confirmar Ubicación
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

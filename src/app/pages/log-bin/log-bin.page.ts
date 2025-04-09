@@ -93,6 +93,13 @@ export class LogBinPage implements OnInit {
       usu_correo: this.email.trim(),
       usu_contra: this.password,
     });
+    console.log(`🚀 ~ LogBinPage ~ login ~ {
+      usu_correo: this.email.trim(),
+      usu_contra: this.password,
+    }:`, {
+      usu_correo: this.email.trim(),
+      usu_contra: this.password,
+    })
 
     this.apiLoginService
       .getTokenTemp(tokenTemp, { email: this.email.trim() })

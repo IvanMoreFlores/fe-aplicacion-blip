@@ -21,9 +21,9 @@
         </select>
       </div>
     </div> -->
-    <default-select label="Ciudad" [options]="ciudades" [(selectedValue)]="ciudad"
+    <!-- <default-select label="Ciudad" [options]="ciudades" [(selectedValue)]="ciudad"
       (selectionChange)="onCiudadChange($event)" [class]="'secundary-input'" [placeholder]="'Ciudad'">
-    </default-select>
+    </default-select> -->
 
     <!-- <div class="input-bar">
       <p class="label-text">Distrito</p>
@@ -37,9 +37,9 @@
         </select>
       </div>
     </div> -->
-    <default-select label="Distrito" [options]="distritos" [(selectedValue)]="distrito"
+    <!-- <default-select label="Distrito" [options]="distritos" [(selectedValue)]="distrito"
       (selectionChange)="onDistritoChange($event)" [class]="'secundary-input'" [placeholder]="'Distrito'">
-    </default-select>
+    </default-select> -->
     <!-- <div class="input-bar">
           <ion-label class="label-text">Referencia</ion-label>
           <ion-input type="text" [(ngModel)]="referencia" placeholder="E.j Cdra. 5 de la Av. Benavides"></ion-input>
@@ -70,3 +70,4 @@
     <default-custom-button [text]="'Siguiente'" (click)="nextPage()"></default-custom-button>
   </div>
 </ion-footer>
+<app-loader *ngIf="isLoading"></app-loader>

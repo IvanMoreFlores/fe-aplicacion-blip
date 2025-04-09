@@ -27,6 +27,8 @@ export class ConfiguracionAlquilarPage implements OnInit {
   dis_id: number = 0;
   tve_id: number[] = [];
   descripcion: string = '';
+  lat: number = 0;
+  lng: number = 0;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.setValues();
@@ -60,6 +62,8 @@ export class ConfiguracionAlquilarPage implements OnInit {
       this.uga_long = params['uga_long'];
       this.dis_id = params['dis_id'];
       this.descripcion = params['descripcion'];
+      this.lat = params['lat'];
+      this.lng = params['lng'];
     });
   }
 
@@ -105,6 +109,8 @@ export class ConfiguracionAlquilarPage implements OnInit {
         dis_id: this.dis_id,
         tve_id: this.tve_id,
         descripcion: this.descripcion,
+        lat: this.lat,
+        lng: this.lng,
       },
     });
   }
@@ -126,6 +132,10 @@ export class ConfiguracionAlquilarPage implements OnInit {
         uga_lat: this.uga_lat,
         uga_long: this.uga_long,
         dis_id: this.dis_id,
+        tve_id: this.tve_id,
+        descripcion: this.descripcion,
+        lat: this.lat,
+        lng: this.lng,
       },
     });
   }

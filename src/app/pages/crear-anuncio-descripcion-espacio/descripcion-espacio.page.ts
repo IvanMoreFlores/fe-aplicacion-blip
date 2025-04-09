@@ -14,6 +14,8 @@ export class DescripcionEspacioPage implements OnInit {
   ciudad: string = '';
   referencia: string = '';
   detalles: string = '';
+  lat: number = 0;
+  lng: number = 0;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
   ngOnInit() {
@@ -34,6 +36,8 @@ export class DescripcionEspacioPage implements OnInit {
         referencia: this.referencia,
         detalles: this.detalles,
         descripcion: this.descripcion,
+        lat: this.lat,
+        lng: this.lng,
       },
     });
   }
@@ -45,6 +49,8 @@ export class DescripcionEspacioPage implements OnInit {
       this.ciudad = params['ciudad'];
       this.referencia = params['referencia'];
       this.detalles = params['detalles'];
+      this.lat= params['lat'];
+      this.lng= params['lng'];
     });
   }
 }

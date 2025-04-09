@@ -25,6 +25,8 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
   gar_ancho: string = '';
   gar_alto: string = '';
   descripcion: string = '';
+  lat: number = 0;
+  lng: number = 0;
 
   @ViewChildren('customBtn') customBtns!: QueryList<ElementRef>;
   selectedIndex: number | null = null; // Inicialmente ningún botón seleccionado
@@ -65,6 +67,8 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
       this.gar_ancho = params['gar_ancho'];
       this.gar_alto = params['gar_alto'];
       this.descripcion = params['descripcion'];
+      this.lat = params['lat'];
+      this.lng = params['lng'];
     });
   }
 
@@ -116,6 +120,8 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
         gar_largo: this.gar_largo,
         gar_ancho: this.gar_ancho,
         gar_alto: this.gar_alto,
+        lat: this.lat,
+        lng: this.lng,
       },
     });
   }
@@ -133,6 +139,9 @@ export class DescripcionDeMedidasDelEspacioPage implements OnInit {
         gar_largo: this.gar_largo,
         gar_ancho: this.gar_ancho,
         gar_alto: this.gar_alto,
+        descripcion: this.descripcion,
+        lat: this.lat,
+        lng: this.lng,
       },
     });
   }

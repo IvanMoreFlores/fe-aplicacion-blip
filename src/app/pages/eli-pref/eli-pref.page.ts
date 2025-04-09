@@ -22,6 +22,8 @@ export class EliPrefPage implements OnInit {
   uga_lat: string = '';
   uga_long: string = '';
   descripcion: string = '';
+  lat: number = 0;
+  lng: number = 0;
 
   constructor(
     private router: Router,
@@ -54,6 +56,8 @@ export class EliPrefPage implements OnInit {
       this.uga_lat = params['uga_lat'];
       this.uga_long = params['uga_long'];
       this.descripcion = params['descripcion'];
+      this.lat = params['lat'];
+      this.lng = params['lng'];
     });
   }
 
@@ -74,6 +78,8 @@ export class EliPrefPage implements OnInit {
         uga_lat: this.uga_lat,
         uga_long: this.uga_long,
         descripcion: this.descripcion,
+        lat: this.lat,
+        lng: this.lng
       }
     });
 
@@ -93,7 +99,10 @@ export class EliPrefPage implements OnInit {
         gar_alto: this.gar_alto,
         uga_direcc: this.uga_direcc,
         uga_lat: this.uga_lat,
-        uga_long: this.uga_long
+        uga_long: this.uga_long,
+        descripcion: this.descripcion,
+        lat: this.lat,
+        lng: this.lng
       }
     });
   }

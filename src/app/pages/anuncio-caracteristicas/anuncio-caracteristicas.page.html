@@ -485,17 +485,16 @@
 
       <!--                 -----PRECIO-----              -->
       <div *ngIf="selectedContent === 'Precio'">
-        <div class="titulo-precio">
+        <div class="informacion">
           <h1 class="secondary-title">Precio base</h1>
-          <h2 class="pen">PEN</h2>
-        </div>
-
-        <div>
+          <h2>
+            Los conductores podrán ver esta información antes de alquilar tu cochera.
+          </h2>
+          <span>Hora o fracción</span>
           <div class="precio-base">
-            <span class="simbolo">S/.</span>
+            <span class="simbolo">S/</span>
             <input class="monto" id="hora-fraccion" id="hora-fraccion" placeholde="0.00" type="number"
               value="{{ precio_hora }}" />
-            <label for="hora-fraccion" class="hora-fraccion">Hora o fracción</label>
           </div>
 
           <ion-modal trigger="hora-fraccion" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
@@ -517,10 +516,11 @@
             </ng-template>
           </ion-modal>
 
+          <span>Día (24h)</span>
           <div class="precio-base">
-            <span class="simbolo">S/.</span>
+            <span class="simbolo">S/</span>
             <input class="monto" id="hora-fraccion2" placeholde="0.00" value="{{ precio_dia }}" type="number" />
-            <label for="hora-fraccion" class="hora-fraccion">Día (24h)</label>
+
           </div>
 
           <ion-modal trigger="hora-fraccion2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
@@ -543,10 +543,12 @@
           </ion-modal>
 
           <div class="recordatorio">
+            <div class="esp-inpar">
+              <img src="/assets/images/group.svg" alt="" />
+            </div>
             <div class="esp-par">
               <p>
-                Recuerda que la tarifa de servicio es 5% sobre el precio base. <span>E.j Si el precio base x h/f es de
-                  S/10, estarías ganando S/9.50 x hora.</span>
+                Recuerda que la comisión de servicio es del 5% sobre el precio base. <span>E.j Si el precio base x  h/f es de S/10 , estarías ganando S/9.50 x hora.</span>
               </p>
             </div>
 
@@ -556,7 +558,7 @@
 
       <!--                 -----DISPONIBILIDAD-----              -->
       <div *ngIf="selectedContent === 'Disponibilidad'">
-        <div class="disponibilidad-container">
+        <div class="informacion">
           <h1 class="secondary-title">Días restringidos</h1>
           <p>
             Los usuarios no podrán reservar tu cochera
@@ -566,7 +568,77 @@
           <div class="checkbox-semana">
             <form class="clearfix">
               <!-- Columna 1 -->
-              <div class="checkbox-column">
+              <div class="input-bar2">
+                <div class="ing2">
+                  <img src="/assets/images/fi-sr-calendar.svg" alt="">
+                  <h1>Lunes</h1>
+                </div>
+                <input *ngIf="chck_lun === true" checked type="checkbox" #checkbox1 (change)="checkDia($event, 1)" class="custom-checkbox" id="lunes"
+                name="diasSemana" value="lunes" >
+                <input *ngIf="chck_lun === false" type="checkbox" #checkbox1 (change)="checkDia($event, 1)" class="custom-checkbox" id="lunes"
+                name="diasSemana" value="lunes" >
+              </div>
+              <div class="input-bar2">
+                <div class="ing2">
+                  <img src="/assets/images/fi-sr-calendar.svg" alt="">
+                  <h1>Martes</h1>
+                </div>
+                <input *ngIf="chck_mar === true" checked type="checkbox" #checkbox1 (change)="checkDia($event, 2)" class="custom-checkbox" id="martes"
+                name="diasSemana" value="martes" >
+                <input *ngIf="chck_mar === false" type="checkbox" #checkbox1 (change)="checkDia($event, 2)" class="custom-checkbox" id="martes"
+                name="diasSemana" value="martes" >
+              </div>
+              <div class="input-bar2">
+                <div class="ing2">
+                  <img src="/assets/images/fi-sr-calendar.svg" alt="">
+                  <h1>Miercoles</h1>
+                </div>
+                <input *ngIf="chck_mie === true" checked type="checkbox" #checkbox1 (change)="checkDia($event, 3)" class="custom-checkbox" id="miercoles"
+                name="diasSemana" value="miercoles" >
+                <input *ngIf="chck_mie === false" type="checkbox" #checkbox1 (change)="checkDia($event, 3)" class="custom-checkbox" id="miercoles"
+                name="diasSemana" value="miercoles" >
+              </div>
+              <div class="input-bar2">
+                <div class="ing2">
+                  <img src="/assets/images/fi-sr-calendar.svg" alt="">
+                  <h1>Jueves</h1>
+                </div>
+                <input *ngIf="chck_jue === true" checked type="checkbox" #checkbox1 (change)="checkDia($event, 4)" class="custom-checkbox" id="jueves"
+                name="diasSemana" value="jueves" >
+                <input *ngIf="chck_jue === false" type="checkbox" #checkbox1 (change)="checkDia($event, 4)" class="custom-checkbox" id="jueves"
+                name="diasSemana" value="jueves" >
+              </div>
+              <div class="input-bar2">
+                <div class="ing2">
+                  <img src="/assets/images/fi-sr-calendar.svg" alt="">
+                  <h1>Viernes</h1>
+                </div>
+                <input *ngIf="chck_vie === true" checked type="checkbox" #checkbox1 (change)="checkDia($event, 5)" class="custom-checkbox" id="viernes"
+                name="diasSemana" value="viernes" >
+                <input *ngIf="chck_vie === false" type="checkbox" #checkbox1 (change)="checkDia($event, 5)" class="custom-checkbox" id="viernes"
+                name="diasSemana" value="viernes" >
+              </div>
+              <div class="input-bar2">
+                <div class="ing2">
+                  <img src="/assets/images/fi-sr-calendar.svg" alt="">
+                  <h1>Sabado</h1>
+                </div>
+                <input *ngIf="chck_sab === true" checked type="checkbox" #checkbox1 (change)="checkDia($event, 6)" class="custom-checkbox" id="sabado"
+                name="diasSemana" value="sabado" >
+                <input *ngIf="chck_sab === false" type="checkbox" #checkbox1 (change)="checkDia($event, 6)" class="custom-checkbox" id="sabado"
+                name="diasSemana" value="sabado" >
+              </div>
+              <div class="input-bar2">
+                <div class="ing2">
+                  <img src="/assets/images/fi-sr-calendar.svg" alt="">
+                  <h1>Domingo</h1>
+                </div>
+                <input *ngIf="chck_dom === true" checked type="checkbox" #checkbox1 (change)="checkDia($event, 7)" class="custom-checkbox" id="domingo"
+                name="diasSemana" value="domingo" >
+                <input *ngIf="chck_dom === false" type="checkbox" #checkbox1 (change)="checkDia($event, 7)" class="custom-checkbox" id="domingo"
+                name="diasSemana" value="domingo" >
+              </div>
+              <!-- <div class="checkbox-column">
                 <label for="domingo">
                   <input *ngIf="chck_dom === true" type="checkbox" checked (change)="checkDia($event, 7)" id="domingo"
                     name="diasSemana" value="domingo" class="checkbox-round2" />
@@ -589,7 +661,6 @@
                   Martes
                 </label>
               </div>
-              <!-- Columna 2 -->
               <div class="checkbox-column">
                 <label for="miercoles">
                   <input *ngIf="chck_mie === true" type="checkbox" checked (change)="checkDia($event, 3)" id="miercoles"
@@ -613,7 +684,6 @@
                   Viernes
                 </label>
               </div>
-              <!-- Columna 3 -->
               <div class="checkbox-column">
                 <label for="sabado">
                   <input *ngIf="chck_vie === true" type="checkbox" checked (change)="checkDia($event, 5)" id="sabado"
@@ -622,7 +692,7 @@
                     name="diasSemana" value="sabado" class="checkbox-round2" />
                   Sábado
                 </label>
-              </div>
+              </div> -->
             </form>
           </div>
 

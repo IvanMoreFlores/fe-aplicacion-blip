@@ -49,6 +49,7 @@ export class HomePage implements OnInit, OnDestroy {
     [key: number]: { hours: number; minutes: number; seconds: number };
   } = {};
   timerSubscription: Subscription = new Subscription();
+  isLoading = false;
 
   constructor(
     private readonly router: Router,
@@ -126,6 +127,19 @@ export class HomePage implements OnInit, OnDestroy {
     );
   }
 
+  async setEnCurso(id: string) {
+    const token = await this.storage.getItem('token');
+    this.api.updateReserve(token, id, '5').subscribe(
+      async (response: any) => {
+        console.log(response);
+        this.getReservas();
+      },
+      (error: any) => {
+        console.error('Error al enviar el mensaje:', error);
+      }
+    );
+  }
+
   ngOnInit() {
     this.getUserData();
     this.getReservas();
@@ -141,20 +155,7 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
-  ionViewWillEnter() {
-    this.getUserData();
-    this.getReservas();
-    this.getDni();
-    this.getBlackout();
-    setTimeout(() => {
-      this.iniciarSwiper();
-    }, 0);
-
-    // Actualizar los temporizadores cada segundo
-    this.timerSubscription = interval(1000).subscribe(() => {
-      this.updateTimers();
-    });
-  }
+  // Removed duplicate implementation of ionViewWillEnter
   async getBlackout() {
     let apagon = await this.storage.getItem('apagon');
     if (apagon !== null) {
@@ -164,7 +165,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   async getUserData() {
     this.userData = await this.storage.getItem('user');
-    console.log('🚀 ~ HomePage ~ getUserData ~ userData:', this.userData);
     this.setSaludo();
   }
 
@@ -286,14 +286,16 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   async getReservas() {
+    this.isLoading = true;
     const token = await this.storage.getItem('token');
     this.api.getReservations(token).subscribe(
       async (response: any) => {
-        response.data.forEach((element: any) => {
-          element.res_fecini = this.addFiveHours(element.res_fecini);
-          element.res_fecfin = this.addFiveHours(element.res_fecfin);
-        });
-        this.data = this.addStateInCurse(response.data);
+        // response.data.forEach((element: any) => {
+        //   element.res_fecini = this.addFiveHours(element.res_fecini);
+        //   element.res_fecfin = this.addFiveHours(element.res_fecfin);
+        // });
+        //this.data = this.addStateInCurse(response.data);
+        this.data = response.data;
         console.log(this.data);
         this.n_data = Object.keys(this.data).length;
         this.getPendientes(this.data);
@@ -302,6 +304,7 @@ export class HomePage implements OnInit, OnDestroy {
         this.getComienzaPronto(this.data);
         this.getEnCurso(this.data);
         this.initializeTimers();
+        this.isLoading = false;
       },
       (error: any) => {
         console.error('Error al enviar el mensaje:', error);
@@ -310,6 +313,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   async getPendientes(datos: any) {
+    this.data_pendientes = [];
     datos.map((reserva: any) => {
       if (reserva.rst_id === 1) {
         this.data_pendientes.push(reserva);
@@ -320,6 +324,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   getComienzaPronto(datos: any) {
+    this.data_comienza_pronto = [];
     datos.map((reserva: any) => {
       const fechaEspecifica = reserva.res_fecini;
       const ahora = new Date();
@@ -336,17 +341,9 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   getEnCurso(datos: any) {
-    const fechaActual = new Date();
+    this.data_encurso = [];
     datos.map((reserva: any) => {
-      const fechaHoraInicio = new Date(reserva.res_fecini);
-      const fechaHoraFin = new Date(reserva.res_fecfin);
-
-      if (
-        fechaActual >= fechaHoraInicio &&
-        fechaActual <= fechaHoraFin &&
-        reserva.rst_id !== 3 &&
-        reserva.rst_id !== 4
-      ) {
+      if (reserva.rst_id === 5) {
         this.data_encurso.push(reserva);
       }
     });
@@ -354,6 +351,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   getFinalizadas(datos: any) {
+    this.data_finalizado = [];
     datos.map((reserva: any) => {
       if (reserva.rst_id === 4) {
         this.data_finalizado.push(reserva);
@@ -364,6 +362,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   getCanceladas(datos: any) {
+    this.data_canceladas = [];
     datos.map((reserva: any) => {
       if (reserva.rst_id === 3) {
         this.data_canceladas.push(reserva);
@@ -644,18 +643,28 @@ export class HomePage implements OnInit, OnDestroy {
     return fecha.toISOString();
   }
 
-  formatTimeToDisplay(item:any){
-    if(item.tip_id===1){
+  formatTimeToDisplay(item: any) {
+    if (item.tip_id === 1) {
       return `${item.res_tiempo}h`;
-    }else{
-      return `${item.res_tiempo/24}d`;
+    } else {
+      return `${item.res_tiempo / 24}d`;
     }
   }
 
   formatDateToDayMonth(date: string): string {
     const months = [
-      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
     ];
 
     const fecha = new Date(date);
@@ -667,11 +676,84 @@ export class HomePage implements OnInit, OnDestroy {
 
   dismissAnyModal() {
     const modals = document.querySelectorAll('ion-modal');
-    modals.forEach(modal => {
+    modals.forEach((modal) => {
       if (modal) {
         (modal as any).dismiss();
       }
     });
   }
 
+  ionViewWillEnter() {
+    this.isLoading = true;
+    // Reset data arrays to prevent duplicate entries when returning to the page
+    this.data = null;
+    this.data_pendientes = [];
+    this.data_comienza_pronto = [];
+    this.data_encurso = [];
+    this.data_finalizado = [];
+    this.data_canceladas = [];
+
+    // Reset counters
+    this.n_data = 0;
+    this.n_data_pendientes = 0;
+    this.n_data_comienza = 0;
+    this.n_data_encurso = 0;
+    this.n_data_finalizado = 0;
+    this.n_data_canceladas = 0;
+
+    // Get fresh data
+    this.getUserData();
+    this.getReservas();
+    this.getDni();
+    this.getBlackout();
+
+    // Initialize UI components
+    setTimeout(() => {
+      this.iniciarSwiper();
+    }, 0);
+
+    // Clear any existing subscription to avoid duplicates
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
+
+    // Restart the timer subscription
+    this.timerSubscription = interval(1000).subscribe(() => {
+      this.updateTimers();
+    });
+
+    // Force change detection to update the UI
+    this.cdr.detectChanges();
+  }
+
+  // Añadir esta nueva función
+  isReservationWithinOneHour(item: any): boolean {
+    // Verificar si el estado es "confirmado" (rst_id === 2)
+    if (item.rst_id !== 2) {
+      return false;
+    }
+
+    const now = new Date();
+    const startTime = new Date(item.res_fecini);
+    const endTime = new Date(item.res_fecfin);
+
+    // Caso 1: La hora actual es después de la hora de inicio pero antes de la hora de finalización
+    // (la reserva debería estar activa)
+    if (now >= startTime && now <= endTime) {
+      return true;
+    }
+
+    // Caso 2: La hora actual es antes de la hora de inicio pero falta menos de una hora
+    if (now < startTime) {
+      // Calcular la diferencia en milisegundos
+      const timeDifference = startTime.getTime() - now.getTime();
+      // Convertir a horas
+      const hoursDifference = timeDifference / (1000 * 60 * 60);
+      // Habilitar si falta menos de 1 hora para el inicio
+      return hoursDifference <= 1;
+    }
+
+    // En cualquier otro caso (ya pasó la hora de finalización), no habilitar
+    return false;
+  }
 }
