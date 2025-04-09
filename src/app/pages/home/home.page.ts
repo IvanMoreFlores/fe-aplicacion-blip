@@ -290,10 +290,10 @@ export class HomePage implements OnInit, OnDestroy {
     const token = await this.storage.getItem('token');
     this.api.getReservations(token).subscribe(
       async (response: any) => {
-        // response.data.forEach((element: any) => {
-        //   element.res_fecini = this.addFiveHours(element.res_fecini);
-        //   element.res_fecfin = this.addFiveHours(element.res_fecfin);
-        // });
+        response.data.forEach((element: any) => {
+          element.res_fecini = this.addFiveHours(element.res_fecini);
+          element.res_fecfin = this.addFiveHours(element.res_fecfin);
+        });
         //this.data = this.addStateInCurse(response.data);
         this.data = response.data;
         console.log(this.data);
