@@ -1,167 +1,174 @@
 /* Estilos para el header */
-h1,h1,h3{
-    margin: 0px;
+h1,
+h1,
+h3 {
+  margin: 0px;
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+ion-header {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+
+ion-toolbar {
+  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important; /* Aplica directamente el color blanco */
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ion-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 22px;
+  margin-block: 10px;
+  height: 56px; /* Altura consistente para el header */
+}
+
+.custom-title {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0px;
+}
+.btn-idn {
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
+  border-radius: 10px;
+  margin-right: 0px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+ion-buttons {
+  display: flex;
+  align-items: center;
+}
+
+ion-icon {
+  font-size: 24px; /* Tamaño adecuado para los iconos */
+  color: #000;
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: none; /* Eliminar el fondo del botón */
+  --ripple-color: transparent; /* Sin efecto ripple */
+  img {
+    width: 28px;
+    height: 28px;
   }
-  ion-header {
-    --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-    background-color: #fff !important; /* Aplica directamente el color blanco */
-    
-  }
-  ion-header {
-    --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-    background-color: #fff !important; /* Aplica directamente el color blanco */
-  }
-  
-  ion-toolbar {
-    --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-    background-color: #fff !important; /* Aplica directamente el color blanco */
-  }
-  .head{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  ion-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline:  22px;
-    margin-block: 10px;
-    height: 56px; /* Altura consistente para el header */
-  
-  }
-  
-  .custom-title{
-    color: #212121;
-    font-family: Poppins;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 120% */
-  }
-  .header-ios ion-toolbar:last-of-type {
-    --border-width: 0px;
-  }
-  .btn-idn{
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(112, 112, 112, 0.2);
-    border-radius: 10px;
-    margin-right: 0px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    background-color: #ffffff;
-  }
-  ion-buttons {
-    display: flex;
-    align-items: center;
-  }
-  
-  ion-icon {
-    font-size: 24px; /* Tamaño adecuado para los iconos */
-    color: #000;
-  }
-  
-  ion-button {
-    --padding-start: 0;
-    --padding-end: 0;
-    --background: none; /* Eliminar el fondo del botón */
-    --ripple-color: transparent; /* Sin efecto ripple */
-  }
-  ion-content{
-    padding-inline: 40px;
-  }
-  ion-title{
-    color: #212121;
-font-family: Poppins;
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: 24px; /* 120% */
-padding: 0px;
-  }
-  ion-content {
-    --overflow: hidden;
-  }
+}
+ion-content {
+  padding-inline: 40px;
+}
+ion-title {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+  padding: 0px 0px 0px 45px;
+  text-align: left;
+
+}
+ion-content {
+  --overflow: hidden;
+}
 /* Estilos generales */
 .container-pef {
-    padding-inline: 40px;
-    margin-top: 30px;
-  }
-  
-  h1, h3, h4, p {
-    margin: 0;
-  }
-  
-  .status-header {
-    font-family: Poppins;
-    font-size: 20px;
-    font-weight: 500;
-    color: #212121;
-  }
-  
-  .status-text {
-    color: #212121;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 25px; /* 192.308% */
-    padding-block: 15px;
-  }
-  
-  /* Estilos de los documentos */
-  .documents-header {
-    margin-top: 24px;
-    font-family: Poppins;
-    font-size: 16px;
-    font-weight: 500;
-    color: #212121;
-    display: flex;
-    align-items: center;
-  }
-  
-  .documents-header ion-icon {
-    margin-left: 8px;
-    color: #ff3b30; /* Color de alerta */
-  }
-  
-  .document-status {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .document-status ion-icon {
-    font-size: 30px;
-    margin-right: 8px;
-  }
-  
-  .document-label {
-    color: #212121;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 25px; /* 166.667% */
-    margin-right: auto;
-    
-  }
-  
-  .update-link {
-    color: #212121;
-    text-align: right;
-    font-family: Poppins;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 22px; /* 183.333% */
-    text-decoration-line: underline;
-    margin-left: 20px;
-  }
-  
-  .update-link:hover {
-    text-decoration: underline;
-  }
-  
+  padding-inline: 40px;
+  margin-top: 30px;
+}
+
+h1,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.status-header {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.status-text {
+  color: #212121;
+  text-align: justify;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 192.308% */
+  padding-block: 15px;
+}
+
+/* Estilos de los documentos */
+.documents-header {
+  margin-top: 24px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  color: #212121;
+  display: flex;
+  align-items: center;
+}
+
+.documents-header ion-icon {
+  margin-left: 8px;
+  color: #ff3b30; /* Color de alerta */
+}
+
+.document-status {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.document-status ion-icon {
+  font-size: 30px;
+  margin-right: 8px;
+}
+
+.document-label {
+  color: #212121;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 166.667% */
+  margin-right: auto;
+}
+
+.update-link {
+  color: #212121;
+  text-align: right;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 183.333% */
+  text-decoration-line: underline;
+  margin-left: 20px;
+}
+
+.update-link:hover {
+  text-decoration: underline;
+}
