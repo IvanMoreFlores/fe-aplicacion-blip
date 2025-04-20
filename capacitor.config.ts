@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'apphost.blip.pe',
-  appName: 'bliphostfrontend',
+  appName: 'Blip Host',
   webDir: 'www',
   server: {
     androidScheme: 'https'

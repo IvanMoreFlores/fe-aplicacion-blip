@@ -1,5 +1,5 @@
 {
-  "name": "bliphostfrontend",
+  "name": "Blip Host",
   "integrations": {
     "capacitor": {},
     "cordova": {}
