@@ -50,6 +50,8 @@ export class HomePage implements OnInit, OnDestroy {
   } = {};
   timerSubscription: Subscription = new Subscription();
   isLoading = false;
+  data_ads: any[] = [];
+  ads_active: number = 0;
 
   constructor(
     private readonly router: Router,
@@ -170,6 +172,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   async getDni() {
     const userDni = await this.storage.getItem('userDni');
+    console.log('user DNI',userDni);
     if (userDni) {
       this.url_new = '/descripcion-del-espacio';
       //this.url_new = '/nuevo-anu-pone-alq';
@@ -683,6 +686,29 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
+  async getAds(){
+    const token = await this.storage.getItem('token');
+    this.api.getAds(token).subscribe(
+      (response: any) => {
+        this.data_ads = response.data;
+
+        if (this.data_ads.length <= 0) {
+          console.log('Debes crear un Anuncio antes!');
+          this.ads_active = 0;
+        }else{
+          this.ads_active = 1;
+        }
+
+        console.log('ads_active',this.ads_active);
+
+      },
+      (error: any) => {
+        console.error('Error al cargar los anuncios:', error);
+        this.cdr.detectChanges();
+      }
+    );
+  }
+
   ionViewWillEnter() {
     this.isLoading = true;
     // Reset data arrays to prevent duplicate entries when returning to the page
@@ -706,6 +732,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.getReservas();
     this.getDni();
     this.getBlackout();
+    this.getAds();
 
     // Initialize UI components
     setTimeout(() => {

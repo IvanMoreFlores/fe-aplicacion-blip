@@ -15,11 +15,11 @@ export class TerminosYCondicionesPage implements OnInit {
 
   isChecked: boolean = false;
   constructor(
-    private modalcontroller: ModalController,
-    private jwtService: JwtService,
-    private storageService: StorageService,
-    private api: ApiService,
-    private router: Router,
+    private readonly modalcontroller: ModalController,
+    private readonly jwtService: JwtService,
+    private readonly storageService: StorageService,
+    private readonly api: ApiService,
+    private readonly router: Router,
   ) { }
 
   toggleCheckbox() {
@@ -33,7 +33,9 @@ export class TerminosYCondicionesPage implements OnInit {
   }
 
   async init_value(){
+    console.log('init-value comienza');
     const token = await this.storageService.getItem('token');
+    console.log('token',token);
     if(token !== null){
       //obtener datos para llenar cbo boxs
       this.api.getValidate(token).subscribe(
@@ -85,6 +87,8 @@ export class TerminosYCondicionesPage implements OnInit {
   }
 
   goToDisplayPage() {
-    this.router.navigate(['/datos-registro']);
+    if(this.isChecked){
+      this.router.navigate(['/datos-registro']);
+    }
   }
 }

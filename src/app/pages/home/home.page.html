@@ -18,21 +18,21 @@
           <h2 class="subtitle">Servicios de Anfitrión</h2>
           <div class="button-container">
 
-            <button (click)="exit()" routerLink="{{ url_new }}" class="service-button">
+            <button *ngIf="ads_active == 0" (click)="exit()" routerLink="{{ url_new }}" class="service-button">
               <div>
                 <img class="button-image" src="/assets/images/ticket-outline-selected.svg" alt="Imagen 1">
                 <span class="button-text">Crea un nuevo anuncio</span>
               </div>
               <img class="second-image" src="/assets/images/Vector-1.png" alt="">
             </button>
-            <button (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
+            <button *ngIf="ads_active == 1" (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
               <div>
                 <img class="button-image" src="/assets/images/fi-sr-plus.svg" alt="Imagen 2">
                 <span class="button-text">Mis Anuncios</span>
               </div>
               <img class="second-image" src="/assets/images/Vector-1.png" alt="">
             </button>
-            <button class="service-button">
+            <!--<button class="service-button">
 
               <div>
                 <img class="button-image" src="assets/images/apag.svg" alt="Imagen 1">
@@ -43,7 +43,7 @@
                 [(ngModel)]="apagon_val" (ionChange)="onToggleChange($event)" [checked]="apagon_val">
               </ion-toggle>
 
-            </button>
+            </button>-->
             <!-- <button (click)="exit()" routerLink="/finanzas" class="service-button">
                 <div>
                   <img class="button-image" src="assets/images/finanzas.svg" alt="Imagen 1">
@@ -181,7 +181,7 @@
                       </div>
                       <div class="floating-text status">
                         <span>{{toCamelCase(item.rst_descri) }}
-                          <span *ngIf="item.rst_id === 1" class="dot_orange"></span>
+                          <span *ngIf="item.rst_id === 1" class="dot_orange"></span> 
                           <span *ngIf="item.rst_id === 2" class="dot"></span>
                           <span *ngIf="item.rst_id === 3" class="dot_red"></span>
                           <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
@@ -349,9 +349,6 @@
           <div class="board">
             <img src="/assets/images/icon-calendar2.svg" alt="">
             <h1 class="par">Ninguna cochera disponible.</h1>
-            <default-custom-button routerLink={{this.url_new}} [withImg]="true"
-              [imageUrl]="'/assets/images/icon-plus2.svg'" [text]="'Crear nuevo anuncio'"
-              [class]="'secondary-button-w-h-small'"></default-custom-button>
           </div>
         </div>
       </div>
@@ -547,9 +544,6 @@
           <div class="board">
             <img src="/assets/images/icon-calendar2.svg" alt="">
             <h1 class="par">Ninguna cochera disponible.</h1>
-            <default-custom-button routerLink={{this.url_new}} [withImg]="true"
-              [imageUrl]="'/assets/images/icon-plus2.svg'" [text]="'Crear nuevo anuncio'"
-              [class]="'secondary-button-w-h-small'"></default-custom-button>
           </div>
         </div>
       </div>
@@ -745,9 +739,6 @@
           <div class="board">
             <img src="/assets/images/icon-calendar2.svg" alt="">
             <h1 class="par">Ninguna cochera disponible.</h1>
-            <default-custom-button routerLink={{this.url_new}} [withImg]="true"
-              [imageUrl]="'/assets/images/icon-plus2.svg'" [text]="'Crear nuevo anuncio'"
-              [class]="'secondary-button-w-h-small'"></default-custom-button>
           </div>
         </div>
       </div>
@@ -944,9 +935,6 @@
           <div class="board">
             <img src="/assets/images/icon-calendar2.svg" alt="">
             <h1 class="par">Ninguna cochera disponible.</h1>
-            <default-custom-button routerLink={{this.url_new}} [withImg]="true"
-              [imageUrl]="'/assets/images/icon-plus2.svg'" [text]="'Crear nuevo anuncio'"
-              [class]="'secondary-button-w-h-small'"></default-custom-button>
           </div>
         </div>
       </div>
@@ -1142,9 +1130,6 @@
           <div class="board">
             <img src="/assets/images/icon-calendar2.svg" alt="">
             <h1 class="par">Ninguna cochera disponible.</h1>
-            <default-custom-button routerLink={{this.url_new}} [withImg]="true"
-              [imageUrl]="'/assets/images/icon-plus2.svg'" [text]="'Crear nuevo anuncio'"
-              [class]="'secondary-button-w-h-small'"></default-custom-button>
           </div>
         </div>
       </div>
@@ -1344,9 +1329,6 @@
           <div class="board">
             <img src="/assets/images/icon-calendar2.svg" alt="">
             <h1 class="par">Ninguna cochera disponible.</h1>
-            <default-custom-button routerLink={{this.url_new}} [withImg]="true"
-              [imageUrl]="'/assets/images/icon-plus2.svg'" [text]="'Crear nuevo anuncio'"
-              [class]="'secondary-button-w-h-small'"></default-custom-button>
           </div>
         </div>
       </div>
