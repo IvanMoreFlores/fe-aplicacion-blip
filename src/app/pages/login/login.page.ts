@@ -38,6 +38,10 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   async init_value() {
+    const token = await this.storageService.getItem('token');
+    if(token){
+      this.router.navigate(['/tab-home/home']);
+    }
     this.phone2 = '';
   }
 
