@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ApiLoginService {
   private apiUrl = 'https://login.blip-backend.com';
+  //private apiUrl = 'https://login-demo.blip-backend.com';
   //private apiUrl = 'http://localhost:3001';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getTokenTemp(token: string, data: any): Observable<any> {
     const { email, phone } = data;

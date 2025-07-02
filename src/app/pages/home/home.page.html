@@ -9,6 +9,38 @@
     <h3 style="padding-inline: 10px;">{{saludo}}</h3>
     <button slot="end" class="btn-mn" id="menu" (click)="openMenuModal()"><img src="/assets/images/menu-pun.svg"
         alt=""></button>
+
+    <ion-modal trigger="validate" mode="ios" [isOpen]="isValidModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]"
+      (ionBackdropTap)="dismissValidModal()">
+      <ng-template>
+        <div class="block">
+          <div class="cont-header">
+            <img src="/assets/images/impo-pen.svg" alt="">
+            <h1 class="menu-block">Verifica tu identidad para continuar</h1>
+          </div>
+          <div class="cont-ap">
+            <div>
+              <p>Antes de publicar un anuncio, debes verificar tu identidad. </p>
+
+              <p>Esto ayuda a mantener un espacio seguro y confiable para toda nuestra comunidad.</p>
+
+              <p>
+                <span>Tus datos están protegidos y se usan únicamente para el proceso de verificación. </span>
+              </p>
+
+            </div>
+
+            <div class="button-container-modal">
+              <button class="button-continuar-modal" (click)="dismissValidModal()">Lo haré luego</button>
+              <button class="button-cancelar-modal" (click)="goToValidate()">Validar Identidad</button>
+            </div>
+
+
+          </div>
+        </div>
+      </ng-template>
+    </ion-modal>
+
     <ion-modal trigger="menu" mode="ios" [isOpen]="isMenuModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]"
       (ionBackdropTap)="dismissMenuModal()">
       <ng-template>
@@ -18,14 +50,15 @@
           <h2 class="subtitle">Servicios de Anfitrión</h2>
           <div class="button-container">
 
-            <button *ngIf="ads_active == 0" (click)="exit()" routerLink="{{ url_new }}" class="service-button">
+            <button *ngIf="ads_active == 0" (click)="exit(1)" class="service-button">
               <div>
                 <img class="button-image" src="/assets/images/ticket-outline-selected.svg" alt="Imagen 1">
                 <span class="button-text">Crea un nuevo anuncio</span>
               </div>
               <img class="second-image" src="/assets/images/Vector-1.png" alt="">
             </button>
-            <button *ngIf="ads_active == 1" (click)="exit()" routerLink="/anuncio-caracteristicas" class="service-button">
+            <button *ngIf="ads_active == 1" (click)="exit(2)"
+              class="service-button">
               <div>
                 <img class="button-image" src="/assets/images/fi-sr-plus.svg" alt="Imagen 2">
                 <span class="button-text">Mis Anuncios</span>
@@ -58,7 +91,7 @@
               </div>
               <img class="second-image" src="/assets/images/Vector-1.png" alt="">
             </button>
-            <button (click)="exit()" routerLink="/finanzas" class="service-button">
+            <button (click)="exit(3)" class="service-button">
               <div>
                 <img class="button-image" src="assets/images/fi-sr-interrogation.svg" alt="Imagen 1">
                 <span class="button-text">Términos y Condiciones</span>
@@ -181,7 +214,7 @@
                       </div>
                       <div class="floating-text status">
                         <span>{{toCamelCase(item.rst_descri) }}
-                          <span *ngIf="item.rst_id === 1" class="dot_orange"></span> 
+                          <span *ngIf="item.rst_id === 1" class="dot_orange"></span>
                           <span *ngIf="item.rst_id === 2" class="dot"></span>
                           <span *ngIf="item.rst_id === 3" class="dot_red"></span>
                           <span *ngIf="item.rst_id === 4" class="dot_blue"></span>
@@ -246,14 +279,16 @@
                       <div class="det-asd" [ngClass]="{'det-add-bottom': item.tip_id === 2}" *ngIf="item.tip_id === 2">
                         <div class="derz">
                           <img src="/assets/images/can-card.svg" alt="">
-                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span> {{formatDateToDayMonth(item.res_fecfin) }}</h1>
+                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span>
+                            {{formatDateToDayMonth(item.res_fecfin) }}</h1>
                         </div>
                       </div>
 
                       <div class="btn" *ngIf="item.rst_id === 1">
                         <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
                         <button id="mod-cancelar-1" class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -270,7 +305,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -278,8 +313,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal1.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal1.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -288,9 +325,11 @@
                         </ion-modal>
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 2">
-                        <button [disabled]="!isReservationWithinOneHour(item)" class="bt-con" (click)="setEnCurso(item.res_id)">Iniciar</button>
-                        <button id="mod-cancelar-2"  class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <button [disabled]="!isReservationWithinOneHour(item)" class="bt-con"
+                          (click)="setEnCurso(item.res_id)">Iniciar</button>
+                        <button id="mod-cancelar-2" class="bt-con">Cancelar</button>
+                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -307,7 +346,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -315,8 +354,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal2.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal2.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -333,7 +374,7 @@
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 5">
-                        <button class="bt-con" (click)="getFinalizar(item.res_id)" >Finalizar</button>
+                        <button class="bt-con" (click)="getFinalizar(item.res_id)">Finalizar</button>
                         <button disabled class="bt-con">Cancelar</button>
                         <!-- <button disabled  (click)="getCancel(item.res_id)"   class="bt-can">Cancelar</button> -->
                       </div>
@@ -445,14 +486,16 @@
                       <div class="det-asd" [ngClass]="{'det-add-bottom': item.tip_id === 2}" *ngIf="item.tip_id === 2">
                         <div class="derz">
                           <img src="/assets/images/can-card.svg" alt="">
-                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span> {{formatDateToDayMonth(item.res_fecfin) }}</h1>
+                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span>
+                            {{formatDateToDayMonth(item.res_fecfin) }}</h1>
                         </div>
                       </div>
 
                       <div class="btn" *ngIf="item.rst_id === 1">
                         <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
                         <button id="mod-cancelar-1" class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -469,7 +512,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -477,8 +520,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal1.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal1.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -488,8 +533,9 @@
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 2">
                         <button disabled class="bt-con">Finalizar</button>
-                        <button id="mod-cancelar-2"  class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <button id="mod-cancelar-2" class="bt-con">Cancelar</button>
+                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -506,7 +552,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -514,8 +560,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal2.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal2.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -528,7 +576,7 @@
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 5">
-                        <button class="bt-con" (click)="getFinalizar(item.res_id)" >Finalizar</button>
+                        <button class="bt-con" (click)="getFinalizar(item.res_id)">Finalizar</button>
                         <button disabled class="bt-con">Cancelar</button>
                         <!-- <button disabled  (click)="getCancel(item.res_id)"   class="bt-can">Cancelar</button> -->
                       </div>
@@ -640,14 +688,16 @@
                       <div class="det-asd" [ngClass]="{'det-add-bottom': item.tip_id === 2}" *ngIf="item.tip_id === 2">
                         <div class="derz">
                           <img src="/assets/images/can-card.svg" alt="">
-                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span> {{formatDateToDayMonth(item.res_fecfin) }}</h1>
+                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span>
+                            {{formatDateToDayMonth(item.res_fecfin) }}</h1>
                         </div>
                       </div>
 
                       <div class="btn" *ngIf="item.rst_id === 1">
                         <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
                         <button id="mod-cancelar-1" class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -664,7 +714,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -672,8 +722,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal1.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal1.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -683,8 +735,9 @@
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 2">
                         <button disabled class="bt-con">Finalizar</button>
-                        <button id="mod-cancelar-2"  class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <button id="mod-cancelar-2" class="bt-con">Cancelar</button>
+                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -701,7 +754,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -709,8 +762,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal2.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal2.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -723,7 +778,7 @@
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 5">
-                        <button class="bt-con" (click)="getFinalizar(item.res_id)" >Finalizar</button>
+                        <button class="bt-con" (click)="getFinalizar(item.res_id)">Finalizar</button>
                         <button disabled class="bt-con">Cancelar</button>
                         <!-- <button disabled  (click)="getCancel(item.res_id)"   class="bt-can">Cancelar</button> -->
                       </div>
@@ -836,14 +891,16 @@
                       <div class="det-asd" [ngClass]="{'det-add-bottom': item.tip_id === 2}" *ngIf="item.tip_id === 2">
                         <div class="derz">
                           <img src="/assets/images/can-card.svg" alt="">
-                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span> {{formatDateToDayMonth(item.res_fecfin) }}</h1>
+                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span>
+                            {{formatDateToDayMonth(item.res_fecfin) }}</h1>
                         </div>
                       </div>
 
                       <div class="btn" *ngIf="item.rst_id === 1">
                         <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
                         <button id="mod-cancelar-1" class="bt-can">Cancelar</button>
-                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -860,7 +917,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -868,8 +925,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal1.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal1.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -879,8 +938,9 @@
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 2">
                         <button disabled class="bt-con">Finalizar</button>
-                        <button id="mod-cancelar-2"  class="bt-can">Cancelar</button>
-                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <button id="mod-cancelar-2" class="bt-can">Cancelar</button>
+                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -897,7 +957,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -905,8 +965,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal2.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal2.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -919,7 +981,7 @@
                         <button disabled class="bt-can">Cancelar</button>
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 5">
-                        <button class="bt-con" (click)="getFinalizar(item.res_id)" >Finalizar</button>
+                        <button class="bt-con" (click)="getFinalizar(item.res_id)">Finalizar</button>
                         <button disabled class="bt-can">Cancelar</button>
                         <!-- <button disabled  (click)="getCancel(item.res_id)"   class="bt-can">Cancelar</button> -->
                       </div>
@@ -1031,14 +1093,16 @@
                       <div class="det-asd" [ngClass]="{'det-add-bottom': item.tip_id === 2}" *ngIf="item.tip_id === 2">
                         <div class="derz">
                           <img src="/assets/images/can-card.svg" alt="">
-                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span> {{formatDateToDayMonth(item.res_fecfin) }}</h1>
+                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span>
+                            {{formatDateToDayMonth(item.res_fecfin) }}</h1>
                         </div>
                       </div>
 
                       <div class="btn" *ngIf="item.rst_id === 1">
                         <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
                         <button id="mod-cancelar-1" class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -1055,7 +1119,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -1063,8 +1127,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal1.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal1.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -1074,8 +1140,9 @@
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 2">
                         <button disabled class="bt-con">Finalizar</button>
-                        <button id="mod-cancelar-2"  class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <button id="mod-cancelar-2" class="bt-con">Cancelar</button>
+                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -1092,7 +1159,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -1100,8 +1167,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal2.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal2.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -1114,7 +1183,7 @@
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 5">
-                        <button class="bt-con" (click)="getFinalizar(item.res_id)" >Finalizar</button>
+                        <button class="bt-con" (click)="getFinalizar(item.res_id)">Finalizar</button>
                         <button disabled class="bt-con">Cancelar</button>
                         <!-- <button disabled  (click)="getCancel(item.res_id)"   class="bt-can">Cancelar</button> -->
                       </div>
@@ -1226,14 +1295,16 @@
                       <div class="det-asd" [ngClass]="{'det-add-bottom': item.tip_id === 2}" *ngIf="item.tip_id === 2">
                         <div class="derz">
                           <img src="/assets/images/can-card.svg" alt="">
-                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span> {{formatDateToDayMonth(item.res_fecfin) }}</h1>
+                          <h1>{{ formatDateToDayMonth(item.res_fecini)}} <span class="separator_a">a</span>
+                            {{formatDateToDayMonth(item.res_fecfin) }}</h1>
                         </div>
                       </div>
 
                       <div class="btn" *ngIf="item.rst_id === 1">
                         <button (click)="getConfirm(item.res_id)" class="bt-con">Confirmar</button>
                         <button id="mod-cancelar-1" class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <ion-modal #cancelModal1 mode="md" trigger="mod-cancelar-1" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -1250,7 +1321,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -1258,8 +1329,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal1.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal1.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -1269,8 +1342,9 @@
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 2">
                         <button disabled class="bt-con">Finalizar</button>
-                        <button id="mod-cancelar-2"  class="bt-con">Cancelar</button>
-                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+                        <button id="mod-cancelar-2" class="bt-con">Cancelar</button>
+                        <ion-modal #cancelModal2 mode="md" trigger="mod-cancelar-2" [initialBreakpoint]="1"
+                          [breakpoints]="[0, 1]">
                           <ng-template>
                             <div class="block">
                               <div class="cont-header">
@@ -1287,7 +1361,7 @@
                                   <p>Cancelar en este estado nuevamente incurrirá en una
                                     <span>penalización del 10% en base al valor de esta reserva reflejada en tus
                                       ingresos para las próximas dos reservas. </span>
-                                    </p>
+                                  </p>
                                   <p>Lee más sobre nuestras políticas
                                     de cancelación.</p>
                                   <p>
@@ -1295,8 +1369,10 @@
                                   </p>
                                 </div>
                                 <div class="button-container-modal">
-                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar Reserva</button>
-                                  <button class="button-cancelar-modal" (click)="cancelModal2.dismiss()">Continuar</button>
+                                  <button class="button-continuar-modal" (click)="getCancel(item.res_id)">Cancelar
+                                    Reserva</button>
+                                  <button class="button-cancelar-modal"
+                                    (click)="cancelModal2.dismiss()">Continuar</button>
                                 </div>
 
                               </div>
@@ -1313,7 +1389,7 @@
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
                       <div class="btn" *ngIf="item.rst_id === 5">
-                        <button class="bt-con" (click)="getFinalizar(item.res_id)" >Finalizar</button>
+                        <button class="bt-con" (click)="getFinalizar(item.res_id)">Finalizar</button>
                         <button disabled class="bt-con">Cancelar</button>
                         <!-- <button disabled  (click)="getCancel(item.res_id)"   class="bt-can">Cancelar</button> -->
                       </div>

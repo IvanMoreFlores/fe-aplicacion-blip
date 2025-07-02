@@ -16,6 +16,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 export class HomePage implements OnInit, OnDestroy {
   switchValue: boolean = false; // Valor inicial del toggle
   isMenuModalOpen: boolean = false; // Control de apertura del modal del menú
+  isValidModalOpen: boolean = false; // Modal de validacion DNI
   isToggleModalOpen: boolean = false; // Control de apertura del modal del toggle
   initialSwitchValue: boolean = false; // Guardar el estado inicial del toggle
   hasCardContent: boolean = false; // Cambia esto dependiendo si hay contenido o no
@@ -36,8 +37,6 @@ export class HomePage implements OnInit, OnDestroy {
   data_apagon: any;
   apagon_val: boolean = false;
   saludo: string = '';
-  // url_new: string = '/nuevo-anu-pone-alq';
-  url_new: string = '/descripcion-del-estacionamiento';
   userData: any;
   slideOpts = {
     initialSlide: 0,
@@ -59,7 +58,7 @@ export class HomePage implements OnInit, OnDestroy {
     private readonly storage: StorageService,
     private readonly api: ApiService,
     private readonly cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnDestroy() {
     // Limpiar la suscripción al destruir el componente
@@ -172,17 +171,8 @@ export class HomePage implements OnInit, OnDestroy {
 
   async getDni() {
     const userDni = await this.storage.getItem('userDni');
-    console.log('user DNI',userDni);
-    if (userDni) {
-      this.url_new = '/descripcion-del-espacio';
-      //this.url_new = '/nuevo-anu-pone-alq';
-    } else {
-      this.getUserData();
-      if (this.userData.esu_id.esu_descri !== 'REGISTRADO') {
-        this.url_new = '/descripcion-del-espacio';
-        //this.url_new = '/nuevo-anu-pone-alq';
-      }
-    }
+    console.log('user DNI', userDni);
+    this.getUserData();
   }
 
   // Abre el modal del menú
@@ -193,6 +183,11 @@ export class HomePage implements OnInit, OnDestroy {
   // Cierra el modal del menú
   dismissMenuModal() {
     this.isMenuModalOpen = false;
+  }
+
+  // Cierra el modal de validacion
+  dismissValidModal() {
+    this.isValidModalOpen = false;
   }
 
   // Abre el modal del toggle después de cerrar el modal del menú
@@ -274,8 +269,33 @@ export class HomePage implements OnInit, OnDestroy {
     this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
   }
   // Salir de cualquier página/modal
-  exit() {
-    this.modalController.dismiss(null, 'isMenuModalOpen');
+  exit(page: number) {
+
+    let urlNav = '';
+
+    switch (page) {
+      case 1:
+        urlNav = '/descripcion-del-espacio';
+        break;
+      case 2:
+        urlNav = '/anuncio-caracteristicas';
+        break;
+      case 3:
+        urlNav = '/terminos-y-condiciones';
+        break;
+    }
+
+    console.log(this.userData);
+
+    const validate_arr = this.userData.esu_id;
+
+    if (validate_arr.esu_id === 1 && page === 1) {
+      this.modalController.dismiss(null, 'isMenuModalOpen');
+      this.isValidModalOpen = true;
+    } else {
+      this.modalController.dismiss(null, 'isMenuModalOpen');
+      this.router.navigate([urlNav]);
+    }
   }
 
   getHoraFormat(hora: string) {
@@ -371,7 +391,6 @@ export class HomePage implements OnInit, OnDestroy {
         this.data_canceladas.push(reserva);
       }
     });
-    console.log(this.data_canceladas);
     this.n_data_canceladas = Object.keys(this.data_canceladas).length;
   }
 
@@ -686,21 +705,17 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
-  async getAds(){
+  async getAds() {
     const token = await this.storage.getItem('token');
     this.api.getAds(token).subscribe(
       (response: any) => {
         this.data_ads = response.data;
 
         if (this.data_ads.length <= 0) {
-          console.log('Debes crear un Anuncio antes!');
           this.ads_active = 0;
-        }else{
+        } else {
           this.ads_active = 1;
         }
-
-        console.log('ads_active',this.ads_active);
-
       },
       (error: any) => {
         console.error('Error al cargar los anuncios:', error);
@@ -733,6 +748,12 @@ export class HomePage implements OnInit, OnDestroy {
     this.getDni();
     this.getBlackout();
     this.getAds();
+
+    const validate_arr = this.userData.esu_id;
+
+    if (validate_arr.esu_id === 1) {
+      this.isValidModalOpen = true;
+    }
 
     // Initialize UI components
     setTimeout(() => {
@@ -783,4 +804,11 @@ export class HomePage implements OnInit, OnDestroy {
     // En cualquier otro caso (ya pasó la hora de finalización), no habilitar
     return false;
   }
+
+  async goToValidate() {
+    this.isValidModalOpen = false;
+    this.dismissAnyModal();
+    await this.router.navigate(['/adj-dt-dni']);
+  }
+
 }
