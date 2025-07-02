@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -16,11 +15,13 @@ export class AdjDtDniPage implements OnInit {
   dniBack: string = '';
   files: File[] = [];
   files2: File[] = []; // Para el segundo dropzone
+  userData: any;
+  data: any;
 
   constructor(
-    private api: ApiService,
-    private storage: StorageService,
-    private router: Router,
+    private readonly api: ApiService,
+    private readonly storage: StorageService,
+    private readonly router: Router,
   ) { }
 
   ngOnInit() { }
@@ -105,9 +106,9 @@ export class AdjDtDniPage implements OnInit {
       this.api.sendDniFiles(token, this.files[0], this.files2[0]).subscribe(
         async (response) => {
           console.log('Imágenes enviadas exitosamente', response);
+          await this.updateData();
           // Manejar la respuesta del servidor aquí
-          this.storage.setItem('userDni', 'registrado');
-          this.router.navigate(['/descripcion-del-estacionamiento']);
+          this.router.navigate(['/tab-home/home']);
         },
         (error) => {
           console.error('Error al enviar las imágenes', error);
@@ -117,6 +118,17 @@ export class AdjDtDniPage implements OnInit {
     } else {
       console.error('No se han capturado las imágenes necesarias.');
     }
+  }
+
+    async updateData() {
+    const token = await this.storage.getItem('token');
+    this.api.getInformation(token).subscribe(
+      (response: any) => {
+        this.data = response.data;
+        this.storage.removeItem('user');
+        this.storage.setItem('user', this.data);
+      }
+    )
   }
 
 }
