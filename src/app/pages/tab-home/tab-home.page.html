@@ -7,7 +7,12 @@
       <img *ngIf="selectedTab === 'home'" src="/assets/images/home39-selected.svg" alt="">
     </ion-tab-button>
 
-    <ion-tab-button tab="loader-comp" [ngClass]="{'selected': selectedTab == 'loader-comp'}">
+    <ion-tab-button tab="finanzas" [ngClass]="{'selected': selectedTab == 'finanzas'}">
+      <img *ngIf="selectedTab !== 'finanzas'" src="/assets/images/finanzas-tab.svg" alt="">
+      <img *ngIf="selectedTab === 'finanzas'" src="/assets/images/tab-selefinanza.svg" alt="">
+    </ion-tab-button>
+
+   <!--<ion-tab-button tab="loader-comp" [ngClass]="{'selected': selectedTab == 'loader-comp'}">
       <img *ngIf="selectedTab !== 'loader-comp'" src="/assets/images/ticket-outline.svg" alt="">
       <img *ngIf="selectedTab === 'loader-comp'" src="/assets/images/ticket-outline-selected.svg" alt="">
     </ion-tab-button>
@@ -15,7 +20,7 @@
     <ion-tab-button tab="calendario-semanal" [ngClass]="{'selected': selectedTab == 'calendario-semanal'}">
       <img *ngIf="selectedTab !== 'calendario-semanal'" src="/assets/images/search-outline.svg" alt="">
       <img *ngIf="selectedTab === 'calendario-semanal'" src="/assets/images/search-outline-selected.svg" alt="">
-    </ion-tab-button>
+    </ion-tab-button>-->
 
     <ion-tab-button tab="inf-perso" [ngClass]="{'selected': selectedTab == 'inf-perso'}">
       <img *ngIf="selectedTab !== 'inf-perso'" src="/assets/images/person-outline.svg" alt="">
