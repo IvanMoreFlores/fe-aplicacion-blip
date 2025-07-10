@@ -26,8 +26,10 @@ const routes: Routes = [
         path: 'inf-perso',
         loadChildren: () => import('../inf-perso/inf-perso.module').then(m => m.InfPersoPageModule)
       },
-
-
+      {
+        path: 'finanzas',
+        loadChildren: () => import('../finanzas/finanzas.module').then(m => m.FinanzasPageModule)
+      },
       {
         path: '',
         redirectTo: '/tab-home/home',
