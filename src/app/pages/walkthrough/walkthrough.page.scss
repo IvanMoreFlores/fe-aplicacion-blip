@@ -3,10 +3,45 @@
 @import "swiper/css";
 @import "swiper/css/pagination";
 
-.wrapper{
-    height: 100%;
+.wrapper {
+  height: 100%;
+  background-color: #ffffff;
+  .animation {
+    position: relative;
+    height: 50%;
+    background-repeat: repeat-x;
+    animation: scroll 4s linear infinite;
+
+    img {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      margin: 0 auto;
+       background-color: #EDFFF4;
+    }
+    .overlay-x {
+      position: absolute;
+      top: 20%;
+      right: 0%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Asegura que esté por encima de la imagen */
+      .close-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        position: relative;
+      }
+    }
+  }
+
+  .card-container {
     background-color: #ffffff;
-<<<<<<< HEAD
     color: #79ffaf;
     height: 50%;
     padding-inline: 10%;
@@ -45,194 +80,105 @@
           li {
             display: inline-block;
             margin-right: 10px;
-=======
-    .animation{
-        position: relative;
-        height: 50%;
-        background: url('/assets/images/orig_landscape_blue.png');
-        background-repeat: repeat-x;
-        animation: scroll 4s linear infinite;
-
-        img{
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            margin: 0 auto;
-            width: 40%;
-        }
-        .overlay-x {
-            position: absolute;
-            top: 20%;
-            right: 0%;
-            transform: translate(-50%, -50%);
-            z-index: 1; /* Asegura que esté por encima de la imagen */
-            .close-button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 40px;
-                height: 40px;
-                background-color: white;
-                border-radius: 50%;
-                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-                cursor: pointer;
-                position: relative;
-              }
-              
-              .close-button span {
-                font-size: 20px;
-                color: #212121;
-                line-height: 0;
-                font-family: 'Poppins';
-              }
->>>>>>> parent of d99da2c (FX-13: style walkthrough)
           }
-    }
-
-    .card-container{
-        background-color: #ffffff;
-        color: #79FFAF;
-        height: 50%;
-        padding-inline: 10%;
-        padding-block: 5%;
-        .card{
-            border: 0px;
-            margin-bottom: 10%;
-            .card-content{
-                h3{
-                    font-size: 40px;
-                    font-family: 'Poppins SemiBold';
-                    margin: 0px;
-                }
-
-                p{
-                    padding-top: 3%;
-                    font-size: 14px;
-                    font-family: 'Poppins Medium';
-                }
-            }
-
-            .stepper-dots{
-                ul{
-                    margin: 0px;
-                    padding: 0px;
-                    list-style-type: none;
-
-                    li{
-                        display: inline-block;
-                        margin-right: 10px;
-
-                        span{
-                            display: block;
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 50%;
-                            border: 1px solid #79FFAF;
-                        }
-
-                        span.active{
-                            background-color: #79FFAF;
-                        }
-                    }
-                }
-            }
-
-            .card-buttons{
-                padding-block: 5%;
-                position: fixed; /* Fija la posición */
-                bottom: 0; /* Posiciónalo en la parte inferior */
-                left: 0;
-                width: 100%;
-                padding-inline:10%;
-                .card-button{
-                    width: 50%;
-
-                    button{
-                        display: block;
-                        text-align: center;
-                        font-family: 'Poppins SemiBold';
-                        font-size: 14px;
-                        padding: 15px 40px;
-                        border-radius: 25px;
-                        border: 1px solid #79FFAF;
-                    }
-
-                    #startButton{
-                        display: none;
-                    }
-                }
-
-                .card-button.card-button-left{
-                    button{
-                        margin-right: auto;
-                        background-color: #212121;
-                        color: #79FFAF;
-                    }
-                }
-
-                .card-button.card-button-right{
-                    button{
-                        margin-left: auto;
-                        color: #212121;
-                        background-color: #79FFAF;
-                    }
-                }
-            }
         }
+      }
+
+      .card-buttons {
+        padding-block: 5%;
+        position: fixed; /* Fija la posición */
+        bottom: 0; /* Posiciónalo en la parte inferior */
+        left: 0;
+        width: 100%;
+        padding-inline: 10%;
+        .card-button {
+          width: 50%;
+
+          button {
+            display: block;
+            text-align: center;
+            font-family: "Poppins SemiBold";
+            font-size: 14px;
+            padding: 15px 40px;
+            border-radius: 25px;
+            border: 1px solid #79ffaf;
+          }
+
+          #startButton {
+            display: none;
+          }
+        }
+
+        .card-button.card-button-left {
+          button {
+            margin-right: auto;
+            background-color: #212121;
+            color: #79ffaf;
+          }
+        }
+
+        .card-button.card-button-right {
+          button {
+            margin-left: auto;
+            color: #212121;
+            background-color: #79ffaf;
+          }
+        }
+      }
     }
+  }
 }
 
 @keyframes scroll {
-    to {
-      background-position: -649px 0;
-    }
+  to {
+    background-position: -649px 0;
+  }
 }
 .swiper-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Evita que se vean partes fuera del contenedor */
-  }
-  
-  .swiper-slide {
-    width: 100%;
-    height: auto;
-
-    justify-content: center;
-    align-items: center;
-  }
-  
-.swiper-pagination-bullet-active{
-    
-    background:black;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Evita que se vean partes fuera del contenedor */
 }
-.swiper-pagination{
-    position: inherit;
+
+.swiper-slide {
+  width: 100%;
+  height: auto;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet-active {
+  background: black;
+}
+.swiper-pagination {
+  position: inherit;
 }
 .next-btn {
-    width: 100%;
-    padding: 20px;
-    font-size: 16px;
-    border: 1px solid #C8C5CA;
-    font-family: 'Poppins SemiBold';
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .disabled-btn {
-    background-color: #ffffff;
-    color: #C8C5CA;
-    cursor: not-allowed;
-  }
-  
-  .enabled-btn {
-    background-color: #212121;
-    color: #ffffff;
-    cursor: pointer;
-  }
-  
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #c8c5ca;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.disabled-btn {
+  background-color: #ffffff;
+  color: #c8c5ca;
+  cursor: not-allowed;
+}
+
+.enabled-btn {
+  background-color: #212121;
+  color: #ffffff;
+  cursor: pointer;
+}
+
 //   .enabled-btn:hover {
 //     background-color: #0056b3;
 //   }
-  
