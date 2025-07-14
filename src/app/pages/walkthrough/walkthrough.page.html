@@ -1,22 +1,11 @@
 <ion-content [fullscreen]="true">
   <div class="wrapper">
     <div class="animation">
-      <img src="/assets/images/city-img-vector1.png" alt="" />
+      <img src="/assets/images/auto-animation 200x66.png" alt="">
       <div class="overlay-x">
         <div class="close-button" routerLink="/login">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.9716 1.02772C12.7849 0.841142 12.5318 0.736328 12.2679 0.736328C12.004 0.736328 11.7509 0.841142 11.5643 1.02772L7.00013 5.59188L2.43596 1.02772C2.24933 0.841142 1.99623 0.736328 1.73233 0.736328C1.46843 0.736328 1.21533 0.841142 1.0287 1.02772C0.842119 1.21436 0.737305 1.46745 0.737305 1.73135C0.737305 1.99526 0.842119 2.24835 1.0287 2.43499L5.59286 6.99915L1.0287 11.5633C0.842119 11.7499 0.737305 12.003 0.737305 12.2669C0.737305 12.5308 0.842119 12.7839 1.0287 12.9706C1.21533 13.1572 1.46843 13.262 1.73233 13.262C1.99623 13.262 2.24933 13.1572 2.43596 12.9706L7.00013 8.40641L11.5643 12.9706C11.7509 13.1572 12.004 13.262 12.2679 13.262C12.5318 13.262 12.7849 13.1572 12.9716 12.9706C13.1581 12.7839 13.2629 12.5308 13.2629 12.2669C13.2629 12.003 13.1581 11.7499 12.9716 11.5633L8.40739 6.99915L12.9716 2.43499C13.1581 2.24835 13.2629 1.99526 13.2629 1.73135C13.2629 1.46745 13.1581 1.21436 12.9716 1.02772Z"
-              fill="#212121"
-            />
-          </svg>
-        </div>
+          <span>x</span>
+        </div>        
       </div>
     </div>
     <div class="card-container">
@@ -26,39 +15,28 @@
           <div class="swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <h3>Publica tu <br />cochera en minutos.</h3>
-                <p>
-                  Crea un anuncio de tu espacio de estacionamiento en pocos
-                  pasos y comienza a recibir reservas.
-                </p>
+                <h3>Publica tu cochera en minutos.</h3>
+                <p>Crea un anuncio de tu espacio de estacionamiento en pocos pasos y comienza a recibir reservas.</p>
               </div>
               <div class="swiper-slide">
                 <h3>Conecta y aumenta tus ingresos.</h3>
-                <p>
-                  Conecta con conductores que buscan estacionamiento y recibe
-                  notificaciones cuando alguien reserva tu cochera.
-                </p>
+                <p>Conecta con conductores que buscan estacionamiento y recibe notificaciones cuando alguien reserva tu cochera.</p>
               </div>
               <div class="swiper-slide">
                 <h3>Administra tus reservas con facilidad.</h3>
-                <p>
-                  Controla la disponibilidad, resuelve consultas y asegura una
-                  experiencia positiva desde una sola plataforma.
-                </p>
+                <p>Controla la disponibilidad, resuelve consultas y asegura una experiencia positiva desde una sola plataforma.</p>  
               </div>
             </div>
           </div>
         </div>
 
         <div class="card-buttons">
-          <button
+          <button 
             [disabled]="!isButtonEnabled"
-            [ngClass]="{ 'disabled-btn': !isButtonEnabled, 'enabled-btn': isButtonEnabled }"
+            [ngClass]="{ 'disabled-btn': !isButtonEnabled, 'enabled-btn': isButtonEnabled }" 
             class="next-btn"
             (click)="confirmWelcome()"
-          >
-            Comenzar
-          </button>
+          >Comenzar</button>
         </div>
       </div>
     </div>
