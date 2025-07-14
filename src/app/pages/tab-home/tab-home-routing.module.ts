@@ -35,7 +35,6 @@ const routes: Routes = [
             (m) => m.InfPersoPageModule
           ),
       },
-
       {
         path: '',
         redirectTo: '/tab-home/home',
