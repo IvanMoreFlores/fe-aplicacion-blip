@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiLoginService {
-  private apiUrl = 'https://login.blip-backend.com';
-  //private apiUrl = 'https://login-demo.blip-backend.com';
+  // private apiUrl = 'https://login.blip-backend.com';
+  private apiUrl = 'https://login-demo.blip-backend.com';
   //private apiUrl = 'http://localhost:3001';
   constructor(private http: HttpClient) { }
 

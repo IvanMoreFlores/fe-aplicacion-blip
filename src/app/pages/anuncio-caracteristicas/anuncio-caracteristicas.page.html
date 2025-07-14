@@ -1,5 +1,5 @@
 <header-component [withArrowLeft]="true" [route]="'/tab-home'" (navigateTo)="handleNavigateTo($event)"
-  [withTrash]="true" [withArrowDown]="true" [modalId]="'open-modal2'" [trashModalId]="'open-modal-tash'"
+  [withTrash]="true" [withArrowDown]="false" [modalId]="'open-modal2'" [trashModalId]="'open-modal-tash'"
   (openModal)="handleOpenModal($event)" (openTrashModal)="handleOpenTrashModal($event)" [withTitleLeft]="true"
   [titleLeft]="gar_nombre">
 </header-component>
@@ -19,9 +19,9 @@
     </div>
   </ng-template>
 </ion-modal>
-<ion-modal #selectModal [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-  <ng-template>
-    <div class="block2">
+<!-- <ion-modal #selectModal [initialBreakpoint]="1" [breakpoints]="[0, 1]"> -->
+  <!-- <ng-template> -->
+    <!-- <div class="block2">
       <h1>Selecciona tu anuncio</h1>
 
       <hr />
@@ -46,17 +46,17 @@
             </label>
           </div>
 
-        </div>
+        </div> -->
         <!-- <div class="button-agregar-anuncio-container">
           <button class="button-agregar-anuncio">
             <span class="false-button-agregar-anuncio"><img src="/assets/images/icon-plus2.svg" alt="" /></span>
             <span>Agregar nuevo anuncio</span>
           </button>
         </div> -->
-      </div>
+      <!-- </div>
     </div>
   </ng-template>
-</ion-modal>
+</ion-modal> -->
 
 <ion-content>
   <div class="container">
