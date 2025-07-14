@@ -91,6 +91,7 @@
           <h2 class="subtitle">Servicios de Anfitrión</h2>
           <div class="button-container">
             <button
+              *ngIf="ads_active == 0"
               (click)="exit(1)"
               class="service-button"
             >
