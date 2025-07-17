@@ -231,60 +231,231 @@
 
           <div class="descripcion">
             <!-- ----------------------------------OPEN MODAL 1---------------------------------- -->
+
             <h3>Ubicación</h3>
             <p>
               <img
                 class="img-descripcion"
                 src="/assets/images/fi-sr-home.svg"
                 alt=""
-                *ngIf="mainAd?.tga_id===1"
+                *ngIf="mainAd?.tga_id === 1"
               />
               <img
                 class="img-descripcion"
                 src="/assets/images/fi-sr-building.svg"
                 alt=""
-                *ngIf="mainAd?.tga_id===2"
+                *ngIf="mainAd?.tga_id === 2"
               />
               <img
                 class="img-descripcion"
                 src="/assets/images/fi-sr-tree.svg"
                 alt=""
-                *ngIf="mainAd?.tga_id===3"
+                *ngIf="mainAd?.tga_id === 3"
               />
               <img
                 class="img-descripcion"
                 src="/assets/images/fi-sr-marker.svg"
                 alt=""
-                *ngIf="mainAd?.tga_id===4"
+                *ngIf="mainAd?.tga_id === 4"
               />
               <img
                 class="img-descripcion"
                 src="/assets/images/fi-sr-briefcase.svg"
                 alt=""
-                *ngIf="mainAd?.tga_id===5"
+                *ngIf="mainAd?.tga_id === 5"
               />
               <img
                 class="img-descripcion"
                 src="/assets/images/fi-sr-room-service.svg"
                 alt=""
-                *ngIf="mainAd?.tga_id===6"
+                *ngIf="mainAd?.tga_id === 6"
               />
               {{ toCamelCase(mainAd?.tga_descri) }}
             </p>
-            <a class="servicios" id="">
+
+            <a class="servicios" id="open-modal-ubicación">
               Editar ubicación
               <img src="/assets/images/arrow-right.png" alt="" />
             </a>
 
+            <ion-modal
+              trigger="open-modal-ubicación"
+              [initialBreakpoint]="1"
+              [breakpoints]="[0, 1]"
+              (ionModalWillPresent)="onModalWillPresent()"
+            >
+              <ng-template>
+                <div class="modal-dimensiones">
+                  <h1>Edita la ubicación de tu cochera</h1>
+                  <hr />
+                  <div class="button-container-modal">
+                    <div
+                      class="form-regla-dimension"
+                      [ngClass]="{ 'custom-btn-selected': selectedIndex === 0 }"
+                    >
+                      <div class="dimension-title">
+                        <img src="/assets/images/fi-sr-home.svg" alt="" />
+                        <div><span class="btn-text">Casa</span></div>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault1"
+                          [checked]="mainAd?.tga_id === 1"
+                          (change)="onRadioChange(0)"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="flexRadioDefault1"
+                        ></label>
+                      </div>
+                    </div>
+                    <div
+                      class="form-regla-dimension"
+                      [ngClass]="{ 'custom-btn-selected': selectedIndex === 1 }"
+                    >
+                      <div class="dimension-title">
+                        <img src="/assets/images/fi-sr-building.svg" alt="" />
+                        <div>
+                          <span class="btn-text"
+                            >Edificio de Departamentos</span
+                          >
+                        </div>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault2"
+                          [checked]="mainAd?.tga_id === 2"
+                          (change)="onRadioChange(1)"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="flexRadioDefault2"
+                        ></label>
+                      </div>
+                    </div>
+                    <div
+                      class="form-regla-dimension"
+                      [ngClass]="{ 'custom-btn-selected': selectedIndex === 2 }"
+                    >
+                      <div class="dimension-title">
+                        <img src="/assets/images/fi-sr-tree.svg" alt="" />
+                        <div>
+                          <span class="btn-text">Urbanización Cerrada</span>
+                        </div>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault3"
+                          [checked]="mainAd?.tga_id === 3"
+                          (change)="onRadioChange(2)"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="flexRadioDefault3"
+                        ></label>
+                      </div>
+                    </div>
+                    <div
+                      class="form-regla-dimension"
+                      [ngClass]="{ 'custom-btn-selected': selectedIndex === 3 }"
+                    >
+                      <div class="dimension-title">
+                        <img src="/assets/images/fi-sr-marker.svg" alt="" />
+                        <div>
+                          <span class="btn-text">Condominio Privado</span>
+                        </div>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault4"
+                          [checked]="mainAd?.tga_id === 4"
+                          (change)="onRadioChange(3)"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="flexRadioDefault4"
+                        ></label>
+                      </div>
+                    </div>
+                    <div
+                      class="form-regla-dimension"
+                      [ngClass]="{ 'custom-btn-selected': selectedIndex === 4 }"
+                    >
+                      <div class="dimension-title">
+                        <img src="/assets/images/fi-sr-briefcase.svg" alt="" />
+                        <div>
+                          <span class="btn-text">Edificio de Oficinas</span>
+                        </div>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault5"
+                          [checked]="mainAd?.tga_id === 5"
+                          (change)="onRadioChange(4)"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="flexRadioDefault5"
+                        ></label>
+                      </div>
+                    </div>
+                    <div
+                      class="form-regla-dimension"
+                      [ngClass]="{ 'custom-btn-selected': selectedIndex === 5 }"
+                    >
+                      <div class="dimension-title">
+                        <img
+                          src="/assets/images/fi-sr-room-service.svg"
+                          alt=""
+                        />
+                        <div><span class="btn-text">Hotel / Hostal</span></div>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault6"
+                          [checked]="mainAd?.tga_id === 6"
+                          (change)="onRadioChange(5)"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="flexRadioDefault6"
+                        ></label>
+                      </div>
+                    </div>
+                    <button (click)="sendUpdateLocation()">Guardar Cambios</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ion-modal>
+
             <hr />
+
             <!-- ----------------------------------OPEN MODAL 5---------------------------------- -->
+
             <h3>Dirección Exacta</h3>
             <p>{{ mainAd?.uga_direcc }}</p>
             <a class="servicios" id="open-modal-dirección">
               Editar dirección
               <img src="/assets/images/arrow-right.png" alt="" />
             </a>
-
             <ion-modal
               trigger="open-modal-dirección"
               [initialBreakpoint]="1"
@@ -340,9 +511,10 @@
               </ng-template>
             </ion-modal>
             <hr />
-            <!-- ----------------------------------OPEN MODAL 4---------------------------------- -->
-            <h3>Servicios</h3>
 
+            <!-- ----------------------------------OPEN MODAL 4---------------------------------- -->
+
+            <h3>Servicios</h3>
             <ul class="lista-servicios">
               <li *ngFor="let servicios of mainAd?.tipos_servicios">
                 <img
@@ -373,12 +545,10 @@
                 <span>{{ servicios?.sga_descri }}</span>
               </li>
             </ul>
-
             <a class="servicios" id="open-modal-servicios">
               Editar servicios
               <img src="/assets/images/arrow-right.png" alt="" />
             </a>
-
             <ion-modal
               trigger="open-modal-servicios"
               [initialBreakpoint]="1"
@@ -508,6 +678,7 @@
               </ng-template>
             </ion-modal>
             <hr />
+
             <!-- ----------------------------------OPEN MODAL 3---------------------------------- -->
 
             <h3>Tamaño y Dimensiones</h3>
@@ -646,8 +817,8 @@
             <hr />
 
             <!-- ----------------------------------OPEN MODAL 2---------------------------------- -->
-            <h3>Preferencias de Alquiler</h3>
 
+            <h3>Preferencias de Alquiler</h3>
             <ul class="lista-servicios">
               <li *ngFor="let vehiculos of mainAd?.tipos_garages">
                 <img
@@ -668,12 +839,10 @@
                 <span>{{ vehiculos?.tve_descri }}</span>
               </li>
             </ul>
-
             <a class="servicios" id="open-modal-prefer">
               Editar preferencia
               <img src="/assets/images/arrow-right.png" alt="" />
             </a>
-
             <ion-modal
               trigger="open-modal-prefer"
               [initialBreakpoint]="1"
@@ -770,6 +939,7 @@
       </div>
 
       <!--                 -----REGLAS-----              -->
+
       <div *ngIf="selectedContent === 'Reglas'">
         <div>
           <h1 class="secondary-title">
@@ -810,6 +980,7 @@
       </div>
 
       <!--                 -----PRECIO-----              -->
+
       <div *ngIf="selectedContent === 'Precio'">
         <div class="informacion">
           <h1 class="secondary-title">Precio base</h1>
@@ -909,6 +1080,7 @@
       </div>
 
       <!--                 -----DISPONIBILIDAD-----              -->
+
       <div *ngIf="selectedContent === 'Disponibilidad'">
         <div class="informacion">
           <h1 class="secondary-title">Días restringidos</h1>
@@ -1235,6 +1407,7 @@
       </div>
 
       <!--                 -----ABONADOS-----              -->
+
       <div *ngIf="selectedContent === 'Abonados'">
         <div class="abonados-container">
           <ion-item lines="none">

@@ -151,14 +151,15 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       }
     );
   }
-
   async updateContent() {
     this.isLoading = true;
     const token = await this.storage.getItem('token');
     const id_select = this.mainAd.gar_id;
+
     this.api.getAds(token).subscribe(
       (response: any) => {
         this.advertisements = response.data;
+
         for (let i = 0; i < this.advertisements.length; i++) {
           if (this.advertisements[i].gar_id === id_select) {
             this.mainAd = this.advertisements[i];
@@ -174,10 +175,16 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
             this.checkServPref();
           }
         }
+
         this.isLoading = false;
+
+        // 👇 Forzar actualización visual
+        this.cdr.detectChanges();
       },
       (error: any) => {
         console.error(error);
+        this.isLoading = false;
+        this.cdr.detectChanges();
       }
     );
   }
@@ -744,5 +751,30 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
       .join('');
+  }
+  onModalWillPresent() {
+    this.selectedIndex = (this.mainAd?.tga_id ?? 1) - 1;
+  }
+
+  async sendUpdateLocation() {
+    if (this.selectedIndex === undefined || this.selectedIndex === null) {
+      this.selectedIndex = (this.mainAd?.tga_id ?? 1) - 1;
+    }
+    const token = await this.storage.getItem('token');
+    const formData = new FormData();
+    const newTgaId = (this.selectedIndex ?? 0) + 1;
+    formData.append('tga_id', newTgaId.toString());
+    formData.append('gar_id', this.mainAd.gar_id);
+    this.api.updateAd(token, formData).subscribe(
+      (response: any) => {
+        console.log('Ubicación actualizada en backend:', response);
+        this.updateContent();
+        this.modalController.dismiss();
+      },
+      (error: any) => {
+        console.error('Error al actualizar ubicación:', error);
+        alert('Hubo un error al actualizar la ubicación.');
+      }
+    );
   }
 }
