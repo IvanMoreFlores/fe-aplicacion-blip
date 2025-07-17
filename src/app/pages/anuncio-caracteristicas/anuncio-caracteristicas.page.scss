@@ -4,7 +4,7 @@ ion-content {
 
 .container {
   padding: 0px 32px 10px 32px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
 }
@@ -16,6 +16,33 @@ ion-content {
 .regresar {
   display: flex;
   text-decoration: none;
+}
+
+.input-name {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  input {
+    border: 1px solid #d0d0d3;
+    border-radius: 10px;
+    padding: 12px 40px 12px 10px; 
+    width: 100%;
+    background-color: transparent;
+    font-size: 15px;
+    color: #212121;
+    outline: none;
+  }
+
+  img {
+    top: 22px;
+    position: absolute;
+    right: 26px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
 }
 
 .title {
@@ -32,7 +59,6 @@ ion-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Distribuye los elementos a lo largo del eje principal (horizontal) */
   margin-bottom: 20px;
 }
 
@@ -108,7 +134,7 @@ ion-content {
     height: 56px;
     border-radius: 30px;
     border: 1px solid #212121;
-    color: #FFFFFF;
+    color: #ffffff;
     background-color: #212121;
     font-size: 16px;
     font-weight: 500;
@@ -163,7 +189,6 @@ ion-content {
     margin-right: 20px;
     width: 27px;
     height: 25px;
-
   }
 }
 
@@ -186,7 +211,6 @@ ion-content {
   }
 }
 
-
 .checkbox-anuncio label div {
   flex-grow: 1;
   /* El texto ocupará todo el espacio restante */
@@ -206,7 +230,7 @@ ion-content {
   height: 18px;
   background-color: white;
   border-radius: 50%;
-  border: 1px solid #A3A2A4;
+  border: 1px solid #a3a2a4;
   appearance: none;
   outline: none;
   cursor: pointer;
@@ -220,7 +244,7 @@ ion-content {
 }
 
 .checkbox-round:checked::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -230,7 +254,6 @@ ion-content {
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 .button-agregar-anuncio-container {
   height: 50px;
@@ -316,7 +339,7 @@ ion-modal {
     // Elimina margin-top negativo
     vertical-align: middle; // Centra verticalmente
     display: inline-block; // Asegura que sea tratado como bloque en línea
-    filter: brightness(0)
+    filter: brightness(0);
   }
 }
 
@@ -385,7 +408,7 @@ ion-modal {
     font-weight: normal;
     color: #212121;
     margin-right: auto;
-    line-height:normal;
+    line-height: normal;
   }
 
   h1 {
@@ -403,7 +426,7 @@ ion-modal {
     margin: auto;
   }
 
-  span{
+  span {
     font-size: 15px;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
@@ -421,7 +444,6 @@ ion-modal {
   color: #49454f;
   margin-right: auto;
 }
-
 
 .form input {
   border-color: #d0d0d3;
@@ -465,7 +487,7 @@ ion-modal {
   border-radius: 15px;
   position: relative;
   border: none;
-  background: #F5F5F5;
+  background: #f5f5f5;
   /* Permite posicionar el botón de cierre */
 }
 
@@ -485,7 +507,8 @@ ion-modal {
   width: 26px;
   /* Ajusta el ancho al 100% del contenedor */
   height: 24px;
-  filter: brightness(0) saturate(100%) invert(62%) sepia(6%) saturate(178%) hue-rotate(177deg) brightness(91%) contrast(87%);
+  filter: brightness(0) saturate(100%) invert(62%) sepia(6%) saturate(178%)
+    hue-rotate(177deg) brightness(91%) contrast(87%);
 }
 
 .close-button {
@@ -502,9 +525,6 @@ ion-modal {
   z-index: 1;
   /* Asegura que el botón esté por encima de la imagen */
 }
-
-
-
 
 .box2 {
   grid-area: 1 / 2 / 2 / 3;
@@ -567,7 +587,7 @@ ion-modal {
     margin-left: 3px;
     font-size: 14px;
     font-family: "Poppins";
-    color: #8E8E93;
+    color: #8e8e93;
     font-weight: 300;
   }
 
@@ -608,7 +628,6 @@ a.servicios:hover {
   padding: 10px 0px 10px 0px;
   margin: 0;
 
-
   li {
     padding-bottom: 10px;
 
@@ -627,8 +646,6 @@ a.servicios:hover {
     margin-right: 9px;
   }
 }
-
-
 
 .modal-descripcion {
   width: 100%;
@@ -1089,22 +1106,20 @@ a.servicios:hover {
   align-items: flex-start;
   margin-top: 20px;
   margin-bottom: 30px;
-  box-shadow:none;
+  box-shadow: none;
 
   .esp-par {
     padding-left: 15px;
     padding-top: 15px;
   }
-  .esp-inpar{
+  .esp-inpar {
     padding-top: 15px;
-    img{
+    img {
       width: 50px;
       height: auto;
     }
   }
 }
-
-
 
 .recordatorio p {
   color: #212121;
@@ -1276,7 +1291,6 @@ ion-datetime {
   --ion-text-align: center; // Asegura que el texto esté centrado
 }
 
-
 ion-datetime::part(picker) {
   font-size: 18px; // Tamaño del texto en el selector de hora
   font-weight: 500; // Grosor del texto
@@ -1335,7 +1349,6 @@ ion-datetime-button::part(native) {
   font-size: 14px;
   font-weight: 500;
 }
-
 
 // -------------------- ABONADOS ---------------------------------
 
@@ -1584,7 +1597,7 @@ ion-toggle::part(track) {
   padding-block: 20px;
   border-radius: 30px;
   color: #212121;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid #212121;
 }
 
@@ -1592,7 +1605,7 @@ ion-toggle::part(track) {
   width: 100%;
   padding: 20px;
   border-radius: 30px;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #212121;
   border: 1px solid #212121;
 }
@@ -1601,7 +1614,7 @@ ion-toggle::part(track) {
   font-size: 12px;
   position: absolute;
   top: -10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 0 10px;
   left: 15px;
   font-family: "Poppins", sans-serif;
@@ -1639,7 +1652,7 @@ ion-toggle::part(track) {
 }
 
 .btn-gurd2 {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .swiper-wrapper {
@@ -1671,7 +1684,7 @@ ion-toggle::part(track) {
 
   // Estilo para el segundo span (dirección)
   span:not(.checkbox-text) {
-    color: #8E8E93;
+    color: #8e8e93;
     font-family: "Poppins";
     font-size: 15px;
     font-style: normal;
@@ -1682,7 +1695,7 @@ ion-toggle::part(track) {
 
   // Estilo para el ultimo span
   span:last-child {
-    color: #8E8E93;
+    color: #8e8e93;
     font-family: "Poppins";
     font-size: 15px;
     font-style: normal;
@@ -1708,7 +1721,6 @@ ion-toggle::part(track) {
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-
 }
 
 .ing2 {
@@ -1757,7 +1769,7 @@ ion-toggle::part(track) {
 }
 
 .custom-checkbox:checked::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
