@@ -191,7 +191,68 @@ ngx-dropzone,
     margin: 0px;
   }
 }
+.block2 {
+  width: 100%;
+  padding: 40px;
+  max-height: 50vh; 
+  overflow: hidden;
 
+  .btn-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    button {
+      width: 100%;
+      padding-block: 15px;
+      border: 1px solid #212121;
+      background-color: #FFFFFF;
+      border-radius: 30px;
+      color: #212121;
+      text-align: center;
+
+      font-family: Poppins;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 25px; 
+      letter-spacing: 0.18px;
+    }
+
+    .selec-gal {
+      background-color: #212121;
+      color: #FFFFFF;
+    }
+  }
+}
+
+
+.btn-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Centra los botones horizontalmente */
+}
+
+button {
+    width: 100%;
+    padding-block: 15px;
+    border: 1px solid #212121;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    color: #212121;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; 
+    letter-spacing: 0.18px;
+}
+
+.selec-gal {
+    background-color: #212121;
+    color: #FFFFFF;
+}
 .img-dow {
   display: flex;
   justify-content: center;

@@ -4,66 +4,24 @@
     <p>Te pedimos al menos tres fotos, pero si tienes más, ¡mejor aún!</p>
 
     <div class="boxes">
-      <!-- Imagen 1 -->
-      <div class="photo-container" *ngIf="files.length > 0">
+      <div
+        *ngFor="let img of allPreviews; let i = index"
+        class="photo-container"
+      >
         <div class="box1">
-          <img [src]="esta1" alt="Foto 1" />
-          <button class="close-button" (click)="onRemove(files[0])">x</button>
+          <img [src]="img" alt="Foto {{ i + 1 }}" />
+          <button class="close-button" (click)="removeImage(i)">x</button>
         </div>
       </div>
-      <div *ngIf="files.length === 0" class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
-        <ngx-dropzone-label>
-          <div class="pad">
-            <img src="/assets/images/add-anun.svg" alt="Agregar imagen" class="img-dow" />
-          </div>
-        </ngx-dropzone-label>
-      </div>
-
-      <!-- Imagen 2 -->
-      <div class="photo-container" *ngIf="files2.length > 0">
-        <div class="box1">
-          <img [src]="esta2" alt="Foto 2" />
-          <button class="close-button" (click)="onRemove2(files2[0])">x</button>
+      
+      <div class="box1" id="mod-fot">
+        <div class="pad">
+          <img
+            src="/assets/images/add-anun.svg"
+            alt="Agregar imagen"
+            class="img-dow"
+          />
         </div>
-      </div>
-      <div *ngIf="files2.length === 0" class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect2($event)">
-        <ngx-dropzone-label>
-          <div class="pad">
-            <img src="/assets/images/add-anun.svg" alt="Agregar imagen" class="img-dow" />
-          </div>
-        </ngx-dropzone-label>
-      </div>
-
-      <!-- Imagen 3 -->
-      <div class="photo-container" *ngIf="files3.length > 0">
-        <div class="box1">
-          <img [src]="esta3" alt="Foto 3" />
-          <button class="close-button" (click)="onRemove3(files3[0])">x</button>
-        </div>
-      </div>
-      <div *ngIf="files3.length === 0" class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelect3($event)">
-        <ngx-dropzone-label>
-          <div class="pad">
-            <img src="/assets/images/add-anun.svg" alt="Agregar imagen" class="img-dow" />
-          </div>
-        </ngx-dropzone-label>
-      </div>
-
-      <!-- Imágenes adicionales -->
-      <div *ngFor="let img of extraPreviews; let i = index" class="photo-container">
-        <div class="box1">
-          <img [src]="img" alt="Foto adicional {{ i + 4 }}" />
-          <button class="close-button" (click)="onRemoveExtra(i)">x</button>
-        </div>
-      </div>
-
-      <!-- Botón para añadir más imágenes -->
-      <div class="box1" ngx-dropzone [accept]="'image/*'" (change)="onSelectExtra($event)">
-        <ngx-dropzone-label>
-          <div class="pad">
-            <img src="/assets/images/add-anun.svg" alt="Agregar más imágenes" class="img-dow" />
-          </div>
-        </ngx-dropzone-label>
       </div>
     </div>
   </div>
@@ -71,6 +29,24 @@
 
 <ion-footer class="footer-btn" mode="md">
   <div class="bnt-dow">
-    <default-custom-button [text]="'Siguiente'" (click)="sendImages()"></default-custom-button>
+    <default-custom-button
+      [text]="'Siguiente'"
+      (click)="sendImages()"
+      [disabled]="mainFiles.length < 3"
+    ></default-custom-button>
   </div>
 </ion-footer>
+
+<!-- Modal exactamente igual -->
+<ion-modal trigger="mod-fot" [initialBreakpoint]="0.3" [breakpoints]="[0.3, 1]">
+  <ng-template>
+    <div class="block2">
+      <div class="btn-cont">
+        <button (click)="selectCamera()">Tomar una foto</button>
+        <button class="selec-gal" (click)="selectGallery()">
+          Seleccionar de galería
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
