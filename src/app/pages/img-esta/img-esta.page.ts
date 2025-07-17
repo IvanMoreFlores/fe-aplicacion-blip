@@ -26,13 +26,13 @@ export class ImgEstaPage implements OnInit {
   uga_long: string = '';
   dis_id: number = 0;
   tve_id: string[] = [];
+  descripcion: string = '';
   files: File[] = [];
   files2: File[] = [];
   files3: File[] = [];
   esta1: string = '';
   esta2: string = '';
   esta3: string = '';
-  descripcion: string = '';
 
   constructor(
     private router: Router,
@@ -43,14 +43,16 @@ export class ImgEstaPage implements OnInit {
     this.setValues();
   }
 
+  ngOnInit() {}
+
   handleNavigateTo(route: string) {
-    if (route) {
-      this.router.navigate([route]);
-    }
+    if (route) this.router.navigate([route]);
   }
+
   onSelect(event: { addedFiles: File[] }) {
     if (event.addedFiles.length) {
       this.files = [event.addedFiles[0]];
+      this.generatePreview(this.files[0], 'Aest1');
     }
   }
 
@@ -58,12 +60,14 @@ export class ImgEstaPage implements OnInit {
     const index = this.files.indexOf(file);
     if (index >= 0) {
       this.files.splice(index, 1);
+      this.esta1 = '';
     }
   }
 
   onSelect2(event: { addedFiles: File[] }) {
     if (event.addedFiles.length) {
       this.files2 = [event.addedFiles[0]];
+      this.generatePreview(this.files2[0], 'Aest2');
     }
   }
 
@@ -71,22 +75,38 @@ export class ImgEstaPage implements OnInit {
     const index = this.files2.indexOf(file);
     if (index >= 0) {
       this.files2.splice(index, 1);
+      this.esta2 = '';
     }
   }
 
   onSelect3(event: { addedFiles: File[] }) {
     if (event.addedFiles.length) {
       this.files3 = [event.addedFiles[0]];
+      this.generatePreview(this.files3[0], 'Aest3');
     }
   }
 
   onRemove3(file: File) {
-    const index = this.files2.indexOf(file);
+    const index = this.files3.indexOf(file);
     if (index >= 0) {
       this.files3.splice(index, 1);
+      this.esta3 = '';
     }
   }
 
+  // ========== Generar vista previa ==========
+  generatePreview(file: File, type: string) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      if (type === 'Aest1') this.esta1 = result;
+      if (type === 'Aest2') this.esta2 = result;
+      if (type === 'Aest3') this.esta3 = result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // ========== Captura desde cámara ==========
   async captureImage(type: string) {
     try {
       const image = await Camera.getPhoto({
@@ -97,11 +117,7 @@ export class ImgEstaPage implements OnInit {
       });
 
       if (image.webPath) {
-        if (type === 'front') {
-          this.convertToBase64(image.webPath, 'front');
-        } else if (type === 'back') {
-          this.convertToBase64(image.webPath, 'back');
-        }
+        this.convertToBase64(image.webPath, type);
       } else {
         console.error('No se ha podido obtener la ruta de la imagen.');
       }
@@ -114,23 +130,16 @@ export class ImgEstaPage implements OnInit {
     fetch(url)
       .then(response => response.blob())
       .then(blob => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = () => {
-          const base64data = reader.result as string;
-          if (type === 'Aest1') {
-            this.esta1 = base64data;
-          } else if (type === 'Aest2') {
-            this.esta2 = base64data;
-          } else if (type === 'Aest3') {
-            this.esta3 = base64data;
-          }
-
-        };
+        const file = new File([blob], 'camera.jpg', { type: blob.type });
+        if (type === 'Aest1') {
+          this.files = [file];
+        } else if (type === 'Aest2') {
+          this.files2 = [file];
+        } else if (type === 'Aest3') {
+          this.files3 = [file];
+        }
+        this.generatePreview(file, type);
       });
-  }
-
-  ngOnInit() {
   }
 
   setValues() {
@@ -146,13 +155,11 @@ export class ImgEstaPage implements OnInit {
       this.gar_ancho = params['gar_ancho'];
       this.gar_alto = params['gar_alto'];
       this.uga_direcc = params['uga_direcc'];
-      this.uga_lat = params['uga_lat'];
-      this.uga_long = params['uga_long'];
+      this.uga_lat = params['lat'] || params['uga_lat'];
+      this.uga_long = params['lng'] || params['uga_long'];
       this.dis_id = params['dis_id'];
       this.tve_id = params['tve_id'];
       this.descripcion = params['descripcion'];
-      this.uga_lat=params['lat'];
-      this.uga_long=params['lng'];
     });
   }
 
@@ -161,53 +168,23 @@ export class ImgEstaPage implements OnInit {
   }
 
   async sendImages() {
-
-    if (!this.files || this.files.length === 0) {
-      alert('Debes incluir imagenes.');
+    if (!this.files.length || !this.files2.length || !this.files3.length) {
+      alert('Debes incluir las tres imágenes del área de estacionamiento.');
       return;
     }
-
-    if (!this.files2 || this.files2.length === 0) {
-      alert('Debes incluir imagenes.');
-      return;
-    }
-
-    if (!this.files3 || this.files3.length === 0) {
-      alert('Debes incluir imagenes.');
-      return;
-    }
-
-    //colocar validacion de img vacio
-
-    let name = '';
 
     const token = await this.storage.getItem('token');
-
     const arr_dist = await this.storage.getItem('adConfig');
 
-    arr_dist.districts.map((distrito: any) => {
+    let name = '';
+    arr_dist.districts.forEach((distrito: any) => {
       if (distrito.id_distrito.toString() === this.distrito) {
         name = 'Cochera ' + distrito.nombre_distrito + ' ' + this.generarCodigoAleatorio();
       }
-
     });
 
-    console.log(name);
-    console.log(this.files);
-    console.log(this.files2);
-    console.log(this.files3);
-    console.log(this.tga_id);
-    console.log(this.direccion);
-    console.log(this.gar_largo);
-    console.log(this.gar_ancho);
-    console.log(this.gar_alto);
-    console.log(this.uga_direcc);
-    console.log(this.uga_lat);
-    console.log(this.uga_long);
-    console.log(this.servicio);
-    console.log(this.tve_id);
-
-    this.api.createAdvertisement(token,
+    this.api.createAdvertisement(
+      token,
       name,
       this.files,
       this.files2,
@@ -222,20 +199,19 @@ export class ImgEstaPage implements OnInit {
       this.uga_long,
       this.distrito,
       this.servicio,
-      this.tve_id).subscribe(
-        async (response: any) => {
-          console.log(response);
-          if (response.status === "success") {
-            this.router.navigate(['/cre-anu']);
-          } else {
-            alert('Hubo un error')
-          }
-        },
-        (error: any) => {
-          alert('Hubo un error: ' + error.message)
+      this.tve_id
+    ).subscribe(
+      async (response: any) => {
+        if (response.status === "success") {
+          this.router.navigate(['/cre-anu']);
+        } else {
+          alert('Hubo un error');
         }
-      );
-
+      },
+      (error: any) => {
+        alert('Hubo un error: ' + error.message);
+      }
+    );
   }
 
   return() {
@@ -260,4 +236,3 @@ export class ImgEstaPage implements OnInit {
     });
   }
 }
-
