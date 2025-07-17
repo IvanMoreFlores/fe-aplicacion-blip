@@ -33,6 +33,8 @@ export class ImgEstaPage implements OnInit {
   esta1: string = '';
   esta2: string = '';
   esta3: string = '';
+  extraFiles: File[] = [];
+  extraPreviews: string[] = [];
 
   constructor(
     private router: Router,
@@ -55,6 +57,24 @@ export class ImgEstaPage implements OnInit {
       this.generatePreview(this.files[0], 'Aest1');
     }
   }
+  onSelect2(event: { addedFiles: File[] }) {
+    if (event.addedFiles.length) {
+      this.files2 = [event.addedFiles[0]];
+      this.generatePreview(this.files2[0], 'Aest2');
+    }
+  }
+  onSelect3(event: { addedFiles: File[] }) {
+    if (event.addedFiles.length) {
+      this.files3 = [event.addedFiles[0]];
+      this.generatePreview(this.files3[0], 'Aest3');
+    }
+  }
+  onSelectExtra(event: { addedFiles: File[] }) {
+    for (const file of event.addedFiles) {
+      this.extraFiles.push(file);
+      this.generateExtraPreview(file);
+    }
+  }
 
   onRemove(file: File) {
     const index = this.files.indexOf(file);
@@ -63,14 +83,6 @@ export class ImgEstaPage implements OnInit {
       this.esta1 = '';
     }
   }
-
-  onSelect2(event: { addedFiles: File[] }) {
-    if (event.addedFiles.length) {
-      this.files2 = [event.addedFiles[0]];
-      this.generatePreview(this.files2[0], 'Aest2');
-    }
-  }
-
   onRemove2(file: File) {
     const index = this.files2.indexOf(file);
     if (index >= 0) {
@@ -78,14 +90,6 @@ export class ImgEstaPage implements OnInit {
       this.esta2 = '';
     }
   }
-
-  onSelect3(event: { addedFiles: File[] }) {
-    if (event.addedFiles.length) {
-      this.files3 = [event.addedFiles[0]];
-      this.generatePreview(this.files3[0], 'Aest3');
-    }
-  }
-
   onRemove3(file: File) {
     const index = this.files3.indexOf(file);
     if (index >= 0) {
@@ -93,20 +97,11 @@ export class ImgEstaPage implements OnInit {
       this.esta3 = '';
     }
   }
-
-  // ========== Generar vista previa ==========
-  generatePreview(file: File, type: string) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      if (type === 'Aest1') this.esta1 = result;
-      if (type === 'Aest2') this.esta2 = result;
-      if (type === 'Aest3') this.esta3 = result;
-    };
-    reader.readAsDataURL(file);
+  onRemoveExtra(index: number) {
+    this.extraFiles.splice(index, 1);
+    this.extraPreviews.splice(index, 1);
   }
 
-  // ========== Captura desde cámara ==========
   async captureImage(type: string) {
     try {
       const image = await Camera.getPhoto({
@@ -115,7 +110,6 @@ export class ImgEstaPage implements OnInit {
         resultType: CameraResultType.Uri,
         source: CameraSource.Camera,
       });
-
       if (image.webPath) {
         this.convertToBase64(image.webPath, type);
       } else {
@@ -123,6 +117,21 @@ export class ImgEstaPage implements OnInit {
       }
     } catch (error) {
       console.error('Error al capturar la imagen:', error);
+    }
+  }
+  async captureExtraImage() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+      });
+      if (image.webPath) {
+        this.convertExtraToBase64(image.webPath);
+      }
+    } catch (error) {
+      console.error('Error al capturar imagen adicional:', error);
     }
   }
 
@@ -140,6 +149,32 @@ export class ImgEstaPage implements OnInit {
         }
         this.generatePreview(file, type);
       });
+  }
+  convertExtraToBase64(url: string) {
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const file = new File([blob], 'camera-extra.jpg', { type: blob.type });
+        this.extraFiles.push(file);
+        this.generateExtraPreview(file);
+      });
+  }
+
+  generatePreview(file: File, type: string) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (type === 'Aest1') this.esta1 = reader.result as string;
+      if (type === 'Aest2') this.esta2 = reader.result as string;
+      if (type === 'Aest3') this.esta3 = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
+  generateExtraPreview(file: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.extraPreviews.push(reader.result as string);
+    };
+    reader.readAsDataURL(file);
   }
 
   setValues() {
@@ -166,13 +201,11 @@ export class ImgEstaPage implements OnInit {
   generarCodigoAleatorio(): number {
     return Math.floor(1000 + Math.random() * 9000);
   }
-
   async sendImages() {
     if (!this.files.length || !this.files2.length || !this.files3.length) {
-      alert('Debes incluir las tres imágenes del área de estacionamiento.');
+      alert('Debes incluir las tres imágenes principales.');
       return;
     }
-
     const token = await this.storage.getItem('token');
     const arr_dist = await this.storage.getItem('adConfig');
 
@@ -202,7 +235,7 @@ export class ImgEstaPage implements OnInit {
       this.tve_id
     ).subscribe(
       async (response: any) => {
-        if (response.status === "success") {
+        if (response.status === 'success') {
           this.router.navigate(['/cre-anu']);
         } else {
           alert('Hubo un error');
