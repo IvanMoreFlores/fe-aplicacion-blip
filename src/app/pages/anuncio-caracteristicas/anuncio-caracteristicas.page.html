@@ -440,7 +440,9 @@
                         ></label>
                       </div>
                     </div>
-                    <button (click)="sendUpdateLocation()">Guardar Cambios</button>
+                    <button (click)="sendUpdateLocation()">
+                      Guardar Cambios
+                    </button>
                   </div>
                 </div>
               </ng-template>
@@ -859,7 +861,10 @@
                       <div class="checkbox-anuncio">
                         <label for="checkbox">
                           <div>
-                            <img src="/assets/images/fi-sr-car.svg" alt="icono" />
+                            <img
+                              src="/assets/images/fi-sr-car.svg"
+                              alt="icono"
+                            />
                             <span class="checkbox-text"
                               >Carros Particulares</span
                             >
@@ -1025,7 +1030,7 @@
             </ng-template>
           </ion-modal>
 
-          <span>Día (24h)</span>
+          <!-- <span>Día (24h)</span>
           <div class="precio-base">
             <span class="simbolo">S/</span>
             <input
@@ -1035,7 +1040,7 @@
               value="{{ precio_dia }}"
               type="number"
             />
-          </div>
+          </div> -->
 
           <ion-modal
             trigger="hora-fraccion2"
@@ -1067,12 +1072,12 @@
             </div>
             <div class="esp-par">
               <p>
-                Recuerda que la comisión de servicio es del 5% sobre el precio
+                Recuerda que la comisión de servicio es del 10% sobre el precio
                 base.
-                <span
-                  >E.j Si el precio base x h/f es de S/10 , estarías ganando
-                  S/9.50 x hora.</span
-                >
+                <span>
+                  E.j Si el precio base x h/f es de S/10 , estarías ganando S/9
+                  x hora.
+                </span>
               </p>
             </div>
           </div>
