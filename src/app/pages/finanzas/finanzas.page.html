@@ -2,7 +2,11 @@
   <ion-toolbar>
     <a class="regresar" href="#">
       <div class="left-arrow">
-        <img src="/assets/images/left-arrow.svg" alt="" routerLink="/tab-home/home" />
+        <img
+          src="/assets/images/left-arrow.svg"
+          alt=""
+          routerLink="/tab-home/home"
+        />
       </div>
       <h1 class="title">Finanzas</h1>
     </a>
@@ -13,32 +17,46 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <button (click)="changeContent('Ingresos')"
-            [ngClass]="{'active': isButtonActive('Ingresos')}">Ingresos</button>
+          <button
+            (click)="changeContent('Ingresos')"
+            [ngClass]="{'active': isButtonActive('Ingresos')}"
+          >
+            Ingresos
+          </button>
         </div>
 
         <div class="swiper-slide">
-          <button (click)="changeContent('Historial de Alquiler')"
-            [ngClass]="{'active': isButtonActive('Historial de Alquiler')}">Historial de Alquiler</button>
+          <button
+            (click)="changeContent('Historial de Alquiler')"
+            [ngClass]="{'active': isButtonActive('Historial de Alquiler')}"
+          >
+            Historial de Alquiler
+          </button>
         </div>
 
         <div class="swiper-slide">
-          <button (click)="changeContent('Pagos')" [ngClass]="{'active': isButtonActive('Pagos')}">Pagos</button>
+          <button
+            (click)="changeContent('Pagos')"
+            [ngClass]="{'active': isButtonActive('Pagos')}"
+          >
+            Pagos
+          </button>
         </div>
 
         <div class="swiper-slide">
-          <button (click)="changeContent('Historial de Pago')"
-            [ngClass]="{'active': isButtonActive('Historial de Pago')}">Historial de Pago</button>
+          <button
+            (click)="changeContent('Historial de Pago')"
+            [ngClass]="{'active': isButtonActive('Historial de Pago')}"
+          >
+            Historial de Pago
+          </button>
         </div>
-
       </div>
-
     </div>
     <div class="scroll-container">
       <!--                 -----Ingresos-----              -->
       <div *ngIf="selectedContent === 'Ingresos'">
-
-        <div class="anuncio" *ngFor="let card_pago of arr_payment">
+        <!-- <div class="anuncio" *ngFor="let card_pago of arr_payment">
           <div>
             <h2>Anuncio {{ card_pago.id }}</h2>
             <p>{{ card_pago.nombre }}</p>
@@ -52,33 +70,47 @@
               <span>S/. {{ card_pago.total }}</span>
             </div>
           </div>
+        </div> -->
+        <div class="myIngresContainer">
+          <h3>Mis Ingresos</h3>
+          <div class="myIngresContent">
+            <img
+              src="/assets/images/fi-sr-exclamation.svg"
+              alt=""
+              class="icon-info-excla"
+            />
+            <h2>
+              El monto mínimo para solicitar un retiro es de S/50. Se aplicará
+              una tarifa de servicio del 10% por cada retiro efectuado.
+            </h2>
+          </div>
         </div>
-
-        <hr>
 
         <div class="ingreso-final">
           <div>
-            <h3>Ingreso Final</h3>
-            <p>El balance se actualizará en base a la actividad de tu(s) anuncio(s)..</p>
             <h1>S/. {{ total_final }}</h1>
 
-            <div class="deposito-pago">
-              <h2>Retención del 5%</h2>
-              <h2>Balance mínimo requerido S/50</h2>
+            <h3>Balance Actual</h3>
 
+            <div class="deposito-pago">
+              <h2>
+                Para optimizar tus retiros y reducir costos por tarifas de
+                servicio, te sugerimos realizar 1 o 2 retiros al mes en lugar de
+                retiros frecuentes de montos pequeños.
+              </h2>
             </div>
           </div>
         </div>
 
         <div class="continue">
-          <button class="btn-sig" (click)="reqPayment()">Solicitar Retiro</button>
+          <button class="btn-sig" (click)="reqPayment()">
+            Solicitar Retiro
+          </button>
         </div>
-
       </div>
 
       <!--                 -----Historial de Alquiler-----              -->
       <div *ngIf="selectedContent === 'Historial de Alquiler'">
-
         <div class="alquiler-title">
           <h3>Esta semana</h3>
         </div>
@@ -86,7 +118,9 @@
         <div *ngFor="let reserva of data_reserve">
           <div class="alquiler">
             <div class="h-alq">
-              <h3 class="date"> {{ reserva.res_fecini | date: 'dd \'de\' MMMM' : 'es' }} </h3>
+              <h3 class="date">
+                {{ reserva.res_fecini | date: 'dd \'de\' MMMM' : 'es' }}
+              </h3>
               <div class="chip">
                 <h3>{{ reserva.rst_descri }}</h3>
               </div>
@@ -94,7 +128,11 @@
             <div class="nomb-host">
               <div>
                 <div class="aut">
-                  <img src="/assets/images/icon-car.svg" alt="" class="icon-car">
+                  <img
+                    src="/assets/images/icon-car.svg"
+                    alt=""
+                    class="icon-car"
+                  />
                   <h1>Host Name</h1>
                 </div>
                 <div class="veiculo">
@@ -102,33 +140,30 @@
                   <h1>{{ reserva.veh_placa }}</h1>
                 </div>
                 <div class="tiempo">
-                  <h1>Reserva </h1>
+                  <h1>Reserva</h1>
                   <span>x</span>
                   <h1>{{ reserva.tip_descri }}</h1>
-                  <img src="/assets/images/der-reser.svg" alt="">
+                  <img src="/assets/images/der-reser.svg" alt="" />
                   <h1>1h</h1>
                 </div>
                 <div class="horas">
                   <h1>{{ reserva.res_fecini | date: 'hh:mm a' : 'es' }}</h1>
-                  <img src="/assets/images/flec-hist.svg" alt="">
-                  <h1>{{ reserva.res_fecfin | date: 'hh:mm
-                a' : 'es' }}</h1>
+                  <img src="/assets/images/flec-hist.svg" alt="" />
+                  <h1>{{ reserva.res_fecfin | date: 'hh:mm a' : 'es' }}</h1>
                 </div>
-                <h1 class="description">Alquiler <span>{{ reserva.gar_nombre }}</span></h1>
-              </div>  
-              <h1 class="precio">S/. {{ reserva.pag_monto_total }} 
-              </h1>
-              
+                <h1 class="description">
+                  Alquiler <span>{{ reserva.gar_nombre }}</span>
+                </h1>
+              </div>
+              <h1 class="precio">S/. {{ reserva.pag_monto_total }}</h1>
             </div>
           </div>
-          <hr>
+          <hr />
         </div>
-
       </div>
 
       <!--                 -----Pagos-----              -->
       <div *ngIf="selectedContent === 'Pagos'">
-
         <div>
           <h1 class="pagos-title">Configura tu método de pago</h1>
 
@@ -136,65 +171,103 @@
 
           <div class="form-regla">
             <label class="num-regla">Titular de la Cuenta</label>
-            <input  type="text" class="input-pago" placeholder="Nombre del Titular">
+            <input
+              type="text"
+              class="input-pago"
+              placeholder="Nombre del Titular"
+            />
           </div>
 
           <div class="form-regla">
             <label class="num-regla">Número de Cuenta</label>
-            <input [(ngModel)]="cta" type="number" class="input-pago" placeholder="*** ******* * **">
+            <input
+              [(ngModel)]="cta"
+              type="number"
+              class="input-pago"
+              placeholder="*** ******* * **"
+            />
           </div>
 
           <div class="form-regla">
-            <label class="num-regla">Número de Cuenta Interbancaria (CCI)</label>
-            <input [(ngModel)]="cci" type="number" class="input-pago" placeholder="*** *** ************ **">
+            <label class="num-regla"
+              >Número de Cuenta Interbancaria (CCI)</label
+            >
+            <input
+              [(ngModel)]="cci"
+              type="number"
+              class="input-pago"
+              placeholder="*** *** ************ **"
+            />
           </div>
           <div class="form-regla">
             <label class="num-regla">Banco de Destino</label>
-            <select class="input-pago2" id="distrito" [(ngModel)]="banco" placeholder="Selecciona tu banco"
-              name="distrito">
+            <select
+              class="input-pago2"
+              id="distrito"
+              [(ngModel)]="banco"
+              placeholder="Selecciona tu banco"
+              name="distrito"
+            >
               <option value="" disabled selected>Selecciona tu distrito</option>
-              <option *ngFor="let banco of banks" value="{{ banco.mep_id }}">{{ banco.mep_descri }}</option>
+              <option *ngFor="let banco of banks" value="{{ banco.mep_id }}">
+                {{ banco.mep_descri }}
+              </option>
             </select>
           </div>
           <div class="continue">
-            <button class="btn-sig" (click)="save_method()">Guardar datos de pago</button>
+            <button class="btn-sig" (click)="save_method()">
+              Guardar datos de pago
+            </button>
           </div>
         </div>
-
       </div>
 
       <!--                 -----Historial de Pago-----              -->
       <div *ngIf="selectedContent === 'Historial de Pago'">
-
         <div>
-
-          <h1 class="historial-title">Revisa tu histórico de pagos efectuados</h1>
+          <h1 class="historial-title">
+            Revisa tu histórico de pagos efectuados
+          </h1>
 
           <div *ngFor="let pago of data_deposit">
-
             <div class="historial">
               <div class="icon-historial">
-                <img src="/assets/images/tarj-blac.svg" alt="" class="icon-car">
+                <img
+                  src="/assets/images/tarj-blac.svg"
+                  alt=""
+                  class="icon-car"
+                />
               </div>
 
               <div class="info-historial">
-                <h3 class="date">{{ pago.pre_fecsol | date: 'dd \'de\' MMMM' : 'es' }}</h3>
+                <h3 class="date">
+                  {{ pago.pre_fecsol | date: 'dd \'de\' MMMM' : 'es' }}
+                </h3>
                 <p class="description">Solicitud de retiro de balance</p>
-                <h4 class="time" *ngIf="pago.pre_estado == 1" style="color: red;">En espera</h4>
-                <h4 class="time" *ngIf="pago.pre_estado == 2" style="color: green;">Transferencia realizada</h4>
+                <h4
+                  class="time"
+                  *ngIf="pago.pre_estado == 1"
+                  style="color: red"
+                >
+                  En espera
+                </h4>
+                <h4
+                  class="time"
+                  *ngIf="pago.pre_estado == 2"
+                  style="color: green"
+                >
+                  Transferencia realizada
+                </h4>
               </div>
 
               <div class="historial-monto">
                 <span class="amount">S/. {{ pago.pre_monto }}</span>
               </div>
             </div>
-            <hr>
+            <hr />
           </div>
-
         </div>
       </div>
     </div>
   </div>
-
-
 </ion-content>
