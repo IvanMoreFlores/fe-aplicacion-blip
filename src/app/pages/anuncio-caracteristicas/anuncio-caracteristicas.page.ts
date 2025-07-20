@@ -1,4 +1,12 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+} from '@angular/core';
 import Swiper from 'swiper';
 import {} from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -22,6 +30,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   text = ''; // Texto del primer textarea
   textareas: string[] = []; // Array para almacenar los textareas adicionales
   advertisements: any[] = [];
+  selectedIndex: number | null = null;
   mainAd: any;
   gar_nombre: any;
   gar_nombre_mod: any;
@@ -86,7 +95,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
 
   handleNavigateTo(route: string) {
     if (route) {
-      this.router.navigateByUrl(route,{replaceUrl: true});
+      this.router.navigateByUrl(route, { replaceUrl: true });
     }
   }
 
@@ -142,14 +151,15 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       }
     );
   }
-
   async updateContent() {
     this.isLoading = true;
     const token = await this.storage.getItem('token');
     const id_select = this.mainAd.gar_id;
+
     this.api.getAds(token).subscribe(
       (response: any) => {
         this.advertisements = response.data;
+
         for (let i = 0; i < this.advertisements.length; i++) {
           if (this.advertisements[i].gar_id === id_select) {
             this.mainAd = this.advertisements[i];
@@ -165,10 +175,16 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
             this.checkServPref();
           }
         }
+
         this.isLoading = false;
+
+        // 👇 Forzar actualización visual
+        this.cdr.detectChanges();
       },
       (error: any) => {
         console.error(error);
+        this.isLoading = false;
+        this.cdr.detectChanges();
       }
     );
   }
@@ -310,7 +326,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
         } else {
           this.chck_hora = true;
         }
-      }else{
+      } else {
         this.chck_hora = false;
       }
     });
@@ -536,7 +552,9 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       this.routerSubscription.unsubscribe();
     }
   }
-
+  onRadioChange(index: number) {
+    this.selectedIndex = index;
+  }
   async sendUpdateName() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
@@ -566,7 +584,6 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     this.selectedGarId = garId;
     console.log('Seleccionado:', garId);
     this.advertisements.map((advice: any) => {
-
       if (garId == advice.gar_id) {
         this.mainAd = advice;
         this.gar_nombre = this.mainAd.gar_nombre;
@@ -618,10 +635,21 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   async sendUpdateDim() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
-    formData.append('gar_ancho', this.gar_ancho);
-    formData.append('gar_largo', this.gar_largo);
-    formData.append('gar_alto', this.gar_alto);
+
+    let dimensionValue = '';
+    if (this.selectedIndex === 0) {
+      dimensionValue = '1';
+    } else if (this.selectedIndex === 1) {
+      dimensionValue = '2';
+    } else if (this.selectedIndex === 2) {
+      dimensionValue = '3';
+    }
+
+    formData.append('gar_largo', dimensionValue);
+    formData.append('gar_ancho', dimensionValue);
+    formData.append('gar_alto', dimensionValue);
     formData.append('gar_id', this.mainAd.gar_id);
+
     this.api.updateAd(token, formData).subscribe(
       (response: any) => {
         console.log(response);
@@ -723,5 +751,30 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
       .join('');
+  }
+  onModalWillPresent() {
+    this.selectedIndex = (this.mainAd?.tga_id ?? 1) - 1;
+  }
+
+  async sendUpdateLocation() {
+    if (this.selectedIndex === undefined || this.selectedIndex === null) {
+      this.selectedIndex = (this.mainAd?.tga_id ?? 1) - 1;
+    }
+    const token = await this.storage.getItem('token');
+    const formData = new FormData();
+    const newTgaId = (this.selectedIndex ?? 0) + 1;
+    formData.append('tga_id', newTgaId.toString());
+    formData.append('gar_id', this.mainAd.gar_id);
+    this.api.updateAd(token, formData).subscribe(
+      (response: any) => {
+        console.log('Ubicación actualizada en backend:', response);
+        this.updateContent();
+        this.modalController.dismiss();
+      },
+      (error: any) => {
+        console.error('Error al actualizar ubicación:', error);
+        alert('Hubo un error al actualizar la ubicación.');
+      }
+    );
   }
 }
