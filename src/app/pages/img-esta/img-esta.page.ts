@@ -25,7 +25,7 @@ export class ImgEstaPage implements OnInit {
   uga_lat: string = '';
   uga_long: string = '';
   dis_id: number = 0;
-  tve_id: string[] = [];
+  tve_id: any = []; 
   descripcion: string = '';
   mainFiles: File[] = [];
   extraFiles: File[] = [];
@@ -114,17 +114,34 @@ export class ImgEstaPage implements OnInit {
 
     arr_dist.districts.forEach((distrito: any) => {
       if (distrito.id_distrito.toString() === this.distrito) {
-        name = 'Cochera ' + distrito.nombre_distrito + ' ' + this.generarCodigoAleatorio();
+        name =
+          'Cochera ' +
+          distrito.nombre_distrito +
+          ' ' +
+          this.generarCodigoAleatorio();
       }
     });
+
+    console.log('Datos a enviar:');
+    console.log('name:', name);
+    console.log('tga_id:', this.tga_id);
+    console.log('descripcion:', this.descripcion);
+    console.log('gar_largo:', this.gar_largo);
+    console.log('gar_ancho:', this.gar_ancho);
+    console.log('gar_alto:', this.gar_alto);
+    console.log('direccion:', this.direccion);
+    console.log('latitud:', this.uga_lat);
+    console.log('longitud:', this.uga_long);
+    console.log('distrito:', this.distrito);
+    console.log('servicios:', this.servicio);
+    console.log('tve_id:', this.tve_id);
+    console.log('Files:', this.mainFiles);
 
     this.api
       .createAdvertisement(
         token,
         name,
-        this.mainFiles[0],
-        this.mainFiles[1],
-        this.mainFiles[2],
+        this.mainFiles,
         this.tga_id,
         this.descripcion,
         this.gar_largo,
@@ -142,11 +159,11 @@ export class ImgEstaPage implements OnInit {
           if (response.status === 'success') {
             this.router.navigate(['/cre-anu']);
           } else {
-            alert('Hubo un error');
+            alert('Hubo un error al crear el anuncio');
           }
         },
         (error: any) => {
-          alert('Hubo un error: ' + error.message);
+          alert('Error al crear el anuncio: ' + error.message);
         }
       );
   }

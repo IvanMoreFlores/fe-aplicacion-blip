@@ -119,13 +119,10 @@ export class ApiService {
       headers,
     });
   }
-
   createAdvertisement(
     token: string,
     name: string,
-    file1: any,
-    file2: any,
-    file3: any,
+    files: File[],
     tga_id: string,
     gar_descri: string,
     gar_largo: string,
@@ -136,18 +133,19 @@ export class ApiService {
     uga_long: string,
     dis_id: string,
     services: any[],
-    tve_ids: any[]
+    tve_ids: any
   ) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
 
     const formData = new FormData();
-    const files = [file1, file2, file3];
-    files.forEach((file) => {
-      formData.append('files', file[0]);
+
+    files.forEach((file, index) => {
+      formData.append('files', file);
     });
 
+    // Otros datos
     formData.append('tga_id', tga_id);
     formData.append('gar_nombre', name);
     formData.append('gar_descri', gar_descri);
@@ -159,27 +157,14 @@ export class ApiService {
     formData.append('uga_long', uga_long);
     formData.append('dis_id', dis_id);
 
-    if (services && services.length > 0) {
-      if (services.length === 1) {
-        formData.append('services', services[0].trim()); // Un solo elemento
-      } else {
-        services.forEach((service: string) => {
-          formData.append('services', service.trim()); // Múltiples elementos
-        });
-      }
-    }
+    services.forEach((service: string) => {
+      formData.append('services[]', service);
+    });
 
-    if (tve_ids && tve_ids.length > 0) {
-      if (tve_ids.length === 1) {
-        formData.append('tve_id', tve_ids[0].trim()); // Un solo elemento
-      } else {
-        tve_ids.forEach((tve_id: string) => {
-          formData.append('tve_id', tve_id.trim()); // Múltiples elementos
-        });
-      }
-    }
-
-    console.log(formData);
+    const tveArray = Array.isArray(tve_ids) ? tve_ids : [tve_ids];
+    tveArray.forEach((tve_id: string) => {
+      formData.append('tve_id[]', tve_id);
+    });
 
     return this.http.post(this.apiUrl + '/advertisement/create', formData, {
       headers,
