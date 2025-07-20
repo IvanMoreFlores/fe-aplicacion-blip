@@ -1342,16 +1342,18 @@
               </div> -->
             </form>
           </div>
-
-          <ion-item lines="none">
-            <ion-toggle justify="space-between" [(ngModel)]="chck_hora">
+          <ion-item>
+            <ion-toggle
+              justify="space-between"
+              [(ngModel)]="chck_hora"
+              (ionChange)="onToggleHorario()"
+            >
               <div class="toggle-info">
                 Horas restringidas
                 <img src="/assets/images/icon-info2.svg" alt="" />
               </div>
             </ion-toggle>
           </ion-item>
-
           <p class="tex-hor">
             ¡Personaliza tu horario! Al habilitar esta opción podrás controlar
             tus tiempos. En caso de que no habilite esta opción, consideraremos
@@ -1376,7 +1378,8 @@
                     id="datetime1"
                     presentation="time"
                     hourCycle="h12"
-                    value="{{ this.convertToISO(hora_init) }}"
+                    value="{{ convertToISO(hora_init) }}"
+                    [disabled]="chck_hora"
                     (ionChange)="onTimeChange($event, 1)"
                   ></ion-datetime>
                 </ng-template>
@@ -1401,9 +1404,9 @@
                     presentation="time"
                     hourCycle="h12"
                     value="{{ convertToISO(hora_end) }}"
+                    [disabled]="chck_hora"
                     (ionChange)="onTimeChange($event, 2)"
-                  >
-                  </ion-datetime>
+                  ></ion-datetime>
                 </ng-template>
               </ion-modal>
             </div>

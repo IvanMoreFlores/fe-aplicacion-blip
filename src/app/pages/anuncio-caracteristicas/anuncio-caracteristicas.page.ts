@@ -241,6 +241,10 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   }
 
   async checkServPref() {
+    const savedToggle = await this.storage.getItem('chck_hora');
+    if (savedToggle !== null) {
+      this.chck_hora = savedToggle === 'true';
+    }
     this.chck_serv1 = false;
     this.chck_serv2 = false;
     this.chck_serv3 = false;
@@ -320,14 +324,15 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       if (restrict.rga_tipo === 2) {
         this.hora_init = restrict.rga_horainicio;
         this.hora_end = restrict.rga_horafin;
-
-        if (this.hora_init === '10:00:00' && this.hora_end === '17:00:00') {
+        if (
+          this.hora_init === '10:00:00' &&
+          this.hora_end === '17:00:00' &&
+          !this.chck_hora
+        ) {
           this.chck_hora = false;
         } else {
           this.chck_hora = true;
         }
-      } else {
-        this.chck_hora = false;
       }
     });
   }
@@ -774,6 +779,32 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       (error: any) => {
         console.error('Error al actualizar ubicación:', error);
         alert('Hubo un error al actualizar la ubicación.');
+      }
+    );
+  }
+ 
+  async onToggleHorario() {
+    const token = await this.storage.getItem('token');
+    const formData = new FormData();
+
+    if (!this.chck_hora) {
+      formData.append('rga_hora_inicio', '10:00');
+      formData.append('rga_hora_fin', '17:00');
+    } else {
+      formData.append('rga_hora_inicio', this.hora_init || '10:00');
+      formData.append('rga_hora_fin', this.hora_end || '17:00');
+    }
+
+    formData.append('gar_id', this.mainAd.gar_id);
+    await this.storage.setItem('chck_hora', String(this.chck_hora)); 
+
+    this.api.updateAd(token, formData).subscribe(
+      (response: any) => {
+        console.log('Horario actualizado:', response);
+        this.updateContent();
+      },
+      (error: any) => {
+        alert('Hubo un error al actualizar el horario: ' + error.message);
       }
     );
   }
