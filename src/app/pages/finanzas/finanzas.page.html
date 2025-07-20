@@ -99,13 +99,12 @@
                 retiros frecuentes de montos pequeños.
               </h2>
             </div>
+            <div class="continue">
+              <button class="btn-sig" (click)="reqPayment()">
+                Solicitar Retiro
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div class="continue">
-          <button class="btn-sig" (click)="reqPayment()">
-            Solicitar Retiro
-          </button>
         </div>
       </div>
 
@@ -165,60 +164,118 @@
       <!--                 -----Pagos-----              -->
       <div *ngIf="selectedContent === 'Pagos'">
         <div>
-          <h1 class="pagos-title">Configura tu método de pago</h1>
-
-          <p>Transferencia a:</p>
-
-          <div class="form-regla">
-            <label class="num-regla">Titular de la Cuenta</label>
-            <input
-              type="text"
-              class="input-pago"
-              placeholder="Nombre del Titular"
-            />
-          </div>
-
-          <div class="form-regla">
-            <label class="num-regla">Número de Cuenta</label>
-            <input
-              [(ngModel)]="cta"
-              type="number"
-              class="input-pago"
-              placeholder="*** ******* * **"
-            />
-          </div>
-
-          <div class="form-regla">
-            <label class="num-regla"
-              >Número de Cuenta Interbancaria (CCI)</label
-            >
-            <input
-              [(ngModel)]="cci"
-              type="number"
-              class="input-pago"
-              placeholder="*** *** ************ **"
-            />
-          </div>
-          <div class="form-regla">
-            <label class="num-regla">Banco de Destino</label>
-            <select
-              class="input-pago2"
-              id="distrito"
-              [(ngModel)]="banco"
-              placeholder="Selecciona tu banco"
-              name="distrito"
-            >
-              <option value="" disabled selected>Selecciona tu distrito</option>
-              <option *ngFor="let banco of banks" value="{{ banco.mep_id }}">
-                {{ banco.mep_descri }}
-              </option>
-            </select>
+          <div class="myIngresContainer">
+            <h1 class="pagos-title">Configura tus pagos</h1>
+            <div class="myIngresContent">
+              <img
+                src="/assets/images/fi-sr-exclamation.svg"
+                alt=""
+                class="icon-info-excla"
+              />
+              <h2>
+                Tu saldo será depositado en un plazo no mayor a 7 días hábiles
+                después de solicitar el retiro en la sección de Ingresos.
+              </h2>
+            </div>
           </div>
           <div class="continue">
-            <button class="btn-sig" (click)="save_method()">
-              Guardar datos de pago
+            <!-- <img
+              src="/assets/images/fi-sr-plus.svg"
+              alt=""
+              class="icon-add"
+            /> -->
+            <button class="btn-sig" (click)="isToggleModalOpen = true">
+              Agregar método de pago
             </button>
           </div>
+          <ion-modal
+            mode="ios"
+            [isOpen]="isToggleModalOpen"
+            [initialBreakpoint]="1"
+            [breakpoints]="[0, 1]"
+            (ionBackdropTap)="dismissToggleModal(true)"
+          >
+            <ng-template>
+              <div class="modal-container">
+                <div class="modal-header">
+                  <!-- <ion-icon
+                    name="close-outline"
+                    (click)="dismissToggleModal()"
+                  ></ion-icon> -->
+                  <img
+                    src="/assets/images/cross.png"
+                    alt=""
+                    class="icon-close"
+                    (click)="dismissToggleModal()"
+                  />
+                </div>
+
+                <h2 class="modal-title">Datos de Depósito</h2>
+
+                <div class="form-regla">
+                  <input
+                    type="text"
+                    class="input-pago"
+                    placeholder="Nombre del Titular"
+                    [(ngModel)]="nom_ape"
+                  />
+                </div>
+                <p class="modal-subtitle">
+                  *Debe coincidir con el nombre registrado en el banco
+                </p>
+                <hr />
+                <div class="form-regla">
+                  <select
+                    class="input-pago banco-destino"
+                    name="banco"
+                    id="banco"
+                    [(ngModel)]="banco"
+                  >
+                    <option value="" disabled selected>Banco de Destino</option>
+                    <option *ngFor="let b of banks" [value]="b.mep_id">
+                      {{ b.mep_descri }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-regla">
+                  <select class="input-pago banco-destino" [(ngModel)]="tipoCuenta">
+                    <option value="" disabled selected>Tipo de Cuenta</option>
+                    <option value="ahorro">Ahorro</option>
+                    <option value="corriente">Corriente</option>
+                  </select>
+                </div>
+
+                <div class="form-regla">
+                  <input
+                    [(ngModel)]="cta"
+                    type="number"
+                    class="input-pago"
+                    placeholder="Número de Cuenta"
+                  />
+                </div>
+
+                <div class="form-regla">
+                  <input
+                    [(ngModel)]="cci"
+                    type="number"
+                    class="input-pago"
+                    placeholder="Código Interbancario (CCI)"
+                  />
+                </div>
+
+                <div class="continue">
+                  <button
+                    class="btn-sig"
+                    [disabled]="!cta || !cci || !banco"
+                    (click)="save_method(); dismissToggleModal()"
+                  >
+                    Guardar Datos de Pago
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </ion-modal>
         </div>
       </div>
 

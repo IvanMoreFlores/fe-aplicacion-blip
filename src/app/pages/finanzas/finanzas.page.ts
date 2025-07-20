@@ -17,8 +17,9 @@ export class FinanzasPage implements OnInit {
   textareas: string[] = []; // Array para almacenar los textareas adicionales
   cci: string = '';
   cta: string = '';
-  banco: any;
+  banco: string = '';
   banks: any;
+  nom_ape: string = '';
   data_payment: any;
   data_ads: any;
   data_reserve: any;
@@ -27,14 +28,17 @@ export class FinanzasPage implements OnInit {
   total_payment: any;
   total_final: number = 0;
   fecha_format_hoy: string = '';
+  isToggleModalOpen = false;
+  tipoCuenta: string = '';
 
   constructor(
     private readonly api: ApiService,
     private readonly storage: StorageService
-  ) { }
+  ) {}
 
   getPlaceholderHeight(): string {
-    const placeholderText = "Ej. Ser puntal con las horas de reserva y salir al momento pactado"; // Cambia esto al texto real de tu placeholder
+    const placeholderText =
+      'Ej. Ser puntal con las horas de reserva y salir al momento pactado'; // Cambia esto al texto real de tu placeholder
     const placeholderHeight = placeholderText.length * 1; // Ajusta el factor según tus necesidades
     return `${placeholderHeight}px`;
   }
@@ -50,32 +54,27 @@ export class FinanzasPage implements OnInit {
 
   async getAdsData() {
     const token = await this.storage.getItem('token');
-    this.api.getAds(token).subscribe(
-      async (response: any) => {
-        this.data_ads = response.data;
-        await this.setPayment(this.data_ads);
-      }
-    )
+    this.api.getAds(token).subscribe(async (response: any) => {
+      this.data_ads = response.data;
+      await this.setPayment(this.data_ads);
+    });
   }
 
   async getReserves() {
     const token = await this.storage.getItem('token');
-    this.api.getReservations2(token).subscribe(
-      async (response: any) => {
-        this.data_reserve = response.data;
-        console.log(this.data_reserve);
-      }
-    )
-
+    this.api.getReservations2(token).subscribe(async (response: any) => {
+      this.data_reserve = response.data;
+      console.log(this.data_reserve);
+    });
   }
 
   async getFechaShow() {
     let fecha = new Date();
     const opciones: Intl.DateTimeFormatOptions = {
-      weekday: 'long',   // Día de la semana en texto largo (Lunes, Martes...)
-      day: 'numeric',    // Día del mes en número (15)
-      month: 'long',     // Mes en texto largo (Enero, Febrero...)
-      year: 'numeric',   // Año en número (2024)
+      weekday: 'long', // Día de la semana en texto largo (Lunes, Martes...)
+      day: 'numeric', // Día del mes en número (15)
+      month: 'long', // Mes en texto largo (Enero, Febrero...)
+      year: 'numeric', // Año en número (2024)
     };
 
     this.fecha_format_hoy = fecha.toLocaleDateString('es-ES', opciones);
@@ -100,66 +99,57 @@ export class FinanzasPage implements OnInit {
         alert('Solicitud Enviada');
       },
       (error: any) => {
-        alert('Error. Solicitud previamente enviada')
+        alert('Error. Solicitud previamente enviada');
       }
-    )
+    );
   }
 
   async setPayment(data: any) {
     const token = await this.storage.getItem('token');
-    this.api.getPayments(token).subscribe(
-      (response: any) => {
-        this.data_payment = response.data;
+    this.api.getPayments(token).subscribe((response: any) => {
+      this.data_payment = response.data;
 
-        const fecha_hoy = new Date();
+      const fecha_hoy = new Date();
 
-        let count = 0;
+      let count = 0;
 
-        this.data_ads.map((ad: any) => {
+      this.data_ads.map((ad: any) => {
+        let total = 0;
 
-          let total = 0;
+        this.data_payment.map((payment: any) => {
+          const fecha_pago = new Date(payment.res_fecini);
 
-          this.data_payment.map((payment: any) => {
+          const isSameDay =
+            fecha_pago.getUTCFullYear() === fecha_hoy.getUTCFullYear() &&
+            fecha_pago.getUTCMonth() === fecha_hoy.getUTCMonth() &&
+            fecha_pago.getUTCDate() === fecha_hoy.getUTCDate();
 
-            const fecha_pago = new Date(payment.res_fecini);
-
-            const isSameDay =
-              fecha_pago.getUTCFullYear() === fecha_hoy.getUTCFullYear() &&
-              fecha_pago.getUTCMonth() === fecha_hoy.getUTCMonth() &&
-              fecha_pago.getUTCDate() === fecha_hoy.getUTCDate();
-
-            if (ad.gar_id === payment.gar_id) {
-              total += parseFloat(payment.monto_total);
-            }
-
-          });
-
-          if (total > 0) {
-            count = count + 1;
-
-            this.arr_payment.push({
-              nombre: ad.gar_nombre,
-              total: total,
-              id: count
-            });
+          if (ad.gar_id === payment.gar_id) {
+            total += parseFloat(payment.monto_total);
           }
-
-          this.total_final += total;
-
         });
 
-      }
-    )
+        if (total > 0) {
+          count = count + 1;
+
+          this.arr_payment.push({
+            nombre: ad.gar_nombre,
+            total: total,
+            id: count,
+          });
+        }
+
+        this.total_final += total;
+      });
+    });
   }
 
   async getDataBank() {
     const token = await this.storage.getItem('token');
-    this.api.getBanks(token).subscribe(
-      (response: any) => {
-        const result = response.data;
-        this.banks = result.banks;
-      }
-    );
+    this.api.getBanks(token).subscribe((response: any) => {
+      const result = response.data;
+      this.banks = result.banks;
+    });
   }
 
   initSwiper() {
@@ -188,21 +178,32 @@ export class FinanzasPage implements OnInit {
     }
   }
 
+  dismissToggleModal(forceClose: boolean = false) {
+    this.isToggleModalOpen = false;
+    if (forceClose) {
+      console.log('Modal cerrado por tap en el backdrop');
+    }
+  }
 
   async save_method() {
-    const user = await this.storage.getItem('user');
-    const nom_ape = user.usu_nombre + ' ' + user.usu_apepat;
     const token = await this.storage.getItem('token');
     const data = {
-      "cba_titular": nom_ape,
-      "mep_id": this.banco,
-      "cba_numcuent": this.cta,
-      "cba_cci": this.cci
+      cba_titular: this.nom_ape,
+      mep_id: this.banco,
+      cba_numcuent: this.cta,
+      cba_tipocuenta: this.tipoCuenta,
+      cba_cci: this.cci,
     };
 
     this.api.updatePaymentMethod(token, data).subscribe({
-      next: (response) => console.log('Respuesta:', response),
-      error: (error) => console.error('Error:', error)
+      next: (response) => {
+        console.log('Respuesta:', response);
+        this.dismissToggleModal();
+      },
+      error: (error) => {
+        console.error('Error:', error);
+        alert('Hubo un error al guardar los datos.');
+      },
     });
   }
 
@@ -216,10 +217,17 @@ export class FinanzasPage implements OnInit {
       (error: any) => {
         console.log(error);
       }
-    )
+    );
   }
-
-
-
+  
+//   get isFormValid(): boolean {
+//   return (
+//     this.nom_ape.trim() !== '' &&
+//     this.banco.trim() !== '' &&
+//     this.tipoCuenta.trim() !== '' &&
+//     this.cta.trim() !== '' &&
+//     this.cci.trim() !== ''
+//   );
+// }
 
 }
