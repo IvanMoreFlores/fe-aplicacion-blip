@@ -184,20 +184,26 @@
               alt=""
               class="icon-add"
             /> -->
-            <button class="btn-sig" (click)="isToggleModalOpen = true">
+            <button
+              class="btn-sig"
+              (click)="isToggleModalOpen = true"
+              [disabled]="savedPaymentMethodo"
+            >
               Agregar método de pago
             </button>
           </div>
-          <div *ngIf="metodoPagoGuardado" class="tarjeta-pago">
+          <div *ngIf="savedPaymentMethodo" class="tarjeta-pago">
             <div class="informacion-tarjeta">
               <img
                 src="/assets/images/tash-blac.svg"
                 alt=""
                 class="icon-tarjeta"
+                (click)="deletePaymentMethod()"
               />
-              <h1>{{ metodoPagoGuardado.cba_titular }}</h1>
-              <h2>{{ metodoPagoGuardado.banco_nombre }}</h2>
-              <p>{{ metodoPagoGuardado.cba_numcuent }}</p>
+
+              <h1>{{ savedPaymentMethodo.cba_titular }}</h1>
+              <h2>{{ savedPaymentMethodo.banco_nombre }}</h2>
+              <p>{{ savedPaymentMethodo.cba_numcuent }}</p>
             </div>
           </div>
 

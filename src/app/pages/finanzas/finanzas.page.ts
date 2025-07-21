@@ -30,7 +30,7 @@ export class FinanzasPage implements OnInit {
   fecha_format_hoy: string = '';
   isToggleModalOpen = false;
   tipoCuenta: string = '';
-  metodoPagoGuardado: any = null;
+  savedPaymentMethodo: any = null;
 
   constructor(
     private readonly api: ApiService,
@@ -45,9 +45,9 @@ export class FinanzasPage implements OnInit {
   }
 
   ngOnInit() {
-    const metodoGuardado = localStorage.getItem('metodoPagoGuardado');
+    const metodoGuardado = localStorage.getItem('savedPaymentMethodo');
     if (metodoGuardado) {
-      this.metodoPagoGuardado = JSON.parse(metodoGuardado);
+      this.savedPaymentMethodo = JSON.parse(metodoGuardado);
     }
 
     this.initSwiper();
@@ -224,18 +224,18 @@ export class FinanzasPage implements OnInit {
         console.log('Respuesta del backend:', response);
 
         if (response.status === 'success') {
-          this.metodoPagoGuardado = {
+          this.savedPaymentMethodo = {
             ...data,
             cba_id: response.data?.cba_id,
             banco_nombre: this.banks.find((b: any) => b.mep_id == data.mep_id)
               ?.mep_descri,
           };
           localStorage.setItem(
-            'metodoPagoGuardado',
-            JSON.stringify(this.metodoPagoGuardado)
+            'savedPaymentMethodo',
+            JSON.stringify(this.savedPaymentMethodo)
           );
 
-          alert('Datos guardados correctamente ✅');
+          alert('Datos guardados correctamente ');
           this.dismissToggleModal();
           this.limpiarFormulario();
         }
@@ -258,5 +258,12 @@ export class FinanzasPage implements OnInit {
         console.log(error);
       }
     );
+  }
+  deletePaymentMethod() {
+    if (confirm('¿Estás seguro de eliminar el método de pago guardado?')) {
+      this.savedPaymentMethodo = null;
+      localStorage.removeItem('savedPaymentMethodo');
+      alert('Método de pago eliminado ');
+    }
   }
 }
