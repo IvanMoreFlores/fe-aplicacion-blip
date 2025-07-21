@@ -188,6 +188,19 @@
               Agregar método de pago
             </button>
           </div>
+          <div *ngIf="metodoPagoGuardado" class="tarjeta-pago">
+            <div class="informacion-tarjeta">
+              <img
+                src="/assets/images/tash-blac.svg"
+                alt=""
+                class="icon-tarjeta"
+              />
+              <h1>{{ metodoPagoGuardado.cba_titular }}</h1>
+              <h2>{{ metodoPagoGuardado.banco_nombre }}</h2>
+              <p>{{ metodoPagoGuardado.cba_numcuent }}</p>
+            </div>
+          </div>
+
           <ion-modal
             mode="ios"
             [isOpen]="isToggleModalOpen"
@@ -239,7 +252,10 @@
                 </div>
 
                 <div class="form-regla">
-                  <select class="input-pago banco-destino" [(ngModel)]="tipoCuenta">
+                  <select
+                    class="input-pago banco-destino"
+                    [(ngModel)]="tipoCuenta"
+                  >
                     <option value="" disabled selected>Tipo de Cuenta</option>
                     <option value="ahorro">Ahorro</option>
                     <option value="corriente">Corriente</option>
@@ -249,7 +265,7 @@
                 <div class="form-regla">
                   <input
                     [(ngModel)]="cta"
-                    type="number"
+                    type="text"
                     class="input-pago"
                     placeholder="Número de Cuenta"
                   />
@@ -258,7 +274,7 @@
                 <div class="form-regla">
                   <input
                     [(ngModel)]="cci"
-                    type="number"
+                    type="text"
                     class="input-pago"
                     placeholder="Código Interbancario (CCI)"
                   />
@@ -267,8 +283,8 @@
                 <div class="continue">
                   <button
                     class="btn-sig"
-                    [disabled]="!cta || !cci || !banco"
-                    (click)="save_method(); dismissToggleModal()"
+                    [disabled]="!nom_ape || !cta || !cci || !banco || !tipoCuenta"
+                    (click)="save_method()"
                   >
                     Guardar Datos de Pago
                   </button>

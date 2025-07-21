@@ -30,6 +30,7 @@ export class FinanzasPage implements OnInit {
   fecha_format_hoy: string = '';
   isToggleModalOpen = false;
   tipoCuenta: string = '';
+  metodoPagoGuardado: any = null;
 
   constructor(
     private readonly api: ApiService,
@@ -44,6 +45,11 @@ export class FinanzasPage implements OnInit {
   }
 
   ngOnInit() {
+    const metodoGuardado = localStorage.getItem('metodoPagoGuardado');
+    if (metodoGuardado) {
+      this.metodoPagoGuardado = JSON.parse(metodoGuardado);
+    }
+
     this.initSwiper();
     this.getDataBank();
     this.getAdsData();
@@ -146,9 +152,17 @@ export class FinanzasPage implements OnInit {
 
   async getDataBank() {
     const token = await this.storage.getItem('token');
-    this.api.getBanks(token).subscribe((response: any) => {
-      const result = response.data;
-      this.banks = result.banks;
+    this.api.getBanks(token).subscribe({
+      next: (response: any) => {
+        if (response.status === 'success' && response.data?.banks) {
+          this.banks = response.data.banks;
+        } else {
+          this.banks = [];
+        }
+      },
+      error: (error) => {
+        this.banks = [];
+      },
     });
   }
 
@@ -184,25 +198,51 @@ export class FinanzasPage implements OnInit {
       console.log('Modal cerrado por tap en el backdrop');
     }
   }
+  limpiarFormulario() {
+    this.nom_ape = '';
+    this.banco = '';
+    this.tipoCuenta = '';
+    this.cta = '';
+    this.cci = '';
+  }
 
   async save_method() {
     const token = await this.storage.getItem('token');
+
     const data = {
-      cba_titular: this.nom_ape,
-      mep_id: this.banco,
-      cba_numcuent: this.cta,
-      cba_tipocuenta: this.tipoCuenta,
-      cba_cci: this.cci,
+      cba_titular: (this.nom_ape || '').toString().trim(),
+      mep_id: Number(this.banco),
+      cba_numcuent: (this.cta || '').toString().trim(),
+      cba_tipocuenta: (this.tipoCuenta || '').toString().trim(),
+      cba_cci: (this.cci || '').toString().trim(),
     };
 
+    console.log('Enviando datos al backend:', data);
+
     this.api.updatePaymentMethod(token, data).subscribe({
-      next: (response) => {
-        console.log('Respuesta:', response);
-        this.dismissToggleModal();
+      next: (response: any) => {
+        console.log('Respuesta del backend:', response);
+
+        if (response.status === 'success') {
+          this.metodoPagoGuardado = {
+            ...data,
+            cba_id: response.data?.cba_id,
+            banco_nombre: this.banks.find((b: any) => b.mep_id == data.mep_id)
+              ?.mep_descri,
+          };
+          localStorage.setItem(
+            'metodoPagoGuardado',
+            JSON.stringify(this.metodoPagoGuardado)
+          );
+
+          alert('Datos guardados correctamente ✅');
+          this.dismissToggleModal();
+          this.limpiarFormulario();
+        }
       },
       error: (error) => {
-        console.error('Error:', error);
-        alert('Hubo un error al guardar los datos.');
+        console.error('Error al guardar los datos:', error);
+        alert('❌ Hubo un error al guardar los datos.');
       },
     });
   }
@@ -219,15 +259,4 @@ export class FinanzasPage implements OnInit {
       }
     );
   }
-  
-//   get isFormValid(): boolean {
-//   return (
-//     this.nom_ape.trim() !== '' &&
-//     this.banco.trim() !== '' &&
-//     this.tipoCuenta.trim() !== '' &&
-//     this.cta.trim() !== '' &&
-//     this.cci.trim() !== ''
-//   );
-// }
-
 }
