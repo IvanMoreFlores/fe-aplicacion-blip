@@ -93,7 +93,8 @@ ion-toolbar {
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 10px;
-  width: fit-content; /* Ajusta el ancho al contenido */
+
+  width: fit-content  !important
 }
 
 .swiper-wrapper button {
