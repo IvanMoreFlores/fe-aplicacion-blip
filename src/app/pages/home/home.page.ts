@@ -275,7 +275,7 @@ export class HomePage implements OnInit, OnDestroy {
 
     switch (page) {
       case 1:
-        urlNav = '/descripcion-del-espacio';
+        urlNav = '/descripcion-del-estacionamiento';
         break;
       case 2:
         urlNav = '/anuncio-caracteristicas';

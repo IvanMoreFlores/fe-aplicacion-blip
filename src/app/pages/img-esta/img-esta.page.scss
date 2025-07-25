@@ -76,6 +76,9 @@ ion-content {
   height: 23px;
   font-size: 13px;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* Asegura que el botón esté por encima de la imagen */
 }
 

@@ -155,6 +155,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/descripcion-de-direccion/descripcion-de-direccion.module').then( m => m.DescripcionDeDireccionPageModule)
   },
   {
+    path: 'descripcion-de-nombre',
+    loadChildren: () => import('./pages/descripcion-de-nombre/descripcion-nombre.module').then( m => m.DescripcionNombreModule)
+  },
+  {
     path: 'descripcion-de-servicios-adicionales',
     loadChildren: () => import('./pages/descripcion-de-servicios-adicionales/descripcion-de-servicios-adicionales.module').then( m => m.DescripcionDeServiciosAdicionalesPageModule)
   },
