@@ -13,8 +13,8 @@
           <button class="close-button" (click)="removeImage(i)">x</button>
         </div>
       </div>
-      
-      <div class="box1" id="mod-fot">
+
+      <div class="box1" id="mod-fot" (click)="onAddImageClick()">
         <div class="pad">
           <img
             src="/assets/images/add-anun.svg"
@@ -38,7 +38,12 @@
 </ion-footer>
 
 <!-- Modal exactamente igual -->
-<ion-modal trigger="mod-fot" [initialBreakpoint]="0.3" [breakpoints]="[0.3, 1]">
+<ion-modal
+  [isOpen]="showAddImageModal"
+  (didDismiss)="showAddImageModal = false"
+  [initialBreakpoint]="0.3"
+  [breakpoints]="[0.3, 1]"
+>
   <ng-template>
     <div class="block2">
       <div class="btn-cont">

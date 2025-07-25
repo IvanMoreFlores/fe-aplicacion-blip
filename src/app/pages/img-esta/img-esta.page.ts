@@ -30,6 +30,8 @@ export class ImgEstaPage implements OnInit {
   mainFiles: File[] = [];
   extraFiles: File[] = [];
   allPreviews: string[] = [];
+showAddImageModal: boolean = false;
+firstTimeAddingImage = true;
 
   constructor(
     private router: Router,
@@ -214,4 +216,14 @@ export class ImgEstaPage implements OnInit {
       },
     });
   }
+  onAddImageClick() {
+  if (this.firstTimeAddingImage) {
+    this.showAddImageModal = true;
+    this.firstTimeAddingImage = false;
+  } else {
+    // Ya mostró el modal antes, va directo a galería
+    this.selectGallery();
+  }
+}
+
 }
