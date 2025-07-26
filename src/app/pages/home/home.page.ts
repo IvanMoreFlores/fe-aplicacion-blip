@@ -58,7 +58,7 @@ export class HomePage implements OnInit, OnDestroy {
     private readonly storage: StorageService,
     private readonly api: ApiService,
     private readonly cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnDestroy() {
     // Limpiar la suscripción al destruir el componente
@@ -270,7 +270,6 @@ export class HomePage implements OnInit, OnDestroy {
   }
   // Salir de cualquier página/modal
   exit(page: number) {
-
     let urlNav = '';
 
     switch (page) {
@@ -810,5 +809,49 @@ export class HomePage implements OnInit, OnDestroy {
     this.dismissAnyModal();
     await this.router.navigate(['/adj-dt-dni']);
   }
+  doRefresh(event: any) {
+    this.isLoading = true;
 
+    // Reiniciar datos
+    this.data = null;
+    this.data_pendientes = [];
+    this.data_comienza_pronto = [];
+    this.data_encurso = [];
+    this.data_finalizado = [];
+    this.data_canceladas = [];
+
+    this.n_data = 0;
+    this.n_data_pendientes = 0;
+    this.n_data_comienza = 0;
+    this.n_data_encurso = 0;
+    this.n_data_finalizado = 0;
+    this.n_data_canceladas = 0;
+
+    Promise.all([
+      this.getUserData(),
+      this.getReservas(),
+      this.getDni(),
+      this.getBlackout(),
+      this.getAds(),
+    ])
+      .then(() => {
+        setTimeout(() => {
+          this.iniciarSwiper();
+        }, 0);
+
+        if (this.timerSubscription) {
+          this.timerSubscription.unsubscribe();
+        }
+        this.timerSubscription = interval(1000).subscribe(() => {
+          this.updateTimers();
+        });
+
+        event.target.complete();
+        this.cdr.detectChanges();
+      })
+      .catch((error) => {
+        console.error('Error en la actualización:', error);
+        event.target.complete();
+      });
+  }
 }

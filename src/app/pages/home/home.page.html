@@ -1,4 +1,5 @@
 <ion-header mode="ios">
+  
   <ion-toolbar>
     <ion-buttons slot="start">
       <img
@@ -229,6 +230,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-down-outline"
+      refreshingSpinner="circles"
+      pullingText="Desliza hacia abajo para refrescar"
+      refreshingText="Actualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="cont-hom">
     <h1 class="tl-res">Tus Reservas</h1>
     <div class="cardba-content">
