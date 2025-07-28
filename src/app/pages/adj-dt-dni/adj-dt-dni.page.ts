@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -10,49 +10,69 @@ import { Router } from '@angular/router';
   styleUrls: ['./adj-dt-dni.page.scss'],
 })
 export class AdjDtDniPage implements OnInit {
-
   dniFront: string = '';
   dniBack: string = '';
   files: File[] = [];
-  files2: File[] = []; // Para el segundo dropzone
+  files2: File[] = []; // Para el reverso del DNI
   userData: any;
   data: any;
+
+  // previews para mostrar las imágenes seleccionadas
+  allPreviewsFront: string[] = [];
+  allPreviewsBack: string[] = [];
+
+  @ViewChild('frontInput') frontInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('backInput') backInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private readonly api: ApiService,
     private readonly storage: StorageService,
     private readonly router: Router,
-  ) { }
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
-  onSelect(event: { addedFiles: File[] }) {
-    if (event.addedFiles.length) {
-      this.files = [event.addedFiles[0]]; // Solo almacena el primer archivo
+  // Métodos para abrir los inputs ocultos
+  onAddFrontClick() {
+    this.frontInput.nativeElement.click();
+  }
+
+  onAddBackClick() {
+    this.backInput.nativeElement.click();
+  }
+
+  // Maneja la selección de archivo desde el input
+  onFileSelected(event: Event, type: 'front' | 'back') {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) return;
+
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (type === 'front') {
+        this.allPreviewsFront = [reader.result as string];
+        this.files = [file]; // para enviar al backend
+      } else {
+        this.allPreviewsBack = [reader.result as string];
+        this.files2 = [file];
+      }
+    };
+    reader.readAsDataURL(file);
+    input.value = '';
+  }
+
+  // Elimina imagen de la vista y de los arrays
+  removeImage(type: 'front' | 'back') {
+    if (type === 'front') {
+      this.allPreviewsFront = [];
+      this.files = [];
+    } else {
+      this.allPreviewsBack = [];
+      this.files2 = [];
     }
   }
 
-  onSelect2(event: { addedFiles: File[] }) {
-    if (event.addedFiles.length) {
-      this.files2 = [event.addedFiles[0]]; // Solo almacena el primer archivo para el segundo dropzone
-    }
-  }
-
-  onRemove(file: File) {
-    const index = this.files.indexOf(file);
-    if (index >= 0) {
-      this.files.splice(index, 1);
-    }
-  }
-
-  onRemove2(file: File) {
-    const index = this.files2.indexOf(file);
-    if (index >= 0) {
-      this.files2.splice(index, 1);
-    }
-  }
-
-
+  // Métodos existentes (captura con cámara y envío)
   async captureImage(type: string) {
     try {
       const image = await Camera.getPhoto({
@@ -93,26 +113,25 @@ export class AdjDtDniPage implements OnInit {
       });
   }
 
-
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
 
   async sendImages() {
-    //routerLink="/descripcion-del-estacionamiento"
-    // Asegúrate de tener ambos base64 de imágenes antes de enviar
-
-    if (this.files && this.files2) {
+    if (this.files.length && this.files2.length) {
       console.log(this.files[0]);
       console.log(this.files2[0]);
-      const token = await this.storage.getItem('token');  // Obtén tu token de autenticación correctamente
+      const token = await this.storage.getItem('token');
       this.api.sendDniFiles(token, this.files[0], this.files2[0]).subscribe(
         async (response) => {
           console.log('Imágenes enviadas exitosamente', response);
           await this.updateData();
-          // Manejar la respuesta del servidor aquí
           this.router.navigate(['/tab-home/home']);
         },
         (error) => {
           console.error('Error al enviar las imágenes', error);
-          // Manejar errores de la solicitud aquí
         }
       );
     } else {
@@ -120,7 +139,7 @@ export class AdjDtDniPage implements OnInit {
     }
   }
 
-    async updateData() {
+  async updateData() {
     const token = await this.storage.getItem('token');
     this.api.getInformation(token).subscribe(
       (response: any) => {
@@ -130,6 +149,4 @@ export class AdjDtDniPage implements OnInit {
       }
     )
   }
-
 }
-
