@@ -1285,61 +1285,6 @@
                   value="domingo"
                 />
               </div>
-              <!-- <div class="checkbox-column">
-                <label for="domingo">
-                  <input *ngIf="chck_dom === true" type="checkbox" checked (change)="checkDia($event, 7)" id="domingo"
-                    name="diasSemana" value="domingo" class="checkbox-round2" />
-                  <input *ngIf="chck_dom === false" type="checkbox" (change)="checkDia($event, 7)" id="domingo"
-                    name="diasSemana" value="domingo" class="checkbox-round2" />
-                  Domingo
-                </label>
-                <label for="lunes">
-                  <input *ngIf="chck_lun === true" type="checkbox" checked (change)="checkDia($event, 1)" id="lunes"
-                    name="diasSemana" value="lunes" class="checkbox-round2" />
-                  <input *ngIf="chck_lun === false" type="checkbox" (change)="checkDia($event, 1)" id="lunes"
-                    name="diasSemana" value="lunes" class="checkbox-round2" />
-                  Lunes
-                </label>
-                <label for="martes">
-                  <input *ngIf="chck_mar === true" type="checkbox" checked (change)="checkDia($event, 2)" id="martes"
-                    name="diasSemana" value="martes" class="checkbox-round2" />
-                  <input *ngIf="chck_mar === false" type="checkbox" (change)="checkDia($event, 2)" id="martes"
-                    name="diasSemana" value="martes" class="checkbox-round2" />
-                  Martes
-                </label>
-              </div>
-              <div class="checkbox-column">
-                <label for="miercoles">
-                  <input *ngIf="chck_mie === true" type="checkbox" checked (change)="checkDia($event, 3)" id="miercoles"
-                    name="diasSemana" value="miercoles" class="checkbox-round2" />
-                  <input *ngIf="chck_mie === false" type="checkbox" (change)="checkDia($event, 3)" id="miercoles"
-                    name="diasSemana" value="miercoles" class="checkbox-round2" />
-                  Miércoles
-                </label>
-                <label for="jueves">
-                  <input *ngIf="chck_jue === true" type="checkbox" checked (change)="checkDia($event, 4)" id="jueves"
-                    name="diasSemana" value="jueves" class="checkbox-round2" />
-                  <input *ngIf="chck_jue === false" type="checkbox" (change)="checkDia($event, 4)" id="jueves"
-                    name="diasSemana" value="jueves" class="checkbox-round2" />
-                  Jueves
-                </label>
-                <label for="viernes">
-                  <input *ngIf="chck_vie === true" type="checkbox" checked (change)="checkDia($event, 5)" id="viernes"
-                    name="diasSemana" value="viernes" class="checkbox-round2" />
-                  <input *ngIf="chck_vie === false" type="checkbox" (change)="checkDia($event, 5)" id="viernes"
-                    name="diasSemana" value="viernes" class="checkbox-round2" />
-                  Viernes
-                </label>
-              </div>
-              <div class="checkbox-column">
-                <label for="sabado">
-                  <input *ngIf="chck_vie === true" type="checkbox" checked (change)="checkDia($event, 5)" id="sabado"
-                    name="diasSemana" value="Viernes" class="checkbox-round2" />
-                  <input *ngIf="chck_vie === false" type="checkbox" (change)="checkDia($event, 5)" id="sabado"
-                    name="diasSemana" value="sabado" class="checkbox-round2" />
-                  Sábado
-                </label>
-              </div> -->
             </form>
           </div>
           <ion-item>
@@ -1411,6 +1356,12 @@
               </ion-modal>
             </div>
           </div>
+        </div>
+        <div class="bnt-dow">
+          <default-custom-button
+            [text]="'Guardar'"
+            (click)="sendUpdateDias()"
+          ></default-custom-button>
         </div>
       </div>
 
