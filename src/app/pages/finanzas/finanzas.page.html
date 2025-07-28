@@ -89,8 +89,12 @@
         <div class="ingreso-final">
           <div>
             <h1>S/. {{ total_final }}</h1>
-
             <h3>Balance Actual</h3>
+
+            <h4 *ngIf="total_final >= 50">
+              Después de comisión (10%): S/. {{ (total_final * 0.9) | number :
+              '1.2-2' }}
+            </h4>
 
             <div class="deposito-pago">
               <h2>

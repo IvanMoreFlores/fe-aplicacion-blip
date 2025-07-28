@@ -99,10 +99,30 @@ export class FinanzasPage implements OnInit {
   }
 
   async reqPayment() {
+    if (this.total_final < 50) {
+      alert('El monto mínimo para solicitar un retiro es de S/.50.00');
+      return;
+    }
+    const montoDeposito = this.total_final * 0.9;
+
+    const confirmar = confirm(
+      `Se descontará el 10% por comisión. Monto a depositar: S/.${montoDeposito.toFixed(
+        2
+      )}. ¿Deseas continuar?`
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
     const token = await this.storage.getItem('token');
     this.api.reqPayment(token).subscribe(
       (response: any) => {
-        alert('Solicitud Enviada');
+        alert(
+          `Solicitud enviada correctamente. Se depositará S/.${montoDeposito.toFixed(
+            2
+          )}`
+        );
       },
       (error: any) => {
         alert('Error. Solicitud previamente enviada');
@@ -114,30 +134,22 @@ export class FinanzasPage implements OnInit {
     const token = await this.storage.getItem('token');
     this.api.getPayments(token).subscribe((response: any) => {
       this.data_payment = response.data;
-
       const fecha_hoy = new Date();
-
       let count = 0;
+      this.total_final = 0;
+      this.arr_payment = [];
 
       this.data_ads.map((ad: any) => {
         let total = 0;
 
         this.data_payment.map((payment: any) => {
-          const fecha_pago = new Date(payment.res_fecini);
-
-          const isSameDay =
-            fecha_pago.getUTCFullYear() === fecha_hoy.getUTCFullYear() &&
-            fecha_pago.getUTCMonth() === fecha_hoy.getUTCMonth() &&
-            fecha_pago.getUTCDate() === fecha_hoy.getUTCDate();
-
           if (ad.gar_id === payment.gar_id) {
             total += parseFloat(payment.monto_total);
           }
         });
 
         if (total > 0) {
-          count = count + 1;
-
+          count++;
           this.arr_payment.push({
             nombre: ad.gar_nombre,
             total: total,
