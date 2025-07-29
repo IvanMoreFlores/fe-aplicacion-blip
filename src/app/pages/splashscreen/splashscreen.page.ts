@@ -12,7 +12,6 @@ import { JwtService } from '../../services/jwt.service';
   styleUrls: ['./splashscreen.page.scss'],
 })
 export class SplashscreenPage implements OnInit {
-
   constructor(
     private router: Router,
     private storageService: StorageService,
@@ -21,7 +20,7 @@ export class SplashscreenPage implements OnInit {
     if (Capacitor.getPlatform() !== 'web') {
       StatusBar.setStyle({ style: Style.Light });
       StatusBar.setOverlaysWebView({ overlay: true });
-      StatusBar.setBackgroundColor({ color: "#79FFAF" });
+      StatusBar.setBackgroundColor({ color: '#79FFAF' });
       NavigationBar.setNavigationBarColor({ color: '#79FFAF' });
     }
   }
@@ -29,8 +28,12 @@ export class SplashscreenPage implements OnInit {
   ngOnInit() {
     //this.init_value();
     const btnPlay = document.getElementById('btnPlay') as HTMLButtonElement;
-    const animationCircle = document.getElementById('animated-circle') as HTMLDivElement;
-    const animationLogo = document.getElementById('animated-logo') as HTMLImageElement;
+    const animationCircle = document.getElementById(
+      'animated-circle'
+    ) as HTMLDivElement;
+    const animationLogo = document.getElementById(
+      'animated-logo'
+    ) as HTMLImageElement;
 
     setTimeout(() => {
       animationCircle.classList.add('run');
@@ -44,8 +47,8 @@ export class SplashscreenPage implements OnInit {
 
   async init_value() {
     const valor = await this.storageService.getItem('welcome');
-    if (valor === true) {
 
+    if (valor === true) {
       const token = await this.storageService.getItem('token');
 
       if (token !== null) {
@@ -56,16 +59,15 @@ export class SplashscreenPage implements OnInit {
         const isLogged = result?.isLogged;
 
         if (isLogged === true) {
-          this.router.navigate(['/lds']);
+          this.router.navigate(['/lds'], { replaceUrl: true });
         } else {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/login'], { replaceUrl: true });
         }
-      }else{
-        this.router.navigate(['/login']);
+      } else {
+        this.router.navigate(['/login'], { replaceUrl: true });
       }
-
     } else {
-      this.router.navigate(['/walkthrough']);
+      this.router.navigate(['/walkthrough'], { replaceUrl: true });
     }
   }
 
