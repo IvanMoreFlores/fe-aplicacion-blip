@@ -407,7 +407,11 @@ const routes: Routes = [
 {
   path:'app-descripcion-espacio',
   loadChildren: () => import('./pages/crear-anuncio-descripcion-espacio/descripcion-espacio.module').then( m => m.DescripcionEspacioModule)
-}
+},  {
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  }
+
 
 
 

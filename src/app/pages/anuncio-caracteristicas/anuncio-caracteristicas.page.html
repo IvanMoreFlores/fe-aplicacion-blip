@@ -1093,200 +1093,129 @@
             Los usuarios no podrán reservar tu cochera en los siguientes días:
           </p>
 
-          <div class="checkbox-semana">
-            <form class="clearfix">
-              <!-- Columna 1 -->
-              <div class="input-bar2">
-                <div class="ing2">
-                  <img src="/assets/images/fi-sr-calendar.svg" alt="" />
-                  <h1>Lunes</h1>
-                </div>
-                <input
-                  *ngIf="chck_lun === true"
-                  checked
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 1)"
-                  class="custom-checkbox"
-                  id="lunes"
-                  name="diasSemana"
-                  value="lunes"
-                />
-                <input
-                  *ngIf="chck_lun === false"
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 1)"
-                  class="custom-checkbox"
-                  id="lunes"
-                  name="diasSemana"
-                  value="lunes"
-                />
-              </div>
-              <div class="input-bar2">
-                <div class="ing2">
-                  <img src="/assets/images/fi-sr-calendar.svg" alt="" />
-                  <h1>Martes</h1>
-                </div>
-                <input
-                  *ngIf="chck_mar === true"
-                  checked
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 2)"
-                  class="custom-checkbox"
-                  id="martes"
-                  name="diasSemana"
-                  value="martes"
-                />
-                <input
-                  *ngIf="chck_mar === false"
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 2)"
-                  class="custom-checkbox"
-                  id="martes"
-                  name="diasSemana"
-                  value="martes"
-                />
-              </div>
-              <div class="input-bar2">
-                <div class="ing2">
-                  <img src="/assets/images/fi-sr-calendar.svg" alt="" />
-                  <h1>Miercoles</h1>
-                </div>
-                <input
-                  *ngIf="chck_mie === true"
-                  checked
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 3)"
-                  class="custom-checkbox"
-                  id="miercoles"
-                  name="diasSemana"
-                  value="miercoles"
-                />
-                <input
-                  *ngIf="chck_mie === false"
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 3)"
-                  class="custom-checkbox"
-                  id="miercoles"
-                  name="diasSemana"
-                  value="miercoles"
-                />
-              </div>
-              <div class="input-bar2">
-                <div class="ing2">
-                  <img src="/assets/images/fi-sr-calendar.svg" alt="" />
-                  <h1>Jueves</h1>
-                </div>
-                <input
-                  *ngIf="chck_jue === true"
-                  checked
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 4)"
-                  class="custom-checkbox"
-                  id="jueves"
-                  name="diasSemana"
-                  value="jueves"
-                />
-                <input
-                  *ngIf="chck_jue === false"
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 4)"
-                  class="custom-checkbox"
-                  id="jueves"
-                  name="diasSemana"
-                  value="jueves"
-                />
-              </div>
-              <div class="input-bar2">
-                <div class="ing2">
-                  <img src="/assets/images/fi-sr-calendar.svg" alt="" />
-                  <h1>Viernes</h1>
-                </div>
-                <input
-                  *ngIf="chck_vie === true"
-                  checked
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 5)"
-                  class="custom-checkbox"
-                  id="viernes"
-                  name="diasSemana"
-                  value="viernes"
-                />
-                <input
-                  *ngIf="chck_vie === false"
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 5)"
-                  class="custom-checkbox"
-                  id="viernes"
-                  name="diasSemana"
-                  value="viernes"
-                />
-              </div>
-              <div class="input-bar2">
-                <div class="ing2">
-                  <img src="/assets/images/fi-sr-calendar.svg" alt="" />
-                  <h1>Sabado</h1>
-                </div>
-                <input
-                  *ngIf="chck_sab === true"
-                  checked
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 6)"
-                  class="custom-checkbox"
-                  id="sabado"
-                  name="diasSemana"
-                  value="sabado"
-                />
-                <input
-                  *ngIf="chck_sab === false"
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 6)"
-                  class="custom-checkbox"
-                  id="sabado"
-                  name="diasSemana"
-                  value="sabado"
-                />
-              </div>
-              <div class="input-bar2">
-                <div class="ing2">
-                  <img src="/assets/images/fi-sr-calendar.svg" alt="" />
-                  <h1>Domingo</h1>
-                </div>
-                <input
-                  *ngIf="chck_dom === true"
-                  checked
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 7)"
-                  class="custom-checkbox"
-                  id="domingo"
-                  name="diasSemana"
-                  value="domingo"
-                />
-                <input
-                  *ngIf="chck_dom === false"
-                  type="checkbox"
-                  #checkbox1
-                  (change)="checkDia($event, 7)"
-                  class="custom-checkbox"
-                  id="domingo"
-                  name="diasSemana"
-                  value="domingo"
-                />
-              </div>
-            </form>
-          </div>
+         <div class="checkbox-semana">
+  <form class="clearfix">
+    <!-- Lunes -->
+    <div class="input-bar2">
+      <div class="ing2">
+        <img src="/assets/images/fi-sr-calendar.svg" alt="" />
+        <h1>Lunes</h1>
+      </div>
+      <input
+        type="checkbox"
+        class="custom-checkbox"
+        id="lunes"
+        name="diasSemana"
+        value="lunes"
+        [checked]="chck_lun"
+        (change)="checkDia($event, 1)"
+      />
+    </div>
+
+    <!-- Martes -->
+    <div class="input-bar2">
+      <div class="ing2">
+        <img src="/assets/images/fi-sr-calendar.svg" alt="" />
+        <h1>Martes</h1>
+      </div>
+      <input
+        type="checkbox"
+        class="custom-checkbox"
+        id="martes"
+        name="diasSemana"
+        value="martes"
+        [checked]="chck_mar"
+        (change)="checkDia($event, 2)"
+      />
+    </div>
+
+    <!-- Miércoles -->
+    <div class="input-bar2">
+      <div class="ing2">
+        <img src="/assets/images/fi-sr-calendar.svg" alt="" />
+        <h1>Miércoles</h1>
+      </div>
+      <input
+        type="checkbox"
+        class="custom-checkbox"
+        id="miercoles"
+        name="diasSemana"
+        value="miercoles"
+        [checked]="chck_mie"
+        (change)="checkDia($event, 3)"
+      />
+    </div>
+
+    <!-- Jueves -->
+    <div class="input-bar2">
+      <div class="ing2">
+        <img src="/assets/images/fi-sr-calendar.svg" alt="" />
+        <h1>Jueves</h1>
+      </div>
+      <input
+        type="checkbox"
+        class="custom-checkbox"
+        id="jueves"
+        name="diasSemana"
+        value="jueves"
+        [checked]="chck_jue"
+        (change)="checkDia($event, 4)"
+      />
+    </div>
+
+    <!-- Viernes -->
+    <div class="input-bar2">
+      <div class="ing2">
+        <img src="/assets/images/fi-sr-calendar.svg" alt="" />
+        <h1>Viernes</h1>
+      </div>
+      <input
+        type="checkbox"
+        class="custom-checkbox"
+        id="viernes"
+        name="diasSemana"
+        value="viernes"
+        [checked]="chck_vie"
+        (change)="checkDia($event, 5)"
+      />
+    </div>
+
+    <!-- Sábado -->
+    <div class="input-bar2">
+      <div class="ing2">
+        <img src="/assets/images/fi-sr-calendar.svg" alt="" />
+        <h1>Sábado</h1>
+      </div>
+      <input
+        type="checkbox"
+        class="custom-checkbox"
+        id="sabado"
+        name="diasSemana"
+        value="sabado"
+        [checked]="chck_sab"
+        (change)="checkDia($event, 6)"
+      />
+    </div>
+
+    <!-- Domingo -->
+    <div class="input-bar2">
+      <div class="ing2">
+        <img src="/assets/images/fi-sr-calendar.svg" alt="" />
+        <h1>Domingo</h1>
+      </div>
+      <input
+        type="checkbox"
+        class="custom-checkbox"
+        id="domingo"
+        name="diasSemana"
+        value="domingo"
+        [checked]="chck_dom"
+        (change)="checkDia($event, 7)"
+      />
+    </div>
+  </form>
+</div>
+
           <ion-item>
             <ion-toggle
               justify="space-between"
