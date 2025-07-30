@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { JwtService } from 'src/app/services/jwt.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { SmsService } from 'src/app/services/sms.service';
-import { Keyboard } from '@capacitor/keyboard';
 import { ToastController } from '@ionic/angular';
 import { ApiLoginService } from 'src/app/services/api-login.service';
 
@@ -34,7 +33,6 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    Keyboard.removeAllListeners();
   }
 
   async init_value() {

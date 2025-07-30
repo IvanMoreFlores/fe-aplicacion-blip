@@ -46,28 +46,37 @@ export class SplashscreenPage implements OnInit {
   }
 
   async init_value() {
-    const valor = await this.storageService.getItem('welcome');
+    const welcome = await this.storageService.getItem('welcome');
 
-    if (valor === true) {
-      const token = await this.storageService.getItem('token');
+    if (!welcome) {
+      this.router.navigate(['/walkthrough'], { replaceUrl: true });
+      return;
+    }
 
-      if (token !== null) {
-        console.log('token desde el Storage:', token);
-        console.log('descifrado del token');
-        const result: any = await this.jwtService.verifyToken(token);
-        console.log(result);
-        const isLogged = result?.isLogged;
+    const token = await this.storageService.getItem('token');
 
-        if (isLogged === true) {
-          this.router.navigate(['/lds'], { replaceUrl: true });
-        } else {
-          this.router.navigate(['/login'], { replaceUrl: true });
-        }
+    if (!token) {
+      this.router.navigate(['/login'], { replaceUrl: true });
+      return;
+    }
+
+    try {
+      const result: any = await this.jwtService.verifyToken(token);
+      const isLogged = result?.isLogged === true;
+
+      if (isLogged) {
+        this.router.navigate(['/lds'], { replaceUrl: true });
       } else {
+        await this.storageService.removeItem('token');
+        await this.storageService.removeItem('refreshToken');
+        await this.storageService.removeItem('user');
         this.router.navigate(['/login'], { replaceUrl: true });
       }
-    } else {
-      this.router.navigate(['/walkthrough'], { replaceUrl: true });
+    } catch (err) {
+      await this.storageService.removeItem('token');
+      await this.storageService.removeItem('refreshToken');
+      await this.storageService.removeItem('user');
+      this.router.navigate(['/login'], { replaceUrl: true });
     }
   }
 
