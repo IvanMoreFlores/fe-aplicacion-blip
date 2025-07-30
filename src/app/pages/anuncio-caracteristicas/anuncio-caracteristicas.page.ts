@@ -195,22 +195,27 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     const hours = fecha_date.getHours().toString().padStart(2, '0');
     const minutes = fecha_date.getMinutes().toString().padStart(2, '0');
     const result = `${hours}:${minutes}`;
+    const token = await this.storage.getItem('token');
+    const formData = new FormData();
+    formData.append(type === 1 ? 'rga_hora_inicio' : 'rga_hora_fin', result);
+    formData.append('gar_id', this.mainAd.gar_id);
 
-    // Si el usuario modifica la hora manualmente, desactiva el toggle
-    this.chck_hora = false;
-
-    if (type === 1) {
-      this.hora_init = result;
-    } else {
-      this.hora_end = result;
-    }
+    this.api.updateAd(token, formData).subscribe(
+      (response: any) => {
+        console.log('Horario actualizado:', response);
+        this.updateContent(); // recargar todo
+      },
+      (error: any) => {
+        alert('Hubo un error: ' + error.message);
+      }
+    );
   }
 
   async onNumberInputChange() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
     let pag_monto = '';
-    pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"tip_id":2,"pag_monto":${this.precio_dia}}]`;
+    pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"pag_monto":${this.precio_dia}}]`;
     formData.append('pag_monto', pag_monto);
     formData.append('gar_id', this.mainAd.gar_id);
     this.api.updateAd(token, formData).subscribe(
@@ -293,21 +298,14 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       }
 
       if (restrict.rga_tipo === 2) {
-        // Horarios
         this.hora_init = restrict.rga_horainicio;
         this.hora_end = restrict.rga_horafin;
+
+        this.chck_hora = !(
+          this.hora_init === '10:00:00' && this.hora_end === '17:00:00'
+        );
       }
     });
-
-    // --- Ajustar toggle según horario actual ---
-    // Si el horario sigue siendo el predeterminado
-    if (this.hora_init === '10:00:00' && this.hora_end === '17:00:00') {
-      // Solo dejamos activo el toggle si estaba guardado así en el storage
-      this.chck_hora = savedToggle === 'true';
-    } else {
-      // Si el horario es manual, el toggle debe estar desactivado
-      this.chck_hora = false;
-    }
   }
 
   convertToISO(time: string): string {
@@ -320,55 +318,48 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     // Convierte la fecha a formato ISO con los segundos (YYYY-MM-DDTHH:mm:00)
     return currentDate.toISOString().split('.')[0]; // Retorna en formato YYYY-MM-DDTHH:mm:ss
   }
-  checkDia(event: Event, num: number) {
+  async checkDia(event: Event, num: number) {
     const checkbox = event.target as HTMLInputElement;
     const isChecked = checkbox.checked;
-
-    // Modificamos solo el estado local
-    switch (num) {
-      case 1:
-        this.chck_lun = isChecked;
-        break;
-      case 2:
-        this.chck_mar = isChecked;
-        break;
-      case 3:
-        this.chck_mie = isChecked;
-        break;
-      case 4:
-        this.chck_jue = isChecked;
-        break;
-      case 5:
-        this.chck_vie = isChecked;
-        break;
-      case 6:
-        this.chck_sab = isChecked;
-        break;
-      case 7:
-        this.chck_dom = isChecked;
-        break;
+    const token = await this.storage.getItem('token');
+    const formData = new FormData();
+    if (isChecked) {
+      formData.append('rga_dia_a', num.toString());
+    } else {
+      formData.append('rga_dia_d', num.toString());
     }
+    formData.append('gar_id', this.mainAd.gar_id);
+
+    this.api.updateAd(token, formData).subscribe(
+      (response: any) => {
+        console.log('Día actualizado:', response);
+        // NO uses response.data aquí. Siempre recarga los datos:
+        this.updateContent();
+      },
+      (error: any) => {
+        alert('Hubo un error: ' + error.message);
+      }
+    );
   }
 
   async sendUpdateDias() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
-
     await this.storage.setItem('chck_hora', String(this.chck_hora));
-    if (this.chck_lun) formData.append('rga_dia_a[]', '1');
-    if (this.chck_mar) formData.append('rga_dia_a[]', '2');
-    if (this.chck_mie) formData.append('rga_dia_a[]', '3');
-    if (this.chck_jue) formData.append('rga_dia_a[]', '4');
-    if (this.chck_vie) formData.append('rga_dia_a[]', '5');
-    if (this.chck_sab) formData.append('rga_dia_a[]', '6');
-    if (this.chck_dom) formData.append('rga_dia_a[]', '7');
+    if (this.chck_lun) formData.append('rga_dia_a', '1');
+    if (this.chck_mar) formData.append('rga_dia_a', '2');
+    if (this.chck_mie) formData.append('rga_dia_a', '3');
+    if (this.chck_jue) formData.append('rga_dia_a', '4');
+    if (this.chck_vie) formData.append('rga_dia_a', '5');
+    if (this.chck_sab) formData.append('rga_dia_a', '6');
+    if (this.chck_dom) formData.append('rga_dia_a', '7');
 
     if (this.chck_hora) {
-      formData.append('rga_hora_inicio', '10:00');
-      formData.append('rga_hora_fin', '17:00');
-    } else {
       formData.append('rga_hora_inicio', this.hora_init || '10:00');
       formData.append('rga_hora_fin', this.hora_end || '17:00');
+    } else {
+      formData.append('rga_hora_inicio', '10:00');
+      formData.append('rga_hora_fin', '17:00');
     }
 
     formData.append('gar_id', this.mainAd.gar_id);
@@ -651,10 +642,10 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     } else if (this.selectedIndex === 2) {
       dimensionValue = '3';
     }
+    formData.append('gar_largo', this.gar_largo);
+    formData.append('gar_ancho', this.gar_ancho);
+    formData.append('gar_alto', this.gar_alto);
 
-    formData.append('gar_largo', dimensionValue);
-    formData.append('gar_ancho', dimensionValue);
-    formData.append('gar_alto', dimensionValue);
     formData.append('gar_id', this.mainAd.gar_id);
 
     this.api.updateAd(token, formData).subscribe(
@@ -705,7 +696,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
     if (this.chck_pref1 == true) {
-      formData.append('tve_id[] ', '1');
+      formData.append('tve_id[]', '1');
     }
     if (this.chck_pref2 == true) {
       formData.append('tve_id[]', '2');
