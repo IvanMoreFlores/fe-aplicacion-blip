@@ -35,7 +35,7 @@ export class RegistroPage implements OnInit, OnDestroy {
   buttonClassPassword: string = 'secondary-button';
   isLoading: boolean = false;
 
-  private isCodeValid: boolean = false; 
+  private isCodeValid: boolean = false;
 
   constructor(
     private router: Router,
@@ -65,6 +65,13 @@ export class RegistroPage implements OnInit, OnDestroy {
   }
 
   handleNavigateTo(route: string) {
+    if (route === '/login') {
+      this.storageService.removeItem('token');
+      this.storageService.removeItem('refreshToken');
+      this.storageService.removeItem('user');
+      this.isCodeValid = false;
+    }
+
     if (route) {
       this.router.navigate([route]);
     }
@@ -141,7 +148,7 @@ export class RegistroPage implements OnInit, OnDestroy {
           try {
             const user = await this.getUserData(token);
             await this.saveDataStorage('user', user);
-            this.isCodeValid = true; 
+            this.isCodeValid = true;
             this.isLoading = false;
             this.showToast(
               'Código verificado correctamente. Pulsa Siguiente para continuar.'
