@@ -10,27 +10,20 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  private checkingSession = false;
+
   constructor(
     private storageService: StorageService,
     private router: Router,
     private authService: AuthService
   ) {
-    Keyboard.setResizeMode({
-      mode: KeyboardResize.Native,
-    });
-
-    Keyboard.addListener('keyboardWillShow', () => {
-      document.body.classList.add('keyboard-open');
-    });
-
-    Keyboard.addListener('keyboardWillHide', () => {
-      document.body.classList.remove('keyboard-open');
-    });
-
     this.checkSession();
   }
 
   async checkSession() {
+    if (this.checkingSession) return; 
+    this.checkingSession = true;
+
     const token = await this.authService.ensureValidToken();
 
     if (token) {
@@ -44,5 +37,8 @@ export class AppComponent {
     } else {
       this.router.navigate(['/login'], { replaceUrl: true });
     }
+
+    this.checkingSession = false;
   }
 }
+
