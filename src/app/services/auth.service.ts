@@ -36,7 +36,7 @@ export class AuthService {
         error: async (err) => {
           console.error('Refresh token inválido:', err);
           await this.storage.clear();
-          reject(null);
+          resolve(null);
         },
       });
     });
