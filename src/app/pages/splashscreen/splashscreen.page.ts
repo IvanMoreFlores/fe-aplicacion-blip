@@ -41,58 +41,39 @@ export class SplashscreenPage implements OnInit {
       setTimeout(() => {
         animationLogo.style.display = 'block';
         this.playCarlock();
-      }, 1000); // Tiempo para mostrar la animación antes de reproducir el sonido
+      }, 1000); 
     }, 20);
   }
 
-  async init_value() {
-    const welcome = await this.storageService.getItem('welcome');
-
-    if (!welcome) {
-      this.router.navigate(['/walkthrough'], { replaceUrl: true });
-      return;
-    }
-
-    const token = await this.storageService.getItem('token');
-
-    if (!token) {
-      this.router.navigate(['/login'], { replaceUrl: true });
-      return;
-    }
-
-    try {
-      const result: any = await this.jwtService.verifyToken(token);
-      const isLogged = result?.isLogged === true;
-
-      if (isLogged) {
-        this.router.navigate(['/lds'], { replaceUrl: true });
-      } else {
-        await this.storageService.removeItem('token');
-        await this.storageService.removeItem('refreshToken');
-        await this.storageService.removeItem('user');
-        this.router.navigate(['/login'], { replaceUrl: true });
-      }
-    } catch (err) {
-      await this.storageService.removeItem('token');
-      await this.storageService.removeItem('refreshToken');
-      await this.storageService.removeItem('user');
-      this.router.navigate(['/login'], { replaceUrl: true });
-    }
+ async init_value() {
+  const welcome = await this.storageService.getItem('welcome');
+  if (!welcome) {
+    this.router.navigate(['/walkthrough'], { replaceUrl: true });
+    return;
   }
+
+  const token = await this.storageService.getItem('token');
+
+  if (token) {
+    this.router.navigate(['/lds'], { replaceUrl: true });
+    return;
+  }
+
+  this.router.navigate(['/login'], { replaceUrl: true });
+}
+
 
   playCarlock() {
     const carlock = document.getElementById('carlock') as HTMLAudioElement;
     carlock.play();
     carlock.onended = () => {
-      // Retrasar la redirección para asegurarse de que todo se haya completado
       setTimeout(() => {
         this.init_value();
-      }, 500); // Retraso en milisegundos (ajustar según sea necesario)
+      }, 500); 
     };
   }
 
   onSoundEnded() {
-    // Redirigir a la página deseada después de que el sonido termine
     this.router.navigate(['/walkthrough']);
   }
 }
