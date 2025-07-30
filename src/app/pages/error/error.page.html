@@ -1,0 +1,10 @@
+<app-error-page [type]="errorType" [statusCode]="errorCode"></app-error-page>
+
+<ion-footer class="footer-btn" mode="md" *ngIf="showButton">
+  <div class="bnt-dow">
+    <default-custom-button
+      [text]="buttonText"
+      (click)="onButtonClick()"
+    ></default-custom-button>
+  </div>
+</ion-footer>

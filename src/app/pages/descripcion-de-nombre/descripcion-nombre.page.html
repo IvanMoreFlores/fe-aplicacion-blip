@@ -1,0 +1,31 @@
+<header-component
+  [withArrowLeft]="true"
+  [route]="'/descripcion-del-estacionamiento'"
+  (navigateTo)="handleNavigateTo($event)"
+></header-component>
+
+<ion-content>
+  <div class="container">
+    <h1>¿Dale un nombre atractivo a tu anuncio?</h1>
+    <p>
+      Elige un nombre claro y llamativo para tu cochera. Usa palabras clave que
+      ayuden a los conductores a identificarla fácilmente.
+    </p>
+    <default-input
+      [(valueInput)]="gar_nombre"
+      [type]="'text'"
+      [placeholder]="'Nombre del anuncio'"
+      [class]="'secundary-input'"
+      [withImgRight]="false"
+    ></default-input>
+  </div>
+</ion-content>
+
+<ion-footer class="footer-btn" mode="md">
+  <div class="bnt-dow">
+    <default-custom-button
+      [text]="'Siguiente'"
+      (click)="nextPage()"
+    ></default-custom-button>
+  </div>
+</ion-footer>

@@ -1,16 +1,29 @@
-<header-component [withArrowLeft]="true" [route]="'/login'" (navigateTo)="handleNavigateTo($event)"></header-component>
+<header-component
+  [withArrowLeft]="true"
+  [route]="'/login'"
+  (navigateTo)="handleNavigateTo($event)"
+></header-component>
 <ion-content>
   <div class="container">
     <h2>Ingresa tu correo electrónico</h2>
-    <default-input [(valueInput)]="email" (valueInputChange)="onEmailChange()" [type]="'email'"
-      [placeholder]="'nombre@ejemplo.com'" [pattern]="'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'"
-      [class]="'secundary-input'" [withImgRight]="false"></default-input>
-  </div>
-</ion-content>
-<ion-footer class="footer-btn" mode="md">
+    <default-input
+      [(valueInput)]="email"
+      (valueInputChange)="onEmailChange()"
+      [type]="'email'"
+      [placeholder]="'nombre@ejemplo.com'"
+      [pattern]="'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'"
+      [class]="'secundary-input'"
+      [withImgRight]="false"
+    ></default-input>
+  </div> </ion-content
+><ion-footer class="footer-btn" mode="md">
   <div class="bnt-dow">
-    <default-custom-button [text]="'Siguiente'" [disabled]="!isEmailValid"
-      (click)="goToDisplayPage()"></default-custom-button>
+    <default-custom-button
+      [text]="'Siguiente'"
+      [disabled]="!isEmailValid || isLoading"
+      (click)="goToDisplayPage()"
+    >
+    </default-custom-button>
   </div>
 </ion-footer>
 <app-loader *ngIf="isLoading"></app-loader>

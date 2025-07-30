@@ -2,43 +2,46 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
-
-  private _storage: Storage | null = null; 
+  private _storage: Storage | null = null;
+  private _initPromise: Promise<void>;
 
   constructor(private storage: Storage) {
-    this.init();
+    this._initPromise = this.init();
   }
 
-  
-
-  // Inicializar el Storage sin borrar los datos existentes
-  async init() {
-    if (this._storage === null) {  // Verifica si el almacenamiento ya ha sido inicializado
+  private async init() {
+    if (!this._storage) {
       this._storage = await this.storage.create();
-      console.log('crea almacenamiento')
+      console.log('Storage inicializado');
     }
   }
 
-  // Guardar un valor
+  private async ready() {
+    if (!this._storage) {
+      await this._initPromise;
+    }
+  }
+
   async setItem(key: string, value: any): Promise<void> {
+    await this.ready();
     await this._storage?.set(key, value);
   }
 
-  // Obtener un valor
   async getItem(key: string): Promise<any> {
+    await this.ready();
     return await this._storage?.get(key);
   }
 
-  // Eliminar un valor
   async removeItem(key: string): Promise<void> {
+    await this.ready();
     await this._storage?.remove(key);
   }
 
-  // Limpiar el Storage
   async clear(): Promise<void> {
+    await this.ready();
     await this._storage?.clear();
   }
 }

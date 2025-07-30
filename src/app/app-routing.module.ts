@@ -155,6 +155,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/descripcion-de-direccion/descripcion-de-direccion.module').then( m => m.DescripcionDeDireccionPageModule)
   },
   {
+    path: 'descripcion-de-nombre',
+    loadChildren: () => import('./pages/descripcion-de-nombre/descripcion-nombre.module').then( m => m.DescripcionNombreModule)
+  },
+  {
     path: 'descripcion-de-servicios-adicionales',
     loadChildren: () => import('./pages/descripcion-de-servicios-adicionales/descripcion-de-servicios-adicionales.module').then( m => m.DescripcionDeServiciosAdicionalesPageModule)
   },
@@ -403,7 +407,11 @@ const routes: Routes = [
 {
   path:'app-descripcion-espacio',
   loadChildren: () => import('./pages/crear-anuncio-descripcion-espacio/descripcion-espacio.module').then( m => m.DescripcionEspacioModule)
-}
+},  {
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  }
+
 
 
 

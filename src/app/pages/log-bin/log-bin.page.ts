@@ -80,10 +80,10 @@ export class LogBinPage implements OnInit {
       const content = document.querySelector('ion-content') as HTMLElement;
 
       if (footer) {
-        footer.style.bottom = '0px'; // Restaura el footer
+        footer.style.bottom = '0px'; 
       }
       if (content) {
-        content.style.paddingBottom = '0px'; // Restaura el padding
+        content.style.paddingBottom = '0px';
       }
     });
   }

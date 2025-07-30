@@ -1,18 +1,36 @@
-<header-component [withArrowLeft]="true" [route]="'/login'" (navigateTo)="handleNavigateTo($event)"></header-component>
+<header-component
+  [withArrowLeft]="true"
+  [route]="'/login'"
+  (navigateTo)="handleNavigateTo($event)"
+></header-component>
 <ion-content scroll-y="true">
   <div class="validation-number">
     <h2>Bienvenido, de nuevo!</h2>
-    <p>
-      Ingresa el código de 4 dígitos enviado al número +51 {{ number }}.
-    </p>
-    <app-dynamic-inputs-numeric [numInputs]="4"
-      (valoresChange)="handleValoresChange($event)"></app-dynamic-inputs-numeric>
-    <default-custom-button (clicked)="sendSMS()" [disabled]="isDisabled" [class]="buttonClassTimer"
-      [text]="buttonTextTimer" [withTime]="buttonWithTimeTimer" [minutes]="minutes" [seconds]="seconds">
+    <p>Ingresa el código de 4 dígitos enviado al número +51 {{ number }}.</p>
+    <app-dynamic-inputs-numeric
+      [numInputs]="4"
+      (valoresChange)="handleValoresChange($event)"
+    ></app-dynamic-inputs-numeric>
+    <default-custom-button
+      (clicked)="sendSMS()"
+      [disabled]="isDisabled"
+      [class]="buttonClassTimer"
+      [text]="buttonTextTimer"
+      [withTime]="buttonWithTimeTimer"
+      [minutes]="minutes"
+      [seconds]="seconds"
+    >
     </default-custom-button>
-    <default-custom-button [class]="buttonClassOptions" [text]="buttonTextOptions"
-      id="modal-opc-inicio-registro"></default-custom-button>
-    <ion-modal trigger="modal-opc-inicio-registro" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <default-custom-button
+      [class]="buttonClassOptions"
+      [text]="buttonTextOptions"
+      id="modal-opc-inicio-registro"
+    ></default-custom-button>
+    <ion-modal
+      trigger="modal-opc-inicio-registro"
+      [initialBreakpoint]="1"
+      [breakpoints]="[0, 1]"
+    >
       <ng-template>
         <div class="modal-container">
           <div class="modal-header">
@@ -20,24 +38,42 @@
           </div>
           <div class="line"></div>
           <div class="modal-body">
-            <default-custom-button (clicked)="dismissModal()" routerLink="/log-con" [text]="buttonTextPassword"
-              [class]="buttonClassPassword" [withImgPass]="true"></default-custom-button>
-            <default-custom-button (clicked)="dismissModal()" routerLink="/ing-cor" [text]="'Ingresa con correo'"
-              [withImg]="true" [class]="'secondary-button'"></default-custom-button>
-            <default-custom-button (clicked)="dismissModal()" [text]="'Cancelar'"></default-custom-button>
+            <default-custom-button
+              (clicked)="dismissModal()"
+              routerLink="/log-con"
+              [text]="buttonTextPassword"
+              [class]="buttonClassPassword"
+              [withImgPass]="true"
+            ></default-custom-button>
+            <default-custom-button
+              (clicked)="dismissModal()"
+              routerLink="/ing-cor"
+              [text]="'Ingresa con correo'"
+              [withImg]="true"
+              [class]="'secondary-button'"
+            ></default-custom-button>
+            <default-custom-button
+              (clicked)="dismissModal()"
+              [text]="'Cancelar'"
+            ></default-custom-button>
           </div>
         </div>
       </ng-template>
     </ion-modal>
     <p class="footer-text">
-      <a href="#" routerLink="/log-con" class="register-link">He cambiado mi número de teléfono</a>
+      <a href="#" routerLink="/log-con" class="register-link"
+        >He cambiado mi número de teléfono</a
+      >
     </p>
   </div>
 </ion-content>
 <ion-footer class="footer-btn" mode="md">
   <div class="bnt-dow">
-    <default-custom-button [text]="buttonTextNext" [disabled]="!inputsFilled"
-      (click)="verifyOTP()"></default-custom-button>
+    <default-custom-button
+      [text]="buttonTextNext"
+      [disabled]="!inputsFilled"
+      (click)="verifyOTP()"
+    ></default-custom-button>
   </div>
 </ion-footer>
 <app-loader *ngIf="isLoading"></app-loader>

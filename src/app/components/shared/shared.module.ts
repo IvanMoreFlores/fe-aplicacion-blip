@@ -11,6 +11,7 @@ import { DefaultSelectComponent } from './default-select/default-select.componen
 import { DefaultInputDateComponent } from './defaul-input-date/default-input-date.component';
 import { DatePickerPopoverComponent } from './defaul-input-date/date-picker-popover.component';
 import { MapSelectorComponent } from '../map-selector/map-selector.component';
+import { ErrorPageComponent } from '../error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MapSelectorComponent } from '../map-selector/map-selector.component';
     DefaultInputDateComponent,
     DatePickerPopoverComponent,
     MapSelectorComponent,
+    ErrorPageComponent
   ],
   imports: [CommonModule, IonicModule], // Importa los módulos necesarios
   exports: [
@@ -37,6 +39,7 @@ import { MapSelectorComponent } from '../map-selector/map-selector.component';
     DefaultInputDateComponent,
     DatePickerPopoverComponent,
     MapSelectorComponent,
+    ErrorPageComponent
   ], // Exporta el componente para que pueda ser usado en otros módulos
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

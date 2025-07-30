@@ -1,0 +1,34 @@
+.container-padre {
+  display: flex;
+  height: 90dvh;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+.container img {
+  width: 251px;
+  height: 163px;
+}
+.container-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.container-text h2 {
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 45px;
+}
+.container-text p {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 30px;
+  color: #8e8e93;
+}

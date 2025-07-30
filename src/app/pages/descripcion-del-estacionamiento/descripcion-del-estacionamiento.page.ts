@@ -65,6 +65,6 @@ export class DescripcionDelEstacionamientoPage implements OnInit {
   }
 
   navigate() {
-    this.router.navigate(['/descripcion-del-espacio']);
+    this.router.navigate(['/descripcion-de-nombre']);
   }
 }

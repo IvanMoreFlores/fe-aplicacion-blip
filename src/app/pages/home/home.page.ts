@@ -58,7 +58,7 @@ export class HomePage implements OnInit, OnDestroy {
     private readonly storage: StorageService,
     private readonly api: ApiService,
     private readonly cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnDestroy() {
     // Limpiar la suscripción al destruir el componente
@@ -268,14 +268,12 @@ export class HomePage implements OnInit, OnDestroy {
 
     this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
   }
-  // Salir de cualquier página/modal
   exit(page: number) {
-
     let urlNav = '';
 
     switch (page) {
       case 1:
-        urlNav = '/descripcion-del-espacio';
+        urlNav = '/descripcion-del-estacionamiento';
         break;
       case 2:
         urlNav = '/anuncio-caracteristicas';
@@ -307,17 +305,59 @@ export class HomePage implements OnInit, OnDestroy {
       hour12: true,
     });
   }
-
   async getReservas() {
     this.isLoading = true;
     const token = await this.storage.getItem('token');
     this.api.getReservations(token).subscribe(
       async (response: any) => {
+        const ahora = new Date();
+
         response.data.forEach((element: any) => {
           element.res_fecini = this.addFiveHours(element.res_fecini);
           element.res_fecfin = this.addFiveHours(element.res_fecfin);
+
+          const inicio = new Date(element.res_fecini);
+          const fin = new Date(element.res_fecfin);
+
+          // === CASO 1: Servicio en curso pero tiempo terminado ===
+          if (element.rst_id === 5 && ahora > fin) {
+            // Cronómetro queda en 00:00:00 pero el botón FINALIZAR sigue activo
+            this.countdownTimers[element.res_id] = {
+              hours: 0,
+              minutes: 0,
+              seconds: 0,
+            };
+          }
+
+          // === CASO 2: Servicio confirmado pero ya inició (no presionó INICIAR) ===
+          if (element.rst_id === 2 && ahora >= inicio && ahora <= fin) {
+            // Simulamos que está EN CURSO automáticamente
+            element.rst_id = 5;
+            element.rst_descri = 'EN CURSO';
+
+            const tiempoTranscurridoSegundos = Math.floor(
+              (ahora.getTime() - inicio.getTime()) / 1000
+            );
+            const tiempoTotalSegundos = element.res_tiempo * 3600;
+            const tiempoRestanteSegundos =
+              tiempoTotalSegundos - tiempoTranscurridoSegundos;
+
+            if (tiempoRestanteSegundos <= 0) {
+              this.countdownTimers[element.res_id] = {
+                hours: 0,
+                minutes: 0,
+                seconds: 0,
+              };
+            } else {
+              this.countdownTimers[element.res_id] = {
+                hours: Math.floor(tiempoRestanteSegundos / 3600),
+                minutes: Math.floor((tiempoRestanteSegundos % 3600) / 60),
+                seconds: tiempoRestanteSegundos % 60,
+              };
+            }
+          }
         });
-        //this.data = this.addStateInCurse(response.data);
+
         this.data = response.data;
         console.log(this.data);
         this.n_data = Object.keys(this.data).length;
@@ -326,6 +366,7 @@ export class HomePage implements OnInit, OnDestroy {
         this.getCanceladas(this.data);
         this.getComienzaPronto(this.data);
         this.getEnCurso(this.data);
+
         this.initializeTimers();
         this.isLoading = false;
       },
@@ -493,31 +534,25 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   initializeTimer(item: any) {
-    // Si el estado es EN CURSO (rst_id = 5), calcular el tiempo restante
+    if (this.countdownTimers[item.res_id]) {
+      return;
+    }
+
     if (item.rst_id === 5) {
       const fechaInicio = new Date(item.res_fecini);
       const fechaActual = new Date();
       const tiempoTranscurridoMs =
         fechaActual.getTime() - fechaInicio.getTime();
 
-      // Convertir el tiempo transcurrido a horas, minutos y segundos
       const tiempoTranscurridoSegundos = Math.floor(
         tiempoTranscurridoMs / 1000
       );
-      const horasTranscurridas = Math.floor(tiempoTranscurridoSegundos / 3600);
-      const minutosTranscurridos = Math.floor(
-        (tiempoTranscurridoSegundos % 3600) / 60
-      );
-      const segundosTranscurridos = tiempoTranscurridoSegundos % 60;
 
-      // Convertir res_tiempo a segundos (asumiendo que está en horas)
       const tiempoTotalSegundos = item.res_tiempo * 3600;
 
-      // Calcular tiempo restante en segundos
       const tiempoRestanteSegundos =
         tiempoTotalSegundos - tiempoTranscurridoSegundos;
 
-      // Si el tiempo restante es negativo, establecer a 0
       if (tiempoRestanteSegundos <= 0) {
         this.countdownTimers[item.res_id] = {
           hours: 0,
@@ -525,7 +560,6 @@ export class HomePage implements OnInit, OnDestroy {
           seconds: 0,
         };
       } else {
-        // Convertir el tiempo restante a horas, minutos y segundos
         const horasRestantes = Math.floor(tiempoRestanteSegundos / 3600);
         const minutosRestantes = Math.floor(
           (tiempoRestanteSegundos % 3600) / 60
@@ -539,7 +573,6 @@ export class HomePage implements OnInit, OnDestroy {
         };
       }
     } else {
-      // Para otros estados, mantener el comportamiento original
       this.countdownTimers[item.res_id] = {
         hours: Math.floor(item.res_tiempo),
         minutes: 0,
@@ -810,5 +843,49 @@ export class HomePage implements OnInit, OnDestroy {
     this.dismissAnyModal();
     await this.router.navigate(['/adj-dt-dni']);
   }
+  doRefresh(event: any) {
+    this.isLoading = true;
 
+    // Reiniciar datos
+    this.data = null;
+    this.data_pendientes = [];
+    this.data_comienza_pronto = [];
+    this.data_encurso = [];
+    this.data_finalizado = [];
+    this.data_canceladas = [];
+
+    this.n_data = 0;
+    this.n_data_pendientes = 0;
+    this.n_data_comienza = 0;
+    this.n_data_encurso = 0;
+    this.n_data_finalizado = 0;
+    this.n_data_canceladas = 0;
+
+    Promise.all([
+      this.getUserData(),
+      this.getReservas(),
+      this.getDni(),
+      this.getBlackout(),
+      this.getAds(),
+    ])
+      .then(() => {
+        setTimeout(() => {
+          this.iniciarSwiper();
+        }, 0);
+
+        if (this.timerSubscription) {
+          this.timerSubscription.unsubscribe();
+        }
+        this.timerSubscription = interval(1000).subscribe(() => {
+          this.updateTimers();
+        });
+
+        event.target.complete();
+        this.cdr.detectChanges();
+      })
+      .catch((error) => {
+        console.error('Error en la actualización:', error);
+        event.target.complete();
+      });
+  }
 }

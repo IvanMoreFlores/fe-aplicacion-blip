@@ -1,43 +1,101 @@
+<header-component
+  [withArrowLeft]="true"
+  [route]="'/tab-home'"
+  [withTitleLeft]="true"
+  [titleLeft]="'Verificación de Identidad'"
+  (navigateTo)="handleNavigateTo($event)"
+>
+</header-component>
+
 <ion-content [fullscreen]="true">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="content">
-          <h1 class="titlex">Adjunta una foto de tu documento de identidad.</h1>
-          <h2 class="text-adj">Por favor, toma fotos horizontales de ambas caras de tu documento en un fondo blanco. Asegúrate de que las imágenes estén nítidas para garantizar un proceso eficiente. </h2>
-          <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
-            <ngx-dropzone-label>
-                <div class="pad">
-                    <img src="/assets/images/dowsl.svg" alt="" class="img-dow"> 
-                    <div class="luck">
-                        <h1 class="mld">Sube la cara delantera</h1>
-                        <h1 class="cfd">Solo archivos JPEG O PNG</h1>
-                    </div>
-                </div>
-            </ngx-dropzone-label>
-            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngIf="files.length > 0" [file]="files[0]" [removable]="true" (removed)="onRemove(files[0])">
-            </ngx-dropzone-image-preview>
-        </div>
-        
-        <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect2($event)">
-            <ngx-dropzone-label>
-                <div class="pad">
-                    <img src="/assets/images/dowsl.svg" alt="" class="img-dow"> 
-                    <div class="luck">
-                        <h1 class="mld">Sube la cara trasera</h1>
-                        <h1 class="cfd">Solo archivos JPEG O PNG</h1>
-                    </div>
-                </div>
-            </ngx-dropzone-label>
-            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview2" *ngIf="files2.length > 0" [file]="files2[0]" [removable]="true" (removed)="onRemove2(files2[0])">
-            </ngx-dropzone-image-preview>
-        </div>
+          <h1 class="titlex">Estado de Validación</h1>
+          <h2 class="text-adj">
+            Para garantizar la seguridad y autenticidad de nuestra comunidad,
+            necesitamos validar tu identidad. Si no podemos validar tu
+            identidad, te notificaremos para que puedas corregir los datos y
+            volver a intentarlo.
+          </h2>
+          <h1 class="titlex">Subir la cara frontal</h1>
+          <div class="boxes">
+            <div *ngFor="let img of allPreviewsFront" class="photo-container">
+              <div class="box1">
+                <img [src]="img" alt="Frente DNI" />
+                <button class="close-button" (click)="removeImage('front')">
+                  x
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="box1"
+              id="mod-fot"
+              (click)="onAddFrontClick()"
+              *ngIf="allPreviewsFront.length === 0"
+            >
+              <div class="pad">
+                <img
+                  src="/assets/images/add-anun.svg"
+                  alt="Agregar"
+                  class="img-dow"
+                />
+              </div>
+            </div>
+
+            <input
+              type="file"
+              #frontInput
+              style="display: none"
+              accept="image/*"
+              (change)="onFileSelected($event, 'front')"
+            />
+          </div>
+
+          <h1 class="titlex">Subir la cara trasera</h1>
+          <div class="boxes">
+            <div *ngFor="let img of allPreviewsBack" class="photo-container">
+              <div class="box1">
+                <img [src]="img" alt="Reverso DNI" />
+                <button class="close-button" (click)="removeImage('back')">
+                  x
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="box1"
+              id="mod-fot"
+              (click)="onAddBackClick()"
+              *ngIf="allPreviewsBack.length === 0"
+            >
+              <div class="pad">
+                <img
+                  src="/assets/images/add-anun.svg"
+                  alt="Agregar"
+                  class="img-dow"
+                />
+              </div>
+            </div>
+
+            <input
+              type="file"
+              #backInput
+              style="display: none"
+              accept="image/*"
+              (change)="onFileSelected($event, 'back')"
+            />
+          </div>
         </div>
       </div>
     </div>
     <footer class="footer-btn">
       <div class="bnt-dow">
-        <button routerLink="/confirmacion-de-identidad" class="bac">Atrás</button>
+        <button routerLink="/confirmacion-de-identidad" class="bac">
+          Atrás
+        </button>
         <button class="nex" (click)="sendImages()">Siguiente</button>
       </div>
     </footer>

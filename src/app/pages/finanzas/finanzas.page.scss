@@ -1,11 +1,12 @@
 /* Estilos para el header */
-h1,h1,h3{
+h1,
+h1,
+h3 {
   margin: 0px;
 }
 ion-header {
   --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
   background-color: #fff !important; /* Aplica directamente el color blanco */
-  
 }
 ion-header {
   --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
@@ -20,12 +21,10 @@ ion-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline:  22px;
+  padding-inline: 22px;
   margin-block: 10px;
   height: 56px; /* Altura consistente para el header */
-
 }
-
 
 .header-ios ion-toolbar:last-of-type {
   --border-width: 0px;
@@ -39,7 +38,7 @@ ion-toolbar {
 .title {
   color: #212121;
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 120% */
@@ -94,11 +93,12 @@ ion-toolbar {
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 10px;
-  width: fit-content; /* Ajusta el ancho al contenido */
+
+  width: fit-content  !important
 }
 
 .swiper-wrapper button {
-  font-size: 12px;
+  font-size: 14px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   margin: 0;
@@ -122,7 +122,7 @@ ion-toolbar {
 }
 //---------------------ANUNCIO-------------------------------
 
-.anuncio{
+.anuncio {
   margin-bottom: 30px;
 }
 
@@ -146,7 +146,7 @@ ion-toolbar {
   text-decoration: underline;
   padding-block: 10px;
 }
-p{
+p {
   margin: 0px;
 }
 .anuncio-ingreso {
@@ -159,7 +159,34 @@ p{
   width: 100%;
   height: 71px;
 }
-
+.myIngresContent {
+  display: flex;
+  gap: 12px;
+  padding-block: 32px 0px;
+  align-items: flex-start;
+}
+.icon-info-excla {
+  padding-top: 6px;
+}
+.myIngresContainer h3 {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+.myIngresContainer h2 {
+  color: #212121;
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 1%;
+  margin: 0px;
+}
 .anuncio-ingreso h3 {
   color: #212121;
   font-family: Poppins;
@@ -170,7 +197,7 @@ p{
   padding-bottom: 5px;
   padding-top: 10px;
 }
-.cont-anun{
+.cont-anun {
   width: 70%;
 }
 .anuncio-ingreso p {
@@ -193,27 +220,30 @@ p{
   text-transform: uppercase;
 }
 
-.ingreso-final{
+.ingreso-final {
   width: 100%;
   padding: 20px;
-  box-shadow: 0px 4px 20px 0px #66666633;
+  background: var(--light-mode-blip-theme-background-color, #ffffff);
+  border-radius: 8px;
+  border: 1px solid var(--Gray-Scale-Global-Tokens-gray-200, #e5e5ea);
+  box-shadow: 0px 2px 6px 2px #00000026;
   display: flex;
   align-items: center;
   border-radius: 15px;
-  margin-top: 30px  ;
+  margin-top: 30px;
 }
 
-.ingreso-final h3{
+.ingreso-final h3 {
   color: #212121;
   font-family: Poppins;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 13px; /* 81.25% */
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
-.ingreso-final p{
+.ingreso-final p {
   color: #212121;
   font-family: Poppins;
   font-size: 14px;
@@ -222,23 +252,21 @@ p{
   line-height: 20px; /* 142.857% */
 }
 
-.ingreso-final p span{
+.ingreso-final p span {
   font-size: 10px;
   font-weight: 600;
-  color: #6D6D6D;
+  color: #6d6d6d;
   text-decoration: underline;
 }
 
-.ingreso-final h1{
+.ingreso-final h1 {
   color: #212121;
-  text-align: left;
   font-family: Poppins;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 60% */
-  text-transform: uppercase;
-  padding-block: 40px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: 1%;
+  padding-block: 0px 20px;
 }
 
 .deposito-pago {
@@ -246,14 +274,14 @@ p{
 
   display: block;
 }
-.deposito-pago h2{
+.deposito-pago h2 {
   color: #575757;
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: 20px; /* 142.857% */
-margin:0px
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  margin: 0px;
 }
 
 .icon-info {
@@ -273,42 +301,38 @@ margin:0px
   margin-left: 10px; /* Agregado para dar espacio entre el icono y el texto */
 }
 
-
-hr{
- border-top: 1px solid #CDCDCD;
+hr {
+  border-top: 1px solid #cdcdcd;
 }
-
-
 
 // ----------------HISTORIAL DE ALQUILER------------------------------
 
-.alquiler-title h3{
+.alquiler-title h3 {
   color: #575757;
   font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 150% */
-
 }
 
-
 .h-alq {
-  display: flex;                /* Usar flexbox para la alineación */
+  display: flex; /* Usar flexbox para la alineación */
   justify-content: space-between; /* Espacio entre los elementos */
-  align-items: center;         /* Alinear verticalmente al centro */
+  align-items: center; /* Alinear verticalmente al centro */
   padding-block: 10px;
-  width: 100%;                 /* Asegúrate de que tenga un ancho del 100% */
+  width: 100%; /* Asegúrate de que tenga un ancho del 100% */
 }
 
 .chip {
-  display: flex;               /* Asegúrate de que el chip también use flexbox si necesitas alineación interna */
-  background-color: #FFF;
-  padding: 13px 15px;         /* Agregar padding para que el botón se vea mejor */
+  display: flex; /* Asegúrate de que el chip también use flexbox si necesitas alineación interna */
+  background-color: #fff;
+  padding: 13px 15px; /* Agregar padding para que el botón se vea mejor */
   border-radius: 15px;
-  
-/* M3/Elevation Light/2 */
-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+
+  /* M3/Elevation Light/2 */
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 2px 6px 2px rgba(0, 0, 0, 0.15);
 }
 
 .chip h3 {
@@ -317,91 +341,86 @@ box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 2px 6px 2px rgba(0, 0, 0, 0
   font-family: Poppins;
   font-size: 11px;
   font-weight: 500;
-  margin: 0;                  /* Eliminar márgenes para evitar desajustes */
+  margin: 0; /* Eliminar márgenes para evitar desajustes */
 }
-.nomb-host{
+.nomb-host {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.nomb-host div{
-width: 75%;
+.nomb-host div {
+  width: 75%;
 }
-.aut{
+.aut {
   display: flex;
   padding-block: 5px;
 }
-.aut h1{
+.aut h1 {
   color: #212121;
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 500;
-margin-left: 10px;
-
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  margin-left: 10px;
 }
-.veiculo{
+.veiculo {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-block: 5px;
 }
-.veiculo h1{
+.veiculo h1 {
   color: #212121;
-font-family: Poppins;
-font-size: 13px;
-font-style: normal;
-font-weight: 500;
-
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
 }
 .icon-alquiler {
   margin-right: 10px; /* Espacio entre el icono y la información */
 }
-.tiempo{
+.tiempo {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-block: 5px;
 }
-.tiempo   h1{
+.tiempo h1 {
   color: #212121;
-font-family: Poppins;
-font-size: 13px;
-font-style: normal;
-font-weight: 400;
-
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
 }
 .tiempo span {
   color: #212121;
-font-family: Poppins;
-font-size: 13px;
-font-style: normal;
-font-weight: 400;
-
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
 }
-.horas{
+.horas {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-block: 5px;
 }
-.horas h1{
+.horas h1 {
   color: #212121;
-font-family: Poppins;
-font-size: 13px;
-font-style: normal;
-font-weight: 400;
-
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
 }
-.precio{
+.precio {
   color: #212121;
-text-align: right;
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 500;
-line-height: 25px; /* 166.667% */
-text-transform: uppercase;
+  text-align: right;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 166.667% */
+  text-transform: uppercase;
 }
 .icon-alquiler {
   display: flex;
@@ -412,13 +431,12 @@ text-transform: uppercase;
 .circle {
   width: 29px; /* Ajusta el tamaño del círculo según tus necesidades */
   height: 29px; /* Ajusta el tamaño del círculo según tus necesidades */
-  background-color: #79FFAF4D;
+  background-color: #79ffaf4d;
   border-radius: 50%; /* Hace que el div sea un círculo */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .h-alq h3 {
   margin: 0; /* Elimina el margen superior e inferior de h3 */
@@ -434,10 +452,10 @@ text-transform: uppercase;
   margin: 0; /* Elimina el margen superior e inferior de h4 */
   font-size: 10px;
   font-weight: 500;
-  color: #6D6D6D;
+  color: #6d6d6d;
 }
 
-.description  {
+.description {
   margin: 0; /* Elimina el margen superior e inferior de p */
   color: #212121;
   font-family: Poppins;
@@ -448,7 +466,7 @@ text-transform: uppercase;
   padding-block: 15px;
 }
 
-.description span{
+.description span {
   color: #212121;
   font-family: Poppins;
   font-size: 13px;
@@ -456,7 +474,6 @@ text-transform: uppercase;
   font-weight: 500;
   line-height: 0px;
   text-decoration-line: underline;
-
 }
 
 .alquiler-monto {
@@ -470,14 +487,18 @@ text-transform: uppercase;
 
 // --------------------PAGOS------------------------------
 
-.pagos-title{
-  font-size: 19px;
+.pagos-title {
+  font-family: Poppins;
   font-weight: 500;
-  margin-bottom: 20px;
+  font-style: Medium;
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
 }
 
-.informacion-pagos{
-  background-color: #79FFAF;
+.informacion-pagos {
+  background-color: #79ffaf;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 4px 20px 0px #66666633;
@@ -485,18 +506,55 @@ text-transform: uppercase;
   margin-bottom: 20px;
 }
 
-.informacion-pagos p{
+.informacion-pagos p {
   font-size: 12px;
   font-weight: 300;
 }
-
-.informacion-pagos p span{
+.tarjeta-pago {
+  background: var(--light-mode-blip-theme-background-color, #ffffff);
+  border-radius: 8px;
+  border: 1px solid var(--Gray-Scale-Global-Tokens-gray-200, #e5e5ea);
+  margin-top: 32px;
+  box-shadow: 0px 2px 6px 2px #00000026;
+  padding: 24px;
+}
+.informacion-tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  gap: 8px;
+}
+.informacion-tarjeta h1 {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: 1%;
+}
+.informacion-tarjeta h2 {
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 25px;
+  letter-spacing: 1%;
+}
+.informacion-tarjeta p {
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 25px;
+  letter-spacing: 1%;
+}
+.icon-tarjeta{
+  width: 28px;
+  height: 28px;
+}
+.informacion-pagos p span {
   font-weight: 500;
 }
 
-
 ion-item::part(native) {
-  background: #FFFF;
+  background: #ffff;
   color: #212121;
   font-size: 12px;
   font-weight: 500;
@@ -529,7 +587,6 @@ ion-toggle::part(track) {
   overflow: visible;
 }
 
-
 .num-regla {
   position: absolute;
   font-size: 12px;
@@ -543,7 +600,7 @@ ion-toggle::part(track) {
 .form-regla {
   margin-bottom: 30px;
   margin-top: 30px;
-  position: relative;   
+  position: relative;
 }
 .input-pago {
   height: auto;
@@ -562,7 +619,7 @@ ion-toggle::part(track) {
   appearance: none; /* Oculta la flecha predeterminada */
   -webkit-appearance: none; /* Para navegadores WebKit */
   -moz-appearance: none; /* Para navegadores Firefox */
-  background-image: url('/assets/images/flec-pago.svg'); /* Ruta a tu flecha */
+  background-image: url("/assets/images/flec-pago.svg"); /* Ruta a tu flecha */
   background-repeat: no-repeat;
   background-position: right 20px center; /* Posiciona la flecha */
   height: auto;
@@ -580,18 +637,17 @@ ion-toggle::part(track) {
 
 // ------------------------HISTORIAL DE PAGO------------------------------
 
-
-.historial-title{
+.historial-title {
   font-size: 19px;
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
 
-.historial-subtitle{
+.historial-subtitle {
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 1.5rem;
-  color: #49454F;
+  color: #49454f;
 }
 
 .historial {
@@ -603,7 +659,6 @@ ion-toggle::part(track) {
 
 .icon-historial {
   margin-right: 10px; /* Espacio entre el icono y la información */
-
 }
 
 .icon-historial img {
@@ -611,7 +666,7 @@ ion-toggle::part(track) {
   height: 1rem;
 }
 
-.info-historial{
+.info-historial {
   flex-grow: 1; /* Permite que este contenedor ocupe todo el espacio disponible */
 }
 
@@ -634,7 +689,7 @@ ion-toggle::part(track) {
   font-weight: 300;
 }
 
-.info-historial p span{
+.info-historial p span {
   text-decoration: underline;
   font-weight: 400;
 }
@@ -647,23 +702,114 @@ ion-toggle::part(track) {
   font-size: 16px;
   font-weight: 500;
 }
+.modal-container {
+  padding: 21px;
+  text-align: center;
+}
 
-.continue{
+.modal-header {
+  display: flex;
+  justify-content: left;
+  padding-block: 0px 24px;
+}
+.modal-header img {
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 30px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.modal-subtitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #212121;
+}
+
+.form-regla {
+  margin-bottom: 15px;
+}
+
+.input-pago {
   width: 100%;
-  margin-top: 20px;  
-  margin-bottom: 20px;              
-  
-  button{
-      width: 100%;
-      display: block;
-      text-align: center;
-      font-family: 'Poppins SemiBold', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      padding: 20px 40px;
-      border-radius: 30px;
-      background-color: #212121;
-      color: #FFF;
-      border: 1px solid #212121;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e6e6eb;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  background-color: #fff;
+}
+.input-pago:focus,
+.input-pago:not(:placeholder-shown),
+.input-pago:valid,
+.input-pago.ng-dirty,
+.input-pago.ng-touched {
+  color: #000; /* texto negro cuando tiene valor o está activo */
+}
+select.input-pago:focus,
+select.input-pago:valid,
+select.input-pago.ng-dirty,
+select.input-pago.ng-touched {
+  color: #000;
+}
+.banco-destino {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff
+    url('data:image/svg+xml;utf8,<svg fill="black" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+    no-repeat right 10px center;
+  background-size: 16px;
+  padding-right: 30px;
+}
+
+.btn-sig {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+}
+.continue button:disabled {
+  background-color: #c7c7cc;
+  color: #ffffff;
+  border: none;
+}
+
+.continue {
+  width: 100%;
+  margin-top: 20px;
+
+  button {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 1%;
+    text-align: center;
+    padding: 12px 52px;
+    border-radius: 30px;
+    background-color: #212121;
+    color: #fff;
+    border: 1px solid #212121;
   }
 }

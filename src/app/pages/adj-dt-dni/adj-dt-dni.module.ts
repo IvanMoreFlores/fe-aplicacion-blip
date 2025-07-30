@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdjDtDniPageRoutingModule } from './adj-dt-dni-routing.module';
 import { AdjDtDniPage } from './adj-dt-dni.page';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { SharedModule } from "src/app/components/shared/shared.module";
 
 @NgModule({
   imports: [
@@ -12,8 +13,9 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FormsModule,
     IonicModule,
     AdjDtDniPageRoutingModule,
-    NgxDropzoneModule
-  ],
+    NgxDropzoneModule,
+    SharedModule
+],
   declarations: [AdjDtDniPage]
 })
 export class AdjDtDniPageModule {}
