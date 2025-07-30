@@ -1286,12 +1286,6 @@
             </div>
           </div>
         </div>
-        <div class="bnt-dow">
-          <default-custom-button
-            [text]="'Guardar'"
-            (click)="sendUpdateDias()"
-          ></default-custom-button>
-        </div>
       </div>
 
       <!--                 -----ABONADOS-----              -->
@@ -1326,4 +1320,14 @@
     </div>
   </div>
 </ion-content>
+<ion-footer *ngIf="selectedContent === 'Disponibilidad'">
+  <ion-toolbar
+    ><div class="bnt-dow">
+      <default-custom-button
+        [text]="'Guardar'"
+        (click)="sendUpdateDias()"
+      ></default-custom-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
 <app-loader *ngIf="isLoading"></app-loader>
