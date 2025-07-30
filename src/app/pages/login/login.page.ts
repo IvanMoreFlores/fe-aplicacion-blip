@@ -32,12 +32,13 @@ export class LoginPage implements OnInit, OnDestroy {
     this.init_value();
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   async init_value() {
     const token = await this.storageService.getItem('token');
-    if (token) {
+    const user = await this.storageService.getItem('user');
+    const refreshToken = await this.storageService.getItem('refreshToken');
+    if (token && user && refreshToken) {
       this.router.navigate(['/tab-home/home'], { replaceUrl: true });
     }
 
@@ -60,11 +61,13 @@ export class LoginPage implements OnInit, OnDestroy {
       .subscribe({
         next: async (response) => {
           const { token_temp } = response;
-          await this.saveDataToken(token_temp);
+          await this.storageService.removeItem('tempToken');
+          await this.storageService.setItem('tempToken', token_temp);
+
           this.apiLoginService
             .sendSMS(token_temp, { to: phone, text: messageSMS })
             .subscribe({
-              next: (response) => {
+              next: () => {
                 const { message } = response;
                 this.isLoading = false;
                 this.router.navigate(['/registro'], {

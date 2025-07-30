@@ -133,42 +133,44 @@ export class RegistroPage implements OnInit, OnDestroy {
     this.startTimer();
   }
 
-  async verifyOTP() {
-    this.isLoading = true;
-    const code_front = this.inputs.join('');
-    const token = await this.storageService.getItem('token');
+async verifyOTP() {
+  this.isLoading = true;
+  const code_front = this.inputs.join('');
+  const tempToken = await this.storageService.getItem('tempToken');
 
-    if (code_front === this.code) {
-      this.apiLoginService.getTokenSession(token).subscribe({
-        next: async (response) => {
-          const { token, refreshToken } = response;
-          await this.saveDataStorage('token', token);
-          await this.saveDataStorage('refreshToken', refreshToken);
+  if (code_front === this.code) {
+    this.apiLoginService.getTokenSession(tempToken).subscribe({
+      next: async (response) => {
+        const { token, refreshToken } = response;
+        await this.saveDataStorage('token', token);
+        await this.saveDataStorage('refreshToken', refreshToken);
+        await this.storageService.removeItem('tempToken');
 
-          try {
-            const user = await this.getUserData(token);
-            await this.saveDataStorage('user', user);
-            this.isCodeValid = true;
-            this.isLoading = false;
-            this.showToast(
-              'Código verificado correctamente. Pulsa Siguiente para continuar.'
-            );
-          } catch (error) {
-            this.isLoading = false;
-            this.showToast('Error al obtener el autorizador');
-          }
-        },
-        error: (error) => {
-          console.error(error);
+        try {
+          const user = await this.getUserData(token);
+          await this.saveDataStorage('user', user);
+          this.isCodeValid = true;
           this.isLoading = false;
-          this.showToast('Error al obtener el autorizador');
-        },
-      });
-    } else {
-      this.isLoading = false;
-      this.showToast('El código es incorrecto');
-    }
+          this.showToast(
+            'Código verificado correctamente. Pulsa Siguiente para continuar.'
+          );
+        } catch (error) {
+          this.isLoading = false;
+          this.showToast('Error al obtener datos del usuario');
+        }
+      },
+      error: (error) => {
+        console.error(error);
+        this.isLoading = false;
+        this.showToast('Error al obtener el autorizador');
+      },
+    });
+  } else {
+    this.isLoading = false;
+    this.showToast('El código es incorrecto');
   }
+}
+
 
   async continuarAlHome() {
     if (this.isCodeValid) {
@@ -204,40 +206,41 @@ export class RegistroPage implements OnInit, OnDestroy {
   }
 
   async sendSMS() {
-    this.isLoading = true;
-    const tokenTemp = await this.jwtService.generateTokenTempHost({
-      usu_nrotel: this.number,
+  this.isLoading = true;
+  const tokenTemp = await this.jwtService.generateTokenTempHost({
+    usu_nrotel: this.number,
+  });
+  const { phone, messageSMS, code } = this.buildSMS(this.number);
+  this.code = code.toString();
+  this.apiLoginService
+    .getTokenTemp(tokenTemp, { phone: this.number })
+    .subscribe({
+      next: async (response) => {
+        const { token_temp } = response;
+        await this.saveDataStorage('tempToken', token_temp);
+        this.apiLoginService
+          .sendSMS(token_temp, { to: phone, text: messageSMS })
+          .subscribe({
+            next: () => {
+              this.isLoading = false;
+              this.resetTimer();
+              this.showToast('Mensaje enviado correctamente');
+            },
+            error: (error) => {
+              this.isLoading = false;
+              this.showToast('Error al enviar el mensaje');
+              console.error('Error al enviar el mensaje:', error);
+            },
+          });
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.showToast('Error al obtener el autorizador');
+        console.error('Error al obtener el token temporal:', error);
+      },
     });
-    const { phone, messageSMS, code } = this.buildSMS(this.number);
-    this.code = code.toString();
-    this.apiLoginService
-      .getTokenTemp(tokenTemp, { phone: this.number })
-      .subscribe({
-        next: async (response) => {
-          const { token_temp } = response;
-          await this.saveDataStorage('token', token_temp);
-          this.apiLoginService
-            .sendSMS(token_temp, { to: phone, text: messageSMS })
-            .subscribe({
-              next: () => {
-                this.isLoading = false;
-                this.resetTimer();
-                this.showToast('Mensaje enviado correctamente');
-              },
-              error: (error) => {
-                this.isLoading = false;
-                this.showToast('Error al enviar el mensaje');
-                console.error('Error al enviar el mensaje:', error);
-              },
-            });
-        },
-        error: (error) => {
-          this.isLoading = false;
-          this.showToast('Error al obtener el autorizador');
-          console.error('Error al obtener el token temporal:', error);
-        },
-      });
-  }
+}
+
 
   async saveDataStorage(index: string, data: any) {
     await this.storageService.removeItem(index);

@@ -15,9 +15,11 @@ export class AuthService {
   async ensureValidToken(): Promise<string | null> {
     const token = await this.storage.getItem('token');
     const refreshToken = await this.storage.getItem('refreshToken');
+    const user = await this.storage.getItem('user');
 
-    if (!token || !refreshToken) return null;
-
+    if (!token || !refreshToken || !user) {
+      return null;
+    }
     const decoded = await this.jwtService.verifyToken(token);
     if (decoded) {
       return token;
@@ -31,7 +33,11 @@ export class AuthService {
           await this.storage.setItem('refreshToken', newRefresh);
           resolve(newToken);
         },
-        error: (err) => reject(err),
+        error: async (err) => {
+          console.error('Refresh token inválido:', err);
+          await this.storage.clear();
+          reject(null);
+        },
       });
     });
   }

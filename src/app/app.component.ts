@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { StorageService } from './services/storage.service';
 import { Keyboard, KeyboardResize } from '@capacitor/keyboard';
-import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
@@ -35,7 +34,13 @@ export class AppComponent {
     const token = await this.authService.ensureValidToken();
 
     if (token) {
-      this.router.navigate(['/tab-home/home'], { replaceUrl: true });
+      const user = await this.storageService.getItem('user');
+      const refreshToken = await this.storageService.getItem('refreshToken');
+      if (user && refreshToken) {
+        this.router.navigate(['/tab-home/home'], { replaceUrl: true });
+      } else {
+        this.router.navigate(['/login'], { replaceUrl: true });
+      }
     } else {
       this.router.navigate(['/login'], { replaceUrl: true });
     }
