@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Keyboard } from '@capacitor/keyboard';
 import { JwtService } from 'src/app/services/jwt.service';
 import { ApiLoginService } from 'src/app/services/api-login.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-ing-cor',
   templateUrl: './ing-cor.page.html',
@@ -31,23 +31,28 @@ export class IngCorPage implements OnInit {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     this.isEmailValid = emailPattern.test(this.email.trim());
   }
+
   handleNavigateTo(route: string) {
     if (route) {
       this.router.navigate([route]);
     }
   }
+
   async goToDisplayPage() {
     this.isLoading = true;
     const tokenTemp = await this.jwtService.generateTokenTempHost({
       usu_correo: this.email.trim(),
     });
+
     const { message, code } = this.buildEmail();
+
     this.apiLoginService
       .getTokenTemp(tokenTemp, { email: this.email.trim() })
       .subscribe({
         next: async (response) => {
           const { token_temp } = response;
           await this.saveStorage('token_temp', token_temp);
+
           this.apiLoginService
             .sendEmail(
               token_temp,
@@ -76,35 +81,10 @@ export class IngCorPage implements OnInit {
         },
       });
   }
-  initializeKeyboardListeners() {
-    const content = document.querySelector('ion-content') as HTMLElement;
-    const footer = document.querySelector('.footer-btn') as HTMLElement;
 
-    Keyboard.addListener('keyboardWillShow', (info) => {
-      const footer = document.querySelector('.footer-btn') as HTMLElement;
-      if (footer) {
-        footer.style.bottom = `${info.keyboardHeight}px`; // Ajusta el espacio
-      }
-    });
+  ngOnInit() {}
 
-    Keyboard.addListener('keyboardWillHide', () => {
-      const footer = document.querySelector('.footer-btn') as HTMLElement;
-      const content = document.querySelector('ion-content') as HTMLElement;
-
-      if (footer) {
-        footer.style.bottom = '0px'; // Restaura el footer
-      }
-      if (content) {
-        content.style.paddingBottom = '0px'; // Restaura el padding
-      }
-    });
-  }
-  ngOnInit() {
-    this.initializeKeyboardListeners();
-  }
-  ngOnDestroy() {
-    Keyboard.removeAllListeners(); // Eliminar listeners de teclado al destruir el componente
-  }
+  ngOnDestroy() {}
 
   buildEmail() {
     const code = Math.floor(1000 + Math.random() * 9000);

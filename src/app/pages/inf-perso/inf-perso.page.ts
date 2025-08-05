@@ -26,6 +26,7 @@ export class InfPersoPage implements OnInit {
   email: string = '';
   files: File[] = [];
   img_url: string = '';
+  isValidIdn: boolean = false;
 
   constructor(
     private modalController: ModalController,
@@ -33,30 +34,40 @@ export class InfPersoPage implements OnInit {
     private api: ApiService
   ) {
     this.getUserData();
-  } // Inyecta el ModalController
+  }
 
   async getUserData() {
     this.userData = await this.storage.getItem('user');
     console.log(this.userData);
+
     this.nom = this.userData.usu_nombre;
     this.ape = this.userData.usu_apepat;
     this.telf = this.userData.usu_nrotel;
     this.email = this.userData.usu_correo;
-    if(this.userData.photo){
+
+    if (this.userData.photo) {
       this.img_url = this.userData.photo.url;
       console.log(this.img_url);
     }
+    if (
+      this.userData.esu_id &&
+      this.userData.esu_id.esu_descri === 'VERIFICADO'
+    ) {
+      this.isValidIdn = true;
+    } else {
+      this.isValidIdn = false;
+    }
+
+    console.log('¿Identificación validada?', this.isValidIdn);
   }
 
   async updateData() {
     const token = await this.storage.getItem('token');
-    this.api.getInformation(token).subscribe(
-      (response: any) => {
-        this.data = response.data;
-        this.storage.removeItem('user');
-        this.storage.setItem('user', this.data);
-      }
-    )
+    this.api.getInformation(token).subscribe((response: any) => {
+      this.data = response.data;
+      this.storage.removeItem('user');
+      this.storage.setItem('user', this.data);
+    });
   }
 
   setOpen(isOpen: boolean) {
@@ -82,10 +93,9 @@ export class InfPersoPage implements OnInit {
         await this.updateData();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
     );
-
   }
 
   async guardarCambios() {
@@ -94,13 +104,13 @@ export class InfPersoPage implements OnInit {
     formData.append('usu_nombre', this.nom);
     this.api.updateUser(token, formData).subscribe(
       (response: any) => {
-        console.log(response)
+        console.log(response);
         this.updateData();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
-    )
+    );
     await this.modalController.dismiss();
   }
 
@@ -114,9 +124,9 @@ export class InfPersoPage implements OnInit {
         this.updateData();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
-    )
+    );
     await this.modalController.dismiss();
   }
 
@@ -126,13 +136,13 @@ export class InfPersoPage implements OnInit {
     formData.append('usu_nrotel', this.telf);
     this.api.updateUser(token, formData).subscribe(
       (response: any) => {
-        console.log(response)
+        console.log(response);
         this.updateData();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
-    )
+    );
     await this.modalController.dismiss();
   }
 
@@ -146,12 +156,11 @@ export class InfPersoPage implements OnInit {
         this.updateData();
       },
       (error: any) => {
-        alert('Hubo un error: ' + error.message)
+        alert('Hubo un error: ' + error.message);
       }
-    )
+    );
     await this.modalController.dismiss();
   }
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }

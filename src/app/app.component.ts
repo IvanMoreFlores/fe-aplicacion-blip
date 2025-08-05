@@ -1,29 +1,44 @@
 import { Component } from '@angular/core';
 import { StorageService } from './services/storage.service';
 import { Keyboard, KeyboardResize } from '@capacitor/keyboard';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
-import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private storageService: StorageService,) {
+  private checkingSession = false;
 
-    Keyboard.setResizeMode({
-      mode: KeyboardResize.Native, // Cambia a Ionic, Body o None según tu necesidad
-    });
-    
-    // Escucha los eventos del teclado si necesitas manejar clases en el DOM
-    Keyboard.addListener('keyboardWillShow', () => {
-      document.body.classList.add('keyboard-open');
-    });
-    
-    Keyboard.addListener('keyboardWillHide', () => {
-      document.body.classList.remove('keyboard-open');
-    });
+  constructor(
+    private storageService: StorageService,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.checkSession();
   }
 
+  async checkSession() {
+    if (this.checkingSession) return; 
+    this.checkingSession = true;
 
+    const token = await this.authService.ensureValidToken();
+
+    if (token) {
+      const user = await this.storageService.getItem('user');
+      const refreshToken = await this.storageService.getItem('refreshToken');
+      if (user && refreshToken) {
+        this.router.navigate(['/tab-home/home'], { replaceUrl: true });
+      } else {
+        this.router.navigate(['/login'], { replaceUrl: true });
+      }
+    } else {
+      this.router.navigate(['/login'], { replaceUrl: true });
+    }
+
+    this.checkingSession = false;
+  }
 }
+

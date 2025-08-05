@@ -1,0 +1,25 @@
+<div class="container-padre">
+  <div class="container">
+    <img
+      *ngIf="type === 'maintenance'"
+      src="assets/images/error/maintenance.svg"
+      alt="Mantenimiento"
+    />
+    <img
+      *ngIf="type === 'server'"
+      src="assets/images/error/server-error.svg"
+      alt="Error servidor"
+    />
+    <img
+      *ngIf="type === 'client'"
+      src="assets/images/error/client-error.svg"
+      alt="Error cliente"
+    />
+    <div class="container-text">
+      <h2>{{ title }}</h2>
+      <p>
+        {{ description }}
+      </p>
+    </div>
+  </div>
+</div>

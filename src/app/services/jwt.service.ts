@@ -64,6 +64,14 @@ export class JwtService {
   async verifyToken(token: string): Promise<object | null> {
     try {
       const { payload } = await jose.jwtVerify(token, this.secretKey);
+      if (payload && payload.exp) {
+        const now = Math.floor(Date.now() / 1000);
+        if (payload.exp < now) {
+          console.warn('Token expirado');
+          return null;
+        }
+      }
+
       return payload;
     } catch (err) {
       console.error('Token verification failed:', err);

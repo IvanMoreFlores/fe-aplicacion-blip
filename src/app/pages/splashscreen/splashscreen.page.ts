@@ -12,7 +12,6 @@ import { JwtService } from '../../services/jwt.service';
   styleUrls: ['./splashscreen.page.scss'],
 })
 export class SplashscreenPage implements OnInit {
-
   constructor(
     private router: Router,
     private storageService: StorageService,
@@ -21,7 +20,7 @@ export class SplashscreenPage implements OnInit {
     if (Capacitor.getPlatform() !== 'web') {
       StatusBar.setStyle({ style: Style.Light });
       StatusBar.setOverlaysWebView({ overlay: true });
-      StatusBar.setBackgroundColor({ color: "#79FFAF" });
+      StatusBar.setBackgroundColor({ color: '#79FFAF' });
       NavigationBar.setNavigationBarColor({ color: '#79FFAF' });
     }
   }
@@ -29,8 +28,12 @@ export class SplashscreenPage implements OnInit {
   ngOnInit() {
     //this.init_value();
     const btnPlay = document.getElementById('btnPlay') as HTMLButtonElement;
-    const animationCircle = document.getElementById('animated-circle') as HTMLDivElement;
-    const animationLogo = document.getElementById('animated-logo') as HTMLImageElement;
+    const animationCircle = document.getElementById(
+      'animated-circle'
+    ) as HTMLDivElement;
+    const animationLogo = document.getElementById(
+      'animated-logo'
+    ) as HTMLImageElement;
 
     setTimeout(() => {
       animationCircle.classList.add('run');
@@ -38,50 +41,39 @@ export class SplashscreenPage implements OnInit {
       setTimeout(() => {
         animationLogo.style.display = 'block';
         this.playCarlock();
-      }, 1000); // Tiempo para mostrar la animación antes de reproducir el sonido
+      }, 1000); 
     }, 20);
   }
 
-  async init_value() {
-    const valor = await this.storageService.getItem('welcome');
-    if (valor === true) {
-
-      const token = await this.storageService.getItem('token');
-
-      if (token !== null) {
-        console.log('token desde el Storage:', token);
-        console.log('descifrado del token');
-        const result: any = await this.jwtService.verifyToken(token);
-        console.log(result);
-        const isLogged = result?.isLogged;
-
-        if (isLogged === true) {
-          this.router.navigate(['/lds']);
-        } else {
-          this.router.navigate(['/login']);
-        }
-      }else{
-        this.router.navigate(['/login']);
-      }
-
-    } else {
-      this.router.navigate(['/walkthrough']);
-    }
+ async init_value() {
+  const welcome = await this.storageService.getItem('welcome');
+  if (!welcome) {
+    this.router.navigate(['/walkthrough'], { replaceUrl: true });
+    return;
   }
+
+  const token = await this.storageService.getItem('token');
+
+  if (token) {
+    this.router.navigate(['/lds'], { replaceUrl: true });
+    return;
+  }
+
+  this.router.navigate(['/login'], { replaceUrl: true });
+}
+
 
   playCarlock() {
     const carlock = document.getElementById('carlock') as HTMLAudioElement;
     carlock.play();
     carlock.onended = () => {
-      // Retrasar la redirección para asegurarse de que todo se haya completado
       setTimeout(() => {
         this.init_value();
-      }, 500); // Retraso en milisegundos (ajustar según sea necesario)
+      }, 500); 
     };
   }
 
   onSoundEnded() {
-    // Redirigir a la página deseada después de que el sonido termine
     this.router.navigate(['/walkthrough']);
   }
 }

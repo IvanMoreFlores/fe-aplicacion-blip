@@ -25,7 +25,7 @@ export class WalkthroughPage implements OnInit {
     private route: ActivatedRoute,
     private storageService: StorageService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.iniciarSwiper();
@@ -53,8 +53,12 @@ export class WalkthroughPage implements OnInit {
     });
   }
 
- async confirmWelcome() {
+  async confirmWelcome() {
+    await this.storageService.removeItem('token');
+    await this.storageService.removeItem('refreshToken');
+    await this.storageService.removeItem('user');
     await this.storageService.setItem('welcome', true);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
+  
 }

@@ -1,4 +1,5 @@
 <ion-header mode="ios">
+  
   <ion-toolbar>
     <ion-buttons slot="start">
       <img
@@ -117,7 +118,7 @@
               <div>
                 <img
                   class="button-image"
-                  src="/assets/images/fi-sr-plus.svg"
+                  src="/assets/images/fi-sr-plus-mis.svg"
                   alt="Imagen 2"
                 />
                 <span class="button-text">Mis Anuncios</span>
@@ -229,6 +230,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-down-outline"
+      refreshingSpinner="circles"
+      pullingText="Desliza hacia abajo para refrescar"
+      refreshingText="Actualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="cont-hom">
     <h1 class="tl-res">Tus Reservas</h1>
     <div class="cardba-content">
@@ -343,7 +352,7 @@
                           <span *ngIf="item.rst_id === 5" class="dot"></span>
                         </span>
                       </div>
-                      <div class="floating-text status" style="top: 50px">
+                      <!-- <div class="floating-text status" style="top: 50px">
                         <div style="display: flex; align-items: center">
                           <img
                             src="/assets/images/diner-card.svg"
@@ -352,7 +361,7 @@
                           />
                           <span>S/{{item.pag_monto_total}}</span>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
 
                     <ion-card-content>
