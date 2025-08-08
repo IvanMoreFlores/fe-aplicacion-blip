@@ -17,7 +17,7 @@ export class ContraVerfPage implements OnInit {
   // Método para redirigir tras 2 segundos
   private startRedirection() {
     setTimeout(() => {
-      this.router.navigate(['/login']); // Cambia '/' por la ruta real
+      this.router.navigate(['/login'], { replaceUrl: true });
     }, 2000);
   }
 
