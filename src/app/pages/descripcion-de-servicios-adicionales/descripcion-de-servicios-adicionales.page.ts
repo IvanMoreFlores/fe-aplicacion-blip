@@ -58,9 +58,9 @@ export class DescripcionDeServiciosAdicionalesPage implements OnInit {
   // Función para manejar los cambios en los checkboxes
   onCheckboxChange(servicioId: number, isChecked: boolean) {
     if (isChecked) {
-      console.log('checked');
-      // Si el checkbox está seleccionado, agrega el servicio al array
-      this.serviciosSeleccionados.push(servicioId);
+      if (!this.serviciosSeleccionados.includes(servicioId)) {
+        this.serviciosSeleccionados.push(servicioId);
+      }
       console.log(this.serviciosSeleccionados);
     } else {
       console.log('unchecked');
