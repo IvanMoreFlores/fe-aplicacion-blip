@@ -33,7 +33,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
 
         this.router.navigate(['/error'], {
-          state: { type, statusCode: error.status },
+          state: { type, statusCode: error.status }, 
         });
 
         return throwError(() => error);

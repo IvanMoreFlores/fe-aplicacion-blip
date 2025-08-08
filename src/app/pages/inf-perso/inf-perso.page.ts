@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { ApiService } from 'src/app/services/api.service';
 
+
 @Component({
   selector: 'app-inf-perso',
   templateUrl: './inf-perso.page.html',
