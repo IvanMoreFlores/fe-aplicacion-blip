@@ -751,4 +751,5 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   async onToggleHorario() {
     await this.storage.setItem('chck_hora', String(this.chck_hora));
   }
+  
 }
