@@ -514,7 +514,7 @@
                           </ng-template>
                         </ion-modal>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 2">
+                     <div class="btn" *ngIf="item.rst_id === 2 && !item.allowFinalize">
                         <button
                           [disabled]="!isReservationWithinOneHour(item)"
                           class="bt-con"
@@ -590,10 +590,11 @@
                         <button disabled class="bt-con">Finalizar</button>
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 5">
+                    <div class="btn" *ngIf="item.rst_id === 5 || item.allowFinalize">
                         <button
                           class="bt-con"
                           (click)="getFinalizar(item.res_id)"
+                          
                         >
                           Finalizar
                         </button>
@@ -825,7 +826,7 @@
                           </ng-template>
                         </ion-modal>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 2">
+                     <div class="btn" *ngIf="item.rst_id === 2 && !item.allowFinalize">
                         <button disabled class="bt-con">Finalizar</button>
                         <button id="mod-cancelar-2" class="bt-con">
                           Cancelar
@@ -891,7 +892,7 @@
                         <button disabled class="bt-con">Confirmar</button>
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 5">
+                     <div class="btn" *ngIf="item.rst_id === 5 || item.allowFinalize">
                         <button
                           class="bt-con"
                           (click)="getFinalizar(item.res_id)"
@@ -1129,7 +1130,7 @@
                           </ng-template>
                         </ion-modal>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 2">
+                     <div class="btn" *ngIf="item.rst_id === 2 && !item.allowFinalize">
                         <button disabled class="bt-con">Finalizar</button>
                         <button id="mod-cancelar-2" class="bt-con">
                           Cancelar
@@ -1195,7 +1196,7 @@
                         <button disabled class="bt-con">Confirmar</button>
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 5">
+                     <div class="btn" *ngIf="item.rst_id === 5 || item.allowFinalize">
                         <button
                           class="bt-con"
                           (click)="getFinalizar(item.res_id)"
@@ -1436,7 +1437,7 @@
                           </ng-template>
                         </ion-modal>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 2">
+                     <div class="btn" *ngIf="item.rst_id === 2 && !item.allowFinalize">
                         <button disabled class="bt-con">Finalizar</button>
                         <button id="mod-cancelar-2" class="bt-can">
                           Cancelar
@@ -1502,7 +1503,7 @@
                         <button disabled class="bt-con">Confirmar</button>
                         <button disabled class="bt-can">Cancelar</button>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 5">
+                     <div class="btn" *ngIf="item.rst_id === 5 || item.allowFinalize">
                         <button
                           class="bt-con"
                           (click)="getFinalizar(item.res_id)"
@@ -1740,7 +1741,7 @@
                           </ng-template>
                         </ion-modal>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 2">
+                     <div class="btn" *ngIf="item.rst_id === 2 && !item.allowFinalize">
                         <button disabled class="bt-con">Finalizar</button>
                         <button id="mod-cancelar-2" class="bt-con">
                           Cancelar
@@ -1806,7 +1807,7 @@
                         <button disabled class="bt-con">Confirmar</button>
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 5">
+                     <div class="btn" *ngIf="item.rst_id === 5 || item.allowFinalize">
                         <button
                           class="bt-con"
                           (click)="getFinalizar(item.res_id)"
@@ -2044,7 +2045,7 @@
                           </ng-template>
                         </ion-modal>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 2">
+                     <div class="btn" *ngIf="item.rst_id === 2 && !item.allowFinalize">
                         <button disabled class="bt-con">Finalizar</button>
                         <button id="mod-cancelar-2" class="bt-con">
                           Cancelar
@@ -2114,7 +2115,7 @@
                         <button disabled class="bt-con">Finalizar</button>
                         <button disabled class="bt-con">Cancelar</button>
                       </div>
-                      <div class="btn" *ngIf="item.rst_id === 5">
+                     <div class="btn" *ngIf="item.rst_id === 5 || item.allowFinalize">
                         <button
                           class="bt-con"
                           (click)="getFinalizar(item.res_id)"
