@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  OnDestroy,
-  ViewChildren,
-  QueryList,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import Swiper from 'swiper';
 import {} from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -16,9 +8,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 import { ModalController } from '@ionic/angular';
 import { Router, NavigationEnd } from '@angular/router';
 import { IonModal } from '@ionic/angular';
-import { AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from 'rxjs'; // Importar Subscription
-import { filter } from 'rxjs/operators'; // Importar filter
+import { ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-anuncio-caracteristicas',
@@ -26,9 +17,9 @@ import { filter } from 'rxjs/operators'; // Importar filter
   styleUrls: ['./anuncio-caracteristicas.page.scss'],
 })
 export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
-  selectedContent: string = 'Características'; // Inicializa la variable con el valor por defecto
-  text = ''; // Texto del primer textarea
-  textareas: string[] = []; // Array para almacenar los textareas adicionales
+  selectedContent: string = 'Características';
+  text = '';
+  textareas: string[] = [];
   advertisements: any[] = [];
   selectedIndex: number | null = null;
   mainAd: any;
@@ -61,7 +52,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   hora_init: any;
   hora_end: any;
   chck_hora: boolean = false;
-  isLoading: boolean = true; // Siempre comienza en true
+  isLoading: boolean = true;
   private routerSubscription!: Subscription;
   private swiperInstance: any;
   showContent1: boolean = false;
@@ -81,15 +72,12 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef
   ) {}
 
-  // Método para reiniciar el estado de la página
   resetPageState() {
     this.isLoading = true;
-    // Destruir la instancia anterior de Swiper si existe
     if (this.swiperInstance) {
       this.swiperInstance.destroy();
       this.swiperInstance = null;
     }
-    // Cargar el contenido
     this.loadContent();
   }
 
@@ -112,7 +100,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   }
 
   async loadContent() {
-    this.isLoading = true; // Asegurar que loading está activado
+    this.isLoading = true;
     const token = await this.storage.getItem('token');
 
     this.api.getAds(token).subscribe(
@@ -122,7 +110,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
         if (this.advertisements.length <= 0) {
           alert('Debes crear un Anuncio antes!');
           this.router.navigate(['/tab-home/home']);
-          return; // Salir del método para evitar errores
+          return;
         }
 
         this.mainAd = this.advertisements[0];
@@ -138,15 +126,13 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
         this.precio_dia = this.mainAd.tipos_pagos[1].pag_monto;
         this.checkServPref();
 
-        // Esperar que el DOM se actualice
         this.cdr.detectChanges();
 
-        // Inicializar Swiper después de que los datos estén cargados
         this.initSwiper();
       },
       (error: any) => {
         console.error('Error al cargar los anuncios:', error);
-        this.isLoading = false; // Finalizar loading incluso en caso de error
+        this.isLoading = false;
         this.cdr.detectChanges();
       }
     );
@@ -178,7 +164,6 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
 
         this.isLoading = false;
 
-        // 👇 Forzar actualización visual
         this.cdr.detectChanges();
       },
       (error: any) => {
@@ -190,25 +175,17 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   }
 
   async onTimeChange(event: any, type: number) {
-    const selectedTime = event.detail.value;
-    const fecha_date = new Date(selectedTime);
+    const fecha_date = new Date(event.detail.value);
     const hours = fecha_date.getHours().toString().padStart(2, '0');
     const minutes = fecha_date.getMinutes().toString().padStart(2, '0');
     const result = `${hours}:${minutes}`;
-    const token = await this.storage.getItem('token');
-    const formData = new FormData();
-    formData.append(type === 1 ? 'rga_hora_inicio' : 'rga_hora_fin', result);
-    formData.append('gar_id', this.mainAd.gar_id);
 
-    this.api.updateAd(token, formData).subscribe(
-      (response: any) => {
-        console.log('Horario actualizado:', response);
-        this.updateContent(); // recargar todo
-      },
-      (error: any) => {
-        alert('Hubo un error: ' + error.message);
-      }
-    );
+    if (type === 1) {
+      this.hora_init = result;
+    } else {
+      this.hora_end = result;
+    }
+    console.log('Hora actualizada:', this.hora_init, this.hora_end);
   }
 
   async onNumberInputChange() {
@@ -233,9 +210,10 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     const savedToggle = await this.storage.getItem('chck_hora');
     if (savedToggle !== null) {
       this.chck_hora = savedToggle === 'true';
+    } else {
+      this.chck_hora = false;
     }
 
-    // Reiniciar estados
     this.chck_serv1 = false;
     this.chck_serv2 = false;
     this.chck_serv3 = false;
@@ -252,7 +230,6 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     this.chck_sab = false;
     this.chck_dom = false;
 
-    // Servicios
     this.mainAd.tipos_servicios.map((servicio: any) => {
       if (servicio.sga_id === 1) this.chck_serv1 = true;
       if (servicio.sga_id === 2) this.chck_serv2 = true;
@@ -261,17 +238,14 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       if (servicio.sga_id === 5) this.chck_serv5 = true;
     });
 
-    // Preferencias de garage
     this.mainAd.tipos_garages.map((garage: any) => {
       if (garage.tve_id === 1) this.chck_pref1 = true;
       if (garage.tve_id === 2) this.chck_pref2 = true;
       if (garage.tve_id === 3) this.chck_pref3 = true;
     });
 
-    // Restricciones
     this.mainAd.tipos_restricciones.map((restrict: any) => {
       if (restrict.rga_tipo === 1) {
-        // Días bloqueados
         switch (restrict.rga_dia) {
           case 1:
             this.chck_lun = true;
@@ -300,23 +274,17 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       if (restrict.rga_tipo === 2) {
         this.hora_init = restrict.rga_horainicio;
         this.hora_end = restrict.rga_horafin;
-
-        this.chck_hora = !(
-          this.hora_init === '10:00:00' && this.hora_end === '17:00:00'
-        );
       }
     });
   }
 
   convertToISO(time: string): string {
-    const currentDate = new Date(); // Obtiene la fecha actual
-    const [hours, minutes] = time.split(':'); // Divide la cadena de tiempo en horas y minutos
-    // Establece la hora y los minutos en la fecha actual
+    const currentDate = new Date();
+    const [hours, minutes] = time.split(':');
     currentDate.setUTCHours(parseInt(hours));
     currentDate.setUTCMinutes(parseInt(minutes));
-    currentDate.setUTCSeconds(0); // Opcionalmente puedes establecer los segundos en 0
-    // Convierte la fecha a formato ISO con los segundos (YYYY-MM-DDTHH:mm:00)
-    return currentDate.toISOString().split('.')[0]; // Retorna en formato YYYY-MM-DDTHH:mm:ss
+    currentDate.setUTCSeconds(0);
+    return currentDate.toISOString().split('.')[0];
   }
   async checkDia(event: Event, num: number) {
     const checkbox = event.target as HTMLInputElement;
@@ -333,7 +301,6 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     this.api.updateAd(token, formData).subscribe(
       (response: any) => {
         console.log('Día actualizado:', response);
-        // NO uses response.data aquí. Siempre recarga los datos:
         this.updateContent();
       },
       (error: any) => {
@@ -341,11 +308,12 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       }
     );
   }
-
   async sendUpdateDias() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
+
     await this.storage.setItem('chck_hora', String(this.chck_hora));
+
     if (this.chck_lun) formData.append('rga_dia_a', '1');
     if (this.chck_mar) formData.append('rga_dia_a', '2');
     if (this.chck_mie) formData.append('rga_dia_a', '3');
@@ -354,14 +322,21 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     if (this.chck_sab) formData.append('rga_dia_a', '6');
     if (this.chck_dom) formData.append('rga_dia_a', '7');
 
-    if (this.chck_hora) {
-      formData.append('rga_hora_inicio', this.hora_init || '10:00');
-      formData.append('rga_hora_fin', this.hora_end || '17:00');
+    let horaInicioEnviar = '';
+    let horaFinEnviar = '';
+
+    if (!this.chck_hora) {
+      horaInicioEnviar =
+        this.hora_init && this.hora_init.trim() !== '' ? this.hora_init : '';
+      horaFinEnviar =
+        this.hora_end && this.hora_end.trim() !== '' ? this.hora_end : '';
     } else {
-      formData.append('rga_hora_inicio', '10:00');
-      formData.append('rga_hora_fin', '17:00');
+      horaInicioEnviar = '10:00';
+      horaFinEnviar = '17:00';
     }
 
+    formData.append('rga_hora_inicio', horaInicioEnviar);
+    formData.append('rga_hora_fin', horaFinEnviar);
     formData.append('gar_id', this.mainAd.gar_id);
 
     this.api.updateAd(token, formData).subscribe(
@@ -481,7 +456,6 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   }
 
   initSwiper() {
-    // Crear nueva instancia de Swiper
     setTimeout(() => {
       this.swiperInstance = new Swiper('.swiper-container', {
         slidesPerView: 'auto',
@@ -491,9 +465,9 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
           el: '.swiper-pagination',
         },
       });
-      this.isLoading = false; // Finalizar loading después de inicializar Swiper
-      this.cdr.detectChanges(); // Forzar detección de cambios
-    }, 200); // Tiempo suficiente para asegurar que el DOM esté listo
+      this.isLoading = false;
+      this.cdr.detectChanges();
+    }, 200);
   }
 
   changeContent(content: string) {
@@ -512,7 +486,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
 
   agregarTextarea() {
     if (this.textareas.length < 3) {
-      this.textareas.push(''); // Agrega un nuevo textarea vacío al array
+      this.textareas.push('');
     }
   }
 
@@ -541,11 +515,9 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter() {
-    // Restablecer el estado de la página
     this.resetPageState();
   }
   ngOnDestroy() {
-    // Limpieza al destruir el componente
     if (this.routerSubscription) {
       this.routerSubscription.unsubscribe();
     }
@@ -776,7 +748,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     );
   }
 
-  onToggleHorario() {
-    console.log('Toggle horario cambiado:', this.chck_hora);
+  async onToggleHorario() {
+    await this.storage.setItem('chck_hora', String(this.chck_hora));
   }
 }

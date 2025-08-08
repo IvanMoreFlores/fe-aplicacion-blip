@@ -1217,11 +1217,8 @@
           </div>
 
           <ion-item>
-            <ion-toggle
-              justify="space-between"
-              [(ngModel)]="chck_hora"
-              (ionChange)="onToggleHorario()"
-            >
+          <ion-toggle [(ngModel)]="chck_hora">
+
               <div class="toggle-info">
                 Horas restringidas
                 <img src="/assets/images/icon-info2.svg" alt="" />
@@ -1252,7 +1249,7 @@
                     id="datetime1"
                     presentation="time"
                     hourCycle="h12"
-                    value="{{ convertToISO(hora_init) }}"
+                    [value]="convertToISO(hora_init)"
                     [disabled]="chck_hora"
                     (ionChange)="onTimeChange($event, 1)"
                   ></ion-datetime>
@@ -1277,7 +1274,7 @@
                     id="datetime2"
                     presentation="time"
                     hourCycle="h12"
-                    value="{{ convertToISO(hora_end) }}"
+                    [value]="convertToISO(hora_end)"
                     [disabled]="chck_hora"
                     (ionChange)="onTimeChange($event, 2)"
                   ></ion-datetime>
