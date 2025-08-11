@@ -192,7 +192,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
     let pag_monto = '';
-    pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}},{"tip_id":2,"pag_monto":${this.precio_dia}}]`;
+    pag_monto = `[{"tip_id":1,"pag_monto":${this.precio_hora}}]`;
     formData.append('pag_monto', pag_monto);
     formData.append('gar_id', this.mainAd.gar_id);
     this.api.updateAd(token, formData).subscribe(
@@ -289,31 +289,42 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   async checkDia(event: Event, num: number) {
     const checkbox = event.target as HTMLInputElement;
     const isChecked = checkbox.checked;
-    const token = await this.storage.getItem('token');
-    const formData = new FormData();
-    if (isChecked) {
-      formData.append('rga_dia_a', num.toString());
-    } else {
-      formData.append('rga_dia_d', num.toString());
-    }
-    formData.append('gar_id', this.mainAd.gar_id);
 
-    this.api.updateAd(token, formData).subscribe(
-      (response: any) => {
-        console.log('Día actualizado:', response);
-        this.updateContent();
-      },
-      (error: any) => {
-        alert('Hubo un error: ' + error.message);
-      }
-    );
+    // Solo actualizar las variables locales sin llamar al servicio
+    switch (num) {
+      case 1:
+        this.chck_lun = isChecked;
+        break;
+      case 2:
+        this.chck_mar = isChecked;
+        break;
+      case 3:
+        this.chck_mie = isChecked;
+        break;
+      case 4:
+        this.chck_jue = isChecked;
+        break;
+      case 5:
+        this.chck_vie = isChecked;
+        break;
+      case 6:
+        this.chck_sab = isChecked;
+        break;
+      case 7:
+        this.chck_dom = isChecked;
+        break;
+    }
+
+    console.log('Día actualizado localmente:', num, isChecked);
   }
+
   async sendUpdateDias() {
     const token = await this.storage.getItem('token');
     const formData = new FormData();
 
     await this.storage.setItem('chck_hora', String(this.chck_hora));
 
+    // Enviar todos los días seleccionados
     if (this.chck_lun) formData.append('rga_dia_a', '1');
     if (this.chck_mar) formData.append('rga_dia_a', '2');
     if (this.chck_mie) formData.append('rga_dia_a', '3');
@@ -321,6 +332,15 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
     if (this.chck_vie) formData.append('rga_dia_a', '5');
     if (this.chck_sab) formData.append('rga_dia_a', '6');
     if (this.chck_dom) formData.append('rga_dia_a', '7');
+
+    // Enviar todos los días NO seleccionados (para desactivarlos en el backend)
+    if (!this.chck_lun) formData.append('rga_dia_d', '1');
+    if (!this.chck_mar) formData.append('rga_dia_d', '2');
+    if (!this.chck_mie) formData.append('rga_dia_d', '3');
+    if (!this.chck_jue) formData.append('rga_dia_d', '4');
+    if (!this.chck_vie) formData.append('rga_dia_d', '5');
+    if (!this.chck_sab) formData.append('rga_dia_d', '6');
+    if (!this.chck_dom) formData.append('rga_dia_d', '7');
 
     let horaInicioEnviar = '';
     let horaFinEnviar = '';
@@ -751,5 +771,4 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   async onToggleHorario() {
     await this.storage.setItem('chck_hora', String(this.chck_hora));
   }
-  
 }
