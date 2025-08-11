@@ -268,6 +268,11 @@ export class HomePage implements OnInit, OnDestroy {
 
     this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
   }
+  openWhatsApp() {
+    const url = 'https://wa.me/message/YCTKTTHJPG6DE1';
+    window.open(url, '_system'); // _system abre fuera de la webview
+  }
+
   exit(page: number) {
     let urlNav = '';
 
@@ -327,6 +332,7 @@ export class HomePage implements OnInit, OnDestroy {
               minutes: 0,
               seconds: 0,
             };
+            element.allowFinalize = true; // botón FINALIZAR activo
           }
 
           // === CASO 2: Servicio confirmado pero ya inició (no presionó INICIAR) ===

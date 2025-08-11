@@ -1,5 +1,4 @@
 <ion-header mode="ios">
-  
   <ion-toolbar>
     <ion-buttons slot="start">
       <img
@@ -148,7 +147,11 @@
                 </div>
                 <img class="second-image" src="/assets/images/Vector-1.png" alt="">
               </button> -->
-            <button routerLink="sopor56" class="service-button">
+            <button
+              routerLink="sopor56"
+              class="service-button"
+              (click)="openWhatsApp()"
+            >
               <div>
                 <img
                   class="button-image"
@@ -225,7 +228,6 @@
         </div>
       </ng-template>
     </ion-modal>
-
   </ion-toolbar>
 </ion-header>
 
@@ -235,7 +237,8 @@
       pullingIcon="arrow-down-outline"
       refreshingSpinner="circles"
       pullingText="Desliza hacia abajo para refrescar"
-      refreshingText="Actualizando...">
+      refreshingText="Actualizando..."
+    >
     </ion-refresher-content>
   </ion-refresher>
   <div class="cont-hom">
