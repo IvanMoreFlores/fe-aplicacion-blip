@@ -42,6 +42,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   selectedGarId: number | null = null;
   precio_hora: any;
   precio_dia: any;
+  isInputFocused: boolean = false;
   chck_dom: boolean = false;
   chck_lun: boolean = false;
   chck_mar: boolean = false;
@@ -63,6 +64,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   showContentDirec: boolean = false;
   @ViewChild('trashModal') trashModal!: IonModal;
   @ViewChild('selectModal') selectModal!: IonModal;
+  @ViewChild('precioModal') precioModal!: IonModal;
 
   constructor(
     private router: Router,
@@ -770,5 +772,35 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
 
   async onToggleHorario() {
     await this.storage.setItem('chck_hora', String(this.chck_hora));
+  }
+
+  onInputFocus() {
+    // Marcar que el input está enfocado y cambiar la altura del modal
+    this.isInputFocused = true;
+
+    // Cambiar la altura del modal usando CSS personalizado
+    const style = document.createElement('style');
+    style.id = 'modal-height-style';
+    style.textContent = `
+      ion-modal[trigger="hora-fraccion"] {
+        --height: 700px !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    this.cdr.detectChanges();
+  }
+
+  onInputBlur() {
+    // Marcar que el input perdió el foco y restaurar la altura del modal
+    this.isInputFocused = false;
+
+    // Remover el estilo personalizado para restaurar la altura automática
+    const existingStyle = document.getElementById('modal-height-style');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+
+    this.cdr.detectChanges();
   }
 }

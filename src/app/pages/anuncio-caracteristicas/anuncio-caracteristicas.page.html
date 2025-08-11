@@ -1007,9 +1007,11 @@
           </div>
 
           <ion-modal
+            #precioModal
             trigger="hora-fraccion"
             [initialBreakpoint]="1"
             [breakpoints]="[0, 1]"
+            [ngClass]="{'input-focused': isInputFocused}"
           >
             <ng-template>
               <div class="block">
@@ -1019,7 +1021,12 @@
                   <div class="form-regla">
                     <div class="input-bar">
                       <p class="label-text">Hora o fracción</p>
-                      <input placeholder="S/ 5" [(ngModel)]="precio_hora" />
+                      <input
+                        placeholder="S/ 5"
+                        [(ngModel)]="precio_hora"
+                        (focus)="onInputFocus()"
+                        (blur)="onInputBlur()"
+                      />
                     </div>
                     <button class="btn-gurd2" (click)="onNumberInputChange()">
                       Guardar Cambios
@@ -1217,8 +1224,7 @@
           </div>
 
           <ion-item>
-          <ion-toggle [(ngModel)]="chck_hora">
-
+            <ion-toggle [(ngModel)]="chck_hora">
               <div class="toggle-info">
                 Horas restringidas
                 <img src="/assets/images/icon-info2.svg" alt="" />
