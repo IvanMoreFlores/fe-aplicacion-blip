@@ -133,6 +133,7 @@
               </div>
             </div>
             <ion-modal
+              #nombreModal
               trigger="open-modal-nombre"
               [initialBreakpoint]="1"
               [breakpoints]="[0, 1]"
@@ -148,6 +149,8 @@
                         class="false-textarea"
                         placeholder="Av. Alfredo Mendiola 3698"
                         [(ngModel)]="gar_nombre_mod"
+                        (focus)="onNombreInputFocus()"
+                        (blur)="onNombreInputBlur()"
                       />
                     </div>
                     <button (click)="sendUpdateName()">Guardar Cambios</button>

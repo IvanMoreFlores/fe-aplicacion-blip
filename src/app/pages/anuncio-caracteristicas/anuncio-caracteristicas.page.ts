@@ -43,6 +43,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   precio_hora: any;
   precio_dia: any;
   isInputFocused: boolean = false;
+  isNombreInputFocused: boolean = false;
   chck_dom: boolean = false;
   chck_lun: boolean = false;
   chck_mar: boolean = false;
@@ -65,6 +66,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   @ViewChild('trashModal') trashModal!: IonModal;
   @ViewChild('selectModal') selectModal!: IonModal;
   @ViewChild('precioModal') precioModal!: IonModal;
+  @ViewChild('nombreModal') nombreModal!: IonModal;
 
   constructor(
     private router: Router,
@@ -797,6 +799,36 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
 
     // Remover el estilo personalizado para restaurar la altura automática
     const existingStyle = document.getElementById('modal-height-style');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+
+    this.cdr.detectChanges();
+  }
+
+  onNombreInputFocus() {
+    // Marcar que el input del nombre está enfocado y cambiar la altura del modal
+    this.isNombreInputFocused = true;
+
+    // Cambiar la altura del modal usando CSS personalizado
+    const style = document.createElement('style');
+    style.id = 'modal-nombre-height-style';
+    style.textContent = `
+      ion-modal[trigger="open-modal-nombre"] {
+        --height: 700px !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    this.cdr.detectChanges();
+  }
+
+  onNombreInputBlur() {
+    // Marcar que el input del nombre perdió el foco y restaurar la altura del modal
+    this.isNombreInputFocused = false;
+
+    // Remover el estilo personalizado para restaurar la altura automática
+    const existingStyle = document.getElementById('modal-nombre-height-style');
     if (existingStyle) {
       existingStyle.remove();
     }
