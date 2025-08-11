@@ -25,13 +25,12 @@ export class ImgEstaPage implements OnInit {
   uga_lat: string = '';
   uga_long: string = '';
   dis_id: number = 0;
-  tve_id: any = []; 
+  tve_id: any = [];
   descripcion: string = '';
   mainFiles: File[] = [];
   extraFiles: File[] = [];
   allPreviews: string[] = [];
-showAddImageModal: boolean = false;
-firstTimeAddingImage = true;
+  showAddImageModal: boolean = false;
 
   constructor(
     private router: Router,
@@ -56,12 +55,22 @@ firstTimeAddingImage = true;
   }
 
   async dismissOpenModal() {
-    const modal = await this.modalCtrl.getTop();
-    if (modal) modal.dismiss();
+    this.showAddImageModal = false;
   }
 
   async captureImage(source: CameraSource) {
     try {
+      // Verificar permisos antes de intentar capturar
+      const permissionStatus = await Camera.checkPermissions();
+      
+      if (permissionStatus.camera !== 'granted') {
+        const requestResult = await Camera.requestPermissions();
+        if (requestResult.camera !== 'granted') {
+          alert('Se requieren permisos de cámara para tomar fotos.');
+          return;
+        }
+      }
+
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: false,
@@ -74,6 +83,7 @@ firstTimeAddingImage = true;
       }
     } catch (error) {
       console.error('Error al obtener la imagen:', error);
+      alert('Error al capturar la imagen. Por favor, intenta de nuevo.');
     }
   }
 
@@ -217,13 +227,7 @@ firstTimeAddingImage = true;
     });
   }
   onAddImageClick() {
-  if (this.firstTimeAddingImage) {
+    // Siempre mostrar el modal para dar opción de cámara o galería
     this.showAddImageModal = true;
-    this.firstTimeAddingImage = false;
-  } else {
-    // Ya mostró el modal antes, va directo a galería
-    this.selectGallery();
   }
-}
-
 }
