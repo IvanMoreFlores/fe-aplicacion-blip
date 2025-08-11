@@ -268,6 +268,11 @@ export class HomePage implements OnInit, OnDestroy {
 
     this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
   }
+  openWhatsApp() {
+    const url = 'https://wa.me/message/YCTKTTHJPG6DE1';
+    window.open(url, '_system'); // _system abre fuera de la webview
+  }
+
   exit(page: number) {
     let urlNav = '';
 
@@ -305,74 +310,84 @@ export class HomePage implements OnInit, OnDestroy {
       hour12: true,
     });
   }
- async getReservas() {
-  this.isLoading = true;
-  const token = await this.storage.getItem('token');
-  this.api.getReservations(token).subscribe(
-    async (response: any) => {
-      const ahora = new Date();
+  async getReservas() {
+    this.isLoading = true;
+    const token = await this.storage.getItem('token');
+    this.api.getReservations(token).subscribe(
+      async (response: any) => {
+        const ahora = new Date();
 
-      response.data.forEach((element: any) => {
-        // Ajustar fechas con +5 horas
-        element.res_fecini = this.addFiveHours(element.res_fecini);
-        element.res_fecfin = this.addFiveHours(element.res_fecfin);
+        response.data.forEach((element: any) => {
+          // Ajustar fechas con +5 horas
+          element.res_fecini = this.addFiveHours(element.res_fecini);
+          element.res_fecfin = this.addFiveHours(element.res_fecfin);
 
-        const inicio = new Date(element.res_fecini);
-        const fin = new Date(element.res_fecfin);
+          const inicio = new Date(element.res_fecini);
+          const fin = new Date(element.res_fecfin);
 
-        // Caso 1: Servicio EN CURSO (rst_id === 5) pero ya pasó la hora fin
-        if (element.rst_id === 5 && ahora > fin) {
-          this.countdownTimers[element.res_id] = { hours: 0, minutes: 0, seconds: 0 };
-          element.allowFinalize = true; // botón FINALIZAR activo
-        }
-
-        // Caso 2: Servicio CONFIRMADO (rst_id === 2), ya empezó pero no se inició (no dio INICIAR)
-        if (element.rst_id === 2 && ahora >= inicio && ahora <= fin) {
-          element.rst_id = 5; // cambiar a EN CURSO
-          element.rst_descri = 'EN CURSO';
-          element.allowFinalize = true; // botón FINALIZAR activo
-
-          const tiempoTranscurridoSegundos = Math.floor((ahora.getTime() - inicio.getTime()) / 1000);
-          const tiempoTotalSegundos = element.res_tiempo * 3600;
-          const tiempoRestanteSegundos = tiempoTotalSegundos - tiempoTranscurridoSegundos;
-
-          if (tiempoRestanteSegundos <= 0) {
-            this.countdownTimers[element.res_id] = { hours: 0, minutes: 0, seconds: 0 };
-          } else {
+          // Caso 1: Servicio EN CURSO (rst_id === 5) pero ya pasó la hora fin
+          if (element.rst_id === 5 && ahora > fin) {
             this.countdownTimers[element.res_id] = {
-              hours: Math.floor(tiempoRestanteSegundos / 3600),
-              minutes: Math.floor((tiempoRestanteSegundos % 3600) / 60),
-              seconds: tiempoRestanteSegundos % 60,
+              hours: 0,
+              minutes: 0,
+              seconds: 0,
             };
+            element.allowFinalize = true; // botón FINALIZAR activo
           }
-        }
 
-        // Para otros estados, desactivar allowFinalize
-        if (element.rst_id !== 5) {
-          element.allowFinalize = false;
-        }
-      });
+          // Caso 2: Servicio CONFIRMADO (rst_id === 2), ya empezó pero no se inició (no dio INICIAR)
+          if (element.rst_id === 2 && ahora >= inicio && ahora <= fin) {
+            element.rst_id = 5; // cambiar a EN CURSO
+            element.rst_descri = 'EN CURSO';
+            element.allowFinalize = true; // botón FINALIZAR activo
 
-      this.data = response.data;
-      this.n_data = Object.keys(this.data).length;
+            const tiempoTranscurridoSegundos = Math.floor(
+              (ahora.getTime() - inicio.getTime()) / 1000
+            );
+            const tiempoTotalSegundos = element.res_tiempo * 3600;
+            const tiempoRestanteSegundos =
+              tiempoTotalSegundos - tiempoTranscurridoSegundos;
 
-      // Filtrar por estados
-      this.getPendientes(this.data);
-      this.getFinalizadas(this.data);
-      this.getCanceladas(this.data);
-      this.getComienzaPronto(this.data);
-      this.getEnCurso(this.data);
+            if (tiempoRestanteSegundos <= 0) {
+              this.countdownTimers[element.res_id] = {
+                hours: 0,
+                minutes: 0,
+                seconds: 0,
+              };
+            } else {
+              this.countdownTimers[element.res_id] = {
+                hours: Math.floor(tiempoRestanteSegundos / 3600),
+                minutes: Math.floor((tiempoRestanteSegundos % 3600) / 60),
+                seconds: tiempoRestanteSegundos % 60,
+              };
+            }
+          }
 
-      this.initializeTimers();
-      this.isLoading = false;
-    },
-    (error: any) => {
-      console.error('Error al enviar el mensaje:', error);
-      this.isLoading = false;
-    }
-  );
-}
+          // Para otros estados, desactivar allowFinalize
+          if (element.rst_id !== 5) {
+            element.allowFinalize = false;
+          }
+        });
 
+        this.data = response.data;
+        this.n_data = Object.keys(this.data).length;
+
+        // Filtrar por estados
+        this.getPendientes(this.data);
+        this.getFinalizadas(this.data);
+        this.getCanceladas(this.data);
+        this.getComienzaPronto(this.data);
+        this.getEnCurso(this.data);
+
+        this.initializeTimers();
+        this.isLoading = false;
+      },
+      (error: any) => {
+        console.error('Error al enviar el mensaje:', error);
+        this.isLoading = false;
+      }
+    );
+  }
 
   async getPendientes(datos: any) {
     this.data_pendientes = [];
