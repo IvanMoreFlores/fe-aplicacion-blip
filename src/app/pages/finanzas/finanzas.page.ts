@@ -43,7 +43,7 @@ export class FinanzasPage implements OnInit {
     const placeholderHeight = placeholderText.length * 1; // Ajusta el factor según tus necesidades
     return `${placeholderHeight}px`;
   }
-
+  
   ngOnInit() {
     const metodoGuardado = localStorage.getItem('savedPaymentMethodo');
     if (metodoGuardado) {
@@ -110,7 +110,6 @@ export class FinanzasPage implements OnInit {
         2
       )}. ¿Deseas continuar?`
     );
-
     if (!confirmar) {
       return;
     }
@@ -162,6 +161,24 @@ export class FinanzasPage implements OnInit {
     });
   }
 
+  toCamelCase(text: string, capitalizeAfterSpace: boolean = false): string {
+    if (!text) return '';
+
+    // Convierte todo el texto a minúsculas primero
+    let result = text.toLowerCase();
+
+    // Convierte la primera letra a mayúscula
+    result = result.charAt(0).toUpperCase() + result.slice(1);
+
+    // Si se debe capitalizar después de espacios
+    if (capitalizeAfterSpace) {
+      result = result.replace(/ ([a-z])/g, function (match, group1) {
+        return ' ' + group1.toUpperCase();
+      });
+    }
+
+    return result;
+  }
   async getDataBank() {
     const token = await this.storage.getItem('token');
     this.api.getBanks(token).subscribe({

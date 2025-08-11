@@ -268,6 +268,11 @@ export class HomePage implements OnInit, OnDestroy {
 
     this.cdr.detectChanges(); // Asegura que los cambios se reflejen correctamente
   }
+  openWhatsApp() {
+    const url = 'https://wa.me/message/YCTKTTHJPG6DE1';
+    window.open(url, '_system'); // _system abre fuera de la webview
+  }
+
   exit(page: number) {
     let urlNav = '';
 
@@ -313,27 +318,28 @@ export class HomePage implements OnInit, OnDestroy {
         const ahora = new Date();
 
         response.data.forEach((element: any) => {
+          // Ajustar fechas con +5 horas
           element.res_fecini = this.addFiveHours(element.res_fecini);
           element.res_fecfin = this.addFiveHours(element.res_fecfin);
 
           const inicio = new Date(element.res_fecini);
           const fin = new Date(element.res_fecfin);
 
-          // === CASO 1: Servicio en curso pero tiempo terminado ===
+          // Caso 1: Servicio EN CURSO (rst_id === 5) pero ya pasó la hora fin
           if (element.rst_id === 5 && ahora > fin) {
-            // Cronómetro queda en 00:00:00 pero el botón FINALIZAR sigue activo
             this.countdownTimers[element.res_id] = {
               hours: 0,
               minutes: 0,
               seconds: 0,
             };
+            element.allowFinalize = true; // botón FINALIZAR activo
           }
 
-          // === CASO 2: Servicio confirmado pero ya inició (no presionó INICIAR) ===
+          // Caso 2: Servicio CONFIRMADO (rst_id === 2), ya empezó pero no se inició (no dio INICIAR)
           if (element.rst_id === 2 && ahora >= inicio && ahora <= fin) {
-            // Simulamos que está EN CURSO automáticamente
-            element.rst_id = 5;
+            element.rst_id = 5; // cambiar a EN CURSO
             element.rst_descri = 'EN CURSO';
+            element.allowFinalize = true; // botón FINALIZAR activo
 
             const tiempoTranscurridoSegundos = Math.floor(
               (ahora.getTime() - inicio.getTime()) / 1000
@@ -356,11 +362,17 @@ export class HomePage implements OnInit, OnDestroy {
               };
             }
           }
+
+          // Para otros estados, desactivar allowFinalize
+          if (element.rst_id !== 5) {
+            element.allowFinalize = false;
+          }
         });
 
         this.data = response.data;
-        console.log(this.data);
         this.n_data = Object.keys(this.data).length;
+
+        // Filtrar por estados
         this.getPendientes(this.data);
         this.getFinalizadas(this.data);
         this.getCanceladas(this.data);
@@ -372,6 +384,7 @@ export class HomePage implements OnInit, OnDestroy {
       },
       (error: any) => {
         console.error('Error al enviar el mensaje:', error);
+        this.isLoading = false;
       }
     );
   }

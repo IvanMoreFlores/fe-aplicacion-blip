@@ -52,7 +52,10 @@ export class DescripcionDeDireccionPage implements OnInit {
 
   async setValues() {
     const adConfig = await this.storage.getItem('adConfig');
-    console.log("🚀 ~ DescripcionDeDireccionPage ~ setValues ~ adConfig:", adConfig)
+    console.log(
+      '🚀 ~ DescripcionDeDireccionPage ~ setValues ~ adConfig:',
+      adConfig
+    );
     this.distritoData = adConfig.districts;
     for (const item of this.distritoData) {
       this.distritos.push({
@@ -79,24 +82,12 @@ export class DescripcionDeDireccionPage implements OnInit {
     await modal.present();
 
     const { data, role } = await modal.onDidDismiss();
-
     if (role === 'confirm' && data) {
-      // Guardar la ubicación seleccionada
       this.selectedLocation = data.position;
+      if (data.address) {
+        this.direccion = data.address;
+      }
 
-      // Actualizar la dirección con la encontrada en el mapa
-      // if (data.address) {
-      //   this.direccion = data.address;
-      // }
-
-      // Guardar en storage para uso posterior
-      // await this.storage.setItem('lastGeocodedLocation', {
-      //   lat: data.position.lat,
-      //   lng: data.position.lng,
-      //   formattedAddress: data.address
-      // });
-
-      // Geocodificar para obtener distrito y ciudad
       await this.geocodeLocationForComponents(data.position);
     }
   }
@@ -110,7 +101,10 @@ export class DescripcionDeDireccionPage implements OnInit {
       async (response: any) => {
         console.log('🚀 ~ DescripcionDeDireccionPage ~ response:', response);
         this.isLoading = false;
-        console.log("🚀 ~ DescripcionDeDireccionPage ~ this.distritos:", this.distritos)
+        console.log(
+          '🚀 ~ DescripcionDeDireccionPage ~ this.distritos:',
+          this.distritos
+        );
 
         if (
           response.status === 'OK' &&

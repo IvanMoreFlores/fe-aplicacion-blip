@@ -129,7 +129,7 @@ export class LogBinPage implements OnInit {
                 if (user) {
                   await this.saveStorage('user', user);
                   this.isLoading = false;
-                  this.router.navigate(['/tab-home/home']);
+                     this.router.navigate(['/tab-home/home'], { replaceUrl: true });
                 }
               },
               error: (error) => {

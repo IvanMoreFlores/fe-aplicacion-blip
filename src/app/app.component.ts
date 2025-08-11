@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { StorageService } from './services/storage.service';
-import { Keyboard, KeyboardResize } from '@capacitor/keyboard';
 import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,26 +12,20 @@ export class AppComponent {
 
   constructor(
     private storageService: StorageService,
-    private router: Router,
-    private authService: AuthService
+    private router: Router
   ) {
     this.checkSession();
   }
 
   async checkSession() {
-    if (this.checkingSession) return; 
+    if (this.checkingSession) return;
     this.checkingSession = true;
 
-    const token = await this.authService.ensureValidToken();
+    const user = await this.storageService.getItem('user');
+    const refreshToken = await this.storageService.getItem('refreshToken');
 
-    if (token) {
-      const user = await this.storageService.getItem('user');
-      const refreshToken = await this.storageService.getItem('refreshToken');
-      if (user && refreshToken) {
-        this.router.navigate(['/tab-home/home'], { replaceUrl: true });
-      } else {
-        this.router.navigate(['/login'], { replaceUrl: true });
-      }
+    if (user && refreshToken) {
+      this.router.navigate(['/tab-home/home'], { replaceUrl: true });
     } else {
       this.router.navigate(['/login'], { replaceUrl: true });
     }
@@ -41,4 +33,3 @@ export class AppComponent {
     this.checkingSession = false;
   }
 }
-

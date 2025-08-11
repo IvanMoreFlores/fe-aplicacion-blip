@@ -27,15 +27,6 @@
 
         <div class="swiper-slide">
           <button
-            (click)="changeContent('Historial de Alquiler')"
-            [ngClass]="{'active': isButtonActive('Historial de Alquiler')}"
-          >
-            Historial de Alquiler
-          </button>
-        </div>
-
-        <div class="swiper-slide">
-          <button
             (click)="changeContent('Pagos')"
             [ngClass]="{'active': isButtonActive('Pagos')}"
           >
@@ -45,12 +36,21 @@
 
         <div class="swiper-slide">
           <button
+            (click)="changeContent('Transacciones')"
+            [ngClass]="{'active': isButtonActive('Transacciones')}"
+          >
+            Transacciones
+          </button>
+        </div>
+
+        <!-- <div class="swiper-slide">
+          <button
             (click)="changeContent('Historial de Pago')"
             [ngClass]="{'active': isButtonActive('Historial de Pago')}"
           >
             Historial de Pago
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="scroll-container">
@@ -104,64 +104,15 @@
               </h2>
             </div>
             <div class="continue">
-              <button class="btn-sig" (click)="reqPayment()">
+              <button
+                class="btn-sig"
+                (click)="reqPayment()"
+                [disabled]="total_final < 50"
+              >
                 Solicitar Retiro
               </button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!--                 -----Historial de Alquiler-----              -->
-      <div *ngIf="selectedContent === 'Historial de Alquiler'">
-        <div class="alquiler-title">
-          <h3>Esta semana</h3>
-        </div>
-
-        <div *ngFor="let reserva of data_reserve">
-          <div class="alquiler">
-            <div class="h-alq">
-              <h3 class="date">
-                {{ reserva.res_fecini | date: 'dd \'de\' MMMM' : 'es' }}
-              </h3>
-              <div class="chip">
-                <h3>{{ reserva.rst_descri }}</h3>
-              </div>
-            </div>
-            <div class="nomb-host">
-              <div>
-                <div class="aut">
-                  <img
-                    src="/assets/images/icon-car.svg"
-                    alt=""
-                    class="icon-car"
-                  />
-                  <h1>Host Name</h1>
-                </div>
-                <div class="veiculo">
-                  <h1>{{ reserva.veh_modelo }}</h1>
-                  <h1>{{ reserva.veh_placa }}</h1>
-                </div>
-                <div class="tiempo">
-                  <h1>Reserva</h1>
-                  <span>x</span>
-                  <h1>{{ reserva.tip_descri }}</h1>
-                  <img src="/assets/images/der-reser.svg" alt="" />
-                  <h1>1h</h1>
-                </div>
-                <div class="horas">
-                  <h1>{{ reserva.res_fecini | date: 'hh:mm a' : 'es' }}</h1>
-                  <img src="/assets/images/flec-hist.svg" alt="" />
-                  <h1>{{ reserva.res_fecfin | date: 'hh:mm a' : 'es' }}</h1>
-                </div>
-                <h1 class="description">
-                  Alquiler <span>{{ reserva.gar_nombre }}</span>
-                </h1>
-              </div>
-              <h1 class="precio">S/. {{ reserva.pag_monto_total }}</h1>
-            </div>
-          </div>
-          <hr />
         </div>
       </div>
 
@@ -305,8 +256,60 @@
         </div>
       </div>
 
+      <!--                 -----Transacciones-----              -->
+      <div *ngIf="selectedContent === 'Transacciones'">
+        <div class="alquiler-title">
+          <h1 class="historial-title">Histórico de Transacciones</h1>
+        </div>
+        <div *ngFor="let reserva of data_reserve" class="alquiler-padre">
+          <div class="alquiler">
+            <div class="alquiler-img">
+              <img src="/assets/images/fi-sr-money.svg" alt="" />
+            </div>
+            <div class="alquiler-container">
+              <div class="container-text">
+                <p class="alquiler-text">string title no found back</p>
+                <div class="container-date-alquiler">
+                  <div
+                    *ngFor="let reserva of data_reserve"
+                    class="container-rst-descrip"
+                  >
+                    <span
+                      *ngIf="reserva.rst_id === 1"
+                      class="dot_orange"
+                    ></span>
+                    <span *ngIf="reserva.rst_id === 2" class="dot"></span>
+                    <span *ngIf="reserva.rst_id === 3" class="dot_red"></span>
+                    <span *ngIf="reserva.rst_id === 4" class="dot_blue"></span>
+                    <span *ngIf="reserva.rst_id === 5" class="dot"></span>
+                  </div>
+                  <p class="alquiler-text">{{ reserva.rst_descri }}</p>
+                </div>
+                <div class="container-date-alquiler">
+                  <img
+                    src="/assets/images/finanzas-fi-sr-calendar.svg"
+                    alt=""
+                  />
+                  <p class="alquiler-text-second">
+                    {{ reserva.res_fecini | date: 'dd \'de\' MMMM' : 'es' }}
+                  </p>
+                </div>
+              </div>
+              <div class="text-price">
+                <div class="container-date-alquiler">
+                  <img src="/assets/images/finanzas-fi-sr-money.svg" alt="" />
+                  <p class="alquiler-text-second">
+                    S/. {{ reserva.pag_monto_total }}.00
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!--                 -----Historial de Pago-----              -->
-      <div *ngIf="selectedContent === 'Historial de Pago'">
+      <!-- <div *ngIf="selectedContent === 'Historial de Pago'">
         <div>
           <h1 class="historial-title">
             Revisa tu histórico de pagos efectuados
@@ -350,7 +353,7 @@
             <hr />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </ion-content>

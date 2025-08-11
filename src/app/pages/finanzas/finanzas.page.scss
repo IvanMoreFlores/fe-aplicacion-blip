@@ -94,7 +94,7 @@ ion-toolbar {
   margin-right: 10px;
   margin-bottom: 10px;
 
-  width: fit-content  !important
+  width: fit-content !important;
 }
 
 .swiper-wrapper button {
@@ -307,184 +307,81 @@ hr {
 
 // ----------------HISTORIAL DE ALQUILER------------------------------
 
-.alquiler-title h3 {
-  color: #575757;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 150% */
+.alquiler-padre {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-
-.h-alq {
-  display: flex; /* Usar flexbox para la alineación */
-  justify-content: space-between; /* Espacio entre los elementos */
-  align-items: center; /* Alinear verticalmente al centro */
-  padding-block: 10px;
-  width: 100%; /* Asegúrate de que tenga un ancho del 100% */
+.alquiler {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
 }
-
-.chip {
-  display: flex; /* Asegúrate de que el chip también use flexbox si necesitas alineación interna */
-  background-color: #fff;
-  padding: 13px 15px; /* Agregar padding para que el botón se vea mejor */
+.alquiler-img {
+  background-color: #c7c7cc;
   border-radius: 15px;
-
-  /* M3/Elevation Light/2 */
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3),
-    0px 2px 6px 2px rgba(0, 0, 0, 0.15);
-}
-
-.chip h3 {
-  color: #212121;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 11px;
-  font-weight: 500;
-  margin: 0; /* Eliminar márgenes para evitar desajustes */
-}
-.nomb-host {
+  padding: 54px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-.nomb-host div {
-  width: 75%;
-}
-.aut {
-  display: flex;
-  padding-block: 5px;
-}
-.aut h1 {
-  color: #212121;
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  margin-left: 10px;
-}
-.veiculo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 5px;
-}
-.veiculo h1 {
-  color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-}
-.icon-alquiler {
-  margin-right: 10px; /* Espacio entre el icono y la información */
-}
-.tiempo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 5px;
-}
-.tiempo h1 {
-  color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-}
-.tiempo span {
-  color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-}
-.horas {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 5px;
-}
-.horas h1 {
-  color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-}
-.precio {
-  color: #212121;
-  text-align: right;
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25px; /* 166.667% */
-  text-transform: uppercase;
-}
-.icon-alquiler {
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
-
-.circle {
-  width: 29px; /* Ajusta el tamaño del círculo según tus necesidades */
-  height: 29px; /* Ajusta el tamaño del círculo según tus necesidades */
-  background-color: #79ffaf4d;
-  border-radius: 50%; /* Hace que el div sea un círculo */
+.alquiler-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.container-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.alquiler-text {
+  font-weight: 500;
+  font-size: 15px;
+}
+.alquiler-text-second {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1%;
+}
+.container-date-alquiler {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
   align-items: center;
 }
-
-.h-alq h3 {
-  margin: 0; /* Elimina el margen superior e inferior de h3 */
-  color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 0px; /* 0% */
+.dot_blue {
+  width: 8px;
+  height: 8px;
+  display: flex;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Green, blue);
 }
 
-.info-alquiler h4 {
-  margin: 0; /* Elimina el margen superior e inferior de h4 */
-  font-size: 10px;
-  font-weight: 500;
-  color: #6d6d6d;
+ .dot {
+  width: 8px;
+  height: 8px;
+   display: flex;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Green, #34C759);
+  display: inline-block;
 }
-
-.description {
-  margin: 0; /* Elimina el margen superior e inferior de p */
-  color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 0px; /* 0% */
-  padding-block: 15px;
+.dot_red {
+  width: 8px;
+  height: 8px;
+   display: flex;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Green, red);
 }
-
-.description span {
-  color: #212121;
-  font-family: Poppins;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 0px;
-  text-decoration-line: underline;
+.dot_orange {
+  width: 8px;
+  height: 8px;
+   display: flex;
+  border-radius: var(--loader, 100px);
+  background: var(--Colors-Green, orange);
 }
-
-.alquiler-monto {
-  margin-left: auto; /* Empuja este contenedor hacia la derecha */
-}
-
-.alquiler-monto span {
-  font-size: 16px;
-  font-weight: 500;
-}
-
 // --------------------PAGOS------------------------------
 
 .pagos-title {
@@ -545,7 +442,7 @@ hr {
   line-height: 25px;
   letter-spacing: 1%;
 }
-.icon-tarjeta{
+.icon-tarjeta {
   width: 28px;
   height: 28px;
 }
@@ -774,6 +671,11 @@ select.input-pago.ng-touched {
     no-repeat right 10px center;
   background-size: 16px;
   padding-right: 30px;
+}
+.btn-sig:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .btn-sig {
