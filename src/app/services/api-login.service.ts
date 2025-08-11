@@ -9,7 +9,7 @@ export class ApiLoginService {
   // private apiUrl = 'https://login.blip-backend.com';
   private apiUrl = 'https://login-demo.blip-backend.com';
   //private apiUrl = 'http://localhost:3001';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTokenTemp(token: string, data: any): Observable<any> {
     const { email, phone } = data;
@@ -35,6 +35,18 @@ export class ApiLoginService {
     return this.http.get(`${this.apiUrl}/host/session/token`, {
       headers,
     });
+  }
+
+  // Método para refrescar el token
+  refreshToken(token: string, refreshToken: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.get(
+      `${this.apiUrl}/user/session/token/${token}/refresh/${refreshToken}`,
+      { headers }
+    );
   }
 
   sendSMS(token: string, data: any): Observable<any> {
