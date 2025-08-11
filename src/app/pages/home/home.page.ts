@@ -1,10 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import Swiper from 'swiper';
 import { interval, Subscription } from 'rxjs';
+import { Geolocation, PositionOptions } from '@capacitor/geolocation';
+import { HttpClient } from '@angular/common/http';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -51,19 +53,98 @@ export class HomePage implements OnInit, OnDestroy {
   isLoading = false;
   data_ads: any[] = [];
   ads_active: number = 0;
+  apiKey: string = 'AIzaSyBZkfs324ThxziQZNBudoIPv8JT8Vp7V2s';
 
   constructor(
     private readonly router: Router,
     private readonly modalController: ModalController,
     private readonly storage: StorageService,
     private readonly api: ApiService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly cdr: ChangeDetectorRef,
+    private readonly platform: Platform,
+    private readonly http: HttpClient
   ) {}
 
   ngOnDestroy() {
     // Limpiar la suscripción al destruir el componente
     if (this.timerSubscription) {
       this.timerSubscription.unsubscribe();
+    }
+  }
+
+  // Función para solicitar permisos de ubicación y obtener la ubicación actual
+  async requestLocationPermission() {
+    try {
+      // Verificar si ya tenemos la ubicación guardada
+      const savedLocation = await this.storage.getItem('userLocation');
+      if (savedLocation) {
+        console.log('Ubicación ya guardada:', savedLocation);
+        return;
+      }
+
+      // Verificar permisos
+      const permissionStatus = await Geolocation.checkPermissions();
+      
+      if (permissionStatus.location !== 'granted') {
+        // Solicitar permisos usando el sistema nativo
+        const requestResult = await Geolocation.requestPermissions();
+        
+        if (requestResult.location !== 'granted') {
+          console.log('Permisos de ubicación denegados');
+          return;
+        }
+      }
+
+      // Obtener ubicación actual
+      const options: PositionOptions = {
+        enableHighAccuracy: true,
+        timeout: 10000
+      };
+
+      const position = await Geolocation.getCurrentPosition(options);
+      
+      const userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        timestamp: new Date().toISOString()
+      };
+
+      // Obtener dirección usando Google Geocoding API
+      await this.getAddressFromCoordinates(userLocation);
+
+    } catch (error) {
+      console.error('Error al obtener ubicación:', error);
+    }
+  }
+
+  // Función para obtener la dirección a partir de coordenadas
+  async getAddressFromCoordinates(location: { lat: number; lng: number }) {
+    try {
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${this.apiKey}`;
+      
+      this.http.get(url).subscribe(
+        async (response: any) => {
+          if (response.status === 'OK' && response.results && response.results.length > 0) {
+            const address = response.results[0].formatted_address;
+            
+            const userLocationWithAddress = {
+              ...location,
+              address: address
+            };
+
+            // Guardar en storage
+            await this.storage.setItem('userLocation', userLocationWithAddress);
+            console.log('Ubicación guardada:', userLocationWithAddress);
+          }
+        },
+        async (error) => {
+          console.error('Error al obtener dirección:', error);
+          // Guardar solo las coordenadas si no se puede obtener la dirección
+          await this.storage.setItem('userLocation', location);
+        }
+      );
+    } catch (error) {
+      console.error('Error en getAddressFromCoordinates:', error);
     }
   }
   // Inyecta el ModalController
@@ -146,6 +227,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.getReservas();
     this.getDni();
     this.getBlackout();
+    this.requestLocationPermission(); // Solicitar permisos de ubicación
     setTimeout(() => {
       this.iniciarSwiper();
     }, 0);

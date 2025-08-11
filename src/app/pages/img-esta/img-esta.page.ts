@@ -53,7 +53,11 @@ export class ImgEstaPage implements OnInit {
     await this.captureImage(CameraSource.Photos);
     this.dismissOpenModal();
   }
-
+  handleNavigateTo(route: string) {
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
   async dismissOpenModal() {
     this.showAddImageModal = false;
   }
@@ -62,12 +66,22 @@ export class ImgEstaPage implements OnInit {
     try {
       // Verificar permisos antes de intentar capturar
       const permissionStatus = await Camera.checkPermissions();
-      
-      if (permissionStatus.camera !== 'granted') {
-        const requestResult = await Camera.requestPermissions();
-        if (requestResult.camera !== 'granted') {
-          alert('Se requieren permisos de cámara para tomar fotos.');
-          return;
+
+      if (source === CameraSource.Camera) {
+        if (permissionStatus.camera !== 'granted') {
+          const requestResult = await Camera.requestPermissions();
+          if (requestResult.camera !== 'granted') {
+            alert('Se requieren permisos de cámara para tomar fotos.');
+            return;
+          }
+        }
+      } else if (source === CameraSource.Photos) {
+        if (permissionStatus.photos !== 'granted') {
+          const requestResult = await Camera.requestPermissions();
+          if (requestResult.photos !== 'granted') {
+            alert('Se requieren permisos de galería para seleccionar fotos.');
+            return;
+          }
         }
       }
 
