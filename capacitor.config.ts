@@ -14,6 +14,9 @@ const config: CapacitorConfig = {
     },
     Keyboard: {
       resize: 'none' as any // Deshabilitar el ajuste automático del teclado
+    },
+    Camera: {
+      androidScaleType: "CENTER_CROP"
     }
   }
 };
