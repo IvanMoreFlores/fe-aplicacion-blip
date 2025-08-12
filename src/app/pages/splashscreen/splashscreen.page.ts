@@ -46,19 +46,22 @@ export class SplashscreenPage implements OnInit {
   }
 
  async init_value() {
+  const token = await this.storageService.getItem('token');
+
+  // Si hay token, el usuario ya está logueado, ir directamente a lds
+  if (token) {
+    this.router.navigate(['/lds'], { replaceUrl: true });
+    return;
+  }
+
+  // Si no hay token, verificar si ya vio el welcome
   const welcome = await this.storageService.getItem('welcome');
   if (!welcome) {
     this.router.navigate(['/walkthrough'], { replaceUrl: true });
     return;
   }
 
-  const token = await this.storageService.getItem('token');
-
-  if (token) {
-    this.router.navigate(['/lds'], { replaceUrl: true });
-    return;
-  }
-
+  // Si no hay token pero ya vio el welcome, ir a login
   this.router.navigate(['/login'], { replaceUrl: true });
 }
 
