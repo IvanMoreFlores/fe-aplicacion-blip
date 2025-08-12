@@ -15,6 +15,7 @@ export class MapSelectorComponent implements OnInit, AfterViewInit {
   @ViewChild('mapElement', { static: true }) mapElement!: ElementRef;
   @Input() initialAddress!: string;
   @Input() apiKey: string='AIzaSyBZkfs324ThxziQZNBudoIPv8JT8Vp7V2s';
+  @Input() userLocation: any; // Nueva propiedad para la ubicación del usuario
 
   map: any;
   currentPosition!: { lat: number, lng: number };
@@ -74,8 +75,22 @@ export class MapSelectorComponent implements OnInit, AfterViewInit {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
+      // Si hay ubicación del usuario guardada, usarla primero
+      if (this.userLocation && this.userLocation.lat && this.userLocation.lng) {
+        this.currentPosition = {
+          lat: this.userLocation.lat,
+          lng: this.userLocation.lng
+        };
+        this.currentAddress = this.userLocation.address || '';
+        this.map.setCenter(this.currentPosition);
+        
+        // Si no hay dirección, hacer geocodificación inversa
+        if (!this.currentAddress) {
+          this.reverseGeocode(this.currentPosition);
+        }
+      }
       // Si hay dirección inicial, geocodificarla
-      if (this.initialAddress) {
+      else if (this.initialAddress) {
         await this.geocodeAddress(this.initialAddress);
       } else {
         // Si no hay dirección, usar la ubicación actual

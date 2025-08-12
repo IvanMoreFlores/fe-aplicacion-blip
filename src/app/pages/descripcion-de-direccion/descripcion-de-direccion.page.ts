@@ -69,12 +69,21 @@ export class DescripcionDeDireccionPage implements OnInit {
   }
 
   async nextMap() {
+    // Verificar si hay ubicación guardada del usuario
+    const userLocation = await this.storage.getItem('userLocation');
+    
+    if (userLocation && userLocation.address) {
+      // Si hay ubicación guardada, usarla como dirección inicial
+      this.direccion = userLocation.address;
+    }
+
     // Abrir modal con mapa para seleccionar ubicación
     const modal = await this.modalController.create({
       component: MapSelectorComponent,
       componentProps: {
         initialAddress: this.direccion,
         apiKey: this.apiKey,
+        userLocation: userLocation // Pasar la ubicación del usuario al componente
       },
       cssClass: 'map-modal',
     });
