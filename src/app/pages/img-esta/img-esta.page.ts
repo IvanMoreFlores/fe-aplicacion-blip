@@ -61,8 +61,53 @@ export class ImgEstaPage implements OnInit {
           photos: permissionStatus.photos === 'granted'
         });
       }
+
+      // Si no tenemos permisos de cámara o galería, solicitarlos automáticamente
+      if (permissionStatus.camera !== 'granted' || permissionStatus.photos !== 'granted') {
+        console.log('Solicitando permisos de cámara y galería...');
+        await this.requestCameraAndGalleryPermissions();
+      }
     } catch (error) {
       console.error('Error al verificar permisos de cámara:', error);
+    }
+  }
+
+  async requestCameraAndGalleryPermissions() {
+    try {
+      // Verificar permisos de cámara
+      const cameraPermissionStatus = await Camera.checkPermissions();
+      let cameraGranted = cameraPermissionStatus.camera === 'granted';
+      let photosGranted = cameraPermissionStatus.photos === 'granted';
+      
+      if (cameraPermissionStatus.camera !== 'granted') {
+        const cameraRequestResult = await Camera.requestPermissions();
+        if (cameraRequestResult.camera !== 'granted') {
+          console.log('Permisos de cámara denegados');
+        } else {
+          console.log('Permisos de cámara concedidos');
+          cameraGranted = true;
+        }
+      }
+
+      // Verificar permisos de galería (photos)
+      if (cameraPermissionStatus.photos !== 'granted') {
+        const photosRequestResult = await Camera.requestPermissions();
+        if (photosRequestResult.photos !== 'granted') {
+          console.log('Permisos de galería denegados');
+        } else {
+          console.log('Permisos de galería concedidos');
+          photosGranted = true;
+        }
+      }
+
+      // Guardar el estado de los permisos en storage
+      await this.storage.setItem('cameraPermissions', {
+        camera: cameraGranted,
+        photos: photosGranted
+      });
+
+    } catch (error) {
+      console.error('Error al solicitar permisos de cámara y galería:', error);
     }
   }
 
@@ -117,8 +162,24 @@ export class ImgEstaPage implements OnInit {
       if (image.webPath) {
         this.addImageFromPath(image.webPath);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error al obtener la imagen:', error);
+      
+      // Verificar si el error es por cancelación del usuario
+      if (error.message && (
+        error.message.includes('User cancelled') || 
+        error.message.includes('User canceled') ||
+        error.message.includes('cancelled') ||
+        error.message.includes('canceled') ||
+        error.message.includes('User did not take photo') ||
+        error.message.includes('User did not select photo')
+      )) {
+        // El usuario canceló la acción, no mostrar error
+        console.log('Usuario canceló la selección de imagen');
+        return;
+      }
+      
+      // Solo mostrar error si no es una cancelación
       alert('Error al capturar la imagen. Por favor, intenta de nuevo.');
     }
   }
