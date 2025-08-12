@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import Swiper from 'swiper';
 import { interval, Subscription } from 'rxjs';
 import { Geolocation, PositionOptions } from '@capacitor/geolocation';
+import { Camera } from '@capacitor/camera';
 import { HttpClient } from '@angular/common/http';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -113,6 +114,46 @@ export class HomePage implements OnInit, OnDestroy {
       await this.getAddressFromCoordinates(userLocation);
     } catch (error) {
       console.error('Error al obtener ubicación:', error);
+    }
+  }
+
+  // Función para solicitar permisos de cámara y galería
+  async requestCameraAndGalleryPermissions() {
+    try {
+      // Verificar permisos de cámara
+      const cameraPermissionStatus = await Camera.checkPermissions();
+      let cameraGranted = cameraPermissionStatus.camera === 'granted';
+      let photosGranted = cameraPermissionStatus.photos === 'granted';
+      
+      if (cameraPermissionStatus.camera !== 'granted') {
+        const cameraRequestResult = await Camera.requestPermissions();
+        if (cameraRequestResult.camera !== 'granted') {
+          console.log('Permisos de cámara denegados');
+        } else {
+          console.log('Permisos de cámara concedidos');
+          cameraGranted = true;
+        }
+      }
+
+      // Verificar permisos de galería (photos)
+      if (cameraPermissionStatus.photos !== 'granted') {
+        const photosRequestResult = await Camera.requestPermissions();
+        if (photosRequestResult.photos !== 'granted') {
+          console.log('Permisos de galería denegados');
+        } else {
+          console.log('Permisos de galería concedidos');
+          photosGranted = true;
+        }
+      }
+
+      // Guardar el estado de los permisos en storage
+      await this.storage.setItem('cameraPermissions', {
+        camera: cameraGranted,
+        photos: photosGranted
+      });
+
+    } catch (error) {
+      console.error('Error al solicitar permisos de cámara y galería:', error);
     }
   }
 
@@ -231,6 +272,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.getDni();
     this.getBlackout();
     this.requestLocationPermission(); // Solicitar permisos de ubicación
+    this.requestCameraAndGalleryPermissions(); // Solicitar permisos de cámara y galería
     setTimeout(() => {
       this.iniciarSwiper();
     }, 0);
@@ -880,6 +922,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.getDni();
     this.getBlackout();
     this.getAds();
+    this.requestCameraAndGalleryPermissions(); // Solicitar permisos de cámara y galería
 
     const validate_arr = this.userData.esu_id;
 

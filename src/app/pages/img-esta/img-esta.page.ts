@@ -42,7 +42,29 @@ export class ImgEstaPage implements OnInit {
     this.setValues();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.checkCameraPermissions();
+  }
+
+  async checkCameraPermissions() {
+    try {
+      const permissionStatus = await Camera.checkPermissions();
+      const savedPermissions = await this.storage.getItem('cameraPermissions');
+      
+      // Si no tenemos permisos guardados o los permisos han cambiado, actualizar
+      if (!savedPermissions || 
+          savedPermissions.camera !== (permissionStatus.camera === 'granted') ||
+          savedPermissions.photos !== (permissionStatus.photos === 'granted')) {
+        
+        await this.storage.setItem('cameraPermissions', {
+          camera: permissionStatus.camera === 'granted',
+          photos: permissionStatus.photos === 'granted'
+        });
+      }
+    } catch (error) {
+      console.error('Error al verificar permisos de cámara:', error);
+    }
+  }
 
   async selectCamera() {
     await this.captureImage(CameraSource.Camera);
@@ -71,7 +93,7 @@ export class ImgEstaPage implements OnInit {
         if (permissionStatus.camera !== 'granted') {
           const requestResult = await Camera.requestPermissions();
           if (requestResult.camera !== 'granted') {
-            alert('Se requieren permisos de cámara para tomar fotos.');
+            alert('Se requieren permisos de cámara para tomar fotos. Por favor, ve a Configuración > Privacidad y Seguridad > Cámara y habilita el acceso para esta aplicación.');
             return;
           }
         }
@@ -79,7 +101,7 @@ export class ImgEstaPage implements OnInit {
         if (permissionStatus.photos !== 'granted') {
           const requestResult = await Camera.requestPermissions();
           if (requestResult.photos !== 'granted') {
-            alert('Se requieren permisos de galería para seleccionar fotos.');
+            alert('Se requieren permisos de galería para seleccionar fotos. Por favor, ve a Configuración > Privacidad y Seguridad > Fotos y habilita el acceso para esta aplicación.');
             return;
           }
         }
