@@ -524,8 +524,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
       async (response: any) => {
         console.log(response);
         alert('Anuncio eliminado!');
-        // Redirigir a home en lugar de hacer reload
-        this.router.navigate(['/tab-home/home']);
+        window.location.reload();
       },
       (error) => {
         console.error('Error al eliminar', error);
