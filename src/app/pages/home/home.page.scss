@@ -2,7 +2,6 @@ ion-content {
   padding-inline: 22px;
 
   --overflow: hidden;
-
 }
 
 .cont-hom {
@@ -11,7 +10,7 @@ ion-content {
 
 .btn-mn {
   background-color: #ffffff;
-  box-shadow: 0px 4px 4px 0px rgba(33, 33, 33, 0.10);
+  box-shadow: 0px 4px 4px 0px rgba(33, 33, 33, 0.1);
   border-radius: 20%;
   width: 44px;
   height: 44px;
@@ -75,13 +74,12 @@ ion-toolbar {
   }
 }
 
-
 .next-btn {
   width: 100%;
   padding: 20px;
   font-size: 16px;
-  border: 1px solid #C8C5CA;
-  font-family: 'Poppins SemiBold';
+  border: 1px solid #c8c5ca;
+  font-family: "Poppins SemiBold";
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -89,7 +87,7 @@ ion-toolbar {
 
 .disabled-btn {
   background-color: #ffffff;
-  color: #C8C5CA;
+  color: #c8c5ca;
   cursor: not-allowed;
 }
 
@@ -99,10 +97,8 @@ ion-toolbar {
   cursor: pointer;
 }
 
-
-
 .subtitle {
-  color: rgba(33, 33, 33, 0.60);
+  color: rgba(33, 33, 33, 0.6);
   font-family: "Poppins";
   font-size: 12px;
   font-style: normal;
@@ -149,7 +145,7 @@ ion-toolbar {
   z-index: 999;
 }
 
-.horizontal-scroll>div {
+.horizontal-scroll > div {
   flex: 0 0 auto;
   /* Asegura que cada hijo ocupe su espacio y no se contraiga */
   margin-right: 10px;
@@ -176,16 +172,16 @@ ion-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #C7C7CC;
+  border: 1px solid #c7c7cc;
   border-radius: 30px;
-  background: var(--Schemes-On-Primary, #FFF);
+  background: var(--Schemes-On-Primary, #fff);
   height: 30px;
   padding: 18px 20px 18px 20px !important;
   margin-right: 10px;
 
   h1 {
     margin: 0px;
-    color: #C7C7CC;
+    color: #c7c7cc;
     font-size: 14px;
   }
 
@@ -199,11 +195,11 @@ ion-toolbar {
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    background: #C7C7CC;
+    background: #c7c7cc;
 
     .descrip {
       margin: 0px;
-      color: var(--Schemes-On-Primary, #FFF);
+      color: var(--Schemes-On-Primary, #fff);
       font-family: Poppins;
       font-style: normal;
       font-weight: 700;
@@ -224,7 +220,6 @@ ion-toolbar {
 
     .lda {
       background: #212121;
-
     }
   }
 }
@@ -237,7 +232,7 @@ ion-toolbar {
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  border: 1px solid #C7C7CC;
+  border: 1px solid #c7c7cc;
   margin: 20px 0;
   overflow: auto;
 }
@@ -253,13 +248,14 @@ ion-toolbar {
   img {
     width: 25px;
     height: 25px;
-    filter: invert(62%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(95%) contrast(85%);
+    filter: invert(62%) sepia(0%) saturate(0%) hue-rotate(180deg)
+      brightness(95%) contrast(85%);
   }
 
   h1 {
     font-size: 15px;
     font-family: "Poppins";
-    color: #C7C7CC;
+    color: #c7c7cc;
   }
 
   /* Asegura que el tamaño de fuente sea adecuado */
@@ -306,7 +302,6 @@ ion-toolbar {
   width: 95%;
 }
 
-
 .button-image {
   margin-left: 15px;
   margin-right: 15px;
@@ -320,7 +315,6 @@ ion-toolbar {
   font-weight: normal;
   /* 160% */
 }
-
 
 .text-b {
   font-size: 16px;
@@ -360,7 +354,7 @@ ion-toolbar {
 .block {
   width: 100%;
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   flex-direction: column;
 }
 
@@ -369,7 +363,6 @@ ion-modal {
 }
 
 .title-c {
-
   color: #212121;
   font-family: Poppins;
   font-size: 15px;
@@ -391,7 +384,6 @@ ion-modal {
   font-weight: 400;
   line-height: 25px;
   /* 192.308% */
-
 }
 
 /* Contenedor de botones */
@@ -409,7 +401,7 @@ ion-modal {
   border: 1px solid #212121;
   background-color: white;
   color: #212121;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   border-radius: 25px;
   margin-bottom: 15px;
@@ -422,7 +414,7 @@ ion-modal {
   padding-block: 15px;
   background-color: #212121;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   border-radius: 25px;
   cursor: pointer;
@@ -450,7 +442,6 @@ ion-modal {
 }
 
 .swiper-wrapper {
-
   padding-right: 80px;
   /* Añade espacio extra al final del contenedor de slides */
 }
@@ -463,13 +454,12 @@ ion-modal {
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 100%;
-
 }
 
 .floating-text {
   box-shadow: none;
   position: absolute;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 5px 15px;
   border-radius: 20px;
   color: #212121;
@@ -517,7 +507,7 @@ ion-modal {
   width: 6px;
   height: 6px;
   border-radius: var(--loader, 100px);
-  background: var(--Colors-Green, #34C759);
+  background: var(--Colors-Green, #34c759);
 
   margin-left: 5px;
   display: inline-block;
@@ -665,7 +655,6 @@ ion-modal {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .btn {
@@ -683,7 +672,6 @@ ion-modal {
 .bt-con {
   width: 45%;
   padding-block: 10px;
-
 }
 
 .bt-can {
@@ -714,7 +702,6 @@ ion-modal {
   background-color: rgb(29, 27, 32);
   border-radius: 20px;
   border: 1px solid #212121;
-
 }
 
 .bt-can:disabled {
@@ -744,7 +731,7 @@ ion-content ion-card {
 ion-card {
   flex: 0 0 auto;
   /* Evita que las tarjetas se expandan verticalmente */
-  border: 1px solid #CAC4D0;
+  border: 1px solid #cac4d0;
   margin: 0px;
 
   ion-card-content {
@@ -805,7 +792,7 @@ ion-card {
         margin-top: 5px;
 
         h1 {
-          color: #FEF7FF;
+          color: #fef7ff;
           text-align: center;
           margin: 0px;
           font-family: "Poppins";
@@ -829,7 +816,7 @@ ion-card {
         }
 
         .title-large {
-          color: #1D1B20;
+          color: #1d1b20;
           font-family: "Poppins";
           font-size: 15px;
           font-style: normal;
@@ -839,16 +826,14 @@ ion-card {
         }
 
         .subtitle-large {
-          color: #1D1B20;
+          color: #1d1b20;
           font-family: "Poppins";
           font-size: 13px;
           font-style: normal;
           font-weight: normal;
-
         }
       }
     }
-
   }
 }
 

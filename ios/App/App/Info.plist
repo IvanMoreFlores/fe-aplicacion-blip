@@ -59,5 +59,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true />
+	<!-- Configuración para Safe Area y Dynamic Island -->
+	<key>UIStatusBarHidden</key>
+	<false />
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<!-- Configuración para viewport moderno -->
+	<key>UIRequiresFullScreen</key>
+	<false />
+	<!-- Configuración para Safe Area -->
 </dict>
 </plist>

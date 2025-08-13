@@ -30,6 +30,7 @@
     "@capacitor/ios": "^7.4.0",
     "@capacitor/keyboard": "^7.0.0",
     "@capacitor/status-bar": "^7.0.0",
+    "@capawesome/capacitor-android-edge-to-edge-support": "^7.2.2",
     "@capgo/capacitor-navigation-bar": "^7.1.24",
     "@fullcalendar/angular": "^6.1.10",
     "@fullcalendar/core": "^6.1.11",

@@ -24,16 +24,53 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-@import 'swiper/scss';
-@import 'swiper/scss/navigation';
-@import 'swiper/scss/pagination';
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
 @import "~dropzone/dist/dropzone.css";
 @import "~leaflet/dist/leaflet.css";
 
-body {
-  background-color: var(--background-color);
-  font-family: var(--ion-font-family);
-  color: var(--title-text-color);
+/* Importar configuración unificada de Edge-to-Edge para iOS y Android */
+// @import "./theme/edge-to-edge-unified.scss";
+
+// body {
+//   background-color: var(--background-color);
+//   font-family: var(--ion-font-family);
+//   color: var(--title-text-color);
+
+//   /* Configuración para Safe Area en dispositivos con Dynamic Island */
+//   padding-top: env(safe-area-inset-top);
+//   padding-bottom: env(safe-area-inset-bottom);
+//   padding-left: env(safe-area-inset-left);
+//   padding-right: env(safe-area-inset-right);
+// }
+
+// /* Configuración específica para iOS Safe Area */
+// @supports (padding: max(0px)) {
+//   body {
+//     padding-top: max(env(safe-area-inset-top), 0px);
+//     padding-bottom: max(env(safe-area-inset-bottom), 0px);
+//     padding-left: max(env(safe-area-inset-left), 0px);
+//     padding-right: max(env(safe-area-inset-right), 0px);
+//   }
+// }
+
+/* Configuración para dispositivos con Dynamic Island */
+@supports (padding: env(safe-area-inset-top)) {
+  .ion-page {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Asegurar que el contenido principal respete el Safe Area */
+  // .ion-content {
+  //   --padding-top: env(safe-area-inset-top);
+  //   --padding-bottom: env(safe-area-inset-bottom);
+  //   --padding-start: env(safe-area-inset-left);
+  //   --padding-end: env(safe-area-inset-right);
+  // }
 }
 
 h1,
@@ -81,7 +118,6 @@ h3 {
 //       }
 //   }
 
-
 //   swiper-slide img {
 //     width: 500px;
 //     max-width:  350px;
@@ -118,7 +154,6 @@ h3 {
 //           color: #dc3545; /* Cambia el color del texto del botón de cancelar */
 //         }
 //     }
-
 
 //   .calendar-container {
 //     display: flex;
@@ -171,8 +206,6 @@ h3 {
 //   height: 100%;
 //   z-index: 1;
 // }
-
-
 
 //   td {
 //     width: 30px;

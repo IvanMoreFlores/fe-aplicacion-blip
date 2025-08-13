@@ -30,6 +30,30 @@ const config: CapacitorConfig = {
         permissions: ['camera', 'photoLibrary', 'photoLibraryAdd'],
       },
     },
+    // Configuración para Android Edge-to-Edge Support
+    AndroidEdgeToEdgeSupport: {
+      enabled: true,
+      // Configurar el comportamiento del sistema de navegación
+      navigationBar: {
+        color: '#000000',
+        light: false,
+        // Configurar para que respete el Safe Area
+        edgeToEdge: true,
+      },
+      // Configurar el comportamiento de la barra de estado
+      statusBar: {
+        color: '#000000',
+        light: false,
+        // Configurar para que respete el Safe Area
+        edgeToEdge: true,
+      },
+      // Configurar el comportamiento del teclado
+      keyboard: {
+        resize: 'none',
+        // Configurar para que respete el Safe Area
+        edgeToEdge: true,
+      },
+    },
   },
 };
 

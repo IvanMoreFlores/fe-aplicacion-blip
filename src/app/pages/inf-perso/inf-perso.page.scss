@@ -5,12 +5,11 @@ h3 {
   margin: 0px;
 }
 ion-header {
-  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-  background-color: #fff !important; /* Aplica directamente el color blanco */
-}
-ion-header {
-  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-  background-color: #fff !important; /* Aplica directamente el color blanco */
+  --background: #fff !important;
+  /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important;
+  /* Aplica directamente el color blanco */
+  padding: 10px 20px 20px 20px;
 }
 
 ion-toolbar {
@@ -23,12 +22,12 @@ ion-toolbar {
   align-items: center;
 }
 ion-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 22px;
-  margin-block: 10px;
-  height: 56px; /* Altura consistente para el header */
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // padding-inline: 22px;
+  // margin-block: 10px;
+  // height: 56px; /* Altura consistente para el header */
 }
 
 .custom-title {
@@ -67,7 +66,7 @@ ion-buttons {
   letter-spacing: 0%;
   vertical-align: middle;
 }
-.img-dow{
+.img-dow {
   width: 16px !important;
   height: 16px !important;
 }

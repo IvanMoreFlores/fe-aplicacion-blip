@@ -5,12 +5,11 @@ h3 {
   margin: 0px;
 }
 ion-header {
-  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-  background-color: #fff !important; /* Aplica directamente el color blanco */
-}
-ion-header {
-  --background: #fff !important; /* Fuerza el color blanco como fondo usando !important */
-  background-color: #fff !important; /* Aplica directamente el color blanco */
+  --background: #fff !important;
+  /* Fuerza el color blanco como fondo usando !important */
+  background-color: #fff !important;
+  /* Aplica directamente el color blanco */
+  padding: 10px 20px 20px 20px;
 }
 
 ion-toolbar {
@@ -18,12 +17,12 @@ ion-toolbar {
   background-color: #fff !important; /* Aplica directamente el color blanco */
 }
 ion-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 22px;
-  margin-block: 10px;
-  height: 56px; /* Altura consistente para el header */
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // padding-inline: 22px;
+  // margin-block: 10px;
+  // height: 56px; /* Altura consistente para el header */
 }
 
 .header-ios ion-toolbar:last-of-type {
@@ -360,25 +359,25 @@ hr {
   background: var(--Colors-Green, blue);
 }
 
- .dot {
+.dot {
   width: 8px;
   height: 8px;
-   display: flex;
+  display: flex;
   border-radius: var(--loader, 100px);
-  background: var(--Colors-Green, #34C759);
+  background: var(--Colors-Green, #34c759);
   display: inline-block;
 }
 .dot_red {
   width: 8px;
   height: 8px;
-   display: flex;
+  display: flex;
   border-radius: var(--loader, 100px);
   background: var(--Colors-Green, red);
 }
 .dot_orange {
   width: 8px;
   height: 8px;
-   display: flex;
+  display: flex;
   border-radius: var(--loader, 100px);
   background: var(--Colors-Green, orange);
 }
