@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-contra-verf',
   templateUrl: './contra-verf.page.html',
@@ -7,7 +8,10 @@ import { Router } from '@angular/router';
 })
 export class ContraVerfPage implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private navCtrl: NavController
+  ) { }
 
 
   ngOnInit() {
@@ -17,7 +21,7 @@ export class ContraVerfPage implements OnInit {
   // Método para redirigir tras 2 segundos
   private startRedirection() {
     setTimeout(() => {
-      this.router.navigate(['/login'], { replaceUrl: true });
+      this.navCtrl.navigateRoot('/login');
     }, 2000);
   }
 

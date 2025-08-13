@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { ModalController, Platform } from '@ionic/angular';
+import { ModalController, NavController, Platform } from '@ionic/angular';
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -63,7 +63,8 @@ export class HomePage implements OnInit, OnDestroy {
     private readonly api: ApiService,
     private readonly cdr: ChangeDetectorRef,
     private readonly platform: Platform,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private navCtrl: NavController,
   ) {}
 
   ngOnDestroy() {
@@ -383,7 +384,7 @@ export class HomePage implements OnInit, OnDestroy {
   async sesion_close() {
     await this.storage.clear();
     await this.modalController.dismiss();
-    this.router.navigate(['/login']);
+    this.navCtrl.navigateRoot ('/login');
   }
   async dismissToggleModal(fromBackdrop: boolean = false) {
     this.isToggleModalOpen = false; // Cierra el modal del toggle

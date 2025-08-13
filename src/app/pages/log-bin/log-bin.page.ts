@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../../services/jwt.service';
 import { StorageService } from '../../services/storage.service';
 import { ApiService } from 'src/app/services/api.service';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { Keyboard } from '@capacitor/keyboard';
 import { ApiLoginService } from 'src/app/services/api-login.service';
 
@@ -29,7 +29,8 @@ export class LogBinPage implements OnInit {
     private storageService: StorageService,
     private apiLoginService: ApiLoginService,
     private api: ApiService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private navCtrl: NavController,
   ) {}
 
   handleNavigateTo(route: string) {
@@ -129,7 +130,7 @@ export class LogBinPage implements OnInit {
                 if (user) {
                   await this.saveStorage('user', user);
                   this.isLoading = false;
-                     this.router.navigate(['/tab-home/home'], { replaceUrl: true });
+                  this.navCtrl.navigateRoot('/tab-home/home');
                 }
               },
               error: (error) => {

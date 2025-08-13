@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { JwtService } from 'src/app/services/jwt.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { SmsService } from 'src/app/services/sms.service';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { ApiLoginService } from 'src/app/services/api-login.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class LoginPage implements OnInit, OnDestroy {
     private storageService: StorageService,
     private sms: SmsService,
     private apiLoginService: ApiLoginService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private navCtrl: NavController,
   ) {}
 
   ngOnInit() {
@@ -39,7 +40,7 @@ export class LoginPage implements OnInit, OnDestroy {
     const user = await this.storageService.getItem('user');
     const refreshToken = await this.storageService.getItem('refreshToken');
     if (token && user && refreshToken) {
-      this.router.navigate(['/tab-home/home'], { replaceUrl: true });
+      this.navCtrl.navigateRoot('/tab-home/home');
     }
 
     this.phone2 = '';

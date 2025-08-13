@@ -3,6 +3,7 @@ import { StorageService } from './services/storage.service';
 import { Router } from '@angular/router';
 import { ApiLoginService } from './services/api-login.service';
 import { catchError, of } from 'rxjs';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent {
   private checkingSession = false;
 
   constructor(
+    private navCtrl: NavController,
     private storageService: StorageService,
     private router: Router,
     private apiLoginService: ApiLoginService
@@ -50,16 +52,16 @@ export class AppComponent {
               console.log('Token refrescado exitosamente');
             }
             // Navegar al home independientemente del resultado del refresh
-            this.router.navigate(['/tab-home/home'], { replaceUrl: true });
+            this.navCtrl.navigateRoot('/tab-home/home');
           },
           error: (error) => {
             console.error('Error en la respuesta del refresh:', error);
             // Navegar al home incluso si hay error en el refresh
-            this.router.navigate(['/tab-home/home'], { replaceUrl: true });
+            this.navCtrl.navigateRoot('/tab-home/home');
           },
         });
     } else {
-      this.router.navigate(['/login'], { replaceUrl: true });
+      this.navCtrl.navigateRoot('/login');
     }
 
     this.checkingSession = false;

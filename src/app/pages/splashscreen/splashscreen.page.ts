@@ -5,6 +5,7 @@ import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar } from '@capgo/capacitor-navigation-bar';
 import { StorageService } from '../../services/storage.service';
 import { JwtService } from '../../services/jwt.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-splashscreen',
@@ -15,7 +16,8 @@ export class SplashscreenPage implements OnInit {
   constructor(
     private router: Router,
     private storageService: StorageService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private navCtrl: NavController,
   ) {
     if (Capacitor.getPlatform() !== 'web') {
       StatusBar.setStyle({ style: Style.Light });
@@ -57,12 +59,12 @@ export class SplashscreenPage implements OnInit {
   // Si no hay token, verificar si ya vio el welcome
   const welcome = await this.storageService.getItem('welcome');
   if (!welcome) {
-    this.router.navigate(['/walkthrough'], { replaceUrl: true });
+    this.navCtrl.navigateRoot('/walkthrough');
     return;
   }
 
   // Si no hay token pero ya vio el welcome, ir a login
-  this.router.navigate(['/login'], { replaceUrl: true });
+  this.navCtrl.navigateRoot('/login');
 }
 
 
@@ -77,6 +79,6 @@ export class SplashscreenPage implements OnInit {
   }
 
   onSoundEnded() {
-    this.router.navigate(['/walkthrough']);
+    this.navCtrl.navigateRoot('/walkthrough');
   }
 }

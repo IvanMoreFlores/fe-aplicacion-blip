@@ -4,6 +4,7 @@ import { StorageService } from '../../services/storage.service';
 import Swiper from 'swiper';
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { NavController } from '@ionic/angular';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 @Component({
@@ -24,7 +25,8 @@ export class WalkthroughPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private navCtrl: NavController,
   ) {}
 
   ngOnInit() {
@@ -58,7 +60,7 @@ export class WalkthroughPage implements OnInit {
     await this.storageService.removeItem('refreshToken');
     await this.storageService.removeItem('user');
     await this.storageService.setItem('welcome', true);
-    this.router.navigate(['/login'], { replaceUrl: true });
+    this.navCtrl.navigateRoot('/login');
   }
   
 }

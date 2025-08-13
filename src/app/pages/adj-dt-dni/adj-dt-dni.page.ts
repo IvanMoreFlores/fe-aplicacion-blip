@@ -3,6 +3,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-adj-dt-dni',
@@ -25,12 +26,13 @@ export class AdjDtDniPage implements OnInit {
   @ViewChild('backInput') backInput!: ElementRef<HTMLInputElement>;
 
   constructor(
+    private navCtrl: NavController,
     private readonly api: ApiService,
     private readonly storage: StorageService,
     private readonly router: Router,
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   // Métodos para abrir los inputs ocultos
   onAddFrontClick() {
@@ -128,7 +130,7 @@ export class AdjDtDniPage implements OnInit {
         async (response) => {
           console.log('Imágenes enviadas exitosamente', response);
           await this.updateData();
-          this.router.navigate(['/tab-home/home']);
+          this.navCtrl.navigateRoot('/tab-home/home');
         },
         (error) => {
           console.error('Error al enviar las imágenes', error);

@@ -5,7 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from '../../services/storage.service';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Router, NavigationEnd } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { ChangeDetectorRef } from '@angular/core';
@@ -69,6 +69,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
   @ViewChild('nombreModal') nombreModal!: IonModal;
 
   constructor(
+    private navCtrl: NavController,
     private router: Router,
     private api: ApiService,
     private storage: StorageService,
@@ -113,7 +114,7 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
 
         if (this.advertisements.length <= 0) {
           alert('Debes crear un Anuncio antes!');
-          this.router.navigate(['/tab-home/home']);
+          this.navCtrl.navigateRoot('/tab-home/home');
           return;
         }
 
