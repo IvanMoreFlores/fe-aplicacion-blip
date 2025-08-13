@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Blip Host</string>
+    <string name="title_activity_main">Blip Host</string>
+    <string name="package_name">apphost.blip.pe</string>
+    <string name="custom_url_scheme">apphost.blip.pe</string>
+</resources>

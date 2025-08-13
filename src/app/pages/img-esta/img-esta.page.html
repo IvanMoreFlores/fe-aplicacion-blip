@@ -1,10 +1,41 @@
-<header-component [withArrowLeft]="true" [route]="'/app-configuracion-alquilar'"
-  (navigateTo)="handleNavigateTo($event)"></header-component>
+<header-component
+  [withArrowLeft]="true"
+  [route]="'/app-configuracion-alquilar'"
+  (navigateTo)="handleNavigateTo($event)"
+></header-component>
 
 <ion-content>
   <div class="container">
     <h1 class="titlex">Incluye imágenes de tu área de estacionamiento</h1>
     <p>Te pedimos al menos tres fotos, pero si tienes más, ¡mejor aún!</p>
+
+    <!-- Indicador de estado de permisos -->
+    <div class="permission-status" *ngIf="permissionStatus">
+      <div
+        class="permission-info"
+        *ngIf="permissionStatus.camera === 'granted' && permissionStatus.photos === 'granted'"
+      >
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+        <span>Permisos de cámara y galería activados</span>
+      </div>
+      <div
+        class="permission-info"
+        *ngIf="permissionStatus.camera === 'denied' || permissionStatus.photos === 'denied'"
+      >
+        <ion-icon name="warning" color="warning"></ion-icon>
+        <span>Algunos permisos están desactivados</span>
+        <ion-button fill="clear" size="small" (click)="showPermissionAlert()">
+          Activar permisos
+        </ion-button>
+      </div>
+      <div
+        class="permission-info"
+        *ngIf="permissionStatus.camera === 'prompt' || permissionStatus.photos === 'prompt'"
+      >
+        <ion-icon name="information-circle" color="primary"></ion-icon>
+        <span>Permisos pendientes de confirmación</span>
+      </div>
+    </div>
 
     <div class="boxes">
       <div
@@ -26,6 +57,20 @@
           />
         </div>
       </div>
+    </div>
+
+    <!-- Mensaje cuando no hay permisos -->
+    <div
+      class="no-permissions"
+      *ngIf="permissionStatus && (permissionStatus.camera === 'denied' || permissionStatus.photos === 'denied')"
+    >
+      <p>
+        Para agregar imágenes, necesitas activar los permisos de cámara y
+        galería.
+      </p>
+      <ion-button fill="outline" (click)="showPermissionAlert()">
+        Activar permisos
+      </ion-button>
     </div>
   </div>
 </ion-content>

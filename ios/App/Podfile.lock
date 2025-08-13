@@ -1,0 +1,52 @@
+PODS:
+  - Capacitor (6.2.0):
+    - CapacitorCordova
+  - CapacitorCamera (6.0.2):
+    - Capacitor
+  - CapacitorCordova (6.2.0)
+  - CapacitorGeolocation (6.1.0):
+    - Capacitor
+  - CapacitorKeyboard (6.0.3):
+    - Capacitor
+  - CapacitorStatusBar (6.0.1):
+    - Capacitor
+  - CapgoCapacitorNavigationBar (6.1.47):
+    - Capacitor
+
+DEPENDENCIES:
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorGeolocation (from `../../node_modules/@capacitor/geolocation`)"
+  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
+  - "CapgoCapacitorNavigationBar (from `../../node_modules/@capgo/capacitor-navigation-bar`)"
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorCamera:
+    :path: "../../node_modules/@capacitor/camera"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorGeolocation:
+    :path: "../../node_modules/@capacitor/geolocation"
+  CapacitorKeyboard:
+    :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorStatusBar:
+    :path: "../../node_modules/@capacitor/status-bar"
+  CapgoCapacitorNavigationBar:
+    :path: "../../node_modules/@capgo/capacitor-navigation-bar"
+
+SPEC CHECKSUMS:
+  Capacitor: 1f3c7b9802d958cd8c4eb63895fff85dff2e1eea
+  CapacitorCamera: ed022171dbf3853e68eec877b4d78995378af6b7
+  CapacitorCordova: b33e7f4aa4ed105dd43283acdd940964374a87d9
+  CapacitorGeolocation: d994ee64ee41909e2089e575c9d3a976007c2812
+  CapacitorKeyboard: 460c6f9ec5e52c84f2742d5ce2e67bbc7ab0ebb0
+  CapacitorStatusBar: b81d4fb5d4e0064c712018071b3ab4b810b39a63
+  CapgoCapacitorNavigationBar: dbcb19b94942e7cad85771d559eb11693d686998
+
+PODFILE CHECKSUM: f3c903881f65cb95394c1ceb15d2c49c8a20d305
+
+COCOAPODS: 1.16.2

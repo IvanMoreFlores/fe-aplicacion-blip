@@ -19,6 +19,58 @@ ion-content {
   p {
     margin-bottom: 20px;
   }
+
+  .permission-status {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+
+    .permission-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #495057;
+
+      ion-icon {
+        font-size: 20px;
+      }
+
+      span {
+        flex: 1;
+      }
+
+      ion-button {
+        --padding-start: 8px;
+        --padding-end: 8px;
+        height: 28px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .no-permissions {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 10px;
+    margin-top: 20px;
+
+    p {
+      margin-bottom: 15px;
+      color: #856404;
+      font-size: 14px;
+    }
+
+    ion-button {
+      --background: #856404;
+      --color: #fff;
+      --border-color: #856404;
+    }
+  }
 }
 
 .boxes {
@@ -197,7 +249,7 @@ ngx-dropzone,
 .block2 {
   width: 100%;
   padding: 40px;
-  max-height: 50vh; 
+  max-height: 50vh;
   overflow: hidden;
 
   .btn-cont {
@@ -209,7 +261,7 @@ ngx-dropzone,
       width: 100%;
       padding-block: 15px;
       border: 1px solid #212121;
-      background-color: #FFFFFF;
+      background-color: #ffffff;
       border-radius: 30px;
       color: #212121;
       text-align: center;
@@ -217,44 +269,43 @@ ngx-dropzone,
       font-family: Poppins;
       font-size: 18px;
       font-weight: 500;
-      line-height: 25px; 
+      line-height: 25px;
       letter-spacing: 0.18px;
     }
 
     .selec-gal {
       background-color: #212121;
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
 }
 
-
 .btn-cont {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center; /* Centra los botones horizontalmente */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; /* Centra los botones horizontalmente */
 }
 
 button {
-    width: 100%;
-    padding-block: 15px;
-    border: 1px solid #212121;
-    background-color: #FFFFFF;
-    border-radius: 30px;
-    color: #212121;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 25px; 
-    letter-spacing: 0.18px;
+  width: 100%;
+  padding-block: 15px;
+  border: 1px solid #212121;
+  background-color: #ffffff;
+  border-radius: 30px;
+  color: #212121;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: 0.18px;
 }
 
 .selec-gal {
-    background-color: #212121;
-    color: #FFFFFF;
+  background-color: #212121;
+  color: #ffffff;
 }
 .img-dow {
   display: flex;
@@ -285,7 +336,6 @@ ngx-dropzone-image-preview img {
 }
 
 /* Estilos opcionales para el borde cuando se interactúa */
-
 
 .bnt-dow {
   width: 100%;
