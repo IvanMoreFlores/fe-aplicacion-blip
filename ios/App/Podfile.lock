@@ -1,16 +1,16 @@
 PODS:
-  - Capacitor (6.2.0):
+  - Capacitor (7.4.0):
     - CapacitorCordova
-  - CapacitorCamera (6.0.2):
+  - CapacitorCamera (7.0.2):
     - Capacitor
-  - CapacitorCordova (6.2.0)
-  - CapacitorGeolocation (6.1.0):
+  - CapacitorCordova (7.4.0)
+  - CapacitorGeolocation (7.0.0):
     - Capacitor
-  - CapacitorKeyboard (6.0.3):
+  - CapacitorKeyboard (7.0.0):
     - Capacitor
-  - CapacitorStatusBar (6.0.1):
+  - CapacitorStatusBar (7.0.0):
     - Capacitor
-  - CapgoCapacitorNavigationBar (6.1.47):
+  - CapgoCapacitorNavigationBar (7.1.24):
     - Capacitor
 
 DEPENDENCIES:
@@ -39,14 +39,14 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capgo/capacitor-navigation-bar"
 
 SPEC CHECKSUMS:
-  Capacitor: 1f3c7b9802d958cd8c4eb63895fff85dff2e1eea
-  CapacitorCamera: ed022171dbf3853e68eec877b4d78995378af6b7
-  CapacitorCordova: b33e7f4aa4ed105dd43283acdd940964374a87d9
-  CapacitorGeolocation: d994ee64ee41909e2089e575c9d3a976007c2812
-  CapacitorKeyboard: 460c6f9ec5e52c84f2742d5ce2e67bbc7ab0ebb0
-  CapacitorStatusBar: b81d4fb5d4e0064c712018071b3ab4b810b39a63
-  CapgoCapacitorNavigationBar: dbcb19b94942e7cad85771d559eb11693d686998
+  Capacitor: a162db7c9c90f383740a78e8935dff4958158b6b
+  CapacitorCamera: 6e18d54c8ab30d7dc7b8cd93d96f9b4f57e9202a
+  CapacitorCordova: 723e017d8a80ab2ede9959fbe37556c35ac860d5
+  CapacitorGeolocation: 0854ff17bcbf1c694aa36495e627c9c1bffa323b
+  CapacitorKeyboard: 2c26c6fccde35023c579fc37d4cae6326d5e6343
+  CapacitorStatusBar: 438e90beeeefa8276b24e6c5991cb02dd13e51bf
+  CapgoCapacitorNavigationBar: 996658df36af6a4c18c09b66b331960570cf8857
 
-PODFILE CHECKSUM: f3c903881f65cb95394c1ceb15d2c49c8a20d305
+PODFILE CHECKSUM: e72176099e3b313586e72c2fffee95395896b6b8
 
 COCOAPODS: 1.16.2

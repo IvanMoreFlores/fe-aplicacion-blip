@@ -17,7 +17,7 @@ const config: CapacitorConfig = {
     },
     Camera: {
       androidScaleType: 'CENTER_CROP',
-      // Configuración adicional para Android
+      // Configuración para Capacitor 7
       android: {
         permissions: [
           'android.permission.CAMERA',
@@ -25,6 +25,9 @@ const config: CapacitorConfig = {
           'android.permission.WRITE_EXTERNAL_STORAGE',
           'android.permission.READ_MEDIA_IMAGES',
         ],
+      },
+      ios: {
+        permissions: ['camera', 'photoLibrary', 'photoLibraryAdd'],
       },
     },
   },
