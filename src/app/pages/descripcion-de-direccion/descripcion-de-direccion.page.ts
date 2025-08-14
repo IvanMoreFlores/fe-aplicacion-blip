@@ -122,21 +122,49 @@ export class DescripcionDeDireccionPage implements OnInit {
         ) {
           const result = response.results[0];
           const addressComponents = result.address_components;
-          const distritoEncontrado = addressComponents.find(
-            (component: any) =>
-              component.types.includes('locality') &&
-              component.types.includes('political') &&
-              component.types.length === 2
-          ).long_name;
-          const ciudadEncontrada = addressComponents.find(
-            (component: any) =>
-              component.types.includes('administrative_area_level_2') &&
-              component.types.includes('political') &&
-              component.types.length === 2
-          ).long_name;
+          
+          // Intentar encontrar distrito de manera más flexible
+          let distritoEncontrado = null;
+          try {
+            distritoEncontrado = addressComponents.find(
+              (component: any) =>
+                component.types.includes('locality') &&
+                component.types.includes('political') &&
+                component.types.length === 2
+            )?.long_name;
+          } catch (error) {
+            console.log('No se pudo encontrar distrito en locality');
+          }
 
-          // Intentar asignar distrito
+          // Si no se encontró en locality, buscar en otros tipos
+          if (!distritoEncontrado) {
+            try {
+              distritoEncontrado = addressComponents.find(
+                (component: any) =>
+                  component.types.includes('sublocality') &&
+                  component.types.includes('political')
+              )?.long_name;
+            } catch (error) {
+              console.log('No se pudo encontrar distrito en sublocality');
+            }
+          }
+
+          // Intentar encontrar ciudad
+          let ciudadEncontrada = null;
+          try {
+            ciudadEncontrada = addressComponents.find(
+              (component: any) =>
+                component.types.includes('administrative_area_level_2') &&
+                component.types.includes('political') &&
+                component.types.length === 2
+            )?.long_name;
+          } catch (error) {
+            console.log('No se pudo encontrar ciudad');
+          }
+
+          // Intentar asignar distrito si se encontró
           if (distritoEncontrado) {
+            let distritoAsignado = false;
             for (const dist of this.distritos) {
               if (
                 dist.value
@@ -151,13 +179,19 @@ export class DescripcionDeDireccionPage implements OnInit {
                   'Distrito seleccionado automáticamente:',
                   dist.value
                 );
+                distritoAsignado = true;
                 break;
               }
             }
+            
+            if (!distritoAsignado) {
+              console.log('No se pudo asignar automáticamente el distrito:', distritoEncontrado);
+            }
           }
 
-          // Asignar ciudad
+          // Asignar ciudad si se encontró
           if (ciudadEncontrada) {
+            let ciudadAsignada = false;
             for (const city of this.ciudades) {
               if (
                 city.value
@@ -169,8 +203,13 @@ export class DescripcionDeDireccionPage implements OnInit {
               ) {
                 this.ciudad = city.key;
                 console.log('Ciudad seleccionada automáticamente:', city.value);
+                ciudadAsignada = true;
                 break;
               }
+            }
+            
+            if (!ciudadAsignada) {
+              console.log('No se pudo asignar automáticamente la ciudad:', ciudadEncontrada);
             }
           }
         }
@@ -213,23 +252,51 @@ export class DescripcionDeDireccionPage implements OnInit {
             lng: result.geometry.location.lng,
           };
 
-          // Extraer distrito y ciudad
+          // Extraer distrito y ciudad de manera más flexible
           const addressComponents = result.address_components;
-          const distritoEncontrado = addressComponents.find(
-            (component: any) =>
-              component.types.includes('locality') &&
-              component.types.includes('political') &&
-              component.types.length === 2
-          ).long_name;
-          const ciudadEncontrada = addressComponents.find(
-            (component: any) =>
-              component.types.includes('administrative_area_level_2') &&
-              component.types.includes('political') &&
-              component.types.length === 2
-          ).long_name;
+          
+          // Intentar encontrar distrito
+          let distritoEncontrado = null;
+          try {
+            distritoEncontrado = addressComponents.find(
+              (component: any) =>
+                component.types.includes('locality') &&
+                component.types.includes('political') &&
+                component.types.length === 2
+            )?.long_name;
+          } catch (error) {
+            console.log('No se pudo encontrar distrito en locality');
+          }
 
-          // Intentar asignar distrito y ciudad
+          // Si no se encontró en locality, buscar en otros tipos
+          if (!distritoEncontrado) {
+            try {
+              distritoEncontrado = addressComponents.find(
+                (component: any) =>
+                  component.types.includes('sublocality') &&
+                  component.types.includes('political')
+              )?.long_name;
+            } catch (error) {
+              console.log('No se pudo encontrar distrito en sublocality');
+            }
+          }
+
+          // Intentar encontrar ciudad
+          let ciudadEncontrada = null;
+          try {
+            ciudadEncontrada = addressComponents.find(
+              (component: any) =>
+                component.types.includes('administrative_area_level_2') &&
+                component.types.includes('political') &&
+                component.types.length === 2
+            )?.long_name;
+          } catch (error) {
+            console.log('No se pudo encontrar ciudad');
+          }
+
+          // Intentar asignar distrito si se encontró
           if (distritoEncontrado) {
+            let distritoAsignado = false;
             for (const dist of this.distritos) {
               if (
                 dist.value
@@ -240,12 +307,19 @@ export class DescripcionDeDireccionPage implements OnInit {
                   .includes(dist.value.toLowerCase())
               ) {
                 this.distrito = dist.key;
+                distritoAsignado = true;
                 break;
               }
             }
+            
+            if (!distritoAsignado) {
+              console.log('No se pudo asignar automáticamente el distrito:', distritoEncontrado);
+            }
           }
 
+          // Intentar asignar ciudad si se encontró
           if (ciudadEncontrada) {
+            let ciudadAsignada = false;
             for (const city of this.ciudades) {
               if (
                 city.value
@@ -256,8 +330,13 @@ export class DescripcionDeDireccionPage implements OnInit {
                   .includes(city.value.toLowerCase())
               ) {
                 this.ciudad = city.key;
+                ciudadAsignada = true;
                 break;
               }
+            }
+            
+            if (!ciudadAsignada) {
+              console.log('No se pudo asignar automáticamente la ciudad:', ciudadEncontrada);
             }
           }
 
@@ -287,19 +366,33 @@ export class DescripcionDeDireccionPage implements OnInit {
   }
 
   validateAndNavigate() {
-    if (!this.ciudad || this.ciudad.length < 1) {
-      alert('Debes seleccionar una ciudad.');
+    // Validar que hay una dirección
+    if (!this.direccion || this.direccion.length < 1) {
+      alert('Debes incluir una dirección.');
       return;
     }
 
-    if (!this.distrito || this.distrito.length < 1) {
-      alert('Debes seleccionar un distrito.');
-      return;
-    }
-
+    // Validar que hay una ubicación seleccionada en el mapa
     if (!this.selectedLocation) {
       alert('Debes seleccionar una ubicación en el mapa.');
       return;
+    }
+
+    // Si no se detectó automáticamente la ciudad, asignar Lima por defecto
+    if (!this.ciudad || this.ciudad.length < 1) {
+      this.ciudad = '1'; // Lima
+    }
+
+    // Si no se detectó automáticamente el distrito, intentar encontrarlo o usar un valor por defecto
+    if (!this.distrito || this.distrito.length < 1) {
+      // Intentar encontrar el distrito más cercano basado en la dirección
+      const distritoEncontrado = this.findClosestDistrict();
+      if (distritoEncontrado) {
+        this.distrito = distritoEncontrado;
+      } else {
+        // Si no se encuentra, usar el primer distrito disponible o un valor por defecto
+        this.distrito = this.distritos.length > 0 ? this.distritos[0].key : '1';
+      }
     }
 
     // Navegar a la siguiente página con todos los datos
@@ -315,6 +408,34 @@ export class DescripcionDeDireccionPage implements OnInit {
         lng: this.selectedLocation.lng,
       },
     });
+  }
+
+  // Método para encontrar el distrito más cercano basado en la dirección
+  private findClosestDistrict(): string | null {
+    if (!this.direccion || this.distritos.length === 0) {
+      return null;
+    }
+
+    const direccionLower = this.direccion.toLowerCase();
+    
+    // Buscar coincidencias exactas primero
+    for (const dist of this.distritos) {
+      if (direccionLower.includes(dist.value.toLowerCase())) {
+        return dist.key;
+      }
+    }
+
+    // Si no hay coincidencias exactas, buscar coincidencias parciales
+    for (const dist of this.distritos) {
+      const distritoWords = dist.value.toLowerCase().split(' ');
+      for (const word of distritoWords) {
+        if (word.length > 3 && direccionLower.includes(word)) {
+          return dist.key;
+        }
+      }
+    }
+
+    return null;
   }
 
   async return() {
