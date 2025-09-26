@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  // private apiUrl = 'https://backend-demo.blip-backend.com';
+  private apiUrl = 'https://backend-demo.blip-backend.com';
   // private apiUrl = 'https://blip-backend.com'; //'http://44.213.46.131:3000'; // URL de tu API
-  private apiUrl = 'http://192.168.0.188:3000';
+  //private apiUrl = 'http://192.168.0.188:3000';
   constructor(private http: HttpClient) {}
 
   // Método para validar token de usuario
