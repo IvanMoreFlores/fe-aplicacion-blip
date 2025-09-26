@@ -4,7 +4,7 @@ ion-content {
 
 .container {
   padding: 10px 32px 10px 32px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
 }
@@ -17,8 +17,6 @@ ion-content {
   color: #212121;
   margin-bottom: 30px;
 }
-
-
 
 .input-bar {
   border: 1px solid black;
@@ -36,7 +34,6 @@ ion-content {
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-
 }
 
 .ing {
@@ -82,7 +79,7 @@ ion-content {
 }
 
 .custom-checkbox:checked::before {
-  content: '\2714';
+  content: "\2714";
   /* Código Unicode para el símbolo de check (✔) */
   position: absolute;
   top: 50%;
@@ -112,7 +109,7 @@ ion-content {
 
   .bac {
     border: 1px solid #212121;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     padding-inline: 10px;
     padding-top: 17px;
     padding-bottom: 17px;
@@ -144,5 +141,6 @@ ion-footer {
     display: flex;
     justify-content: space-between;
     padding: 7px 32px 7px 32px;
+    background-color: #ffffff;
   }
 }

@@ -4,7 +4,7 @@ ion-content {
 
 .container {
   padding: 10px 32px 10px 32px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
 
@@ -22,15 +22,12 @@ ion-content {
   }
 }
 
-
-
-
 /* Botón personalizado */
 .custom-btn {
   margin-top: 20px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #212121;
-  border: 1px solid #A3A2A4;
+  border: 1px solid #a3a2a4;
   /* Borde predeterminado gris */
   border-radius: 10px;
   width: 100%;
@@ -68,7 +65,7 @@ ion-content {
   position: absolute;
   right: 20px;
   /* Posiciona el radio button a la derecha */
-  border: 1px solid #A3A2A4;
+  border: 1px solid #a3a2a4;
   background-color: transparent;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -89,7 +86,7 @@ ion-content {
 
   .bac {
     border: 1px solid #212121;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     padding-inline: 10px;
     padding-top: 17px;
     padding-bottom: 17px;
@@ -122,5 +119,6 @@ ion-footer {
     display: flex;
     justify-content: space-between;
     padding: 7px 32px 7px 32px;
+    background-color: #ffffff;
   }
 }

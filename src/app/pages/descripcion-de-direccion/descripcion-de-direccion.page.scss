@@ -4,7 +4,7 @@ ion-content {
 
 .container {
   padding: 10px 32px 10px 32px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
 }
@@ -24,7 +24,7 @@ ion-content {
   font-size: 12px;
   position: absolute;
   top: -10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 0 10px;
   left: 15px;
   font-family: "Poppins", sans-serif;
@@ -64,7 +64,7 @@ ion-content {
 }
 
 .custom-select::after {
-  content: url('/assets/images/flec.svg');
+  content: url("/assets/images/flec.svg");
   /* Usa `content` para incluir la imagen SVG */
   position: absolute;
   top: 50%;
@@ -119,7 +119,7 @@ ion-content {
   font-size: 12px;
   position: absolute;
   top: -10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 0 10px;
   left: 15px;
   font-family: "Poppins", sans-serif;
@@ -146,7 +146,7 @@ textarea {
 
   .bac {
     border: 1px solid #212121;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     padding-inline: 10px;
     padding-top: 17px;
     padding-bottom: 17px;
@@ -179,5 +179,6 @@ ion-footer {
     display: flex;
     justify-content: space-between;
     padding: 7px 32px 7px 32px;
+    background-color: #ffffff;
   }
 }

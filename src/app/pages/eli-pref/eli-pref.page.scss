@@ -24,7 +24,6 @@ img {
   font-weight: 500;
   /* 133.333% */
   width: 99%;
-
 }
 
 .subtitle {
@@ -52,7 +51,7 @@ img {
 
   .bac {
     border: 1px solid #212121;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     padding-inline: 10px;
     padding-top: 17px;
     padding-bottom: 17px;
@@ -91,5 +90,6 @@ ion-footer {
     display: flex;
     justify-content: space-between;
     padding: 7px 32px 7px 32px;
+    background-color: #ffffff;
   }
 }

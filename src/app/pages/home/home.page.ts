@@ -64,7 +64,7 @@ export class HomePage implements OnInit, OnDestroy {
     private readonly cdr: ChangeDetectorRef,
     private readonly platform: Platform,
     private readonly http: HttpClient,
-    private navCtrl: NavController,
+    private navCtrl: NavController
   ) {}
 
   ngOnDestroy() {
@@ -125,7 +125,7 @@ export class HomePage implements OnInit, OnDestroy {
       const cameraPermissionStatus = await Camera.checkPermissions();
       let cameraGranted = cameraPermissionStatus.camera === 'granted';
       let photosGranted = cameraPermissionStatus.photos === 'granted';
-      
+
       if (cameraPermissionStatus.camera !== 'granted') {
         const cameraRequestResult = await Camera.requestPermissions();
         if (cameraRequestResult.camera !== 'granted') {
@@ -150,9 +150,8 @@ export class HomePage implements OnInit, OnDestroy {
       // Guardar el estado de los permisos en storage
       await this.storage.setItem('cameraPermissions', {
         camera: cameraGranted,
-        photos: photosGranted
+        photos: photosGranted,
       });
-
     } catch (error) {
       console.error('Error al solicitar permisos de cámara y galería:', error);
     }
@@ -384,7 +383,7 @@ export class HomePage implements OnInit, OnDestroy {
   async sesion_close() {
     await this.storage.clear();
     await this.modalController.dismiss();
-    this.navCtrl.navigateRoot ('/login');
+    this.navCtrl.navigateRoot('/login');
   }
   async dismissToggleModal(fromBackdrop: boolean = false) {
     this.isToggleModalOpen = false; // Cierra el modal del toggle
@@ -885,7 +884,6 @@ export class HomePage implements OnInit, OnDestroy {
     this.api.getAds(token).subscribe(
       (response: any) => {
         this.data_ads = response.data;
-
         if (this.data_ads.length <= 0) {
           this.ads_active = 0;
         } else {

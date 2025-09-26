@@ -4,7 +4,7 @@ ion-content {
 
 .container {
   padding: 10px 32px 10px 32px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
 
@@ -31,7 +31,7 @@ ion-content {
     --padding-end: 16px;
     --padding-top: 12px;
     --padding-bottom: 12px;
-    --placeholder-color: #C7C7CC; // Color del placeholder
+    --placeholder-color: #c7c7cc; // Color del placeholder
     --placeholder-opacity: 1;
   }
 
@@ -71,7 +71,6 @@ ion-content {
     font-size: 0.8rem;
     margin-top: 2px;
   }
-
 }
 
 ion-footer {
@@ -80,5 +79,6 @@ ion-footer {
     display: flex;
     justify-content: space-between;
     padding: 7px 32px 7px 32px;
+    background-color: #ffffff;
   }
 }

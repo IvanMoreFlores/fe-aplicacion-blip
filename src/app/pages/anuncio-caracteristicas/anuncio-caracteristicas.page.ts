@@ -329,23 +329,35 @@ export class AnuncioCaracteristicasPage implements OnInit, OnDestroy {
 
     await this.storage.setItem('chck_hora', String(this.chck_hora));
 
+    // Crear arrays de números para los días
+    const rga_dia_a: number[] = [];
+    const rga_dia_d: number[] = [];
+
     // Enviar todos los días seleccionados
-    if (this.chck_lun) formData.append('rga_dia_a', '1');
-    if (this.chck_mar) formData.append('rga_dia_a', '2');
-    if (this.chck_mie) formData.append('rga_dia_a', '3');
-    if (this.chck_jue) formData.append('rga_dia_a', '4');
-    if (this.chck_vie) formData.append('rga_dia_a', '5');
-    if (this.chck_sab) formData.append('rga_dia_a', '6');
-    if (this.chck_dom) formData.append('rga_dia_a', '7');
+    if (this.chck_lun) rga_dia_a.push(1);
+    if (this.chck_mar) rga_dia_a.push(2);
+    if (this.chck_mie) rga_dia_a.push(3);
+    if (this.chck_jue) rga_dia_a.push(4);
+    if (this.chck_vie) rga_dia_a.push(5);
+    if (this.chck_sab) rga_dia_a.push(6);
+    if (this.chck_dom) rga_dia_a.push(7);
 
     // Enviar todos los días NO seleccionados (para desactivarlos en el backend)
-    if (!this.chck_lun) formData.append('rga_dia_d', '1');
-    if (!this.chck_mar) formData.append('rga_dia_d', '2');
-    if (!this.chck_mie) formData.append('rga_dia_d', '3');
-    if (!this.chck_jue) formData.append('rga_dia_d', '4');
-    if (!this.chck_vie) formData.append('rga_dia_d', '5');
-    if (!this.chck_sab) formData.append('rga_dia_d', '6');
-    if (!this.chck_dom) formData.append('rga_dia_d', '7');
+    if (!this.chck_lun) rga_dia_d.push(1);
+    if (!this.chck_mar) rga_dia_d.push(2);
+    if (!this.chck_mie) rga_dia_d.push(3);
+    if (!this.chck_jue) rga_dia_d.push(4);
+    if (!this.chck_vie) rga_dia_d.push(5);
+    if (!this.chck_sab) rga_dia_d.push(6);
+    if (!this.chck_dom) rga_dia_d.push(7);
+
+    // Agregar los arrays como JSON al FormData
+    formData.append('rga_dia_a', JSON.stringify(rga_dia_a));
+    formData.append('rga_dia_d', JSON.stringify(rga_dia_d));
+
+    // Console.log para debuggear los arrays que se envían al backend
+    console.log('rga_dia_a (días activos):', rga_dia_a);
+    console.log('rga_dia_d (días desactivados):', rga_dia_d);
 
     let horaInicioEnviar = '';
     let horaFinEnviar = '';

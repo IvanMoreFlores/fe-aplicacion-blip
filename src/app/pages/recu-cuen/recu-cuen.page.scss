@@ -33,6 +33,7 @@ ion-footer {
     display: flex;
     justify-content: space-between;
     padding: 7px 32px 7px 32px;
+    background-color: #ffffff;
   }
 }
 
@@ -42,7 +43,7 @@ ion-modal {
 
   .line {
     width: 100%;
-    border-bottom: 0.5px solid #D4D4D4;
+    border-bottom: 0.5px solid #d4d4d4;
   }
 
   .modal-container {
